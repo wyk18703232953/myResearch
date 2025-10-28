@@ -1,0 +1,27 @@
+"Little A has a rectangular box with a height of $h$. He places this box on a table and establishes a three-dimensional Cartesian coordinate system $O-xyz$, where the table is located at $z=z_0$.
+
+Due to Little A's obsessive-compulsive disorder, he places the length and width of the box parallel to the $x$ and $y$ axes (the length does not necessarily correspond to the $x$ axis), and the bottom face has a pair of diagonal vertices located at $(u_0,v_0,z_0)$ and $(u_1,v_1,z_0)$.
+
+Now Little A has $q$ queries. For each query, he provides a point $(x_i,y_i,z_i)$ and wants to know if the point is inside the box (the boundary is also considered inside).
+
+
+
+
+
+
+**Input**
+
+The first line contains six integers $z_0,h,u_0,v_0,u_1,v_1$ ($0\leq z_0,h\leq 10^6$, $-10^6\leq u_0,v_0,u_1,v_1\leq 10^6$).
+
+The second line contains an integer $q$ ($1\leq q\leq 10^3$) indicating the number of queries.
+
+The next $q$ lines each contain three integers $x_i,y_i,z_i$ ($-10^6\leq x_i,y_i,z_i\leq 10^6$) representing the $i$\-th query.
+
+
+
+
+
+
+**Output**
+
+Output $q$ lines. In the $i$\-th line, output a string YES or NO. YES indicates that the queried point is inside the box, while NO indicates that it is not inside the box. The case does not matter, meaning you can output YES, Yes, YeS, yEs and NO, No, nO, etc."|||#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    long long z0, h, u0, v0, u1, v1;\n    if(!(cin >> z0 >> h >> u0 >> v0 >> u1 >> v1)) return 0;\n\n    long long minX = min(u0, u1);\n    long long maxX = max(u0, u1);\n    long long minY = min(v0, v1);\n    long long maxY = max(v0, v1);\n    long long zmin = z0;\n    long long zmax = z0 + h;\n\n    int q;\n    cin >> q;\n    while (q--) {\n        long long x, y, z;\n        cin >> x >> y >> z;\n        bool inside = (x >= minX && x <= maxX &&\n                       y >= minY && y <= maxY &&\n                       z >= zmin && z <= zmax);\n        cout << (inside ? "YES" : "NO") << '\n';\n    }\n\n    return 0;\n}\n|||题意给出一个以 z=z0 平面为底面的长方体，高度为 h，底面与 xy 平面平行且边沿 x,y 轴。底面对角顶点为 (u0,v0,z0) 与 (u1,v1,z0)，由于边平行于坐标轴，底面的 x 在 [min(u0,u1), max(u0,u1)]，y 在 [min(v0,v1), max(v0,v1)]，高度在 z 的区间 [z0, z0+h] 内。对于每个查询点 (x, y, z)，若 x, y, z 都落在上述区间内（边界算作内部），则输出 YES，否则输出 NO。时间复杂度 O(q)，常数空间。###_###

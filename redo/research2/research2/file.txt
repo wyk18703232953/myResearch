@@ -1,0 +1,3 @@
+Little A has a rectangular box with a height of $h$. He places this box on a table and establishes a three-dimensional Cartesian coordinate system $O-xyz$, where the table is located at $z=z_0$.
+Due to Little A's obsessive-compulsive disorder, he places the length and width of the box parallel to the $x$ and $y$ axes (the length does not necessarily correspond to the $x$ axis), and the bottom face has a pair of diagonal vertices located at $(u_0,v_0,z_0)$ and $(u_1,v_1,z_0)$.
+Now Little A has $q$ queries. For each query, he provides a point $(x_i,y_i,z_i)$ and wants to know if the point is inside the box (the boundary is also considered inside).
