@@ -15,7 +15,8 @@ response = client.chat.completions.create(
     stream=False
 )
 
-print(response.choices[0].message.content)\
+print(response.choices[0].message.content)
+
 
 
 # from openai import OpenAI
