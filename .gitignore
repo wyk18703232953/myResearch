@@ -23,3 +23,5 @@ Thumbs.db
 **/answer/
 **/problems_*/
 **/.svn/
+**/__pycache__/
+
