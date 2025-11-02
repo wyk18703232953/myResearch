@@ -7,7 +7,7 @@ from review import review_result
 
 import yaml
 
-with open(r'../config.yaml', 'r') as f:
+with open(r'./config.yaml', 'r') as f:
     config = yaml.safe_load(f)['gpt4.1']
 
 BASE_URL = config['BASE_URL']
@@ -41,9 +41,10 @@ if __name__ == "__main__":
                     print(f"已提交第{i+1}题第{cnt+1}次")
                     import time
 
-                    https: // www.buctoj.com / problem.php?id = 5844  #
-                    https: // www.buctoj.com / submit.php
-                    https: // www.buctcoder.com / submitpage.php?id = 5844
+                    # https: // www.buctoj.com / problem.php?id = 5844  #
+                    # https: // www.buctoj.com / submit.php
+                    # https://www.buctoj.com/submitpage.php?id=5844
+                    # https: // www.buctcoder.com / submitpage.php?id = 5844
                     time.sleep(10+i*5)  # 等待5秒让判题系统处理
                     flag = review_result(BASE_URL, session, link, REVIEW_URL, USERNAME)
                     if flag:
