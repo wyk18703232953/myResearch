@@ -1,0 +1,34 @@
+common: &common
+  BASE_URL: 'https://www.buctoj.com/'
+  LOGIN_PAGE: loginpage.php
+  LOGIN_URL: login.php
+  CID: '3942'
+  SUBMIT_URL: submit.php
+  REVIEW_URL: status.php
+
+#https://www:
+#  buctcoder:
+#    com/contest:
+#      php?cid=3942:
+#gpt4.1:
+#  <<: *common
+#  USERNAME: '12'
+#  PASSWORD: 'F8A81F697A'
+#  Retries: 8
+gpt4.1:
+  <<: *common
+  USERNAME: 'Wu1074154081'
+  PASSWORD: '123456'
+  Retries: 1
+
+deepseek-r1:
+  <<: *common
+  USERNAME: '10'
+  PASSWORD: 'DC2227791F'
+  Retries: 3
+
+doubao1.5pro:
+  <<: *common
+  USERNAME: '11'
+  PASSWORD: '2209D85010'
+  Retries: 6
