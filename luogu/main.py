@@ -52,6 +52,7 @@ if __name__ == "__main__":
         code=""
         # 读取文件夹中的内容赋值给code,并打印出来
         # code = []
+        login( wd,email,password )
         folder_path = "d:/myResearch/luogu/answer"
         for file_name in os.listdir(folder_path):
             problem_name = os.path.splitext(file_name)[0]
@@ -62,7 +63,6 @@ if __name__ == "__main__":
             pid=problem_name
             url=f"https://www.luogu.com.cn/problem/{pid}#submit"
             submit_code(wd, url, code)
-
     finally:
         time.sleep(100)
 
