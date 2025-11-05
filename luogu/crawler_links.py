@@ -130,7 +130,6 @@ def extract_problem_content(soup):
             if background_content:
                 problem_data['background'] = background_content.get_text(strip=True)
                 print("题目背景:")
-                # 修正：使用 background 而不是 description
                 print(problem_data['background'][:200] + "..." if len(problem_data['background']) > 200 else problem_data['background'])
             else:
                 problem_data['background'] = "未找到题目背景内容"
@@ -177,7 +176,7 @@ def extract_problem_content(soup):
         else:
             problem_data['output_format'] = "未找到输出格式标题"
         
-        # 6. 获取输入输出样例
+        # 6. 获取输入输出样例（修改后的部分）
         sample_section = soup.find('h2', string=lambda text: text and '输入输出样例' in text)
         if sample_section:
             sample_block = sample_section.find_next('div', class_='io-sample')
@@ -185,6 +184,8 @@ def extract_problem_content(soup):
                 # 获取所有样例块
                 sample_blocks = sample_block.find_all('div', class_='io-sample-block')
                 samples = []
+                
+                current_sample = {}
                 
                 for i, block in enumerate(sample_blocks):
                     caption = block.find('p', class_='lfe-caption')
@@ -195,27 +196,27 @@ def extract_problem_content(soup):
                         code_text = code_block.get_text(strip=True)
                         
                         if '输入' in caption_text:
-                            samples.append({
-                                'input': code_text,
-                                'input_caption': caption_text
-                            })
+                            # 如果当前已有样例且包含output，先保存
+                            if current_sample and 'output' in current_sample:
+                                samples.append(current_sample)
+                                current_sample = {}
+                            
+                            # 开始新的输入样例
+                            current_sample['input'] = code_text
+                            
                         elif '输出' in caption_text:
-                            # 匹配到对应的输出
-                            if samples and 'output' not in samples[-1]:
-                                samples[-1]['output'] = code_text
-                                samples[-1]['output_caption'] = caption_text
-                            else:
-                                samples.append({
-                                    'output': code_text,
-                                    'output_caption': caption_text
-                                })
+                            # 添加输出到当前样例
+                            current_sample['output'] = code_text
+                
+                # 添加最后一个样例（如果存在）
+                if current_sample:
+                    samples.append(current_sample)
                 
                 problem_data['samples'] = samples
                 print("\n输入输出样例:")
                 for i, sample in enumerate(samples):
-                    if 'input' in sample:
-                        print(f"样例 {i+1} - 输入:")
-                        print(sample['input'])
+                    print(f"样例 {i+1} - 输入:")
+                    print(sample['input'])
                     if 'output' in sample:
                         print(f"样例 {i+1} - 输出:")
                         print(sample['output'])
@@ -256,6 +257,4 @@ if __name__ == '__main__':
     os.makedirs(SAVE_DIR, exist_ok=True)
     for link in links:
         save_page_content(link, SAVE_DIR)
-        break
-    
-   
+
