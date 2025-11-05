@@ -1,0 +1,14 @@
+{
+  "title": "P4391 [BalticOI 2009] Radio Transmission 无线传输",
+  "background": "",
+  "description": "给你一个字符串s1​，它是由某个字符串s2​不断自我连接形成的（保证至少重复2次）。但是字符串s2​是不确定的，现在只想知道它的最短长度是多少。",
+  "input_format": "第一行一个整数L，表示给出字符串的长度。第二行给出字符串s1​的一个子串，全由小写字母组成。",
+  "output_format": "仅一行，表示s2​的最短长度。",
+  "samples": [
+    {
+      "input": "8\ncabcabca",
+      "output": "3"
+    }
+  ],
+  "hint": "样例输入输出 1 解释对于样例，我们可以利用abc不断自我连接得到abcabcabcabc，读入的cabcabca，是它的子串。规模与约定对于全部的测试点，保证1≤L≤106。"
+}

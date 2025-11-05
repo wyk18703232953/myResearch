@@ -1,0 +1,14 @@
+{
+  "title": "P3546 [POI 2012] PRE-Prefixuffix",
+  "background": "",
+  "description": "We consider strings consisting of lowercase letters of the English alphabet in this problem.An initial fragment of a given string is called its prefix.A final (terminal) fragment of a given string is called its suffix.In particular, the empty string is both a prefix and a suffix of any string.Two strings are cyclically equivalent if one of them can be obtained from another by    moving its certain suffix from the end of the string to its beginning.For example, the stringsandare cyclically equivalent, whereas the stringsandare not.In particular, every string is cyclically equivalent to itself.A stringconsisting ofletters is given.We are looking for its prefixand suffixof equal length such that:andare cyclically equivalent,                  the common length ofanddoes not exceed(i.e., the prefixand the suffixdo not overlap in), and                  the common length ofandis maximized.对于两个串S1​,S2​，如果能够将S1​的一个后缀移动到开头后变成S2​，就称S1​和S2​循环相同。例如串 ababba 和串 abbaab 是循环相同的。给出一个长度为n的串S，求满足下面条件的最大的L(L≤2n​)：S的L前缀和S的L后缀是循环相同的。",
+  "input_format": "The first line of the standard input contains a single integer() denoting the length of the string.The second line of input contains the stringitself, consisting oflowercase letters of the English alphabet.In tests worth 30% of the points the conditionholds in addition.In tests worth 50% of the points the conditionholds in addition.",
+  "output_format": "Your program should print a single integer in the first and only line of the standard output,      namely the common length of the prefixand the suffixthat we are looking for.",
+  "samples": [
+    {
+      "input": "15\nababbabababbaab",
+      "output": "6"
+    }
+  ],
+  "hint": "数据范围：对于30%的数据，保证n≤500；对于50%的数据，保证n≤5000；对于100%数据，保证1≤n≤106。"
+}

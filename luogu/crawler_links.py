@@ -5,7 +5,7 @@ import time
 import os
 BASE_URL = "https://luogu.com.cn"   # ✅ 替换成实际网站的根网址
 LIST_PAGE_URL = f"https://www.luogu.com.cn/problem/list?type=luogu&page=1&tag=302"   # ✅ 替换成含有 row-wrap 的页面
-SAVE_DIR = "pages"  # 抓取的题目详情页保存路径
+SAVE_DIR = "problems"  # 抓取的题目详情页保存路径
 
 def fetch_problem_links_with_selenium():
     try:

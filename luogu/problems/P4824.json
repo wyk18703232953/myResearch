@@ -1,0 +1,14 @@
+{
+  "title": "P4824 [USACO15FEB] Censoring S",
+  "background": "",
+  "description": "Farmer John 为他的奶牛订阅了《Good Hooveskeeping》杂志，但最新一期包含了一篇不恰当的牛排烹饪文章。为此，FJ 需要将杂志文字组成的字符串S（长度不超过106）中所有出现的子串T进行删除处理。删除规则如下：反复找到当前S中第一个出现的子串T并删除，直到S中不再包含T。注意，删除操作可能产生新的T子串。请输出最终处理完成的字符串S。",
+  "input_format": "第一行输入字符串S。第二行输入字符串T。保证T的长度不超过S，且S和T均由小写字母组成。删除过程中保证S不会变为空。",
+  "output_format": "输出处理完成后的字符串S。",
+  "samples": [
+    {
+      "input": "whatthemomooofun\nmoo",
+      "output": "whatthefun"
+    }
+  ],
+  "hint": "未找到说明/提示标题"
+}

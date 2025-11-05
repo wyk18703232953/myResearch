@@ -17,9 +17,14 @@ def login(wd, email, password):
 
 def submit_code(wd, url, code):
     wd.get(url)
-    wd.find_element(By.XPATH,'//*[@id="app"]/div[4]/main/div/div/div[2]/div/div[2]/div[3]/div/div/div[2]/div[2]').send_keys(code)
+    wd.execute_script("""
+        arguments[0].innerText = arguments[1];
+        // 如果需要保留格式用 innerHTML
+        // arguments[0].innerHTML = arguments[1];
+    """, wd.find_element(By.XPATH, '//*[@id="app"]/div[4]/main/div/div/div[2]/div/div[2]/div[3]/div/div/div[2]/div[2]'),code
+    )
     submit_btn = wd.find_element(By.XPATH, '//*[@id="app"]/div[4]/main/div/div/div[2]/div/div[2]/button')
-    submit_btn.click()
+    # submit_btn.click()
     time.sleep(8)
     print("代码已提交！")
 
@@ -44,21 +49,15 @@ if __name__ == "__main__":
     try:
         email='1074154081@qq.com'
         password='10741Wyk.'
-        code=""
-        # 读取文件夹中的内容赋值给code,并打印出来
-        # code = []
-        folder_path = "d:/myResearch/luogu/answer"
-        for file_name in os.listdir(folder_path):
-            problem_name = os.path.splitext(file_name)[0]
-            file_path = os.path.join(folder_path, file_name)
-            if os.path.isfile(file_path):
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    code = f.read()
-            break
-        pid=problem_name
-        url=f"https://www.luogu.com.cn/problem/{pid}#submit"
-        # submit_code(wd, url, code)
+        login(wd, email, password)
+        file_path="D:/myResearch/luogu/answer/P10716.txt"
+        with open(file_path, 'r', encoding='utf-8') as f:
+            code = f.read()
+            # print(code)
+        # url=f"https://www.luogu.com.cn/problem/{pid}#submit"
+        url=f"https://www.luogu.com.cn/problem/P1393#submit"
+        time.sleep(2)
+        submit_code(wd, url, code)
     finally:
-        wd.quit()
         time.sleep(100)
 

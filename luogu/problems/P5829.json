@@ -1,0 +1,14 @@
+{
+  "title": "P5829 【模板】失配树",
+  "background": "",
+  "description": "给定一个字符串s，定义它的k前缀prek​为字符串s1…k​，k后缀sufk​为字符串s∣s∣−k+1…∣s∣​，其中1≤k≤∣s∣。定义Border(s)为对于i∈[1,∣s∣)，满足prei​=sufi​的字符串prei​的集合。Border(s)中的每个元素都称之为字符串s的border。有m组询问，每组询问给定p,q，求s的p前缀和q前缀的最长公共border的长度。",
+  "input_format": "第一行一个字符串s。第二行一个整数m。接下来m行，每行两个整数p,q。",
+  "output_format": "对于每组询问，一行一个整数，表示答案。若不存在公共border，请输出0。",
+  "samples": [
+    {
+      "input": "aaaabbabbaa\n5\n2 4\n7 10\n3 4\n1 2\n4 11",
+      "output": "1\n1\n2\n0\n2"
+    }
+  ],
+  "hint": "样例2说明：对于第一个询问，2前缀和18前缀分别是zz和zzaaccaazzccaacczz，由于zz只有一个border，即z，故最长公共border长度为1。对于16%的数据，s中的字符全部相等。对于100%的数据，1≤p,q≤∣s∣≤106，1≤m≤105，si​∈[a,z]。"
+}
