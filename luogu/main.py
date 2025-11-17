@@ -25,7 +25,7 @@ def submit_code(wd, url, code):
     )
     submit_btn = wd.find_element(By.XPATH, '//*[@id="app"]/div[4]/main/div/div/div[2]/div/div[2]/button')
     submit_btn.click()
-    time.sleep(8)
+    time.sleep(11)
     print("代码已提交！")
 
 # ===== 关键：反检测设置 =====
