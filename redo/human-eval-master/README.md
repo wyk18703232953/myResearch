@@ -1,5 +1,21 @@
 # HumanEval: Hand-Written Evaluation Set 
-
+可以用这个数据集来评估模型的代码能力。
+## 安装
+首先，确保您使用的是 Python 3.7 或更高版本：
+```
+$ conda create -n codex python=3.7
+$ conda activate codex
+```
+克隆并安装此仓库：
+```
+$ git clone URL_ADDRESS$ git clone https://github.com/openai/human-eval
+$ pip install -e human-eval
+```
+需要在linux环境下运行，在windows下可能会报错。admin  admin下有。
+## 使用
+语法是
+human_eval.evaluate_functional_correctness .\human_eval\example_samples.jsonl 
+============================================================================
 This is an evaluation harness for the HumanEval problem solving dataset
 described in the paper "[Evaluating Large Language Models Trained on
 Code](https://arxiv.org/abs/2107.03374)".
