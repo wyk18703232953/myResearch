@@ -1,0 +1,142 @@
+Your task is to complete the following code and generate 5 versions.  You should first write a rough problem-solving process using three programming structures(i.e.,sequential,branch,and loop structures)and then output the final code.SCOT must also be added to the code as a line-level comment.
+Here are some demonstration examples:
+/**
+@brief Find the maximum value in a vector of integers.
+*/
+int findMaxInVector(const std::vector<int>& numbers){
+// Write your code here
+// Let's think step by step
+// SCOT: param numbers A non-empty vector of integers to search through
+// SCOT: return int The maximum value found in the vector
+    // SCOT: Handle empty vector case by returning 0 (assumption based on simplicity)
+    if (numbers.empty()) {
+        return 0; // SCOT: Early return for edge case
+    }
+    int max_value = numbers[0]; // SCOT: Initialize max with first element
+    // SCOT: Loop through remaining elements starting from index 1
+    for (size_t i = 1; i < numbers.size(); ++i) {
+    // SCOT: Branch to update max_value if current element is larger
+        if (numbers[i] > max_value) {
+            max_value = numbers[i]; // SCOT: Update max_value
+        }
+    }
+    // SCOT: Return the maximum value found
+    return max_value;
+}
+=======================================================
+/**
+ * @brief Finds sequences of lowercase letters joined with an underscore in the input string.
+ */
+string textLowercaseUnderscore(string text) {
+// Write your code here
+// Let's think step by step
+// SCOT: param text The input string in which to search for lowercase sequences joined by underscores.
+// SCOT: return string The result string, which may contain the modified string or extracted sequences based on implementation.
+// SCOT: Define a regex pattern for lowercase letters joined with underscore
+// SCOT: Create a regex object with the pattern
+    regex pattern("[a-z]+_[a-z]+\");
+    smatch match;
+    // SCOT:  Use regex_search to find if pattern exists in text
+    if (regex_search(text, match, pattern)) {
+        // SCOT: If match is found, return the matched string
+        return match.str();
+    }
+    // SCOT: If no match is found, return empty string
+    return "";
+}
+========================================================
+/**
+ * @brief Check if a string represents a valid email address format.
+*/
+bool isValidEmail(const std::string& email){
+// Write your code here
+// Let's think step by step
+// SCOT: param email The string to validate as an email address
+// SCOT: return bool True if the string matches email format, false otherwise
+    // SCOT: Define regex pattern for basic email validation
+    std::regex email_pattern(R"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})"); // SCOT: Pattern for localpart@domain.tld
+    // SCOT: Use regex_match to check if entire string conforms to pattern
+    if (std::regex_match(email, email_pattern)) { // SCOT: Branch based on regex match result
+        return true; // SCOT: Return true for valid email format
+    }
+    // SCOT: Return false if pattern doesn't match
+    return false; // SCOT: Sequential return for invalid case
+}
+========================================================
+/**
+ * @brief Check if a binary tree is a valid Binary Search Tree (BST).
+*/
+bool isValidBST(TreeNode* root) {
+// Write your code here
+// Let's think step by step
+// SCOT: param root The root node of the binary tree to validate
+// SCOT: return bool True if the tree is a valid BST, false otherwise
+    // SCOT: Define helper function for recursive validation with range checking
+    return validateBST(root, LONG_MIN, LONG_MAX); // SCOT: Use min/max bounds for initial call
+}
+
+bool validateBST(TreeNode* node, long min_val, long max_val) {
+    // SCOT: Base case - empty node is valid
+    if (!node) return true; // SCOT: Sequential return for null node
+    
+    // SCOT: Branch to check if current node value violates BST property
+    if (node->val <= min_val || node->val >= max_val) {
+        return false; // SCOT: Return false if value out of valid range
+    }
+    
+    // SCOT: Recursively validate left and right subtrees with updated bounds
+    return validateBST(node->left, min_val, node->val) && // SCOT: Left subtree max becomes current value
+           validateBST(node->right, node->val, max_val);  // SCOT: Right subtree min becomes current value
+}
+==============================================================
+/**
+
+@brief Find the kth largest element in an unsorted array.
+*/
+int findKthLargest(vector<int>& nums, int k) {
+// Write your code here
+// Let's think step by step
+// SCOT: param nums The unsorted vector of integers to search
+// SCOT: param k The 1-based position of the largest element to find (k=1 returns maximum)
+// SCOT: return int The kth largest element in the array
+// SCOT: Create min-heap using priority_queue with greater<int> comparator
+priority_queue<int, vector<int>, greater<int>> minHeap; // SCOT: Min-heap stores smallest of k largest elements at top
+// SCOT: Loop through each number in the input vector
+for (int num : nums) { // SCOT: Sequential iteration over all elements
+// SCOT: Branch condition 1: if heap has fewer than k elements
+if (minHeap.size() < static_cast<size_t>(k)) { // SCOT: Handle initial population of heap
+minHeap.push(num); // SCOT: Add current number to heap
+}
+// SCOT: Branch condition 2: if current number exceeds smallest in heap
+else if (num > minHeap.top()) { // SCOT: Compare with current kth largest candidate
+minHeap.pop(); // SCOT: Remove smallest element to maintain heap size
+minHeap.push(num); // SCOT: Insert larger element into heap
+}
+// SCOT: Implicit branch: skip elements smaller than heap top when heap is full
+}
+// SCOT: Sequential access to final result at heap top
+return minHeap.top(); // SCOT: Top contains kth largest after processing all elements
+}
+
+
+//testing requirement
+/** brief Given a binary tree root, return its maximum depth.
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+int maxDepth(TreeNode root) {
+// Write your code here
+// Let's think step by step
+// Write your code here
+// Let's think step by step

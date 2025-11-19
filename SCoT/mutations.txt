@@ -1,0 +1,308 @@
+{
+    0: [' /**
+ * @brief Given a binary tree root, return its maximum depth.
+ *
+ * Variant: Breadth-first search using a level delimiter (nullptr) to mark level boundaries.
+ * This preserves semantics (maximum number of levels) but changes the traversal detail.
+ */
+int maxDepth(TreeNode* root) {
+ // If the tree is empty, depth is zero
+    if (!root) {
+        return 0;
+    }
+
+    std::queue<TreeNode*> q;
+    q.push(root);
+    q.push(nullptr); // Level delimiter to separate levels
+    int depth = 0;
+
+    while (!q.empty()) {
+        TreeNode* node = q.front();
+        q.pop();
+
+        if (node == nullptr) {
+            // Completed one level
+            ++depth;
+            // If more levels exist, add another delimiter for the next level
+            if (!q.empty()) {
+                q.push(nullptr);
+            }
+        } else {
+            // Enqueue children for the next level
+            if (node->left)  q.push(node->left);
+            if (node->right) q.push(node->right);
+        }
+    }
+
+    return depth;
+}',
+‘/**
+ * @brief Given a binary tree root, return its maximum depth.
+ *
+ * Variant: Depth-first search using an explicit stack to track per-node depth.
+ * This preserves the semantic goal (maximum number of levels) but uses a
+ * different traversal strategy from the breadth-first variants.
+ */
+int maxDepth(TreeNode* root) {
+    // Empty tree has depth 0
+    if (!root) {
+        return 0;
+    }
+
+    // Stack holds pairs of (node, depth_of_node)
+    std::stack<std::pair<TreeNode*, int>> st;
+    st.push(std::make_pair(root, 1));
+
+    int maxDepthFound = 0;
+
+    while (!st.empty()) {
+        std::pair<TreeNode*, int> cur = st.top();
+        st.pop();
+
+        TreeNode* node = cur.first;
+        int depth = cur.second;
+
+        if (!node) continue;
+
+        if (depth > maxDepthFound) {
+            maxDepthFound = depth;
+        }
+
+        // Push children with incremented depth (right before left to mirror typical DFS order)
+        if (node->right) st.push(std::make_pair(node->right, depth + 1));
+        if (node->left)  st.push(std::make_pair(node->left, depth + 1));
+    }
+
+    return maxDepthFound;
+}',
+‘/**
+ * @brief Given a binary tree root, return its maximum depth.
+ *
+ * Variant: Recursive post-order depth calculation using a small internal helper.
+ * The depth of a node is 1 + max(depth(left), depth(right)).
+ * This keeps semantics identical (the number of levels from root to deepest leaf).
+ */
+
+// Internal helper: computes depth of a subtree rooted at `node`
+static int depthRec(TreeNode* node) {
+    if (!node) {
+        // An empty subtree contributes zero depth
+        return 0;
+    }
+    int leftDepth  = depthRec(node->left);
+    int rightDepth = depthRec(node->right);
+
+    // Choose the deeper side and add one for the current node
+    return (leftDepth > rightDepth ? leftDepth : rightDepth) + 1;
+}
+
+// Public interface expected by callers
+int maxDepth(TreeNode* root) {
+    // Delegate to the recursive helper
+    return depthRec(root);
+}'], 1: ['/**
+ * @brief Given a binary tree root, return its maximum depth.
+ *
+ * Variant 1/3: Recursive depth computation using a small internal helper.
+ * Keeps the semantic meaning (maximum number of levels) but uses a
+ * distinct helper function and different naming.
+ */
+static int depthOfNode(TreeNode* n) {
+    if (!n) {
+        // Empty subtree contributes zero depth
+        return 0;
+    }
+    int leftDepth  = depthOfNode(n->left);
+    int rightDepth = depthOfNode(n->right);
+    // Deepest child level plus one for the current node
+    return (leftDepth > rightDepth ? leftDepth : rightDepth) + 1;
+}
+
+int maxDepth(TreeNode* root) {
+    // Delegates to the internal helper for the actual computation
+    return depthOfNode(root);
+}',
+‘/**
+ * @brief Given a binary tree root, return its maximum depth.
+ *
+ * Variant 2/3: Iterative breadth-first search (level-order) using a queue.
+ * This approach counts levels by processing all nodes at the current level
+ * before moving to the next, yielding the maximum depth.
+ */
+static int computeDepthBFS(TreeNode* root) {
+    // Empty tree has depth 0
+    if (!root) return 0;
+
+    // Process nodes level by level
+    std::queue<TreeNode*> q;
+    q.push(root);
+
+    int depth = 0;
+    while (!q.empty()) {
+        // Number of nodes at the current level
+        int levelSize = q.size();
+
+        // Expand all nodes at this level
+        for (int i = 0; i < levelSize; ++i) {
+            TreeNode* node = q.front();
+            q.pop();
+
+            if (node->left)  q.push(node->left);
+            if (node->right) q.push(node->right);
+        }
+
+        // Finished a full level, move to the next
+        ++depth;
+    }
+
+    return depth;
+}
+
+int maxDepth(TreeNode* root) {
+    // Delegate to the BFS-based implementation
+    return computeDepthBFS(root);
+}',
+‘/**
+ * @brief Given a binary tree root, return its maximum depth.
+ *
+ * Variant 3/3: Iterative post-order DFS using two stacks and a depth map.
+ * This computes depth bottom-up without recursion and uses explicit storage.
+ */
+#include <stack>
+#include <unordered_map>
+
+static int maxDepthIterPostOrder(TreeNode* root) {
+    if (!root) return 0;
+
+    std::stack<TreeNode*> s1;
+    std::stack<TreeNode*> s2;
+    std::unordered_map<TreeNode*, int> depth; // stores computed depth for subtrees
+
+    // Phase 1: produce a reverse post-order (root -> children) in s2
+    s1.push(root);
+    while (!s1.empty()) {
+        TreeNode* node = s1.top();
+        s1.pop();
+        s2.push(node);
+        if (node->left)  s1.push(node->left);
+        if (node->right) s1.push(node->right);
+    }
+
+    // Phase 2: compute depths bottom-up while popping from s2
+    int maxDepthFound = 0;
+    while (!s2.empty()) {
+        TreeNode* node = s2.top();
+        s2.pop();
+
+        int leftDepth  = node->left  ? depth[node->left]  : 0;
+        int rightDepth = node->right ? depth[node->right] : 0;
+
+        int d = (leftDepth > rightDepth ? leftDepth : rightDepth) + 1;
+        depth[node] = d;
+
+        if (d > maxDepthFound) maxDepthFound = d;
+    }
+
+    return maxDepthFound;
+}
+
+int maxDepth(TreeNode* root) {
+    return maxDepthIterPostOrder(root);
+}'], 2: ['/**
+ * @brief Given a binary tree root, return its maximum depth.
+ *
+ * Variant 1/3: Iterative DFS using an explicit stack to track depth.
+ * This version emphasizes clearer variable names and a small
+ * optimization by extracting the top element once per iteration.
+ */
+int maxDepth(TreeNode* root) {
+    // Empty tree has depth 0
+    if (!root) {
+        return 0;
+    }
+
+    // Stack stores pairs of (node pointer, depth of that node)
+    std::stack<std::pair<TreeNode*, int>> stack;
+    stack.emplace(root, 1);
+
+    int maxDepthFound = 0;
+
+    while (!stack.empty()) {
+        // Peek at the top element and then pop
+        const auto& top = stack.top();
+        TreeNode* node = top.first;
+        int depth = top.second;
+        stack.pop();
+
+        if (!node) continue;
+
+        if (depth > maxDepthFound) {
+            maxDepthFound = depth;
+        }
+
+        // Push children with incremented depth
+        if (node->right) stack.emplace(node->right, depth + 1);
+        if (node->left)  stack.emplace(node->left, depth + 1);
+    }
+
+    return maxDepthFound;
+}', "/**
+ * @brief Given a binary tree root, return its maximum depth.
+ *
+ * Variant 2/3 (Round 2): Recursive depth computation with a small internal helper.
+ * This approach computes the height of the tree by recursively evaluating
+ * the left and right subtrees and taking the larger height, then adding one
+ * for the current node.
+ */
+static int subtreeDepth(TreeNode* node) {
+    // An empty subtree contributes a depth of 0
+    if (!node) {
+        return 0;
+    }
+
+    // Recurse into left and right subtrees
+    int leftH  = subtreeDepth(node->left);
+    int rightH = subtreeDepth(node->right);
+
+    // Depth of this node is 1 plus the maximum of its children's depths
+    return (leftH > rightH ? leftH : rightH) + 1;
+}
+
+int maxDepth(TreeNode* root) {
+    // Start the recursive depth calculation from the root
+    return subtreeDepth(root);
+}",
+‘/**
+ * @brief Given a binary tree root, return its maximum depth.
+ *
+ * Variant: Memoized depth-first search using an explicit cache (unordered_map).
+ * This stores computed depths for subtrees to avoid re-computation.
+ * Note: In a pure tree, subtrees are unique, but this variant demonstrates a
+ * distinct caching-based approach while preserving the original semantics.
+ */
+#include <unordered_map>
+
+static int depthWithMemo(TreeNode* node, std::unordered_map<TreeNode*, int>& memo) {
+    if (!node) {
+        return 0; // Empty subtree contributes zero depth
+    }
+
+    auto it = memo.find(node);
+    if (it != memo.end()) {
+        return it->second; // Return cached depth if available
+    }
+
+    int leftDepth  = depthWithMemo(node->left, memo);
+    int rightDepth = depthWithMemo(node->right, memo);
+
+    int d = 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
+    memo[node] = d; // Cache computed depth for this node
+
+    return d;
+}
+
+int maxDepth(TreeNode* root) {
+    std::unordered_map<TreeNode*, int> memo;
+    return depthWithMemo(root, memo);
+}']
+}

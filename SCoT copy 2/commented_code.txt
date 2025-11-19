@@ -1,0 +1,134 @@
+Version 1
+/**
+ * @brief Given a binary tree root, return its maximum depth.
+ */
+int maxDepth(TreeNode* root) {
+    // Write your code here
+    // Let's think step by step
+    // SCOT: param root The root node of the binary tree to measure depth for
+    // SCOT: return int The maximum depth (number of levels) in the tree
+    // SCOT: Approach: Level-order traversal (breadth-first search) using a queue
+    // SCOT: Data structure: std::queue<TreeNode*> to process nodes level by level
+    if (!root) {
+        return 0; // SCOT: Empty tree has depth 0
+    }
+    std::queue<TreeNode*> q;
+    q.push(root);
+    int depth = 0;
+    while (!q.empty()) {
+        int levelSize = q.size();
+        // SCOT: Process all nodes at the current level
+        for (int i = 0; i < levelSize; ++i) {
+            TreeNode* node = q.front();
+            q.pop();
+            if (node->left)  q.push(node->left);
+            if (node->right) q.push(node->right);
+        }
+        depth++; // SCOT: Finished processing one level
+    }
+    return depth;
+}
+========================================================
+Version 2
+/**
+ * @brief Given a binary tree root, return its maximum depth.
+ */
+int maxDepth(TreeNode* root) {
+    // Write your code here
+    // Let's think step by step
+    // SCOT: param root The root node of the binary tree
+    // SCOT: return int The maximum depth of the tree
+    // SCOT: Approach: Depth-first search (recursive)
+    // SCOT: Use post-order traversal to compute depth from children
+    if (!root) {
+        return 0; // SCOT: Empty tree has depth 0
+    }
+    int leftDepth = maxDepth(root->left);
+    int rightDepth = maxDepth(root->right);
+    return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth); // SCOT: Combine child depths
+}
+========================================================
+Version 3
+/**
+ * @brief Given a binary tree root, return its maximum depth.
+ */
+int maxDepth(TreeNode* root) {
+    // Write your code here
+    // Let's think step by step
+    // SCOT: param root The root node of the binary tree
+    // SCOT: return int The maximum depth
+    // SCOT: Approach: Iterative DFS using an explicit stack to track depth
+    // SCOT: Data structure: std::stack<pair<TreeNode*, int>> to store node and its depth
+    if (!root) {
+        return 0;
+    }
+    int maxDepthFound = 0;
+    std::stack<std::pair<TreeNode*, int>> st;
+    st.push({root, 1});
+    while (!st.empty()) {
+        auto [node, depth] = st.top();
+        st.pop();
+        if (!node) continue;
+        if (depth > maxDepthFound) maxDepthFound = depth;
+        // Push children with incremented depth
+        if (node->right) st.push({node->right, depth + 1});
+        if (node->left)  st.push({node->left, depth + 1});
+    }
+    return maxDepthFound;
+}
+========================================================
+Version 4
+/**
+ * @brief Given a binary tree root, return its maximum depth.
+ */
+int maxDepth(TreeNode* root) {
+    // Write your code here
+    // Let's think step by step
+    // SCOT: param root The root node of the binary tree
+    // SCOT: return int The maximum depth
+    // SCOT: Approach: Recursive helper with an explicit depth parameter
+    // SCOT: Use a helper to carry the current depth as we traverse
+    return maxDepthHelper(root, 0);
+}
+
+// Helper: compute max depth by traversing with current depth
+int maxDepthHelper(TreeNode* node, int current) {
+    // SCOT: param node Current node in traversal
+    // SCOT: param current Current depth so far
+    // SCOT: return int Maximum depth found from this subtree
+    if (!node) {
+        return current; // SCOT: Reached null, return accumulated depth
+    }
+    int left = maxDepthHelper(node->left, current + 1);
+    int right = maxDepthHelper(node->right, current + 1);
+    return left > right ? left : right; // SCOT: Take deeper path
+}
+========================================================
+Version 5
+/**
+ * @brief Given a binary tree root, return its maximum depth.
+ */
+int maxDepth(TreeNode* root) {
+    // Write your code here
+    // Let's think step by step
+    // SCOT: param root The root node of the binary tree
+    // SCOT: return int The maximum depth of the tree
+    // SCOT: Approach: Level-order traversal using two vectors to alternate levels
+    // SCOT: Data structure: std::vector<TreeNode*> currentLevel and nextLevel
+    if (!root) {
+        return 0;
+    }
+    std::vector<TreeNode*> currentLevel{root};
+    int depth = 0;
+    while (!currentLevel.empty()) {
+        depth++;
+        std::vector<TreeNode*> nextLevel;
+        nextLevel.reserve(currentLevel.size() * 2);
+        for (TreeNode* node : currentLevel) {
+            if (node->left)  nextLevel.push_back(node->left);
+            if (node->right) nextLevel.push_back(node->right);
+        }
+        currentLevel.swap(nextLevel);
+    }
+    return depth;
+}
