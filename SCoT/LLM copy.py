@@ -77,6 +77,8 @@ class Pipeline:
     def cluster_codes(self, session: str, codes: [str], n_clusters: int) -> Dict[int, List[str]]:
         # 将所有代码附带索引传给模型，让模型按 cluster 分组并以 JSON 返回
         payload = {
+            # 分析AST，CFG，DFG，
+            # 根据AST,CFG,DFG进行聚类。
             "instruction": f"Cluster the following {len(codes)} commented codes into "
                            f"{n_clusters} groups. Return JSON like {{\"0\": [0,2], \"1\": [1,3], ...}} "
                            "where numbers reference the index in the provided list. Do not output extra text.",
