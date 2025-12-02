@@ -70,17 +70,15 @@ def validate_code_complexity(src, expected_complexity, api_key=None, base_url=No
         record['model_raw_output'] = model_raw_output
         
         # 清理模型输出，提取关键复杂度术语
-        model_analyzed_complexity = clean_complexity_output(model_raw_output)
-        record['model_analyzed_complexity'] = model_analyzed_complexity
         
         # 比较复杂度
-        is_match = compare_complexity(model_analyzed_complexity, record['expected_complexity'])
+        is_match = compare_complexity(model_raw_output, record['expected_complexity'])
         record['is_match'] = is_match
         
         # 记录日志
         print(f"期望复杂度: {record['expected_complexity']}")
         print(f"模型原始输出: {record['model_raw_output']}")
-        print(f"模型分析复杂度: {record['model_analyzed_complexity']}")
+        # print(f"模型分析复杂度: {record['model_analyzed_complexity']}")
         print(f"匹配结果: {record['is_match']}")
         
         return record
@@ -91,43 +89,6 @@ def validate_code_complexity(src, expected_complexity, api_key=None, base_url=No
         print(f"分析代码复杂度时出错: {error_msg}")
         return record
 
-def clean_complexity_output(output):
-    """
-    清理模型输出的复杂度术语，提取关键信息
-    """
-    # 移除常见的格式问题
-    output = output.replace('```', '').strip()
-    
-    # 定义常见的复杂度术语映射
-    complexity_mapping = {
-        'o(1)': 'constant',
-        'o(0)': 'constant',
-        'constant': 'constant',
-        'o(n)': 'linear',
-        'linear': 'linear',
-        'o(log n)': 'logn',
-        'o(log(n))': 'logn',
-        'log n': 'logn',
-        'logn': 'logn',
-        'o(n log n)': 'nlogn',
-        'o(n logn)': 'nlogn',
-        'n log n': 'nlogn',
-        'nlogn': 'nlogn',
-        'o(n^2)': 'quadratic',
-        'quadratic': 'quadratic',
-        'o(n^3)': 'cubic',
-        'cubic': 'cubic',
-        'o(2^n)': 'exponential',
-        'exponential': 'exponential'
-    }
-    
-    # 检查是否包含某个复杂度术语
-    for key, value in complexity_mapping.items():
-        if key in output:
-            return value
-    
-    # 如果没有找到匹配的术语，返回原始输出（去除空格和特殊字符）
-    return re.sub(r'[^a-z0-9]', '', output)
 
 def compare_complexity(actual, expected):
     """
@@ -151,13 +112,13 @@ def compare_complexity(actual, expected):
     # 直接比较
     return actual == expected
 
-def batch_validate_from_jsonl(jsonl_file_path, max_items=10, save_results=True, output_file=None):
+def batch_validate_from_jsonl(jsonl_file_path, max_items=None, save_results=True, output_file=None):
     """
     从JSONL文件批量验证代码复杂度并记录详细实验过程
     
     参数:
     jsonl_file_path (str): JSONL文件路径
-    max_items (int): 最大处理项目数
+    max_items (int): 最大处理项目数，如果为None则处理所有项目
     save_results (bool): 是否保存结果到文件
     output_file (str): 输出文件路径，如果为None则自动生成
     
@@ -186,7 +147,7 @@ def batch_validate_from_jsonl(jsonl_file_path, max_items=10, save_results=True, 
     try:
         with open(jsonl_file_path, 'r', encoding='utf-8') as f:
             for i, line in enumerate(f):
-                if i >= max_items:
+                if max_items is not None and i >= max_items:
                     break
                 
                 line = line.strip()
@@ -301,29 +262,29 @@ import datetime
 # 示例用法
 if __name__ == "__main__":
     # 示例1：单独验证一个代码片段
-    print("=== 示例1: 单独验证代码片段 ===")
-    sample_code = """
-    def linear_search(arr, target):
-        for i in range(len(arr)):
-            if arr[i] == target:
-                return i
-        return -1
-    """
-    expected = "linear"
-    result = validate_code_complexity(sample_code, expected)
-    print(f"验证结果: {result['is_match']}")
-    print(f"详细记录: {json.dumps(result, ensure_ascii=False, indent=2)}")
+    # print("=== 示例1: 单独验证代码片段 ===")
+    # sample_code = """
+    # def linear_search(arr, target):
+    #     for i in range(len(arr)):
+    #         if arr[i] == target:
+    #             return i
+    #     return -1
+    # """
+    # expected = "linear"
+    # result = validate_code_complexity(sample_code, expected)
+    # print(f"验证结果: {result['is_match']}")
+    # print(f"详细记录: {json.dumps(result, ensure_ascii=False, indent=2)}")
     
     # 示例2：从JSONL文件批量验证
     print("\n=== 示例2: 从JSONL文件批量验证 ===")
     jsonl_path = "d:/MyResearch/codeComplex/data/data.jsonl"
     if os.path.exists(jsonl_path):
-        # 处理少量样本作为测试
-        batch_results, detailed_records = batch_validate_from_jsonl(jsonl_path, max_items=5, save_results=True)
+        # 处理所有样本
+        batch_results, detailed_records = batch_validate_from_jsonl(jsonl_path, max_items=None, save_results=True)
         
-        # 显示前几个详细记录
-        print(f"\n前3条详细记录:")
-        for i, record in enumerate(detailed_records[:3]):
+        # 显示所有详细记录
+        print(f"\n所有详细记录 ({len(detailed_records)} 条):")
+        for i, record in enumerate(detailed_records):
             print(f"\n记录 {i+1}:")
             print(f"样本ID: {record['sample_id']}")
             print(f"问题: {record['problem']}")
