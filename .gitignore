@@ -26,3 +26,7 @@ Thumbs.db
 **/__pycache__/
 
 redo/humaneval-zip/human-eval-master.zip
+mbpp_plus/gitattributes
+mbpp_plus/README.md
+mbpp_plus/test.py
+mbpp_plus/data/test-00000-of-00001-d5781c9c51e02795.parquet
