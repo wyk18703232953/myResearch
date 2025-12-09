@@ -1,5 +1,13 @@
 def similar_elements(list1, list2):
-    return list(set(list1) & set(list2))
+    shared_elements = []
+    # Convert the lists to sets for faster lookup
+    set1 = set(list1)
+    set2 = set(list2)
+    # Use set intersection to find common elements
+    common_elements = set1.intersection(set2)
+    # Convert the result back to a list and add it to the shared_elements list
+    shared_elements = list(common_elements)
+    return shared_elements
 
 
 import numpy as np

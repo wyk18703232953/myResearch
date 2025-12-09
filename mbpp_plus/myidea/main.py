@@ -10,14 +10,14 @@ client = OpenAI(
     base_url='https://spark-api-open.xf-yun.com/v1'  # 指向讯飞星火的请求地址
 )
 
-
+#读取mbppplus数据集
 def read_dataset():
     """读取mbppplus数据集"""
     dataset_path = "d:/MyResearch/mbpp_plus/data/mbpp_plus_data.parquet"
     df = pd.read_parquet(dataset_path)
     return df
 
-
+#提取函数名，只能生成这个名字的函数。
 def extract_function_name(code):
     """从代码中提取函数名"""
     lines = code.split('\n')
@@ -28,7 +28,7 @@ def extract_function_name(code):
             return func_name
     return None
 
-
+#生成代码
 def generate_code(prompt, expected_func_name):
     """使用LLM生成代码"""
     # 构建提示词，确保生成的函数名与预期一致
@@ -87,11 +87,11 @@ def generate_code(prompt, expected_func_name):
         print(f"代码生成失败: {e}")
         return None
 
-
+#利用数据集中的测试代码生成测试文件
 def create_test_file(task_id, generated_code, test_content):
     """创建测试文件"""
     # 创建子文件夹
-    folder_path = f"d:/MyResearch/mbpp_plus/myidea/{task_id}"
+    folder_path = f"d:/MyResearch/mbpp_plus/myidea/resource/{task_id}"
     os.makedirs(folder_path, exist_ok=True)
     
     # 创建test.py文件
@@ -123,7 +123,7 @@ def run_test(test_file_path):
         print(f"测试执行失败: {e}")
         return False
 
-
+"""生成测试报告"""
 def generate_report(results):
     """生成测试报告"""
     total = len(results)
@@ -193,6 +193,7 @@ def main():
         results[task_id] = test_result
         
         print(f"   测试结果：{'成功' if test_result else '失败'}")
+        break
     
     # 3. 生成报告
     print("\n3. 生成测试报告...")
