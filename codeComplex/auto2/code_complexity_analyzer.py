@@ -85,17 +85,17 @@ class CodeComplexityAnalyzer:
             
             for _ in range(runs):
                 # Create a local namespace for execution
-                local_namespace = {'n': n}
+                ns = {'n': n}
                 
                 # Start timing
                 start_time = timeit.default_timer()
                 
                 try:
                     # Execute the code in the local namespace
-                    exec(code, globals(), local_namespace)
+                    exec(code, ns, ns)
                 except Exception as e:
                     print(f"  Error executing code with n={n}: {e}")
-                    print(f"  Code: {code[:1000]}...")
+                    # print(f"  Code: {code[:1000]}...")
                     continue
                 
                 # Stop timing
@@ -105,7 +105,7 @@ class CodeComplexityAnalyzer:
             if total_time > 0:
                 avg_time = total_time / runs
                 results[n] = avg_time
-        
+                # print(f"  n={n}, avg_time={avg_time:.8f}")
         return results
     
     # Define common time complexity functions for curve fitting
@@ -139,6 +139,7 @@ class CodeComplexityAnalyzer:
     
     def analyze_time_complexity(self, execution_results):
         """Analyze execution times to determine time complexity"""
+        print("execution_results",execution_results)
         n_values = np.array(sorted(execution_results.keys()))
         times = np.array([execution_results[n] for n in n_values])
         
@@ -186,11 +187,11 @@ class CodeComplexityAnalyzer:
                 }
         
         return {
+            'best_fit': best_fit,
+            'best_r_squared': best_r_squared,
             'n_values': n_values.tolist(),
             'actual_times': times.tolist(),
             'all_fits': all_fits,
-            'best_fit': best_fit,
-            'best_r_squared': best_r_squared
         }
     
     def generate_report(self, record_index, original_code, modified_code, execution_results, complexity_analysis):
@@ -210,7 +211,7 @@ class CodeComplexityAnalyzer:
         
         return report
     
-    def run_analysis(self, jsonl_file_path, n_values=[10, 100, 1000, 10000, 100000], limit=1):
+    def run_analysis(self, jsonl_file_path, n_values=[10, 100, 1000, 10000, 100000], limit=10):
         """Run the complete analysis workflow"""
         # Step 1: Read JSONL file
         records = self.read_jsonl(jsonl_file_path, limit)
@@ -228,7 +229,7 @@ class CodeComplexityAnalyzer:
             modified_code = self.modify_code_with_llm(original_code)
             
             # Debug: Print first 500 chars of modified code
-            print(f"  Modified code preview: {modified_code[:500]}...")
+            # print(f"  Modified code preview: {modified_code[:500]}...")
             
             # Step 4: Execute code with different n values
             print(f"  Executing code with different n values...")
@@ -275,4 +276,4 @@ if __name__ == "__main__":
     n_values = [10, 100, 1000, 10000, 100000]
     
     # Run the analysis
-    analyzer.run_analysis(jsonl_file, n_values=n_values, limit=1)
+    analyzer.run_analysis(jsonl_file, n_values=n_values, limit=10)

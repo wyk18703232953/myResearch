@@ -1,0 +1,132 @@
+{
+  "record_index": 9,
+  "original_code": "import decimal\ndecimal.getcontext().prec = 100\n\na, v = map(decimal.Decimal, input().split())\nl, d, w = map(decimal.Decimal, input().split())\n\ndef DecimalPow(a, b):\n    return decimal.Decimal(a) ** decimal.Decimal(b)\n\ndef getLastT(v1, dist):\n    t1 = (v - v1) / a\n    d1 = v1 * t1 + decimal.Decimal(0.5) * a * DecimalPow(t1, 2)\n    if d1 >= dist:\n        return (-v1 + (v1 ** decimal.Decimal(2) + 2 * a * dist) ** decimal.Decimal(0.5)) / a\n    t2 = (dist - d1) / v\n    return t1 + t2\n\nif w >= v:\n    t1 = v / a\n    if decimal.Decimal(0.5) * a * (t1 ** decimal.Decimal(2)) <= l:\n        t2 = (l - decimal.Decimal(0.5) * a * (t1 ** decimal.Decimal(2))) / v\n    else:\n        t1 = (decimal.Decimal(2) * l / a) ** decimal.Decimal(0.5)\n        t2 = 0\n    t = t1 + t2\n    print('{t:.5f}'.format(t = t))\n\nelif (w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:\n    t = getLastT(0, l)\n    print('{t:.5f}'.format(t = t))\n\nelif (v ** decimal.Decimal(2) - 0) / (2 * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:\n    t2 = -w / a + ((w ** decimal.Decimal(2)) / (2 * (a ** decimal.Decimal(2))) + d / a) ** decimal.Decimal(0.5)\n    t1 = w / a + t2\n    t3 = getLastT(w, l - d)\n    t = t1 + t2 + t3\n    print('{t:.5f}'.format(t = t))\n\nelse:\n    t1 = v / a\n    t3 = (v - w) / a\n    t2 = (d - ((v ** decimal.Decimal(2) - 0) / (decimal.Decimal(2) * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a))) / v\n    t4 = getLastT(w, l - d)\n    t = t1 + t2 + t3 + t4\n    print('{t:.5f}'.format(t = t))",
+  "modified_code": "import decimal\ndecimal.getcontext().prec = 100\n\nn = 1\n_input_call_count = 0\ndef generate_input(n_param):\n    global _input_call_count\n    _input_call_count += 1\n    if _input_call_count == 1:\n        if n_param <= 0:\n            return \"2 3\"\n        elif n_param == 1:\n            return \"2 3\"\n        elif n_param == 2:\n            return \"4 10\"\n        else:\n            return \"6 9\"\n    else:\n        if n_param <= 0:\n            return \"5 1 4\"\n        elif n_param == 1:\n            return \"5 1 4\"\n        elif n_param == 2:\n            return \"100 5 1\"\n        else:\n            return \"10 6 2\"\n\na, v = map(decimal.Decimal, generate_input(n).split())\nl, d, w = map(decimal.Decimal, generate_input(n).split())\n\ndef DecimalPow(a, b):\n    return decimal.Decimal(a) ** decimal.Decimal(b)\n\ndef getLastT(v1, dist):\n    t1 = (v - v1) / a\n    d1 = v1 * t1 + decimal.Decimal(0.5) * a * DecimalPow(t1, 2)\n    if d1 >= dist:\n        return (-v1 + (v1 ** decimal.Decimal(2) + 2 * a * dist) ** decimal.Decimal(0.5)) / a\n    t2 = (dist - d1) / v\n    return t1 + t2\n\nif w >= v:\n    t1 = v / a\n    if decimal.Decimal(0.5) * a * (t1 ** decimal.Decimal(2)) <= l:\n        t2 = (l - decimal.Decimal(0.5) * a * (t1 ** decimal.Decimal(2))) / v\n    else:\n        t1 = (decimal.Decimal(2) * l / a) ** decimal.Decimal(0.5)\n        t2 = 0\n    t = t1 + t2\n    print('{t:.5f}'.format(t = t))\n\nelif (w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:\n    t = getLastT(0, l)\n    print('{t:.5f}'.format(t = t))\n\nelif (v ** decimal.Decimal(2) - 0) / (2 * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:\n    t2 = -w / a + ((w ** decimal.Decimal(2)) / (2 * (a ** decimal.Decimal(2))) + d / a) ** decimal.Decimal(0.5)\n    t1 = w / a + t2\n    t3 = getLastT(w, l - d)\n    t = t1 + t2 + t3\n    print('{t:.5f}'.format(t = t))\n\nelse:\n    t1 = v / a\n    t3 = (v - w) / a\n    t2 = (d - ((v ** decimal.Decimal(2) - 0) / (decimal.Decimal(2) * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a))) / v\n    t4 = getLastT(w, l - d)\n    t = t1 + t2 + t3 + t4\n    print('{t:.5f}'.format(t = t))",
+  "execution_results": {
+    "10": 0.0011488999938592316,
+    "100": 0.0007389800157397985,
+    "1000": 0.000757659983355552,
+    "10000": 0.0007880799937993288,
+    "100000": 0.0007404600037261844
+  },
+  "complexity_analysis": {
+    "best_fit": "O(log n)",
+    "best_r_squared": 0.4720660687156768,
+    "n_values": [
+      10,
+      100,
+      1000,
+      10000,
+      100000
+    ],
+    "actual_times": [
+      0.0011488999938592316,
+      0.0007389800157397985,
+      0.000757659983355552,
+      0.0007880799937993288,
+      0.0007404600037261844
+    ],
+    "all_fits": {
+      "O(1)": {
+        "params": [
+          0.0008348159959166157
+        ],
+        "r_squared": -27.90491625156941,
+        "predicted_times": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "O(log n)": {
+        "params": [
+          -3.334426062964761e-05,
+          0.001065149990484052
+        ],
+        "r_squared": 0.4720660687156768,
+        "predicted_times": [
+          0.0009883719930213171,
+          0.0009115939955585823,
+          0.0008348159980958475,
+          0.0007580380006331126,
+          0.0006812600031703779
+        ]
+      },
+      "O(n)": {
+        "params": [
+          -1.3085244556946088e-09,
+          0.0008638940285515064
+        ],
+        "r_squared": 0.10464701706997603,
+        "predicted_times": [
+          0.0008638809433069494,
+          0.0008637631761059369,
+          0.0008625855040958118,
+          0.0008508087839945602,
+          0.0007330415829820455
+        ]
+      },
+      "O(n log n)": {
+        "params": [
+          -1.1115900686943866e-10,
+          0.0008626232517626677
+        ],
+        "r_squared": 0.10103965104881185,
+        "predicted_times": [
+          0.000862620692231946,
+          0.0008625720611482338,
+          0.0008618553925461589,
+          0.0008523851288758839,
+          0.0007346467156778716
+        ]
+      },
+      "O(n²)": {
+        "params": [
+          1.1442846550270856e-13,
+          -1.295144264391441e-08,
+          0.0008914543393750125
+        ],
+        "r_squared": -7.568177919551813,
+        "predicted_times": [
+          0.00089132483639142,
+          0.0008901603393952762,
+          0.0008786173251966008,
+          0.0007733827594861393,
+          -0.00024233830412053793
+        ]
+      },
+      "O(n³)": {
+        "params": [
+          -2.3733102331959144e-16,
+          2.6280936548693502e-11,
+          -2.570600378542886e-07,
+          0.0009681214384630243
+        ],
+        "r_squared": -1073.8881184546183,
+        "predicted_times": [
+          0.0009655534659408052,
+          0.000942678006712059,
+          0.0007371050061341097,
+          0.0010257873446216361,
+          0.012320320404128612
+        ]
+      },
+      "O(2^n)": {
+        "params": [
+          1.0,
+          1.0
+        ],
+        "r_squared": -Infinity,
+        "predicted_times": [
+          22026.465794806718,
+          2.6881171418161356e+43,
+          Infinity,
+          Infinity,
+          Infinity
+        ]
+      }
+    }
+  }
+}

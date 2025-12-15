@@ -1,42 +1,132 @@
 {
   "record_index": 0,
   "original_code": "from math import sqrt\n\na, v = map(int, input().split())\nl, d, w = map(int, input().split())\n\ndef findt(u, v, a, dist):\n\tfront = (v*v-u*u)/(2*a)\n\tif front > dist:\n\t\treturn (sqrt(u*u+2*a*dist)-u)/a\n\treturn (v-u)/a + (dist-front)/v\n\ndef solve(a, v, l, d, w):\n\tif v <= w or 2*a*d <= w*w:\n\t\treturn findt(0, v, a, l)\n\tafter = findt(w, v, a, l-d)\n\tpeak = sqrt(a*d + w*w/2)\n\tif peak > v:\n\t\ttravel = (v*v-w*w/2)/a\n\t\tbefore = (2*v-w)/a + (d-travel)/v\n\telse:\n\t\tbefore = (2*peak-w)/a\n\treturn before + after\n\nprint(f'{solve(a, v, l, d, w):.8f}')",
-  "modified_code": "from math import sqrt\n\nn = 1\n\ndef generate_input(n):\n    if not hasattr(generate_input, \"_call\"):\n        generate_input._call = 0\n    generate_input._call += 1\n    base = max(1, int(n))\n    a = 1 + (base * 13) % 97\n    v = 2 + (base * 29) % 1000\n    l = 50 * base\n    d = 5 * base\n    w = 1 + (base * 7) % v\n    if generate_input._call == 1:\n        return f\"{a} {v}\"\n    else:\n        return f\"{l} {d} {w}\"\n\na, v = map(int, generate_input(n).split())\nl, d, w = map(int, generate_input(n).split())\n\ndef findt(u, v, a, dist):\n\tfront = (v*v-u*u)/(2*a)\n\tif front > dist:\n\t\treturn (sqrt(u*u+2*a*dist)-u)/a\n\treturn (v-u)/a + (dist-front)/v\n\ndef solve(a, v, l, d, w):\n\tif v <= w or 2*a*d <= w*w:\n\t\treturn findt(0, v, a, l)\n\tafter = findt(w, v, a, l-d)\n\tpeak = sqrt(a*d + w*w/2)\n\tif peak > v:\n\t\ttravel = (v*v-w*w/2)/a\n\t\tbefore = (2*v-w)/a + (d-travel)/v\n\telse:\n\t\tbefore = (2*peak-w)/a\n\treturn before + after\n\nprint(f'{solve(a, v, l, d, w):.8f}')",
-  "execution_results": {},
+  "modified_code": "from math import sqrt\n\nn = 42\n_input_call_count = 0\n\ndef generate_input(n):\n    global _input_call_count\n    _input_call_count += 1\n    if _input_call_count % 2 == 1:\n        a = 1 + (n % 3)\n        v = 5 + (n % 5)\n        return f\"{a} {v}\\n\"\n    else:\n        l = 10 * n + 7\n        d = max(1, (n % 7))\n        w = 0\n        return f\"{l} {d} {w}\\n\"\n\na, v = map(int, generate_input(n).split())\nl, d, w = map(int, generate_input(n).split())\n\ndef findt(u, v, a, dist):\n\tfront = (v*v-u*u)/(2*a)\n\tif front > dist:\n\t\treturn (sqrt(u*u+2*a*dist)-u)/a\n\treturn (v-u)/a + (dist-front)/v\n\ndef solve(a, v, l, d, w):\n\tif v <= w or 2*a*d <= w*w:\n\t\treturn findt(0, v, a, l)\n\tafter = findt(w, v, a, l-d)\n\tpeak = sqrt(a*d + w*w/2)\n\tif peak > v:\n\t\ttravel = (v*v-w*w/2)/a\n\t\tbefore = (2*v-w)/a + (d-travel)/v\n\telse:\n\t\tbefore = (2*peak-w)/a\n\treturn before + after\n\nprint(f'{solve(a, v, l, d, w):.8f}')",
+  "execution_results": {
+    "10": 0.0005700399866327644,
+    "100": 0.0004871799843385816,
+    "1000": 0.000490120006725192,
+    "10000": 0.0005399800022132695,
+    "100000": 0.0005169600248336792
+  },
   "complexity_analysis": {
-    "n_values": [],
-    "actual_times": [],
+    "best_fit": "O(log n)",
+    "best_r_squared": 0.05836088976962195,
+    "n_values": [
+      10,
+      100,
+      1000,
+      10000,
+      100000
+    ],
+    "actual_times": [
+      0.0005700399866327644,
+      0.0004871799843385816,
+      0.000490120006725192,
+      0.0005399800022132695,
+      0.0005169600248336792
+    ],
     "all_fits": {
       "O(1)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          0.0005208560009486974
+        ],
+        "r_squared": -278.03351229071757,
+        "predicted_times": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       },
       "O(log n)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -2.317389367659561e-06,
+          0.000536863959564739
+        ],
+        "r_squared": 0.05836088976962195,
+        "predicted_times": [
+          0.0005315279733521032,
+          0.0005261919871394675,
+          0.0005208560009268316,
+          0.0005155200147141958,
+          0.0005101840285015601
+        ]
       },
       "O(n)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -3.0394517997913187e-11,
+          0.000521531427972199
+        ],
+        "r_squared": 0.001445170234412707,
+        "predicted_times": [
+          0.000521531124027019,
+          0.0005215283885203992,
+          0.0005215010334542011,
+          0.0005212274827922199,
+          0.0005184919761724077
+        ]
       },
       "O(n log n)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -2.8897048340780706e-12,
+          0.0005215788820533359
+        ],
+        "r_squared": 0.0017477251237442148,
+        "predicted_times": [
+          0.0005215788155154232,
+          0.0005215775512950812,
+          0.0005215589206795136,
+          0.000521312730402372,
+          0.0005182519864162854
+        ]
       },
       "O(n²)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -2.274204909864338e-14,
+          2.2835734746636457e-09,
+          0.0005160539647228272
+        ],
+        "r_squared": -7.76043584985476,
+        "predicted_times": [
+          0.0005160767981833689,
+          0.0005162820946498025,
+          0.0005183147961483922,
+          0.0005366154945595993,
+          0.0007123435354481571
+        ]
       },
       "O(n³)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -5.4242033203469016e-17,
+          5.95761643681947e-12,
+          -5.350747414935698e-08,
+          0.0005335762380482157
+        ],
+        "r_squared": -1927.7627905457155,
+        "predicted_times": [
+          0.0005330417590141237,
+          0.000528285012555615,
+          0.0004859721383024747,
+          0.0005943025948049687,
+          0.0035835406919631756
+        ]
       },
       "O(2^n)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          1.0,
+          1.0
+        ],
+        "r_squared": -Infinity,
+        "predicted_times": [
+          22026.465794806718,
+          2.6881171418161356e+43,
+          Infinity,
+          Infinity,
+          Infinity
+        ]
       }
-    },
-    "best_fit": null,
-    "best_r_squared": -Infinity
+    }
   }
 }

@@ -1,0 +1,132 @@
+{
+  "record_index": 7,
+  "original_code": "import math\ndef getdt():\n    return map(int,input().split())\ndef calc(v0,v,a,x):\n    t = (v - v0)/a\n    x0 = v0 * t + 0.5*a*t*t\n    if x0>=x:\n        return (x,(math.sqrt(v0*v0 + 2*a*x)-v0)/a)\n    return (x0,t)\ndef go(v0,v,a,x):\n    x0,t = calc(v0,v,a,x)\n    return t + (x-x0)/v\na,v = getdt()\nl,d,w = getdt()\nif w>v:\n    w = v\nx,t = calc(0,w,a,d)\nif x==d:\n    print(go(0,v,a,l))\nelse:\n    print(t+go(w,v,a,(d-x)*0.5) * 2 + go(w,v,a,l-d))\n",
+  "modified_code": "import math\ndef generate_input(n):\n    if not hasattr(generate_input, \"_idx\"):\n        generate_input._idx = 0\n    generate_input._idx += 1\n    if generate_input._idx == 1:\n        a = 1 + (n % 3)\n        v = a + 3 + (n % 5)\n        return f\"{a} {v}\"\n    elif generate_input._idx == 2:\n        a = 1 + (n % 3)\n        v = a + 3 + (n % 5)\n        l = 2 + (n % 5)\n        d = max(1, l - 1)\n        w = max(1, min(v, (d % (v + 1)) + 1))\n        return f\"{l} {d} {w}\"\n    else:\n        return \"1 1\"\ndef getdt():\n    return map(int, generate_input(1).split())\ndef calc(v0,v,a,x):\n    t = (v - v0)/a\n    x0 = v0 * t + 0.5*a*t*t\n    if x0>=x:\n        return (x,(math.sqrt(v0*v0 + 2*a*x)-v0)/a)\n    return (x0,t)\ndef go(v0,v,a,x):\n    x0,t = calc(v0,v,a,x)\n    return t + (x-x0)/v\na,v = getdt()\nl,d,w = getdt()\nif w>v:\n    w = v\nx,t = calc(0,w,a,d)\nif x==d:\n    print(go(0,v,a,l))\nelse:\n    print(t+go(w,v,a,(d-x)*0.5) * 2 + go(w,v,a,l-d))",
+  "execution_results": {
+    "10": 0.0004955400130711496,
+    "100": 0.0004599799867719412,
+    "1000": 0.000539620011113584,
+    "10000": 0.0004821999929845333,
+    "100000": 0.0007143200258724391
+  },
+  "complexity_analysis": {
+    "best_fit": "O(n log n)",
+    "best_r_squared": 0.9067025465259925,
+    "n_values": [
+      10,
+      100,
+      1000,
+      10000,
+      100000
+    ],
+    "actual_times": [
+      0.0004955400130711496,
+      0.0004599799867719412,
+      0.000539620011113584,
+      0.0004821999929845333,
+      0.0007143200258724391
+    ],
+    "all_fits": {
+      "O(1)": {
+        "params": [
+          0.0005383320059627294
+        ],
+        "r_squared": -34.42275970163194,
+        "predicted_times": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "O(log n)": {
+        "params": [
+          1.9967993123155067e-05,
+          0.0004003979959620183
+        ],
+        "r_squared": 0.5021985917930905,
+        "predicted_times": [
+          0.00044637599926440277,
+          0.0004923540025667872,
+          0.0005383320058691718,
+          0.0005843100091715562,
+          0.0006302880124739406
+        ]
+      },
+      "O(n)": {
+        "params": [
+          2.231482845974665e-09,
+          0.0004887439941598558
+        ],
+        "r_squared": 0.9028100836176867,
+        "predicted_times": [
+          0.0004887663089883156,
+          0.0004889671424444532,
+          0.0004909754770058305,
+          0.0005110588226196024,
+          0.0007118922787573223
+        ]
+      },
+      "O(n log n)": {
+        "params": [
+          1.9333395891646656e-10,
+          0.0004899680758649901
+        ],
+        "r_squared": 0.9067025465259925,
+        "predicted_times": [
+          0.0004899725275439078,
+          0.0004900571094433442,
+          0.0004913035795403018,
+          0.0005077747915358132,
+          0.0007125520217502797
+        ]
+      },
+      "O(n²)": {
+        "params": [
+          3.618221984847772e-14,
+          -1.4500016892429129e-09,
+          0.0004974585498831991
+        ],
+        "r_squared": -1.374146737131336,
+        "predicted_times": [
+          0.0004974440534845286,
+          0.0004973139115364732,
+          0.0004960447304138047,
+          0.00048657675497561773,
+          0.00040347767755189725
+        ]
+      },
+      "O(n³)": {
+        "params": [
+          6.935956241873023e-17,
+          -7.610932443741781e-12,
+          6.989029293509376e-08,
+          0.0004750527312617002
+        ],
+        "r_squared": -375.86838707751997,
+        "predicted_times": [
+          0.00047575087316716633,
+          0.0004819657205903346,
+          0.0005374014513154708,
+          0.000412811965482167,
+          -0.003267936691235935
+        ]
+      },
+      "O(2^n)": {
+        "params": [
+          1.0,
+          1.0
+        ],
+        "r_squared": -Infinity,
+        "predicted_times": [
+          22026.465794806718,
+          2.6881171418161356e+43,
+          Infinity,
+          Infinity,
+          Infinity
+        ]
+      }
+    }
+  }
+}

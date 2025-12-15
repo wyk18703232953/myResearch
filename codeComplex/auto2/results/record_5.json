@@ -1,42 +1,132 @@
 {
   "record_index": 4,
   "original_code": "from math import *\na,v=list(map(int,input().split()))\nl,d,w=list(map(int,input().split()))\nif v>w:\n    s1=w**2/2/a\n    if d<=s1:\n        s=min(v**2/2/a,l)\n        t=sqrt(2*s/a)+(l-s)/v\n    else:\n        t=sqrt(2*s1/a)\n        s2=min((d-s1)/2,(v**2-w**2)/(2*a))\n        if s2==(d-s1)/2:\n            t+=2*(sqrt(2*(s1+s2)/a)-sqrt(2*s1/a))\n        else:\n            t+=2*(v-w)/a+(d-s1-2*s2)/v\n        s3=min((v**2-w**2)/2/a,l-d)\n        t+=sqrt(2*(s3+s1)/a)-sqrt(2*s1/a)+(l-d-s3)/v\nelse:\n    s=min(v**2/2/a,l)\n    t=sqrt(2*s/a)+(l-s)/v\nprint(t)",
-  "modified_code": "from math import *\nn = 7\ndef generate_input(n):\n    if not hasattr(generate_input, \"_count\"):\n        generate_input._count = 0\n    generate_input._count += 1\n    c = generate_input._count\n    if c == 1:\n        a = max(1, int(n) % 10 + 1)\n        v = max(a, (int(n) * 2) % 20 + 1)\n        return f\"{a} {v}\"\n    elif c == 2:\n        l = max(1, int(n) % 20 + 1)\n        d = max(0, (int(n) * 3) % 40)\n        w = max(1, (int(n) * 5) % 50 + 1)\n        return f\"{l} {d} {w}\"\n    else:\n        return \"\"\n\na,v=list(map(int,generate_input(n).split()))\nl,d,w=list(map(int,generate_input(n).split()))\nif v>w:\n    s1=w**2/2/a\n    if d<=s1:\n        s=min(v**2/2/a,l)\n        t=sqrt(2*s/a)+(l-s)/v\n    else:\n        t=sqrt(2*s1/a)\n        s2=min((d-s1)/2,(v**2-w**2)/(2*a))\n        if s2==(d-s1)/2:\n            t+=2*(sqrt(2*(s1+s2)/a)-sqrt(2*s1/a))\n        else:\n            t+=2*(v-w)/a+(d-s1-2*s2)/v\n        s3=min((v**2-w**2)/2/a,l-d)\n        t+=sqrt(2*(s3+s1)/a)-sqrt(2*s1/a)+(l-d-s3)/v\nelse:\n    s=min(v**2/2/a,l)\n    t=sqrt(2*s/a)+(l-s)/v\nprint(t)",
-  "execution_results": {},
+  "modified_code": "from math import *\ndef generate_input(n):\n    if not hasattr(generate_input, \"_idx\"):\n        generate_input._idx = 0\n        if n <= 0:\n            a, v = 1, 2\n            l, d, w = 3, 1, 4\n        else:\n            base = int(n)\n            a = max(1, (base * 3) % 11 + 1)\n            v = max(1, (base * 5) % 15 + 1)\n            l = max(1, (base * 7) % 20 + 1)\n            d = max(0, (base * 9) % 25)\n            w = max(1, (base * 11) % 30 + 1)\n        generate_input._lines = [\n            f\"{a} {v}\",\n            f\"{l} {d} {w}\"\n        ]\n    line = generate_input._lines[generate_input._idx]\n    generate_input._idx += 1\n    return line\nn = 2\na,v = list(map(int, generate_input(n).split()))\nl,d,w = list(map(int, generate_input(n).split()))\nif v>w:\n    s1=w**2/2/a\n    if d<=s1:\n        s=min(v**2/2/a,l)\n        t=sqrt(2*s/a)+(l-s)/v\n    else:\n        t=sqrt(2*s1/a)\n        s2=min((d-s1)/2,(v**2-w**2)/(2*a))\n        if s2==(d-s1)/2:\n            t+=2*(sqrt(2*(s1+s2)/a)-sqrt(2*s1/a))\n        else:\n            t+=2*(v-w)/a+(d-s1-2*s2)/v\n        s3=min((v**2-w**2)/2/a,l-d)\n        t+=sqrt(2*(s3+s1)/a)-sqrt(2*s1/a)+(l-d-s3)/v\nelse:\n    s=min(v**2/2/a,l)\n    t=sqrt(2*s/a)+(l-s)/v\nprint(t)",
+  "execution_results": {
+    "10": 0.0005887200008146465,
+    "100": 0.0005795399891212582,
+    "1000": 0.0005241799983195961,
+    "10000": 0.000585799990221858,
+    "100000": 0.0005627400125376881
+  },
   "complexity_analysis": {
-    "n_values": [],
-    "actual_times": [],
+    "best_fit": "O(log n)",
+    "best_r_squared": 0.0738765368525286,
+    "n_values": [
+      10,
+      100,
+      1000,
+      10000,
+      100000
+    ],
+    "actual_times": [
+      0.0005887200008146465,
+      0.0005795399891212582,
+      0.0005241799983195961,
+      0.000585799990221858,
+      0.0005627400125376881
+    ],
     "all_fits": {
       "O(1)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          0.0005681959982030094
+        ],
+        "r_squared": -571.0063536022526,
+        "predicted_times": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       },
       "O(log n)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -1.984723713605154e-06,
+          0.0005819059839096291
+        ],
+        "r_squared": 0.0738765368525286,
+        "predicted_times": [
+          0.0005773359886729701,
+          0.0005727659934363111,
+          0.000568195998199652,
+          0.000563626002962993,
+          0.000559056007726334
+        ]
       },
       "O(n)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -5.4014273333063654e-11,
+          0.0005693963034351649
+        ],
+        "r_squared": 0.007876446275950966,
+        "predicted_times": [
+          0.0005693957632924315,
+          0.0005693909020078316,
+          0.0005693422891618319,
+          0.0005688561607018343,
+          0.0005639948761018585
+        ]
       },
       "O(n log n)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -4.855895218036937e-12,
+          0.0005694107369060637
+        ],
+        "r_squared": 0.008516967441065448,
+        "predicted_times": [
+          0.0005694106250949444,
+          0.0005694085006836753,
+          0.0005693771935702371,
+          0.000568963492428376,
+          0.0005638201809349672
+        ]
       },
       "O(n²)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -1.839339161208556e-14,
+          1.8174844189951694e-09,
+          0.0005649662263333803
+        ],
+        "r_squared": -8.756114774868665,
+        "predicted_times": [
+          0.000564984399338231,
+          0.0005651477908413636,
+          0.0005667653173607633,
+          0.0005813017313621234,
+          0.0007207787829848981
+        ]
       },
       "O(n³)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          -7.166830212245609e-17,
+          7.883267253538183e-12,
+          -7.189748261767915e-08,
+          0.0005881178600595165
+        ],
+        "r_squared": -5524.572298854218,
+        "predicted_times": [
+          0.0005873996734883968,
+          0.0005810068728019819,
+          0.0005240319763932531,
+          0.0006575218893238477,
+          0.004514401742501296
+        ]
       },
       "O(2^n)": {
-        "error": "`ydata` must not be empty!",
-        "r_squared": -Infinity
+        "params": [
+          1.0,
+          1.0
+        ],
+        "r_squared": -Infinity,
+        "predicted_times": [
+          22026.465794806718,
+          2.6881171418161356e+43,
+          Infinity,
+          Infinity,
+          Infinity
+        ]
       }
-    },
-    "best_fit": null,
-    "best_r_squared": -Infinity
+    }
   }
 }

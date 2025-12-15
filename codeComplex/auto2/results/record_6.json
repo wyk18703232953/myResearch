@@ -1,0 +1,132 @@
+{
+  "record_index": 5,
+  "original_code": "'''\nJana Goodman\n\n5d follow traffic rules\n\naccel formulas:\n    t = (v1 - v0) / a\n    d = (v1 - v0)t / 2\n    v = sqr (2ad)\n\nno accel: d = vt -- t = d / v -- v = d / t\n\n'''\nimport math\n\nSPACE = ' '\n\n\ndef get_data(file_name):\n    result = list()\n    state = 0\n    data = list()\n    # [a, v, l, d, w, answer]\n    try:\n        for line in open(file_name, 'r').readlines():\n            line = line.strip()\n            if state == 0:\n                if line == 'Input':\n                    data = list()\n                    state = 1\n                elif line == 'Answer':\n                    state = 2\n            elif state == 1:\n                data += list(map(int, line.split(SPACE)))\n                state = 11\n            elif state == 11:\n                data += list(map(int, line.split(SPACE)))\n                state = 0\n            elif state == 2:\n                data.append(float(line))\n                result.append(data)\n                state = 0\n    except FileNotFoundError:\n        print(f'File {file_name} not found.')\n    return result\n\n\n# no accel: d = vt -- t = d / v -- v = d / t\n\ndef time(d=None, v=None, v0=0, steady=False):\n    if steady:\n        return d / v\n\n    if d is None:\n        # time to accelerate v0 to v\n        return (v - v0) / ACCEL\n\n    # time to go distance d while accelerating from v0\n    if v is None:\n        v = vel(d=d, v0=v0)\n    return (2 * d) / (v + v0)\n\n\ndef dist(t=None, v=None, v0=0, steady=False):\n    if steady:\n        return v * t\n\n    if t is None:\n        # distance to accelerate v0 to v\n        return (pow(v, 2) - pow(v0, 2)) / (2 * ACCEL)\n\n    # distance to accelerate for time t\n    return (1 / 2) * (v + v0) * t\n\n\ndef vel(d=None, t=None, v0=0, steady=False):\n    if steady:\n        return d / t\n\n    if d is None:\n        # velocity after accelerating from v0 for time t\n        return t * ACCEL - v0\n\n    # velocity after going distance d accelerating from v0\n    return pow(2 * d * ACCEL + v0 ** 2, 1 / 2)\n\ndef can_ignore_sign(v, w, d):\n    return v <= w or d <= dist(v=w)\n\n\ndef ignore_sign(v, w, l):\n    dmax = dist(v=v)\n    if l <= dmax:\n        return time(d=l)\n    return time(v=v) + time(d=l - dmax, v=v, steady=True)\n\n\ndef get_time(a, v, l, d, w):\n    global ACCEL\n    ACCEL = a\n\n    if can_ignore_sign(v, w, d):\n        return ignore_sign(v, w, l)\n\n    # go to the sign\n    tmax, dmax = time(v=v), dist(v=v)\n    tlim_max, dlim_max = time(v=v, v0=w), dist(v=v, v0=w)\n    if dmax + dlim_max <= d:\n        #  0 <<< lim <<< max === sign <<< dlim_max\n        #  0 <<<dlim === dmax=== sign <<< dlim_max\n        res = tmax + time(d=d - dmax - dlim_max, v=v, steady=True) + tlim_max\n    else:\n        #  0 <<<dlim ... dmax=== sign <<< dlim_max\n        res = time(v=w) + time(v=vel(d=(d - dist(v=w)) / 2, v0=w), v0=w) * 2\n\n    # go from sign to end of the road\n    x = d + dist(v=v) - dist(v=w)\n    if x >= l:\n        # reach end of the road before getting to top speed\n        res += time(d=l - d, v0=w)\n        return res\n    return res + time(v=v, v0=w) + time(d=l - x, v=v, steady=True)\n\n\nif __name__ == '__main__':\n    a, v = map(int, input().split())\n    l, d, w = map(int, input().split())\n    print(get_time(a, v, l, d, w))\n\n# --------- testing\n    # cases = get_data('testdata.txt')\n    # for i, [a, v, l, d, w, ans] in enumerate(cases, 1):\n    #     if a == 6 and v == 80:\n    #         debug = 1\n    #     my_ans = get_time(a, v, l, d, w)\n    #     if abs(my_ans - ans) >= pow(10, -6):\n    #         print(f'Case {i} My answer: {my_ans} -- Right answer: {ans}')\n    #     else:\n    #         print(f'Case {i} OK')\n",
+  "modified_code": "'''\nJana Goodman\n\n5d follow traffic rules\n\naccel formulas:\n    t = (v1 - v0) / a\n    d = (v1 - v0)t / 2\n    v = sqr (2ad)\n\nno accel: d = vt -- t = d / v -- v = d / t\n\n'''\nimport math\n\nSPACE = ' '\n\n\ndef get_data(file_name):\n    result = list()\n    state = 0\n    data = list()\n    # [a, v, l, d, w, answer]\n    try:\n        for line in open(file_name, 'r').readlines():\n            line = line.strip()\n            if state == 0:\n                if line == 'Input':\n                    data = list()\n                    state = 1\n                elif line == 'Answer':\n                    state = 2\n            elif state == 1:\n                data += list(map(int, line.split(SPACE)))\n                state = 11\n            elif state == 11:\n                data += list(map(int, line.split(SPACE)))\n                state = 0\n            elif state == 2:\n                data.append(float(line))\n                result.append(data)\n                state = 0\n    except FileNotFoundError:\n        print(f'File {file_name} not found.')\n    return result\n\n\n# no accel: d = vt -- t = d / v -- v = d / t\n\ndef time(d=None, v=None, v0=0, steady=False):\n    if steady:\n        return d / v\n\n    if d is None:\n        # time to accelerate v0 to v\n        return (v - v0) / ACCEL\n\n    # time to go distance d while accelerating from v0\n    if v is None:\n        v = vel(d=d, v0=v0)\n    return (2 * d) / (v + v0)\n\n\ndef dist(t=None, v=None, v0=0, steady=False):\n    if steady:\n        return v * t\n\n    if t is None:\n        # distance to accelerate v0 to v\n        return (pow(v, 2) - pow(v0, 2)) / (2 * ACCEL)\n\n    # distance to accelerate for time t\n    return (1 / 2) * (v + v0) * t\n\n\ndef vel(d=None, t=None, v0=0, steady=False):\n    if steady:\n        return d / t\n\n    if d is None:\n        # velocity after accelerating from v0 for time t\n        return t * ACCEL - v0\n\n    # velocity after going distance d accelerating from v0\n    return pow(2 * d * ACCEL + v0 ** 2, 1 / 2)\n\ndef can_ignore_sign(v, w, d):\n    return v <= w or d <= dist(v=w)\n\n\ndef ignore_sign(v, w, l):\n    dmax = dist(v=v)\n    if l <= dmax:\n        return time(d=l)\n    return time(v=v) + time(d=l - dmax, v=v, steady=True)\n\n\ndef get_time(a, v, l, d, w):\n    global ACCEL\n    ACCEL = a\n\n    if can_ignore_sign(v, w, d):\n        return ignore_sign(v, w, l)\n\n    # go to the sign\n    tmax, dmax = time(v=v), dist(v=v)\n    tlim_max, dlim_max = time(v=v, v0=w), dist(v=v, v0=w)\n    if dmax + dlim_max <= d:\n        #  0 <<< lim <<< max === sign <<< dlim_max\n        #  0 <<<dlim === dmax=== sign <<< dlim_max\n        res = tmax + time(d=d - dmax - dlim_max, v=v, steady=True) + tlim_max\n    else:\n        #  0 <<<dlim ... dmax=== sign <<< dlim_max\n        res = time(v=w) + time(v=vel(d=(d - dist(v=w)) / 2, v0=w), v0=w) * 2\n\n    # go from sign to end of the road\n    x = d + dist(v=v) - dist(v=w)\n    if x >= l:\n        # reach end of the road before getting to top speed\n        res += time(d=l - d, v0=w)\n        return res\n    return res + time(v=v, v0=w) + time(d=l - x, v=v, steady=True)\n\n\ndef generate_input(n):\n    if not hasattr(generate_input, \"_step\"):\n        generate_input._step = 0\n    if generate_input._step == 0:\n        generate_input._step = 1\n        a = max(1, int(n) % 10 + 1)\n        v = max(a + 1, (int(n) * 3) % 100 + 5)\n        return f\"{a} {v}\"\n    else:\n        generate_input._step = 0\n        l = int(n) * 10 + 20\n        d = int(n) * 5 + 5\n        w = (int(n) * 2) % 30 + 5\n        if d > l:\n            d = l // 2\n        return f\"{l} {d} {w}\"\n\n\nif __name__ == '__main__':\n    a, v = map(int, generate_input(5).split())\n    l, d, w = map(int, generate_input(5).split())\n    print(get_time(a, v, l, d, w))\n\n# --------- testing\n    # cases = get_data('testdata.txt')\n    # for i, [a, v, l, d, w, ans] in enumerate(cases, 1):\n    #     if a == 6 and v == 80:\n    #         debug = 1\n    #     my_ans = get_time(a, v, l, d, w)\n    #     if abs(my_ans - ans) >= pow(10, -6):\n    #         print(f'Case {i} My answer: {my_ans} -- Right answer: {ans}')\n    #     else:\n    #         print(f'Case {i} OK')",
+  "execution_results": {
+    "10": 0.001139319990761578,
+    "100": 0.0009310800000093877,
+    "1000": 0.0006937399855814874,
+    "10000": 0.000849720009136945,
+    "100000": 0.0010201399913057686
+  },
+  "complexity_analysis": {
+    "best_fit": "O(log n)",
+    "best_r_squared": 0.08954668940684762,
+    "n_values": [
+      10,
+      100,
+      1000,
+      10000,
+      100000
+    ],
+    "actual_times": [
+      0.001139319990761578,
+      0.0009310800000093877,
+      0.0006937399855814874,
+      0.000849720009136945,
+      0.0010201399913057686
+    ],
+    "all_fits": {
+      "O(1)": {
+        "params": [
+          0.0009267999931799054
+        ],
+        "r_squared": -37.62287708722279,
+        "predicted_times": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "O(log n)": {
+        "params": [
+          -1.3885265035591277e-05,
+          0.0010227160082081938
+        ],
+        "r_squared": 0.08954668940684762,
+        "predicted_times": [
+          0.00099074400392497,
+          0.000958771999641746,
+          0.000926799995358522,
+          0.0008948279910752982,
+          0.0008628559867920742
+        ]
+      },
+      "O(n)": {
+        "params": [
+          1.0918208572644984e-09,
+          0.0009025375522521806
+        ],
+        "r_squared": 0.0796978654330116,
+        "predicted_times": [
+          0.0009025484704607532,
+          0.0009026467343379071,
+          0.0009036293731094451,
+          0.0009134557608248256,
+          0.0010117196379786305
+        ]
+      },
+      "O(n log n)": {
+        "params": [
+          9.671737534561253e-11,
+          0.0009026054234035029
+        ],
+        "r_squared": 0.08367434011539798,
+        "predicted_times": [
+          0.00090260765040337,
+          0.0009026499634008437,
+          0.0009032735233636159,
+          0.0009115134228716756,
+          0.0010139554167556616
+        ]
+      },
+      "O(n²)": {
+        "params": [
+          1.3099286248420238e-13,
+          -1.223649907401044e-08,
+          0.0009340874323862294
+        ],
+        "r_squared": -10.918136511195016,
+        "predicted_times": [
+          0.0009339650804947755,
+          0.0009328650924074532,
+          0.0009219819261747031,
+          0.0008248217278945452,
+          -0.00010485397093093984
+        ]
+      },
+      "O(n³)": {
+        "params": [
+          -3.9799225737133143e-16,
+          4.4010918324994447e-11,
+          -4.215944028543684e-07,
+          0.0010626543172500868
+        ],
+        "r_squared": -3484.2570139102577,
+        "predicted_times": [
+          0.0010584427739153833,
+          0.0010209345881556425,
+          0.0006846728404633415,
+          0.001248091612801278,
+          0.020962096661351615
+        ]
+      },
+      "O(2^n)": {
+        "params": [
+          1.0,
+          1.0
+        ],
+        "r_squared": -Infinity,
+        "predicted_times": [
+          22026.465794806718,
+          2.6881171418161356e+43,
+          Infinity,
+          Infinity,
+          Infinity
+        ]
+      }
+    }
+  }
+}
