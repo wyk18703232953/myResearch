@@ -1,0 +1,42 @@
+{
+  "record_index": 0,
+  "original_code": "from math import sqrt\n\na, v = map(int, input().split())\nl, d, w = map(int, input().split())\n\ndef findt(u, v, a, dist):\n\tfront = (v*v-u*u)/(2*a)\n\tif front > dist:\n\t\treturn (sqrt(u*u+2*a*dist)-u)/a\n\treturn (v-u)/a + (dist-front)/v\n\ndef solve(a, v, l, d, w):\n\tif v <= w or 2*a*d <= w*w:\n\t\treturn findt(0, v, a, l)\n\tafter = findt(w, v, a, l-d)\n\tpeak = sqrt(a*d + w*w/2)\n\tif peak > v:\n\t\ttravel = (v*v-w*w/2)/a\n\t\tbefore = (2*v-w)/a + (d-travel)/v\n\telse:\n\t\tbefore = (2*peak-w)/a\n\treturn before + after\n\nprint(f'{solve(a, v, l, d, w):.8f}')",
+  "modified_code": "from math import sqrt\n\nn = 1\n\ndef generate_input(n):\n    if not hasattr(generate_input, \"_call\"):\n        generate_input._call = 0\n    generate_input._call += 1\n    base = max(1, int(n))\n    a = 1 + (base * 13) % 97\n    v = 2 + (base * 29) % 1000\n    l = 50 * base\n    d = 5 * base\n    w = 1 + (base * 7) % v\n    if generate_input._call == 1:\n        return f\"{a} {v}\"\n    else:\n        return f\"{l} {d} {w}\"\n\na, v = map(int, generate_input(n).split())\nl, d, w = map(int, generate_input(n).split())\n\ndef findt(u, v, a, dist):\n\tfront = (v*v-u*u)/(2*a)\n\tif front > dist:\n\t\treturn (sqrt(u*u+2*a*dist)-u)/a\n\treturn (v-u)/a + (dist-front)/v\n\ndef solve(a, v, l, d, w):\n\tif v <= w or 2*a*d <= w*w:\n\t\treturn findt(0, v, a, l)\n\tafter = findt(w, v, a, l-d)\n\tpeak = sqrt(a*d + w*w/2)\n\tif peak > v:\n\t\ttravel = (v*v-w*w/2)/a\n\t\tbefore = (2*v-w)/a + (d-travel)/v\n\telse:\n\t\tbefore = (2*peak-w)/a\n\treturn before + after\n\nprint(f'{solve(a, v, l, d, w):.8f}')",
+  "execution_results": {},
+  "complexity_analysis": {
+    "n_values": [],
+    "actual_times": [],
+    "all_fits": {
+      "O(1)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(log n)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(n)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(n log n)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(n²)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(n³)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(2^n)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      }
+    },
+    "best_fit": null,
+    "best_r_squared": -Infinity
+  }
+}

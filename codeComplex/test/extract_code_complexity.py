@@ -145,11 +145,14 @@ if __name__ == "__main__":
         
         # 示例4: 统计前100条记录中各种复杂度的分布
         print("\n=== 示例4: 统计前200条记录的复杂度分布 ===")
-        sample_results = get_source_and_complexity(file_path, max_lines=1000)
+        sample_results = get_source_and_complexity(file_path, max_lines=6000)
         complexity_counts = count_complexity_types(sample_results)
         print("复杂度分布:")
+        c=0
         for complexity, count in complexity_counts.items():
             print(f"  {complexity}: {count} 条")
+            c+=count
+        print(f"总记录数: {c}")
             
     except Exception as e:
         print(f"发生错误: {e}")

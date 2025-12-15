@@ -1,0 +1,132 @@
+{
+  "record_index": 1,
+  "original_code": "from math import *\na, vm = map(int, input().split())\nl, d, vd = map(int, input().split())\nif vm <= vd or sqrt(2 * a * d) <= vd:\n    if vm ** 2 / (2 * a) >= l:\n        ans = sqrt(2 * l / a)\n    else:\n        ans = vm / a + (l - vm ** 2 / (2 * a)) / vm\nelse:\n    s1 = (vm ** 2 - vd ** 2) / (2 * a)\n    if s1 >= (l - d):\n        ans = (sqrt(4 * (vd ** 2) + 8 * a * (l - d)) - 2 * vd) / (2 * a)\n    else:\n        ans = (vm - vd) / a + (l - d - s1) / vm\n    v1 = sqrt((2 * a * d + vd ** 2) / 2)\n    if v1 <= vm:\n        ans = ans + v1 / a + (v1 - vd) / a\n    else:\n        s1 = d - (vm ** 2 - vd ** 2) / (2 * a) - (vm ** 2) / (2 * a)\n        ans = ans + vm / a + (vm - vd) / a + s1 / vm\nprint('%.12f' % ans)\n",
+  "modified_code": "from math import *\n_input_call_count = 0\ndef generate_input(n):\n    global _input_call_count\n    _input_call_count += 1\n    if _input_call_count == 1:\n        a = max(1, min(1000, n + 1))\n        vm = max(0, min(1000, n + 2))\n        return f\"{a} {vm}\"\n    elif _input_call_count == 2:\n        l = max(0, n * 3)\n        d = max(0, n // 2)\n        vd = max(0, (n * 7) % 100)\n        return f\"{l} {d} {vd}\"\n    else:\n        return \"0 0\"\n\nn = 1\na, vm = map(int, generate_input(n).split())\nl, d, vd = map(int, generate_input(n).split())\nif vm <= vd or sqrt(2 * a * d) <= vd:\n    if vm ** 2 / (2 * a) >= l:\n        ans = sqrt(2 * l / a)\n    else:\n        ans = vm / a + (l - vm ** 2 / (2 * a)) / vm\nelse:\n    s1 = (vm ** 2 - vd ** 2) / (2 * a)\n    if s1 >= (l - d):\n        ans = (sqrt(4 * (vd ** 2) + 8 * a * (l - d)) - 2 * vd) / (2 * a)\n    else:\n        ans = (vm - vd) / a + (l - d - s1) / vm\n    v1 = sqrt((2 * a * d + vd ** 2) / 2)\n    if v1 <= vm:\n        ans = ans + v1 / a + (v1 - vd) / a\n    else:\n        s1 = d - (vm ** 2 - vd ** 2) / (2 * a) - (vm ** 2) / (2 * a)\n        ans = ans + vm / a + (vm - vd) / a + s1 / vm\nprint('%.12f' % ans)",
+  "execution_results": {
+    "10": 0.000710279995109886,
+    "100": 0.0006148799904622138,
+    "1000": 0.0006132800015620887,
+    "10000": 0.0005244399886578322,
+    "100000": 0.00045777999330312016
+  },
+  "complexity_analysis": {
+    "n_values": [
+      10,
+      100,
+      1000,
+      10000,
+      100000
+    ],
+    "actual_times": [
+      0.000710279995109886,
+      0.0006148799904622138,
+      0.0006132800015620887,
+      0.0005244399886578322,
+      0.00045777999330312016
+    ],
+    "all_fits": {
+      "O(1)": {
+        "params": [
+          0.0005841319938190282
+        ],
+        "r_squared": -45.816842053668054,
+        "predicted_times": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "O(log n)": {
+        "params": [
+          -2.5859630764874872e-05,
+          0.0007627639948579759
+        ],
+        "r_squared": 0.9521583486748436,
+        "predicted_times": [
+          0.0007032199945484448,
+          0.0006436759942389137,
+          0.0005841319939293827,
+          0.0005245879936198515,
+          0.00046504399331032044
+        ]
+      },
+      "O(n)": {
+        "params": [
+          -1.7293982989178568e-09,
+          0.0006225626828173463
+        ],
+        "r_squared": 0.6129954240755333,
+        "predicted_times": [
+          0.0006225453888343571,
+          0.0006223897429874545,
+          0.0006208332845184285,
+          0.0006052686998281677,
+          0.0004496228529255606
+        ]
+      },
+      "O(n log n)": {
+        "params": [
+          -1.47630796390489e-10,
+          0.0006210629373372755
+        ],
+        "r_squared": 0.5976684944810933,
+        "predicted_times": [
+          0.0006210595380125651,
+          0.0006209949508430684,
+          0.0006200431399241687,
+          0.0006074656384958524,
+          0.000451096701819486
+        ]
+      },
+      "O(n²)": {
+        "params": [
+          1.2400697696241892e-13,
+          -1.4346915173261208e-08,
+          0.0006524299974456665
+        ],
+        "r_squared": -29.61296827258551,
+        "predicted_times": [
+          0.0006522865406946316,
+          0.0006509965459981099,
+          0.0006382070892493677,
+          0.0005213615434092963,
+          -0.0006074035713150946
+        ]
+      },
+      "O(n³)": {
+        "params": [
+          -4.9781797252174954e-17,
+          5.612610111344347e-12,
+          -6.5550353519017e-08,
+          0.0006685114415195441
+        ],
+        "r_squared": -65.36471072933371,
+        "predicted_times": [
+          0.0006678564991955833,
+          0.0006620124824869586,
+          0.0006085239163146193,
+          0.000574305127745901,
+          0.0020276996470061266
+        ]
+      },
+      "O(2^n)": {
+        "params": [
+          1.0,
+          1.0
+        ],
+        "r_squared": -Infinity,
+        "predicted_times": [
+          22026.465794806718,
+          2.6881171418161356e+43,
+          Infinity,
+          Infinity,
+          Infinity
+        ]
+      }
+    },
+    "best_fit": "O(log n)",
+    "best_r_squared": 0.9521583486748436
+  }
+}

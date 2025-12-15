@@ -1,0 +1,42 @@
+{
+  "record_index": 3,
+  "original_code": "from math import *\na, vm = map(int, input().split())\nl, d, vd = map(int, input().split())\nif vm <= vd or sqrt(2 * a * d) <= vd:\n    if vm ** 2 / (2 * a) >= l:\n        ans = sqrt(2 * l / a)\n    else:\n        ans = vm / a + (l - vm ** 2 / (2 * a)) / vm\nelse:\n    s1 = (vm ** 2 - vd ** 2) / (2 * a)\n    if s1 >= (l - d):\n        ans = (sqrt(4 * (vd ** 2) + 8 * a * (l - d)) - 2 * vd) / (2 * a)\n    else:\n        ans = (vm - vd) / a + (l - d - s1) / vm\n    v1 = sqrt((2 * a * d + vd ** 2) / 2)\n    if v1 <= vm:\n        ans = ans + v1 / a + (v1 - vd) / a\n    else:\n        s1 = d - (vm ** 2 - vd ** 2) / (2 * a) - (vm ** 2) / (2 * a)\n        ans = ans + vm / a + (vm - vd) / a + s1 / vm\nprint('%.12f' % ans)",
+  "modified_code": "from math import *\nn = 1\n\ndef generate_input(n):\n    if not hasattr(generate_input, \"_idx\"):\n        generate_input._idx = 0\n    generate_input._idx += 1\n    if generate_input._idx == 1:\n        a = n + 100\n        vm = n + 200\n        return f\"{a} {vm}\"\n    else:\n        l = n + 300\n        d = n + 400\n        vd = n + 500\n        return f\"{l} {d} {vd}\"\n\na, vm = map(int, generate_input(n).split())\nl, d, vd = map(int, generate_input(n).split())\nif vm <= vd or sqrt(2 * a * d) <= vd:\n    if vm ** 2 / (2 * a) >= l:\n        ans = sqrt(2 * l / a)\n    else:\n        ans = vm / a + (l - vm ** 2 / (2 * a)) / vm\nelse:\n    s1 = (vm ** 2 - vd ** 2) / (2 * a)\n    if s1 >= (l - d):\n        ans = (sqrt(4 * (vd ** 2) + 8 * a * (l - d)) - 2 * vd) / (2 * a)\n    else:\n        ans = (vm - vd) / a + (l - d - s1) / vm\n    v1 = sqrt((2 * a * d + vd ** 2) / 2)\n    if v1 <= vm:\n        ans = ans + v1 / a + (v1 - vd) / a\n    else:\n        s1 = d - (vm ** 2 - vd ** 2) / (2 * a) - (vm ** 2) / (2 * a)\n        ans = ans + vm / a + (vm - vd) / a + s1 / vm\nprint('%.12f' % ans)",
+  "execution_results": {},
+  "complexity_analysis": {
+    "n_values": [],
+    "actual_times": [],
+    "all_fits": {
+      "O(1)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(log n)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(n)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(n log n)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(n²)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(n³)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      },
+      "O(2^n)": {
+        "error": "`ydata` must not be empty!",
+        "r_squared": -Infinity
+      }
+    },
+    "best_fit": null,
+    "best_r_squared": -Infinity
+  }
+}

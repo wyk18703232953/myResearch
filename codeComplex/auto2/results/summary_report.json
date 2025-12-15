@@ -1,0 +1,41 @@
+{
+  "total_records": 5,
+  "records": [
+    {
+      "record_index": 1,
+      "best_fit": null,
+      "best_r_squared": -Infinity,
+      "execution_times": {}
+    },
+    {
+      "record_index": 2,
+      "best_fit": "O(log n)",
+      "best_r_squared": 0.9521583486748436,
+      "execution_times": {
+        "10": 0.000710279995109886,
+        "100": 0.0006148799904622138,
+        "1000": 0.0006132800015620887,
+        "10000": 0.0005244399886578322,
+        "100000": 0.00045777999330312016
+      }
+    },
+    {
+      "record_index": 3,
+      "best_fit": null,
+      "best_r_squared": -Infinity,
+      "execution_times": {}
+    },
+    {
+      "record_index": 4,
+      "best_fit": null,
+      "best_r_squared": -Infinity,
+      "execution_times": {}
+    },
+    {
+      "record_index": 5,
+      "best_fit": null,
+      "best_r_squared": -Infinity,
+      "execution_times": {}
+    }
+  ]
+}
