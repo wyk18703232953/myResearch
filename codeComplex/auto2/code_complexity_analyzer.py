@@ -275,4 +275,4 @@ if __name__ == "__main__":
     n_values = [10, 100, 1000, 10000, 100000]
     
     # Run the analysis
-    analyzer.run_analysis(jsonl_file, n_values=n_values, limit=5)
+    analyzer.run_analysis(jsonl_file, n_values=n_values, limit=1)

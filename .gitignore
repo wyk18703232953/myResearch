@@ -2,6 +2,7 @@
 node_modules/
 dist/
 build/
+**/test.py
 
 
 # 环境变量
@@ -30,5 +31,4 @@ mbpp_plus/gitattributes
 mbpp_plus/README.md
 mbpp_plus/test.py
 mbpp_plus/data/test-00000-of-00001-d5781c9c51e02795.parquet
-codeComplex/test.py
 codeComplex/test.py
