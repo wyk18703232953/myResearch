@@ -1,0 +1,48 @@
+Time Complexity Analysis Report
+==================================================
+Number of data points: 100
+n range: 1.0 to 100.0
+Step size: 1
+
+Fit Results:
+------------------------------
+Constant:
+  Parameters: [0.00575791]
+  R²: 0.000000
+
+Linear:
+  Parameters: [ 0.00015748 -0.00219464]
+  R²: 0.913707
+
+Quadratic:
+  Parameters: [1.32950035e-06 2.31968415e-05 8.81086491e-05]
+  R²: 0.957107
+
+Cubic:
+  Parameters: [-6.58344777e-09  2.32689268e-06 -1.72986028e-05  4.37395394e-04]
+  R²: 0.957791
+
+Logarithmic:
+  Parameters: [ 0.00398957 -0.00875371]
+  R²: 0.600113
+
+n_log_n:
+  Parameters: [ 3.32340446e-05 -1.14039129e-03]
+  R²: 0.936706
+
+Exponential:
+  Parameters: [0.00112195 0.02717103]
+  R²: 0.934526
+
+Sqrt_Exponential:
+  Parameters: [0.00112195 0.02717103]
+  R²: -0.154296
+
+Power:
+  Parameters: [0.00112195 0.02717103]
+  R²: -0.892995
+
+Best Fit Model:
+------------------------------
+Cubic with R² = 0.957791
+Parameters: [-6.58344777e-09  2.32689268e-06 -1.72986028e-05  4.37395394e-04]
