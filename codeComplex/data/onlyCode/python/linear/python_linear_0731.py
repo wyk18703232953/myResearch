@@ -1,0 +1,7 @@
+n, k = [int(x) for x in input().split()]
+
+ans = ""
+while len(ans) < n:
+    ans += '1' * ((n - k) // 2) + '0';
+ans = ans[:n]
+print(ans)

@@ -1,0 +1,17 @@
+n,k=map(int,input().split())
+if(k%2==0):
+    print("YES")
+    print('.'*n)
+    print('.'+'#'*(k//2)+'.'*(n-1-k//2))
+    print('.'+'#'*(k//2)+'.'*(n-1-k//2))
+    print('.'*n)
+else:
+    print("YES")
+    print('.'*n)
+    if(k<=n-2):
+        print('.'*((n-k)//2)+'#'*k+'.'*((n-k)//2))
+        print('.'*n)
+    else:
+        print('.'+'#'*(n-2)+'.')
+        print('.'+'#'*((k-n+2)//2)+'.'*(n-2-k+n-2)+'#'*((k-n+2)//2)+'.')
+    print('.'*n)

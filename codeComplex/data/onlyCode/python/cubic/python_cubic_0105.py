@@ -1,0 +1,82 @@
+class edge(object):
+	def __init__(self,ne,to,fl):
+		self.ne=ne
+		self.to=to
+		self.fl=fl
+
+def add(x,y,z):
+	global tot
+	tot+=1
+	e.append(edge(he[x],y,z))
+	he[x]=tot
+
+def addedge(x,y,z):
+	add(x,y,z)
+	add(y,x,0)
+
+def bfs():
+	global deep
+	deep=[0 for i in range(T+1)]
+	q=[]
+	q.append(S)
+	deep[S]=1
+	lp=0
+	while (len(q)>lp):
+		x=q[lp]
+		lp+=1
+		i=he[x]
+		while (i):
+			y=e[i].to
+			if ((deep[y]==0)and(e[i].fl!=0)):
+				deep[y]=deep[x]+1
+				q.append(y)
+			i=e[i].ne
+	return deep[T]!=0
+
+def dfs(x,flow):
+	global deep
+	if ((x==T)or(flow==0)):
+		return flow
+	used=0
+	i=he[x]
+	while (i):
+		y=e[i].to
+		if ((deep[y]==deep[x]+1)and(e[i].fl!=0)):
+			now=dfs(y,min(flow-used,e[i].fl))
+			used+=now
+			e[i].fl-=now
+			e[i^1].fl+=now
+			if (flow==used):
+				break;
+		i=e[i].ne
+	if (used==0):
+		deep[x]=-1
+	return used
+
+def dinic():
+	res=0
+	while (bfs()):
+		res+=dfs(S,INF)
+	return res
+
+n,m=map(int,input().split())
+ans=0
+weight=[0]+list(map(int,input().split()))
+
+e=[0,0]
+tot=1
+S=n+m+1
+T=S+1
+he=[0 for i in range(T+1)]
+INF=1000000007#只要>10^9就足够了
+
+for i in range(1,n+1):
+	addedge(S,i,weight[i]);
+for i in range(1,m+1):
+	x,y,w=map(int,input().split())
+	addedge(n+i,T,w)
+	addedge(x,n+i,INF)
+	addedge(y,n+i,INF)
+	ans+=w
+ans-=dinic()
+print(ans)

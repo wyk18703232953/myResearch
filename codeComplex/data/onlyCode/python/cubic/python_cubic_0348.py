@@ -1,0 +1,44 @@
+import io,os,bisect
+input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
+prime = [2]
+
+for i in range(3,4*10**3,2):
+    flag = False
+    if i%2==0: continue 
+    for j in range(3,int(i**0.5)+1,2):
+        if i%j==0: 
+            flag = True 
+            break
+    if not flag:  prime.append(i)
+
+def primefactor(num):
+
+    index = 0
+    output = []
+
+    while num>=prime[index]**2:
+
+        times = 0
+        while num%prime[index]==0:
+            num = num // prime[index]
+            times += 1
+        if times&1:  output.append(prime[index])
+        index += 1 
+
+    if num>1: output.append(num)
+
+
+    return tuple(output)
+
+for _ in range(int(input())):
+    n,k = map(int,input().split());arr = list(map(int,input().split()));seg = 1;fact = {};left = [[0 for j in range(k+1)] for i in range(n)];dp = [[300000 for j in range(k+1)] for i in range(n)];stack = [0]
+    for i in range(n):
+        factor = primefactor(arr[i])
+        if factor in fact:            bisect.insort(stack,fact[factor]+1)            
+        fact[factor] = i
+        for j in range(k+1):
+            if j<len(stack):  left[i][j] = stack[-j-1]
+    for i in range(n):
+        for j in range(k+1):
+            for t in range(j+1):l = left[i][t];dp[i][j] = (min(dp[l-1][j-t] + 1, dp[i][j]) if l > 0 else 1)
+    print(dp[-1][-1])   

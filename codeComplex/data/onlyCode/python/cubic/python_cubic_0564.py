@@ -1,0 +1,67 @@
+a=list(input())
+b=list(input())
+num=int(''.join(b))
+a.sort()
+a.reverse()
+al=len(a)
+ans=[]
+if(len(a)==len(b) and len(a)!=1):
+	c=[]
+	count=0
+	hogya=0
+	for i in range(al):
+		if(hogya==1):
+			o.reverse()
+			f=list(c+o)
+			ans.append(''.join(f))
+			count+=1
+			break
+		t=len(a)
+		j=0
+		mittal=t
+		abhinhi=0
+		while(t):
+			#print("hello")
+			if(j>len(a)-1):
+				break
+			if(int(a[j])<=int(b[i])):
+				c.append(a[j])
+				temp=a[j]
+				a.remove(a[j])
+				o=a.copy()
+				o.sort()
+				f=list(c+o)
+				#if(i==8):
+				#	print(c,a)
+				#print(num,a)
+				if(temp<b[i]):
+					#print(i,temp,j,f)
+					#print("hello")
+					#print("hello",hogya)
+					hogya=1
+					break
+				if(int(''.join(f))<=num):
+					ans.append(''.join(f))
+					count+=1
+					break
+				else:
+					a.append(temp)
+					c=c[:len(c)-1]
+					#c.remove(c[len(c)-1])
+					#print(c,a)
+					
+				t-=1
+			else:
+				j+=1
+				t-=1
+		if(mittal==len(a)):
+			#print(mittal,i)
+			#print("hello")
+			break
+	#print(count)
+	print(ans[count-1])
+elif(len(a)==1):
+	print(''.join(a))
+else:
+	print(''.join(a))
+#print(ans)
