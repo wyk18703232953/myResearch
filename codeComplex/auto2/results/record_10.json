@@ -1,17 +1,17 @@
 {
   "record_index": 9,
-  "original_code": "import decimal\ndecimal.getcontext().prec = 100\n\na, v = map(decimal.Decimal, input().split())\nl, d, w = map(decimal.Decimal, input().split())\n\ndef DecimalPow(a, b):\n    return decimal.Decimal(a) ** decimal.Decimal(b)\n\ndef getLastT(v1, dist):\n    t1 = (v - v1) / a\n    d1 = v1 * t1 + decimal.Decimal(0.5) * a * DecimalPow(t1, 2)\n    if d1 >= dist:\n        return (-v1 + (v1 ** decimal.Decimal(2) + 2 * a * dist) ** decimal.Decimal(0.5)) / a\n    t2 = (dist - d1) / v\n    return t1 + t2\n\nif w >= v:\n    t1 = v / a\n    if decimal.Decimal(0.5) * a * (t1 ** decimal.Decimal(2)) <= l:\n        t2 = (l - decimal.Decimal(0.5) * a * (t1 ** decimal.Decimal(2))) / v\n    else:\n        t1 = (decimal.Decimal(2) * l / a) ** decimal.Decimal(0.5)\n        t2 = 0\n    t = t1 + t2\n    print('{t:.5f}'.format(t = t))\n\nelif (w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:\n    t = getLastT(0, l)\n    print('{t:.5f}'.format(t = t))\n\nelif (v ** decimal.Decimal(2) - 0) / (2 * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:\n    t2 = -w / a + ((w ** decimal.Decimal(2)) / (2 * (a ** decimal.Decimal(2))) + d / a) ** decimal.Decimal(0.5)\n    t1 = w / a + t2\n    t3 = getLastT(w, l - d)\n    t = t1 + t2 + t3\n    print('{t:.5f}'.format(t = t))\n\nelse:\n    t1 = v / a\n    t3 = (v - w) / a\n    t2 = (d - ((v ** decimal.Decimal(2) - 0) / (decimal.Decimal(2) * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a))) / v\n    t4 = getLastT(w, l - d)\n    t = t1 + t2 + t3 + t4\n    print('{t:.5f}'.format(t = t))",
-  "modified_code": "import decimal\ndecimal.getcontext().prec = 100\n\nn = 1\n_input_call_count = 0\ndef generate_input(n_param):\n    global _input_call_count\n    _input_call_count += 1\n    if _input_call_count == 1:\n        if n_param <= 0:\n            return \"2 3\"\n        elif n_param == 1:\n            return \"2 3\"\n        elif n_param == 2:\n            return \"4 10\"\n        else:\n            return \"6 9\"\n    else:\n        if n_param <= 0:\n            return \"5 1 4\"\n        elif n_param == 1:\n            return \"5 1 4\"\n        elif n_param == 2:\n            return \"100 5 1\"\n        else:\n            return \"10 6 2\"\n\na, v = map(decimal.Decimal, generate_input(n).split())\nl, d, w = map(decimal.Decimal, generate_input(n).split())\n\ndef DecimalPow(a, b):\n    return decimal.Decimal(a) ** decimal.Decimal(b)\n\ndef getLastT(v1, dist):\n    t1 = (v - v1) / a\n    d1 = v1 * t1 + decimal.Decimal(0.5) * a * DecimalPow(t1, 2)\n    if d1 >= dist:\n        return (-v1 + (v1 ** decimal.Decimal(2) + 2 * a * dist) ** decimal.Decimal(0.5)) / a\n    t2 = (dist - d1) / v\n    return t1 + t2\n\nif w >= v:\n    t1 = v / a\n    if decimal.Decimal(0.5) * a * (t1 ** decimal.Decimal(2)) <= l:\n        t2 = (l - decimal.Decimal(0.5) * a * (t1 ** decimal.Decimal(2))) / v\n    else:\n        t1 = (decimal.Decimal(2) * l / a) ** decimal.Decimal(0.5)\n        t2 = 0\n    t = t1 + t2\n    print('{t:.5f}'.format(t = t))\n\nelif (w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:\n    t = getLastT(0, l)\n    print('{t:.5f}'.format(t = t))\n\nelif (v ** decimal.Decimal(2) - 0) / (2 * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:\n    t2 = -w / a + ((w ** decimal.Decimal(2)) / (2 * (a ** decimal.Decimal(2))) + d / a) ** decimal.Decimal(0.5)\n    t1 = w / a + t2\n    t3 = getLastT(w, l - d)\n    t = t1 + t2 + t3\n    print('{t:.5f}'.format(t = t))\n\nelse:\n    t1 = v / a\n    t3 = (v - w) / a\n    t2 = (d - ((v ** decimal.Decimal(2) - 0) / (decimal.Decimal(2) * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a))) / v\n    t4 = getLastT(w, l - d)\n    t = t1 + t2 + t3 + t4\n    print('{t:.5f}'.format(t = t))",
+  "original_code": "\ndef maxXORInRange(L, R): \n\n\tLXR = L ^ R \n\tmsbPos = 0\n\twhile(LXR): \n\t\n\t\tmsbPos += 1\n\t\tLXR >>= 1\n\tmaxXOR, two = 0, 1\n\t\n\twhile (msbPos): \n\t\n\t\tmaxXOR += two \n\t\ttwo <<= 1\n\t\tmsbPos -= 1\n\n\treturn maxXOR \n\nL, R = [int(i) for i in input().split()]\nprint(maxXORInRange(L, R)) \n\n",
+  "modified_code": "def maxXORInRange(L, R): \n\n\tLXR = L ^ R \n\tmsbPos = 0\n\twhile(LXR): \n\t\n\t\tmsbPos += 1\n\t\tLXR >>= 1\n\tmaxXOR, two = 0, 1\n\t\n\twhile (msbPos): \n\t\n\t\tmaxXOR += two \n\t\ttwo <<= 1\n\t\tmsbPos -= 1\n\n\treturn maxXOR \n\ndef generate_input(n):\n    if n <= 0:\n        return \"0 0\"\n    L = 0\n    R = (1 << n) - 1\n    return f\"{L} {R}\"\n\nn = 2\nL, R = [int(i) for i in generate_input(n).split()]\nprint(maxXORInRange(L, R))",
   "execution_results": {
-    "10": 0.0011488999938592316,
-    "100": 0.0007389800157397985,
-    "1000": 0.000757659983355552,
-    "10000": 0.0007880799937993288,
-    "100000": 0.0007404600037261844
+    "10": 0.00037620000075548886,
+    "100": 0.0003090000012889504,
+    "1000": 0.00026439999928697946,
+    "10000": 0.00031176002230495217,
+    "100000": 0.00029757999582216146
   },
   "complexity_analysis": {
     "best_fit": "O(log n)",
-    "best_r_squared": 0.4720660687156768,
+    "best_r_squared": 0.3613484898576793,
     "n_values": [
       10,
       100,
@@ -20,18 +20,18 @@
       100000
     ],
     "actual_times": [
-      0.0011488999938592316,
-      0.0007389800157397985,
-      0.000757659983355552,
-      0.0007880799937993288,
-      0.0007404600037261844
+      0.00037620000075548886,
+      0.0003090000012889504,
+      0.00026439999928697946,
+      0.00031176002230495217,
+      0.00029757999582216146
     ],
     "all_fits": {
       "O(1)": {
         "params": [
-          0.0008348159959166157
+          0.0003117880038917065
         ],
-        "r_squared": -27.90491625156941,
+        "r_squared": -73.59877616593596,
         "predicted_times": [
           0,
           0,
@@ -42,75 +42,75 @@
       },
       "O(log n)": {
         "params": [
-          -3.334426062964761e-05,
-          0.001065149990484052
+          -6.708980765788247e-06,
+          0.0003581320010968103
         ],
-        "r_squared": 0.4720660687156768,
+        "r_squared": 0.3613484898576793,
         "predicted_times": [
-          0.0009883719930213171,
-          0.0009115939955585823,
-          0.0008348159980958475,
-          0.0007580380006331126,
-          0.0006812600031703779
+          0.0003426840019963225,
+          0.0003272360028958347,
+          0.0003117880037953469,
+          0.0002963400046948591,
+          0.00028089200559437135
         ]
       },
       "O(n)": {
         "params": [
-          -1.3085244556946088e-09,
-          0.0008638940285515064
+          -1.9236343764067934e-10,
+          0.0003160627042015288
         ],
-        "r_squared": 0.10464701706997603,
+        "r_squared": 0.04276229456422531,
         "predicted_times": [
-          0.0008638809433069494,
-          0.0008637631761059369,
-          0.0008625855040958118,
-          0.0008508087839945602,
-          0.0007330415829820455
+          0.00031606078056715237,
+          0.0003160434678577647,
+          0.0003158703407638881,
+          0.000314139069825122,
+          0.00029682636043746084
         ]
       },
       "O(n log n)": {
         "params": [
-          -1.1115900686943866e-10,
-          0.0008626232517626677
+          -1.6342280107325485e-11,
+          0.00031587614704903135
         ],
-        "r_squared": 0.10103965104881185,
+        "r_squared": 0.04129338438229213,
         "predicted_times": [
-          0.000862620692231946,
-          0.0008625720611482338,
-          0.0008618553925461589,
-          0.0008523851288758839,
-          0.0007346467156778716
+          0.00031587577075412575,
+          0.00031586862115091924,
+          0.00031576325857734936,
+          0.00031437096742660493,
+          0.00029706140176870093
         ]
       },
       "O(n²)": {
         "params": [
-          1.1442846550270856e-13,
-          -1.295144264391441e-08,
-          0.0008914543393750125
+          1.2229990114635974e-14,
+          -1.4367459335248334e-09,
+          0.00031900832129152574
         ],
-        "r_squared": -7.568177919551813,
+        "r_squared": -1.6132544455060458,
         "predicted_times": [
-          0.00089132483639142,
-          0.0008901603393952762,
-          0.0008786173251966008,
-          0.0007733827594861393,
-          -0.00024233830412053793
+          0.0003189939550551895,
+          0.0003188647689980744,
+          0.00031758380534811553,
+          0.000305863860967741,
+          0.00019257881393987253
         ]
       },
       "O(n³)": {
         "params": [
-          -2.3733102331959144e-16,
-          2.6280936548693502e-11,
-          -2.570600378542886e-07,
-          0.0009681214384630243
+          -9.439946737814155e-17,
+          1.0420074655425939e-11,
+          -9.853202206702445e-08,
+          0.0003495029987254912
         ],
-        "r_squared": -1073.8881184546183,
+        "r_squared": -3624.114170729419,
         "predicted_times": [
-          0.0009655534659408052,
-          0.000942678006712059,
-          0.0007371050061341097,
-          0.0010257873446216361,
-          0.012320320404128612
+          0.00034851872041788705,
+          0.00033975390286587563,
+          0.00026129665184651454,
+          0.00040625890787940127,
+          0.005189432090327241
         ]
       },
       "O(2^n)": {

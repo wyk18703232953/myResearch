@@ -1,0 +1,132 @@
+{
+  "record_index": 19,
+  "original_code": "'''\n    Auther: ghoshashis545 Ashis Ghosh\n    College: Jalpaiguri Govt Enggineering College\n\n'''\nfrom os import path\nfrom io import BytesIO, IOBase\nimport sys\nfrom heapq import heappush,heappop\nfrom functools import cmp_to_key as ctk\nfrom collections import deque,Counter,defaultdict as dd \nfrom bisect import bisect,bisect_left,bisect_right,insort,insort_left,insort_right\nfrom itertools import permutations\nfrom datetime import datetime\nfrom math import ceil,sqrt,log,gcd\ndef ii():return int(input())\ndef si():return input().rstrip()\ndef mi():return map(int,input().split())\ndef li():return list(mi())\nabc='abcdefghijklmnopqrstuvwxyz'\nmod=1000000007\n#mod=998244353\ninf = float(\"inf\")\nvow=['a','e','i','o','u']\ndx,dy=[-1,1,0,0],[0,0,1,-1]\n\ndef bo(i):\n    return ord(i)-ord('0')\n\nfile = 1\ndef ceil(a,b):\n    return (a+b-1)//b\n\n\n\n\ndef solve():\n\n    \n    # for _ in range(1,ii()+1):\n      \n    l,r = mi()\n    s1 = bin(l)[2:]\n    s2 = bin(r)[2:]\n    if len(s1) != len(s2):\n      print((1<<len(s2))-1)\n      return\n    \n    x = 0\n    for i in range(62,-1,-1):\n      if ((l>>i)&1)^((r>>i)&1):\n        x +=(1<<(i+1))\n        x -=1\n        break\n    print(x)\n\n\n\n\n\n\n\n\n            \n\n\n\n\n\n    \n        \n\n\n\n\n\n\n\n\n        \nif __name__ ==\"__main__\":\n\n    if(file):\n    \n       if path.exists('input.txt'):\n           sys.stdin=open('input.txt', 'r')\n           sys.stdout=open('output.txt','w')\n       else:\n           input=sys.stdin.readline\n    solve()\n",
+  "modified_code": "'''\n    Auther: ghoshashis545 Ashis Ghosh\n    College: Jalpaiguri Govt Enggineering College\n\n'''\nfrom os import path\nfrom io import BytesIO, IOBase\nimport sys\nfrom heapq import heappush,heappop\nfrom functools import cmp_to_key as ctk\nfrom collections import deque,Counter,defaultdict as dd \nfrom bisect import bisect,bisect_left,bisect_right,insort,insort_left,insort_right\nfrom itertools import permutations\nfrom datetime import datetime\nfrom math import ceil,sqrt,log,gcd\ndef generate_input(n):\n    # Returns a line of input data (string) based on test size n\n    try:\n        nn = int(n)\n    except:\n        nn = 1\n    l = max(0, min(1000000, nn * 3))\n    r = l + 2\n    return f\"{l} {r}\"\n\n# global test size parameter\nn = 1\n\ndef ii():return int(generate_input(n))\ndef si():return generate_input(n).rstrip()\ndef mi():return map(int,generate_input(n).split())\ndef li():return list(mi())\nabc='abcdefghijklmnopqrstuvwxyz'\nmod=1000000007\n#mod=998244353\ninf = float(\"inf\")\nvow=['a','e','i','o','u']\ndx,dy=[-1,1,0,0],[0,0,1,-1]\n\ndef bo(i):\n    return ord(i)-ord('0')\n\nfile = 1\ndef ceil(a,b):\n    return (a+b-1)//b\n\n\n\n\ndef solve():\n\n    \n    # for _ in range(1,ii()+1):\n      \n    l,r = mi()\n    s1 = bin(l)[2:]\n    s2 = bin(r)[2:]\n    if len(s1) != len(s2):\n      print((1<<len(s2))-1)\n      return\n    \n    x = 0\n    for i in range(62,-1,-1):\n      if ((l>>i)&1)^((r>>i)&1):\n        x +=(1<<(i+1))\n        x -=1\n        break\n    print(x)\n\n\n\n\n\n\n\n\n            \n\n\n\n\n\n    \n        \n\n\n\n\n\n\n\n\n        \nif __name__ ==\"__main__\":\n\n    if(file):\n    \n       if path.exists('input.txt'):\n           sys.stdin=open('input.txt', 'r')\n           sys.stdout=open('output.txt','w')\n       else:\n           input=sys.stdin.readline\n    solve()",
+  "execution_results": {
+    "10": 0.0009129199897870421,
+    "100": 0.0006174199865199625,
+    "1000": 0.0003913599997758865,
+    "10000": 0.000379300001077354,
+    "100000": 0.000479279994033277
+  },
+  "complexity_analysis": {
+    "best_fit": "O(log n)",
+    "best_r_squared": 0.6254030639376632,
+    "n_values": [
+      10,
+      100,
+      1000,
+      10000,
+      100000
+    ],
+    "actual_times": [
+      0.0009129199897870421,
+      0.0006174199865199625,
+      0.0003913599997758865,
+      0.000379300001077354,
+      0.000479279994033277
+    ],
+    "all_fits": {
+      "O(1)": {
+        "params": [
+          0.0005560559942387045
+        ],
+        "r_squared": -7.9127630359887196,
+        "predicted_times": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "O(log n)": {
+        "params": [
+          -4.8006910953805635e-05,
+          0.0008876759865849326
+        ],
+        "r_squared": 0.6254030639376632,
+        "predicted_times": [
+          0.0007771359890620071,
+          0.0006665959915390817,
+          0.0005560559940161562,
+          0.0004455159964932308,
+          0.0003349759989703054
+        ]
+      },
+      "O(n)": {
+        "params": [
+          -1.2578939720561667e-09,
+          0.0005840089140857367
+        ],
+        "r_squared": 0.06180778829486666,
+        "predicted_times": [
+          0.0005839963351460161,
+          0.0005838831246885311,
+          0.0005827510201136805,
+          0.0005714299743651751,
+          0.00045821951688012003
+        ]
+      },
+      "O(n log n)": {
+        "params": [
+          -1.0358579054717358e-10,
+          0.0005819687536269602
+        ],
+        "r_squared": 0.05607828900926237,
+        "predicted_times": [
+          0.0005819663684759886,
+          0.0005819210506075282,
+          0.0005812532083354804,
+          0.0005724281497405632,
+          0.0004627112050469975
+        ]
+      },
+      "O(n²)": {
+        "params": [
+          3.2267193456569536e-13,
+          -3.408926106177147e-08,
+          0.0006617250595463781
+        ],
+        "r_squared": -38.93653762722278,
+        "predicted_times": [
+          0.0006613841992029538,
+          0.0006583193601595466,
+          0.0006279584704191723,
+          0.00035309964238523295,
+          -0.0022922125135672426
+        ]
+      },
+      "O(n³)": {
+        "params": [
+          -4.194293530373404e-16,
+          4.656610609429529e-11,
+          -4.6549644988118104e-07,
+          0.0007972169561845827
+        ],
+        "r_squared": -1932.371592098718,
+        "predicted_times": [
+          0.000792566647876951,
+          0.0007511325528280546,
+          0.00037786718304465955,
+          0.0007991681513116916,
+          0.01990946929140786
+        ]
+      },
+      "O(2^n)": {
+        "params": [
+          1.0,
+          1.0
+        ],
+        "r_squared": -Infinity,
+        "predicted_times": [
+          22026.465794806718,
+          2.6881171418161356e+43,
+          Infinity,
+          Infinity,
+          Infinity
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "record_index": 10,
+  "original_code": "#!/bin/python3\n\nimport os\nimport sys\nfrom io import BytesIO, IOBase\nimport math\n\n\ndef main():\n    l, r = map(int, input().split())\n    for i in range(62, -1, -1):\n        if ((1 << i) & l) ^ ((1 << i) & r):  # if xor of max bit is 1\n            print((1 << (i+1)) - 1)\n            break\n    else:\n        print(0)\n\n\n# region fastio\nBUFSIZE = 8192\n\n\nclass FastIO(IOBase):\n    newlines = 0\n\n    def __init__(self, file):\n        self._fd = file.fileno()\n        self.buffer = BytesIO()\n        self.writable = \"x\" in file.mode or \"r\" not in file.mode\n        self.write = self.buffer.write if self.writable else None\n\n    def read(self):\n        while True:\n            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))\n            if not b:\n                break\n            ptr = self.buffer.tell()\n            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)\n        self.newlines = 0\n        return self.buffer.read()\n\n    def readline(self):\n        while self.newlines == 0:\n            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))\n            self.newlines = b.count(b\"\\n\") + (not b)\n            ptr = self.buffer.tell()\n            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)\n        self.newlines -= 1\n        return self.buffer.readline()\n\n    def flush(self):\n        if self.writable:\n            os.write(self._fd, self.buffer.getvalue())\n            self.buffer.truncate(0), self.buffer.seek(0)\n\n\nclass IOWrapper(IOBase):\n    def __init__(self, file):\n        self.buffer = FastIO(file)\n        self.flush = self.buffer.flush\n        self.writable = self.buffer.writable\n        self.write = lambda s: self.buffer.write(s.encode(\"ascii\"))\n        self.read = lambda: self.buffer.read().decode(\"ascii\")\n        self.readline = lambda: self.buffer.readline().decode(\"ascii\")\n\n\nsys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)\ndef input(): return sys.stdin.readline().rstrip(\"\\r\\n\")\n\n# endregion\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "modified_code": "#!/bin/python3\n\nimport os\nimport sys\nfrom io import BytesIO, IOBase\nimport math\n\n\ndef generate_input(n):\n    if n <= 0:\n        l = 0\n        r = 0\n    else:\n        l = 0\n        max_bits = min(n, 60)\n        r = (1 << max_bits) - 1\n    return f\"{l} {r}\"\n\n\ndef main():\n    n = 1\n    l, r = map(int, generate_input(n).split())\n    for i in range(62, -1, -1):\n        if ((1 << i) & l) ^ ((1 << i) & r):  # if xor of max bit is 1\n            print((1 << (i+1)) - 1)\n            break\n    else:\n        print(0)\n\n\n# region fastio\nBUFSIZE = 8192\n\n\nclass FastIO(IOBase):\n    newlines = 0\n\n    def __init__(self, file):\n        self._fd = file.fileno()\n        self.buffer = BytesIO()\n        self.writable = \"x\" in file.mode or \"r\" not in file.mode\n        self.write = self.buffer.write if self.writable else None\n\n    def read(self):\n        while True:\n            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))\n            if not b:\n                break\n            ptr = self.buffer.tell()\n            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)\n        self.newlines = 0\n        return self.buffer.read()\n\n    def readline(self):\n        while self.newlines == 0:\n            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))\n            self.newlines = b.count(b\"\\n\") + (not b)\n            ptr = self.buffer.tell()\n            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)\n        self.newlines -= 1\n        return self.buffer.readline()\n\n    def flush(self):\n        if self.writable:\n            os.write(self._fd, self.buffer.getvalue())\n            self.buffer.truncate(0), self.buffer.seek(0)\n\n\nclass IOWrapper(IOBase):\n    def __init__(self, file):\n        self.buffer = FastIO(file)\n        self.flush = self.buffer.flush\n        self.writable = self.buffer.writable\n        self.write = lambda s: self.buffer.write(s.encode(\"ascii\"))\n        self.read = lambda: self.buffer.read().decode(\"ascii\")\n        self.readline = lambda: self.buffer.readline().decode(\"ascii\")\n\n\nsys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)\ndef input(): return sys.stdin.readline().rstrip(\"\\r\\n\")\n\n# endregion\n\n\nif __name__ == \"__main__\":\n    main()",
+  "execution_results": {
+    "10": 0.00024186000227928163
+  },
+  "complexity_analysis": {
+    "best_fit": null,
+    "best_r_squared": -Infinity,
+    "n_values": [
+      10
+    ],
+    "actual_times": [
+      0.00024186000227928163
+    ],
+    "all_fits": {
+      "O(1)": {
+        "params": [
+          0.00024186000227928163
+        ],
+        "r_squared": -Infinity,
+        "predicted_times": [
+          0
+        ]
+      },
+      "O(log n)": {
+        "error": "Improper input: func input vector length N=2 must not exceed func output vector length M=1",
+        "r_squared": -Infinity
+      },
+      "O(n)": {
+        "error": "Improper input: func input vector length N=2 must not exceed func output vector length M=1",
+        "r_squared": -Infinity
+      },
+      "O(n log n)": {
+        "error": "Improper input: func input vector length N=2 must not exceed func output vector length M=1",
+        "r_squared": -Infinity
+      },
+      "O(n²)": {
+        "error": "Improper input: func input vector length N=3 must not exceed func output vector length M=1",
+        "r_squared": -Infinity
+      },
+      "O(n³)": {
+        "error": "Improper input: func input vector length N=4 must not exceed func output vector length M=1",
+        "r_squared": -Infinity
+      },
+      "O(2^n)": {
+        "error": "Improper input: func input vector length N=2 must not exceed func output vector length M=1",
+        "r_squared": -Infinity
+      }
+    }
+  }
+}

@@ -1,17 +1,17 @@
 {
   "record_index": 0,
-  "original_code": "from math import sqrt\n\na, v = map(int, input().split())\nl, d, w = map(int, input().split())\n\ndef findt(u, v, a, dist):\n\tfront = (v*v-u*u)/(2*a)\n\tif front > dist:\n\t\treturn (sqrt(u*u+2*a*dist)-u)/a\n\treturn (v-u)/a + (dist-front)/v\n\ndef solve(a, v, l, d, w):\n\tif v <= w or 2*a*d <= w*w:\n\t\treturn findt(0, v, a, l)\n\tafter = findt(w, v, a, l-d)\n\tpeak = sqrt(a*d + w*w/2)\n\tif peak > v:\n\t\ttravel = (v*v-w*w/2)/a\n\t\tbefore = (2*v-w)/a + (d-travel)/v\n\telse:\n\t\tbefore = (2*peak-w)/a\n\treturn before + after\n\nprint(f'{solve(a, v, l, d, w):.8f}')",
-  "modified_code": "from math import sqrt\n\nn = 42\n_input_call_count = 0\n\ndef generate_input(n):\n    global _input_call_count\n    _input_call_count += 1\n    if _input_call_count % 2 == 1:\n        a = 1 + (n % 3)\n        v = 5 + (n % 5)\n        return f\"{a} {v}\\n\"\n    else:\n        l = 10 * n + 7\n        d = max(1, (n % 7))\n        w = 0\n        return f\"{l} {d} {w}\\n\"\n\na, v = map(int, generate_input(n).split())\nl, d, w = map(int, generate_input(n).split())\n\ndef findt(u, v, a, dist):\n\tfront = (v*v-u*u)/(2*a)\n\tif front > dist:\n\t\treturn (sqrt(u*u+2*a*dist)-u)/a\n\treturn (v-u)/a + (dist-front)/v\n\ndef solve(a, v, l, d, w):\n\tif v <= w or 2*a*d <= w*w:\n\t\treturn findt(0, v, a, l)\n\tafter = findt(w, v, a, l-d)\n\tpeak = sqrt(a*d + w*w/2)\n\tif peak > v:\n\t\ttravel = (v*v-w*w/2)/a\n\t\tbefore = (2*v-w)/a + (d-travel)/v\n\telse:\n\t\tbefore = (2*peak-w)/a\n\treturn before + after\n\nprint(f'{solve(a, v, l, d, w):.8f}')",
+  "original_code": "import math\n\n\ndef field(n, x, y, t):\n    t = t + 1\n    upper_dist = x - 1\n    left_dist = y - 1\n    down_dist = n - x\n    right_dist = n - y\n    out_up = max(0, t - upper_dist - 1)\n    out_down = max(0, t - down_dist - 1)\n    out_left = max(0, t - left_dist - 1)\n    out_right = max(0, t - right_dist - 1)\n    #print(out_up, out_right, out_down, out_left)\n    #print(base_field(t), right_field(out_right), right_field(out_left), up_field(out_up, n, y), up_field(out_down, n, y))\n    field = base_field(t) - right_field(out_right) - right_field(out_left) - up_field(out_up, n, y) - up_field(out_down, n, y)\n    return field\n\n\ndef right_field(out_r):\n    return out_r ** 2\n\n\ndef up_field(out_up, n, y):\n    rect = max(0, out_up - n + 1)\n    h = out_up - rect\n    wyst = max(y - 1 + h - n, 0, h - y)\n    result = n * rect + h ** 2 - int((1 + wyst) / 2 * wyst)\n    if result < 0:\n        result = 0\n    return result\n\n\ndef base_field(t):\n    return 2 * (t ** 2) - 2 * t + 1\n\n\nclass CodeforcesTask256BSolution:\n    def __init__(self):\n        self.result = ''\n        self.n_x_y_c = []\n\n    def read_input(self):\n        self.n_x_y_c = [int(x) for x in input().split(\" \")]\n\n    def process_task(self):\n        search = 0\n        mid = 1\n        found = False\n        last_sm = 0\n        while not found:\n            #print(last_sm ,search)\n            ff = field(self.n_x_y_c[0], self.n_x_y_c[1], self.n_x_y_c[2], search)\n            if ff == self.n_x_y_c[3]:\n                found = True\n            elif ff > self.n_x_y_c[3]:\n                if search - last_sm == 1:\n                    found = True\n                else:\n                    search = last_sm + (search - last_sm) // 2\n            else:\n                last_sm = search\n                search += mid\n                mid = search - last_sm\n        self.result = str(search)\n\n    def get_result(self):\n        return self.result\n\n\nif __name__ == \"__main__\":\n    Solution = CodeforcesTask256BSolution()\n    Solution.read_input()\n    Solution.process_task()\n    print(Solution.get_result())\n",
+  "modified_code": "import math\n\ndef generate_input(n):\n    if n < 1:\n        n = 1\n    n_val = n\n    x = max(1, min(n_val, (n_val // 2)))\n    y = max(1, min(n_val, (n_val // 3)))\n    c = n_val // 2\n    return f\"{n_val} {x} {y} {c}\"\n\ndef field(n, x, y, t):\n    t = t + 1\n    upper_dist = x - 1\n    left_dist = y - 1\n    down_dist = n - x\n    right_dist = n - y\n    out_up = max(0, t - upper_dist - 1)\n    out_down = max(0, t - down_dist - 1)\n    out_left = max(0, t - left_dist - 1)\n    out_right = max(0, t - right_dist - 1)\n    #print(out_up, out_right, out_down, out_left)\n    #print(base_field(t), right_field(out_right), right_field(out_left), up_field(out_up, n, y), up_field(out_down, n, y))\n    field = base_field(t) - right_field(out_right) - right_field(out_left) - up_field(out_up, n, y) - up_field(out_down, n, y)\n    return field\n\n\ndef right_field(out_r):\n    return out_r ** 2\n\n\ndef up_field(out_up, n, y):\n    rect = max(0, out_up - n + 1)\n    h = out_up - rect\n    wyst = max(y - 1 + h - n, 0, h - y)\n    result = n * rect + h ** 2 - int((1 + wyst) / 2 * wyst)\n    if result < 0:\n        result = 0\n    return result\n\n\ndef base_field(t):\n    return 2 * (t ** 2) - 2 * t + 1\n\n\nclass CodeforcesTask256BSolution:\n    def __init__(self):\n        self.result = ''\n        self.n_x_y_c = []\n\n    def read_input(self):\n        self.n_x_y_c = [int(x) for x in generate_input(1).split(\" \")]\n\n    def process_task(self):\n        search = 0\n        mid = 1\n        found = False\n        last_sm = 0\n        while not found:\n            #print(last_sm ,search)\n            ff = field(self.n_x_y_c[0], self.n_x_y_c[1], self.n_x_y_c[2], search)\n            if ff == self.n_x_y_c[3]:\n                found = True\n            elif ff > self.n_x_y_c[3]:\n                if search - last_sm == 1:\n                    found = True\n                else:\n                    search = last_sm + (search - last_sm) // 2\n            else:\n                last_sm = search\n                search += mid\n                mid = search - last_sm\n        self.result = str(search)\n\n    def get_result(self):\n        return self.result\n\n\nif __name__ == \"__main__\":\n    Solution = CodeforcesTask256BSolution()\n    Solution.read_input()\n    Solution.process_task()\n    print(Solution.get_result())",
   "execution_results": {
-    "10": 0.0005700399866327644,
-    "100": 0.0004871799843385816,
-    "1000": 0.000490120006725192,
-    "10000": 0.0005399800022132695,
-    "100000": 0.0005169600248336792
+    "10": 0.0005521399900317193,
+    "100": 0.0005610000109300018,
+    "1000": 0.0004778399830684066,
+    "10000": 0.00048791998997330663,
+    "100000": 0.00044919999781996013
   },
   "complexity_analysis": {
     "best_fit": "O(log n)",
-    "best_r_squared": 0.05836088976962195,
+    "best_r_squared": 0.8192051503800964,
     "n_values": [
       10,
       100,
@@ -20,18 +20,18 @@
       100000
     ],
     "actual_times": [
-      0.0005700399866327644,
-      0.0004871799843385816,
-      0.000490120006725192,
-      0.0005399800022132695,
-      0.0005169600248336792
+      0.0005521399900317193,
+      0.0005610000109300018,
+      0.0004778399830684066,
+      0.00048791998997330663,
+      0.00044919999781996013
     ],
     "all_fits": {
       "O(1)": {
         "params": [
-          0.0005208560009486974
+          0.0005056199943646788
         ],
-        "r_squared": -278.03351229071757,
+        "r_squared": -134.56349914342184,
         "predicted_times": [
           0,
           0,
@@ -42,75 +42,75 @@
       },
       "O(log n)": {
         "params": [
-          -2.317389367659561e-06,
-          0.000536863959564739
+          -1.2115079408617362e-05,
+          0.0005893079981047728
         ],
-        "r_squared": 0.05836088976962195,
+        "r_squared": 0.8192051503800964,
         "predicted_times": [
-          0.0005315279733521032,
-          0.0005261919871394675,
-          0.0005208560009268316,
-          0.0005155200147141958,
-          0.0005101840285015601
+          0.0005614119968580513,
+          0.00053351599561133,
+          0.0005056199943646085,
+          0.000477723993117887,
+          0.0004498279918711656
         ]
       },
       "O(n)": {
         "params": [
-          -3.0394517997913187e-11,
-          0.000521531427972199
+          -7.653085662977699e-10,
+          0.000522626681326271
         ],
-        "r_squared": 0.001445170234412707,
+        "r_squared": 0.47056101854712806,
         "predicted_times": [
-          0.000521531124027019,
-          0.0005215283885203992,
-          0.0005215010334542011,
-          0.0005212274827922199,
-          0.0005184919761724077
+          0.000522619028240608,
+          0.0005225501504696412,
+          0.0005218613727599733,
+          0.0005149735956632933,
+          0.000446095824696494
         ]
       },
       "O(n log n)": {
         "params": [
-          -2.8897048340780706e-12,
-          0.0005215788820533359
+          -6.537136759064844e-11,
+          0.000521973129742275
         ],
-        "r_squared": 0.0017477251237442148,
+        "r_squared": 0.4593643108518173,
         "predicted_times": [
-          0.0005215788155154232,
-          0.0005215775512950812,
-          0.0005215589206795136,
-          0.000521312730402372,
-          0.0005182519864162854
+          0.0005219716245109098,
+          0.0005219430251149704,
+          0.0005215215603327064,
+          0.0005159522042813606,
+          0.0004467115614808444
         ]
       },
       "O(n²)": {
         "params": [
-          -2.274204909864338e-14,
-          2.2835734746636457e-09,
-          0.0005160539647228272
+          4.7747037492644054e-14,
+          -5.623495301486178e-09,
+          0.0005341266453625358
         ],
-        "r_squared": -7.76043584985476,
+        "r_squared": -17.09161110657831,
         "predicted_times": [
-          0.0005160767981833689,
-          0.0005162820946498025,
-          0.0005183147961483922,
-          0.0005366154945595993,
-          0.0007123435354481571
+          0.0005340704151842247,
+          0.000533564773302762,
+          0.0005285508970985422,
+          0.0004826663960969384,
+          3.910356111677443e-05
         ]
       },
       "O(n³)": {
         "params": [
-          -5.4242033203469016e-17,
-          5.95761643681947e-12,
-          -5.350747414935698e-08,
-          0.0005335762380482157
+          -8.35327476991931e-17,
+          9.257500934198064e-12,
+          -9.154172589303592e-08,
+          0.0005611109523921574
         ],
-        "r_squared": -1927.7627905457155,
+        "r_squared": -1693.8264035924194,
         "predicted_times": [
-          0.0005330417590141237,
-          0.000528285012555615,
-          0.0004859721383024747,
-          0.0005943025948049687,
-          0.0035835406919631756
+          0.0005601964607997878,
+          0.0005520492712794481,
+          0.00047874319468562033,
+          0.000571504546928953,
+          0.004460748041379623
         ]
       },
       "O(2^n)": {

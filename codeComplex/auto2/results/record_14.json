@@ -1,0 +1,132 @@
+{
+  "record_index": 13,
+  "original_code": "# L = 8    R = 20\n# L ^ R = (01000) ^ (10100) = (11100)\n# Now as L ^ R is of form (1xxxx) we\n# can get maximum XOR as (11111) by \n# choosing A and B as 15 and 16 (01111 \n# and 10000)\n\n# Examples 2:\n# L = 16     R = 20\n# L ^ R = (10000) ^ (10100) = (00100)\n# Now as L ^ R is of form (1xx) we can \n# get maximum xor as (111) by choosing  \n# A and B as 19 and 20 (10011 and 10100)\n\ndef maxXORInRange(L, R):\n  \n    # get xor of limits\n    LXR = L ^ R\n  \n    # loop to get msb position of L^R\n    msbPos = 0\n    while(LXR):\n      \n        msbPos += 1\n        LXR >>= 1\n      \n  \n    # construct result by adding 1,\n    # msbPos times\n    maxXOR, two = 0, 1\n      \n    while (msbPos):\n      \n        maxXOR += two\n        two <<= 1\n        msbPos -= 1\n  \n    return maxXOR\n  \nL,R = map(int, input().split())\nprint(maxXORInRange(L, R))",
+  "modified_code": "# L = 8    R = 20\n# L ^ R = (01000) ^ (10100) = (11100)\n# Now as L ^ R is of form (1xxxx) we\n# can get maximum XOR as (11111) by \n# choosing A and B as 15 and 16 (01111 \n# and 10000)\n\n# Examples 2:\n# L = 16     R = 20\n# L ^ R = (10000) ^ (10100) = (00100)\n# Now as L ^ R is of form (1xx) we can \n# get maximum xor as (111) by choosing  \n# A and B as 19 and 20 (10011 and 10100)\n\ndef generate_input(n):\n    if not isinstance(n, int):\n        try:\n            n = int(n)\n        except:\n            n = 1\n    L = abs(n)\n    R = L + 5\n    return f\"{L} {R}\"\n\ndef maxXORInRange(L, R):\n  \n    # get xor of limits\n    LXR = L ^ R\n  \n    # loop to get msb position of L^R\n    msbPos = 0\n    while(LXR):\n      \n        msbPos += 1\n        LXR >>= 1\n      \n  \n    # construct result by adding 1,\n    # msbPos times\n    maxXOR, two = 0, 1\n      \n    while (msbPos):\n      \n        maxXOR += two\n        two <<= 1\n        msbPos -= 1\n  \n    return maxXOR\n  \nL,R = map(int, generate_input(n).split())\nprint(maxXORInRange(L, R))",
+  "execution_results": {
+    "10": 0.0001605600002221763,
+    "100": 0.0001585200079716742,
+    "1000": 0.00013044001534581184,
+    "10000": 0.000135280005633831,
+    "100000": 0.00018125999486073852
+  },
+  "complexity_analysis": {
+    "best_fit": "O(n log n)",
+    "best_r_squared": 0.5325582286080612,
+    "n_values": [
+      10,
+      100,
+      1000,
+      10000,
+      100000
+    ],
+    "actual_times": [
+      0.0001605600002221763,
+      0.0001585200079716742,
+      0.00013044001534581184,
+      0.000135280005633831,
+      0.00018125999486073852
+    ],
+    "all_fits": {
+      "O(1)": {
+        "params": [
+          0.0001532120048068464
+        ],
+        "r_squared": -68.6782435393157,
+        "predicted_times": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "O(log n)": {
+        "params": [
+          7.88678021560801e-07,
+          0.00014776401002113623
+        ],
+        "r_squared": 0.019297215549369917,
+        "predicted_times": [
+          0.00014958000827675416,
+          0.0001513960065323721,
+          0.00015321200478799003,
+          0.000155028003043608,
+          0.00015684400129922592
+        ]
+      },
+      "O(n)": {
+        "params": [
+          3.4110814354201133e-10,
+          0.0001456318996410558
+        ],
+        "r_squared": 0.5196151129438316,
+        "predicted_times": [
+          0.00014563531072249125,
+          0.00014566601045541003,
+          0.00014597300778459782,
+          0.00014904298107647592,
+          0.00017974271399525695
+        ]
+      },
+      "O(n log n)": {
+        "params": [
+          2.9854866025293694e-11,
+          0.00014574358766162806
+        ],
+        "r_squared": 0.5325582286080612,
+        "predicted_times": [
+          0.0001457442750953227,
+          0.0001457573363355207,
+          0.0001459498177700176,
+          0.0001484933224401551,
+          0.0001801152723932159
+        ]
+      },
+      "O(n²)": {
+        "params": [
+          2.3257109248697917e-14,
+          -2.025266521980208e-09,
+          0.0001512334183747104
+        ],
+        "r_squared": -22.64231405789092,
+        "predicted_times": [
+          0.00015121316803520153,
+          0.00015103112429360488,
+          0.00014923140896197891,
+          0.0001333064640797781,
+          -1.8499188581644604e-05
+        ]
+      },
+      "O(n³)": {
+        "params": [
+          -3.142458097863051e-17,
+          3.487918157581886e-12,
+          -3.434725375093733e-08,
+          0.00016138477324779615
+        ],
+        "r_squared": -1253.1018398432004,
+        "predicted_times": [
+          0.00016104164947067795,
+          0.00015798489562969726,
+          0.0001304940130734621,
+          0.00016672690910731806,
+          0.001644900233258684
+        ]
+      },
+      "O(2^n)": {
+        "params": [
+          1.0,
+          1.0
+        ],
+        "r_squared": -Infinity,
+        "predicted_times": [
+          22026.465794806718,
+          2.6881171418161356e+43,
+          Infinity,
+          Infinity,
+          Infinity
+        ]
+      }
+    }
+  }
+}

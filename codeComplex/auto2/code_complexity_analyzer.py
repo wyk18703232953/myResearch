@@ -16,8 +16,10 @@ class CodeComplexityAnalyzer:
     def _setup_llm_client(self):
         """Set up the LLM client using existing API configuration"""
         return OpenAI(
-            api_key="sk-glL4mhF8GCov9dZiCJLIQ64OvlUpPa2qjLCpnV6zKz4byxXE",
+            api_key="sk-covG0sPc9mOwXbzYcVPJgI6yysm8Q89dF5paIvM538ueaGUO",
+            # base_url="https://yunwu.ai/v1/chat/completions"
             base_url="https://yunwu.ai/v1"
+            # base_url="https://yunwu.ai"
         )
     
     def read_jsonl(self, file_path, limit=5):
@@ -50,7 +52,13 @@ class CodeComplexityAnalyzer:
         """
         
         response = self.llm_client.chat.completions.create(
+            #0.12输出
             model="gpt-5-nano-2025-08-07",
+            #0.6输出不能用？》！
+            # model="gpt-5.1-codex-mini-2025-11-13",
+            #3.0输出
+            # model="gpt-5.1-codex",
+            # model="gpt-5-codex",
             temperature=0.0,
             messages=[
                 {
@@ -270,10 +278,10 @@ class CodeComplexityAnalyzer:
 
 if __name__ == "__main__":
     analyzer = CodeComplexityAnalyzer()
-    jsonl_file = "D:\MyResearch\codeComplex\data\python_data.jsonl"
+    jsonl_file = "D:\MyResearch\codeComplex\data\python_data_filtered.jsonl"
     
     # Define n values to test (test data sizes)
     n_values = [10, 100, 1000, 10000, 100000]
     
     # Run the analysis
-    analyzer.run_analysis(jsonl_file, n_values=n_values, limit=10)
+    analyzer.run_analysis(jsonl_file, n_values=n_values, limit=1000)
