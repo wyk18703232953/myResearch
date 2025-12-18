@@ -1,7 +1,7 @@
 import json
 import os
 
-def split_jsonl_by_complexity(input_file, output_dir):
+def split_jsonl_by_complexity(input_file, output_dir, only_src=False):
     # 确保输出目录存在
     os.makedirs(output_dir, exist_ok=True)
     
@@ -34,6 +34,13 @@ def split_jsonl_by_complexity(input_file, output_dir):
             # 获取complexity字段
             complexity = data.get('complexity', 'unknown')
             
+            # 如果只需要保存src字段
+            if only_src:
+                if 'src' in data:
+                    data = data['src']
+                else:
+                    continue
+            
             # 将数据添加到对应的分组
             if complexity not in complexity_groups:
                 complexity_groups[complexity] = []
@@ -41,21 +48,29 @@ def split_jsonl_by_complexity(input_file, output_dir):
     
     # 将每个分组写入对应的文件
     for complexity, items in complexity_groups.items():
-        output_file = os.path.join(output_dir, f'{language_prefix}_complexity_{complexity}.jsonl')
+        output_file = os.path.join(output_dir, f'{language_prefix}_complexity_{complexity}.json')
         with open(output_file, 'w', encoding='utf-8') as f:
-            for item in items:
-                f.write(json.dumps(item, ensure_ascii=False) + '\n')
+            json.dump(items, f, ensure_ascii=False, indent=2)
         print(f"已保存 {len(items)} 条记录到 {output_file}")
 
 if __name__ == "__main__":
     output_dir = 'd:/MyResearch/codeComplex/data/'
+    only_code_dir = 'd:/MyResearch/codeComplex/data/onlyCode/'
     
-    # 处理Python文件
-    print("开始处理Python文件...")
+    # 处理Python文件（完整数据）
+    print("开始处理Python文件（完整数据）...")
     python_file = 'd:/MyResearch/codeComplex/data/python_data.jsonl'
-    split_jsonl_by_complexity(python_file, output_dir)
+    # split_jsonl_by_complexity(python_file, output_dir)
     
-    # 处理Java文件
-    print("\n开始处理Java文件...")
+    # 处理Java文件（完整数据）
+    print("\n开始处理Java文件（完整数据）...")
     java_file = 'd:/MyResearch/codeComplex/data/java_data.jsonl'
-    split_jsonl_by_complexity(java_file, output_dir)
+    # split_jsonl_by_complexity(java_file, output_dir)
+    
+    # 处理Python文件（只保存src）
+    print("\n开始处理Python文件（只保存src）...")
+    split_jsonl_by_complexity(python_file, only_code_dir, only_src=True)
+    
+    # 处理Java文件（只保存src）
+    print("\n开始处理Java文件（只保存src）...")
+    split_jsonl_by_complexity(java_file, only_code_dir, only_src=True)
