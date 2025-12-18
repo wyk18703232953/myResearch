@@ -20,7 +20,6 @@ def calc(l, r, eq, eq_i):
                 t += calc(l + 1, r - 1, eq and x == y, eq_i and x != y)
     f[key] = t
     return t
-# 1000 10000
 
 s = ['?'] * n
 for i in range(n):
