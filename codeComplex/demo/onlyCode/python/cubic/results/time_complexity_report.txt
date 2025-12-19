@@ -1,48 +1,49 @@
 Time Complexity Analysis Report
 ==================================================
+分析的代码文件: python_cubic_0001.py
 Number of data points: 100
 n range: 1.0 to 100.0
-Step size: 1
+Step size: 100
 
 Fit Results:
 ------------------------------
-Constant:
-  Parameters: [0.00575791]
-  R²: 0.000000
-
-Linear:
-  Parameters: [ 0.00015748 -0.00219464]
-  R²: 0.913707
-
-Quadratic:
-  Parameters: [1.32950035e-06 2.31968415e-05 8.81086491e-05]
-  R²: 0.957107
-
 Cubic:
-  Parameters: [-6.58344777e-09  2.32689268e-06 -1.72986028e-05  4.37395394e-04]
+  Parameters: ['-6.583448e-09', '2.326893e-06', '-1.729860e-05', '4.373954e-04']
   R²: 0.957791
 
-Logarithmic:
-  Parameters: [ 0.00398957 -0.00875371]
-  R²: 0.600113
+Power:
+  Parameters: ['4.935115e-06', '1.748866e+00']
+  R²: 0.957169
+
+Quadratic:
+  Parameters: ['1.329500e-06', '2.319684e-05', '8.810865e-05']
+  R²: 0.957107
 
 n_log_n:
-  Parameters: [ 3.32340446e-05 -1.14039129e-03]
+  Parameters: ['3.323404e-05', '-1.140391e-03']
   R²: 0.936706
 
-Exponential:
-  Parameters: [0.00112195 0.02717103]
+Sqrt_Exponential:
+  Parameters: ['1.121952e-03', '5.434202e-02']
   R²: 0.934526
 
-Sqrt_Exponential:
-  Parameters: [0.00112195 0.02717103]
-  R²: -0.154296
+Exponential:
+  Parameters: ['1.121950e-03', '2.717103e-02']
+  R²: 0.934526
 
-Power:
-  Parameters: [0.00112195 0.02717103]
-  R²: -0.892995
+Linear:
+  Parameters: ['1.574764e-04', '-2.194643e-03']
+  R²: 0.913707
+
+Logarithmic:
+  Parameters: ['3.989566e-03', '-8.753708e-03']
+  R²: 0.600113
+
+Constant:
+  Parameters: ['5.757914e-03']
+  R²: 0.000000
 
 Best Fit Model:
 ------------------------------
 Cubic with R² = 0.957791
-Parameters: [-6.58344777e-09  2.32689268e-06 -1.72986028e-05  4.37395394e-04]
+Parameters: ['-6.583448e-09', '2.326893e-06', '-1.729860e-05', '4.373954e-04']

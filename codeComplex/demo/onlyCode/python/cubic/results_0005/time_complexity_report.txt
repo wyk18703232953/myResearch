@@ -1,0 +1,49 @@
+Time Complexity Analysis Report
+==================================================
+分析的代码文件: python_cubic_0005.py
+Number of data points: 100
+String length range: 1.0 to 100.0
+Step size: 1
+
+Fit Results:
+------------------------------
+Cubic:
+  Parameters: ['3.175543e-09', '-2.632501e-07', '1.454703e-05', '1.262971e-04']
+  R²: 0.494981
+
+Exponential:
+  Parameters: ['1.740852e-04', '2.474625e-02']
+  R²: 0.493840
+
+Sqrt_Exponential:
+  Parameters: ['1.740881e-04', '4.949210e-02']
+  R²: 0.493840
+
+Quadratic:
+  Parameters: ['2.178446e-07', '-4.986056e-06', '2.947764e-04']
+  R²: 0.488418
+
+Power:
+  Parameters: ['1.483281e-06', '1.549400e+00']
+  R²: 0.465339
+
+n_log_n:
+  Parameters: ['3.609796e-06', '3.078188e-05']
+  R²: 0.456113
+
+Linear:
+  Parameters: ['1.701625e-05', '-7.926276e-05']
+  R²: 0.440326
+
+Logarithmic:
+  Parameters: ['4.267372e-04', '-7.721532e-04']
+  R²: 0.283382
+
+Constant:
+  Parameters: ['7.800579e-04']
+  R²: 0.000000
+
+Best Fit Model:
+------------------------------
+Cubic with R² = 0.494981
+Parameters: ['3.175543e-09', '-2.632501e-07', '1.454703e-05', '1.262971e-04']
