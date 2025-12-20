@@ -146,7 +146,8 @@ def process_code_file(code_path):
     # 提取文件名作为结果目录名
     file_name = os.path.basename(code_path)
     base_name = os.path.splitext(file_name)[0]
-    result_dir = f"d:/MyResearch/codeComplex/demo/onlyCode/results/cubic/results_{base_name}"  # 修复目录名拼写错误
+    #todo 更改结果目录
+    result_dir = f"d:/MyResearch/codeComplex/demo/onlyCode/results/logn/results_{base_name}"  # 修复目录名拼写错误
     os.makedirs(result_dir, exist_ok=True)
     
     # 保存生成的程序
@@ -157,6 +158,7 @@ def process_code_file(code_path):
     
     # 创建测试结果文件
     test_results = []
+    #todo 更改测试规模的最大值
     max_n = 100  # 测试规模的最大值
     step = 1  # 间隔为1
     
@@ -168,7 +170,8 @@ def process_code_file(code_path):
         start_n = int(test_results[-1][0]) + step if test_results else 1
         print(f"继续从n={start_n}开始分析")
     else:
-        start_n = 1
+        #todo 更改初始测试规模
+        start_n = 10
     
     try:
         # 对于每个测试规模n（从start_n到max_n，间隔step）
@@ -183,7 +186,9 @@ main({n})
             
             # 记录开始时间
             start_time = time.time()
-            
+            print(f"当前测试规模n={n}")
+            print(f"当前测试代码：")
+            print(test_code)
             # 创建一个临时环境并执行代码
             exec_globals = {}
             exec(test_code, exec_globals)
@@ -389,7 +394,8 @@ main({n})
 # 主函数：执行完整的时间复杂度分析流程
 def main():
     # 定义要处理的文件夹路径
-    folder_path = "d:/MyResearch/codeComplex/data/onlyCode/python/cubic/"
+    #todo 更改文件夹路径
+    folder_path = "d:/MyResearch/codeComplex/data/onlyCode/python/logn"
     
     # 获取文件夹中所有的Python文件
     python_files = []
@@ -404,12 +410,13 @@ def main():
     
     # 遍历所有Python文件，逐个处理
     for i, code_path in enumerate(python_files, 1):
-           
         print(f"\n{'='*60}")
         print(f"处理文件 {i}/{len(python_files)}")
         print(f"{'='*60}")
-        process_code_file(code_path)
-        break
+        if(i==443):
+            process_code_file(code_path)
+            break;
+        
     
     print(f"\n{'='*60}")
     print("所有文件处理完成！")
