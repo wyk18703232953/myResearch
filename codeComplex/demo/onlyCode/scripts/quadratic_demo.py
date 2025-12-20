@@ -150,7 +150,7 @@ def process_code_file(code_path):
     file_name = os.path.basename(code_path)
     base_name = os.path.splitext(file_name)[0]
     # 使用配置文件中的结果目录
-    result_dir = f"{config.results_base_dir}/results_{base_name}"  # 修复目录名拼写错误
+    result_dir = f"{config.quadratic_results_base_dir}/results_{base_name}"  # 修复目录名拼写错误
     os.makedirs(result_dir, exist_ok=True)
     
     # 保存生成的程序
@@ -397,7 +397,7 @@ main({n})
 # 主函数：执行完整的时间复杂度分析流程
 def main():
     # 使用配置文件中的文件夹路径
-    folder_path = config.folder_path
+    folder_path = config.quadratic_folder_path
     
     # 获取文件夹中所有的Python文件
     python_files = []
