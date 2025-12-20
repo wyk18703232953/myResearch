@@ -146,7 +146,7 @@ def process_code_file(code_path):
     # 提取文件名作为结果目录名
     file_name = os.path.basename(code_path)
     base_name = os.path.splitext(file_name)[0]
-    result_dir = f"d:/MyResearch/codeComplex/demo/onlyCode/results/cubic/esults_{base_name}"
+    result_dir = f"d:/MyResearch/codeComplex/demo/onlyCode/results/cubic/results_{base_name}"  # 修复目录名拼写错误
     os.makedirs(result_dir, exist_ok=True)
     
     # 保存生成的程序
@@ -197,15 +197,20 @@ main({n})
             # 保存结果
             test_results.append((n, run_time))
             
-            # 输出进度
-            if n % 10 == 0 or n == max_n:
-                print(f'Completed n={n}, time={run_time:.6f}s')
-                print(f'当前已分析 {len(test_results)} 个数据点')
+            # 记录当前分析的数据点数量
+            current_datapoints = len(test_results)
+            
+            # 输出进度（每10个点或最后一个点）
+            # 当前已分析 {current_datapoints} 个数据点
+            # if n % 10 == 0 or n == max_n:
+            #     print(f'Completed n={n}, time={run_time:.6f}s')
+            #     print(f'当前已分析 {current_datapoints} 个数据点')
             
             # 每10个点保存一次临时数据，防止程序中断导致数据丢失
-            if len(test_results) % 10 == 0:
+            if current_datapoints % 10 == 0:
                 np.savez(temp_results_path, results=test_results)
-                print(f'临时数据已保存到 {temp_results_path}')
+                # 临时数据已保存到：{temp_results_path}
+                # print(f'临时数据已保存到 {temp_results_path}')
                 
     except KeyboardInterrupt:
         print("\n分析被用户中断，保存已收集的数据...")
@@ -399,6 +404,7 @@ def main():
     
     # 遍历所有Python文件，逐个处理
     for i, code_path in enumerate(python_files, 1):
+           
         print(f"\n{'='*60}")
         print(f"处理文件 {i}/{len(python_files)}")
         print(f"{'='*60}")
