@@ -189,9 +189,9 @@ main({n})
             
             # 记录开始时间
             start_time = time.time()
-            print(f"当前测试规模n={n}")
-            print(f"当前测试代码：")
-            print(test_code)
+            # print(f"当前测试规模n={n}")
+            # print(f"当前测试代码：")
+            # print(test_code)
             # 创建一个临时环境并执行代码
             exec_globals = {}
             exec(test_code, exec_globals)
@@ -412,12 +412,11 @@ def main():
     
     # 遍历所有Python文件，逐个处理
     for i, code_path in enumerate(python_files, 1):
-        print(f"\n{'='*60}")
-        print(f"处理文件 {i}/{len(python_files)}")
-        print(f"{'='*60}")
-        if(i==445):
+        if(i%12==0):
+            print(f"\n{'='*60}")
+            print(f"处理文件 {i}/{len(python_files)}")
+            print(f"{'='*60}")
             process_code_file(code_path)
-            break;
         
     
     print(f"\n{'='*60}")

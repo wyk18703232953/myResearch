@@ -1,0 +1,53 @@
+def fibonacci(n):
+    flist = []
+    a = 0
+    b = 1
+    flist.append(a)
+    flist.append(b)
+    for i in range(2, n):
+        c = a + b
+        a = b
+        b = c
+        if b < n:
+            flist.append(b)
+        else:
+            flist.append(b)
+            break
+    return flist
+
+def twopinter(li, i, x):
+    z = 0
+    while i <= len(li) - 1:
+        if li[i] + li[len(li) - 1 - z] == x:
+            return li[i] + li[len(li) - 1 - z]
+        elif li[i] + li[len(li) - 1 - z] < x:
+            i += 1
+        elif li[i] + li[len(li) - 1 - z] > x:
+            z += 1
+        else:
+            return 0
+
+def threepointer(li, n):
+    st = 0
+    while st <= len(li) - 1:
+        x = n - li[st]
+        tp = twopinter(li, st, x)
+        if tp is None:
+            return False
+        if li[st] + tp == n:
+            return True
+        elif li[st] + tp < n:
+            st += 1
+        else:
+            return False
+
+def main(n):
+    li = fibonacci(n)
+    res_three = threepointer(li, n)
+    triple_result = "I'm too stupid to solve this problem" if res_three is False else ""
+    pair_result = (0, 0, n)
+    return {"fibonacci_list": li, "threepointer_result": res_three, "triple_message": triple_result, "pair_result": pair_result}
+
+if __name__ == "__main__":
+    result = main(10)
+    print(result["pair_result"][0], result["pair_result"][1], result["pair_result"][2])
