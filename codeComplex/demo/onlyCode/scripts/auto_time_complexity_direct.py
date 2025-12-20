@@ -8,6 +8,9 @@ import os
 import sys
 from openai import OpenAI
 
+# 导入配置文件
+import config
+
 # 定义不同时间复杂度的函数模型
 def constant(n, a):
     return a * np.ones_like(n)
@@ -146,8 +149,8 @@ def process_code_file(code_path):
     # 提取文件名作为结果目录名
     file_name = os.path.basename(code_path)
     base_name = os.path.splitext(file_name)[0]
-    #todo 更改结果目录
-    result_dir = f"d:/MyResearch/codeComplex/demo/onlyCode/results/logn/results_{base_name}"  # 修复目录名拼写错误
+    # 使用配置文件中的结果目录
+    result_dir = f"{config.results_base_dir}/results_{base_name}"  # 修复目录名拼写错误
     os.makedirs(result_dir, exist_ok=True)
     
     # 保存生成的程序
@@ -158,9 +161,9 @@ def process_code_file(code_path):
     
     # 创建测试结果文件
     test_results = []
-    #todo 更改测试规模的最大值
-    max_n = 100  # 测试规模的最大值
-    step = 1  # 间隔为1
+    # 使用配置文件中的测试参数
+    max_n = config.max_n  # 测试规模的最大值
+    step = config.step    # 间隔为1
     
     # 检查是否已经有部分结果
     temp_results_path = os.path.join(result_dir, "temp_results.npz")
@@ -170,8 +173,8 @@ def process_code_file(code_path):
         start_n = int(test_results[-1][0]) + step if test_results else 1
         print(f"继续从n={start_n}开始分析")
     else:
-        #todo 更改初始测试规模
-        start_n = 10
+        # 使用配置文件中的初始测试规模
+        start_n = config.start_n
     
     try:
         # 对于每个测试规模n（从start_n到max_n，间隔step）
@@ -393,9 +396,8 @@ main({n})
 
 # 主函数：执行完整的时间复杂度分析流程
 def main():
-    # 定义要处理的文件夹路径
-    #todo 更改文件夹路径
-    folder_path = "d:/MyResearch/codeComplex/data/onlyCode/python/logn"
+    # 使用配置文件中的文件夹路径
+    folder_path = config.folder_path
     
     # 获取文件夹中所有的Python文件
     python_files = []
