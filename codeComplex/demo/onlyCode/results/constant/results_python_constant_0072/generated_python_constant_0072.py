@@ -7,5 +7,4 @@ def main(n):
     return 0, a, b
 
 if __name__ == "__main__":
-    for test_n in [0, 1, 2, 3, 5, 8, 13]:
-        print(test_n, "->", main(test_n))
+    print(main(10))

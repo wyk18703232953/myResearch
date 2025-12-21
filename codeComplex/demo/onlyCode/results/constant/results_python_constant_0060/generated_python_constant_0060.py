@@ -17,7 +17,7 @@ def fibonacci(n):
 
 def twopinter(li, i, x):
     z = 0
-    while i <= len(li) - 1:
+    while i <= len(li) - 1 and z <= len(li) - 1:
         if li[i] + li[len(li) - 1 - z] == x:
             return li[i] + li[len(li) - 1 - z]
         elif li[i] + li[len(li) - 1 - z] < x:
@@ -26,28 +26,30 @@ def twopinter(li, i, x):
             z += 1
         else:
             return 0
+    return 0
 
 def threepointer(li, n):
     st = 0
     while st <= len(li) - 1:
         x = n - li[st]
-        tp = twopinter(li, st, x)
-        if tp is None:
-            return False
-        if li[st] + tp == n:
+        if li[st] + twopinter(li, st, x) == n:
             return True
-        elif li[st] + tp < n:
+        elif li[st] + twopinter(li, st, x) < n:
             st += 1
         else:
             return False
+    return False
 
 def main(n):
     li = fibonacci(n)
-    res_three = threepointer(li, n)
-    triple_result = "I'm too stupid to solve this problem" if res_three is False else ""
-    pair_result = (0, 0, n)
-    return {"fibonacci_list": li, "threepointer_result": res_three, "triple_message": triple_result, "pair_result": pair_result}
+    if not threepointer(li, n):
+        return "I'm too stupid to solve this problem", 0, 0, n
+    return "", 0, 0, n
 
 if __name__ == "__main__":
-    result = main(10)
-    print(result["pair_result"][0], result["pair_result"][1], result["pair_result"][2])
+    res = main(10)
+    if isinstance(res, tuple):
+        for item in res:
+            print(item)
+    else:
+        print(res)

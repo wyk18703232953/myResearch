@@ -16,10 +16,9 @@ def main(n):
         if o == t:
             l = l + 1
     if l > 0:
-        print("YES")
+        return "YES"
     else:
-        print("NO")
-
+        return "NO"
 
 if __name__ == "__main__":
-    main(100)
+    print(main(28))
