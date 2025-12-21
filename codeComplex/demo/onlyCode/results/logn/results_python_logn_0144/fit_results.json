@@ -1,0 +1,70 @@
+{
+  "Constant": {
+    "params": [
+      0.00044928951027952595
+    ],
+    "r_squared": 0.0,
+    "success": true
+  },
+  "Linear": {
+    "params": [
+      -2.2065808258386346e-07,
+      0.0011112637543250568
+    ],
+    "r_squared": 0.033312469724697036,
+    "success": true
+  },
+  "Quadratic": {
+    "params": [
+      1.8792660742655435e-10,
+      -1.348217761377437e-06,
+      0.0025457703032794004
+    ],
+    "r_squared": 0.05971816134322716,
+    "success": true
+  },
+  "Cubic": {
+    "params": [
+      -3.044471921191658e-13,
+      2.9279513514216013e-09,
+      -8.819504170798324e-06,
+      0.008519480996553792
+    ],
+    "r_squared": 0.13269301386681354,
+    "success": true
+  },
+  "Logarithmic": {
+    "params": [
+      -0.0007335045446365405,
+      0.006256411979843781
+    ],
+    "r_squared": 0.053011473103767415,
+    "success": true
+  },
+  "n_log_n": {
+    "params": [
+      -2.404590593592945e-08,
+      0.0010326177410024092
+    ],
+    "r_squared": 0.03174052598419386,
+    "success": true
+  },
+  "Exponential": {
+    "params": [],
+    "r_squared": 0,
+    "success": false,
+    "error": "Optimal parameters not found: Number of calls to function has reached maxfev = 600."
+  },
+  "Sqrt_Exponential": {
+    "params": [],
+    "r_squared": 0,
+    "success": false,
+    "error": "Optimal parameters not found: Number of calls to function has reached maxfev = 600."
+  },
+  "Power": {
+    "params": [],
+    "r_squared": 0,
+    "success": false,
+    "error": "Optimal parameters not found: Number of calls to function has reached maxfev = 600."
+  }
+}

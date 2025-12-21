@@ -1,0 +1,46 @@
+时间复杂度分析报告
+====================
+
+分析文件: d:/MyResearch/codeComplex/data/onlyCode/python/logn\python_logn_0564.py
+生成文件: d:/MyResearch/codeComplex/demo/onlyCode/results/logn/results_python_logn_0564\generated_python_logn_0564.py
+分析时间: 2025-12-21 00:43:34
+
+测试参数: n = 1000 到 5000, 步长 50
+数据点数量: 81
+
+模型拟合结果:
+
+Cubic:
+  R²值: 0.051829
+  参数: [3.622316323895669e-14, -2.977853161869328e-10, 7.420541340747507e-07, -0.0004850937179920192]
+
+Quadratic:
+  R²值: 0.024701
+  参数: [2.8223151800190365e-11, -1.4688039714480482e-07, 0.0002256590731573928]
+
+n_log_n:
+  R²值: 0.009493
+  参数: [2.566269011144426e-09, 1.534291766484529e-05]
+
+Power:
+  R²值: 0.009251
+  参数: [5.67347348499739e-10, 1.4618063425603627]
+
+Linear:
+  R²值: 0.009062
+  参数: [2.245851431868375e-08, 1.0222348933411624e-05]
+
+Logarithmic:
+  R²值: 0.005668
+  参数: [4.680303969112276e-05, -0.00029293967044812235]
+
+Constant:
+  R²值: 0.000000
+  参数: [7.759788889943817e-05]
+
+Exponential: 拟合失败 - Optimal parameters not found: Number of calls to function has reached maxfev = 600.
+
+Sqrt_Exponential: 拟合失败 - Optimal parameters not found: Number of calls to function has reached maxfev = 600.
+
+最佳拟合模型: Cubic
+最佳R²值: 0.051829
