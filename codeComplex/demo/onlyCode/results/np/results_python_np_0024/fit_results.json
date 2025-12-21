@@ -1,70 +1,76 @@
 {
   "Constant": {
     "params": [
-      7.07856281598409
+      7.075129170476655
     ],
     "r_squared": 0.0,
     "success": true
   },
   "Linear": {
     "params": [
-      -0.00021034002304069383,
-      7.299419840176827
+      -2.0824980607419934e-06,
+      7.081376656504444
     ],
-    "r_squared": 0.8849270937082395,
+    "r_squared": 0.025979888312229527,
     "success": true
   },
   "Quadratic": {
     "params": [
-      -2.6275157928466695e-06,
-      0.00530744314193723,
-      4.406962871551529
+      -7.687453349679669e-10,
+      2.5299792683821255e-06,
+      7.075508580338866
     ],
-    "r_squared": 1.0,
+    "r_squared": 0.02984876784345758,
     "success": true
   },
   "Cubic": {
-    "params": [],
-    "r_squared": 0,
-    "success": false,
-    "error": "The number of func parameters=4 must not exceed the number of data points=3"
+    "params": [
+      -2.568574140325933e-12,
+      2.2348421120200094e-08,
+      -6.0504114581904466e-05,
+      7.125907845657616
+    ],
+    "r_squared": 0.07533058437248896,
+    "success": true
   },
   "Logarithmic": {
     "params": [
-      -0.2195540922918259,
-      8.605734696108435
+      -0.005373878497123452,
+      7.117673935635379
     ],
-    "r_squared": 0.8760066291020113,
+    "r_squared": 0.02491387756343655,
     "success": true
   },
   "n_log_n": {
     "params": [
-      -2.6453783693370848e-05,
-      7.2718121148189105
+      -2.3345407256550452e-07,
+      7.08079251931008
     ],
-    "r_squared": 0.886027905315281,
+    "r_squared": 0.026195991121400697,
     "success": true
   },
   "Exponential": {
     "params": [
-      7.30282529705191,
-      -2.9705847998779704e-05
+      7.081378333975074,
+      -2.9430906912142784e-07
     ],
-    "r_squared": 0.8846532831377893,
+    "r_squared": 0.025976804243494245,
     "success": true
   },
   "Sqrt_Exponential": {
     "params": [
-      7.302825566286898,
-      -5.9411766227488146e-05
+      7.08137833672409,
+      -5.886183965940676e-07
     ],
-    "r_squared": 0.8846532831392189,
+    "r_squared": 0.025976804243229012,
     "success": true
   },
   "Power": {
-    "params": [],
-    "r_squared": 0,
-    "success": false,
-    "error": "Optimal parameters not found: Number of calls to function has reached maxfev = 600."
+    "params": [
+      7.117798054865183,
+      -0.000759480346836271
+    ],
+    "r_squared": 0.024913888655293315,
+    "success": true
   }
 }
