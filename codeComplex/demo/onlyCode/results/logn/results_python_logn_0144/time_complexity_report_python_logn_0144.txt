@@ -1,38 +1,38 @@
 时间复杂度分析报告
 ====================
 
-分析文件: d:/MyResearch/codeComplex/data/onlyCode/python/logn\python_logn_0144.py
-生成文件: d:/MyResearch/codeComplex/demo/onlyCode/results/logn/results_python_logn_0144\generated_python_logn_0144.py
-分析时间: 2025-12-21 00:03:12
+分析文件: /home/wuyankai/myResearch/codeComplex/data/onlyCode/python/logn/python_logn_0144.py
+生成文件: /home/wuyankai/myResearch/codeComplex/demo/onlyCode/results/logn/results_python_logn_0144/generated_python_logn_0144.py
+分析时间: 2025-12-21 18:44:28
 
-测试参数: n = 1000 到 5000, 步长 50
+测试参数: n = 5000 到 5000, 步长 50
 数据点数量: 81
 
 模型拟合结果:
 
 Cubic:
-  R²值: 0.132693
-  参数: [-3.044471921191658e-13, 2.9279513514216013e-09, -8.819504170798324e-06, 0.008519480996553792]
+  R²值: 0.129597
+  参数: [-2.9706048995699554e-13, 2.8681190765988714e-09, -8.67260120323533e-06, 0.008412506493564046]
 
 Quadratic:
-  R²值: 0.059718
-  参数: [1.8792660742655435e-10, -1.348217761377437e-06, 0.0025457703032794004]
+  R²值: 0.060042
+  参数: [1.9457464169149465e-10, -1.3825880979887539e-06, 0.002583733900711231]
 
 Logarithmic:
-  R²值: 0.053011
-  参数: [-0.0007335045446365405, 0.006256411979843781]
+  R²值: 0.051420
+  参数: [-0.0007220053153428197, 0.006169143645692532]
 
 Linear:
-  R²值: 0.033312
-  参数: [-2.2065808258386346e-07, 0.0011112637543250568]
+  R²值: 0.031703
+  参数: [-2.1514020329193719e-07, 0.0010984806635451476]
 
 n_log_n:
-  R²值: 0.031741
-  参数: [-2.404590593592945e-08, 0.0010326177410024092]
+  R²值: 0.030133
+  参数: [-2.3415723717579016e-08, 0.0010211007360187922]
 
 Constant:
   R²值: 0.000000
-  参数: [0.00044928951027952595]
+  参数: [0.0004530600446526661]
 
 Exponential: 拟合失败 - Optimal parameters not found: Number of calls to function has reached maxfev = 600.
 
@@ -41,4 +41,4 @@ Sqrt_Exponential: 拟合失败 - Optimal parameters not found: Number of calls t
 Power: 拟合失败 - Optimal parameters not found: Number of calls to function has reached maxfev = 600.
 
 最佳拟合模型: Cubic
-最佳R²值: 0.132693
+最佳R²值: 0.129597

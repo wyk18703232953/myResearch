@@ -5,13 +5,20 @@ import concurrent.futures
 
 # 定义要运行的脚本列表
 scripts = [
-    r"d:\MyResearch\codeComplex\demo\onlyCode\scripts\consatnt_demo.py",
+    # r"d:\MyResearch\codeComplex\demo\onlyCode\scripts\consatnt_demo.py",
     # r"d:\MyResearch\codeComplex\demo\onlyCode\scripts\cubic_demo.py",
     # r"d:\MyResearch\codeComplex\demo\onlyCode\scripts\linear_demo.py",
     # r"d:\MyResearch\codeComplex\demo\onlyCode\scripts\log_demo.py",
     # r"d:\MyResearch\codeComplex\demo\onlyCode\scripts\nlong_demo.py",
     # r"d:\MyResearch\codeComplex\demo\onlyCode\scripts\np_demo.py",
     # r"d:\MyResearch\codeComplex\demo\onlyCode\scripts\quadratic_demo.py"
+    "/home/wuyankai/myResearch/codeComplex/demo/onlyCode/scripts/constant_demo.py",
+    "/home/wuyankai/myResearch/codeComplex/demo/onlyCode/scripts/cubic_demo.py",
+    "/home/wuyankai/myResearch/codeComplex/demo/onlyCode/scripts/linear_demo.py",
+    "/home/wuyankai/myResearch/codeComplex/demo/onlyCode/scripts/log_demo.py",
+    "/home/wuyankai/myResearch/codeComplex/demo/onlyCode/scripts/nlong_demo.py",
+    "/home/wuyankai/myResearch/codeComplex/demo/onlyCode/scripts/np_demo.py",
+    "/home/wuyankai/myResearch/codeComplex/demo/onlyCode/scripts/quadratic_demo.py"
 ]
 
 def run_script(script_path):
