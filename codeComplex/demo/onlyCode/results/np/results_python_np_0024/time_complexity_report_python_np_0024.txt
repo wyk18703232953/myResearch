@@ -1,0 +1,46 @@
+时间复杂度分析报告
+====================
+
+分析文件: /home/wuyankai/myResearch/codeComplex/data/onlyCode/python/np/python_np_0024.py
+生成文件: /home/wuyankai/myResearch/codeComplex/demo/onlyCode/results/np/results_python_np_0024/generated_python_np_0024.py
+分析时间: 2025-12-21 17:51:25
+
+测试参数: n = 1000 到 5000, 步长 50
+数据点数量: 3
+
+模型拟合结果:
+
+Quadratic:
+  R²值: 1.000000
+  参数: [-2.6275157928466695e-06, 0.00530744314193723, 4.406962871551529]
+
+n_log_n:
+  R²值: 0.886028
+  参数: [-2.6453783693370848e-05, 7.2718121148189105]
+
+Linear:
+  R²值: 0.884927
+  参数: [-0.00021034002304069383, 7.299419840176827]
+
+Sqrt_Exponential:
+  R²值: 0.884653
+  参数: [7.302825566286898, -5.9411766227488146e-05]
+
+Exponential:
+  R²值: 0.884653
+  参数: [7.30282529705191, -2.9705847998779704e-05]
+
+Logarithmic:
+  R²值: 0.876007
+  参数: [-0.2195540922918259, 8.605734696108435]
+
+Constant:
+  R²值: 0.000000
+  参数: [7.07856281598409]
+
+Cubic: 拟合失败 - The number of func parameters=4 must not exceed the number of data points=3
+
+Power: 拟合失败 - Optimal parameters not found: Number of calls to function has reached maxfev = 600.
+
+最佳拟合模型: Quadratic
+最佳R²值: 1.000000
