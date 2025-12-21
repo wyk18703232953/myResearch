@@ -140,12 +140,6 @@ def process_code_file(code_path):
     print(f"\n1. 读取原始代码：{code_path}")
     print(f"代码长度：{len(original_code)} 字符")
     
-    # 调用大模型生成可执行程序
-    print("\n2. 调用大模型生成可执行程序...")
-    generated_code = call_large_model(original_code)
-    print(f"生成的程序：")
-    print(generated_code)
-    
     # 提取文件名作为结果目录名
     file_name = os.path.basename(code_path)
     base_name = os.path.splitext(file_name)[0]
@@ -153,11 +147,27 @@ def process_code_file(code_path):
     result_dir = f"{config.nlogn_results_base_dir}/results_{base_name}"  # 修复目录名拼写错误
     os.makedirs(result_dir, exist_ok=True)
     
-    # 保存生成的程序
+    # 构建生成程序的文件路径
     generated_code_path = os.path.join(result_dir, f"generated_{base_name}.py")
-    with open(generated_code_path, 'w', encoding='utf-8') as f:
-        f.write(generated_code)
-    print(f"生成的程序已保存到：{generated_code_path}")
+    
+    # 检查是否已经存在生成的程序文件
+    if os.path.exists(generated_code_path):
+        print(f"\n2. 检测到已存在生成的程序，直接读取：{generated_code_path}")
+        with open(generated_code_path, 'r', encoding='utf-8') as f:
+            generated_code = f.read()
+        print(f"读取到的程序：")
+        print(generated_code)
+    else:
+        # 调用大模型生成可执行程序
+        print("\n2. 调用大模型生成可执行程序...")
+        generated_code = call_large_model(original_code)
+        print(f"生成的程序：")
+        print(generated_code)
+        
+        # 保存生成的程序
+        with open(generated_code_path, 'w', encoding='utf-8') as f:
+            f.write(generated_code)
+        print(f"生成的程序已保存到：{generated_code_path}")
     
     # 创建测试结果文件
     test_results = []
