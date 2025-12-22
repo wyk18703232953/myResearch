@@ -1,0 +1,20 @@
+{
+  "predicted_complexity": "Quadratic",
+  "loop_info": {
+    "loop_count": 1,
+    "nested_depth": 0,
+    "max_nested_depth": 2,
+    "loop_types": {
+      "for": 1
+    }
+  },
+  "data_structures": [],
+  "advanced_features": [
+    "comprehension"
+  ],
+  "cfg_complexity": {
+    "total_nodes": 86,
+    "loop_nodes": 1,
+    "branch_nodes": 1
+  }
+}

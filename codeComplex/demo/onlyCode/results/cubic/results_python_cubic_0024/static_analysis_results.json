@@ -1,0 +1,25 @@
+{
+  "predicted_complexity": "Cubic",
+  "loop_info": {
+    "loop_count": 6,
+    "nested_depth": 0,
+    "max_nested_depth": 3,
+    "loop_types": {
+      "while": 2,
+      "for": 4
+    }
+  },
+  "data_structures": [
+    "set",
+    "set_operations",
+    "list_operations"
+  ],
+  "advanced_features": [
+    "lambda"
+  ],
+  "cfg_complexity": {
+    "total_nodes": 827,
+    "loop_nodes": 6,
+    "branch_nodes": 10
+  }
+}

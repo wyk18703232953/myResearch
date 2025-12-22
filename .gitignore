@@ -33,3 +33,4 @@ mbpp_plus/test.py
 mbpp_plus/data/test-00000-of-00001-d5781c9c51e02795.parquet
 codeComplex/test.py
 codeComplex/data/onlyCode/*/*/*.java
+codeComplex/demo/onlyCode/scripts/config.py

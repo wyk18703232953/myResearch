@@ -276,7 +276,7 @@ if __name__ == "__main__":
     
     # 示例2：从JSONL文件批量验证
     print("\n=== 示例2: 从JSONL文件批量验证 ===")
-    jsonl_path = "d:/MyResearch/codeComplex/data/data.jsonl"
+    jsonl_path = "d:/MyResearch/codeComplex/data/python_data.jsonl"
     if os.path.exists(jsonl_path):
         # 处理所有样本
         batch_results, detailed_records = batch_validate_from_jsonl(jsonl_path, max_items=None, save_results=True)
