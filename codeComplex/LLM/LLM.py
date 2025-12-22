@@ -34,7 +34,7 @@ def validate_code_complexity(src, expected_complexity, api_key=None, base_url=No
     system_prompt = """你是一位算法分析专家，精通时间复杂度分析。
     你的任务是：
     1. 分析给定代码的时间复杂度
-    2. 仅返回复杂度的标准术语，如：constant、linear、logn、nlogn、quadratic、cubic、np。
+    2. 仅返回复杂度的标准术语，如：constant、linear、logn、nlogn、quadratic、cubic、exponential。
     3. 不要输出任何解释或额外信息，只输出复杂度术语本身"""
     
     user_prompt = f"""请分析以下代码的时间复杂度，并仅返回标准的复杂度术语：
@@ -102,7 +102,7 @@ def compare_complexity(actual, expected):
         'nlogn': {'nlogn', 'n log n', 'o(n log n)', 'o(n logn)'},
         'quadratic': {'quadratic', 'o(n^2)', 'n^2'},
         'cubic': {'cubic', 'o(n^3)', 'n^3'},
-        'np': {'np', 'o(n^p)', 'n^p'}
+        'np': {'np', 'o(n^p)', 'n^p', 'exponential', 'o(2^n)', '2^n'},
     }
     
     # 检查是否在等价集合中
@@ -288,8 +288,8 @@ if __name__ == "__main__":
             print(f"样本ID: {record['sample_id']}")
             print(f"问题: {record['problem']}")
             print(f"来源: {record['source']}")
-            print(f"期望复杂度: {record['expected_complexity']}")
-            print(f"模型原始输出: {record['model_raw_output']}")
+            print(f"期望复杂度: {record['expected_complexity']}")#真实复杂度
+            print(f"模型原始输出: {record['model_raw_output']}")#模型分析复杂度
             print(f"匹配结果: {record['is_match']}")
             if record['error']:
                 print(f"错误: {record['error']}")
