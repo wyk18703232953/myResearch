@@ -92,7 +92,7 @@ def format_report(report):
         lines.append(f"  准确率: {stats['accuracy']:.2f}%")
         lines.append(f"  预测分布:")
         
-        for pred_type in sorted(stats['predictions'].keys()):
+        for pred_type in sorted([k for k in stats['predictions'].keys() if k is not None]):
             count = stats['predictions'][pred_type]
             percentage = (count / stats['total']) * 100 if stats['total'] > 0 else 0
             lines.append(f"    {pred_type}: {count} ({percentage:.2f}%)")

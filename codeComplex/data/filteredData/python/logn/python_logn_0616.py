@@ -11,20 +11,25 @@ def main(n):
     bg = 1
     end = tot
 
-    while True:
-        mid = (bg + end) // 2  # 用整除保持整数
-        add = mid * (mid + 1) // 2
+    while bg <= end:
+        mid = (bg + end) // 2  # 整数除法
+        add = (mid * (mid + 1)) // 2  # 整数除法
+        
         sub = tot - mid
-        diff = add - sub
-
-        if diff == choc:
-            print(int(sub))
+        difference = add - sub
+        
+        if difference == choc:
+            print(sub)
             break
-        if diff < choc:
-            bg = mid + 1
+        elif difference < choc:
+            bg = mid + 1  # 需要更大的mid
         else:
-            end = mid - 1
-
+            end = mid - 1  # 需要更小的mid
+    else:
+        # 如果没找到精确解
+        print("No exact solution found")
+        # 或者输出最接近的值
+        print(f"Closest: sub={tot - mid}, diff={difference}")
 
 if __name__ == "__main__":
     # 示例：调用 main(100)
