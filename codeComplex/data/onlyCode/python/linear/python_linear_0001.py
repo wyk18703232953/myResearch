@@ -1,9 +1,10 @@
 import re
 
 inputs = int(input())
-
+# inputs是一个整数，代表坐标的数量
 for x in range(inputs):
     coordinates = input()
+    # coordinates是一个字符串，代表一个坐标，格式为R1C1或A1
     match = re.match("R(\d+)C(\d+)", coordinates)
     if match:
         rows = int(match.group(1))
