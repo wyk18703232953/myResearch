@@ -4,14 +4,14 @@
 # max_n = 5000  # 测试规模的最大值
 # step = 50     # 测试规模的间隔
 # start_n = 1000 # 初始测试规模
-max_n = 6  # 测试规模的最大值
-step = 1     # 测试规模的间隔
-start_n = 1 # 初始测试规模
+max_n = 6000  # 测试规模的最大值
+step = 50     # 测试规模的间隔
+start_n = 1000 # 初始测试规模
 # 文件路径配置
 constant_folder_path = "d:/MyResearch/codeComplex/data/filteredData/python/constant"  # 待处理的代码文件目录
 cubic_folder_path = "d:/MyResearch/codeComplex/data/filteredData/python/cubic"  # 待处理的代码文件目录
 linear_folder_path = "d:/MyResearch/codeComplex/data/filteredData/python/linear"  # 待处理的代码文件目录
-logn_folder_path = "d:/MyResearch/codeComplex/data/filteredData/python/logn1"  # 待处理的代码文件目录
+logn_folder_path = "d:/MyResearch/codeComplex/data/filteredData/python/logn"  # 待处理的代码文件目录
 nlogn_folder_path = "d:/MyResearch/codeComplex/data/filteredData/python/nlogn"  # 待处理的代码文件目录
 np_folder_path = "d:/MyResearch/codeComplex/data/filteredData/python/np"  # 待处理的代码文件目录
 quadratic_folder_path = "d:/MyResearch/codeComplex/data/filteredData/python/quadratic"  # 待处理的代码文件目录
