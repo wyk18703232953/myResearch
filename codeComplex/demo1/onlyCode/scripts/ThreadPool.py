@@ -401,7 +401,7 @@ def process_file_wrapper(args):
 
 def main():
     # 并行处理配置
-    max_workers = 3  # 最大并发数量
+    max_workers = 2  # 最大并发数量
     force_reanalyze = True
     
     # 获取所有要处理的路径配置
