@@ -1,25 +1,7 @@
 import os
 import json
 import re
-import glob
 from collections import defaultdict
-
-def delete_npz_files(root_dir):
-    """删除指定目录及其子目录中的所有.npz文件"""
-    # 获取所有.npz文件的路径
-    npz_files = glob.glob(os.path.join(root_dir, '**/*.npz'), recursive=True)
-    
-    print(f"找到 {len(npz_files)} 个.npz文件")
-    
-    # 删除每个.npz文件
-    for file_path in npz_files:
-        try:
-            os.remove(file_path)
-            print(f"已删除: {file_path}")
-        except Exception as e:
-            print(f"删除失败 {file_path}: {e}")
-    
-    print(f"删除完成！共删除 {len(npz_files)} 个.npz文件")
 
 def extract_actual_complexity(folder_name):
     """从文件夹名称提取真实的复杂度类型"""
@@ -73,10 +55,7 @@ def normalize_model_name(model_name):
     else:
         return model_name
 
-def main(delete_npz=False):
-    # 如果需要删除.npz文件
-    if delete_npz:
-        delete_npz_files("d:/MyResearch/codeComplex/demo1/onlyCode/results")
+def main():
     results_dir = r"d:\MyResearch\codeComplex\demo\onlyCode\results\logn"
     
     # 存储统计结果
@@ -191,4 +170,4 @@ def main(delete_npz=False):
     print(f"\n详细报告已保存到: {output_path}")
 
 if __name__ == "__main__":
-    main(delete_npz=True)
+    main()
