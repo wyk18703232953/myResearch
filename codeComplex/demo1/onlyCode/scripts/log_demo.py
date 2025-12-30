@@ -394,3 +394,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    print(f"2当前时间是: {time.strftime('%H:%M:%S')}")
