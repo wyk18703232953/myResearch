@@ -25,10 +25,7 @@ def format_bytecode_count(count):
         return f"{int(count)}"
 
 def count_dynamic_bytecode(code_str, globals_dict, locals_dict):
-    """
-    执行代码并统计动态字节码指令数
-    (保持原有的逻辑不变，这里为了节省篇幅略去注释，核心逻辑与你之前的一致)
-    """
+    """执行代码并统计动态字节码指令数"""
     compiled_code = compile(code_str, '<string>', 'exec')
     instruction_count = 0
     line_instruction_counts = {}
@@ -36,17 +33,22 @@ def count_dynamic_bytecode(code_str, globals_dict, locals_dict):
     def count_instructions_per_line(code_obj):
         current_line = None
         line_counts = {}
+        
         for inst in dis.get_instructions(code_obj):
             if inst.starts_line:
                 current_line = inst.starts_line
+            
             if current_line is not None:
-                if current_line not in line_counts: line_counts[current_line] = 0
+                if current_line not in line_counts:
+                    line_counts[current_line] = 0
                 line_counts[current_line] += 1
+        
         for line, count in line_counts.items():
             line_instruction_counts[(code_obj, line)] = count
     
     def process_code_objects(code_obj):
         count_instructions_per_line(code_obj)
+        
         for const in code_obj.co_consts:
             if hasattr(const, 'co_code'):
                 process_code_objects(const)
@@ -55,28 +57,40 @@ def count_dynamic_bytecode(code_str, globals_dict, locals_dict):
     
     def trace_function(frame, event, arg):
         nonlocal instruction_count
+        
         if event == 'line':
             code_obj = frame.f_code
             line_num = frame.f_lineno
+            
             if (code_obj, line_num) in line_instruction_counts:
                 instruction_count += line_instruction_counts[(code_obj, line_num)]
+        
         return trace_function
     
     try:
         original_trace = sys.gettrace()
         sys.settrace(trace_function)
-        exec(compiled_code, {}, {})
+        
+        # 使用传入的字典参数而不是空字典
+        exec(compiled_code, globals_dict, globals_dict)
+        
         sys.settrace(original_trace)
+        
         return instruction_count
-    except Exception:
+    except Exception as e:
         sys.settrace(original_trace)
+        print(f"Dynamic trace counting error: {e}")
+        
+        # 使用静态计数作为备选方案
         instruction_count = 0
-        def count_all(code_obj):
+        def count_all_instructions(code_obj):
             nonlocal instruction_count
-            for _ in dis.get_instructions(code_obj): instruction_count += 1
+            for _ in dis.get_instructions(code_obj):
+                instruction_count += 1
             for const in code_obj.co_consts:
-                if hasattr(const, 'co_code'): count_all(const)
-        count_all(compiled_code)
+                if hasattr(const, 'co_code'):
+                    count_all_instructions(const)
+        count_all_instructions(compiled_code)
         return instruction_count
 
 # ==========================================
@@ -221,7 +235,10 @@ def process_code_file(code_path, force_reanalyze=False):
         try:
             for n in range(start_n, config.max_n + 1, config.step):
                 run_code = f"{generated_code}\nmain({n})"
-                bytecode_count = count_dynamic_bytecode(run_code, {}, {})
+                # 创建适当的全局和局部环境
+                exec_globals = {}
+                exec_locals = {}
+                bytecode_count = count_dynamic_bytecode(run_code, exec_globals, exec_locals)
                 test_results.append([n, bytecode_count])
                 
                 if len(test_results) % 5 == 0:
