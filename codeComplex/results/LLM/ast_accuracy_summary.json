@@ -1,0 +1,136 @@
+{
+  "overall": {
+    "total": 4900,
+    "correct": 3124,
+    "failed": 1776,
+    "accuracy": 63.755102040816325
+  },
+  "by_complexity": {
+    "constant": {
+      "total": 791,
+      "correct": 508,
+      "failed": 283,
+      "accuracy": 64.22,
+      "predictions": {
+        "constant": 503,
+        "linear": 202,
+        "quadratic": 17,
+        "nlogn": 8,
+        "logn": 49,
+        "sqrtn": 1,
+        "exponential": 1,
+        "cubic": 2,
+        "o(n)": 2,
+        "o(x · y)": 1,
+        "o(1)": 5
+      }
+    },
+    "cubic": {
+      "total": 606,
+      "correct": 325,
+      "failed": 281,
+      "accuracy": 53.63,
+      "predictions": {
+        "exponential": 29,
+        "quadratic": 108,
+        "nlogn": 15,
+        "cubic": 325,
+        "linear": 126,
+        "constant": 2,
+        "n²k": 1
+      }
+    },
+    "linear": {
+      "total": 853,
+      "correct": 706,
+      "failed": 147,
+      "accuracy": 82.77,
+      "predictions": {
+        "linear": 706,
+        "quadratic": 64,
+        "nlogn": 51,
+        "constant": 22,
+        "cubic": 4,
+        "exponential": 4,
+        "logn": 2
+      }
+    },
+    "logn": {
+      "total": 669,
+      "correct": 384,
+      "failed": 285,
+      "accuracy": 57.4,
+      "predictions": {
+        "logn": 380,
+        "constant": 143,
+        "linear": 122,
+        "quadratic": 7,
+        "o(1)": 1,
+        "o(n)": 2,
+        "o(log n)": 4,
+        "nlogn": 8,
+        "exponential": 1,
+        "sqrt": 1
+      }
+    },
+    "nlogn": {
+      "total": 796,
+      "correct": 502,
+      "failed": 294,
+      "accuracy": 63.07,
+      "predictions": {
+        "quadratic": 84,
+        "nlogn": 502,
+        "linear": 187,
+        "qlogn": 1,
+        "exponential": 9,
+        "constant": 11,
+        "logn": 2
+      }
+    },
+    "np": {
+      "total": 528,
+      "correct": 239,
+      "failed": 289,
+      "accuracy": 45.27,
+      "predictions": {
+        "exponential": 239,
+        "constant": 4,
+        "linear": 146,
+        "quadratic": 68,
+        "cubic": 3,
+        "logn": 4,
+        "nlogn": 47,
+        "null": 1,
+        "nm": 1,
+        "o(n²)": 1,
+        "o(n² log c)": 1,
+        "o(n · k + m · 2^k · k + n + e)": 1,
+        "o(m · 2^k · k + n + m)": 1,
+        "o(n·k + m·2^k + n + m)": 1,
+        "o(m · 2^k · k + n + ∑|g[i]|)": 1,
+        "o(m · 2^k · k + n^2)": 3,
+        "o(m · 2^k · k)": 1,
+        "o(m · 2^k · k + n + |e|)": 1,
+        "o(m · k · 2^k + n + |e|)": 1,
+        "o(m · k · 2^k + n + m)": 1,
+        "o(n + m · 2^k · k)": 1,
+        "o(n²·k·2^k)": 1
+      }
+    },
+    "quadratic": {
+      "total": 657,
+      "correct": 460,
+      "failed": 197,
+      "accuracy": 70.02,
+      "predictions": {
+        "quadratic": 460,
+        "linear": 136,
+        "nlogn": 27,
+        "constant": 3,
+        "exponential": 7,
+        "cubic": 24
+      }
+    }
+  }
+}

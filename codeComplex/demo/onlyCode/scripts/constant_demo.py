@@ -193,9 +193,9 @@ def process_code_file(code_path):
             # 构造完整的测试代码
             test_code = f"""{generated_code}
 
-# 执行测试
-main({n})
-"""
+                # 执行测试
+                main({n})
+                """
             
             # 记录开始时间
             start_time = time.time()
@@ -404,6 +404,101 @@ main({n})
     else:
         print(f"\n数据点不足 ({len(test_results)} 个)，无法进行拟合分析")
 
+def summarize_all_results():
+    """汇总所有分析结果并生成总报告
+    
+    将所有文件的最佳拟合模型和R²值汇总到一个文件中，
+    保存到config.constant_results_base_dir目录下
+    """
+    import os
+    import json
+    import numpy as np
+    
+    # 获取配置文件中的结果目录
+    base_dir = config.constant_results_base_dir
+    
+    # 汇总所有结果
+    summary = {
+        'total_files_processed': 0,
+        'model_distribution': {},
+        'best_models': [],
+        'timestamp': time.strftime('%Y-%m-%d %H:%M:%S')
+    }
+    
+    # 遍历所有results_*目录
+    for item in os.listdir(base_dir):
+        result_dir = os.path.join(base_dir, item)
+        if os.path.isdir(result_dir) and item.startswith('results_'):
+            # 提取文件名
+            base_name = item[len('results_'):]
+            
+            # 读取拟合结果
+            fit_results_path = os.path.join(result_dir, "fit_results.json")
+            if os.path.exists(fit_results_path):
+                try:
+                    with open(fit_results_path, 'r', encoding='utf-8') as f:
+                        fit_results = json.load(f)
+                    
+                    # 找到最佳模型
+                    best_model = max(fit_results.items(), 
+                                     key=lambda x: x[1]['r_squared'] if x[1]['success'] else 0)
+                    
+                    # 更新汇总信息
+                    summary['total_files_processed'] += 1
+                    
+                    # 更新模型分布
+                    model_name = best_model[0]
+                    if model_name in summary['model_distribution']:
+                        summary['model_distribution'][model_name] += 1
+                    else:
+                        summary['model_distribution'][model_name] = 1
+                    
+                    # 添加最佳模型信息
+                    summary['best_models'].append({
+                        'file_name': base_name,
+                        'best_model': model_name,
+                        'r_squared': best_model[1]['r_squared'],
+                        'params': best_model[1]['params'],
+                        'result_dir': result_dir
+                    })
+                    
+                except Exception as e:
+                    print(f"处理 {item} 时出错: {e}")
+    
+    # 保存汇总结果
+    summary_path = os.path.join(base_dir, "summary_all_results.json")
+    with open(summary_path, 'w', encoding='utf-8') as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+    
+    # 生成汇总报告
+    report_path = os.path.join(base_dir, "summary_all_results.txt")
+    with open(report_path, 'w', encoding='utf-8') as f:
+        f.write(f"时间复杂度分析结果汇总\n")
+        f.write(f"======================\n\n")
+        f.write(f"汇总时间: {summary['timestamp']}\n")
+        f.write(f"总处理文件数: {summary['total_files_processed']}\n\n")
+        
+        f.write(f"模型分布:\n")
+        f.write(f"----------\n")
+        for model_name, count in summary['model_distribution'].items():
+            percentage = (count / summary['total_files_processed']) * 100 if summary['total_files_processed'] > 0 else 0
+            f.write(f"{model_name}: {count} 个文件 ({percentage:.1f}%)\n")
+        f.write(f"\n")
+        
+        f.write(f"最佳模型详细信息:\n")
+        f.write(f"------------------\n")
+        # 按R²值排序
+        sorted_best = sorted(summary['best_models'], key=lambda x: x['r_squared'], reverse=True)
+        for item in sorted_best:
+            f.write(f"文件: {item['file_name']}\n")
+            f.write(f"最佳模型: {item['best_model']}\n")
+            f.write(f"R²值: {item['r_squared']:.6f}\n")
+            f.write(f"参数: {item['params']}\n")
+            f.write(f"结果目录: {item['result_dir']}\n\n")
+    
+    print(f"汇总结果已保存到 {summary_path}")
+    print(f"汇总报告已保存到 {report_path}")
+
 # 主函数：执行完整的时间复杂度分析流程
 def main():
     # 使用配置文件中的文件夹路径
@@ -431,6 +526,14 @@ def main():
     
     print(f"\n{'='*60}")
     print("所有文件处理完成！")
+    print("开始汇总所有结果...")
+    print(f"{'='*60}")
+    
+    # 调用结果汇总函数
+    summarize_all_results()
+    
+    print(f"\n{'='*60}")
+    print("结果汇总完成！")
     print(f"{'='*60}")
 
 if __name__ == "__main__":
