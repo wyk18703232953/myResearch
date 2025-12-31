@@ -11,7 +11,7 @@ def main(n):
     if n <= 0:
         a = 1
     else:
-        upper = 10 ** n - 1
+        upper = n
         a = random.randint(1, upper)
 
     lucky = islucky(a)

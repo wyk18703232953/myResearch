@@ -401,14 +401,14 @@ def process_file_wrapper(args):
 
 def main():
     # 并行处理配置
-    max_workers = 2  # 最大并发数量
+    max_workers = 1  # 最大并发数量
     force_reanalyze = True
     
     # 获取所有要处理的路径配置
     folder_configs = [
-        ("quadratic", config.quadratic_folder_path),
+        # ("quadratic", config.quadratic_folder_path),
         ("constant", config.constant_folder_path),
-        ("cubic", config.cubic_folder_path),
+        # ("cubic", config.cubic_folder_path),
         ("linear", config.linear_folder_path),
         ("logn", config.logn_folder_path),
         ("nlogn", config.nlogn_folder_path),
