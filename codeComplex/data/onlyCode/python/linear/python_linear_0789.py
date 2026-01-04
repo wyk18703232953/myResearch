@@ -1,8 +1,8 @@
 import sys
 import copy
 input = sys.stdin.readline
-n,k=map(int,raw_input().split())
-C=list(raw_input().strip())
+n,k=map(int,input().split())
+C=list(input().strip())
 def JUDGE(C):
     ANS_one=0
     ANS_zero=0

@@ -33,9 +33,6 @@ def n_log_n(n, a, b):
 def exponential(n, a, b):
     return a * np.exp(b * n)
 
-def sqrt_exponential(n, a, b):
-    return a * np.exp(b * n / 2)
-
 def power(n, a, b):
     return a * n**b
 
@@ -264,7 +261,6 @@ main({n})
             'Logarithmic': logarithmic,
             'n_log_n': n_log_n,
             'Exponential': exponential,
-            'Sqrt_Exponential': sqrt_exponential,
             'Power': power
         }
         
