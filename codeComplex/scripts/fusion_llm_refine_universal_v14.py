@@ -42,7 +42,7 @@ OUTPUT_TXT = "/home/wuyankai/myResearch/codeComplex/results/fusion_llm_report_un
 DEFAULT_API_KEY = "sk-3sNQAO5ydpVp29WWoCqvM7Ajqzd1I5WKOpe29cpoT3DoMrZe"
 DEFAULT_BASE_URL = "https://yunwu.ai/v1"
 
-EXCLUDED_TYPES = {"np"}
+EXCLUDED_TYPES = {}
 
 # 模型名称到标签的映射
 MODEL_NAME_TO_LABEL = {
@@ -87,7 +87,7 @@ NLOGN_BIC_DIFF_THRESHOLD = 12  # nlogn类型需要更大的模型区分度
 
 # 融合决策阈值
 DELTA_LLM_THRESHOLD = 0.20  # LLM与拟合结果的差异阈值，高于此值才考虑覆盖
-DELTA_FIT_THRESHOLD = 0.15  # 最佳拟合与次佳拟合的差异阈值
+DELTA_FIT_THRESHOLD = 0.15  # 最佳拟合与次佳拟合的差 异阈值
 
 # 复查相关参数
 RECHECK_THRESHOLD = 0.80  # 只有当置信度低于此值时才进行复查

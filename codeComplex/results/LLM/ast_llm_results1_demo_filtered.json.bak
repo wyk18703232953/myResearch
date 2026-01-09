@@ -5861,16 +5861,6 @@
       "complexity_id": "python_logn_0587"
     },
     {
-      "sample_id": 1379,
-      "problem": "1195_B",
-      "source": "CODEFORCES",
-      "expected_complexity": "logn",
-      "model_raw_output": "linear",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_logn_0588"
-    },
-    {
       "sample_id": 1380,
       "problem": "1195_B",
       "source": "CODEFORCES",
@@ -7601,16 +7591,6 @@
       "complexity_id": "python_linear_0100"
     },
     {
-      "sample_id": 1561,
-      "problem": "0909_A",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "exponential",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_linear_0101"
-    },
-    {
       "sample_id": 1562,
       "problem": "0909_A",
       "source": "CODEFORCES",
@@ -7619,26 +7599,6 @@
       "is_match": false,
       "error": null,
       "complexity_id": "python_linear_0102"
-    },
-    {
-      "sample_id": 1563,
-      "problem": "0909_A",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "quadratic",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_linear_0103"
-    },
-    {
-      "sample_id": 1564,
-      "problem": "0909_A",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "quadratic",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_linear_0104"
     },
     {
       "sample_id": 1565,
@@ -7881,16 +7841,6 @@
       "complexity_id": "python_linear_0128"
     },
     {
-      "sample_id": 1589,
-      "problem": "0914_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0129"
-    },
-    {
       "sample_id": 1590,
       "problem": "0914_C",
       "source": "CODEFORCES",
@@ -7899,16 +7849,6 @@
       "is_match": false,
       "error": null,
       "complexity_id": "python_linear_0130"
-    },
-    {
-      "sample_id": 1591,
-      "problem": "0914_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0131"
     },
     {
       "sample_id": 1592,
@@ -9759,16 +9699,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_linear_0316"
-    },
-    {
-      "sample_id": 1777,
-      "problem": "0999_D",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0317"
     },
     {
       "sample_id": 1778,
@@ -14781,16 +14711,6 @@
       "complexity_id": "python_linear_0818"
     },
     {
-      "sample_id": 2279,
-      "problem": "1195_B",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0819"
-    },
-    {
       "sample_id": 2280,
       "problem": "1195_B",
       "source": "CODEFORCES",
@@ -14811,16 +14731,6 @@
       "complexity_id": "python_linear_0821"
     },
     {
-      "sample_id": 2282,
-      "problem": "1195_B",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "logn",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_linear_0822"
-    },
-    {
       "sample_id": 2283,
       "problem": "1195_B",
       "source": "CODEFORCES",
@@ -14829,56 +14739,6 @@
       "is_match": false,
       "error": null,
       "complexity_id": "python_linear_0823"
-    },
-    {
-      "sample_id": 2284,
-      "problem": "1195_B",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "constant",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_linear_0824"
-    },
-    {
-      "sample_id": 2285,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0825"
-    },
-    {
-      "sample_id": 2286,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0826"
-    },
-    {
-      "sample_id": 2287,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0827"
-    },
-    {
-      "sample_id": 2288,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0828"
     },
     {
       "sample_id": 2289,
@@ -14931,16 +14791,6 @@
       "complexity_id": "python_linear_0833"
     },
     {
-      "sample_id": 2294,
-      "problem": "1196_D2",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0834"
-    },
-    {
       "sample_id": 2295,
       "problem": "1196_D2",
       "source": "CODEFORCES",
@@ -14949,16 +14799,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_linear_0835"
-    },
-    {
-      "sample_id": 2296,
-      "problem": "1196_D2",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0836"
     },
     {
       "sample_id": 2297,
@@ -14971,16 +14811,6 @@
       "complexity_id": "python_linear_0837"
     },
     {
-      "sample_id": 2298,
-      "problem": "1196_D2",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0838"
-    },
-    {
       "sample_id": 2299,
       "problem": "1196_D2",
       "source": "CODEFORCES",
@@ -14991,26 +14821,6 @@
       "complexity_id": "python_linear_0839"
     },
     {
-      "sample_id": 2300,
-      "problem": "1196_D2",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0840"
-    },
-    {
-      "sample_id": 2301,
-      "problem": "1196_D2",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0841"
-    },
-    {
       "sample_id": 2302,
       "problem": "1196_D2",
       "source": "CODEFORCES",
@@ -15019,16 +14829,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_linear_0842"
-    },
-    {
-      "sample_id": 2303,
-      "problem": "1197_A",
-      "source": "CODEFORCES",
-      "expected_complexity": "linear",
-      "model_raw_output": "linear",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_linear_0843"
     },
     {
       "sample_id": 2304,
@@ -18511,16 +18311,6 @@
       "complexity_id": "python_nlogn_0339"
     },
     {
-      "sample_id": 2653,
-      "problem": "0988_B",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "exponential",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_nlogn_0340"
-    },
-    {
       "sample_id": 2654,
       "problem": "0988_B",
       "source": "CODEFORCES",
@@ -18529,16 +18319,6 @@
       "is_match": false,
       "error": null,
       "complexity_id": "python_nlogn_0341"
-    },
-    {
-      "sample_id": 2655,
-      "problem": "0988_B",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "exponential",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_nlogn_0342"
     },
     {
       "sample_id": 2656,
@@ -18559,16 +18339,6 @@
       "is_match": false,
       "error": null,
       "complexity_id": "python_nlogn_0344"
-    },
-    {
-      "sample_id": 2658,
-      "problem": "0988_B",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "quadratic",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_nlogn_0345"
     },
     {
       "sample_id": 2659,
@@ -19089,16 +18859,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_nlogn_0397"
-    },
-    {
-      "sample_id": 2711,
-      "problem": "0995_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "exponential",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_nlogn_0398"
     },
     {
       "sample_id": 2712,
@@ -20251,16 +20011,6 @@
       "complexity_id": "python_nlogn_0513"
     },
     {
-      "sample_id": 2827,
-      "problem": "1027_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "linear",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_nlogn_0514"
-    },
-    {
       "sample_id": 2828,
       "problem": "1027_C",
       "source": "CODEFORCES",
@@ -20291,36 +20041,6 @@
       "complexity_id": "python_nlogn_0517"
     },
     {
-      "sample_id": 2831,
-      "problem": "1027_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "linear",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_nlogn_0518"
-    },
-    {
-      "sample_id": 2832,
-      "problem": "1027_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "nlogn",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_nlogn_0519"
-    },
-    {
-      "sample_id": 2833,
-      "problem": "1027_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "linear",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_nlogn_0520"
-    },
-    {
       "sample_id": 2834,
       "problem": "1027_C",
       "source": "CODEFORCES",
@@ -20329,16 +20049,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_nlogn_0521"
-    },
-    {
-      "sample_id": 2835,
-      "problem": "1027_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "nlogn",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_nlogn_0522"
     },
     {
       "sample_id": 2836,
@@ -21789,16 +21499,6 @@
       "is_match": false,
       "error": null,
       "complexity_id": "python_nlogn_0667"
-    },
-    {
-      "sample_id": 2981,
-      "problem": "1100_E",
-      "source": "CODEFORCES",
-      "expected_complexity": "nlogn",
-      "model_raw_output": "nlogn",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_nlogn_0668"
     },
     {
       "sample_id": 2982,
@@ -23371,16 +23071,6 @@
       "complexity_id": "python_quadratic_0029"
     },
     {
-      "sample_id": 3139,
-      "problem": "0909_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0030"
-    },
-    {
       "sample_id": 3140,
       "problem": "0909_C",
       "source": "CODEFORCES",
@@ -23951,16 +23641,6 @@
       "complexity_id": "python_quadratic_0089"
     },
     {
-      "sample_id": 3199,
-      "problem": "0958_A1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0090"
-    },
-    {
       "sample_id": 3200,
       "problem": "0958_A1",
       "source": "CODEFORCES",
@@ -24021,16 +23701,6 @@
       "complexity_id": "python_quadratic_0096"
     },
     {
-      "sample_id": 3206,
-      "problem": "0958_A1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_quadratic_0097"
-    },
-    {
       "sample_id": 3207,
       "problem": "0958_A1",
       "source": "CODEFORCES",
@@ -24039,16 +23709,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_quadratic_0098"
-    },
-    {
-      "sample_id": 3208,
-      "problem": "0958_A1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "exponential",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_quadratic_0099"
     },
     {
       "sample_id": 3209,
@@ -24371,16 +24031,6 @@
       "complexity_id": "python_quadratic_0131"
     },
     {
-      "sample_id": 3241,
-      "problem": "0961_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "exponential",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_quadratic_0132"
-    },
-    {
       "sample_id": 3242,
       "problem": "0961_C",
       "source": "CODEFORCES",
@@ -24411,16 +24061,6 @@
       "complexity_id": "python_quadratic_0135"
     },
     {
-      "sample_id": 3245,
-      "problem": "0961_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "cubic",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_quadratic_0136"
-    },
-    {
       "sample_id": 3246,
       "problem": "0961_C",
       "source": "CODEFORCES",
@@ -24441,16 +24081,6 @@
       "complexity_id": "python_quadratic_0138"
     },
     {
-      "sample_id": 3248,
-      "problem": "0961_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0139"
-    },
-    {
       "sample_id": 3249,
       "problem": "0961_C",
       "source": "CODEFORCES",
@@ -24469,46 +24099,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_quadratic_0141"
-    },
-    {
-      "sample_id": 3251,
-      "problem": "0961_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0142"
-    },
-    {
-      "sample_id": 3252,
-      "problem": "0961_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0143"
-    },
-    {
-      "sample_id": 3253,
-      "problem": "0961_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "linear",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_quadratic_0144"
-    },
-    {
-      "sample_id": 3254,
-      "problem": "0961_C",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0145"
     },
     {
       "sample_id": 3255,
@@ -26791,16 +26381,6 @@
       "complexity_id": "python_quadratic_0374"
     },
     {
-      "sample_id": 3484,
-      "problem": "1027_E",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "cubic",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_quadratic_0375"
-    },
-    {
       "sample_id": 3485,
       "problem": "1028_A",
       "source": "CODEFORCES",
@@ -26919,16 +26499,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_quadratic_0387"
-    },
-    {
-      "sample_id": 3497,
-      "problem": "1028_A",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0388"
     },
     {
       "sample_id": 3498,
@@ -28331,16 +27901,6 @@
       "complexity_id": "python_quadratic_0528"
     },
     {
-      "sample_id": 3638,
-      "problem": "1059_B",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0529"
-    },
-    {
       "sample_id": 3639,
       "problem": "1062_D",
       "source": "CODEFORCES",
@@ -28801,16 +28361,6 @@
       "complexity_id": "python_quadratic_0575"
     },
     {
-      "sample_id": 3685,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0576"
-    },
-    {
       "sample_id": 3686,
       "problem": "1196_D1",
       "source": "CODEFORCES",
@@ -28819,36 +28369,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_quadratic_0577"
-    },
-    {
-      "sample_id": 3687,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0578"
-    },
-    {
-      "sample_id": 3688,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0579"
-    },
-    {
-      "sample_id": 3689,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0580"
     },
     {
       "sample_id": 3690,
@@ -28881,46 +28401,6 @@
       "complexity_id": "python_quadratic_0583"
     },
     {
-      "sample_id": 3693,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0584"
-    },
-    {
-      "sample_id": 3694,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0585"
-    },
-    {
-      "sample_id": 3695,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0586"
-    },
-    {
-      "sample_id": 3696,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0587"
-    },
-    {
       "sample_id": 3697,
       "problem": "1196_D1",
       "source": "CODEFORCES",
@@ -28949,26 +28429,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_quadratic_0590"
-    },
-    {
-      "sample_id": 3700,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0591"
-    },
-    {
-      "sample_id": 3701,
-      "problem": "1196_D1",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0592"
     },
     {
       "sample_id": 3702,
@@ -29069,16 +28529,6 @@
       "is_match": true,
       "error": null,
       "complexity_id": "python_quadratic_0602"
-    },
-    {
-      "sample_id": 3712,
-      "problem": "1197_D",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "nlogn",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_quadratic_0603"
     },
     {
       "sample_id": 3713,
@@ -29581,16 +29031,6 @@
       "complexity_id": "python_quadratic_0653"
     },
     {
-      "sample_id": 3763,
-      "problem": "1515_E",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "exponential",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_quadratic_0654"
-    },
-    {
       "sample_id": 3764,
       "problem": "1515_E",
       "source": "CODEFORCES",
@@ -29599,16 +29039,6 @@
       "is_match": false,
       "error": null,
       "complexity_id": "python_quadratic_0655"
-    },
-    {
-      "sample_id": 3765,
-      "problem": "1515_E",
-      "source": "CODEFORCES",
-      "expected_complexity": "quadratic",
-      "model_raw_output": "quadratic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_quadratic_0656"
     },
     {
       "sample_id": 3766,
@@ -30499,16 +29929,6 @@
       "is_match": false,
       "error": null,
       "complexity_id": "python_cubic_0088"
-    },
-    {
-      "sample_id": 3855,
-      "problem": "0999_F",
-      "source": "CODEFORCES",
-      "expected_complexity": "cubic",
-      "model_raw_output": "cubic",
-      "is_match": true,
-      "error": null,
-      "complexity_id": "python_cubic_0089"
     },
     {
       "sample_id": 3856,
@@ -33955,7 +33375,7 @@
       "problem": "1517_D",
       "source": "CODEFORCES",
       "expected_complexity": "cubic",
-      "model_raw_output": "n\u00b2k",
+      "model_raw_output": "n²k",
       "is_match": false,
       "error": null,
       "complexity_id": "python_cubic_0439"
@@ -34379,16 +33799,6 @@
       "is_match": false,
       "error": null,
       "complexity_id": "python_cubic_0481"
-    },
-    {
-      "sample_id": 4248,
-      "problem": "1517_D",
-      "source": "CODEFORCES",
-      "expected_complexity": "cubic",
-      "model_raw_output": "quadratic",
-      "is_match": false,
-      "error": null,
-      "complexity_id": "python_cubic_0482"
     },
     {
       "sample_id": 4249,
