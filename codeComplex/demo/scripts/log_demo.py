@@ -3,10 +3,37 @@ import re
 import json
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.optimize import curve_fit
+from scipy.optimize import curve_fit, least_squares
 import os
 import sys
+import signal
 from openai import OpenAI
+
+# 全局变量用于存储统计信息
+global_stats = None
+
+# 信号处理函数，确保在程序被中断时保存统计信息
+def signal_handler(signum, frame):
+    print(f"\n接收到信号 {signum}，正在保存统计信息...")
+    if global_stats is not None:
+        save_stats(global_stats)
+    print("统计信息已保存，程序退出。")
+    sys.exit(0)
+
+# 设置信号处理
+# signal.signal(signal.SIGINT, signal_handler)  # 捕获 Ctrl+C
+
+# 保存统计信息的函数
+def save_stats(stats_data):
+    try:
+        stats_dir = '/home/wuyankai/myResearch/codeComplex/demo/filteredData'
+        os.makedirs(stats_dir, exist_ok=True)
+        stats_file_path = os.path.join(stats_dir, 'linear_demo_stats.json')
+        with open(stats_file_path, 'w', encoding='utf-8') as f:
+            json.dump(stats_data, f, indent=2, ensure_ascii=False)
+        print(f"统计信息已保存到：{stats_file_path}")
+    except Exception as e:
+        print(f"保存统计信息时发生错误: {e}")
 
 # 导入配置文件
 import config
@@ -19,10 +46,10 @@ def linear(n, a, b):
     return a * n + b
 
 def quadratic(n, a, b, c):
-    return a * n**2 + b * n + c
+    return a * n**2 + c
 
 def cubic(n, a, b, c, d):
-    return a * n**3 + b * n**2 + c * n + d
+    return a * n**3  + d
 
 def logarithmic(n, a, b):
     return a * np.log(n) + b
@@ -36,121 +63,34 @@ def exponential(n, a, b):
 def power(n, a, b):
     return a * n**b
 
-# 大模型调用函数，基于OpenAI API
-def call_large_model(original_code, api_key=None, base_url=None):
-    """调用大模型生成可执行程序
-    
-    Args:
-        original_code: str, 原始代码
-        api_key (str, optional): OpenAI API密钥，如果不提供则使用默认密钥
-        base_url (str, optional): API基础URL，如果不提供则使用默认URL
-        
-    Returns:
-        str: 生成的无input()、可参数化规模n的Python程序
-    """
-    # 设置默认API参数
-    if api_key is None:
-        api_key = "sk-3sNQAO5ydpVp29WWoCqvM7Ajqzd1I5WKOpe29cpoT3DoMrZe"
-    if base_url is None:
-        base_url = "https://yunwu.ai/v1"
-    
-    # 创建OpenAI客户端
-    client = OpenAI(api_key=api_key, base_url=base_url)
-    
-    # 设计强约束提示词
-    system_prompt = """你是一位算法专家，精通Python编程和时间复杂度分析。
-    你的任务是将给定的Python程序转换为一个无input()、可参数化规模n的Python程序。
-    """
-    
-    user_prompt = f"""请你将以下Python程序转换为一个无input()、可参数化规模n的Python程序。
-    
-    要求：
-    1. 移除所有input()或等价的输入读取语句
-    2. 添加一个函数main(n)，将程序逻辑封装在其中，n为测试规模参数
-    3. 确保程序可以直接执行，无需任何外部输入
-    4. 生成的程序应保留原始算法的时间复杂度特性
-    5. 对于需要数据的地方，根据n生成合适的测试数据
-    6. 只输出生成的Python代码，不要输出任何解释性文字
-    7. 确保代码语法正确，可直接运行
-    8. 不要包含任何额外的注释或说明
-    
-    示例输入：
-    s = input()
-    print(s.count('a'))
-    
-    示例输出：
-    def main(n):
-        s = 'a' * n
-        return s.count('a')
-    
-    原始Python程序：
-    ```python
-    {original_code}
-    ```
-    """
-    
-    try:
-        # 调用大模型API
-        response = client.chat.completions.create(
-            model="gpt-5.1",
-            temperature=0.0,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
-            stream=False
-        )
-        
-        # 提取模型原始回复
-        model_raw_output = response.choices[0].message.content.strip()
-        
-        # 清理输出，确保只返回Python代码
-        # 移除可能的代码块标记
-        if model_raw_output.startswith('```python'):
-            model_raw_output = model_raw_output[10:]
-        if model_raw_output.endswith('```'):
-            model_raw_output = model_raw_output[:-3]
-        
-        return model_raw_output.strip()
-        
-    except Exception as e:
-        error_msg = str(e)
-        print(f"调用大模型时出错: {error_msg}")
-        # 直接抛出异常，让用户后期查看具体错误信息
-        raise Exception(f"调用大模型失败: {error_msg}") from e
-
 # 处理单个代码文件的函数
-def process_code_file(code_path):
+def process_code_file(code_path, expected_models):
     """处理单个代码文件，执行完整的时间复杂度分析流程
     
     Args:
         code_path: str, 代码文件路径
+        expected_models: list, 预期的复杂度模型列表
+    
+    Returns:
+        bool: 处理是否成功
     """
     if not os.path.exists(code_path):
         print(f"错误：文件 {code_path} 不存在")
-        return
+        return False
     
     # 读取原始代码
     with open(code_path, 'r', encoding='utf-8') as f:
-        original_code = f.read()
+        code = f.read()
     
-    print(f"\n1. 读取原始代码：{code_path}")
-    print(f"代码长度：{len(original_code)} 字符")
+    print(f"\n1. 读取原始代码：\n{code_path}")
+    print(f"代码长度：{len(code)} 字符")
     
     # 提取文件名作为结果目录名
     file_name = os.path.basename(code_path)
     base_name = os.path.splitext(file_name)[0]
     # 使用配置文件中的结果目录
-    result_dir = f"{config.logn_results_base_dir}/results_{base_name}"  # 修复目录名拼写错误
+    result_dir = f"{config.linear_results_base_dir}/results_{base_name}"  # 修复目录名拼写错误
     os.makedirs(result_dir, exist_ok=True)
-   
-    # 检查是否已经存在生成的程序文件
-    if os.path.exists(code_path):
-        print(f"\n2. 检测到已存在生成的程序，直接读取：{code_path}")
-        with open(code_path, 'r', encoding='utf-8') as f:
-            code = f.read()
-        print(f"读取到的程序：")
-        print(code)    
     # 创建测试结果文件
     test_results = []
     # 使用配置文件中的测试参数
@@ -172,7 +112,8 @@ def process_code_file(code_path):
         # 对于每个测试规模n（从start_n到max_n，间隔step）
         print(f"\n3. 执行时间测试：n = {start_n} 到 {max_n}，步长 {step}")
         for n in range(start_n, max_n + 1, step):
-            # 构造完整的测试代码
+        # for n in [10**3, 10**4, 10**5, 10**6, 10**7, 10**8 ]:
+                # 构造完整的测试代码
             test_code = f"""{code}
 
 # 执行测试
@@ -180,7 +121,7 @@ main({n})
 """
             
             # 记录开始时间
-            start_time = time.time()
+            start_time = time.perf_counter()
             # print(f"当前测试规模n={n}")
             # print(f"当前测试代码：")
             # print(test_code)
@@ -189,13 +130,15 @@ main({n})
             exec(test_code, exec_globals)
             
             # 记录结束时间
-            end_time = time.time()
+            end_time = time.perf_counter()
             
             # 计算运行时间
             run_time = end_time - start_time
+            run_time_ms = run_time * 1000
             
             # 保存结果
-            test_results.append((n, run_time))
+            test_results.append((n, run_time_ms))
+            # print(f"n={n}, time={run_time_ms:.6f}ms")
             
             # 记录当前分析的数据点数量
             current_datapoints = len(test_results)
@@ -207,7 +150,7 @@ main({n})
             #     print(f'当前已分析 {current_datapoints} 个数据点')
             
             # 每10个点保存一次临时数据，防止程序中断导致数据丢失
-            if current_datapoints % 10 == 0:
+            if current_datapoints % 10000 == 0:
                 np.savez(temp_results_path, results=test_results)
                 # 临时数据已保存到：{temp_results_path}
                 # print(f'临时数据已保存到 {temp_results_path}')
@@ -222,7 +165,7 @@ main({n})
         # 保存最终结果
         final_results_path = os.path.join(result_dir, "time_results.npz")
         np.savez(final_results_path, results=test_results)
-        print(f'最终数据已保存到 {final_results_path}')
+        print(f'最终数据已保存到 \n{final_results_path}')
     
     # 如果收集到的数据点足够，进行拟合分析
     if len(test_results) >= 3:
@@ -236,6 +179,18 @@ main({n})
             'n': n_values,
             'time': time_values
         }
+        
+        # 创建权重数组，让大N的数据点权重更高
+        # 权重与n成正比，可以根据需要调整权重函数
+        weights = n_values / n_values.max()  # 归一化到[0,1]范围
+        # 或者使用更激进的权重：权重与n的平方成正比
+        # weights = (n_values / n_values.max()) ** 2
+        # 为权重添加一个小偏移，确保即使n=0也有一定权重
+        weights = weights + 0.1
+        # 归一化权重，使总和为1
+        weights = weights / weights.sum()
+        # 将权重转换为sigma参数（curve_fit中sigma是标准差，与权重成反比）
+        sigma = 1.0 / weights
         
         # 尝试拟合不同的模型
         models = {
@@ -255,25 +210,39 @@ main({n})
         print("\n4. 开始进行时间复杂度拟合分析...")
         for model_name, model_func in models.items():
             try:
-                # 尝试拟合
+                # 定义残差函数，用于稳健回归
+                def residual_func(params, n, y):
+                    # 计算残差 = (观测值 - 模型预测值) / 权重
+                    # 这样可以保持大N数据点的高权重
+                    return (y - model_func(n, *params)) * weights
+                
+                # 使用稳健回归（least_squares）代替curve_fit
                 if model_name == 'Constant':
-                    popt, pcov = curve_fit(model_func, data['n'], data['time'], p0=[np.mean(data['time'])])
+                    result = least_squares(residual_func, x0=[np.mean(data['time'])], args=(data['n'], data['time']), loss='soft_l1')
+                    popt = result.x
                 elif model_name == 'Linear':
-                    popt, pcov = curve_fit(model_func, data['n'], data['time'], p0=[1e-9, 0])
+                    result = least_squares(residual_func, x0=[1e-9, 0], args=(data['n'], data['time']), loss='soft_l1')
+                    popt = result.x
                 elif model_name == 'Quadratic':
-                    popt, pcov = curve_fit(model_func, data['n'], data['time'], p0=[1e-12, 1e-9, 0])
+                    # 增大二次项系数a的初始值，减小低阶项系数的初始值
+                    result = least_squares(residual_func, x0=[1e-10, 1e-12, 1e-14], args=(data['n'], data['time']), loss='soft_l1')
+                    popt = result.x
                 elif model_name == 'Cubic':
-                    popt, pcov = curve_fit(model_func, data['n'], data['time'], p0=[1e-15, 1e-12, 1e-9, 0])
+                    # 增大三次项系数a的初始值，减小低阶项系数的初始值
+                    result = least_squares(residual_func, x0=[1e-13, 1e-15, 1e-17, 1e-19], args=(data['n'], data['time']), loss='soft_l1')
+                    popt = result.x
                 elif model_name == 'Logarithmic':
-                    popt, pcov = curve_fit(model_func, data['n'], data['time'], p0=[1e-6, 0])
+                    result = least_squares(residual_func, x0=[1e-6, 0], args=(data['n'], data['time']), loss='soft_l1')
+                    popt = result.x
                 elif model_name == 'n_log_n':
-                    popt, pcov = curve_fit(model_func, data['n'], data['time'], p0=[1e-9, 0])
+                    result = least_squares(residual_func, x0=[1e-9, 0], args=(data['n'], data['time']), loss='soft_l1')
+                    popt = result.x
                 elif model_name == 'Exponential':
-                    popt, pcov = curve_fit(model_func, data['n'], data['time'], p0=[1e-6, 1e-6])
-                elif model_name == 'Sqrt_Exponential':
-                    popt, pcov = curve_fit(model_func, data['n'], data['time'], p0=[1e-6, 1e-6])
+                    result = least_squares(residual_func, x0=[1e-6, 1e-6], args=(data['n'], data['time']), loss='soft_l1')
+                    popt = result.x
                 elif model_name == 'Power':
-                    popt, pcov = curve_fit(model_func, data['n'], data['time'], p0=[1e-6, 1])
+                    result = least_squares(residual_func, x0=[1e-9, 1], args=(data['n'], data['time']), loss='soft_l1')
+                    popt = result.x
                 
                 # 计算R²值
                 residuals = data['time'] - model_func(data['n'], *popt)
@@ -284,14 +253,27 @@ main({n})
                 else:
                     r_squared = 1 - (ss_res / ss_tot)
                 
+                # 计算BIC和AIC
+                n_samples = len(data['n'])
+                k_params = len(popt)
+                
+                # BIC (贝叶斯信息准则): BIC = n * ln(SSR/n) + k * ln(n)
+                bic = n_samples * np.log(ss_res / n_samples) + k_params * np.log(n_samples)
+                
+                # AIC (赤池信息准则): AIC = 2k + n * ln(SSR/n)
+                aic = 2 * k_params + n_samples * np.log(ss_res / n_samples)
+                
                 # 保存拟合结果
                 fit_results[model_name] = {
                     'params': popt.tolist(),
                     'r_squared': r_squared,
+                    'bic': bic,
+                    'aic': aic,
                     'success': True
                 }
                 
-                print(f"{model_name}: R² = {r_squared:.6f}, 参数 = {popt}")
+                # 注释掉所有模型的详细输出，只保留最佳拟合模型的信息
+                # print(f"{model_name}: R² = {r_squared:.6f}, BIC = {bic:.6f}, AIC = {aic:.6f}, 参数 = {popt}")
                 
             except Exception as e:
                 fit_results[model_name] = {
@@ -303,8 +285,19 @@ main({n})
                 print(f"{model_name}: 拟合失败 - {e}")
         
         # 找出最佳拟合模型
-        best_model = max(fit_results.items(), key=lambda x: x[1]['r_squared'] if x[1]['success'] else 0)
-        print(f"\n最佳拟合模型: {best_model[0]}, R² = {best_model[1]['r_squared']:.6f}")
+        # 首先筛选出成功拟合的模型
+        successful_models = {name: results for name, results in fit_results.items() if results['success']}
+        if successful_models:
+            # 使用BIC选择最佳模型（BIC值越小越好）
+            best_model = min(successful_models.items(), key=lambda x: x[1]['bic'])
+            best_model_name = best_model[0]
+            print(f"\n最佳拟合模型: {best_model_name} (基于BIC最小选择)")
+            print(f"  BIC值: {best_model[1]['bic']:.6f}")
+            print(f"  AIC值: {best_model[1]['aic']:.6f}")
+            print(f"  R²值: {best_model[1]['r_squared']:.6f}")
+        else:
+            best_model_name = None
+            print("\n没有成功拟合的模型")
         
         # 保存拟合结果
         fit_results_path = os.path.join(result_dir, "fit_results.json")
@@ -316,7 +309,7 @@ main({n})
         plt.scatter(data['n'], data['time'], label='Actual Data', color='blue', alpha=0.5)
         
         # 绘制最佳拟合曲线
-        if best_model[0] in ['Logarithmic', 'n_log_n']:
+        if best_model[0] in ['Logarithmic', 'n_log_n', ]:
             # 对于对数模型，只在n>0时绘制
             plot_n = np.linspace(1, max(data['n']), 1000)
         else:
@@ -376,18 +369,44 @@ main({n})
                     f.write(f"{model_name}: 拟合失败 - {result['error']}\n")
                 f.write("\n")
             
-            f.write(f"最佳拟合模型: {best_model[0]}\n")
-            f.write(f"最佳R²值: {best_model[1]['r_squared']:.6f}\n")
+            f.write(f"最佳拟合模型: {best_model[0]} (基于BIC最小选择)\n")
+            f.write(f"BIC值: {best_model[1]['bic']:.6f}\n")
+            f.write(f"AIC值: {best_model[1]['aic']:.6f}\n")
+            f.write(f"R²值: {best_model[1]['r_squared']:.6f}\n")
         
         print(f"\n分析报告已保存到 {report_path}")
         print(f"所有结果已保存到目录 {result_dir}")
+        
+        # 根据预期模型列表判断处理是否成功
+        return best_model_name in expected_models
     else:
         print(f"\n数据点不足 ({len(test_results)} 个)，无法进行拟合分析")
+        return False
+    
 
 # 主函数：执行完整的时间复杂度分析流程
 def main():
-    # 使用配置文件中的文件夹路径
-    folder_path = config.logn_folder_path
+    global global_stats
+    
+    # 选择要处理的文件夹类型：'logn' 或 'cubic'
+    folder_type = 'quadratic'  # 可以修改为 'cubic' 或 'quadratic' 来处理不同类型的文件夹
+    
+    # 根据选择的类型设置文件夹路径
+    if folder_type == 'logn':
+        folder_path = config.logn_folder_path
+        expected_models = ['Logarithmic', 'logn','constant', 'Power','Constant',"n_log_n"]  # logn类型文件的预期模型
+    elif folder_type == 'linear':
+        folder_path = config.linear_folder_path
+        expected_models = ["linear"]  # linear类型文件的预期模型
+    elif folder_type == 'cubic':
+        folder_path = config.cubic_folder_path
+        expected_models = ['Cubic']  # cubic类型文件的预期模型
+    elif folder_type == 'quadratic':
+        folder_path = config.quadratic_folder_path
+        expected_models = ['Quadratic']  # quadratic类型文件的预期模型
+    else:
+        print(f"不支持的文件夹类型: {folder_type}")
+        return
     
     # 获取文件夹中所有的Python文件
     python_files = []
@@ -400,18 +419,64 @@ def main():
     
     print(f"找到 {len(python_files)} 个Python文件，开始处理...")
     
+    # 初始化计数器
+    total_files = len(python_files)
+    success_count = 0
+    failed_count = 0
+    success_files = []
+    failed_files = []
+    
+    # 创建初始统计数据
+    global_stats = {
+        'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
+        'total_files': total_files,
+        'success_count': success_count,
+        'failed_cout': failed_count,
+        'success_files': success_files,
+        'failed_files': failed_files,
+        'folder_path': folder_path
+    }
+    
     # 遍历所有Python文件，逐个处理
     for i, code_path in enumerate(python_files, 1):
-        if(i%12==0):
+        # if(i>=582-3):
+        if(i>=0):
             print(f"\n{'='*60}")
             print(f"处理文件 {i}/{len(python_files)}")
             print(f"{'='*60}")
-            process_code_file(code_path)
-        
+            try:
+                success = process_code_file(code_path, expected_models)
+                if success:
+                    success_count += 1
+                    success_files.append(os.path.basename(code_path))
+                else:
+                    failed_count += 1
+                    failed_files.append(os.path.basename(code_path))
+            except Exception as e:
+                print(f"处理文件 {code_path} 时发生异常: {e}")
+                import traceback
+                traceback.print_exc()
+                failed_count += 1
+                failed_files.append(os.path.basename(code_path))
+        # 更新全局统计信息
+        global_stats['success_count'] = success_count
+        global_stats['failed_count'] = failed_count
+        global_stats['success_files'] = success_files
+        global_stats['failed_files'] = failed_files
+        global_stats['timestamp'] = time.strftime('%Y-%m-%d %H:%M:%S')
     
     print(f"\n{'='*60}")
     print("所有文件处理完成！")
     print(f"{'='*60}")
+    
+    # 生成统计信息
+    print(f"\n统计信息：")
+    print(f"总文件数：{total_files}")
+    print(f"成功处理：{success_count}")
+    print(f"处理失败：{failed_count}")
+    
+    # 保存统计信息
+    save_stats(global_stats)
 
 if __name__ == "__main__":
     main()
