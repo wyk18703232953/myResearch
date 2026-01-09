@@ -1,11 +1,9 @@
 from math import *
-import random
 
-def main(n: int):
-    # 生成测试数据 A：长度为 n 的非负整数数组
-    # 这里示例使用 0~n 范围内的随机整数，你可按需要调整生成方式
-    random.seed(0)
-    A = [random.randint(0, n) for _ in range(n)]
+def main(n):
+    # 确定性生成长度为 n 的数组 A
+    # 这里构造一个模式：前半部分不满足条件，后半部分逐渐增大
+    A = [(i // 2) for i in range(n)]
 
     ans = -1
     maxs = 0
@@ -13,10 +11,10 @@ def main(n: int):
         if A[j] > maxs:
             ans = j + 1
             break
+
         else:
             maxs = max(maxs, A[j] + 1)
-    print(ans)
-
-# 示例调用
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

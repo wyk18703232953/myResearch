@@ -1,23 +1,20 @@
-import random
-
 def main(n):
-    # 生成参数 k（可根据需要调整范围，这里取 1~20）
-    k = random.randint(1, 20)
-
-    # 生成测试数组 arr，取值在 [0, 2^k - 1] 范围内
-    max_val = (1 << k) - 1
-    arr = [random.randint(0, max_val) for _ in range(n)]
+    # Deterministically generate k based on n, ensure k >= 1
+    k = max(1, (n % 20) + 1)
+    # Generate array arr of length n deterministically
+    arr = [i % (2 ** k) for i in range(1, n + 1)]
 
     newarr = [0]
     for num in arr:
         newarr.append(newarr[-1] ^ num)
 
     dic = {}
-    limit = (1 << k) - 1
+    limit = 2 ** k - 1
     for num in newarr:
         x = (min(num, limit - num), max(num, limit - num))
         if x in dic:
             dic[x] += 1
+
         else:
             dic[x] = 1
 
@@ -30,9 +27,7 @@ def main(n):
         ans += half * (half - 1) / 2
 
     ans = n * (n + 1) / 2 - ans
-    print(int(ans))
-
-
+    # print(int(ans))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，可根据需要修改 n
     main(10)

@@ -18,4 +18,5 @@ if __name__ == "__main__":
     # 这里示例使用 n = 10 作为测试规模。
     test_n = 10
     result = main(test_n)
-    print(result)
+    # print(result)
+    pass

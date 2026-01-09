@@ -1,23 +1,14 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 将 n 看作原程序中的 n
-    # 生成 m, a, b 为与 n 同规模的正整数
-    if n <= 0:
-        raise ValueError("n must be positive")
+    # n 表示输入规模，这里用来生成确定性的 n, m, a, b
+    # 为保证 m 不为 0，令 m = n + 1
+    N = n + 2          # 模拟原始输入中的 n
+    M = n + 1          # 模拟原始输入中的 m
+    A = n + 3          # 模拟原始输入中的 a
+    B = n + 4          # 模拟原始输入中的 b
 
-    m = random.randint(1, max(1, n))          # 保证 m >= 1
-    a = random.randint(1, max(1, n))
-    b = random.randint(1, max(1, n))
-
-    # 原始逻辑
-    x = n % m
-    result = min(a * (m - x), b * x)
-
-    print(result)
-
-
+    x = N % M
+    result = min(A * (M - x), B * x)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：可自行调整 n 的值做规模测试
-    main(100)
+    main(10)

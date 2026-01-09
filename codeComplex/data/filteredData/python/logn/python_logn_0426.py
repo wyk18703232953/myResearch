@@ -42,8 +42,8 @@ def main(n):
         ni = i + 1
         ki = i * i + 1
         res = solve(ni, ki)
-        print(res)
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例：规模取 5
     main(5)

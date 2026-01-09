@@ -8,11 +8,11 @@ def main(n: int):
     i = s_no1.find('2')
     if i == -1:
         result = s_no1 + '1' * t
+
     else:
         result = s_no1[:i] + '1' * t + s_no1[i:]
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

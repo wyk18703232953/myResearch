@@ -10,9 +10,8 @@ def main(n):
         s = (s + x) % MOD
         p = (ss + sp + s) % MOD
         sp = (sp + p) % MOD
-    print(p)
-
-
+    # print(p)
+    pass
 if __name__ == '__main__':
     # 示例：调用 main(5)
     main(5)

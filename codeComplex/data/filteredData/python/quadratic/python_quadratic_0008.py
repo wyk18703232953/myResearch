@@ -1,16 +1,9 @@
 import math
-import random
 
 def main(n):
-    # 生成测试数据：半径 r 和 n 个点的位置 x[i]
-    # 这里示例：r 固定为 10，x 为 0~1000 内递增随机数
+    # n is the number of points
     r = 10
-    x = []
-    cur = 0
-    for _ in range(n):
-        cur += random.randint(0, 20)
-        x.append(cur)
-
+    x = [i * 3 for i in range(n)]
     ans = []
     for i in range(n):
         t = r
@@ -22,10 +15,8 @@ def main(n):
                 t2 = math.sqrt(t2) + ans[j]
                 t = max(t, t2)
         ans.append(t)
-
     for k in ans:
-        print(k)
-
+        # print(k)
+        pass
 if __name__ == "__main__":
-    # 可根据需要调整规模
     main(5)

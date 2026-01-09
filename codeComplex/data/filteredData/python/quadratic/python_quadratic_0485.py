@@ -1,9 +1,9 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：l[i], r[i] 保证在可行范围内 [0, i] 和 [0, n-i-1]
-    l = [random.randint(0, i) for i in range(n)]
-    r = [random.randint(0, n - i - 1) for i in range(n)]
+def main(n):
+    # Deterministically generate l and r based on n
+    # Example scheme:
+    # l[i] ranges from 0 to i (capped), r[i] from 0 to n-1-i (capped)
+    l = [i // 2 for i in range(n)]
+    r = [(n - 1 - i) // 2 for i in range(n)]
 
     maxx = 0
     s = []
@@ -40,13 +40,17 @@ def main(n: int):
             break
         maxx += summ
     if it == 1:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
+        base = min(s)
         for i in s:
-            print(i - min(s) + 1, end=' ')
-
-
-# 示例调用
+            # print(i - base + 1, end=' ')
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
-    main(5)
+    main(10)

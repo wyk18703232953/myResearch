@@ -19,9 +19,8 @@ def main(n):
         num += 1
         i += 1
 
-    print(' '.join(map(str, ans + sorted(all_nums)[::-1])))
-
-
+    # print(' '.join(map(str, ans + sorted(all_nums)[::-1])))
+    pass
 if __name__ == "__main__":
     # 示例调用：可以修改这里的 n 以测试不同规模
     main(5)

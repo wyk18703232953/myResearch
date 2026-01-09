@@ -1,22 +1,21 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # n: 数组 a, b 的长度
-    # m: 任意正整数，这里取与 n 同阶的值
-    m = max(1, n // 2)
+    # Interpret n as the length of arrays a and b, m is fixed as n for scalability
+    m = n
+    if n <= 0:
+        return
 
-    # 生成数组 a, b 的测试数据（可以根据需要调整生成策略）
-    # 这里生成 [1, 10] 范围内的随机整数
-    a = [random.randint(1, 10) for _ in range(n)]
-    b = [random.randint(1, 10) for _ in range(n)]
+    # Deterministically generate arrays a and b based on n
+    # a: mix of increasing and modular pattern
+    a = [(i * 3 + 1) % (n + 5) for i in range(n)]
+    # b: shifted pattern to vary minimum relative to a's maximum
+    b = [(i * 2 + 7) % (n + 11) for i in range(n)]
 
-    # 原始逻辑开始
     ma = 0
     macount = 0
     mi = 10**30
     su = 0
 
+    # Process a
     for el in a:
         if el > ma:
             ma = el
@@ -24,20 +23,26 @@ def main(n):
         elif el == ma:
             macount += 1
 
+    # Process b
     for el in b:
-        mi = min(el, mi)
+        if el < mi:
+            mi = el
         su += el
 
     if ma > mi:
-        print(-1)
+        # print(-1)
+        pass
     elif ma == mi or macount > 1:
         f = True
         for i in range(n):
             if a[i] == ma and f:
                 f = False
+
             else:
                 su += a[i] * m
-        print(su)
+        # print(su)
+        pass
+
     else:
         secmax = 0
         for el in a:
@@ -47,11 +52,10 @@ def main(n):
         for i in range(n):
             if a[i] == ma and f:
                 f = False
+
             else:
                 su += a[i] * m
-        print(su + ma - secmax)
-
-
-# 示例调用
+        # print(su + ma - secmax)
+        pass
 if __name__ == "__main__":
-    main(5)
+    main(10)

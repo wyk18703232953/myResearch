@@ -19,9 +19,8 @@ def main(n):
                     x += 1
             if x >= 2:
                 ans = max(ans, t)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例运行，可根据需要修改 n
     main(10)

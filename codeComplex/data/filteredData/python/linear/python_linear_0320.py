@@ -1,27 +1,18 @@
-import random
-import string
-
-def generate_random_string(length=5):
-    # 生成一个由小写字母组成的随机字符串
-    return ''.join(random.choice(string.ascii_lowercase) for _ in range(length))
-
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 这里简单地生成两个长度为 n 的字符串列表
-    l1 = [generate_random_string() for _ in range(n)]
-    l2 = [generate_random_string() for _ in range(n)]
+    # Generate deterministic input data based on n
+    # l1: ["s0", "s1", ..., "s(n-1)"]
+    l1 = ["s" + str(i) for i in range(n)]
+    # l2: first half same as l1, second half shifted by 1
+    l2 = ["s" + str(i) for i in range(n // 2)] + ["s" + str((i + 1) % n) for i in range(n // 2, n)]
 
-    # 原逻辑
     c = 0
-    l2_copy = l2[:]  # 避免在调试或扩展时直接修改原始测试数据
     for i in range(n):
-        if l1[i] in l2_copy:
-            l2_copy.remove(l1[i])
+        if l1[i] in l2:
+            l2.remove(l1[i])
+
         else:
             c += 1
-
-    print(c)
-
+    # print(c)
+    pass
 if __name__ == "__main__":
-    # 可自行修改 n 来测试不同规模
     main(10)

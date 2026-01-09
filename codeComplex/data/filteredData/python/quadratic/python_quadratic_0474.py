@@ -1,27 +1,27 @@
-import random
-
 def main(n):
-    # 生成测试数据 l, r，使之有较大概率可行
-    # 生成一个随机答案数组 ans（1..n），然后根据 ans 反推 l, r
-    ans = [random.randint(1, n) for _ in range(n)]
-    l = [0] * n
-    r = [0] * n
+    # Deterministic data generation based on n
+    # l[i]: number of greater elements before i
+    # r[i]: number of greater elements after i
+    # Use ans as a simple non-increasing sequence to keep constraints consistent
+    ans_true = [n - i for i in range(n)]
+    l = []
+    r = []
     for i in range(n):
-        k = 0
+        ci = ans_true[i]
+        left_greater = 0
         for j in range(i):
-            if ans[j] > ans[i]:
-                k += 1
-        l[i] = k
-        k = 0
+            if ans_true[j] > ci:
+                left_greater += 1
+        right_greater = 0
         for j in range(i + 1, n):
-            if ans[j] > ans[i]:
-                k += 1
-        r[i] = k
+            if ans_true[j] > ci:
+                right_greater += 1
+        l.append(left_greater)
+        r.append(right_greater)
 
-    # 下面是原逻辑的封装
+    ans = [1 for _ in range(n)]
     s = [l[i] + r[i] for i in range(n)]
     order = [i for i in range(n)]
-    ans_check = [1 for _ in range(n)]
 
     for i in range(n - 1):
         m = i
@@ -39,28 +39,32 @@ def main(n):
     for i in range(1, n):
         if s[i - 1] > s[i]:
             cur += 1
-        ans_check[order[i]] = cur
+        ans[order[i]] = cur
 
     for i in range(n):
         k = 0
         for j in range(i):
-            if ans_check[j] > ans_check[i]:
+            if ans[j] > ans[i]:
                 k += 1
         if l[i] != k:
-            print('NO')
+            # print('NO')
+            pass
             return
         k = 0
         for j in range(i + 1, n):
-            if ans_check[j] > ans_check[i]:
+            if ans[j] > ans[i]:
                 k += 1
         if r[i] != k:
-            print('NO')
+            # print('NO')
+            pass
             return
 
-    print('YES')
-    for x in ans_check:
-        print(x, end=' ')
-
-# 示例：直接运行时给个默认规模
+    # print('YES')
+    pass
+    for i in ans:
+        # print(i, end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
-    main(5)
+    main(10)

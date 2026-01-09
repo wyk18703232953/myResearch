@@ -17,6 +17,7 @@ def solve(n, k):
         m = (l + r) // 2
         if is_good(m, n, k):
             r = m
+
         else:
             l = m
     return r
@@ -31,14 +32,14 @@ def main(n):
     if n < 2:
         n_val = 1
         k_val = 1
+
     else:
         n_val = n
         k_val = max(2, n // 2)
 
     ans = solve(n_val, k_val)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 的值进行测试
     main(10)

@@ -14,9 +14,8 @@ def main(n: int):
         i += 1
         remaining_dist -= 1
 
-    print(cost)
-
-
+    # print(cost)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

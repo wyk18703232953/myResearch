@@ -1,5 +1,3 @@
-import random
-
 def solve(n, a):
     a = sorted(a)
     col = [False for _ in range(n)]
@@ -14,9 +12,11 @@ def solve(n, a):
     return count
 
 def main(n):
-    # 生成测试数据：n 个 1~1000 的随机整数
-    a = [random.randint(1, 1000) for _ in range(n)]
-    print(solve(n, a))
-
+    # 生成确定性输入：长度为 n 的整数数组
+    # 示例构造：a[i] = i + 1
+    a = [i + 1 for i in range(n)]
+    result = solve(n, a)
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

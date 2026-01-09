@@ -1,36 +1,39 @@
-from copy import deepcopy
-import random
-
-
 def main(n):
-    # 生成规模参数：
-    # m: 行数，n: 列数，k: 步数（必须是偶数才有解）
+    # Interpret n as both dimensions of the grid: m = n, cols = n
+    # Also set k proportional to n to scale the computation.
     m = n
-    k = 2 * (n // 2 + 1)  # 生成一个与 n 同数量级的偶数步数
+    cols = n
+    k = 2 * n  # even, and grows with n for scalability
 
-    # 生成测试数据：边权均为 1~9 的正整数
-    horizon = [[random.randint(1, 9) for _ in range(n - 1)] for _ in range(m)]
-    vertical = [[random.randint(1, 9) for _ in range(n)] for _ in range(m - 1)]
+    horizon = []
+    for i in range(m):
+        horizon.append([(i + j) % 7 + 1 for j in range(cols)])
 
-    # 原逻辑：k 为奇数时无法回到原点，答案为 -1
+    vertical = []
+    for i in range(m - 1):
+        vertical.append([(i * 3 + j * 5) % 9 + 1 for j in range(cols)])
+
     if k % 2 == 1:
-        ans = [-1] * n
+        ans = [-1] * cols
         for _ in range(m):
-            print(" ".join(map(str, ans)))
+            # print(" ".join(map(str, ans)))
+            pass
         return
 
     direc = [[0, -1], [0, 1], [1, 0], [-1, 0]]
-    ans = [[0 for _ in range(n)] for _ in range(m)]
+    ans = [[0 for _ in range(cols)] for _ in range(m)]
+
+    from copy import deepcopy
 
     for _ in range(k // 2):
         tempans = deepcopy(ans)
         for i in range(m):
-            for j in range(n):
-                ans[i][j] = 2147483647
+            for j in range(cols):
+                best = 2147483647
                 for d in range(4):
                     neighi = i + direc[d][0]
                     neighj = j + direc[d][1]
-                    if neighi < 0 or neighi >= m or neighj < 0 or neighj >= n:
+                    if neighi < 0 or neighi >= m or neighj < 0 or neighj >= cols:
                         continue
                     base = tempans[neighi][neighj]
                     if d == 0:
@@ -41,12 +44,12 @@ def main(n):
                         base += 2 * vertical[neighi - 1][neighj]
                     if d == 3:
                         base += 2 * vertical[neighi][neighj]
-                    ans[i][j] = min(ans[i][j], base)
+                    if base < best:
+                        best = base
+                ans[i][j] = best
 
     for row in ans:
-        print(" ".join(map(str, row)))
-
-
-# 示例调用
+        # print(" ".join(map(str, row)))
+        pass
 if __name__ == "__main__":
     main(5)

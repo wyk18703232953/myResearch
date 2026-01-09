@@ -1,27 +1,26 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # 数组 a 的元素范围可以自行调整，这里设为 1..10^9
-    a = [random.randint(1, 10**9) for _ in range(n)]
-    # 生成 m：这里设为 n（可根据需要调整规则）
-    m = n
-    queries = []
-    for _ in range(m):
-        l = random.randint(1, n)
-        r = random.randint(1, n)
-        if l > r:
-            l, r = r, l
-        queries.append((l, r))
+    # n controls the size of the array a and the number of queries m
+    # Generate a deterministic array a of length n
+    a = [(i * 37 + 23) % (n + 7) for i in range(n)]
 
-    # 下面是原始逻辑（移除 input，直接使用生成的数据）
+    # Initial parity: number of inversions in a
     parity = 0
     for i in range(n):
         for j in range(i + 1, n):
             if a[j] < a[i]:
                 parity ^= 1
 
-    for l, r in queries:
+    # Let the number of queries m be n as well
+    m = n
+
+    # Deterministically generate m queries (l, r) within [1, n]
+    # 1-based indices as in the original problem
+    for i in range(m):
+        l = (i % n) + 1
+        r = ((i * 2) % n) + 1
+        if l > r:
+            l, r = r, l
+
         dist = (r - l + 1)
         pairs = (dist - 1) * dist // 2
 
@@ -29,11 +28,11 @@ def main(n):
             parity ^= 1
 
         if parity:
-            print("odd")
+            # print("odd")
+            pass
+
         else:
-            print("even")
-
-
+            # print("even")
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自行修改
-    main(5)
+    main(10)

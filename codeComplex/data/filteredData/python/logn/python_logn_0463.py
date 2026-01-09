@@ -1,90 +1,98 @@
 def main(n):
-    # 生成隐藏的 a, b（规模由 n 控制，按位数生成）
-    # 为了与原始算法结构保持一致，仍然用 30 位，但你可以根据 n 修改位数
-    import random
+    # For this interactive-origin problem, the underlying logic is:
+    # there exist hidden integers a0, b0, and every query "? x y"
+    # returns sign(a0 ^ x - (b0 ^ y)) ∈ {-1, 0, 1}.
+    # The original code reconstructs a0, b0 using up to 30 bits.
+    #
+    # Here we remove all input/interactive aspects and instead:
+    # - deterministically construct hidden a0, b0 from n,
+    # - implement a deterministic "oracle" query function,
+    # - run the original reconstruction algorithm using that oracle,
+    # - return the reconstructed a, b to allow time complexity experiments.
+    #
+    # We keep 30 bits as in the original.
+    MAX_BITS = 30
 
-    max_bits = 30  # 原程序固定 30 位
-    # 若希望规模 n 控制位数，可改为：max_bits = n
-    max_val = (1 << max_bits) - 1
-    hidden_a = random.randint(0, max_val)
-    hidden_b = random.randint(0, max_val)
+    # Deterministically generate hidden numbers a0, b0 from n
+    # Ensure they are within 0..(2^MAX_BITS - 1)
+    mask = (1 << MAX_BITS) - 1
+    a0 = (n * 123456789 + 987654321) & mask
+    b0 = (n * 987654321 + 123456789) & mask
 
-    # 定义交互查询函数：模拟原来的输出 "? a b" 并返回 sign((a^hidden_a) - (b^hidden_b))
-    def query(x, y):
-        xa = x ^ hidden_a
-        yb = y ^ hidden_b
-        if xa > yb:
+    # Oracle: given x, y, return sign( (a0 ^ x) - (b0 ^ y) )
+    def oracle(x, y):
+        va = a0 ^ x
+        vb = b0 ^ y
+        if va > vb:
             return 1
-        elif xa < yb:
+        elif va < vb:
             return -1
+
         else:
             return 0
 
-    # 初始查询，对应原来的：
-    # print("? 0 0")
-    t = query(0, 0)
+    # Begin reconstruction logic (adapted from original interactive code)
 
-    A = [-1] * max_bits
-    B = [-1] * max_bits
+    # Initial query with (0, 0)
+    t = oracle(0, 0)
+
+    A = [-1] * MAX_BITS
+    B = [-1] * MAX_BITS
     a = 0
     b = 0
 
-    i = max_bits - 1
+    i = MAX_BITS - 1
     d = 1 << i
-
-    # 第一阶段：从高位到低位
     while i >= 0:
         a += d
         b += d
-        s = query(a, b)
-
+        s = oracle(a, b)
         if s == -t:
             if s == 1:
+                # According to original logic (though this branch is unreachable
+                # when t = oracle(0, 0) ∈ {-1, 0, 1})
                 A[i] = 0
                 B[i] = 1
                 b -= d
-                t = query(a, b)
+                t = oracle(a, b)
             elif s == -1:
                 A[i] = 1
                 a -= d
                 B[i] = 0
-                t = query(a, b)
+                t = oracle(a, b)
         i -= 1
-        d //= 2
+        d //= 2 if d > 0 else 0
 
-    # 第二阶段：填补未确定位
     d = 1
-    for j in range(max_bits):
+    for j in range(MAX_BITS):
         if A[j] == -1:
             a ^= d
-            s = query(a, b)
+            s = oracle(a, b)
             if s == 1:
                 A[j] = 1
                 B[j] = 1
+
             else:
                 A[j] = 0
                 B[j] = 0
             a ^= d
-        d *= 2
+        d <<= 1
 
-    # 根据 A、B 的位拼出最终 a、b
     d = 1
     a = 0
     b = 0
-    for i in range(max_bits):
+    for i in range(MAX_BITS):
         a += d * A[i]
         b += d * B[i]
-        d *= 2
+        d <<= 1
 
-    # 输出结果（模拟原来的最终输出）
-    print("!", a, b)
-
-    # 为了验证正确性，可以打印隐藏值与求得值（若不需要可注释）
-    # print("hidden:", hidden_a, hidden_b)
-    # print("found :", a, b)
+    # For experimentation, we return (reconstructed_a, reconstructed_b, true_a0, true_b0)
+    return a, b, a0, b0
 
 
 if __name__ == "__main__":
-    # n 作为规模参数，本实现中未直接用来控制逻辑，
-    # 如需按 n 控制位数，可在 main 中用 n 替代 max_bits
-    main(30)
+    # Example deterministic call for experimentation
+    # You can change the argument here to scale the "input size"
+    result = main(1000)
+    # print(result)
+    pass

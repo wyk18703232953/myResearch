@@ -1,22 +1,14 @@
-from math import ceil, floor, gcd, log, log2, factorial
-from collections import *
-import random
-import string
+def main(n):
+    # 生成确定性字符串 s，长度为 n，元素在 {'0','1','2'} 中循环
+    # 映射: i % 3 == 0 -> '0', == 1 -> '1', == 2 -> '2'
+    chars = ['0', '1', '2']
+    s = ''.join(chars[i % 3] for i in range(n))
 
-def main(n: int):
-    # 1. 根据规模 n 生成测试数据字符串 s
-    #   假设原题是处理由 '0' 和 '1' 组成的字符串，这里生成长度为 n 的随机 01 串
-    s = ''.join(random.choice('01') for _ in range(n))
-
-    # 2. 原始逻辑改写
     ans = s.replace('1', '') + '2'
     t = ans.find('2')
     result = ans[:t] + '1' * s.count('1') + ans[t:len(ans) - 1]
-
-    # 3. 输出结果
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可根据需要修改 n
+    # 示例规模，可按需修改
     main(10)

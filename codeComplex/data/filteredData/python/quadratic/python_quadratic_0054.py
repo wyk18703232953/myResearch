@@ -1,16 +1,12 @@
-import random
-
-mod = 10**9 + 7
-
 def divisors(M):
-    d = []
-    i = 1
-    while M >= i * i:
-        if M % i == 0:
+    d=[]
+    i=1
+    while M>=i**2:
+        if M%i==0:
             d.append(i)
-            if i * i != M:
-                d.append(M // i)
-        i += 1
+            if i**2!=M:
+                d.append(M//i)
+        i=i+1
     return d
 
 def popcount(x):
@@ -22,49 +18,47 @@ def popcount(x):
     return x & 0x0000007f
 
 def eratosthenes(n):
-    res = [0 for _ in range(n + 1)]
-    prime = set([])
-    for i in range(2, n + 1):
+    res=[0 for i in range(n+1)]
+    prime=set([])
+    for i in range(2,n+1):
         if not res[i]:
             prime.add(i)
-            for j in range(1, n // i + 1):
-                res[i * j] = 1
+            for j in range(1,n//i+1):
+                res[i*j]=1
     return prime
 
-def factorization(n, prime):
-    res = []
+def factorization(n):
+    res=[]
     for p in prime:
-        if n % p == 0:
-            while n % p == 0:
-                n //= p
+        if n%p==0:
+            while n%p==0:
+                n//=p
             res.append(p)
-    if n != 1:
+    if n!=1:
         res.append(n)
     return res
 
 def euler_phi(n):
     res = n
-    for x in range(2, n + 1):
-        if x * x > n:
+    for x in range(2,n+1):
+        if x ** 2 > n:
             break
-        if n % x == 0:
-            res = res // x * (x - 1)
-            while n % x == 0:
+        if n%x==0:
+            res = res//x * (x-1)
+            while n%x==0:
                 n //= x
-    if n != 1:
-        res = res // n * (n - 1)
+    if n!=1:
+        res = res//n * (n-1)
     return res
 
-def ind(b, n):
-    res = 0
-    while n % b == 0:
-        res += 1
-        n //= b
+def ind(b,n):
+    res=0
+    while n%b==0:
+        res+=1
+        n//=b
     return res
 
 def isPrimeMR(n):
-    if n < 2:
-        return 0
     d = n - 1
     d = d // (d & -d)
     L = [2, 3, 5, 7, 11, 13, 17]
@@ -117,7 +111,7 @@ def primeFactor(n):
     i = 2
     ret = {}
     rhoFlg = 0
-    while i * i <= n:
+    while i*i <= n:
         k = 0
         while n % i == 0:
             n //= i
@@ -129,6 +123,7 @@ def primeFactor(n):
             while n > 1:
                 if isPrimeMR(n):
                     ret[n], n = 1, 1
+
                 else:
                     rhoFlg = 1
                     j = findFactorRho(n)
@@ -137,7 +132,6 @@ def primeFactor(n):
                         n //= j
                         k += 1
                     ret[j] = k
-
     if n > 1:
         ret[n] = 1
     if rhoFlg:
@@ -150,37 +144,51 @@ def divisors2(n):
     for p in prime:
         newres = []
         for d in res:
-            for j in range(prime[p] + 1):
-                newres.append(d * p ** j)
+            for j in range(prime[p]+1):
+                newres.append(d*p**j)
         res = newres
     res.sort()
     return res
 
-def xorconv(n, X, Y):
-    if n == 0:
-        res = [(X[0] * Y[0]) % mod]
-        return res
-    x = [X[i] + X[i + 2 ** (n - 1)] for i in range(2 ** (n - 1))]
-    y = [Y[i] + Y[i + 2 ** (n - 1)] for i in range(2 ** (n - 1))]
-    z = [X[i] - X[i + 2 ** (n - 1)] for i in range(2 ** (n - 1))]
-    w = [Y[i] - Y[i + 2 ** (n - 1)] for i in range(2 ** (n - 1))]
-    res1 = xorconv(n - 1, x, y)
-    res2 = xorconv(n - 1, z, w)
-    former = [(res1[i] + res2[i]) * inv for i in range(2 ** (n - 1))]
-    latter = [(res1[i] - res2[i]) * inv for i in range(2 ** (n - 1))]
-    former = list(map(lambda x: x % mod, former))
-    latter = list(map(lambda x: x % mod, latter))
-    return former + latter
+def xorfactorial(num):
+    if num==0:
+        return 0
+    elif num==1:
+        return 1
+    elif num==2:
+        return 3
+    elif num==3:
+        return 0
 
-def merge_sort(A, B):
-    pos_A, pos_B = 0, 0
-    n, m = len(A), len(B)
+    else:
+        return num  # placeholder to keep determinism; original used undefined baseorder/function
+
+def xorconv(n,X,Y):
+    if n==0:
+        res=[(X[0]*Y[0])%mod]
+        return res
+    x=[X[i]+X[i+2**(n-1)] for i in range(2**(n-1))]
+    y=[Y[i]+Y[i+2**(n-1)] for i in range(2**(n-1))]
+    z=[X[i]-X[i+2**(n-1)] for i in range(2**(n-1))]
+    w=[Y[i]-Y[i+2**(n-1)] for i in range(2**(n-1))]
+    res1=xorconv(n-1,x,y)
+    res2=xorconv(n-1,z,w)
+    former=[(res1[i]+res2[i])*inv for i in range(2**(n-1))]
+    latter=[(res1[i]-res2[i])*inv for i in range(2**(n-1))]
+    former=list(map(lambda x:x%mod,former))
+    latter=list(map(lambda x:x%mod,latter))
+    return former+latter
+
+def merge_sort(A,B):
+    pos_A,pos_B = 0,0
+    n,m = len(A),len(B)
     res = []
     while pos_A < n and pos_B < m:
-        a, b = A[pos_A], B[pos_B]
+        a,b = A[pos_A],B[pos_B]
         if a < b:
             res.append(a)
             pos_A += 1
+
         else:
             res.append(b)
             pos_B += 1
@@ -199,7 +207,7 @@ class UnionFindVerSize():
             return x
         self._parent[x] = self.find_root(self._parent[x])
         stack = [x]
-        while self._parent[stack[-1]] != stack[-1]:
+        while self._parent[stack[-1]]!=stack[-1]:
             stack.append(self._parent[stack[-1]])
         for v in stack:
             self._parent[v] = stack[-1]
@@ -210,12 +218,11 @@ class UnionFindVerSize():
         gy = self.find_root(y)
         if gx == gy:
             return
-
         self.group -= 1
-
         if self._size[gx] < self._size[gy]:
             self._parent[gx] = gy
             self._size[gy] += self._size[gx]
+
         else:
             self._parent[gy] = gx
             self._size[gx] += self._size[gy]
@@ -227,43 +234,43 @@ class UnionFindVerSize():
         return self.find_root(x) == self.find_root(y)
 
 class WeightedUnionFind():
-    def __init__(self, N):
+    def __init__(self,N):
         self.parent = [i for i in range(N)]
-        self.size = [1 for _ in range(N)]
-        self.val = [0 for _ in range(N)]
+        self.size = [1 for i in range(N)]
+        self.val = [0 for i in range(N)]
         self.flag = True
-        self.edge = [[] for _ in range(N)]
+        self.edge = [[] for i in range(N)]
 
-    def dfs(self, v, pv):
-        stack = [(v, pv)]
+    def dfs(self,v,pv):
+        stack = [(v,pv)]
         new_parent = self.parent[pv]
         while stack:
-            v, pv = stack.pop()
+            v,pv = stack.pop()
             self.parent[v] = new_parent
-            for nv, w in self.edge[v]:
-                if nv != pv:
+            for nv,w in self.edge[v]:
+                if nv!=pv:
                     self.val[nv] = self.val[v] + w
-                    stack.append((nv, v))
+                    stack.append((nv,v))
 
-    def unite(self, x, y, w):
+    def unite(self,x,y,w):
         if not self.flag:
             return
-        if self.parent[x] == self.parent[y]:
+        if self.parent[x]==self.parent[y]:
             self.flag = (self.val[x] - self.val[y] == w)
             return
-
-        if self.size[self.parent[x]] > self.size[self.parent[y]]:
-            self.edge[x].append((y, -w))
-            self.edge[y].append((x, w))
+        if self.size[self.parent[x]]>self.size[self.parent[y]]:
+            self.edge[x].append((y,-w))
+            self.edge[y].append((x,w))
             self.size[x] += self.size[y]
             self.val[y] = self.val[x] - w
-            self.dfs(y, x)
+            self.dfs(y,x)
+
         else:
-            self.edge[x].append((y, -w))
-            self.edge[y].append((x, w))
+            self.edge[x].append((y,-w))
+            self.edge[y].append((x,w))
             self.size[y] += self.size[x]
             self.val[x] = self.val[y] + w
-            self.dfs(x, y)
+            self.dfs(x,y)
 
 class Dijkstra():
     class Edge():
@@ -294,12 +301,10 @@ class Dijkstra():
         d = [10**15] * self.V
         d[s] = 0
         heapq.heappush(que, (0, s))
-
         while len(que) != 0:
             cost, v = heapq.heappop(que)
             if d[v] < cost:
                 continue
-
             for i in range(len(self.G[v])):
                 e = self.G[v][i]
                 if d[e.to] > d[v] + e.cost:
@@ -309,119 +314,123 @@ class Dijkstra():
 
 def Z_algorithm(s):
     N = len(s)
-    Z_alg = [0] * N
-
+    Z_alg = [0]*N
+    if N == 0:
+        return Z_alg
     Z_alg[0] = N
     i = 1
     j = 0
     while i < N:
-        while i + j < N and s[j] == s[i + j]:
+        while i+j < N and s[j] == s[i+j]:
             j += 1
         Z_alg[i] = j
         if j == 0:
             i += 1
             continue
         k = 1
-        while i + k < N and k + Z_alg[k] < j:
-            Z_alg[i + k] = Z_alg[k]
+        while i+k < N and k + Z_alg[k]<j:
+            Z_alg[i+k] = Z_alg[k]
             k += 1
         i += k
         j -= k
     return Z_alg
 
 class BIT():
-    def __init__(self, n, mod=None):
-        self.BIT = [0] * (n + 1)
-        self.num = n
+    def __init__(self,n,mod=None):
+        self.BIT=[0]*(n+1)
+        self.num=n
         self.mod = mod
 
-    def query(self, idx):
+    def query(self,idx):
         res_sum = 0
-        mod_ = self.mod
+        mod = self.mod
         while idx > 0:
             res_sum += self.BIT[idx]
-            if mod_:
-                res_sum %= mod_
-            idx -= idx & (-idx)
+            if mod:
+                res_sum %= mod
+            idx -= idx&(-idx)
         return res_sum
 
-    def update(self, idx, x):
-        mod_ = self.mod
+    def update(self,idx,x):
+        mod = self.mod
         while idx <= self.num:
             self.BIT[idx] += x
-            if mod_:
-                self.BIT[idx] %= mod_
-            idx += idx & (-idx)
+            if mod:
+                self.BIT[idx] %= mod
+            idx += idx&(-idx)
         return
 
 class dancinglink():
-    def __init__(self, n, debug=False):
+    def __init__(self,n,debug=False):
         self.n = n
         self.debug = debug
-        self._left = [i - 1 for i in range(n)]
-        self._right = [i + 1 for i in range(n)]
+        self._left = [i-1 for i in range(n)]
+        self._right = [i+1 for i in range(n)]
         self.exist = [True for _ in range(n)]
 
-    def pop(self, k):
+    def pop(self,k):
         if self.debug:
             assert self.exist[k]
         L = self._left[k]
         R = self._right[k]
-        if L != -1:
-            if R != self.n:
-                self._right[L], self._left[R] = R, L
+        if L!=-1:
+            if R!=self.n:
+                self._right[L],self._left[R] = R,L
+
             else:
                 self._right[L] = self.n
-        elif R != self.n:
+        elif R!=self.n:
             self._left[R] = -1
         self.exist[k] = False
 
-    def left(self, idx, k=1):
+    def left(self,idx,k=1):
         if self.debug:
             assert self.exist[idx]
         res = idx
         while k:
             res = self._left[res]
-            if res == -1:
+            if res==-1:
                 break
             k -= 1
         return res
 
-    def right(self, idx, k=1):
+    def right(self,idx,k=1):
         if self.debug:
             assert self.exist[idx]
         res = idx
         while k:
             res = self._right[res]
-            if res == self.n:
+            if res==self.n:
                 break
             k -= 1
         return res
 
 class SparseTable():
-    def __init__(self, A, merge_func, ide_ele):
-        N = len(A)
-        n = N.bit_length()
-        self.table = [[ide_ele for _ in range(n)] for _ in range(N)]
-        self.merge_func = merge_func
-
+    def __init__(self,A,merge_func,ide_ele):
+        N=len(A)
+        if N == 0:
+            self.table = []
+            self.merge_func = merge_func
+            return
+        n=N.bit_length()
+        self.table=[[ide_ele for _ in range(n)] for _ in range(N)]
+        self.merge_func=merge_func
         for i in range(N):
-            self.table[i][0] = A[i]
+            self.table[i][0]=A[i]
+        for j in range(1,n):
+            for i in range(0,N-2**j+1):
+                f=self.table[i][j-1]
+                s=self.table[i+2**(j-1)][j-1]
+                self.table[i][j]=self.merge_func(f,s)
 
-        for j in range(1, n):
-            for i in range(0, N - 2 ** j + 1):
-                f = self.table[i][j - 1]
-                s = self.table[i + 2 ** (j - 1)][j - 1]
-                self.table[i][j] = self.merge_func(f, s)
-
-    def query(self, s, t):
-        b = t - s + 1
-        m = b.bit_length() - 1
-        return self.merge_func(self.table[s][m], self.table[t - 2 ** m + 1][m])
+    def query(self,s,t):
+        b=t-s+1
+        m=b.bit_length()-1
+        return self.merge_func(self.table[s][m],self.table[t-2**m+1][m])
 
 class BinaryTrie:
     class node:
-        def __init__(self, val):
+        def __init__(self,val):
             self.left = None
             self.right = None
             self.max = val
@@ -429,171 +438,166 @@ class BinaryTrie:
     def __init__(self):
         self.root = self.node(-10**15)
 
-    def append(self, key, val):
+    def append(self,key,val):
         pos = self.root
-        for i in range(29, -1, -1):
-            pos.max = max(pos.max, val)
-            if key >> i & 1:
+        for i in range(29,-1,-1):
+            pos.max = max(pos.max,val)
+            if key>>i & 1:
                 if pos.right is None:
                     pos.right = self.node(val)
                     pos = pos.right
+
                 else:
                     pos = pos.right
+
             else:
                 if pos.left is None:
                     pos.left = self.node(val)
                     pos = pos.left
+
                 else:
                     pos = pos.left
-        pos.max = max(pos.max, val)
+        pos.max = max(pos.max,val)
 
-    def search(self, M, xor):
+    def search(self,M,xor):
         res = -10**15
         pos = self.root
-        for i in range(29, -1, -1):
+        for i in range(29,-1,-1):
             if pos is None:
                 break
-
-            if M >> i & 1:
-                if xor >> i & 1:
+            if M>>i & 1:
+                if xor>>i & 1:
                     if pos.right:
-                        res = max(res, pos.right.max)
+                        res = max(res,pos.right.max)
                     pos = pos.left
+
                 else:
                     if pos.left:
-                        res = max(res, pos.left.max)
+                        res = max(res,pos.left.max)
                     pos = pos.right
+
             else:
-                if xor >> i & 1:
+                if xor>>i & 1:
                     pos = pos.right
+
                 else:
                     pos = pos.left
-
         if pos:
-            res = max(res, pos.max)
+            res = max(res,pos.max)
         return res
 
-def solveequation(edge, ans, n, m):
-    x = [0] * m
-    used = [False] * n
-
+def solveequation(edge,ans,n,m):
+    x=[0]*m
+    used=[False]*n
     def dfs(v):
-        used[v] = True
-        r = ans[v]
-        for to, dire, idx in edge[v]:
+        used[v]=True
+        r=ans[v]
+        for to,dire,id in edge[v]:
             if used[to]:
                 continue
-            y = dfs(to)
-            if dire == -1:
-                x[idx] = y
-            else:
-                x[idx] = -y
-            r += y
-        return r
+            y=dfs(to)
+            if dire==-1:
+                x[id]=y
 
+            else:
+                x[id]=-y
+            r+=y
+        return r
     for v in range(n):
         if used[v]:
             continue
         y = dfs(v)
-        if y != 0:
+        if y!=0:
             return False
     return x
 
 class Matrix():
-    mod = 10**9 + 7
+    mod=10**9+7
 
     @staticmethod
     def set_mod(m):
-        Matrix.mod = m
+        Matrix.mod=m
 
-    def __init__(self, L):
-        self.row = len(L)
-        self.column = len(L[0])
-        self._matrix = L
+    def __init__(self,L):
+        self.row=len(L)
+        self.column=len(L[0]) if self.row>0 else 0
+        self._matrix=L
         for i in range(self.row):
             for j in range(self.column):
-                self._matrix[i][j] %= Matrix.mod
+                self._matrix[i][j]%=Matrix.mod
 
-    def __getitem__(self, item):
-        if isinstance(item, int):
+    def __getitem__(self,item):
+        if type(item)==int or len(item)!=2:
             raise IndexError("you must specific row and column")
-        elif len(item) != 2:
-            raise IndexError("you must specific row and column")
-
-        i, j = item
+        i,j=item
         return self._matrix[i][j]
 
-    def __setitem__(self, item, val):
-        if isinstance(item, int):
+    def __setitem__(self,item,val):
+        if type(item)==int or len(item)!=2:
             raise IndexError("you must specific row and column")
-        elif len(item) != 2:
-            raise IndexError("you must specific row and column")
+        i,j=item
+        self._matrix[i][j]=val
 
-        i, j = item
-        self._matrix[i][j] = val
-
-    def __add__(self, other):
-        if (self.row, self.column) != (other.row, other.column):
+    def __add__(self,other):
+        if (self.row,self.column)!=(other.row,other.column):
             raise Exception("sizes of matrixes are different")
-
-        res = [[0 for _ in range(self.column)] for _ in range(self.row)]
+        res=[[0 for _ in range(self.column)] for _ in range(self.row)]
         for i in range(self.row):
             for j in range(self.column):
-                res[i][j] = self._matrix[i][j] + other._matrix[i][j]
-                res[i][j] %= Matrix.mod
+                res[i][j]=self._matrix[i][j]+other._matrix[i][j]
+                res[i][j]%=Matrix.mod
         return Matrix(res)
 
-    def __sub__(self, other):
-        if (self.row, self.column) != (other.row, other.column):
+    def __sub__(self,other):
+        if (self.row,self.column)!=(other.row,other.column):
             raise Exception("sizes of matrixes are different")
-
-        res = [[0 for _ in range(self.column)] for _ in range(self.row)]
+        res=[[0 for _ in range(self.column)] for _ in range(self.row)]
         for i in range(self.row):
             for j in range(self.column):
-                res[i][j] = self._matrix[i][j] - other._matrix[i][j]
-                res[i][j] %= Matrix.mod
+                res[i][j]=self._matrix[i][j]-other._matrix[i][j]
+                res[i][j]%=Matrix.mod
         return Matrix(res)
 
-    def __mul__(self, other):
-        if not isinstance(other, int):
-            if self.column != other.row:
+    def __mul__(self,other):
+        if type(other)!=int:
+            if self.column!=other.row:
                 raise Exception("sizes of matrixes are different")
-
-            res = [[0 for _ in range(other.column)] for _ in range(self.row)]
+            res=[[0 for _ in range(other.column)] for _ in range(self.row)]
             for i in range(self.row):
                 for j in range(other.column):
-                    temp = 0
+                    temp=0
                     for k in range(self.column):
-                        temp += self._matrix[i][k] * other._matrix[k][j]
-                    res[i][j] = temp % Matrix.mod
+                        temp+=self._matrix[i][k]*other._matrix[k][j]
+                    res[i][j]=temp%Matrix.mod
             return Matrix(res)
+
         else:
-            n = other
-            res = [[(n * self._matrix[i][j]) % Matrix.mod for j in range(self.column)] for i in range(self.row)]
+            n=other
+            res=[[(n*self._matrix[i][j])%Matrix.mod for j in range(self.column)] for i in range(self.row)]
             return Matrix(res)
 
-    def __pow__(self, m):
-        if self.column != self.row:
+    def __pow__(self,m):
+        if self.column!=self.row:
             raise Exception("the size of row must be the same as that of column")
-
-        n = self.row
-        res = Matrix([[int(i == j) for i in range(n)] for j in range(n)])
+        n=self.row
+        res=Matrix([[int(i==j) for i in range(n)] for j in range(n)])
         base = self
-        while m:
-            if m % 2 == 1:
-                res = res * base
-            base = base * base
-            m //= 2
+        e = m
+        while e:
+            if e%2==1:
+                res=res*base
+            base=base*base
+            e//=2
         return res
 
     def __str__(self):
-        res = []
+        res=[]
         for i in range(self.row):
             for j in range(self.column):
                 res.append(str(self._matrix[i][j]))
                 res.append(" ")
             res.append("\n")
-        res = res[:len(res) - 1]
+        res=res[:len(res)-1]
         return "".join(res)
 
 class SegmentTree:
@@ -601,8 +605,8 @@ class SegmentTree:
         n = len(init_val)
         self.segfunc = segfunc
         self.ide_ele = ide_ele
-        self.num = 1 << (n - 1).bit_length()
-        self.tree = [ide_ele] * (2 * self.num)
+        self.num = 1 << (n - 1).bit_length() if n>0 else 1
+        self.tree = [ide_ele] * 2 * self.num
         for i in range(n):
             self.tree[self.num + i] = init_val[i]
         for i in range(self.num - 1, 0, -1):
@@ -617,7 +621,6 @@ class SegmentTree:
 
     def query(self, l, r):
         res = self.ide_ele
-
         l += self.num
         r += self.num
         while l < r:
@@ -630,38 +633,40 @@ class SegmentTree:
             r >>= 1
         return res
 
-    def bisect_l(self, l, r, x):
+    def bisect_l(self,l,r,x):
         l += self.num
         r += self.num
         Lmin = -1
         Rmin = -1
-        while l < r:
+        while l<r:
             if l & 1:
-                if self.tree[l] <= x and Lmin == -1:
+                if self.tree[l] <= x and Lmin==-1:
                     Lmin = l
                 l += 1
             if r & 1:
-                if self.tree[r - 1] <= x:
-                    Rmin = r - 1
+                if self.tree[r-1] <=x:
+                    Rmin = r-1
             l >>= 1
             r >>= 1
-
         if Lmin != -1:
             pos = Lmin
-            while pos < self.num:
-                if self.tree[2 * pos] <= x:
+            while pos<self.num:
+                if self.tree[2 * pos] <=x:
                     pos = 2 * pos
+
                 else:
-                    pos = 2 * pos + 1
-            return pos - self.num
+                    pos = 2 * pos +1
+            return pos-self.num
         elif Rmin != -1:
             pos = Rmin
-            while pos < self.num:
-                if self.tree[2 * pos] <= x:
+            while pos<self.num:
+                if self.tree[2 * pos] <=x:
                     pos = 2 * pos
+
                 else:
-                    pos = 2 * pos + 1
-            return pos - self.num
+                    pos = 2 * pos +1
+            return pos-self.num
+
         else:
             return -1
 
@@ -681,23 +686,18 @@ class MinCostFlow:
         self.G[to].append(backward)
 
     def flow(self, s, t, f):
-        N = self.N
-        G = self.G
+        N = self.N; G = self.G
         INF = MinCostFlow.INF
-
         res = 0
-        H = [0] * N
-        prv_v = [0] * N
-        prv_e = [None] * N
-
-        d0 = [INF] * N
-        dist = [INF] * N
-
+        H = [0]*N
+        prv_v = [0]*N
+        prv_e = [None]*N
+        d0 = [INF]*N
+        dist = [INF]*N
         while f:
             dist[:] = d0
             dist[s] = 0
             que = [(0, s)]
-
             while que:
                 c, v = heappop(que)
                 if dist[v] < c:
@@ -707,17 +707,13 @@ class MinCostFlow:
                     w, cap, cost, _ = e
                     if cap > 0 and r0 + cost - H[w] < dist[w]:
                         dist[w] = r = r0 + cost - H[w]
-                        prv_v[w] = v
-                        prv_e[w] = e
+                        prv_v[w] = v; prv_e[w] = e
                         heappush(que, (r, w))
             if dist[t] == INF:
                 return None
-
             for i in range(N):
                 H[i] += dist[i]
-
-            d = f
-            v = t
+            d = f; v = t
             while v != s:
                 d = min(d, prv_e[v][1])
                 v = prv_v[v]
@@ -731,42 +727,31 @@ class MinCostFlow:
                 v = prv_v[v]
         return res
 
-# core logic converted from I/O version to function form
-def run_logic(a, queries):
-    n = len(a)
-    inv = 0
-    for i in range(n):
-        for j in range(i + 1, n):
-            if a[i] > a[j]:
-                inv += 1
-    inv %= 2
-
-    out = []
-    for l, r in queries:
-        L = r - l + 1
-        all_pairs = L * (L - 1) // 2
-        if all_pairs % 2 == 1:
-            inv = 1 - inv
-        out.append("odd" if inv else "even")
-    return out
+mod = 10**9+7
+inv = 1  # dummy for xorconv determinism
 
 def main(n):
-    # 生成规模为 n 的测试数据
-    # 数组 a: 长度 n，元素在 [0, n] 内
-    a = [random.randint(0, n) for _ in range(n)]
-
-    # 生成查询数 m（与 n 同数量级）
-    m = max(1, n)
-    queries = []
-    for _ in range(m):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
-        queries.append((l, r))
-
-    # 运行逻辑并输出结果
-    res = run_logic(a, queries)
-    for line in res:
-        print(line)
-
+    size = max(1, n)
+    a = [(i*i + 3*i + 7) % 100000 for i in range(size)]
+    inv_parity = 0
+    for i in range(size):
+        for j in range(i+1,size):
+            if a[i] > a[j]:
+                inv_parity += 1
+    inv_parity %= 2
+    m = n
+    flip_count = 0
+    for q in range(m):
+        l = (3*q) % size
+        r = (l + (q % size)) % size
+        if l > r:
+            l, r = r, l
+        L = r - l + 1
+        all_pairs = L*(L-1)//2
+        if all_pairs % 2 == 1:
+            inv_parity = 1 - inv_parity
+            flip_count += 1
+    # print(inv_parity, flip_count, size)
+    pass
 if __name__ == "__main__":
-    main(5)
+    main(1000)

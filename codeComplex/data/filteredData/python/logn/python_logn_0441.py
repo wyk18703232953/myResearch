@@ -19,6 +19,7 @@ def run(n, k):
         k -= currn
         if currs >= 40:
             rem = m
+
         else:
             rem = min(m, rem + cc[currs] * ((currn - 1) * 2 + 1))
         currn = (currn - 1) * 2 + 3
@@ -44,9 +45,8 @@ def main(n):
         results.append(res)
     # 输出所有结果，每行一个
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 进行 5 组测试
     main(5)

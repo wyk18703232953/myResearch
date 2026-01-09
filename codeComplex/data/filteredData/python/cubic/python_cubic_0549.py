@@ -1,39 +1,29 @@
-import random
+def main(n):
+    # Generate deterministic input based on n
+    # a: list of digits as characters, length = n, digits cycle 0-9
+    # b: upper bound integer with n digits, pattern 9876543210...
+    a = [str(i % 10) for i in range(n)]
+    b_digits = [str((9 - i) % 10) for i in range(n)]
+    b_str = "".join(b_digits) if b_digits else "0"
+    b = int(b_str)
 
-def main(n: int):
-    # 1. 生成测试数据
-    # 生成一个 n 位数字串（首位不为 0），以及一个上界 b
-    if n <= 0:
-        return ""
-    digits = [str(random.randint(0, 9)) for _ in range(n)]
-    if digits[0] == '0':
-        digits[0] = str(random.randint(1, 9))
-    a = digits[:]  # 字符列表
-    # 生成一个上界 b，保证是一个不小于由 a 排序后形成的最小数的随机数
-    min_num = int("".join(sorted(a)))
-    max_num = int("".join(sorted(a, reverse=True)))
-    if min_num == max_num:
-        b = max_num
-    else:
-        b = random.randint(min_num, max_num)
-
-    # 2. 原逻辑
+    a_list = list(a)
     ans = ""
-    a.sort(reverse=True)
-    while len(a) > 0:
-        for i in range(len(a)):
-            num = ans + a[i] + "".join(sorted(a[:i] + a[i+1:]))
+    a_list.sort(reverse=True)
+    while len(a_list) > 0:
+        for i in range(len(a_list)):
+            num = ans + a_list[i] + "".join(sorted(a_list[:i] + a_list[i + 1:]))
             if int(num) <= b:
-                ans += a[i]
-                a = a[:i] + a[i+1:]
+                ans += a_list[i]
+                a_list = a_list[:i] + a_list[i + 1:]
                 break
 
-    # 3. 输出结果（可根据需要修改）
-    print("digits:", "".join(digits))
-    print("b:", b)
-    print("answer:", ans)
+        else:
+            break
+    # print(ans)
+    pass
     return ans
 
+
 if __name__ == "__main__":
-    # 示例：规模为 5 的测试
     main(5)

@@ -1,34 +1,45 @@
 from collections import defaultdict
-import random
 
-def main(n: int):
-    # 随机生成规模：n 行，m 列（这里简单设定 m = n 或至少为 1）
-    m = max(1, n)
 
-    # 随机生成一个 n x m 的 0/1 矩阵，模拟原来的输入数据
-    # 你也可以根据需要改成固定构造或其他分布
-    res = []
+def solve_generated(rows, cols, grid):
+    n, m = rows, cols
     cnt = defaultdict(int)
-
-    for _ in range(n):
-        # 每行生成 m 个 0/1
-        A = [random.randint(0, 1) for _ in range(m)]
+    res = []
+    for i in range(n):
+        A = grid[i]
         res.append(A)
         for j in range(m):
             if A[j]:
                 cnt[j] += 1
-
-    # 按原逻辑判断
     valid = False
     for r in res:
         j = [i for i in range(m) if r[i]]
-        if j and all(cnt[i] > 1 for i in j):
+        if all(cnt[i] > 1 for i in j):
             valid = True
             break
+    if valid:
+        # print("YES")
+        pass
 
-    print("YES" if valid else "NO")
+    else:
+        # print("NO")
+        pass
+
+
+def main(n):
+    # Interpret n as both number of rows and columns of the binary matrix
+    rows = n
+    cols = n
+
+    # Deterministically generate a rows x cols binary matrix
+    # Example pattern: A[i][j] = 1 if (i + j) % 3 != 0 else 0
+    grid = [[1 if (i + j) % 3 != 0 else 0 for j in range(cols)] for i in range(rows)]
+
+    t = 1
+    while t:
+        t -= 1
+        solve_generated(rows, cols, grid)
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可以根据需要修改或在别处调用 main
     main(5)

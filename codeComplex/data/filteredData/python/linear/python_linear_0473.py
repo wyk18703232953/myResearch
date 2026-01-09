@@ -1,16 +1,26 @@
-import random
+import math
+from heapq import *
+
+gcd = math.gcd
+sqrt = math.sqrt
+ceil = math.ceil
+
+def ind(ch):
+    return ord(ch) - ord("a")
 
 def main(n):
-    # 1. 生成测试数据：构造一个 1..n 的随机排列作为 arr
-    #    每个点必须有且只有一个出边，原程序正是基于这种结构（排列上的若干环）。
-    perm = list(range(1, n + 1))
-    random.shuffle(perm)
+    if n < 1:
+        # print(0)
+        pass
+        return
+    cost = [0] + [i * 2 + 1 for i in range(1, n + 1)]
+    arr = [0] * (n + 1)
+    for i in range(1, n + 1):
+        if i < n:
+            arr[i] = i + 1
 
-    # cost: 1..n 的随机正整数权值，这里取 1..10^9 之间
-    cost = [0] + [random.randint(1, 10**9) for _ in range(n)]
-    arr = [0] + perm  # arr[i] 表示 i 指向的节点
-
-    # 以下为原 main 逻辑的无 input() 改写
+        else:
+            arr[i] = 1
     nv = [-1] * (n + 1)
     colors = []
     c = 0
@@ -25,7 +35,6 @@ def main(n):
         if nv[dest] == c:
             colors.append(dest)
         c += 1
-
     s = 0
     for i in colors:
         mi = cost[i]
@@ -34,10 +43,7 @@ def main(n):
             mi = min(mi, cost[nxt])
             nxt = arr[nxt]
         s += mi
-
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10，可按需修改或在外部调用 main(n)
     main(10)

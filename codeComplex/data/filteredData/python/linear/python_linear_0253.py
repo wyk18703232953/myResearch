@@ -1,37 +1,41 @@
-import random
-
 def main(n):
-    # 生成测试数据：根据规模 n 生成 nbColumn 和 h
-    # 这里约定：列数 nbColumn = n，h 在 [0, 2*(nbColumn-2)] 内随机生成，
-    # 确保既有可能输出 YES 也有可能输出 NO
-    nbColumn = max(3, n)  # 至少 3 列以匹配原逻辑的意义
-    max_h = max(0, 2 * (nbColumn - 2))
-    h = random.randint(0, max_h)
+    # 根据 n 确定 nbColumn 和 h 的规模
+    # 保证 nbColumn >= 3，避免原题中 (nbColumn-2) 的退化情况
+    nbColumn = max(3, n)
+    # 让 h 在 [0, 2*(nbColumn-2)] 范围内变化，便于既有 NO 又有 YES 情况
+    h = (3 * n) % (2 * max(1, (nbColumn - 2)) + 1)
 
-    # 输出生成的测试数据（如不需要可注释掉）
-    print(nbColumn, h)
-
-    # 下面是原逻辑
     if (nbColumn - 2) * 2 < h:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
+
         if h % 2 == 0:
-            print('.' * nbColumn)
-            print('.' + '#' * (h // 2) + '.' * (nbColumn - 1 - h // 2))
-            print('.' + '#' * (h // 2) + '.' * (nbColumn - 1 - h // 2))
-            print('.' * nbColumn)
+            # print('.' * nbColumn)
+            pass
+            # print('.' + '#' * (h // 2) + '.' * (nbColumn - 1 - h // 2))
+            pass
+            # print('.' + '#' * (h // 2) + '.' * (nbColumn - 1 - h // 2))
+            pass
+            # print('.' * nbColumn)
+            pass
+
         else:
-            print('.' * nbColumn)
+            # print('.' * nbColumn)
+            pass
             hFirst = min(h, nbColumn - 2)
             countPoint = (nbColumn - hFirst) // 2
-            print('.' * countPoint + '#' * hFirst + '.' * countPoint)
+            # print('.' * countPoint + '#' * hFirst + '.' * countPoint)
+            pass
             hSecond = (h - hFirst) // 2
             countPoint = nbColumn - 2 * hSecond - 2
-            print('.' + '#' * hSecond + '.' * countPoint + '#' * hSecond + '.')
-            print('.' * nbColumn)
-
-
+            # print('.' + '#' * hSecond + '.' * countPoint + '#' * hSecond + '.')
+            pass
+            # print('.' * nbColumn)
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # 示例调用，可按需修改 n 以进行规模化实验
     main(10)

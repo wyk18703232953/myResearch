@@ -21,13 +21,17 @@ def main(n):
         half = (start + end) // 2
         if is_big_num(half, s):
             end = half - 1
+
         else:
             start = half + 1
 
     if not is_big_num(start + 1, s):
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print(n - start + 1)
+        # print(n - start + 1)
+        pass
 
 
 # 示例调用

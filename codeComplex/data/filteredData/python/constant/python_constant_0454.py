@@ -19,10 +19,10 @@ def main(n: int):
     a = int(a_str)
     b = int(b_str)
 
-    print(a)
-    print(b)
-
-
+    # print(a)
+    pass
+    # print(b)
+    pass
 if __name__ == "__main__":
     # 示例：可在此处修改 n 以测试
     main(120)

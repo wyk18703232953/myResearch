@@ -1,33 +1,32 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：
-    # a, b 均为 1..n 的一个随机排列
-    a = list(range(1, n + 1))
-    b = a[:]  # 同一集合的排列
-    random.shuffle(a)
-    random.shuffle(b)
+def main(n):
+    # Deterministically generate input arrays a and b based on n
+    # Example scheme:
+    # a is a permutation-like sequence with simple arithmetic pattern
+    # b is another sequence over the same value range but with a different pattern
+    a = [(i * 2 + 1) % (2 * n + 1) for i in range(n)]
+    b = [(i * 3 + 2) % (2 * n + 1) for i in range(n)]
 
     done = set()
     j = 0
     ans = []
-
     for i in range(n):
         if b[i] in done:
             ans.append(0)
+
         else:
             c = 0
-            while a[j] != b[i]:
+            while j < n and a[j] != b[i]:
                 done.add(a[j])
                 j += 1
                 c += 1
-            done.add(a[j])
-            j += 1
-            ans.append(c + 1)
+            if j < n:
+                done.add(a[j])
+                j += 1
+                ans.append(c + 1)
 
-    print(*ans)
-
-
+            else:
+                ans.append(0)
+    # print(*ans)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10
     main(10)

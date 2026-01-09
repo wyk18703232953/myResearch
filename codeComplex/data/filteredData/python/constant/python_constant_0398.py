@@ -24,9 +24,8 @@ def main(n):
             for fi, fj in fig:
                 board[fi][j + fj] = 'X'
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

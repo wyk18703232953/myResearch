@@ -1,33 +1,30 @@
-import random
+def digitsum(n):
+    init = 0
+    for item in str(n):
+        init += int(item)
+    return init
 
-def digitsum(n: int) -> int:
-    s = 0
-    for ch in str(n):
-        s += int(ch)
-    return s
-
-def main(n: int):
-    # 根据规模 n 生成测试数据：
-    # 原程序读取 n 和 s，这里保留 n 为规模参数，
-    # 随机生成一个 0 <= s <= n 的测试值。
-    s = random.randint(0, n)
-
-    # 下面是原始逻辑
+def solve_single_case(n, s):
     if n - digitsum(n) < s:
-        print(0)
-        return
-
+        return 0
     i = 0
     j = n
     while i < j:
         mid = (i + j) // 2
         if mid - digitsum(mid) < s:
             i = mid + 1
+
         else:
             j = mid
-    print(n - i + 1)
+    return n - i + 1
 
-
+def main(n):
+    # 将 n 映射为原程序中的 (N, S)
+    # 使得规模随 n 增大且生成方式确定
+    N = max(1, n * 1000)
+    S = max(0, n // 2)
+    result = solve_single_case(N, S)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：可以在这里手动指定规模 n
-    main(10**6)
+    main(10)

@@ -1,28 +1,30 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：整数 s，以及 n 对 (x, y)
-    # 这里假设时间范围在一天内 [0:00, 23:59]
-    # s 随机生成在 [0, 120] 分钟内
-    s = random.randint(0, 120)
+def main(n):
+    # Deterministic data generation
+    # Interpret n as the number of (hour, minute) entries
+    # Generate s and n time points in non-decreasing order
+    s = n % 60 + 1  # waiting time, at least 1 and at most 60
 
     h = []
     m = []
     l = [0]
 
-    # 生成 n 个时间点（小时、分钟），保证有序且在一天内
-    # 先生成 n 个分钟数并排序
-    times = sorted(random.randint(0, 23 * 60 + 59) for _ in range(n))
-    for t in times:
-        x = t // 60
-        y = t % 60
+    # Generate times: base minutes increase deterministically with i
+    # Ensure they are non-decreasing and within a day
+    base_gap = max(1, 1440 // (n + 1))
+    for i in range(n):
+        total_minutes = base_gap * (i + 1)
+        total_minutes %= 1440
+        x = total_minutes // 60
+        y = total_minutes % 60
         h.append(x)
         m.append(y)
-        l.append(t)
+        l.append(total_minutes)
 
-    # 以下为原逻辑
+    # Original logic
     if l[1] != 0 and (l[1] - l[0]) >= s + 1:
-        print(0, 0)
+        # print(0, 0)
+        pass
+
     else:
         k = 2 * s + 2
         r = 0
@@ -30,11 +32,12 @@ def main(n: int):
             if l[i + 1] - l[i] >= k:
                 r = l[i] + s + 1
                 break
+
+            else:
+                continue
         if r == 0:
             r = l[n] + s + 1
-        print(r // 60, r % 60)
-
-
-# 示例：调用 main(5)
+        # print(r // 60, r % 60)
+        pass
 if __name__ == "__main__":
-    main(5)
+    main(10)

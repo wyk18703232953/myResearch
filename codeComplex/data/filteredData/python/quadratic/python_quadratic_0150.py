@@ -1,11 +1,29 @@
-import random
+def main(n):
+    lst1 = []
+    for x in range(n):
+        row = ''.join('0' if (x + y) % 3 == 0 else '1' for y in range(n))
+        lst1.append([row])
 
-def main(n: int):
-    # 生成测试数据：4 个 n×n 的 01 字符矩阵，用字符串表示每一行
-    lst1 = [[ "".join(random.choice("01") for _ in range(n)) ] for _ in range(n)]
-    lst2 = [[ "".join(random.choice("01") for _ in range(n)) ] for _ in range(n)]
-    lst3 = [[ "".join(random.choice("01") for _ in range(n)) ] for _ in range(n)]
-    lst4 = [[ "".join(random.choice("01") for _ in range(n)) ] for _ in range(n)]
+    s = "separator_1"
+
+    lst2 = []
+    for x in range(n):
+        row = ''.join('1' if (x * 2 + y) % 3 == 1 else '0' for y in range(n))
+        lst2.append([row])
+
+    s = "separator_2"
+
+    lst3 = []
+    for x in range(n):
+        row = ''.join('0' if (x + 2 * y) % 3 == 2 else '1' for y in range(n))
+        lst3.append([row])
+
+    s = "separator_3"
+
+    lst4 = []
+    for x in range(n):
+        row = ''.join('1' if (x * x + y) % 2 == 0 else '0' for y in range(n))
+        lst4.append([row])
 
     ans_b1 = 0
     ans_w1 = 0
@@ -14,11 +32,14 @@ def main(n: int):
             if (x + y) & 1 == 0:
                 if lst1[x][0][y] == '0':
                     ans_b1 += 1
+
                 else:
                     ans_w1 += 1
+
             else:
                 if lst1[x][0][y] == '1':
                     ans_b1 += 1
+
                 else:
                     ans_w1 += 1
 
@@ -29,11 +50,14 @@ def main(n: int):
             if (x + y) & 1 == 0:
                 if lst2[x][0][y] == '0':
                     ans_b2 += 1
+
                 else:
                     ans_w2 += 1
+
             else:
                 if lst2[x][0][y] == '1':
                     ans_b2 += 1
+
                 else:
                     ans_w2 += 1
 
@@ -44,11 +68,14 @@ def main(n: int):
             if (x + y) & 1 == 0:
                 if lst3[x][0][y] == '0':
                     ans_b3 += 1
+
                 else:
                     ans_w3 += 1
+
             else:
                 if lst3[x][0][y] == '1':
                     ans_b3 += 1
+
                 else:
                     ans_w3 += 1
 
@@ -59,11 +86,14 @@ def main(n: int):
             if (x + y) & 1 == 0:
                 if lst4[x][0][y] == '0':
                     ans_b4 += 1
+
                 else:
                     ans_w4 += 1
+
             else:
                 if lst4[x][0][y] == '1':
                     ans_b4 += 1
+
                 else:
                     ans_w4 += 1
 
@@ -75,8 +105,7 @@ def main(n: int):
         ans_w1 + ans_b2 + ans_w3 + ans_b4,
         ans_w1 + ans_w2 + ans_b3 + ans_b4,
     )
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    main(4)
+    main(10)

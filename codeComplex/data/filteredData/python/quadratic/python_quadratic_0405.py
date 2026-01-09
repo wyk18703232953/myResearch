@@ -3,6 +3,7 @@ def main(n: int) -> str:
     base = "abcdefghijklmnopqrstuvwxyz"
     if n <= 0:
         t = ""
+
     else:
         t = (base * ((n + len(base) - 1) // len(base)))[:n]
 
@@ -20,4 +21,5 @@ def main(n: int) -> str:
 
 if __name__ == "__main__":
     # 简单示例：n = 5
-    print(main(5))
+    # print(main(5))
+    pass

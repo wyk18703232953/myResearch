@@ -4,9 +4,8 @@ def main(n: int):
     l, r = n // 2, n
 
     result = 2 ** ((l ^ r).bit_length()) - 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际评测时可由外部指定 n
     main(10)

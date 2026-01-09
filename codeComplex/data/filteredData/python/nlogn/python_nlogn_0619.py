@@ -8,6 +8,7 @@ def main(n: int) -> int:
         while i * j <= n:
             ans += j * 4
             j += 1
+
         else:
             j = 2
     return ans
@@ -16,4 +17,5 @@ def main(n: int) -> int:
 if __name__ == "__main__":
     # 示例：选择一个规模 n 进行测试
     test_n = 100
-    print(main(test_n))
+    # print(main(test_n))
+    pass

@@ -75,6 +75,7 @@ class SortedList:
 
         if _list_lens[pos]:
             _mins[pos] = _lists[pos][0]
+
         else:
             del _lists[pos]
             del _list_lens[pos]
@@ -91,6 +92,7 @@ class SortedList:
             mi = (lo + pos) >> 1
             if value <= _mins[mi]:
                 pos = mi
+
             else:
                 lo = mi
         if pos and value <= _lists[pos - 1][-1]:
@@ -101,6 +103,7 @@ class SortedList:
             mi = (lo + idx) >> 1
             if value <= _list[mi]:
                 idx = mi
+
             else:
                 lo = mi
         return pos, idx
@@ -115,6 +118,7 @@ class SortedList:
             mi = (pos + hi) >> 1
             if value < _mins[mi]:
                 hi = mi
+
             else:
                 pos = mi
         _list = _lists[pos]
@@ -123,6 +127,7 @@ class SortedList:
             mi = (lo + idx) >> 1
             if value < _list[mi]:
                 idx = mi
+
             else:
                 lo = mi
         return pos, idx
@@ -148,6 +153,7 @@ class SortedList:
                 _list_lens[pos] = _load
                 del _list[_load:]
                 self._rebuild = True
+
         else:
             _lists.append([value])
             _mins.append(value)
@@ -266,14 +272,14 @@ def main(n):
         if a > b:
             op += a // b
             a %= b
+
         else:
             op += b // a
             b %= a
 
     # 输出结果
-    print(op)
-
-
+    # print(op)
+    pass
 if __name__ == '__main__':
     # 示例：调用 main(10)
     main(10)

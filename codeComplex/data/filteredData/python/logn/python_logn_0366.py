@@ -8,6 +8,7 @@ def fp(x, y):
     t = fp(x, y // 2) % mod
     if y % 2 == 1:
         return (t * t * x) % mod
+
     else:
         return (t * t) % mod
 
@@ -34,8 +35,8 @@ def main(n):
     # 这里假设 k 的规模与 n 同阶，例如 k = n
     k = n
     ans = solve(n, k)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为测试规模
     main(10)

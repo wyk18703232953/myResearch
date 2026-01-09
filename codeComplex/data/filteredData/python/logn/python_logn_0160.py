@@ -14,6 +14,7 @@ def main(n):
     # 简单生成一个测试用的“目标值” target_n（原来的 n），例如取中间值
     if maxi <= 1:
         target_n = 1
+
     else:
         target_n = maxi // 2
 
@@ -25,6 +26,7 @@ def main(n):
         result = 0
     elif n_val > maxi:
         result = -1
+
     else:
         begin = 2
         end = k
@@ -38,6 +40,7 @@ def main(n):
                 break
             elif value > n_val:
                 begin = mid + 1
+
             else:
                 MID = mid
                 end = mid - 1
@@ -46,12 +49,12 @@ def main(n):
 
         if remaining == 0:
             result = k - MID
+
         else:
             result = k - MID + 1
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：规模 n = 10
     main(10)

@@ -1,23 +1,26 @@
-import random
-
-
-def main(n: int):
-    # 生成测试数据：
-    # 1. 随机选择 k（段最大长度），范围 [1, max(1, n//2)]
-    # 2. 生成 n 个整数 xs，范围 [0, 10**4]
+def main(n):
+    # Deterministically generate n and k, and xs based on n
+    # Interpret n as the length of xs
     if n <= 0:
         return
 
-    k = random.randint(1, max(1, n // 2))
-    xs = [random.randint(0, 10 ** 4) for _ in range(n)]
+    # Choose k deterministically as a function of n (at least 1)
+    k = max(1, n // 3)
+
+    # Generate xs deterministically:
+    # Use a mix of small and larger values to exercise branches
+    # Values range roughly within [0, 3n]
+    xs = [((i * 7) % (3 * n + 1)) for i in range(n)]
 
     mapka = {}
     lengths = {}
+
     result = []
 
     for x in xs:
         if x in mapka:
             result.append(mapka[x])
+
         else:
             left = max(0, x - k + 1)
             range_potential = x - left
@@ -29,6 +32,7 @@ def main(n: int):
                         mapka[y] = potential_left
                     lengths[potential_left] = x - potential_left + 1
                     break
+
                 else:
                     base = mapka[potential_left]
                     if lengths[base] + (x - potential_left) <= k:
@@ -38,9 +42,9 @@ def main(n: int):
                             lengths[base] += 1
                         break
 
-    print(' '.join(map(str, result)))
-
-
+    # Final output to keep behavior similar to original program
+    # print(' '.join(map(str, result)))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 运行一组规模为 10 的测试
+    # Example deterministic call; adjust n as needed for experiments
     main(10)

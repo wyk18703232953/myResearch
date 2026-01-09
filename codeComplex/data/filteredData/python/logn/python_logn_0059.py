@@ -3,6 +3,7 @@ def main(n: int):
     # 这里示例为：0 <= l <= r < 2^n
     if n <= 0:
         l, r = 0, 0
+
     else:
         # 简单构造：l 为 2^(n-1)，r 为 2^n - 1
         # 即最高位为 1，后面全是 1，覆盖一个典型区间
@@ -24,9 +25,8 @@ def main(n: int):
     ans = 0
     for j in range(len(a)):
         ans += c[len(a) - 1 - j] * (2 ** j)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 可根据需要调整
     main(5)

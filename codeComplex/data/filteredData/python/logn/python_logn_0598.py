@@ -9,11 +9,11 @@ def main(n):
         m = (fin + deb) // 2
         if (m * (m + 1)) // 2 - (n - m) > a:
             fin = m
+
         else:
             deb = m
-    print(n - deb)
-
-
+    # print(n - deb)
+    pass
 if __name__ == "__main__":
     # 示例：运行 main(10)
     main(10)

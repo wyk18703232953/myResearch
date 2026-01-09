@@ -14,6 +14,7 @@ def main(n: int):
     while n != 1:
         if n % 2 != 0:
             z = (n // 2) + 1
+
         else:
             z = n // 2
         for _ in range(z):
@@ -24,12 +25,14 @@ def main(n: int):
     step = int(log2(tmp))
     if tmp % 2 ** (step - 1) == 0:
         out.write(str(tmp))
+
     else:
         q = 2 ** (step - 1)
         ans = 0
         for i in range(1, 1000):
             if q * i <= tmp:
                 ans = max(ans, q * i)
+
             else:
                 break
         out.write(str(ans))

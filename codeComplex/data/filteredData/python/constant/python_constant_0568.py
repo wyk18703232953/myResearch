@@ -1,28 +1,22 @@
-import math
-import random
-
 def main(n):
-    # 生成测试数据：
-    # n 固定为传入规模
-    # 约束：m, k, l 为不超过 n 的正整数
-    if n <= 0:
-        raise ValueError("n must be positive")
+    # 对应原程序中的四个输入：n, m, k, l
+    # 将规模 n 映射为原来的 n，其他参数用确定性方式构造
+    N = n
+    m = max(1, n // 3)
+    k = n // 2
+    l = n // 4
 
-    m = random.randint(1, n)
-    k = random.randint(0, n)
-    l = random.randint(0, n)
-
-    # 原逻辑开始
     x = (l + k) // m
     if x * m < l + k:
         x += 1
     assert x * m >= l + k
 
-    if m * x > n:
-        print(-1)
-    else:
-        print(x)
+    if m * x > N:
+        # print(-1)
+        pass
 
+    else:
+        # print(x)
+        pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n 的值
-    main(100)
+    main(10)

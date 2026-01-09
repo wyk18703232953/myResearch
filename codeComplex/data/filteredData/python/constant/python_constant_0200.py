@@ -1,37 +1,25 @@
-import random
+def solve(k):
+    k.sort()
+    if min(k) == 1:
+        return "YES"
+    elif k.count(2) >= 2:
+        return "YES"
+    elif k.count(3) == 3:
+        return "YES"
+    elif k == [2, 4, 4]:
+        return "YES"
+    return "NO"
+
 
 def main(n):
-    """
-    n 为测试规模，这里用来生成 n 组测试数据，
-    每组数据是一个长度为 3 的整数数组 k，元素范围可自行调整。
-    函数将返回一个长度为 n 的结果列表，每个元素为 "YES" 或 "NO"。
-    """
-    results = []
-
-    for _ in range(n):
-        # 生成一组测试数据：长度固定为 3，数值范围 1~5
-        k = [random.randint(1, 5) for _ in range(3)]
-        k.sort()
-
-        # 原逻辑判断
-        if min(k) == 1:
-            res = "YES"
-        elif k.count(2) >= 2:
-            res = "YES"
-        elif k.count(3) == 3:
-            res = "YES"
-        elif k == [2, 4, 4]:
-            res = "YES"
-        else:
-            res = "NO"
-
-        results.append((k, res))
-
-    return results
-
-
+    # 生成长度为3的列表，因为原题隐含输入为3个数
+    # 使用与 n 相关的确定性构造
+    a = (n % 5) + 1
+    b = ((n // 2) % 5) + 1
+    c = ((n // 3) % 5) + 1
+    k = [a, b, c]
+    res = solve(k)
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：跑 10 组随机测试
-    ans = main(10)
-    for k, res in ans:
-        print(k, res)
+    main(10)

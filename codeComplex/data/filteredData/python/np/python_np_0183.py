@@ -21,9 +21,8 @@ def main(n):
         if l <= s <= r and max(subset) - min(subset) >= x:
             res += 1
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

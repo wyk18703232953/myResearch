@@ -1,32 +1,4 @@
-from collections import deque
-from types import GeneratorType
 import math
-import random
-
-###########
-# LIBRARY #
-###########
-
-
-def bootstrap(f, stack=[]):
-    def wrappedfunc(*args, **kwargs):
-        if stack:
-            return f(*args, **kwargs)
-        else:
-            to = f(*args, **kwargs)
-            while True:
-                if type(to) is GeneratorType:
-                    stack.append(to)
-                    to = next(to)
-                else:
-                    stack.pop()
-                    if not stack:
-                        break
-                    to = stack[-1].send(to)
-            return to
-
-    return wrappedfunc
-
 
 class MDArray(object):
     def __init__(self, dimensions, initial_value=0):
@@ -54,92 +26,85 @@ class MDArray(object):
         return value
 
 
-#########
-# LOGIC #
-#########
-
 def encode(row, col, n, m):
     return row * m + col
 
 
-@bootstrap
 def solve(node, remain, adj, dp):
     if remain == 0:
-        yield 0
+        return 0
     key = (node, remain)
     mem = dp.get(key)
     if mem != -1:
-        yield mem
+        return mem
     best = math.inf
-    for v, w in adj[node]:
-        cand = (yield solve(v, remain - 1, adj, dp)) + w
-        if cand < best:
-            best = cand
+    for to, w in adj[node]:
+        val = solve(to, remain - 1, adj, dp) + w
+        if val < best:
+            best = val
     dp.set(key, best)
-    yield best
+    return best
 
 
 def main(n):
-    # n: controls scale; we choose grid size and k based on n
-    # Example strategy: make grid roughly sqrt(n) x sqrt(n), k even ≤ 2*min(n,m)
-    if n <= 0:
-        return []
+    # Interpret n as grid size n x n, and choose k as an even number derived from n
+    # Ensure k >= 2 for nontrivial behavior
+    grid_n = max(1, n)
+    grid_m = max(1, n)
+    # k is even, proportional to n but capped to keep recursion reasonable
+    k = max(2, 2 * min(n, 20))
 
-    side = max(1, int(n ** 0.5))
-    rows = side
-    cols = side
-    k = 2 * max(1, min(rows, cols) // 2)  # even and not too large
+    n_rows = grid_n
+    m_cols = grid_m
 
-    # Generate random positive weights for edges
-    total_nodes = rows * cols
+    if k % 2 == 1:
+        # This branch will not occur because we enforce even k, but we keep logic consistent
+        result = []
+        for _ in range(n_rows):
+            result.append(' '.join(map(str, [-1] * m_cols)))
+        # print('\n'.join(result))
+        pass
+        return
+
+    total_nodes = n_rows * m_cols
     adj = [[] for _ in range(total_nodes)]
 
-    # Horizontal edges
-    horiz_weights = [
-        [random.randint(1, 10) for _ in range(cols - 1)] for _ in range(rows)
-    ]
-    for i in range(rows):
-        for j in range(cols - 1):
-            cur = encode(i, j, rows, cols)
-            nex = encode(i, j + 1, rows, cols)
-            w = horiz_weights[i][j]
+    # Deterministic horizontal edge weights
+    # Original input: n lines, each with m-1 weights
+    # We generate weight(i,j) = (i + j + 1) for edge between (i,j) and (i,j+1)
+    for i in range(n_rows):
+        weights = [(i + j + 1) for j in range(m_cols - 1)]
+        for j in range(m_cols - 1):
+            cur = encode(i, j, n_rows, m_cols)
+            nex = encode(i, j + 1, n_rows, m_cols)
+            w = weights[j]
             adj[cur].append((nex, w))
             adj[nex].append((cur, w))
 
-    # Vertical edges
-    vert_weights = [
-        [random.randint(1, 10) for _ in range(cols)] for _ in range(rows - 1)
-    ]
-    for i in range(rows - 1):
-        for j in range(cols):
-            cur = encode(i, j, rows, cols)
-            nex = encode(i + 1, j, rows, cols)
-            w = vert_weights[i][j]
+    # Deterministic vertical edge weights
+    # Original input: n-1 lines, each with m weights
+    # We generate weight(i,j) = (i + j + 2) for edge between (i,j) and (i+1,j)
+    for i in range(n_rows - 1):
+        weights = [(i + j + 2) for j in range(m_cols)]
+        for j in range(m_cols):
+            cur = encode(i, j, n_rows, m_cols)
+            nex = encode(i + 1, j, n_rows, m_cols)
+            w = weights[j]
             adj[cur].append((nex, w))
             adj[nex].append((cur, w))
-
-    # If k is odd, answer is all -1
-    if k % 2 == 1:
-        res = [[-1] * cols for _ in range(rows)]
-        for row in res:
-            print(" ".join(map(str, row)))
-        return res
 
     dp = MDArray([total_nodes, k + 2], -1)
-    half = k // 2
 
-    result_grid = []
-    for i in range(rows):
+    half_k = k // 2
+    output_lines = []
+    for i in range(n_rows):
         ans_row = []
-        for j in range(cols):
-            node = encode(i, j, rows, cols)
-            val = solve(node, half, adj, dp) * 2
+        for j in range(m_cols):
+            node = encode(i, j, n_rows, m_cols)
+            val = solve(node, half_k, adj, dp) * 2
             ans_row.append(val)
-        result_grid.append(ans_row)
-        print(" ".join(map(str, ans_row)))
-    return result_grid
-
-
+        output_lines.append(' '.join(map(str, ans_row)))
+    # print('\n'.join(output_lines))
+    pass
 if __name__ == "__main__":
-    # Example: run with scale parameter n = 16
-    main(16)
+    main(5)

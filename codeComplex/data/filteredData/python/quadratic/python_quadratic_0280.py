@@ -1,20 +1,17 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # a 和 b 都为长度为 n 的数组，元素范围 [1, 2n]
+    # Interpret n as the size of both sequences a and b
     m = n
-    a = [random.randint(1, 2 * n) for _ in range(n)]
-    b = [random.randint(1, 2 * n) for _ in range(m)]
 
-    # 原逻辑：输出 a 中在 b 里的元素，按 a 的顺序
-    result = []
+    # Deterministically generate sequences:
+    # a: [0, 1, 2, ..., n-1]
+    # b: [n//2, n//2+1, ..., n//2 + m -1]
+    a = list(range(n))
+    b = list(range(n // 2, n // 2 + m))
+
+    # Core logic from original program
     for x in a:
         if x in b:
-            result.append(str(x))
-    print(' '.join(result))
-
-
+            # print(x, end=' ')
+            pass
 if __name__ == "__main__":
-    # 示例：可按需修改规模
-    main(5)
+    main(10)

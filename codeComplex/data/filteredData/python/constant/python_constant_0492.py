@@ -1,15 +1,12 @@
-import random
+def main(n):
+    # 根据 n 构造确定性输入规模
+    # 映射为 a, b 两个整数
+    # 确保 a > 0
+    a = max(1, n)
+    b = n * n + 3 * n + 1
 
-def main(n: int):
-    # 根据规模 n 生成测试数据，这里简单设定：
-    # a, b 都在 1 到 n 之间随机生成
-    a = random.randint(1, max(1, n))
-    b = random.randint(1, max(1, n))
-
-    # 原逻辑：输出 (b + a - 1) // a
-    print((b + a - 1) // a)
-
-
+    result = (b + a - 1) // a
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：可在此处指定规模 n 来运行
     main(10)

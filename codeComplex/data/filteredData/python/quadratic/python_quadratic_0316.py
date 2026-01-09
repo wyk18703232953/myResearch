@@ -1,24 +1,21 @@
-import random
+def main(n):
+    # Map n to original n and k, and generate deterministic arr
+    original_n = n
+    k = max(1, original_n // 2)
+    arr = [i % 1000 for i in range(1, original_n + 1)]
 
-def main(n, k=None):
-    # 生成测试数据：长度为 n 的整数数组，元素范围可按需调整
-    if k is None:
-        k = max(1, n // 2)  # 若未指定 k，则取 n 的一半（至少为 1）
-    arr = [random.randint(-1000, 1000) for _ in range(n)]
-
-    avg = float("-inf")
-    for i in range(n):
+    avg = 0
+    for i in range(original_n):
         cnt = 0
-        s = 0
-        for j in range(i, n):
-            s += arr[j]
+        sum_val = 0
+        for j in range(i, original_n):
+            sum_val += arr[j]
             cnt += 1
             if cnt >= k:
-                avg = max(avg, s / cnt)
-
-    print(avg)
-
-
+                current_avg = sum_val / cnt
+                if current_avg > avg:
+                    avg = current_avg
+    # print(avg)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n=10，k=3
-    main(10, 3)
+    main(1000)

@@ -1,11 +1,7 @@
-import random
-
-def main(n: int):
-    # 1. 根据 n 生成测试数据：长度为 n 的随机 'b'/'w' 序列
-    # 你也可以按需改成固定模式或可重复的伪随机序列
-    s = [random.choice(['b', 'w']) for _ in range(n)]
-
-    # 2. 将原逻辑封装并执行
+def main(n):
+    # Generate a deterministic string of length n using 'b' and 'w'
+    # Pattern: 'b' if i%2==0 else 'w'
+    s = ['b' if i % 2 == 0 else 'w' for i in range(n)]
     ans = 0
     far = 0
     for i in range(len(s) - 1):
@@ -16,12 +12,11 @@ def main(n: int):
             s[:i + 1] = s[:i + 1][::-1]
             s[i + 1:] = s[i + 1:][::-1]
             far += 1
+
         else:
             ans = max(ans, far + 1)
             far = 0
-    print(max(far + 1, ans))
-
-
+    # print(max(far + 1, ans))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

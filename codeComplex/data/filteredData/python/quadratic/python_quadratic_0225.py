@@ -1,10 +1,15 @@
-import random
+def main(n):
+    # Ensure n is at least 3 because the original loop runs from 1 to n-2
+    if n < 3:
+        # print(-1)
+        pass
+        return
 
-def main(n: int):
-    # 生成测试数据：a 为 1..n 的随机排列，b 为 1..10^6 的随机权值
-    a = list(range(1, n + 1))
-    random.shuffle(a)
-    b = [random.randint(1, 10**6) for _ in range(n)]
+    # Deterministic generation of a and b based on n
+    # a: strictly increasing sequence to allow many valid triples
+    a = [i for i in range(1, n + 1)]
+    # b: some varying costs, deterministic pattern
+    b = [(i * 3) % 10 + (i // 3) for i in range(n)]
 
     ans = float('inf')
     for i in range(1, n - 1):
@@ -16,10 +21,7 @@ def main(n: int):
             if a[i] < a[j]:
                 aft = min(aft, b[j])
         ans = min(ans, b[i] + bef + aft)
-
-    print(-1 if ans > 10**9 else ans)
-
-
+    # print(-1 if ans > 10 ** 9 else ans)
+    pass
 if __name__ == "__main__":
-    # 示例：可根据需要修改规模
-    main(5)
+    main(1000)

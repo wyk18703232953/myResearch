@@ -1,54 +1,57 @@
 def main(n):
-    import random
+    # Interpret n as grid size parameter: n_rows = n, m_cols = n, steps k = 2*n (even)
+    # This keeps structure similar while making everything depend deterministically on n.
+    if n <= 0:
+        return
+    rows = n
+    cols = n
+    steps = 2 * n  # guaranteed even
 
-    # 生成规模参数
-    # n: 行数
-    # m: 列数（这里设为与 n 相同，可按需调整）
-    # k: 步数（设为偶数，确保可行，也可改为其他偶数函数）
-    m = n
-    k = 2 * (n if n > 0 else 1)
+    # Generate deterministic right and down cost matrices
+    # right: rows x cols, but only cols-1 effective; we still allocate full as original
+    right = [[0] * cols for _ in range(rows)]
+    down = [[0] * cols for _ in range(rows)]
 
-    # 生成测试数据：right 和 down 的边权为 1~10 的随机整数
-    right = [[random.randint(1, 10) for _ in range(m)] for _ in range(n)]
-    down = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
+    # Fill right costs: deterministic arithmetic pattern
+    # Use small positive integers so values are manageable but non-trivial.
+    for i in range(rows):
+        for j in range(cols):
+            # e.g., cost depends on row and column indices
+            right[i][j] = (i + j + 1) % 7 + 1
 
-    if k & 1:
-        # 若 k 为奇数，原逻辑输出 -1
-        ans = [[-1] * m for _ in range(n)]
-        return ans
+    # Fill down costs: rows-1 effective, but allocate full as in original
+    for i in range(rows - 1):
+        for j in range(cols):
+            down[i][j] = (i * 3 + j * 2 + 2) % 9 + 1
 
-    # DP 数组
-    mem = [[float('inf') for _ in range(m + 1)] for _ in range(n + 1)]
-    for i in range(n):
-        for j in range(m):
+    # If steps is odd, original logic prints -1 grid; here steps is always even for determinism
+    if steps & 1:
+        for _ in range(rows):
+            # print(*([-1] * cols))
+            pass
+        return
+
+    # mem dimensions follow original: (rows+1) x (cols+1)
+    mem = [[float('inf') for _ in range(cols + 1)] for _ in range(rows + 1)]
+    for i in range(rows):
+        for j in range(cols):
             mem[i][j] = 0
 
-    # 迭代 k/2 次
-    for _step in range(1, k // 2 + 1):
-        mem0 = [[float('inf') for _ in range(m + 1)] for _ in range(n + 1)]
-        for i in range(n):
-            for j in range(m):
-                # 上
-                if i - 1 >= 0:
-                    mem0[i][j] = min(mem0[i][j], mem[i - 1][j] + down[i - 1][j])
-                # 下
-                if i + 1 < n:
-                    mem0[i][j] = min(mem0[i][j], mem[i + 1][j] + down[i][j])
-                # 左
-                if j - 1 >= 0:
-                    mem0[i][j] = min(mem0[i][j], mem[i][j - 1] + right[i][j - 1])
-                # 右
-                if j + 1 < m:
-                    mem0[i][j] = min(mem0[i][j], mem[i][j + 1] + right[i][j])
+    half_k = steps // 2
+    for _ in range(1, half_k + 1):
+        mem0 = [[float('inf') for _ in range(cols + 1)] for _ in range(rows + 1)]
+        for i in range(rows):
+            for j in range(cols):
+                up = mem[i - 1][j] + (down[i - 1][j] if i - 1 >= 0 else float('inf'))
+                down_cost = mem[i + 1][j] + (down[i][j] if i + 1 < rows else float('inf'))
+                left = mem[i][j - 1] + (right[i][j - 1] if j - 1 >= 0 else float('inf'))
+                right_cost = mem[i][j + 1] + (right[i][j] if j + 1 < cols else float('inf'))
+                mem0[i][j] = min(up, down_cost, left, right_cost)
         mem = mem0
 
-    # 输出结果为 2 * mem[i][j]
-    ans = [[mem[i][j] * 2 for j in range(m)] for i in range(n)]
-    return ans
-
-
-# 示例运行
+    for i in range(rows):
+        row_res = [int(mem[i][x] * 2) if mem[i][x] != float('inf') else -1 for x in range(cols)]
+        # print(*row_res)
+        pass
 if __name__ == "__main__":
-    res = main(4)
-    for row in res:
-        print(*row)
+    main(5)

@@ -27,7 +27,8 @@ def main(n: int):
     for _ in range(q - 1):
         s += add
 
-    print(s)
+    # print(s)
+    pass
     return s
 
 

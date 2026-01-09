@@ -12,6 +12,7 @@ def main(n: int) -> int:
     for i in range(n):
         if i == n - 1:
             statements.append('s')
+
         else:
             statements.append('f' if i % 2 == 0 else 's')
 
@@ -37,11 +38,13 @@ def main(n: int) -> int:
                 dp[i][j] = dp[i - 1][j - 1]
                 prefix[i][j] = add(prefix[i][j - 1], dp[i][j])
                 j += 1
+
         else:
             j = 0
             while j < n:
                 if j == 0:
                     dp[i][j] = prefix[i - 1][n - 1]
+
                 else:
                     dp[i][j] = prefix[i - 1][n - 1] - prefix[i - 1][j - 1]
                 prefix[i][j] = add(prefix[i][j - 1], dp[i][j])

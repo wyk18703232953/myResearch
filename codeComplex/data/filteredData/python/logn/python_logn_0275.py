@@ -22,7 +22,8 @@ def main(n):
     k = n                       # 将规模 n 直接作为 k
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     pot = pow(2, k + 1, mod)
@@ -32,9 +33,8 @@ def main(n):
     small = (big - diminui(k + 1)) % mod
 
     ans = (((big + small) % mod) * inv) % mod
-    print(int(ans))
-
-
+    # print(int(ans))
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为规模
     main(10)

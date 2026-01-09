@@ -12,6 +12,7 @@ def solve(n: int, s: int) -> int:
         m = (l + h) // 2
         if m - d(m) >= s:
             h = m
+
         else:
             l = m
     # 局部微调，寻找最小满足条件的 t
@@ -34,4 +35,5 @@ def main(n: int) -> int:
 if __name__ == '__main__':
     # 简单示例：调用 main(100000)
     ans = main(100000)
-    print(ans)
+    # print(ans)
+    pass

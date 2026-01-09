@@ -37,4 +37,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：调用 main(5)，可自行修改或在其他文件中导入调用
-    print(main(5))
+    # print(main(5))
+    pass

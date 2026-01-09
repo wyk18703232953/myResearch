@@ -21,14 +21,14 @@ def main(n):
         m = (l + h) // 2
         if check(m, s) == 0:
             l = m + 1
+
         else:
             h = m - 1
         k += 1
 
     # 保持原程序的输出行为：输出 n - l + 1
-    print(n - l + 1)
-
-
+    # print(n - l + 1)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(100) 进行测试
     main(100)

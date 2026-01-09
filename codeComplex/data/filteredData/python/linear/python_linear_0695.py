@@ -1,39 +1,29 @@
 from collections import defaultdict as dd
 import math
-import random
-
 
 def main(n):
-    """
-    n: 规模参数，用于生成测试数据
-    这里根据 n 生成 n 和 v 的测试值，并执行原逻辑
-    """
-    # 生成测试数据：
-    # 为保证逻辑合理，令 n >= 2
-    n_val = max(2, n)
-    # v 在 [0, 2*n] 范围内随机生成
-    v_val = random.randint(0, 2 * n_val)
+    # 根据 n 构造确定性输入规模
+    # 映射为原程序中的 n, v
+    # 使得两种分支（v >= n-1 和 v < n-1）都可被覆盖随 n 变化时
+    N = n + 2  # 保证 N >= 2
+    # v 在 [0, 2N) 内循环变化，保证有时大于等于 N-1，有时小于
+    v = (3 * n) % (2 * N)
 
-    # 原始逻辑开始
-    n_input, v = n_val, v_val
-    dist = n_input - 1
-
+    # 原始核心逻辑
+    dist = N - 1
     if v >= dist:
         result = dist
+
     else:
         off = dist - v
         prices = [i + 2 for i in range(off)]
         result = v + sum(prices)
 
-    # 返回计算结果及测试数据，方便调试或调用者使用
-    return {
-        "n": n_input,
-        "v": v,
-        "result": result
-    }
+    # 为了完整性，返回结果
+    return result
 
-
-# 示例：直接运行本文件时做一次调用
 if __name__ == "__main__":
-    output = main(10)
-    print(output)
+    # 示例调用，可按需修改 n 用于时间复杂度实验
+    for n in range(1, 10):
+        # print(n, main(n))
+        pass

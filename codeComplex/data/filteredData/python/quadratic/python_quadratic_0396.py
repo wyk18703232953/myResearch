@@ -18,6 +18,7 @@ def main(n: int):
             for k in range(L):
                 line[j0 + k] = 'B'
             mat = ''.join(line)
+
         else:
             # 其他行不含 'B'
             mat = '.' * width
@@ -29,7 +30,8 @@ def main(n: int):
             c = mat.count('B') // 2 + 1
             i_res = i + c
             j_res = j + c
-            print(i_res, j_res)
+            # print(i_res, j_res)
+            pass
             break
 
 

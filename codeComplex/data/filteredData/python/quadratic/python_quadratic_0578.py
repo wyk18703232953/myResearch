@@ -1,18 +1,21 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # 随机生成查询次数 q（至少 1，至多 n）
-    q = max(1, n // 3)
-    results = []
+    # Interpret n as both:
+    # - number of test cases q = n
+    # - length parameter for each test: string length and k derived from it
+    q = n
+    b = []
 
-    for _ in range(q):
-        # 随机生成 k，1 <= k <= n
-        k = random.randint(1, n)
-        # 随机生成长度为 n 的字符串 l，由 'R','G','B' 组成
-        l = ''.join(random.choice('RGB') for _ in range(n))
+    for m in range(q):
+        # For each test, deterministically define n_local and k
+        # n_local grows with m and overall n to scale workload
+        n_local = max(1, n + m)
+        # k is at most n_local and at least 1
+        k = max(1, (m % n_local) + 1)
 
-        # 以下为原逻辑的封装
+        # Deterministically generate string l of length n_local over 'R','G','B'
+        colors = ['R', 'G', 'B']
+        l = ''.join(colors[(i + m) % 3] for i in range(n_local))
+
         k1 = 'R'
         k2 = 'G'
         k3 = 'B'
@@ -36,9 +39,9 @@ def main(n):
             if k3[i - 1] == 'B':
                 k3 = k3 + 'R'
 
-        minn = n
+        minn = n_local
 
-        for i in range(n - k + 1):
+        for i in range(n_local - k + 1):
             tec = 0
             for j in range(k):
                 if l[i + j] != k1[j]:
@@ -46,7 +49,7 @@ def main(n):
             if tec < minn:
                 minn = tec
 
-        for i in range(n - k + 1):
+        for i in range(n_local - k + 1):
             tec = 0
             for j in range(k):
                 if l[i + j] != k2[j]:
@@ -54,7 +57,7 @@ def main(n):
             if tec < minn:
                 minn = tec
 
-        for i in range(n - k + 1):
+        for i in range(n_local - k + 1):
             tec = 0
             for j in range(k):
                 if l[i + j] != k3[j]:
@@ -62,13 +65,10 @@ def main(n):
             if tec < minn:
                 minn = tec
 
-        results.append(minn)
+        b.append(minn)
 
-    # 按原程序风格输出
-    for ans in results:
-        print(ans)
-
-
+    for i in range(q):
+        # print(b[i])
+        pass
 if __name__ == "__main__":
-    # 你可以在这里修改规模 n 进行测试
-    main(10)
+    main(5)

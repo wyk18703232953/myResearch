@@ -71,4 +71,5 @@ if __name__ == "__main__":
     n = 3
     ans = main(n)
     for row in ans:
-        print(" ".join(row))
+        # print(" ".join(row))
+        pass

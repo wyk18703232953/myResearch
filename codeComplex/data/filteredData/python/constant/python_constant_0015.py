@@ -1,6 +1,7 @@
 def func(u, v, a, l):
     if (v ** 2 - u ** 2) >= 2 * a * l:
         return ((u ** 2 + 2 * a * l) ** 0.5 - u) / a
+
     else:
         t1 = (v - u) / a
         t2 = (l - (u * t1 + a * t1 * t1 / 2)) / v
@@ -13,6 +14,7 @@ def efficient(v, a, w, d):
         t2 = (v - w) / a
         t3 = (d - 0.5 * a * t1 * t1 - v * t2 + 0.5 * a * t2 * t2) / v
         return t1 + t2 + t3
+
     else:
         bound = ((2 * a * d + w * w) / 2) ** 0.5
         t1 = bound / a
@@ -38,15 +40,15 @@ def main(n):
     if 2 * a * d <= w ** 2 or v <= w:
         t1 = func(0, v, a, l)
         result = t1
+
     else:
         t1 = efficient(v, a, w, d)
         t2 = func(w, v, a, l - d)
         result = t1 + t2
 
     # 按原程序格式输出
-    print(f"{result:.8f}")
-
-
+    # print(f"{result:.8f}")
+    pass
 if __name__ == "__main__":
     # 示例：用 n = 10 运行
     main(10)

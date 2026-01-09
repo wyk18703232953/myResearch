@@ -27,7 +27,8 @@ def main(n: int):
     序列中的第 i 个数字，依次打印。
     """
     for i in range(1, n + 1):
-        print(get_sequence_number(i))
+        # print(get_sequence_number(i))
+        pass
 
 # 示例：如果需要直接运行，可取消以下注释
 # if __name__ == "__main__":

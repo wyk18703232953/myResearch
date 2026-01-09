@@ -41,9 +41,8 @@ def main(n):
 
     # 输出结果
     for i in a1:
-        print(i, end='')
-
-
+        # print(i, end='')
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

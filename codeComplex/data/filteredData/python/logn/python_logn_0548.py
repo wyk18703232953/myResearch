@@ -16,7 +16,8 @@ def main(n: int):
             f = d[i - 1]
             f1 = 10 ** (i - 1)
             # 找到第 k 个字符对应的数字，并取出其中相应的位
-            print(str(((k - f - 1) // i) + f1)[(k - f - 1) % i])
+            # print(str(((k - f - 1) // i) + f1)[(k - f - 1) % i])
+            pass
             return
 
 

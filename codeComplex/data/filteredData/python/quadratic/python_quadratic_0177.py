@@ -1,12 +1,17 @@
-import random
-
 def main(n):
-    # 生成测试数据：k 在 [1, min(10, n)]，元素在 [0, 255]
-    k = random.randint(1, max(1, min(10, n)))
-    ls = [random.randint(0, 255) for _ in range(n)]
+    # Interpret n as the number of elements in the list, k is fixed relative to n
+    if n <= 0:
+        return
+    # Choose a deterministic k based on n, ensuring k >= 1 and reasonably scaled
+    k = max(1, n // 4 + 1)
+
+    # Generate deterministic input list ls of length n, elements in [0, 255]
+    # Use a simple arithmetic pattern to keep values within 0..255
+    ls = [(i * 37 + 13) % 256 for i in range(n)]
 
     ar = [-1 for _ in range(256)]
 
+    outputs = []
     for e in ls:
         if ar[e] == -1:
             tmp = max(0, e - k + 1)
@@ -14,16 +19,16 @@ def main(n):
             while i <= e:
                 if ar[i] != -1 and ar[i] != i:
                     tmp += 1
-                    i = tmp
+                    i += 1
                     continue
+
                 else:
                     while i <= e:
                         ar[i] = tmp
                         i += 1
-                    break
-        print(ar[e], end=" ")
-
-
+        outputs.append(str(ar[e]))
+    # print(" ".join(outputs))
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10
-    main(10)
+    # Example deterministic call for time-complexity experiments
+    main(1000)

@@ -17,7 +17,8 @@ def main(n):
     m = n
 
     if n == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     ans = n * 2
@@ -28,9 +29,8 @@ def main(n):
         ans -= 1
         ans = (t * ans + 1) % mod
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

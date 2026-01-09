@@ -21,9 +21,8 @@ def main(n: int):
     - 对每个整数调用原逻辑并打印结果。
     """
     for x in range(1, n + 1):
-        print(check_number(x))
-
-
+        # print(check_number(x))
+        pass
 if __name__ == "__main__":
     # 示例：规模为 10，可根据需要修改
     main(10)

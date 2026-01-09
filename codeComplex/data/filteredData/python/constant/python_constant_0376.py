@@ -1,21 +1,25 @@
-import random
+def main(n):
+    # 映射规则：
+    # a, b, c 与 n 成比例，使规模随 n 线性增长并保持确定性
+    a = n // 2
+    b = n // 3
+    c = n // 4
 
-def main(n: int):
-    # 随机生成一组 (a, b, c) 用于规模为 n 的测试
-    # 保证 0 <= a, b, c <= n
-    a = random.randint(0, n)
-    b = random.randint(0, n)
-    c = random.randint(0, n)
+    # 保证至少有 1 的空间让表达式可能为正
+    total_n = a + b - c + 1
 
-    # 原逻辑
-    if n - a - b + c >= 1:
+    # 原始逻辑
+    if total_n - a - b + c >= 1:
         if a < c or b < c:
-            print(-1)
-        else:
-            print(n - a - b + c)
-    else:
-        print(-1)
+            # print(-1)
+            pass
 
+        else:
+            # print(total_n - a - b + c)
+            pass
+
+    else:
+        # print(-1)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可按需修改
     main(10)

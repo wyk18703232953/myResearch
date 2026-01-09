@@ -11,7 +11,8 @@ def main(n: int):
     zz = ((1, -1), (0, 2), (1, -1))
     now = (0, 0)
     for i in range(N):
-        print(now[0], now[1])
+        # print(now[0], now[1])
+        pass
         now = (now[0] + zz[i % 3][0], now[1] + zz[i % 3][1])
 
 

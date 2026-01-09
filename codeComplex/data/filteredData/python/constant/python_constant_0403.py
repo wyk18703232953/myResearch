@@ -1,43 +1,45 @@
-import random
-
 def ch_x(stri, n):
     res = ''
     for i in range(len(stri)):
         if i != n:
             res += stri[i]
+
         else:
             res += 'x'
     return res
 
-def main(n):
-    # 根据规模 n 生成测试数据
-    # 这里生成两个长度为 n 的随机01串
-    a = ''.join(random.choice('01') for _ in range(n))
-    b = ''.join(random.choice('01') for _ in range(n))
 
-    cnt = 0
-    a_cur = a
-    b_cur = b
-
-    for i in range(len(a_cur)):
-        if a_cur[i] == '0' and b_cur[i] == '0':
+def core(a, b):
+    n = 0
+    a = list(a)
+    b = list(b)
+    for i in range(0, len(a)):
+        if a[i] == '0' and b[i] == '0':
             c = [i - 1, i + 1]
             for e in c:
-                if 0 <= e < len(a_cur):
-                    if a_cur[e] == '0':
-                        cnt += 1
-                        a_cur = ch_x(a_cur, e)
+                if 0 <= e < len(a):
+                    if a[e] == '0':
+                        n += 1
+                        a = ch_x(a, e)
                         break
-                    if b_cur[e] == '0':
-                        cnt += 1
-                        b_cur = ch_x(b_cur, e)
+                    if b[e] == '0':
+                        n += 1
+                        b = ch_x(b, e)
                         break
-            a_cur = ch_x(a_cur, i)
-            b_cur = ch_x(b_cur, i)
+            a = ch_x(a, i)
+            b = ch_x(b, i)
+    return n
 
-    print(cnt)
-    return cnt
 
+def main(n):
+    length = max(1, n)
+    # 生成两个长度为 length 的仅包含 '0' 和 '1' 的字符串
+    # 规则：a[i] = '0' if i % 2 == 0 else '1'
+    #       b[i] = '0' if i % 3 == 0 else '1'
+    a = ''.join('0' if i % 2 == 0 else '1' for i in range(length))
+    b = ''.join('0' if i % 3 == 0 else '1' for i in range(length))
+    result = core(a, b)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

@@ -25,6 +25,7 @@ def solve_single_case(n: int, k: int) -> int:
         return 1
     elif normal_sum(k) - 1 - (k - 2) < n:
         return -1
+
     else:
         n -= 1
         k -= 1
@@ -39,9 +40,8 @@ def main(n: int):
     """
     k = n  # 根据规模生成测试数据，这里设为 k = n
     ans = solve_single_case(n, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

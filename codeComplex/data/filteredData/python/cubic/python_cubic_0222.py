@@ -1,22 +1,20 @@
-def main(n: int):
-    import random
+#!/usr/bin/env python3
 
-    # 1. 根据规模 n 生成测试数据
-    # 这里将 n 拆成三部分，分别作为 R, G, B 的数量
-    # 你可以根据需要调整拆分和取值范围
-    R = n // 3
-    G = (n - R) // 2
-    B = n - R - G
+def main(n):
+    # Map n to sizes of three arrays; keep total size O(n)
+    R = max(1, n)
+    G = max(1, n // 2 if n >= 2 else 1)
+    B = max(1, n // 3 if n >= 3 else 1)
 
-    # 生成随机正整数，取值范围 [1, 10^4]
-    r = [random.randint(1, 10_000) for _ in range(R)]
-    g = [random.randint(1, 10_000) for _ in range(G)]
-    b = [random.randint(1, 10_000) for _ in range(B)]
+    # Deterministic data generation
+    r = [(i * 2 + 1) % 100000 for i in range(R)]
+    g = [(i * 3 + 2) % 100000 for i in range(G)]
+    b = [(i * 5 + 3) % 100000 for i in range(B)]
 
-    # 2. 原逻辑开始
     r.sort(reverse=True)
     g.sort(reverse=True)
     b.sort(reverse=True)
+
     nr = len(r)
     ng = len(g)
     nb = len(b)
@@ -29,22 +27,15 @@ def main(n: int):
                 if (i + j + k) % 2 == 1:
                     continue
                 if i > 0 and j > 0:
-                    # Make RG
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      dp[i - 1][j - 1][k] + r[i - 1] * g[j - 1])
+                    dp[i][j][k] = max(dp[i][j][k], dp[i - 1][j - 1][k] + r[i - 1] * g[j - 1])
                 if j > 0 and k > 0:
-                    # Make GB
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      dp[i][j - 1][k - 1] + g[j - 1] * b[k - 1])
+                    dp[i][j][k] = max(dp[i][j][k], dp[i][j - 1][k - 1] + g[j - 1] * b[k - 1])
                 if i > 0 and k > 0:
-                    # Make BR
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      dp[i - 1][j][k - 1] + b[k - 1] * r[i - 1])
+                    dp[i][j][k] = max(dp[i][j][k], dp[i - 1][j][k - 1] + b[k - 1] * r[i - 1])
                 ans = max(ans, dp[i][j][k])
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n = 30 运行
-    main(30)
+    # Example: run with a chosen scale n
+    main(10)

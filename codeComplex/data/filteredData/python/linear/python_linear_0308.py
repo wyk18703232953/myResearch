@@ -1,9 +1,7 @@
-import random
-
-def main(n: int):
-    # 根据 n 生成测试数据：生成 n 个非负整数
-    # 可按需要修改数据规模或范围
-    a = [random.randint(0, 10**9) for _ in range(n)]
+def main(n):
+    # 生成确定性输入：长度为 n 的整数数组 a
+    # 这里选择 a[i] = (i * 2 + 3) % (n + 5) + i // 2，保证有变化且完全确定
+    a = [(i * 2 + 3) % (n + 5) + i // 2 for i in range(n)]
 
     amin = min(a)
     for i in range(n):
@@ -15,9 +13,7 @@ def main(n: int):
             break
         ans = (ans + 1) % n
         cnt += 1
-    print(ans + 1)
-
-
+    # print(ans + 1)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

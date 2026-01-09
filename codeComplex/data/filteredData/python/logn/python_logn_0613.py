@@ -1,5 +1,4 @@
 import math
-import random
 
 def valid(n, k, c1, c2):
     if c1 > n:
@@ -11,19 +10,22 @@ def valid(n, k, c1, c2):
         return c1
     return c2
 
+
 def f(n, k):
     b2 = (2 * n + 3)
     delta = int(math.sqrt(8 * n + 8 * k + 9))
     return valid(n, k, (b2 + delta) // 2, (b2 - delta) // 2)
 
-def main(n):
-    # 根据规模 n 生成测试数据：
-    # 约束一个合理的 k 范围，这里取 [0, n*(n+1)//2] 作为示例
-    max_k = n * (n + 1) // 2
-    k = random.randint(0, max_k)
-    result = f(n, k)
-    print(result)
 
+def main(n):
+    # 规模解释：
+    # 将 n 视为原程序里的 n，k 由 n 确定性构造
+    # 这样输入规模就是单个整数 n，且数据可规模化、可重复
+    original_n = n
+    k = n * (n + 1) // 4  # 确定性构造 k，随 n 规模增长
+    result = f(original_n, k)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可按需修改 n
+    # 示例调用：可根据需要修改 n 进行时间复杂度实验
     main(10)

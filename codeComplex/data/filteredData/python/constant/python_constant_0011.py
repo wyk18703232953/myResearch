@@ -1,69 +1,52 @@
 import decimal
-import random
-
 decimal.getcontext().prec = 100
-
 
 def DecimalPow(a, b):
     return decimal.Decimal(a) ** decimal.Decimal(b)
 
+def getLastT(a, v, v1, dist):
+    t1 = (v - v1) / a
+    d1 = v1 * t1 + decimal.Decimal(0.5) * a * DecimalPow(t1, 2)
+    if d1 >= dist:
+        return (-v1 + (v1 ** decimal.Decimal(2) + 2 * a * dist) ** decimal.Decimal(0.5)) / a
+    t2 = (dist - d1) / v
+    return t1 + t2
 
-def solve_case(a, v, l, d, w):
-    def getLastT(v1, dist):
-        t1 = (v - v1) / a
-        d1 = v1 * t1 + decimal.Decimal('0.5') * a * DecimalPow(t1, 2)
-        if d1 >= dist:
-            return (-v1 + (v1 ** decimal.Decimal(2) + 2 * a * dist) ** decimal.Decimal('0.5')) / a
-        t2 = (dist - d1) / v
-        return t1 + t2
-
+def core(a, v, l, d, w):
     if w >= v:
-        t = getLastT(decimal.Decimal('0'), l)
+        t = getLastT(a, v, decimal.Decimal(0), l)
         return '{t:.5f}'.format(t=t)
-
-    if (w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:
-        t = getLastT(decimal.Decimal('0'), l)
+    elif (w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:
+        t = getLastT(a, v, decimal.Decimal(0), l)
         return '{t:.5f}'.format(t=t)
-
-    if (v ** decimal.Decimal(2)) / (2 * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:
-        t2 = -w / a + ((w ** decimal.Decimal(2)) / (2 * (a ** decimal.Decimal(2))) + d / a) ** decimal.Decimal('0.5')
+    elif (v ** decimal.Decimal(2) - 0) / (2 * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) >= d:
+        t2 = -w / a + ((w ** decimal.Decimal(2)) / (2 * (a ** decimal.Decimal(2))) + d / a) ** decimal.Decimal(0.5)
         t1 = w / a + t2
-        t3 = getLastT(w, l - d)
+        t3 = getLastT(a, v, w, l - d)
         t = t1 + t2 + t3
         return '{t:.5f}'.format(t=t)
 
-    t1 = v / a
-    t3 = (v - w) / a
-    t2 = (d - ((v ** decimal.Decimal(2)) / (decimal.Decimal(2) * a) +
-               (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a))) / v
-    t4 = getLastT(w, l - d)
-    t = t1 + t2 + t3 + t4
-    return '{t:.5f}'.format(t=t)
+    else:
+        t1 = v / a
+        t3 = (v - w) / a
+        t2 = (d - ((v ** decimal.Decimal(2) - 0) / (decimal.Decimal(2) * a) + (v ** decimal.Decimal(2) - w ** decimal.Decimal(2)) / (decimal.Decimal(2) * a))) / v
+        t4 = getLastT(a, v, w, l - d)
+        t = t1 + t2 + t3 + t4
+        return '{t:.5f}'.format(t=t)
 
+def main(n):
+    # 将 n 映射为确定性的测试规模
+    # 构造一组参数 (a, v, l, d, w)，与 n 线性相关但保持物理意义
+    # 使用 decimal.Decimal 保持与原程序一致
+    a = decimal.Decimal(1 + (n % 5))         # 加速度在 1 到 5 之间
+    v = decimal.Decimal(10 + (n % 10))       # 最大速度在 10 到 19 之间
+    l = decimal.Decimal(100 + 3 * n)         # 总路程随 n 增长
+    d = decimal.Decimal(20 + (2 * n) % 80)   # 区间长度保持在 [20, 99]
+    # 保证 w 不为负，且有时大于 v，有时小于 v
+    w = decimal.Decimal((5 + n) % 25)        # 0 到 24 之间
 
-def main(n: int):
-    """
-    生成 n 组测试数据并输出对应结果。
-    这里简单生成一些合理范围内的随机数据：
-      a: [0.1, 5]
-      v: [1, 50]
-      l: [10, 1000]
-      d: [0, l]
-      w: [0, 50]
-    """
-    random.seed(0)
-    for _ in range(n):
-        # 生成测试数据（浮点转为字符串再转 Decimal，避免二进制误差）
-        a = decimal.Decimal(str(round(random.uniform(0.1, 5.0), 3)))
-        v = decimal.Decimal(str(round(random.uniform(1.0, 50.0), 3)))
-        l = decimal.Decimal(str(round(random.uniform(10.0, 1000.0), 3)))
-        d = decimal.Decimal(str(round(random.uniform(0.0, float(l)), 3)))
-        w = decimal.Decimal(str(round(random.uniform(0.0, 50.0), 3)))
-
-        ans = solve_case(a, v, l, d, w)
-        print(ans)
-
-
+    result = core(a, v, l, d, w)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：生成 3 组测试
-    main(3)
+    main(1000)

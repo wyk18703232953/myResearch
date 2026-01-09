@@ -10,14 +10,16 @@ def main(n):
     k = n // 2
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
     elif k == 0:
-        print((2 * x) % mod)
+        # print((2 * x) % mod)
+        pass
+
     else:
         ans = (((pow(2, k, mod) * x - pow(2, k - 1, mod)) % mod) * 2 + 3 * mod + 1) % mod
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

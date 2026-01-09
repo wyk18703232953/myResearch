@@ -67,6 +67,7 @@ def main(n):
     for a, an in zip(A, Ans):
         if a <= limit:
             buc[a].append(an)
+
         else:
             # a 超过 limit 的情况，扩容 bucket
             while len(buc) <= a:
@@ -78,7 +79,8 @@ def main(n):
         AA.append(buc[ao].pop())
 
     # 输出结果
-    print(*AA)
+    # print(*AA)
+    pass
 
 
 # 示例调用

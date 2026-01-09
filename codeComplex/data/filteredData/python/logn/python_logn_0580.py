@@ -23,6 +23,7 @@ def main(n):
 
     if rm == 0:
         ans = num % 10
+
     else:
         ans = 0
         for _ in range(n - rm + 1):
@@ -30,9 +31,8 @@ def main(n):
             num = int(num / 10)
             ans = j
 
-    print(int(ans))
-
-
+    # print(int(ans))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(3)
     main(3)

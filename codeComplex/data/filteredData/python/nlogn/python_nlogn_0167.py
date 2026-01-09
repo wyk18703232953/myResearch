@@ -19,9 +19,8 @@ def main(n: int):
             res += 1
             bottom = endpoints[pt][1]
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，可按需修改或在外部调用 main
     main(10)

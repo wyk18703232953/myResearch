@@ -1,18 +1,25 @@
-import random
+def main(n):
+    # Deterministically generate 'useless' based on n
+    useless = n // 2
 
-def main(n: int):
-    # 生成测试数据：保证 arr 是长度为 n 的整数数组，每个元素在 [1, n] 范围
-    # 这里简单生成随机数据，也可按需改成特定分布
-    arr = [random.randint(1, n) for _ in range(n)]
+    # Generate array 'arr' of length n deterministically
+    # Example pattern: arr[i] = (i % (n // 3 + 1)) + 1 to create repetitions
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-    # 原逻辑开始
+    mod_base = n // 3 + 1
+    arr = [(i % mod_base) + 1 for i in range(n)]
+
     for x in range(1, n + 1):
         if x not in arr:
-            print(0)
+            # print(0)
+            pass
             break
-    else:
-        print(arr.count(min(arr, key=lambda x: arr.count(x))))
 
+    else:
+        # print(arr.count(min(arr, key=lambda x: arr.count(x))))
+        pass
 if __name__ == "__main__":
-    # 示例：运行 main(10)
     main(10)

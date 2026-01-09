@@ -1,5 +1,3 @@
-import random
-
 def quer(x1, y1, x2, y2):
     if x1 > x2 or y1 > y2:
         return [0, 0]
@@ -12,33 +10,27 @@ def quer(x1, y1, x2, y2):
 
 
 def main(n):
-    """
-    n: 规模参数，用来生成测试数据。
-       这里将 n 同时作为网格的尺寸 (n x n) 使用。
-       生成 q = n 组随机查询。
-    """
-    random.seed(0)
     q = n
+    results = []
+    for i in range(q):
+        # 生成 n, m
+        rows = i + 2
+        cols = i + 3
 
-    for _ in range(q):
-        # 生成网格大小 n x n
-        N = n
-        M = n
+        # 生成第一个矩形 (x1, y1, x2, y2)，在 [1, rows] x [1, cols] 内
+        x1 = (i % rows) + 1
+        y1 = ((i * 2) % cols) + 1
+        x2 = rows
+        y2 = cols
 
-        # 生成第一个矩形 [x1, y1, x2, y2]
-        x1 = random.randint(1, N)
-        x2 = random.randint(x1, N)
-        y1 = random.randint(1, M)
-        y2 = random.randint(y1, M)
+        # 生成第二个矩形 (x3, y3, x4, y4)，同样在边界内
+        x3 = 1
+        y3 = 1
+        x4 = max(1, rows - (i % (rows if rows > 0 else 1)))
+        y4 = max(1, cols - (i % (cols if cols > 0 else 1)))
 
-        # 生成第二个矩形 [x3, y3, x4, y4]
-        x3 = random.randint(1, N)
-        x4 = random.randint(x3, N)
-        y3 = random.randint(1, M)
-        y4 = random.randint(y3, M)
-
-        # 以下为原逻辑
-        s = quer(1, 1, N, M)
+        # 计算
+        s = quer(1, 1, rows, cols)
         s1 = quer(x1, y1, x2, y2)
         s[0] -= s1[0]
         s[1] += s1[0]
@@ -51,14 +43,14 @@ def main(n):
         s1 = quer(x3, y3, x4, y4)
         s[0] += s1[1]
         s[1] -= s1[1]
-
         s1 = quer(xmn, ymn, xmx, ymx)
         s[0] += s1[0]
         s[1] -= s1[0]
 
-        print(*s[::-1])
+        results.append((s[1], s[0]))
 
-
+    for res in results:
+        # print(res[0], res[1])
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

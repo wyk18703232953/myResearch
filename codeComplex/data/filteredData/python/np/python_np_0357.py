@@ -51,4 +51,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：规模为 10
-    print(main(10))
+    # print(main(10))
+    pass

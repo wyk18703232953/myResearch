@@ -21,8 +21,8 @@ def main(n):
         ans = 0
     ans %= M
 
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

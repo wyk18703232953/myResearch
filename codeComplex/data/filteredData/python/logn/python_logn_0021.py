@@ -9,6 +9,7 @@ def main(n: int):
     if n <= 0:
         # 若 n 不合法，给一个默认值
         l, r = 0, 0
+
     else:
         l = 1 << (n - 1)      # 2**(n-1)
         r = (1 << n) - 1      # 2**n - 1
@@ -31,6 +32,7 @@ def main(n: int):
 
     if len(ar) != len(al):
         ans = (2 ** len(ar)) - 1
+
     else:
         n_bits = len(ar)
         k = 0
@@ -42,9 +44,8 @@ def main(n: int):
         if k == 0:
             ans = 0
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

@@ -1,4 +1,6 @@
-import random
+import io
+import os
+from collections import Counter, defaultdict, deque
 
 
 def solve(N, M, K, right, down):
@@ -55,24 +57,25 @@ def solve(N, M, K, right, down):
 
 
 def main(n):
-    """
-    n 用作规模参数，生成一个大约 n×n 的网格测试数据。
-    N, M: 在 [max(1, n-1), n+1] 范围内取值
-    K: 在 [0, 2n] 范围内取值（偶数）
-    边权在 [1, 10^6] 随机生成
-    返回 solve 的字符串结果
-    """
-    random.seed(0)
-
-    # 简单设计：N、M 接近 n，保证至少为 1
-    N = max(1, n)
-    M = max(1, n)
-
-    # 生成偶数 K，范围可按需求调整
-    K = 2 * max(1, n // 2)
-
-    # 生成随机权重
-    right = [[random.randint(1, 10 ** 6) for _ in range(M - 1)] for _ in range(N)]
-    down = [[random.randint(1, 10 ** 6) for _ in range(M)] for _ in range(N - 1)]
-
-    return solve(N, M, K, right, down)
+    if n < 1:
+        n = 1
+    N = n
+    M = n
+    K = 2 * n
+    right = []
+    for i in range(N):
+        row = []
+        for j in range(M - 1):
+            row.append((i + 1) * (j + 2))
+        right.append(row)
+    down = []
+    for i in range(N - 1):
+        row = []
+        for j in range(M):
+            row.append((i + 2) * (j + 1))
+        down.append(row)
+    ans = solve(N, M, K, right, down)
+    # print(ans)
+    pass
+if __name__ == "__main__":
+    main(3)

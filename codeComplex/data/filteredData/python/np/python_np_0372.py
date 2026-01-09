@@ -72,4 +72,5 @@ def main(n: int):
 if __name__ == "__main__":
     # example call; you can change n for testing
     ans = main(5)
-    print(ans)
+    # print(ans)
+    pass

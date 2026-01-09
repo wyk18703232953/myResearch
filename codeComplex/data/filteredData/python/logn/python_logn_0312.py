@@ -5,10 +5,12 @@ def pow1(n, k):
         return 1
     if k == 1:
         return n
+
     else:
         if k % 2 == 0:
             a = pow1(n, k // 2) % mod
             return a * a % mod
+
         else:
             return pow1(n, k - 1) % mod * n % mod
 
@@ -20,12 +22,13 @@ def main(n):
 
     if n == 0:
         result = 0
+
     else:
         x = pow1(2, k + 1) % mod
         result = ((n * x - pow1(2, k) + 1)) % mod
 
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

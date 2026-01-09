@@ -1,12 +1,10 @@
-import random
-
-M = 998244353
-
 def main(n):
-    # 1. 生成测试数据：长度为 n 的数组 a，元素在 [0, M-1] 内
-    a = [random.randrange(M) for _ in range(n)]
+    M = 998244353
 
-    # 2. 原逻辑计算
+    # 生成确定性输入数据：长度为 n 的整数数组 a
+    # 这里选择 a[i] = (i * 3 + 1) % M 作为确定性构造
+    a = [(i * 3 + 1) % M for i in range(n)]
+
     series = [1]
     fact = 1
     for i in range(n + 1):
@@ -15,13 +13,13 @@ def main(n):
 
     ind = n - 1
     ans = 0
+
     for i in range(n):
         ans = (ans + (a[i] * series[ind]) % M) % M
         ind -= 1
 
-    print(ans)
-    return ans, a  # 若只需输出结果，可去掉 a
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模 n=10
+    # 示例调用，可根据需要调整 n 的大小进行实验
     main(10)

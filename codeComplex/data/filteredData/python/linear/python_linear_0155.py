@@ -1,9 +1,9 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    p = random.randint(1, 10**9)  # 随机选择模数
-    list1 = [random.randint(0, 10**9) for _ in range(n)]
+    # Define p deterministically based on n, ensure p != 0
+    p = n + 1
+
+    # Generate list1 deterministically with size n
+    list1 = [(i * 2 + 3) for i in range(n)]
 
     mx = 0
     curr = 0
@@ -12,8 +12,7 @@ def main(n):
         curr += list1[i]
         nxt -= list1[i]
         mx = max(mx, curr % p + nxt % p)
-    print(mx)
-
+    # print(mx)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，可按需修改 n
     main(10)

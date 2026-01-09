@@ -1,15 +1,16 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # k 为窗口大小，1 <= k <= n
-    k = random.randint(1, n)
-    # theorems 为长度为 n 的正整数数组
-    theorems = [random.randint(1, 10) for _ in range(n)]
-    # sleep 为长度为 n 的 0/1 数组
-    sleep = [random.randint(0, 1) for _ in range(n)]
+    # Interpret n as the number of elements; also derive k deterministically
+    # Ensure k is at least 1 and at most n
+    if n <= 0:
+        return
+    k = max(1, n // 3)
+    if k > n:
+        k = n
 
-    # 原始逻辑
+    # Deterministic generation of theorems and sleep arrays
+    theorems = [(i * 7 + 3) % 100 for i in range(n)]
+    sleep = [1 if i % 2 == 0 else 0 for i in range(n)]
+
     tsum = []
     ts = 0
     sleepsum = []
@@ -25,11 +26,10 @@ def main(n):
     maxdiff = tsum[k - 1] - sleepsum[k - 1]
     for i in range(1, n - k + 1):
         diff = (tsum[i + k - 1] - tsum[i - 1]) - (sleepsum[i + k - 1] - sleepsum[i - 1])
-        maxdiff = max(maxdiff, diff)
+        if diff > maxdiff:
+            maxdiff = diff
 
-    print(slsum + maxdiff)
-
-
+    # print(slsum + maxdiff)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n=10
     main(10)

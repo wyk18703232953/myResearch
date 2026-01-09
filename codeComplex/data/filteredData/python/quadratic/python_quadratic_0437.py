@@ -1,15 +1,13 @@
-import random
+def main(n):
+    # 这里的 n 表示字符串长度
+    # 构造一个确定性的数字串，例如循环使用 0..9
+    s = "".join(str(i % 10) for i in range(n))
+    # 为避免全部为 '0' 导致 trivial 情况，可在开头放一个非零
+    if n > 0:
+        s = "1" + s[1:] if n > 1 else "1"
 
-def main(n: int):
-    # 根据规模 n 生成一个长度为 n 的由数字字符组成的字符串，
-    # 确保至少有一个非零数字以避免原逻辑中 lower == 0 的退化情况
-    if n <= 0:
-        return  # 或者按需要改成 print("NO") 等
-    digits = [str(random.randint(0, 9)) for _ in range(n)]
-    if all(d == '0' for d in digits):
-        digits[random.randrange(n)] = str(random.randint(1, 9))
-    s = "".join(digits)
-
+    num = int(s)
+    list_n = list(s)
     list_n_int = list(map(int, s))
 
     lower = max(list_n_int)
@@ -18,7 +16,9 @@ def main(n: int):
 
     flag = False
     if lower == 0:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
         for i in range(lower, upper + 1):
             flag = True
@@ -27,7 +27,6 @@ def main(n: int):
             each = i
             seg = total / each
             if seg.is_integer():
-                # 尝试是否可以按 each 为段和划分
                 while p < len(s):
                     temp += list_n_int[p]
                     if temp < each:
@@ -35,13 +34,20 @@ def main(n: int):
                     elif temp == each:
                         temp = 0
                         p += 1
+
                     else:
                         flag = False
                         break
                 if flag:
-                    print("YES")
+                    # print("YES")
+                    pass
                     break
+
             else:
                 flag = False
         if not flag:
-            print("NO")
+            # print("NO")
+            pass
+if __name__ == "__main__":
+    # 示例：n 为字符串长度，可根据实验需求调整
+    main(20)

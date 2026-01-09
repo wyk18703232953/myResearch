@@ -1,20 +1,21 @@
-import random
-import string as strlib
-
-def main(n: int):
-    # 生成长度为 n 的随机小写字母串
-    s = ''.join(random.choice(strlib.ascii_lowercase) for _ in range(n))
-
+def main(n):
+    # 生成一个长度为 n 的确定性字符串
+    # 字符由 'a' 到 'z' 循环构成
+    string = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
     mx = 0
-    for i in range(len(s)):
-        for j in range(i + 1, len(s)):
+
+    for i in range(len(string)):
+        for j in range(i + 1, len(string)):
             m = 0
-            while j + m < len(s) and s[i + m] == s[j + m]:
+            while j + m < len(string) and string[i + m] == string[j + m]:
                 m += 1
             mx = max(mx, m)
 
-    print(mx)
+    return mx
+
 
 if __name__ == "__main__":
-    # 示例：n 可根据需要调整
-    main(10)
+    # 示例调用，可根据需要修改 n 的大小做时间复杂度实验
+    result = main(1000)
+    # print(result)
+    pass

@@ -1,20 +1,5 @@
-import random
-from collections import Counter
 import math
-import os
-import io
-from heapq import heappush, heappop, heapify ,_heapify_max,_heappop_max,nsmallest,nlargest
-from bisect import bisect_left,bisect_right
-from collections import deque,defaultdict,OrderedDict
-from fractions import Fraction
-from decimal import Decimal
-import statistics
-import itertools
-import functools
-import operator
-
-INF = 999999999999999999999999
-alphabets = "abcdefghijklmnopqrstuvwxyz"
+from collections import Counter
 
 class SortedList:
     def __init__(self, iterable=[], _load=200):
@@ -60,7 +45,6 @@ class SortedList:
             return len(_list_lens) - 1, k + _list_lens[-1] - self._len
         if self._rebuild:
             self._fen_build()
- 
         _fen_tree = self._fen_tree
         idx = -1
         for d in reversed(range(len(_fen_tree).bit_length())):
@@ -74,14 +58,13 @@ class SortedList:
         _lists = self._lists
         _mins = self._mins
         _list_lens = self._list_lens
- 
         self._len -= 1
         self._fen_update(pos, -1)
         del _lists[pos][idx]
         _list_lens[pos] -= 1
- 
         if _list_lens[pos]:
             _mins[pos] = _lists[pos][0]
+
         else:
             del _lists[pos]
             del _list_lens[pos]
@@ -91,56 +74,51 @@ class SortedList:
     def _loc_left(self, value):
         if not self._len:
             return 0, 0
- 
         _lists = self._lists
         _mins = self._mins
- 
         lo, pos = -1, len(_lists) - 1
         while lo + 1 < pos:
             mi = (lo + pos) >> 1
             if value <= _mins[mi]:
                 pos = mi
+
             else:
                 lo = mi
- 
         if pos and value <= _lists[pos - 1][-1]:
             pos -= 1
- 
         _list = _lists[pos]
         lo, idx = -1, len(_list)
         while lo + 1 < idx:
             mi = (lo + idx) >> 1
             if value <= _list[mi]:
                 idx = mi
+
             else:
                 lo = mi
- 
         return pos, idx
  
     def _loc_right(self, value):
         if not self._len:
             return 0, 0
- 
         _lists = self._lists
         _mins = self._mins
- 
         pos, hi = 0, len(_lists)
         while pos + 1 < hi:
             mi = (pos + hi) >> 1
             if value < _mins[mi]:
                 hi = mi
+
             else:
                 pos = mi
- 
         _list = _lists[pos]
         lo, idx = -1, len(_list)
         while lo + 1 < idx:
             mi = (lo + idx) >> 1
             if value < _list[mi]:
                 idx = mi
+
             else:
                 lo = mi
- 
         return pos, idx
  
     def add(self, value):
@@ -148,7 +126,6 @@ class SortedList:
         _lists = self._lists
         _mins = self._mins
         _list_lens = self._list_lens
- 
         self._len += 1
         if _lists:
             pos, idx = self._loc_right(value)
@@ -164,6 +141,7 @@ class SortedList:
                 _list_lens[pos] = _load
                 del _list[_load:]
                 self._rebuild = True
+
         else:
             _lists.append([value])
             _mins.append(value)
@@ -177,39 +155,12 @@ class SortedList:
             if idx and _lists[pos][idx - 1] == value:
                 self._delete(pos, idx - 1)
  
-    def remove(self, value):
-        _len = self._len
-        self.discard(value)
-        if _len == self._len:
-            raise ValueError('{0!r} not in list'.format(value))
- 
-    def pop(self, index=-1):
-        pos, idx = self._fen_findkth(self._len + index if index < 0 else index)
-        value = self._lists[pos][idx]
-        self._delete(pos, idx)
-        return value
- 
-    def bisect_left(self, value):
-        pos, idx = self._loc_left(value)
-        return self._fen_query(pos) + idx
- 
-    def bisect_right(self, value):
-        pos, idx = self._loc_right(value)
-        return self._fen_query(pos) + idx
- 
-    def count(self, value):
-        return self.bisect_right(value) - self.bisect_left(value)
- 
     def __len__(self):
         return self._len
  
     def __getitem__(self, index):
         pos, idx = self._fen_findkth(self._len + index if index < 0 else index)
         return self._lists[pos][idx]
- 
-    def __delitem__(self, index):
-        pos, idx = self._fen_findkth(self._len + index if index < 0 else index)
-        self._delete(pos, idx)
  
     def __contains__(self, value):
         _lists = self._lists
@@ -228,30 +179,15 @@ class SortedList:
         return 'SortedList({0})'.format(list(self))
 
 
-def generate_test_data(n):
-    # ensure n >= 1
-    n = max(1, n)
-    # build a random string a of length n using digits (as original code compares lexicographically)
-    digits = "0123456789"
-    a = [random.choice(digits) for _ in range(n)]
-    # build b: either same length or shorter to exercise both branches
-    if n == 1 or random.random() < 0.5:
-        m = random.randint(1, n)  # b length in [1, n]
-    else:
-        m = n
-    b = [random.choice(digits) for _ in range(m)]
-    return a, b
-
-
-def solve(a, b):
-    # logic extracted from original main()
+def core_algorithm(a, b):
     if len(a) < len(b):
         return ''.join(sorted(a)[::-1])
+
     else:
-        a = sorted(a)
+        a_sorted = sorted(a)
         ans = []
-        sa = SortedList(a)
-        for i in range(len(a) - 1):
+        sa = SortedList(a_sorted)
+        for i in range(len(a_sorted) - 1):
             for j in range(len(sa) - 1, -1, -1):
                 temp = ans + [sa[j]]
                 sa.discard(sa[j])
@@ -260,18 +196,30 @@ def solve(a, b):
                 if temp <= b:
                     ans.append(temp[i])
                     break
+
                 else:
                     sa.add(temp[i])
         ans.append(sa[-1])
         return "".join(ans)
 
 
+def generate_strings(n):
+    # Generate two strings a and b based on n
+    # Let length of a be n, and length of b be n (to trigger main branch often)
+    # Characters are deterministic cycle over 'a'..'z'
+    alph = "abcdefghijklmnopqrstuvwxyz"
+    la = n
+    lb = n
+    a = [alph[(i * 7) % 26] for i in range(la)]
+    b = [alph[(i * 5 + 3) % 26] for i in range(lb)]
+    return a, b
+
+
 def main(n):
-    a, b = generate_test_data(n)
-    result = solve(a, b)
-    print(result)
-
-
+    a, b = generate_strings(n)
+    b_list = list(b)
+    result = core_algorithm(list(a), b_list)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # example: run with n = 5
-    main(5)
+    main(10)

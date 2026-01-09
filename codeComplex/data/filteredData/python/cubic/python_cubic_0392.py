@@ -1,23 +1,19 @@
-import random
-
 def main(n):
-    # n 用作规模参数，这里设置 N = M = max(1, n)，K 为偶数步数（例如 4）
-    N = max(1, n)
-    M = max(1, n)
-    K = 4
-    # 若希望测试奇数情况，可改为 K = 3 或其他奇数
+    # Interpret n as grid size parameter: N = M = n, K = 2*n (even)
+    N = n
+    M = n
+    K = 2 * n if 2 * n > 0 else 2  # ensure K >= 2 and even
 
-    # 生成测试数据 A, B：正权重
-    # A[i][j] 表示 (i,j) 与 (i,j+1) 之间的边权
-    # B[i][j] 表示 (i,j) 与 (i+1,j) 之间的边权
-    random.seed(0)
-    A = [[random.randint(1, 10) for _ in range(M - 1)] for _ in range(N)]
-    B = [[random.randint(1, 10) for _ in range(M)] for _ in range(N - 1)]
+    # Since we control K, it will always be even; no need for the odd-K early exit logic
 
-    if K % 2:
-        for _ in range(N):
-            print(*[-1] * M)
-        return
+    # Deterministically generate A (N x M) and B (N-1 x M)
+    # Example pattern: A[i][j] = (i + j) % 9 + 1, B[i][j] = (i * 2 + j) % 9 + 1
+    A = [[(i + j) % 9 + 1 for j in range(M)] for i in range(N)]
+    if N > 1:
+        B = [[(i * 2 + j) % 9 + 1 for j in range(M)] for i in range(N - 1)]
+
+    else:
+        B = []
 
     X = [[0] * M for _ in range(N)]
     inf = 1 << 30
@@ -37,9 +33,8 @@ def main(n):
         X = nX
 
     for x in X:
-        print(*[a * 2 for a in x])
-
-
+        # print(*[a * 2 for a in x])
+        pass
 if __name__ == "__main__":
-    # 示例：n = 5
+    # Example deterministic call; adjust n to change input scale
     main(5)

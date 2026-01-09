@@ -13,6 +13,7 @@ def main(n):
         if l[i] == '1':
             cnt1[i + 1] = cnt1[i] + 1
             cnt0[i + 1] = cnt0[i]
+
         else:
             cnt0[i + 1] = cnt0[i] + 1
             cnt1[i + 1] = cnt1[i]
@@ -29,9 +30,8 @@ def main(n):
         zeroes = cnt0[rq] - cnt0[lq - 1]
         t1 = (pow2[ones] - 1) % mod
         t2 = (t1 * (pow2[zeroes] - 1)) % mod
-        print((t1 + t2) % mod)
-
-
+        # print((t1 + t2) % mod)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -10,6 +10,7 @@ def main(n):
         if n_ >= 60:
             all_moves = 0
             b = True
+
         else:
             all_moves = (4 ** n_ - 1) // 3
 
@@ -24,19 +25,25 @@ def main(n):
                 cnt *= 2
                 step += 1
                 prev_need = need
+
             else:
                 if b:
-                    print('YES', n_ - step)
+                    # print('YES', n_ - step)
+                    pass
                     break
                 if all_moves < k_:
-                    print('NO')
+                    # print('NO')
+                    pass
                     break
                 all_moves -= (4 ** (n_ - step)) // 3 * need
                 if all_moves >= k_ or b:
-                    print('YES', n_ - step)
+                    # print('YES', n_ - step)
+                    pass
                     break
+
                 else:
-                    print('NO')
+                    # print('NO')
+                    pass
                     break
 
     # 根据规模 n 生成测试数据：
@@ -51,6 +58,7 @@ def main(n):
         if n_i >= 30:
             # 对于较大 n_i，直接用一个较大的常数（不会真的用到 all_moves 的准确值）
             k_i = 10**9 + i
+
         else:
             total_moves = (4 ** n_i - 1) // 3
             # 取 0.25~0.75 区间内的某个值

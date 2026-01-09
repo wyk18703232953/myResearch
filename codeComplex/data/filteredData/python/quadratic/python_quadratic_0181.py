@@ -1,48 +1,51 @@
-import random
+def main(n):
+    # Interpret n as the length of the values array and also the number of queries
+    size = n
+    if size <= 0:
+        return
 
-def main(n: int):
-    # 生成测试数据
-    # values: 长度为 n 的随机整数数组
-    values = [random.randint(0, 10**9) for _ in range(n)]
+    # Deterministically generate values of length n
+    values = [(i * 3 + 7) % 100000 for i in range(size)]
 
-    # 生成查询数量（这里设为 n，按需可调整）
-    queries = n
+    queries = size
 
-    # 预生成 queries 个合法的区间 [l, r]，1 <= l <= r <= n
-    query_ranges = []
-    for _ in range(queries):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
-        query_ranges.append((l, r))
+    # dp is fixed-size 5009x5009 in the original code
+    MAXN = 5009
+    dp = [[0] * MAXN for _ in range(MAXN)]
 
-    # 初始化 DP 数组
-    dp = [[0] * 5009 for _ in range(5009)]
-
-    # 第 0 行：原始值
-    for i in range(n):
+    # Initialize first row with values
+    for i in range(size):
         dp[0][i] = values[i]
 
-    # 构造基于异或的三角形
-    for i in range(1, n):  # 0 已经填好
-        for j in range(n - i + 1):
+    # First DP: XOR triangle
+    for i in range(1, size):  # 0 is already populated
+        limit = size - i + 1
+        for j in range(limit):
             top = dp[i - 1][j]
             right = dp[i - 1][j + 1]
             dp[i][j] = top ^ right
 
-    # 对每条斜线取最大值
-    for i in range(1, n):
-        for j in range(n - i + 1):
+    # Second DP: range maximum propagation
+    for i in range(1, size):
+        limit = size - i + 1
+        for j in range(limit):
             top = dp[i - 1][j]
             right = dp[i - 1][j + 1]
-            dp[i][j] = max(right, max(dp[i][j], top))
+            current = dp[i][j]
+            dp[i][j] = max(right, current, top)
 
-    # 处理查询并输出
-    for left, right in query_ranges:
+    # Deterministically generate queries.
+    # Original queries are 1-based [left, right] with 1 <= left <= right <= n
+    # We create 'queries' pairs covering various ranges.
+    for idx in range(queries):
+        # Spread left over 1..n
+        left = (idx % size) + 1
+        # Ensure right >= left and within [1, n]
+        right = left + (idx // 2) % (size - left + 1)
         last_row = (right - 1) - (left - 1)
         last_column = (left - 1)
-        print(dp[last_row][last_column])
-
-
+        # print(dp[last_row][last_column])
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可按需修改规模
-    main(5)
+    # Example call; adjust n for different input scales
+    main(1000)

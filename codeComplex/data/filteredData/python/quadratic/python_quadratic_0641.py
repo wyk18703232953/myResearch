@@ -1,8 +1,7 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：n 个 1~n 范围内的随机正整数
-    a = [random.randint(1, n) for _ in range(n)]
+def main(n):
+    # 生成确定性输入数据：长度为 n 的整数数组
+    # 这里选用简单的算术构造：a[i] = (i % 7) + 1
+    a = [(i % 7) + 1 for i in range(n)]
 
     a.sort()
     count = 0
@@ -14,9 +13,7 @@ def main(n: int):
         for j in range(i + 1, n):
             if a[j] % cur_c == 0:
                 a[j] = 0
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
-    # 示例：可根据需要修改 n 的大小
     main(10)

@@ -1,6 +1,7 @@
 def prod(n: int) -> int:
     if n % 2:
         return n * ((n + 1) // 2)
+
     else:
         return (n // 2) * (n + 1)
 
@@ -8,6 +9,7 @@ def prod(n: int) -> int:
 def total_count(n: int, k: int):
     if k >= n:
         return 0, 0, 1
+
     else:
         count = 0
         l = 1
@@ -17,6 +19,7 @@ def total_count(n: int, k: int):
             mid = (l + r) // 2
             if n > s - prod(mid) + mid:
                 r = mid - 1
+
             else:
                 l = mid + 1
 
@@ -33,12 +36,14 @@ def solve_single(n: int, k: int) -> int:
         return 0
     elif k >= n:
         return 1
+
     else:
         n = n - k
         k = k - 2
         n, k, count = total_count(n, k)
         if n:
             return count + 2
+
         else:
             return count + 1
 
@@ -58,9 +63,8 @@ def main(n: int):
     k = max(1, n // 2 + 1)
 
     ans = solve_single(n, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10) 进行测试
     main(10)

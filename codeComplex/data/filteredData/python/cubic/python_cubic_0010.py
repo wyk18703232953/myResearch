@@ -1,13 +1,8 @@
-import random
-import string
-
-
-def main(n: int) -> None:
-    # 1. 生成长度为 n 的测试字符串，使用小写字母
-    # 如需固定随机性，可在外部设置 random.seed()
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-
-    # 2. 保持原逻辑：统计所有子串出现次数，找出现至少 2 次的最长子串长度
+def main(n):
+    # 生成一个确定性的字符串 s，长度为 n
+    # 这里使用循环周期为 26 的小写字母序列
+    s = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
+    n = len(s)
     d = {}
     for i in range(n):
         r = ""
@@ -15,17 +10,15 @@ def main(n: int) -> None:
             r += s[j]
             if r not in d:
                 d[r] = 1
+
             else:
                 d[r] += 1
-
     maxi = 0
-    for sub, cnt in d.items():
-        if cnt >= 2:
-            maxi = max(maxi, len(sub))
-
-    print(maxi)
-
-
+    for key in d:
+        if d[key] >= 2:
+            maxi = max(maxi, len(key))
+    # print(maxi)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
+    # 示例调用，可根据需要修改 n 的大小做复杂度实验
     main(10)

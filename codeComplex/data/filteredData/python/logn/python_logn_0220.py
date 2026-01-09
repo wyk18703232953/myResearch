@@ -14,6 +14,7 @@ def main(n):
         m = (l + h) // 2
         if m - d(m) >= s:
             h = m
+
         else:
             l = m
 
@@ -22,11 +23,11 @@ def main(n):
         if t < 0 or t > n:
             continue
         if abs(t - d(t)) >= s:
-            print(n - t + 1)
+            # print(n - t + 1)
+            pass
             return
-    print(0)
-
-
+    # print(0)
+    pass
 if __name__ == '__main__':
     # 示例：调用 main(10**6)
     main(10**6)

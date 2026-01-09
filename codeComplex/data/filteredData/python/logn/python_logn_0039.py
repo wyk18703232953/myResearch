@@ -1,17 +1,19 @@
-import random
+def main(n):
+    # Deterministic data generation for time complexity experiments:
+    # Interpret n as the maximum possible value for a and b.
+    # Generate a and b as two deterministic integers based on n.
+    if n < 2:
+        a, b = 0, 0
 
-def main(n: int):
-    # 根据规模 n 生成测试数据，这里假设 n 为 a,b 的最大可能值
-    if n <= 1:
-        n = 2
-    a = random.randint(0, n)
-    b = random.randint(0, n)
+    else:
+        a = n // 3
+        b = (2 * n) // 3 + (n % 2)
 
-    # 原逻辑开始
+    # Core algorithm from original program
     a, b = min(a, b), max(a, b)
 
-    bina = bin(a)[2:]
-    binb = bin(b)[2:]
+    bina = str(bin(a))[2:]
+    binb = str(bin(b))[2:]
 
     lena = len(bina)
     lenb = len(binb)
@@ -19,17 +21,16 @@ def main(n: int):
     ans = 0
     if lena != lenb:
         ans = 2 ** lenb - 1
+
     else:
-        # 原代码此处有 bug：应对 binb 补零，而不是对 a
-        bina = bina.zfill(lenb)
+        a_str = '0' * (lena - lenb) + bina
         for i in range(lenb):
             if (bool(int(bina[i])) != bool(int(binb[i]))):
                 ans = 2 ** (lenb - i) - 1
                 break
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：以 100 为规模调用
-    main(100)
+    # Example deterministic call; adjust n for different scales
+    main(10_000)

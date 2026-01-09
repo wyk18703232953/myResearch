@@ -1,45 +1,46 @@
-import random
+def main(n):
+    # n: length of array a
+    if n <= 0:
+        return
+    # Deterministic construction of array a
+    # Example: a[i] = (i * 3 + 5) % 1000000007
+    a = [(i * 3 + 5) % 1000000007 for i in range(n)]
 
-def main(n: int):
-    # 生成长度为 n 的随机数组 a，元素范围可根据需要调整
-    a = [random.randint(0, 10**9) for _ in range(n)]
-
-    # 随机生成查询数量 q
-    q = random.randint(1, max(1, n))
-
-    # 每个查询生成一个合法区间 [l, r]，1 <= l <= r <= n
-    queries = []
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
-        queries.append((l, r))
-
-    # 原始逻辑开始
+    # Build dp table as in original code
     dp = [[0 for _ in range(n + 1)] for _ in range(n + 1)]
-
     for i in range(n):
         dp[0][i] = a[i]
-
     for i in range(1, n):
         for j in range(n - i + 1):
             dp[i][j] = dp[i - 1][j] ^ dp[i - 1][j + 1]
-
     for i in range(1, n):
         for j in range(n - i):
             dp[i][j] = max(dp[i][j], dp[i - 1][j], dp[i - 1][j + 1])
 
-    # 输出测试数据和结果，方便验证
-    print("n =", n)
-    print("a =", " ".join(map(str, a)))
-    print("q =", q)
-    print("queries:")
-    for l, r in queries:
-        print(l, r)
-    print("answers:")
-    for l, r in queries:
-        print(dp[r - l][l - 1])
+    # Deterministic generation of queries
+    # Let number of queries q scale with n (e.g., q = n)
+    q = n
+    results = []
+    for k in range(q):
+        # Generate l, r such that 1 <= l <= r <= n
+        # Example pattern: sliding intervals with wrap control
+        l = (k % n) + 1
+        r = n - (k % (n // 2 + 1))
+        if r < l:
+            l, r = r, l
+        # Ensure bounds
+        if l < 1:
+            l = 1
+        if r > n:
+            r = n
+        if l > r:
+            l, r = r, l
+        results.append(dp[r - l][l - 1])
 
-
+    # Output results to ensure work is not optimized away
+    for val in results:
+        # print(val)
+        pass
 if __name__ == "__main__":
-    # 示例：规模为 5，可根据需要修改或在外部调用 main(n)
-    main(5)
+    # Example deterministic call; adjust n as needed for experiments
+    main(10)

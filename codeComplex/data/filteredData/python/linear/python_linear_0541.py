@@ -1,15 +1,17 @@
-import random
+def main(n):
+    # 生成确定性的数组 A，长度为 n
+    # 示例：A[i] = (-1)^i * (i + 1)
+    A = [(-(i + 1) if i % 2 else (i + 1)) for i in range(n)]
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的整数数组 A
-    # 这里示例为在 [-10^9, 10^9] 范围内随机生成
-    A = [random.randint(-10**9, 10**9) for _ in range(n)]
-
-    if n == 1:
-        print(A[0])
-
+    if n == 0:
+        # print(0)
+        pass
+    elif n == 1:
+        # print(A[0])
+        pass
     elif n == 2:
-        print(abs(A[0] - A[1]))
+        # print(abs(A[0] - A[1]))
+        pass
 
     else:
         SUM = 0
@@ -22,9 +24,8 @@ def main(n: int):
             if ANS < candidate:
                 ANS = candidate
 
-        print(ANS)
-
-
-# 示例调用
+        # print(ANS)
+        pass
 if __name__ == "__main__":
-    main(5)
+    # 示例：使用 n = 10 进行运行
+    main(10)

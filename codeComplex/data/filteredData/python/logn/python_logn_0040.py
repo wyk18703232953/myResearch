@@ -18,9 +18,8 @@ def main(n: int):
         i += 1
 
     result = pow(2, z - i) - 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

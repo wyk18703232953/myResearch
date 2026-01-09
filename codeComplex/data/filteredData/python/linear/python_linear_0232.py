@@ -11,6 +11,7 @@ def main(n):
             cnt += 1
             if cnt >= 3:
                 ans += 1
+
         else:
             cnt = 0
 
@@ -21,4 +22,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：调用 main(10)，不会使用 input()
     res = main(10)
-    print(res)
+    # print(res)
+    pass

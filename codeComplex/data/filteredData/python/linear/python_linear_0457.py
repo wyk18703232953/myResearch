@@ -1,18 +1,9 @@
-import sys
-import math
-import random
-from collections import OrderedDict
-from fractions import Fraction
-
-# decimal to binary
 def binary(n):
     return bin(n).replace("0b", "")
 
-# binary to decimal
 def decimal(s):
     return int(s, 2)
 
-# power of a number base 2
 def pow2(n):
     p = 0
     while n > 1:
@@ -20,7 +11,6 @@ def pow2(n):
         p += 1
     return p
 
-# if number is prime in √n time
 def isPrime(n):
     if n == 1:
         return False
@@ -30,29 +20,28 @@ def isPrime(n):
             return False
     return True
 
-# list to string, no spaces
 def lts(l):
     return ''.join(map(str, l))
 
-# String to list
 def stl(s):
     return list(s)
 
-# Returns list of numbers with a particular sum
-def sq(a, target, arr=[]):
+def sq(a, target, arr=None):
+    if arr is None:
+        arr = []
     s = sum(arr)
     if s == target:
         return arr
     if s >= target:
-        return
+        return None
     for i in range(len(a)):
         n = a[i]
         remaining = a[i + 1:]
         ans = sq(remaining, target, arr + [n])
         if ans:
             return ans
+    return None
 
-# Sieve for prime numbers in a range
 def SieveOfEratosthenes(n):
     cnt = 0
     prime = [True for _ in range(n + 1)]
@@ -67,36 +56,23 @@ def SieveOfEratosthenes(n):
             cnt += 1
     return cnt
 
-# for positive integers only
-def nCr(n, r):
-    f = math.factorial
-    return f(n) // f(r) // f(n - r)
-
-mod = int(1e9) + 7
-
-def p(xyz):
-    print(xyz)
-
-def p2(a, b):
-    print(a, b)
-
 def main(n):
-    """
-    n: scale parameter, also used as length of the generated string s.
-    We generate a valid string of parentheses s of length n (n even),
-    choose k = n, then run the original core logic on (n, k, s).
-    """
-    # ensure n is at least 2 and even
     if n < 2:
         n = 2
-    if n % 2 == 1:
-        n += 1
+    # Interpret n as both length of string and parameter scale
+    k = n if n % 2 == 0 else n - 1
+    if k < 2:
+        k = 2
+    # Deterministically construct a parenthesis string s of length n
+    # Alternate '(' and ')' to give mixed pattern
+    s_chars = []
+    for i in range(n):
+        if i % 2 == 0:
+            s_chars.append('(')
 
-    k = n
-
-    # generate a balanced parentheses string of length n
-    # simple pattern: first n//2 "(", then n//2 ")"
-    s = "(" * (n // 2) + ")" * (n // 2)
+        else:
+            s_chars.append(')')
+    s = ''.join(s_chars)
 
     ans = []
     lb = k // 2
@@ -106,6 +82,7 @@ def main(n):
         if lb > 0:
             if c == "(":
                 lb -= 1
+
             else:
                 rb -= 1
             ans.append(c)
@@ -116,9 +93,11 @@ def main(n):
         elif lb == 0 and rb == 0:
             break
 
-    p(lts(ans))
-
+    result = lts(ans)
+    # print(result)
+    pass
+    return result
 
 if __name__ == "__main__":
-    # example call; you can change n as needed
+    # example deterministic call
     main(10)

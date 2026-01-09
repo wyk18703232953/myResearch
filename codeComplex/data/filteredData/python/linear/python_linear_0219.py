@@ -1,18 +1,22 @@
-import random
+def main(n):
+    # Generate a deterministic binary string b based on n
+    # Ensure that b is not just '0' or '1' for meaningful processing when n > 1
+    if n <= 1:
+        b = '0' if n == 0 else '1'
 
-def main(n: int):
-    # 生成长度为 n 的仅包含 '0' 和 '1' 的随机二进制串
-    b = ''.join(random.choice('01') for _ in range(n))
-
-    # 原逻辑：如果 b 为 '0' 或 '1'，直接输出 b
-    if b == '0' or b == '1':
-        print(b)
     else:
-        # 统计 b 中 '0' 的个数
-        s = len(list(filter(lambda x: x == '0', b)))
-        # 输出 '1' 加上 s 个 '0'
-        print('1' + '0' * s)
+        # Create a pattern of '1' and '0' with length n
+        # Example pattern: starts with '1', then '0', then repeats '10...'
+        b = ''.join('1' if i % 2 == 0 else '0' for i in range(n))
 
+    # Core logic from original program
+    if b == '0' or b == '1':
+        # print(b)
+        pass
+
+    else:
+        s = len(list(filter(lambda x: x == '0', b)))
+        # print('1' + '0' * s)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

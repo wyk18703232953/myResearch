@@ -1,32 +1,31 @@
-import random
-
-def Is_prime(n: int) -> bool:
+def Is_prime(n):
     if n < 2:
         return False
-    # 小优化：先排除偶数
-    if n > 2 and n % 2 == 0:
-        return False
-    i = 3
-    while i * i <= n:
+    for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:
             return False
-        i += 2
     return True
 
-def main(n: int):
-    # 1. 根据规模 n 生成测试数据
-    # 原程序逻辑：给定一个整数 n，寻找 2..99 中的非素数 i 和 n-i 都为非素数
-    # 这里按要求“根据 n 生成测试数据”：如果 n 不合适（太小），就基于 n 生成一个更大的测试数
-    if n < 10:
-        # 保证搜索空间中更可能存在解
-        n = max(10, n * 10)
 
-    # 2. 保留原始核心逻辑：从 2 到 99 中找非素数 i 和非素数 n-i
+def core_logic(n):
     for i in range(2, 100):
         if not Is_prime(i) and not Is_prime(n - i):
-            print(i, n - i)
-            break
+            return i, n - i
+    return None, None
 
+
+def main(n):
+    # 将 n 映射为原程序中的单个整数输入规模
+    # 使用一个简单的确定性算式生成测试值
+    test_value = 4 + 2 * n  # 保证为偶数且随 n 线性增长
+    a, b = core_logic(test_value)
+    if a is not None:
+        # print(a, b)
+        pass
+
+    else:
+        # print("No pair found")
+        pass
 if __name__ == "__main__":
-    # 示例：以 n = 100 作为规模调用
-    main(100)
+    # 示例调用，可按需修改 n 的大小做时间复杂度实验
+    main(10)

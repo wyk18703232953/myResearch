@@ -30,8 +30,8 @@ def main(n):
 
     # 计算结果
     result = n % g * h(n // g + 1) + (g - n % g) * h(n // g)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10)

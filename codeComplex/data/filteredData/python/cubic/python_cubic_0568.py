@@ -1,11 +1,19 @@
-import random
+def main(n):
+    # Generate deterministic inputs based on n
+    # s: a string of digits of length n
+    # s1: a string of digits of length n (or n-1 if n>1 to cover len(s1)<len(s) case)
+    if n <= 0:
+        return
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的数字串 s 和 s1
-    # 使得 s1 的长度在 1..n 之间，且只包含 0..9
-    s = "".join(str(random.randint(0, 9)) for _ in range(n))
-    m = random.randint(1, n)
-    s1 = "".join(str(random.randint(0, 9)) for _ in range(m))
+    # s: "0123456789" repeated and truncated to length n
+    base_digits = "0123456789"
+    s = (base_digits * (n // 10 + 1))[:n]
+
+    # s1: "9876543210" repeated and truncated;
+    # if n > 1, use length n-1 so that we also hit len(s1) < len(s) branch for measurements
+    m = n if n == 1 else n - 1
+    s1_pattern = "9876543210"
+    s1 = (s1_pattern * (m // 10 + 1))[:m]
 
     l = []
     l1 = []
@@ -20,9 +28,9 @@ def main(n: int):
     if len(s1) > len(s):
         l = sorted(l)
         l = l[::-1]
-        print("".join(map(str, l)))
+        # print("".join(map(str, l)))
+        pass
         return
-
     ans = [0] * len(s)
 
     ki = 0
@@ -52,14 +60,13 @@ def main(n: int):
                         break
                 if f1:
                     break
+
                 else:
                     d[ans[i1]] += 1
                     ans[i1] = 0
         i += 1
 
-    print("".join(map(str, ans)))
-
-
+    # print("".join(map(str, ans)))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，n 为规模参数
     main(10)

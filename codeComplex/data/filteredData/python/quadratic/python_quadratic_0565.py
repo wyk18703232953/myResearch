@@ -28,9 +28,8 @@ def main(n: int):
                 continue
             result.append(f"{m + 1 - column} {n + 1 - row}")
 
-    print("\n".join(result))
-
-
+    # print("\n".join(result))
+    pass
 if __name__ == "__main__":
     # 示例：规模为 5，可按需要修改或在外部调用 main
     main(5)

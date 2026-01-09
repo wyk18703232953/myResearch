@@ -1,18 +1,13 @@
 from math import ceil
-import random
 
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 约束：1 <= k <= n*10，且 k > 0
-    if n <= 0:
-        return 0
+    # 映射：原程序有两个输入 n, k
+    # 这里将第一个参数视为原来的 n，k 由 n 确定性生成
+    orig_n = n
+    k = n + 1 if n > 0 else 1  # 保证 k >= 1 且与 n 有确定关系
 
-    k = random.randint(1, max(1, n * 10))
-
-    result = ceil(n * 2 / k) + ceil(n * 5 / k) + ceil(n * 8 / k)
-    print(result)
-    return result
-
+    result = ceil(orig_n * 2 / k) + ceil(orig_n * 5 / k) + ceil(orig_n * 8 / k)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(100)
-    main(100)
+    main(10)

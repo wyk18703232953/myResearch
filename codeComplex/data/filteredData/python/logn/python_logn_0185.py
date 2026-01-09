@@ -11,11 +11,11 @@ def main(n):
         if mid >= s + z:
             ans = mid
             hi = mid - 1
+
         else:
             lo = mid + 1
-    print(n - ans + 1)
-
-
+    # print(n - ans + 1)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10**6) 或任意规模
     main(1000000)

@@ -5,7 +5,8 @@ def main(n):
         val = x
 
         if val % 2 == 1:
-            print('NO')
+            # print('NO')
+            pass
             continue
 
         val //= 2
@@ -16,10 +17,12 @@ def main(n):
             m = (l + r) // 2
             if m * m <= val:
                 l = m
+
             else:
                 r = m
         if l * l == val:
-            print('YES')
+            # print('YES')
+            pass
             continue
 
         # 检查 val 是否是 2 * (某个整数的平方)
@@ -28,15 +31,16 @@ def main(n):
             m = (l + r) // 2
             if m * m * 2 <= val:
                 l = m
+
             else:
                 r = m
         if l * l * 2 == val:
-            print('YES')
+            # print('YES')
+            pass
             continue
 
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例：规模 n = 10
     main(10)

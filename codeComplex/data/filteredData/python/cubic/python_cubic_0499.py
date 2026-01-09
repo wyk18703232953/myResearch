@@ -1,28 +1,25 @@
-import random
-
 def main(n):
-    # 规模参数：使用 n 作为 N，M，K 则由 n 派生或固定
+    # Map n to grid and steps in a deterministic way
+    if n < 1:
+        n = 1
     N = n
     M = n
-    # 这里给出一个示例：令 K = 2 * n （保证为偶数）
-    # 如需其他策略，可按需修改
-    K = 2 * n
-
-    # 生成测试数据 A, B
-    # A: N x (M-1) 的非负权重
-    # B: (N-1) x M 的非负权重
-    # 可以根据需要调整随机范围
-    A = [[random.randint(1, 9) for _ in range(M - 1)] for _ in range(N)]
-    B = [[random.randint(1, 9) for _ in range(M)] for _ in range(N - 1)]
-
-    # 若 K 为奇数，输出 -1 矩阵（按原逻辑）
-    if K & 1:
-        for _ in range(N):
-            print(*([-1] * M))
-        return
+    # Ensure K is even to avoid the trivial -1 output; tie to n for scaling
+    K = 2 * ((n % 5) + 1)
 
     R = range
     m = min
+
+    if K & 1:
+        for _ in R(N):
+            # print(*[-1] * M)
+            pass
+        return
+
+    # Deterministic generation of A (N x (M-1)) and B ((N-1) x M)
+    # Use simple arithmetic so values are reproducible
+    A = [[(i * M + j + 1) % 7 + 1 for j in R(M - 1)] for i in R(N)]
+    B = [[(i * M + j + 2) % 9 + 1 for j in R(M)] for i in R(N - 1)]
 
     X = [[0] * M for _ in R(N)]
     for _ in R(1, K // 2 + 1):
@@ -38,11 +35,8 @@ def main(n):
                 if j < M - 1:
                     Y[i][j] = m(Y[i][j], X[i][j + 1] + 2 * A[i][j])
         X = Y
-
     for x in X:
-        print(*x)
-
-
+        # print(*x)
+        pass
 if __name__ == "__main__":
-    # 示例调用：n=4
-    main(4)
+    main(5)

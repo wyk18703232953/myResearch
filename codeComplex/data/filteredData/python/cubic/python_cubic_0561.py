@@ -1,6 +1,12 @@
-import random
+def main(n):
+    # Generate deterministic inputs a and b from n
+    # Let a be a string of digits of length n: "012345... (mod 10)"
+    # Let b be a string of digits of length n: "987654... (mod 10 reversed)"
+    if n <= 0:
+        return
+    a = ''.join(str(i % 10) for i in range(1, n + 1))
+    b = ''.join(str((n - i) % 10) for i in range(n))
 
-def solve(a: str, b: str) -> str:
     la = [int(x) for x in a]
     res = []
     la.sort()
@@ -8,7 +14,7 @@ def solve(a: str, b: str) -> str:
     lb = [int(x) for x in b]
     cnt = [0] * 20
 
-    def check() -> bool:
+    def check():
         tres = 0
         for x in range(len(res)):
             tres *= 10
@@ -16,7 +22,12 @@ def solve(a: str, b: str) -> str:
         return tres <= int(b)
 
     if len(a) < len(b):
-        return ''.join(str(x) for x in la)
+        for i in range(len(la)):
+            # print(la[i], end='')
+            pass
+        # print()
+        pass
+
     else:
         for i in range(len(la)):
             cnt[la[i]] += 1
@@ -25,6 +36,7 @@ def solve(a: str, b: str) -> str:
             if flag == 0 and cnt[lb[i]]:
                 res.append(lb[i])
                 cnt[lb[i]] -= 1
+
             else:
                 flag = i - 1
                 for j in range(lb[i] - 1, -1, -1):
@@ -56,30 +68,13 @@ def solve(a: str, b: str) -> str:
                     res.append(v)
                     cnt[v] -= 1
             flag -= 1
-        return ''.join(str(x) for x in res)
-
-def main(n: int):
-    # 生成规模为 n 的测试数据：
-    # a 为长度 n 的随机数字串，首位不为 0
-    # b 为长度在 [1, n] 之间的随机数字串，首位不为 0
-    if n <= 0:
-        return
-
-    def rand_number(length: int) -> str:
-        if length == 1:
-            return str(random.randint(0, 9))
-        first = str(random.randint(1, 9))
-        rest = ''.join(str(random.randint(0, 9)) for _ in range(length - 1))
-        return first + rest
-
-    len_a = n
-    len_b = random.randint(1, n)
-    a = rand_number(len_a)
-    b = rand_number(len_b)
-
-    ans = solve(a, b)
-    print(ans)
-
+        for i in range(len(res)):
+            # print(res[i], end='')
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模 n = 10
+    # Example deterministic runs for time-complexity experiments
+    main(5)
     main(10)
+    main(20)

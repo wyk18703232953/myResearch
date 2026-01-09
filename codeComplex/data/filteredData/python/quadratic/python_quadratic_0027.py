@@ -1,10 +1,17 @@
-import random
+def main(n):
+    MOD = 10**9 + 7
 
-MOD = 10**9 + 7
+    # Deterministic generation of the original input structure:
+    # original: n, then n lines each a string "s" or something else
+    # Here: build a list of length n, pattern depends only on n and index
+    s = []
+    for i in range(n):
+        # Alternate "s" and "f" in a deterministic way
+        if i % 2 == 0:
+            s.append("s")
 
-def main(n: int) -> int:
-    # 生成长度为 n 的随机字符串列表，每个元素是 "s" 或 "f"
-    s = ['s' if random.randint(0, 1) == 0 else 'f' for _ in range(n)]
+        else:
+            s.append("f")
 
     dps = [[0] * (n + 3) for _ in range(n + 1)]
     dpf = [[0] * (n + 3) for _ in range(n + 1)]
@@ -27,6 +34,7 @@ def main(n: int) -> int:
             for p in range(pos + 2, n + 1):
                 dpf[pos + 1][p] += dpf[pos + 1][p - 1]
                 dpf[pos + 1][p] %= MOD
+
         else:
             for depth in range(1, pos + 2):
                 dpf[pos + 1][depth] = (
@@ -43,5 +51,11 @@ def main(n: int) -> int:
                 dpf[pos + 1][p] %= MOD
 
     ans = dps[n][n] % MOD
-    print(ans)
     return ans
+
+
+if __name__ == "__main__":
+    # Example deterministic call for time-complexity experiments
+    result = main(10)
+    # print(result)
+    pass

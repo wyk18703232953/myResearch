@@ -66,8 +66,8 @@ def main(n):
     # 原逻辑：输出 x 中也在 y 中的元素
     for c in x:
         if c in y:
-            print(c, end=" ")
-
+            # print(c, end=" ")
+            pass
 if __name__ == "__main__":
     # 示例：可以手动调用 main(5) 测试
     main(5)

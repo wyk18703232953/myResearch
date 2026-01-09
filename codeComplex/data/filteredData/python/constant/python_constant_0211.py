@@ -18,11 +18,12 @@ def main(n: int):
             break
 
     if worked:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：规模 n = 3
     main(3)

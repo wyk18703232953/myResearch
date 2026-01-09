@@ -1,17 +1,25 @@
-import random
+import sys
 from array import array  # noqa: F401
 
 
-def main(n: int) -> int:
+def main(n):
+    # 确定性生成原程序的输入 (n, k)
+    # 这里将原始的 n 保持为传入的 n，将 k 设为 n 的线性函数以体现规模
+    if n <= 1:
+        # 对于太小的 n，直接返回以避免无意义计算
+        # print(0)
+        pass
+        return
+    k = n + 1
+
     mod = 998244353
 
-    # 生成测试数据：k 在 [1, n^2] 范围内随机取值，至少为 1
-    k = random.randint(1, max(1, n * n))
-
     if k == 1:
-        return 0
+        # print(0)
+        pass
+        return
 
-    # 原始逻辑开始
+    # 初始化 dp1, dp2，与原始逻辑保持一致
     dp1 = [array('i', [0]) * n for _ in range(n)]
     dp2 = [array('i', [0]) * n for _ in range(n)]
     dp1[0][0] = 1
@@ -60,4 +68,7 @@ def main(n: int) -> int:
         x = sum(dp1[i - 1]) % mod
         ans = (ans + x * sum(dps1[:-1])) % mod
 
-    return ans * 2 % mod
+    # print(ans * 2 % mod)
+    pass
+if __name__ == "__main__":
+    main(200)

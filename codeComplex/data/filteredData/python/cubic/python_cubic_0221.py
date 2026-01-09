@@ -1,14 +1,13 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成 R,G,B，并生成对应长度的数组
-    # 这里示例为：R = G = B = n
-    R = G = B = n
+    # Map n to sizes of the three arrays
+    R = max(1, n)
+    G = max(1, n)
+    B = max(1, n)
 
-    # 生成测试数据：1..100 之间的随机整数
-    r = [random.randint(1, 100) for _ in range(R)]
-    g = [random.randint(1, 100) for _ in range(G)]
-    b = [random.randint(1, 100) for _ in range(B)]
+    # Deterministically generate arrays r, g, b
+    r = [(i * 2 + 1) % 1000 for i in range(R)]
+    g = [(i * 3 + 2) % 1000 for i in range(G)]
+    b = [(i * 5 + 3) % 1000 for i in range(B)]
 
     r.sort()
     g.sort()
@@ -31,27 +30,36 @@ def main(n):
     for i in range(1, R + 1):
         for j in range(1, G + 1):
             for k in range(1, B + 1):
-                ri, gj, bk = r[i - 1], g[j - 1], b[k - 1]
-                mx = max(ri, gj, bk)
-                if mx == ri:
+                ri = r[i - 1]
+                gj = g[j - 1]
+                bk = b[k - 1]
+                m = ri
+                if gj > m:
+                    m = gj
+                if bk > m:
+                    m = bk
+                if m == ri:
                     dp[i][j][k] = max(
                         dp[i - 1][j - 1][k] + ri * gj,
-                        dp[i - 1][j][k - 1] + ri * bk
+                        dp[i - 1][j][k - 1] + ri * bk,
                     )
-                elif mx == gj:
+                elif m == gj:
                     dp[i][j][k] = max(
                         dp[i - 1][j - 1][k] + ri * gj,
-                        dp[i][j - 1][k - 1] + gj * bk
+                        dp[i][j - 1][k - 1] + gj * bk,
                     )
+
                 else:
                     dp[i][j][k] = max(
                         dp[i][j - 1][k - 1] + bk * gj,
-                        dp[i - 1][j][k - 1] + ri * bk
+                        dp[i - 1][j][k - 1] + ri * bk,
                     )
 
-    print(dp[R][G][B])
+    result = dp[R][G][B]
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(3) 进行测试
-    main(3)
+    main(10)

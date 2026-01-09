@@ -7,6 +7,7 @@ def search(arr, power):
         if arr[mid] <= power:
             ans = mid
             lo = mid + 1
+
         else:
             hi = mid - 1
     return ans
@@ -28,14 +29,16 @@ def main(n):
         power += k[i]
         pos = search(a, power)
         if pos == n - 1:
-            print(n)
+            # print(n)
+            pass
             power = 0
         elif pos == -1:
-            print(n)
+            # print(n)
+            pass
+
         else:
-            print(n - pos - 1)
-
-
+            # print(n - pos - 1)
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

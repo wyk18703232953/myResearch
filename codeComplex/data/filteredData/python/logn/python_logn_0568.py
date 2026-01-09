@@ -15,7 +15,8 @@ def main(n):
     no = 10 ** ind
 
     if n == 0:
-        print(9)
+        # print(9)
+        pass
         return
 
     u = n
@@ -23,15 +24,18 @@ def main(n):
     no += max(0, (u // (ind + 1)) - 1)
 
     if n == 0:
-        print(str(no)[-1])
+        # print(str(no)[-1])
+        pass
         return
+
     else:
         no += 1
 
     while n > 0:
         if n <= ind + 1:
             e = str(no)
-            print(e[n - 1])
+            # print(e[n - 1])
+            pass
         n -= ind + 1
         no += 1
 

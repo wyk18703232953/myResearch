@@ -16,13 +16,13 @@ def main(n):
 
     if x == 0:
         ans = (y - 1) % 10
+
     else:
         y = y // pow(10, d - x)
         ans = y % 10
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可在此处指定规模 n 进行测试
     # 例如 n = 1000

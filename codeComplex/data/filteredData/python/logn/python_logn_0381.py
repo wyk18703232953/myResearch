@@ -7,14 +7,14 @@ def main(n):
     k = n
 
     if n == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     ans = 2 * n - 1
     x = pow(2, k, M)
-    print((((ans * x) % M) + 1) % M)
-
-
+    # print((((ans * x) % M) + 1) % M)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

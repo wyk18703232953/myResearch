@@ -1,8 +1,6 @@
-import random
-from collections import deque
-
-
 def solveBFS(NR, NG, NB, R, G, B):
+    from collections import deque
+
     def pack(i, j, k):
         return i * 256 * 256 + j * 256 + k
 
@@ -30,23 +28,23 @@ def solveBFS(NR, NG, NB, R, G, B):
 
         if i + 1 <= NR and j + 1 <= NG:
             rg = pack(i + 1, j + 1, k)
-            nd = r * g + d
-            if nd > dp[rg]:
-                dp[rg] = nd
+            val = r * g + d
+            if val > dp[rg]:
+                dp[rg] = val
                 q.append(rg)
 
         if i + 1 <= NR and k + 1 <= NB:
             rb = pack(i + 1, j, k + 1)
-            nd = r * b + d
-            if nd > dp[rb]:
-                dp[rb] = nd
+            val = r * b + d
+            if val > dp[rb]:
+                dp[rb] = val
                 q.append(rb)
 
         if j + 1 <= NG and k + 1 <= NB:
             gb = pack(i, j + 1, k + 1)
-            nd = g * b + d
-            if nd > dp[gb]:
-                dp[gb] = nd
+            val = g * b + d
+            if val > dp[gb]:
+                dp[gb] = val
                 q.append(gb)
 
     return max(dp)
@@ -100,28 +98,18 @@ def solve(NR, NG, NB, R, G, B):
 
 
 def main(n):
-    """
-    n: 规模参数，用于控制 R,G,B 三个数组的最大长度及元素大小。
-    返回 solve 的结果。
-    """
-    random.seed(0)
+    # 定义输入规模：三个数组的长度都为 n
+    NR = NG = NB = n
 
-    # 根据 n 生成测试数据
-    max_len = max(1, n)
-    NR = random.randint(1, max_len)
-    NG = random.randint(1, max_len)
-    NB = random.randint(1, max_len)
-
-    max_val = max(1, n * 10)
-    R = [random.randint(1, max_val) for _ in range(NR)]
-    G = [random.randint(1, max_val) for _ in range(NG)]
-    B = [random.randint(1, max_val) for _ in range(NB)]
+    # 确定性生成测试数据
+    # R, G, B 的元素大小与索引相关，避免随机性
+    R = [(i % 7) + 1 for i in range(NR)]
+    G = [(i % 11) + 1 for i in range(NG)]
+    B = [(i % 13) + 1 for i in range(NB)]
 
     ans = solve(NR, NG, NB, R, G, B)
-    print(ans)
-    return ans
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n = 5 运行
-    main(5)
+    # 示例：输入规模 n = 10
+    main(10)

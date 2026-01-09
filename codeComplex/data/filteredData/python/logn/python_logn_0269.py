@@ -6,7 +6,8 @@ def main(n):
     k = n * n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     mod = 10 ** 9 + 7
@@ -14,9 +15,8 @@ def main(n):
     res = x * pow(2, k + 1, mod) % mod
     res = ((res - (pow(2, k, mod) - 1)) % mod + mod) % mod
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例调用
     main(10)

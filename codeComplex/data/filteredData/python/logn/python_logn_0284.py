@@ -4,6 +4,7 @@ def a(k):
     if k > 0:
         l = a(k // 2)
         return (l * l * (k % 2 + 1)) % M
+
     else:
         return 1
 
@@ -16,11 +17,13 @@ def main(n):
     data = [n, 2 * n]  # data[0] 对应原来的 n[0]，data[1] 对应原来的 n[1]
 
     if data[0] == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         l = a(data[1])
-        print((2 * (data[0] % M) * l - l + 1) % M)
-
+        # print((2 * (data[0] % M) * l - l + 1) % M)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为规模运行
     main(10)

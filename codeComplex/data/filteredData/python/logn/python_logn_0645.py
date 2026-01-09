@@ -14,18 +14,20 @@ def main(n):
         val = (N - mid + 1) * abs(N - mid) // 2 - mid
         if val > k:
             left = mid
+
         else:
             if val == k:
-                print(round(mid))
+                # print(round(mid))
+                pass
                 f = False
                 break
+
             else:
                 right = mid
 
     if f:
-        print(round(left))
-
-
+        # print(round(left))
+        pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(1000)

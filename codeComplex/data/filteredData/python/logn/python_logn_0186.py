@@ -15,13 +15,13 @@ def main(n: int):
         if mid >= s + z:
             ans = mid
             hi = mid - 1
+
         else:
             lo = mid + 1
 
     result = max(0, n - ans + 1)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改测试规模
     main(10**6)

@@ -1,23 +1,21 @@
-from collections import deque
+import math
 from types import GeneratorType
-import sys
-import random
-import __pypy__  # type: ignore
 
 EPS = 10**-12
 
 
 def bootstrap(f, stack=[]):
-    # Deep recursion helper for generators.
     def wrappedfunc(*args, **kwargs):
         if stack:
             return f(*args, **kwargs)
+
         else:
             to = f(*args, **kwargs)
             while True:
                 if type(to) is GeneratorType:
                     stack.append(to)
                     to = next(to)
+
                 else:
                     stack.pop()
                     if not stack:
@@ -68,43 +66,21 @@ class CycleFindDirected(object):
                 while node_end != node_begin:
                     answer.append(node_end)
                     node_end = self.parent[node_end]
-
                 answer.reverse()
                 if len(answer) == 1:
-                    # self-loop special case
                     return [node_begin, node_begin]
                 return answer
         return None
 
 
-def main(n):
-    """
-    自动生成规模为 n 的测试数据，并执行原逻辑。
-    这里生成一个随机有向图：
-    - 顶点数: n
-    - 边数: m 约为 n 到 2n 之间（但最多 n*(n-1)）
-    """
-    random.seed(1)
-
-    # 限制 n，避免极端情况
-    n = max(1, n)
-    max_edges = n * (n - 1)
-    m = random.randint(n, min(2 * n, max_edges)) if max_edges > 0 else 0
-
-    # 随机生成有向边（可能有重复边，逻辑与原程序兼容）
-    edges = []
+def core_logic(n, edges):
     base = CycleFindDirected(n)
-    for _ in range(m):
-        u = random.randrange(n)
-        v = random.randrange(n)
-        edges.append((u, v))
+    for u, v in edges:
         base.add_edge(u, v)
 
-    # 以下为原 main 的逻辑（不再使用输入输出封装）
     cycle = base.find()
     if not cycle:
-        print("YES")
-        return
+        return "YES"
 
     cycle.append(cycle[0])
 
@@ -120,23 +96,43 @@ def main(n):
             cf.add_edge(edge[0], edge[1])
 
     for edge in cycle_edges:
-        # 临时加入除当前 edge 外的所有环边
         for toadd in cycle_edges:
             if toadd != edge:
                 cf.adj[toadd[0]].append(toadd[1])
 
         if not cf.find():
-            print("YES")
-            return
+            return "YES"
 
-        # 撤销刚才加入的边
         for toadd in cycle_edges:
             if toadd != edge:
                 cf.adj[toadd[0]].pop()
 
-    print("NO")
+    return "NO"
 
 
+def generate_deterministic_graph(n):
+    if n <= 1:
+        return n, []
+    m = n * 2
+    edges = []
+    for i in range(n - 1):
+        edges.append((i, i + 1))
+    if n > 2:
+        edges.append((n - 1, 0))
+    idx = 0
+    while len(edges) < m:
+        u = idx % n
+        v = (idx * 2 + 1) % n
+        if u != v and (u, v) not in edges:
+            edges.append((u, v))
+        idx += 1
+    return n, edges
+
+
+def main(n):
+    n_nodes, edges = generate_deterministic_graph(n)
+    result = core_logic(n_nodes, edges)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：可以手动调整 n 进行快速测试
-    main(5)
+    main(10)

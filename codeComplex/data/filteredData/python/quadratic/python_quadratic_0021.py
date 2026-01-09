@@ -5,7 +5,6 @@ import fractions
 import heapq
 import itertools
 import math
-import random
 import sys
 from collections import deque, defaultdict
 from functools import lru_cache, reduce
@@ -17,6 +16,7 @@ def _heappush_max(heap, item):
 
 from math import gcd as Gcd
 
+
 def Extended_Euclid(n, m):
     stack = []
     while m:
@@ -24,12 +24,14 @@ def Extended_Euclid(n, m):
         n, m = m, n % m
     if n >= 0:
         x, y = 1, 0
+
     else:
         x, y = -1, 0
     for i in range(len(stack) - 1, -1, -1):
         n, m = stack[i]
         x, y = y, x - (n // m) * y
     return x, y
+
 
 class MOD:
     def __init__(self, p, e=1):
@@ -41,6 +43,7 @@ class MOD:
         a %= self.mod
         if n >= 0:
             return pow(a, n, self.mod)
+
         else:
             assert math.gcd(a, self.mod) == 1
             x = Extended_Euclid(a, self.mod)[0]
@@ -80,10 +83,12 @@ class MOD:
         cnt = self.cnt[N] - self.cnt[N - K] - self.cnt[K]
         if divisible_count:
             return retu, cnt
+
         else:
             retu *= pow(self.p, cnt, self.mod)
             retu %= self.mod
             return retu
+
 
 def Bell_Numbers(N, mod, prime=False):
     bell_numbers = [0] * (N + 1)
@@ -95,6 +100,7 @@ def Bell_Numbers(N, mod, prime=False):
             bell_numbers[i] = sum(bell_numbers[j] * MD.Comb(i - 1, j) for j in range(i)) % mod
         for i in range(mod, N + 1):
             bell_numbers[i] = (bell_numbers[i - mod + 1] + bell_numbers[i - mod]) % mod
+
     else:
         if N - 1 >= 0:
             MD.Build_Fact(N - 1)
@@ -102,26 +108,34 @@ def Bell_Numbers(N, mod, prime=False):
             bell_numbers[i] = sum(bell_numbers[j] * MD.Comb(i - 1, j) for j in range(i)) % mod
     return bell_numbers
 
-def main(n):
-    # 生成规模由 n 控制的测试数据：
-    # 令 M = n，N = n // 2（至少为 1），S 为 N 个长度为 M 的随机字符串
-    M = n
-    N = max(1, n // 2)
-    alphabet = "abc"
 
-    rng = random.Random(0)
+def generate_input(n):
+    # Map n to M (string length) and N (number of strings)
+    # Use a simple deterministic mapping:
+    # M = max(1, n), N = max(1, n // 2)
+    M = max(1, n)
+    N = max(1, n // 2 if n >= 2 else 1)
+
+    # Deterministically generate N strings of length M over 'a'..'z'
     S = []
-    for _ in range(N):
-        s = "".join(rng.choice(alphabet) for _ in range(M))
-        S.append(s)
+    for j in range(N):
+        base = j + 1
+        chars = []
+        for i in range(M):
+            # simple deterministic pattern depending on i, j
+            c = chr(ord('a') + (i * base + j) % 26)
+            chars.append(c)
+        S.append(''.join(chars))
+    return M, N, S
 
+
+def solve(M, N, S):
     dct = defaultdict(int)
     for i in range(M):
         tpl = ()
         for j in range(N):
             tpl += (S[j][i],)
         dct[tpl] += 1
-
     ans = 1
     mod = 10 ** 9 + 7
     bell = Bell_Numbers(M, mod)
@@ -129,3 +143,12 @@ def main(n):
         ans *= bell[c]
         ans %= mod
     return ans
+
+
+def main(n):
+    M, N, S = generate_input(n)
+    result = solve(M, N, S)
+    # print(result)
+    pass
+if __name__ == "__main__":
+    main(10)

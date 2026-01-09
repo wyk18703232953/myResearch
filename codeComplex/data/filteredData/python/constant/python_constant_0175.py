@@ -1,23 +1,19 @@
-import random
+def main(n):
+    # 解释输入结构：原程序读取两个整数 l, r
+    # 这里用 n 生成一个确定性的区间 [l, r]
+    # 令 l = 1, r = n，保证规模由 n 控制
+    l = 1
+    r = n
 
-def main(n: int):
-    # 根据规模 n 生成测试数据，这里假设：
-    # r 在 [3, 3 + 10*n] 内随机生成，l 在 [1, r] 内随机生成
-    if n <= 0:
-        return
-
-    r = random.randint(3, 3 + 10 * n)
-    l = random.randint(1, r)
-
-    # 原逻辑开始
     if l % 2 != 0:
         l += 1
     if l + 2 > r:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(l, l + 1, l + 2)
-
-
+        # print(l, l + 1, l + 2)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模可根据需要调整
+    # 示例调用，可根据需要修改 n 的大小进行时间复杂度实验
     main(10)

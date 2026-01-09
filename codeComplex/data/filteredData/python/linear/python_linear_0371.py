@@ -1,17 +1,10 @@
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据
-    # 假设 m 与 n 同级，这里设置 m = n，也可以根据需要修改为其他函数关系
+    # n 作为输入规模，同时生成两个长度均为 n 的数组 c 和 a
+    # c 为递增序列，a 为每隔两个元素略大一些的序列，用简单算术保证确定性
     m = n
+    c = [i for i in range(1, n + 1)]
+    a = [i // 2 + 1 for i in range(1, m + 1)]
 
-    # 生成价格列表 c（例如 1~100 的随机整数）
-    c = [random.randint(1, 100) for _ in range(n)]
-
-    # 生成预算列表 a（例如 1~100 的随机整数），长度为 m
-    a = [random.randint(1, 100) for _ in range(m)]
-
-    # 原逻辑开始
     c_i = 0
     a_i = 0
     bought = 0
@@ -20,11 +13,10 @@ def main(n):
             a_i += 1
             c_i += 1
             bought += 1
+
         else:
             c_i += 1
-
-    print(bought)
-
+    # print(bought)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 进行测试
     main(10)

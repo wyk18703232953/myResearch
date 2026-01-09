@@ -1,19 +1,16 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 将 n 拆成三个非负数 r, g, b，使 r + g + b = n
-    # 这里简单取三等分（最后一个补齐）
-    r = n // 3
-    g = n // 3
-    b = n - r - g
+    # Map n to sizes of the three arrays; keep them balanced for scaling
+    # Ensure at least size 1 for each dimension
+    r = max(1, n // 3)
+    g = max(1, (n - r) // 2)
+    b = max(1, n - r - g)
 
-    # 生成随机测试数据（1~100 的整数）
-    ra = sorted([random.randint(1, 100) for _ in range(r)], reverse=True)
-    ga = sorted([random.randint(1, 100) for _ in range(g)], reverse=True)
-    ba = sorted([random.randint(1, 100) for _ in range(b)], reverse=True)
+    # Deterministic generation of arrays, then sort in descending order
+    ra = sorted([(i * 2 + 1) for i in range(r)], reverse=True)
+    ga = sorted([(i * 3 + 2) for i in range(g)], reverse=True)
+    ba = sorted([(i * 5 + 3) for i in range(b)], reverse=True)
 
-    # 创建 DP 数组
+    # Initialize DP array with -1
     dp = [[[-1] * (b + 1) for _ in range(g + 1)] for _ in range(r + 1)]
 
     def solve(i, j, k):
@@ -44,9 +41,8 @@ def main(n):
 
         return dp[i][j][k]
 
-    ans = solve(0, 0, 0)
-    print(ans)
-    return ans
-
-# 示例调用：
-# main(9)
+    result = solve(0, 0, 0)
+    # print(result)
+    pass
+if __name__ == "__main__":
+    main(30)

@@ -9,10 +9,10 @@ def main(n: int):
         a += 1
     b = 10 ** n - a
 
-    print(a)
-    print(b)
-
-
+    # print(a)
+    pass
+    # print(b)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

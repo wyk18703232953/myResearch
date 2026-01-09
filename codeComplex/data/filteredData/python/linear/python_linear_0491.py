@@ -1,7 +1,6 @@
-import random
+import sys
 from collections import deque
 import heapq
-
 
 def solve(N, EDGE):
     EDGELIST = [[] for _ in range(N + 1)]
@@ -14,19 +13,19 @@ def solve(N, EDGE):
     QUE = deque([1])
     check = [0] * (N + 1)
     DEPTH = [None] * (N + 1)
-    depth_val = 0
-
+    depth_level = 0
     while QUE:
         NQUE = deque()
-        depth_val += 1
+        depth_level += 1
 
         while QUE:
             x = QUE.pop()
-            DEPTH[x] = depth_val
+            DEPTH[x] = depth_level
             check[x] = 1
             for to in EDGELIST[x]:
                 if check[to] == 1:
                     continue
+
                 else:
                     REDG[to] = x
                     NQUE.append(to)
@@ -54,36 +53,29 @@ def solve(N, EDGE):
 
         if check[x] == 0:
             check[x] = 1
-        if check[REDG[REDG[x]]] == 0:
+        if REDG[REDG[x]] is not None and check[REDG[REDG[x]]] == 0:
             check[REDG[REDG[x]]] = 1
         check[REDG[x]] = 2
-        heapq.heappush(
-            QUE,
-            (-DEPTH[REDG[REDG[REDG[x]]]], REDG[REDG[REDG[x]]])
-        )
+
+        grand = REDG[REDG[REDG[x]]] if REDG[x] is not None and REDG[REDG[x]] is not None else None
+        if grand is not None:
+            heapq.heappush(QUE, (-DEPTH[grand], grand))
         ANS += 1
 
     return ANS
 
-
-def generate_tree_edges(n):
-    """生成一棵随机树的边列表，节点编号为 1..n。"""
-    edges = []
-    for v in range(2, n + 1):
-        u = random.randint(1, v - 1)
-        edges.append((u, v))
-    return edges
-
+def generate_tree_edges(N):
+    # Deterministic tree generation: a simple chain 1-2-3-...-N
+    # This gives N-1 edges as required
+    return [[i, i + 1] for i in range(1, N)]
 
 def main(n):
-    # 生成规模为 n 的测试数据（随机树）
-    N = n
+    # Map n to tree size N
+    # Ensure N >= 2 for the original logic (which expects N-1 edges)
+    N = max(2, n)
     EDGE = generate_tree_edges(N)
-
     ans = solve(N, EDGE)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：运行 main(10)。实际使用时可修改 n。
     main(10)

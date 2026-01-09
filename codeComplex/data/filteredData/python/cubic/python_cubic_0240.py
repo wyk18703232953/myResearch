@@ -1,23 +1,24 @@
-import random
+def main(n):
+    # Map n to sizes of three arrays: r, g, b
+    # Use roughly equal partition; ensure at least 1 for non-zero n
+    if n <= 0:
+        # print(0)
+        pass
+        return
+    r = n
+    g = n
+    b = n
 
-def main(n: int):
-    # 1. 生成测试数据
-    # 将 n 分成 r, g, b 三部分（尽量平均）
-    r = n // 3
-    g = (n - r) // 2
-    b = n - r - g
+    # Deterministic data generation
+    # Example pattern: increasing positive integers with simple offsets
+    R = [i + 1 for i in range(r)]
+    G = [2 * (i + 1) for i in range(g)]
+    B = [3 * (i + 1) for i in range(b)]
 
-    # 生成随机正整数作为颜色数组，取值范围可自行调整
-    R = [random.randint(1, 1000) for _ in range(r)]
-    G = [random.randint(1, 1000) for _ in range(g)]
-    B = [random.randint(1, 1000) for _ in range(b)]
-
-    # 2. 原逻辑开始
     R = sorted(R, reverse=True)
     G = sorted(G, reverse=True)
     B = sorted(B, reverse=True)
 
-    # dp[i][j][k]: 取了 i 个红、j 个绿、k 个蓝时的最大得分
     dp = []
     for i in range(r + 1):
         sdp = [[0] * (b + 1) for _ in range(g + 1)]
@@ -30,9 +31,9 @@ def main(n: int):
         for i in range(nb_taken + 1):
             if i > r:
                 break
-            # j 的下界：nb_taken - i - b
-            # j 的上界：nb_taken - i
-            for j in range(nb_taken - i - b, nb_taken - i + 1):
+            j_start = nb_taken - i - b
+            j_end = nb_taken - i
+            for j in range(j_start, j_end + 1):
                 if j < 0:
                     continue
                 if j > g:
@@ -40,34 +41,29 @@ def main(n: int):
                 k = nb_taken - i - j
                 if k < 0 or k > b:
                     continue
-                # 三角不等式相关条件
                 if i + j < k or i + k < j or j + k < i:
                     continue
-
                 if i < r and j < g:
-                    dp[i + 1][j + 1][k] = max(
-                        dp[i + 1][j + 1][k],
-                        dp[i][j][k] + R[i] * G[j]
-                    )
-                    answer = max(answer, dp[i + 1][j + 1][k])
-
+                    val = dp[i][j][k] + R[i] * G[j]
+                    if val > dp[i + 1][j + 1][k]:
+                        dp[i + 1][j + 1][k] = val
+                    if dp[i + 1][j + 1][k] > answer:
+                        answer = dp[i + 1][j + 1][k]
                 if i < r and k < b:
-                    dp[i + 1][j][k + 1] = max(
-                        dp[i + 1][j][k + 1],
-                        dp[i][j][k] + R[i] * B[k]
-                    )
-                    answer = max(answer, dp[i + 1][j][k + 1])
-
+                    val = dp[i][j][k] + R[i] * B[k]
+                    if val > dp[i + 1][j][k + 1]:
+                        dp[i + 1][j][k + 1] = val
+                    if dp[i + 1][j][k + 1] > answer:
+                        answer = dp[i + 1][j][k + 1]
                 if j < g and k < b:
-                    dp[i][j + 1][k + 1] = max(
-                        dp[i][j + 1][k + 1],
-                        dp[i][j][k] + G[j] * B[k]
-                    )
-                    answer = max(answer, dp[i][j + 1][k + 1])
+                    val = dp[i][j][k] + G[j] * B[k]
+                    if val > dp[i][j + 1][k + 1]:
+                        dp[i][j + 1][k + 1] = val
+                    if dp[i][j + 1][k + 1] > answer:
+                        answer = dp[i][j + 1][k + 1]
 
-    print(answer)
-
-
+    # print(answer)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 9
-    main(9)
+    # Example deterministic call
+    main(5)

@@ -1,35 +1,38 @@
-from collections import Counter
-import random
-import string
+def main(n):
+    from collections import Counter
 
+    # Ensure n is non-negative
+    if n <= 0:
+        # print(0)
+        pass
+        # print()
+        pass
+        return
 
-def main(n: int):
-    # 1. 生成测试数据：随机字符串 s，打乱得到 t（保证可行）
-    # 字符集为小写字母
-    letters = string.ascii_lowercase
+    # Deterministic generation of s and t of length n
+    # s: cyclic 'a'..'z'
+    s = [chr(ord('a') + (i % 26)) for i in range(n)]
+    # t: a deterministic permutation of s by reversing blocks of size 3
+    t = s[:]  # same multiset of characters
 
-    # 生成随机字符串 s
-    s = [random.choice(letters) for _ in range(n)]
+    def transform_by_blocks(arr, block_size):
+        res = arr[:]
+        for start in range(0, len(res), block_size):
+            end = min(start + block_size, len(res))
+            res[start:end] = reversed(res[start:end])
+        return res
 
-    # 为保证 s 和 t 具有相同字符计数，这里直接对 s 的下标做随机排列
-    indices = list(range(n))
-    random.shuffle(indices)
+    t = transform_by_blocks(t, 3)
 
-    # 构造 t，使得 t 是 s 的一个重排
-    t = [None] * n
-    for i, j in enumerate(indices):
-        t[i] = s[j]
-
-    # ------- 以下是原逻辑 -------
     cs = Counter(s)
     ct = Counter(t)
     if cs != ct:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     xs = [[] for _ in range(26)]
     xt = [[] for _ in range(26)]
-
     for i in range(n):
         j = ord(s[i]) - ord('a')
         xs[j].append(i)
@@ -40,8 +43,8 @@ def main(n: int):
 
     x = [-1] * n
     for i in range(26):
-        for j, k in zip(xs[i], xt[i]):
-            x[j] = k
+        for j_idx, k_idx in zip(xs[i], xt[i]):
+            x[j_idx] = k_idx
 
     ans = []
     for i in range(n):
@@ -49,12 +52,15 @@ def main(n: int):
             if x[j - 1] > x[j]:
                 x[j - 1], x[j] = x[j], x[j - 1]
                 ans.append(j)
+    # print(len(ans))
+    pass
 
-    print(len(ans))
     if ans:
-        print(*ans)
+        # print(*ans)
+        pass
 
-
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

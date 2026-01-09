@@ -1,5 +1,3 @@
-import random
-
 def solve(N, S, C):
     dp = [float('inf')] * N
     for i in range(1, N):
@@ -18,19 +16,12 @@ def solve(N, S, C):
         return -1
     return ans
 
-
 def main(n):
-    # 根据 n 生成测试数据
     N = n
-    # 生成 S 为 1..10^6 范围内的随机整数
-    S = [random.randint(1, 10**6) for _ in range(N)]
-    # 生成 C 为 1..10^6 范围内的随机花费
-    C = [random.randint(1, 10**6) for _ in range(N)]
-
+    S = [i % 10 for i in range(N)]
+    C = [i % 7 + 1 for i in range(N)]
     result = solve(N, S, C)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 你可以在这里指定规模进行简单测试
-    main(5)
+    main(10)

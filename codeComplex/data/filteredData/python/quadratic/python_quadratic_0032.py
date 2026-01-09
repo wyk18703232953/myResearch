@@ -29,4 +29,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：可以在此处手动调用 main 进行简单测试
-    print(main(5))
+    # print(main(5))
+    pass

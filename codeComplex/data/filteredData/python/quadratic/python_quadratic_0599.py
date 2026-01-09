@@ -24,9 +24,8 @@ def main(n):
             if cand > ans:
                 ans = cand
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用
     main(10)

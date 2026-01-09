@@ -4,6 +4,7 @@ MOD = 1000000007
 def find(c: str) -> int:
     if 'A' <= c <= 'Z':
         return ord(c) - ord('A') + 26
+
     else:
         return ord(c) - ord('a')
 
@@ -92,9 +93,8 @@ def main(n: int):
         r = find(s[y - 1])
         if l > r:
             l, r = r, l
-        print(num * ans[l][r] % MOD)
-
-
+        # print(num * ans[l][r] % MOD)
+        pass
 if __name__ == "__main__":
     # 示例调用：n = 20
     main(20)

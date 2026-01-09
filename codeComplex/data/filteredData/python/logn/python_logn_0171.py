@@ -42,6 +42,7 @@ def solve(n: int, k: int) -> int:
         elif minimum == maximum - 1:
             if possible(n, k, minimum):
                 return minimum
+
             else:
                 return maximum
 
@@ -49,6 +50,7 @@ def solve(n: int, k: int) -> int:
         if possible(n, k, mid):
             # Try if smaller is possible.
             maximum = mid
+
         else:
             # Need more.
             minimum = mid
@@ -66,4 +68,5 @@ def main(n: int):
 if __name__ == "__main__":
     # 示例：调用 main(10) 进行测试
     result = main(10)
-    print(result)
+    # print(result)
+    pass

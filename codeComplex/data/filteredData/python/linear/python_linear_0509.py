@@ -16,8 +16,8 @@ def main(n):
                 continue
             res += 1
         i += 1
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：可在此修改 n 进行本地测试
     main(10)

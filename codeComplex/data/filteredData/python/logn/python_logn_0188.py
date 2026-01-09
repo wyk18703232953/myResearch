@@ -12,6 +12,7 @@ def big(n: int, s: int) -> int:
         mid = (lo + hi) // 2
         if mid - digit(mid) < s:
             lo = mid + 1
+
         else:
             hi = mid - 1
     return n - lo + 1
@@ -23,8 +24,8 @@ def main(n: int):
     a = n
     b = n // 2
     ans = big(a, b)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 为规模运行
     main(10)

@@ -50,7 +50,8 @@ def main(n):
     # 你可以按需要替换为其他生成逻辑
     if n < 3:
         # 原逻辑在 n < 3 时不会找到 i in [1, n-2]，结果应为 -1
-        print(-1)
+        # print(-1)
+        pass
         return
 
     S = list(range(n))
@@ -84,11 +85,12 @@ def main(n):
         ans = min(ans, L[i] + C[i] + R[i])
 
     if ans >= INF:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：n = 5
     main(5)

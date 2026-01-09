@@ -16,11 +16,12 @@ def main(n):
         c += 1
 
     if n >= m * c:
-        print(c)
+        # print(c)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，使用某个规模 n
     main(10)

@@ -12,18 +12,22 @@ def main(n: int):
     elif n % 3 == 0:
         # 构造 a=1 的合法情况
         a, b = 1, max(1, n // 2)
+
     else:
         # 构造 b=1 的合法情况
         a, b = max(1, n // 2), 1
 
     # 原始逻辑开始
     if a > 1 and b > 1:
-        print("NO")
+        # print("NO")
+        pass
         return
     if 2 <= n <= 3 and a == b == 1:
-        print("NO")
+        # print("NO")
+        pass
         return
-    print("YES")
+    # print("YES")
+    pass
 
     if b == 1:
         adj = [[0] * n for _ in range(n)]
@@ -47,12 +51,14 @@ def main(n: int):
             conn -= 1
             if conn == b:
                 break
+
     else:
         # 理论上前面已排除 a>1 且 b>1 的情况，这里只是防御性代码
         return
 
     for row in adj:
-        print(*row, sep='')
+        # print(*row, sep='')
+        pass
 
 
 # 示例：直接运行时给一个默认规模

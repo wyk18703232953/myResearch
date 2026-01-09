@@ -1,14 +1,7 @@
-import random
-import string
-
-def main(n: int):
-    # 生成长度为 n 的测试数据，只包含字符 '0','1','2'
-    # 可根据需要调整生成逻辑
+def main(n):
+    # Deterministically generate a binary string s of length n using pattern over '0','1','2'
     chars = ['0', '1', '2']
-    s = ''.join(random.choice(chars) for _ in range(n))
-
-    inf = 1e10
-    mod = int(1e9 + 7)
+    s = ''.join(chars[i % 3] for i in range(n))
 
     c = s.count('1')
     c1, i = 0, 0
@@ -17,17 +10,18 @@ def main(n: int):
             c1 += 1
         i += 1
 
-    # 为保持原逻辑的“连续输出”效果，统一在末尾打印
-    output = []
-    output.append('0' * c1)
-    output.append('1' * c)
+    # Collect output in a list for determinism and to avoid interleaved prints
+    out = []
+    out.append('0' * c1)
+    out.append('1' * c)
     while i < len(s):
         if s[i] != '1':
-            output.append(s[i])
+            out.append(s[i])
         i += 1
-    print(''.join(output))
 
-
+    result = ''.join(out)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
-    main(10)
+    # Example deterministic call; adjust n for different input scales
+    main(20)

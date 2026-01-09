@@ -1,16 +1,16 @@
-import random
+def main(n):
+    # Map n to sizes of r, g, b with a simple deterministic pattern
+    # Make sure they don't exceed 200 because dp dimension is fixed to 201
+    max_size = 200
+    r = min(max(1, n), max_size)
+    g = min(max(1, (2 * n) // 3 + 1), max_size)
+    b = min(max(1, (n // 2) + 1), max_size)
 
-def main(n: int):
-    # 1. 根据 n 生成测试数据
-    # 这里将 r, g, b 都设为 n，颜色值为 1..n 的随机排列
-    # 如果希望不同规模，可自行调整 r, g, b 与 n 的关系
-    r = g = b = max(1, min(n, 200))  # 保证不超过 dp 维度 200 且至少为 1
+    # Deterministic generation of rs, gs, bs using simple arithmetic patterns
+    rs = [(i * 3 + 1) % 1000 for i in range(r)]
+    gs = [(i * 5 + 2) % 1000 for i in range(g)]
+    bs = [(i * 7 + 3) % 1000 for i in range(b)]
 
-    rs = [random.randint(1, 1000) for _ in range(r)]
-    gs = [random.randint(1, 1000) for _ in range(g)]
-    bs = [random.randint(1, 1000) for _ in range(b)]
-
-    # 2. 保持原始逻辑
     rs.sort()
     gs.sort()
     bs.sort()
@@ -18,41 +18,41 @@ def main(n: int):
     gs.reverse()
     bs.reverse()
 
-    # dp 的最大维度在原代码中固定为 201
     dp = [[[0] * 201 for _ in range(201)] for _ in range(201)]
+    limit_rg = min(r, g)
+    limit_gb = min(g, b)
+    limit_br = min(b, r)
 
-    max_i = min(r, g)
-    max_j = min(g, b)
-    max_k = min(b, r)
-
-    for i in range(max_i + 1):
-        for j in range(max_j + 1):
-            for k in range(max_k + 1):
+    for i in range(limit_rg + 1):
+        for j in range(limit_gb + 1):
+            for k in range(limit_br + 1):
                 options = []
-                # 对应原代码中的三种转移
                 if i != 0:
                     if i + k - 1 < r and i + j - 1 < g:
                         options.append(dp[i - 1][j][k] + rs[i + k - 1] * gs[i + j - 1])
+
                     else:
                         options.append(dp[i - 1][j][k])
                 if j != 0:
                     if i + j - 1 < g and j + k - 1 < b:
                         options.append(dp[i][j - 1][k] + gs[i + j - 1] * bs[j + k - 1])
+
                     else:
                         options.append(dp[i][j - 1][k])
                 if k != 0:
                     if j + k - 1 < b and i + k - 1 < r:
                         options.append(dp[i][j][k - 1] + bs[j + k - 1] * rs[i + k - 1])
+
                     else:
                         options.append(dp[i][j][k - 1])
-
                 if options:
                     dp[i][j][k] = max(options)
 
-    result = dp[max_i][max_j][max_k]
-    print(result)
+    result = dp[limit_rg][limit_gb][limit_br]
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    main(50)

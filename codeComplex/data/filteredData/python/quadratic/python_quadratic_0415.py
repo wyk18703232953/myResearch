@@ -17,9 +17,8 @@ def main(n: int):
 
     f1 = fail[-1]
     result = s + s[f1:] * (k - 1)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：n = 10
     main(10)

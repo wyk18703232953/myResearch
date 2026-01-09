@@ -1,46 +1,47 @@
-import random
+def main(n):
+    # Map n to sizes of three arrays (r, g, b)
+    # Simple deterministic partition: r = n, g = n, b = n
+    r = n
+    g = n
+    b = n
 
-def main(n: int):
-    # 根据规模 n 生成随机数据
-    # 约束：r + g + b ≈ n，且每个颜色数量 >= 1
-    if n < 3:
-        raise ValueError("n 应该至少为 3，用于生成三种颜色的数组")
-
-    # 将 n 划分为 r, g, b 三部分
-    r = random.randint(1, n - 2)
-    g = random.randint(1, n - r - 1)
-    b = n - r - g
-
-    # 生成随机值（可根据需要调整范围）
-    R = [random.randint(1, 10**4) for _ in range(r)]
-    G = [random.randint(1, 10**4) for _ in range(g)]
-    B = [random.randint(1, 10**4) for _ in range(b)]
+    # Deterministic generation of arrays R, G, B
+    R = [(i * 2 + 1) for i in range(r)]
+    G = [(i * 3 + 2) for i in range(g)]
+    B = [(i * 5 + 3) for i in range(b)]
 
     R.sort(reverse=True)
     G.sort(reverse=True)
     B.sort(reverse=True)
 
-    # 三维 DP，大小为 (r+1) x (g+1) x (b+1)
-    dp = [[[0] * (b + 1) for _ in range(g + 1)] for _ in range(r + 1)]
+    # Allocate dp with dimensions (r+5) x (g+5) x (b+5)
+    dp = [[[0 for _ in range(b + 5)] for _ in range(g + 5)] for _ in range(r + 5)]
 
-    # 自底向上填表
-    for i in range(r, -1, -1):
-        for j in range(g, -1, -1):
-            for k in range(b, -1, -1):
-                if i < r and j < g:
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      R[i] * G[j] + dp[i + 1][j + 1][k])
-                if i < r and k < b:
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      R[i] * B[k] + dp[i + 1][j][k + 1])
-                if j < g and k < b:
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      G[j] * B[k] + dp[i][j + 1][k + 1])
+    sys.setrecursionlimit(2000000)
 
-    # 输出结果
-    print(dp[0][0][0])
+    def solve(i, j, k):
+        x, y, z = 0, 0, 0
+        if dp[i][j][k]:
+            return dp[i][j][k]
+        if i < r and j < g:
+            x = R[i] * G[j] + solve(i + 1, j + 1, k)
+        if i < r and k < b:
+            y = R[i] * B[k] + solve(i + 1, j, k + 1)
+        if j < g and k < b:
+            z = G[j] * B[k] + solve(i, j + 1, k + 1)
+        mx = x
+        if y > mx:
+            mx = y
+        if z > mx:
+            mx = z
+        dp[i][j][k] = mx
+        return mx
 
-
+    result = solve(0, 0, 0)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n=9 运行一次
-    main(9)
+    import sys
+
+    # Example deterministic call; adjust n to change input scale
+    main(5)

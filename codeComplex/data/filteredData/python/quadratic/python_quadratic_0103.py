@@ -1,37 +1,39 @@
-import random
-
 def check(x, y):
     return ''.join([''.join(s) for s in x]) == ''.join([''.join(s) for s in y])
 
-def main(n: int):
-    # 生成规模为 n 的随机测试数据矩阵 a、b
-    # 使用 '#' 和 '.' 组成的字符矩阵
-    chars = ['#', '.']
-    a = [[random.choice(chars) for _ in range(n)] for _ in range(n)]
-    b = [[random.choice(chars) for _ in range(n)] for _ in range(n)]
+def main(n):
+    # 生成确定性的 n x n 字符矩阵 a 和 b
+    # 使用 'a' 和 'b' 两种字符，以位置 (i + j) 的奇偶性作为构造规则
+    a = [['a' if (i + j) % 2 == 0 else 'b' for j in range(n)] for i in range(n)]
+    # 将 a 旋转 90 度（与原程序中的变换一致），再作为 b
+    b = [['' for _ in range(n)] for _ in range(n)]
+    for t in range(n):
+        for u in range(n):
+            b[t][u] = a[n - u - 1][t]
 
     for _ in range(4):
         for _ in range(2):
             if check(a, b):
-                print('Yes')
+                # print('Yes')
+                pass
                 return
             b = b[::-1]
         for _ in range(2):
             if check(a, b):
-                print('Yes')
+                # print('Yes')
+                pass
                 return
-            b = [row[::-1] for row in b]
+            b = [s[::-1] for s in b]
         c = [['' for _ in range(n)] for _ in range(n)]
         for t in range(n):
             for u in range(n):
                 c[t][u] = b[u][n - t - 1]
         b = c[:]
         if check(a, b):
-            print('Yes')
+            # print('Yes')
+            pass
             return
-    print('No')
-
-
+    # print('No')
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(4)
-    main(4)
+    main(5)

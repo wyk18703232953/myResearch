@@ -1,9 +1,12 @@
-import random
+def main(n):
+    # Generate deterministic data: n integers with some repetitions
+    # Example pattern: a_i = (i % (n // 3 + 1)) + 1 to ensure many duplicates and divisibility relations
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int):
-    # 生成测试数据：n 个 1~10^9 之间的随机整数
-    # 可以根据需要调整数据生成策略
-    arr = [random.randint(1, 10**9) for _ in range(n)]
+    arr = [(i % (n // 3 + 1)) + 1 for i in range(n)]
 
     a = sorted(list(set(arr)))
     m = len(a)
@@ -16,9 +19,7 @@ def main(n: int):
             for j in range(i + 1, m):
                 if a[j] % a[i] == 0:
                     used[j] = 1
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可修改规模
-    main(10)
+    main(1000)

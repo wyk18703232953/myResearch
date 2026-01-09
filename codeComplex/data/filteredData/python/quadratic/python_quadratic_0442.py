@@ -1,8 +1,8 @@
-from random import randint
-
-def main(n: int):
-    # 生成长度为 n 的测试数据，这里用 1~10 的随机整数
-    arr = [randint(1, 10) for _ in range(n)]
+def main(n):
+    # Generate deterministic test data:
+    # n = length of the array
+    # arr[i] = (i % 7) + 1 to avoid zeros and keep values small
+    arr = [(i % 7) + 1 for i in range(n)]
 
     okk = 0
     s = 0
@@ -21,10 +21,7 @@ def main(n: int):
         if cnt == 0 and sss:
             okk = 1
             break
-
-    print("YES" if okk else "NO")
-
-
+    # print("YES" if okk else "NO")
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，可按需修改 n
     main(10)

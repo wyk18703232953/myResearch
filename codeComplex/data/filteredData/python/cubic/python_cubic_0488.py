@@ -1,74 +1,74 @@
 from math import inf
-import random
-
 
 def main(n):
-    # 这里用 n 作为网格的行数，同时令 m = n，k = 2 * n（可按需要调整）
-    m = n
-    k = 2 * n  # 保证为偶数，保持原题意中“往返步数”的含义
+    # Map n to grid size and step count deterministically
+    # Ensure positive dimensions
+    if n < 2:
+        n_val = 2
 
-    # 生成测试数据：权重为 1~9 的随机整数
+    else:
+        n_val = n
+    # Choose grid as roughly sqrt-scaled, k proportional to dimension
+    m = n_val
+    n_rows = n_val
+    k = 2 * (n_val if n_val % 2 == 0 else n_val + 1)
+
+    # Deterministic cost generation
     horizontal_costs = [
-        [random.randint(1, 9) for _ in range(m - 1)]
-        for _ in range(n)
+        [(i * m + j + 1) % 7 + 1 for j in range(m - 1)]
+        for i in range(n_rows)
     ]
     vertical_costs = [
-        [random.randint(1, 9) for _ in range(m)]
-        for _ in range(n - 1)
+        [((i + 1) * m + j + 3) % 9 + 1 for j in range(m)]
+        for i in range(n_rows - 1)
     ]
 
-    # dp[a][b][c] - 从 (a, b) 出发走 c 步的最小花费
-    dp = [[[inf] * (k // 2 + 1) for _ in range(m)] for _ in range(n)]
+    max_c = k // 2
+    dp = [[[inf] * (max_c + 1) for _ in range(m)] for _ in range(n_rows)]
 
     def find_cost(a, b, c):
-        if a < 0 or a >= n or b < 0 or b >= m:
+        if a < 0 or a > n_rows - 1 or b < 0 or b > m - 1:
             return inf
         if c == 0:
             return 0
         if dp[a][b][c] != inf:
             return dp[a][b][c]
 
-        # 向下
-        if a < n - 1:
-            dp[a][b][c] = min(
-                dp[a][b][c],
-                find_cost(a + 1, b, c - 1) + vertical_costs[a][b],
-            )
-        # 向右
+        best = inf
+        if a < n_rows - 1:
+            val = find_cost(a + 1, b, c - 1) + vertical_costs[a][b]
+            if val < best:
+                best = val
         if b < m - 1:
-            dp[a][b][c] = min(
-                dp[a][b][c],
-                find_cost(a, b + 1, c - 1) + horizontal_costs[a][b],
-            )
-        # 向左
+            val = find_cost(a, b + 1, c - 1) + horizontal_costs[a][b]
+            if val < best:
+                best = val
         if b > 0:
-            dp[a][b][c] = min(
-                dp[a][b][c],
-                find_cost(a, b - 1, c - 1) + horizontal_costs[a][b - 1],
-            )
-        # 向上
+            val = find_cost(a, b - 1, c - 1) + horizontal_costs[a][b - 1]
+            if val < best:
+                best = val
         if a > 0:
-            dp[a][b][c] = min(
-                dp[a][b][c],
-                find_cost(a - 1, b, c - 1) + vertical_costs[a - 1][b],
-            )
-        return dp[a][b][c]
+            val = find_cost(a - 1, b, c - 1) + vertical_costs[a - 1][b]
+            if val < best:
+                best = val
 
-    ans = [[inf] * m for _ in range(n)]
+        dp[a][b][c] = best
+        return best
+
+    ans = [[inf] * m for _ in range(n_rows)]
     if k % 2 == 1:
-        for i in range(n):
+        for i in range(n_rows):
             for j in range(m):
                 ans[i][j] = -1
+
     else:
         half = k // 2
-        for i in range(n):
+        for i in range(n_rows):
             for j in range(m):
                 ans[i][j] = 2 * find_cost(i, j, half)
 
     for row in ans:
-        print(*row)
-
-
+        # print(*row)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(4) 生成 4x4 网格的测试并输出
-    main(4)
+    main(10)

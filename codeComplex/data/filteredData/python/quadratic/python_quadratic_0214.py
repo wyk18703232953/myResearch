@@ -1,16 +1,14 @@
-import random
+def main(n):
+    # Interpret n as number of rows; derive m deterministically from n
+    m = max(1, n // 2)
 
-def main(n: int):
-    # 随机生成 m（列数），这里简单设为 1~n 范围内
-    m = random.randint(1, max(1, n))
-
-    # 生成 n 行长度为 m 的 0/1 字符串
+    tc = [0] * m
     ps = []
-    tc = [0] * m  # 每一列的总计数
-    for _ in range(n):
-        row_bits = [random.choice('01') for _ in range(m)]
-        temp = ''.join(row_bits)
 
+    # Deterministically generate n binary strings of length m
+    # temp[i] is '1' if (row_index + i) is even, else '0'
+    for row in range(n):
+        temp = ''.join('1' if (row + col) % 2 == 0 else '0' for col in range(m))
         psa = [0] * m
         for i in range(m):
             if temp[i] == '1':
@@ -28,9 +26,7 @@ def main(n: int):
             ans = 'YES'
             break
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 5
-    main(5)
+    main(10)

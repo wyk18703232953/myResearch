@@ -1,10 +1,7 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 原程序中：n, v = [int(item) for item in input().split()]
-    # 这里设定 v 的规模与 n 同级别，可根据需要调整生成规则
-    v = random.randint(0, n * n)
+    # 映射：原程序的 n 作为规模参数
+    # 生成确定性 v，与 n 有固定关系
+    v = n // 2 + 1
 
     x = 0
     c = 0
@@ -15,9 +12,7 @@ def main(n):
             x += delta
         x -= 1
 
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

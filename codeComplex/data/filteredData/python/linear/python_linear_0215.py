@@ -1,16 +1,14 @@
-import random
-
 def main(n):
-    # 随机生成参数 a, b（b 在原代码中未使用，但保留生成以匹配输入格式）
-    a = random.randint(-10, 10)
-    b = random.randint(-10, 10)
+    # Deterministic generation of a, b
+    a = n % 7 + 1
+    b = (n % 5) + 2
 
-    # 随机生成 n 组 (x, vx, vy)
+    # Deterministic generation of ghosts: list of (vx, vy)
+    # Use simple arithmetic patterns based on i and n
     ghosts = []
-    for _ in range(n):
-        x = random.randint(-10, 10)
-        vx = random.randint(-10, 10)
-        vy = random.randint(-10, 10)
+    for i in range(n):
+        vx = (i * 2 + 1) % (n + 3)
+        vy = (i * 3 + 2) % (n + 5)
         ghosts.append((vx, vy))
 
     speeds = {}
@@ -25,10 +23,7 @@ def main(n):
         group_size = sum(ss.values())
         for sss in ss.values():
             result += sss * (group_size - sss)
-
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
-    main(10)
+    main(1000)

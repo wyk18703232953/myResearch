@@ -14,7 +14,8 @@ def main(n):
     # 为简化，这里选择 t = n // 2（可以按需修改生成策略）。
     if n <= 1:
         # 规模太小直接返回 0
-        print(0)
+        # print(0)
+        pass
         return
 
     target_t = n // 2  # 希望最终输出的值
@@ -37,9 +38,11 @@ def main(n):
         s += dob
         dob += 1
         if s - (n - i - 1) == k:
-            print(n - i - 1)
+            # print(n - i - 1)
+            pass
             return
-    print(0)
+    # print(0)
+    pass
 
 
 # 示例调用

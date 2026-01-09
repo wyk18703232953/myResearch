@@ -51,8 +51,8 @@ def main(n):
         arr = arr[:N - 1]
 
     ans = solve(arr, cnt)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可按需修改
     main(100)

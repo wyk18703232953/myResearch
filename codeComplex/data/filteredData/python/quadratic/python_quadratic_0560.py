@@ -1,8 +1,7 @@
-import random
-
 def main(n):
-    # 生成测试数据：随机选择 m，范围为 1..n（也可以按需修改）
-    m = random.randint(1, n)
+    # 将单个 n 映射为原程序中的 (n, m)
+    # 这里选择 m = n，使输入规模由一个参数控制：矩阵为 n x n
+    m = n
 
     r = []
     rappend = r.append
@@ -18,9 +17,8 @@ def main(n):
         if m & 1:
             rappend(str((n + 1) >> 1) + ' ' + str((m + 1) >> 1))
 
-    print('\n'.join(r))
-
-
+    # print('\n'.join(r))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 进行测试
-    main(5)
+    # 示例：输入规模为 10
+    main(10)

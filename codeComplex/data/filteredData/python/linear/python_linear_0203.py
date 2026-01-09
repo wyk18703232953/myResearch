@@ -1,39 +1,49 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # n：预约次数
-    # m：需要的连续空闲时间长度（分钟）
-    # 这里设定时间为一天内的分钟数 0~1439
-    m = random.randint(1, 180)  # 随机 1~180 分钟
-    times = sorted(random.sample(range(0, 24 * 60), n))  # n 个不重复时间点
+    # Interpret n as the number of time points
+    # Deterministically generate m and the time points
+    # m: a fixed positive integer derived from n
+    m = max(1, n // 3 + 5)
 
-    # 转换为原程序输入格式（小时, 分钟）
-    schedule = [(t // 60, t % 60) for t in times]
-
-    # 原有逻辑
     b = []
     d = []
 
+    # Generate n deterministic time points (a, c) in non-decreasing order of minutes
+    # a: hour, c: minute
+    # Ensure times are within a single day (0 <= a < 24, 0 <= c < 60)
+    # Construction: base minute t = i * (m + 1) // 2 to allow gaps that may exceed (m*2)+1
+    times = []
+    for i in range(n):
+        t = i * ((m + 1) // 2)
+        a = (t // 60) % 24
+        c = t % 60
+        times.append((a, c))
+
     for x in range(n):
-        a, c = schedule[x]
+        a, c = times[x]
         if x == 0:
             if (a * 60) + c > m:
                 b.append("0 0")
             d.append((a * 60) + c)
+
         else:
             if ((a * 60) + c) - d[-1] > (m * 2) + 1:
                 f = d[-1] + m + 1
                 b.append(str(f // 60) + " " + str((f % 60)))
             d.append((a * 60) + c)
 
-    if len(b) == 0:
+    if len(b) == 0 and len(d) > 0:
         f = d[-1] + m + 1
         b.append(str(f // 60) + " " + str((f % 60)))
 
-    print(b[0])
+    if b:
+        # print(b[0])
+        pass
 
-
+    else:
+        # Edge case: n == 0, original code assumes at least one line
+        # Define a deterministic fallback
+        # print("0 0")
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 5
-    main(5)
+    # Example call for testing; adjust n as needed for experiments
+    main(10)

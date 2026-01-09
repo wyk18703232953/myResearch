@@ -104,7 +104,8 @@ def power_set(L):
 
 
 def fastPlrintNextLines(a):
-    print('\n'.join(map(str, a)))
+    # print('\n'.join(map(str, a)))
+    pass
 
 
 def sortByFirstAndSecond(A):
@@ -123,6 +124,7 @@ def solve_one(n, k):
         for i in range(1, k // 2 + 1):
             l[1][i] = '#'
             l[2][i] = '#'
+
     else:
         if k > n - 2:
             for i in range(1, n - 1):
@@ -158,13 +160,13 @@ def main(n):
     # For variety, use a deterministic formula.
     if n < 3:
         k = 0
+
     else:
         k = (2 * (n - 2)) // 3  # some value depending on n
 
     result_lines = solve_one(n, k)
-    print('\n'.join(result_lines))
-
-
+    # print('\n'.join(result_lines))
+    pass
 if __name__ == "__main__":
     # example: run with n = 7
     main(7)

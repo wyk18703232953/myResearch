@@ -27,9 +27,8 @@ def main(n):
     L = n
     R = 2 * n
     # 计算并输出结果
-    print(maxXORInRange(L, R))
-
-
+    # print(maxXORInRange(L, R))
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=8 运行
     main(8)

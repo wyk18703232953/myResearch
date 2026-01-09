@@ -1,30 +1,51 @@
-import random
+def main(n):
+    # Deterministically generate two numeric strings a, b based on n
+    # Ensure they are non-empty
+    length_a = max(1, n)
+    length_b = max(1, (n * 2) // 3 + 1)
 
-def fs(a, b):
-    try:
-        for i in range(a + 1, len(b)):
-            if b[a] > b[i]:
-                ans = b[i]
-                k = b.copy()
-                k.pop(i)
-                ans += "".join(k)
-                return ans
-        return False
-    except:
-        return False
+    # Generate a: digits cycling 1..9, avoiding leading zero
+    a_digits = []
+    for i in range(length_a):
+        d = (i % 9) + 1  # 1..9
+        a_digits.append(str(d))
+    a = "".join(a_digits)
 
-def solve(a, b):
+    # Generate b: digits cycling 1..9 but scaled, keep it comparable in magnitude
+    b_digits = []
+    for i in range(length_b):
+        d = ((i * 2) % 9) + 1
+        b_digits.append(str(d))
+    b = "".join(b_digits)
+
     na = len(a)
     nb = len(b)
 
+    def fs(idx, arr):
+        try:
+            # Try to find a smaller digit after position idx
+            for i in range(idx + 1, len(arr)):
+                if arr[idx] > arr[i]:
+                    ans = arr[i]
+                    k = arr.copy()
+                    k.pop(i)
+                    ans += "".join(k)
+                    return ans
+            return False
+        except Exception:
+            return False
+
     if na < nb:
-        return "".join(sorted(list(a), reverse=True))
+        # print("".join(sorted(list(a), reverse=True)))
+        pass
+
     else:
         if a == b:
-            return a
+            # print(a)
+            pass
+
         else:
             l = sorted(list(a), reverse=True)
-            l2 = l.copy()
             ans1 = ""
             flag = 0
             ans = []
@@ -46,27 +67,16 @@ def solve(a, b):
                     break
             ans1 += "".join(l)
             if int(ans1) <= int(b):
-                return ans1
+                # print(ans1)
+                pass
+
             else:
                 for v in sorted([int(x) for x in ans], reverse=True):
                     if v <= int(b):
-                        return str(v)
-    return ""  # fallback
+                        # print(v)
+                        pass
+                        break
 
-def generate_test_data(n):
-    # 生成长度为 n 的数字串 a，b 的规则：
-    # a 为随机数字串（无前导零限制，与原代码一致）
-    # b 的长度在 [1, n] 内随机，数值随机
-    a = "".join(str(random.randint(0, 9)) for _ in range(n))
-    m = random.randint(1, n)
-    b = "".join(str(random.randint(0, 9)) for _ in range(m))
-    return a, b
-
-def main(n):
-    a, b = generate_test_data(n)
-    result = solve(a, b)
-    print(result)
 
 if __name__ == "__main__":
-    # 这里给一个默认规模，例如 n = 5，可自行修改或在外部调用 main(n)
-    main(5)
+    main(10)

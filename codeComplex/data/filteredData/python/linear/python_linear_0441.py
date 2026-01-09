@@ -10,9 +10,8 @@ def main(n: int):
         ans.extend([x for x in range(cur, cur - sq, -1)])
 
     ans.extend([x for x in range(n, cur, -1)])
-    print(' '.join(map(str, ans)))
-
-
+    # print(' '.join(map(str, ans)))
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值进行测试
     main(10)

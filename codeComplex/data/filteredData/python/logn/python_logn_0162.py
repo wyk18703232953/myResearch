@@ -18,12 +18,12 @@ def main(n):
         if g - m * (m + 1) // 2 >= n_adj:
             ans = k_adj - m
             l = m + 1
+
         else:
             r = m - 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

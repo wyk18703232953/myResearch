@@ -1,4 +1,4 @@
-import random
+import math
 
 
 def field(n, x, y, t):
@@ -11,13 +11,8 @@ def field(n, x, y, t):
     out_down = max(0, t - down_dist - 1)
     out_left = max(0, t - left_dist - 1)
     out_right = max(0, t - right_dist - 1)
-    return (
-        base_field(t)
-        - right_field(out_right)
-        - right_field(out_left)
-        - up_field(out_up, n, y)
-        - up_field(out_down, n, y)
-    )
+    f = base_field(t) - right_field(out_right) - right_field(out_left) - up_field(out_up, n, y) - up_field(out_down, n, y)
+    return f
 
 
 def right_field(out_r):
@@ -38,40 +33,51 @@ def base_field(t):
     return 2 * (t ** 2) - 2 * t + 1
 
 
-def solve_single(n, x, y, c):
-    search = 0
-    mid = 1
-    found = False
-    last_sm = 0
-    while not found:
-        ff = field(n, x, y, search)
-        if ff == c:
-            found = True
-        elif ff > c:
-            if search - last_sm == 1:
+class CodeforcesTask256BSolution:
+    def __init__(self, n_x_y_c):
+        self.result = ''
+        self.n_x_y_c = n_x_y_c
+
+    def process_task(self):
+        search = 0
+        mid = 1
+        found = False
+        last_sm = 0
+        while not found:
+            ff = field(self.n_x_y_c[0], self.n_x_y_c[1], self.n_x_y_c[2], search)
+            if ff == self.n_x_y_c[3]:
                 found = True
+            elif ff > self.n_x_y_c[3]:
+                if search - last_sm == 1:
+                    found = True
+
+                else:
+                    search = last_sm + (search - last_sm) // 2
+
             else:
-                search = last_sm + (search - last_sm) // 2
-        else:
-            last_sm = search
-            search += mid
-            mid = search - last_sm
-    return search
+                last_sm = search
+                search += mid
+                mid = search - last_sm
+        self.result = str(search)
+
+    def get_result(self):
+        return self.result
 
 
 def main(n):
-    # 生成测试数据：
-    # 棋盘大小 n，随机选择 (x, y)，随机选择 t，然后计算对应的 c = field(...)
-    x = random.randint(1, n)
-    y = random.randint(1, n)
-    # t 的范围随 n 调整，这里简单取 [0, 2*n] 范围内的某个值
-    true_t = random.randint(0, 2 * n)
-    c = field(n, x, y, true_t)
-
-    ans = solve_single(n, x, y, c)
-    print(ans)
+    # n controls the board size; x,y are centered; c derived deterministically from n
+    if n < 1:
+        return ""
+    size = n
+    x = (size + 1) // 2
+    y = (size + 1) // 2
+    c = base_field(n) // 2 + (n % 3)
+    n_x_y_c = [size, x, y, c]
+    solution = CodeforcesTask256BSolution(n_x_y_c)
+    solution.process_task()
+    return solution.get_result()
 
 
 if __name__ == "__main__":
-    # 示例：调用 main，给定规模 n
-    main(10)
+    # print(main(1000))
+    pass

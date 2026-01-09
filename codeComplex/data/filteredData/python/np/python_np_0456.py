@@ -32,9 +32,8 @@ def main(n: int) -> None:
         bitcount(m) * (n // (x + y)) + btail(m)
         for m in vbases
     )
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例调用，按需要修改 n
     main(20)

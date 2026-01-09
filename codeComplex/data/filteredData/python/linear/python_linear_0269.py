@@ -1,15 +1,9 @@
-import math
-import random
-
-# decimal to binary
 def binary(n):
-    return bin(n).replace("0b", "")
+    return (bin(n).replace("0b", ""))
 
-# binary to decimal
 def decimal(s):
-    return int(s, 2)
+    return (int(s, 2))
 
-# power of a number base 2
 def pow2(n):
     p = 0
     while n > 1:
@@ -17,25 +11,26 @@ def pow2(n):
         p += 1
     return p
 
-# if number is prime in √n time
 def isPrime(n):
     if n == 1:
         return False
-    root = int(n ** 0.5) + 1
-    for i in range(2, root):
-        if n % i == 0:
-            return False
-    return True
 
-# list to string ,no spaces
+    else:
+        root = int(n ** 0.5)
+        root += 1
+        for i in range(2, root):
+            if n % i == 0:
+                return False
+        return True
+
 def lts(l):
-    return ''.join(map(str, l))
+    s = ''.join(map(str, l))
+    return s
 
-# String to list
 def stl(s):
-    return list(s)
+    l = list(s)
+    return l
 
-# Returns list of numbers with a particular sum
 def sq(a, target, arr=[]):
     s = sum(arr)
     if s == target:
@@ -49,7 +44,6 @@ def sq(a, target, arr=[]):
         if ans:
             return ans
 
-# Sieve for prime numbers in a range
 def SieveOfEratosthenes(n):
     cnt = 0
     prime = [True for _ in range(n + 1)]
@@ -64,7 +58,8 @@ def SieveOfEratosthenes(n):
             cnt += 1
     return cnt
 
-# for positive integers only
+import math
+
 def nCr(n, r):
     f = math.factorial
     return f(n) // f(r) // f(n - r)
@@ -79,52 +74,57 @@ def deep(node, d, visited):
         if visited[c - 1] != 1:
             return deep(c, d, visited)
 
-def main(n):
-    # 1. 生成测试数据：构造一个随机树，n 为结点数量
-    # 为了保证是树，依次连接新节点到 [1, i-1] 中的某个节点
-    edges = []
-    for v in range(2, n + 1):
-        u = random.randint(1, v - 1)
-        edges.append((u, v))
-
-    # 2. 将测试数据构造成与原程序一致的输入结构
+def build_deterministic_tree(n):
     d = {}
-    for u, v in edges:
+    if n == 1:
+        d[1] = []
+        return d
+    for i in range(2, n + 1):
+        u = i
+        v = i // 2
         d.setdefault(u, []).append(v)
         d.setdefault(v, []).append(u)
+    return d
 
-    # 3. 按原逻辑运行
+def core_algorithm(n, d):
     node = 1
     for key in d:
         if len(d[key]) > len(d[node]):
             node = key
-
     ans = []
     visited = [0] * n
     visited[node - 1] = 1
-
     for c in d[node]:
         while True:
             visited[c - 1] = 1
             if len(d[c]) == 1:
                 ans.append([node, c])
                 break
+            progressed = False
             for child in d[c]:
                 if visited[child - 1] != 1:
                     c = child
+                    progressed = True
                     break
-            else:
-                # 若没有未访问的 child，说明走到死路，退出
+            if not progressed:
                 break
-
     if sum(visited) == n:
-        print("Yes")
-        print(len(ans))
+        output_lines = []
+        output_lines.append("Yes")
+        output_lines.append(str(len(ans)))
         for c in ans:
-            print(*c)
-    else:
-        print("No")
+            output_lines.append(f"{c[0]} {c[1]}")
+        return "\n".join(output_lines)
 
+    else:
+        return "No"
+
+def main(n):
+    if n <= 0:
+        n = 1
+    d = build_deterministic_tree(n)
+    result = core_algorithm(n, d)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

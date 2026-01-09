@@ -40,6 +40,7 @@ def main(n):
         ans = solve(n, k)
         if ans is not None:
             results.append(("YES", k, ans))
+
         else:
             results.append(("NO", k, None))
     return results
@@ -51,6 +52,9 @@ if __name__ == "__main__":
     res = main(n)
     for status, k, ans in res:
         if status == "YES":
-            print(f"k={k}: YES {ans}")
+            # print(f"k={k}: YES {ans}")
+            pass
+
         else:
-            print(f"k={k}: NO")
+            # print(f"k={k}: NO")
+            pass

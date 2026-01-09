@@ -27,11 +27,13 @@ def main(n):
             break
         elif x > k + midEat:
             minEat = midEat + 1
+
         else:
             maxEat = midEat - 1
 
     # 输出结果以符合原程序行为
-    print(midEat)
+    # print(midEat)
+    pass
     return midEat
 
 

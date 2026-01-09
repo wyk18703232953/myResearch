@@ -1,15 +1,18 @@
-import random
-import string
+def main(n):
+    # 为了保持与原程序逻辑一致，我们需要两个关键参数：
+    # 字符串长度 n，以及重复次数 k。
+    # 这里约定：传入的 n 既控制字符串长度，又确定性地映射出 k。
 
-def main(n: int):
-    # 随机生成 n 和 k（k 至少为 1，适当限制上界）
     if n <= 0:
-        return
+        return ""
 
-    k = random.randint(1, 10)
+    # 确定性生成 k（至少为 1）
+    k = 1 + (n % 7)
 
-    # 随机生成长度为 n 的字符串 s（小写字母）
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+    # 确定性生成字符串 s，长度为 n
+    # 使用一个周期性模式，避免随机性
+    base = "abcd"
+    s = "".join(base[i % len(base)] for i in range(n))
 
     ap = 0
     i = 1
@@ -19,9 +22,11 @@ def main(n: int):
         i += 1
 
     result = s + s[ap:] * (k - 1)
-    print(result)
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例运行：可以根据需要修改 n 的默认测试规模
-    main(5)
+    # 示例调用，使用一个固定的 n 以保证可重复性
+    main(10)

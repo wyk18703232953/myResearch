@@ -1,17 +1,21 @@
-import random
+def main(n):
+    # 生成确定性的输入数组 a，规模为 n
+    # 这里使用简单的算术构造：a[i] = i % (n // 2 + 1)
+    if n <= 0:
+        a = []
 
-def main(n: int):
-    # 生成规模为 n 的测试数据：整数列表 a
-    # 这里示例生成范围在 [-n, n] 的随机整数
-    a = [random.randint(-n, n) for _ in range(n)]
+    else:
+        mod_base = n // 2 + 1
+        a = [i % mod_base for i in range(n)]
 
     d = set(a)
     if 0 in a:
-        print(len(d) - 1)
+        result = len(d) - 1
+
     else:
-        print(len(d))
-
-
+        result = len(d)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：自行指定规模 n 进行测试
+    # 示例调用，可根据需要修改 n 以做时间复杂度实验
     main(10)

@@ -1,11 +1,22 @@
-import random
-
-def main(n: int):
-    # 随机生成一个 n x n 的 #/. 矩阵作为测试数据
+def main(n):
+    # Interpret n as grid size: n x n
+    # Ensure minimum size to make algorithm meaningful
+    if n < 3:
+        n = 3
     m = n
+
+    # Deterministic grid generation: pattern based on indices
+    # Use '#' and '.' so that some structure exists
     mp = []
-    for _ in range(n):
-        row = [random.choice([True, False]) for _ in range(m)]
+    for i in range(n):
+        row = []
+        for j in range(m):
+            # Example deterministic pattern: walls on border and a checker pattern inside
+            if i == 0 or j == 0 or i == n - 1 or j == m - 1:
+                row.append(True)  # '#'
+
+            else:
+                row.append(((i + j) % 2 == 0))
         mp.append(row)
 
     mp1 = [[False for _ in range(m)] for _ in range(n)]
@@ -26,11 +37,12 @@ def main(n: int):
                     mp1[i + ik][j + jk] = True
 
     if all(all(mp[i][j] == mp1[i][j] for j in range(m)) for i in range(n)):
-        print("YES")
+        # print('YES')
+        pass
+
     else:
-        print("NO")
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可根据需要修改 n
-    main(5)
+    # Example call for time complexity experiments
+    main(1000)

@@ -24,6 +24,7 @@ def main(n):
         for i, j in zip(arra, arrb):
             if i == j:
                 return 1
+
             else:
                 return 0
 
@@ -41,6 +42,7 @@ def main(n):
     # 保证生成的数较大一些但不溢出：2^(n//2+1) 级别
     if n < 1:
         a, b = 1, 1
+
     else:
         a = (1 << (n // 2)) + 3
         b = (1 << (n // 2 + 1)) + 5
@@ -73,4 +75,5 @@ def main(n):
 # 如需直接运行示例：
 if __name__ == "__main__":
     # 示例：规模为 10
-    print(main(10))
+    # print(main(10))
+    pass

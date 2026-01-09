@@ -38,9 +38,12 @@ def main(n):
             del cnts[key]
 
         if K <= 0:
-            print('YES %d' % (N - reslog))
+            # print('YES %d' % (N - reslog))
+            pass
+
         else:
-            print('NO')
+            # print('NO')
+            pass
 
     # 生成测试数据并求解
     T = n

@@ -63,9 +63,8 @@ def main(n):
 
     # 输出结果（保持与原程序行为一致：逐行输出最终 node）
     for ans in results:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(16)
     main(16)

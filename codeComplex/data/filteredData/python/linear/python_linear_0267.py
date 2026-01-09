@@ -1,20 +1,24 @@
-import random
+def main(n):
+    # n is the number of nodes in a tree
+    # Generate a deterministic tree with n nodes:
+    # For 1 <= i < n, connect i with i+1 (a simple path)
+    if n < 2:
+        # For n < 2, the original logic expects at least n=2
+        # We handle n=1 as a degenerate case with no edges
+        # print("No")
+        pass
+        return
 
-def main(n: int):
-    # 1. 生成测试数据：构造一棵 n 个节点的树（n-1 条边）
-    # 先生成一棵随机树
-    edges = []
-    for v in range(2, n + 1):
-        u = random.randint(1, v - 1)
-        edges.append((u, v))
-
-    # 2. 原逻辑开始
+    edges = [[i, i + 1] for i in range(1, n)]
     deg = [0] * n
 
     if n == 2:
-        print("Yes")
-        print(1)
-        print("1 2")
+        # print("Yes")
+        pass
+        # print(1)
+        pass
+        # print("1 2")
+        pass
         return
 
     for u, v in edges:
@@ -24,15 +28,18 @@ def main(n: int):
     ix = deg.index(max(deg))
 
     if deg[ix] < 3 or deg.count(1) + deg.count(2) == n - 1:
-        print("Yes")
-        print(deg.count(1))
+        # print("Yes")
+        pass
+        # print(deg.count(1))
+        pass
         for i in range(n):
             if deg[i] == 1:
-                print(i + 1, ix + 1)
+                # print(i + 1, ix + 1)
+                pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
-    # 示例：运行 main(5)
-    main(5)
+    # Example: run main with a chosen scale n
+    main(10)

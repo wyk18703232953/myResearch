@@ -24,6 +24,7 @@ def main(n):
             return -1
         elif left > right:
             return 1
+
         else:
             return 0
 
@@ -53,6 +54,7 @@ def main(n):
         elif resp1 == 1 and resp2 == -1:
             a += 1 << (m - 1 - i)
             fle = 1
+
         else:
             fle = 0
             # 对应原来的：print('? a+2^(m-1-i), b'); resp3 = int(raw_input())
@@ -86,5 +88,7 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用：规模 n = 30
     info = main(30)
-    print("Guessed (a, b):", info["guessed_a"], info["guessed_b"])
-    print("Real    (A, B):", info["real_A"], info["real_B"])
+    # print("Guessed (a, b):", info["guessed_a"], info["guessed_b"])
+    pass
+    # print("Real    (A, B):", info["real_A"], info["real_B"])
+    pass

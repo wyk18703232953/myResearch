@@ -1,26 +1,22 @@
-import random
-
-def main(n: int):
-    # 这里的 n 表示要生成的测试数据的数量
-    for _ in range(n):
-        # 生成测试数据：范围可根据需要调整，这里示例为 [-10^9, 10^9]
-        x = random.randint(-10**9, 10**9)
-        result = transform_number(x)
-        print(result)
-
-def transform_number(n: int) -> int:
-    # 原逻辑的函数化实现
+def main(n):
+    # 原程序逻辑：对单个整数 n 进行处理
     if n >= 0:
-        return n
+        # print(n)
+        pass
+
     else:
-        n_abs = abs(n)
+        n_abs = -n
         rem = n_abs % 10
         n1 = n_abs // 10
         n2 = n1 // 10
         n2 = n2 * 10 + rem
         k = min(n1, n2)
-        return -1 * k
-
+        # print(-k)
+        pass
 if __name__ == "__main__":
-    # 示例：生成 5 组测试数据并输出结果
-    main(5)
+    # 示例：以 n 为输入规模，构造一个确定性的整数作为原程序输入
+    # 这里选择将输入规模 n 映射为整数 x = n*(-1)**n
+    # 这样 n 控制数值大小，且正负交替，便于实验
+    x = (10 * n if (n := 10) >= 0 else -10)  # 固定示例：规模 10，对应输入 100 或 -100 等
+    # 为了符合要求，示例调用使用固定规模 10
+    main(x)

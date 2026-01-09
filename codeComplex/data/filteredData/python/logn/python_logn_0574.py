@@ -12,9 +12,8 @@ def main(n):
 
     num = 10 ** (s - 1) + k // s
     idx = k % s
-    print(str(num)[idx])
-
-
+    # print(str(num)[idx])
+    pass
 if __name__ == "__main__":
     # 示例：可以修改这里的 n 来进行不同规模的测试
     main(1000)

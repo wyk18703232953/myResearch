@@ -15,6 +15,7 @@ def main(n):
             for j in range(start_col, start_col + segment_len):
                 row[j] = 'B'
             listi.append(''.join(row))
+
         else:
             listi.append('W' * m)
 
@@ -31,7 +32,8 @@ def main(n):
                 q = abs(m - s.index("B") - 1)
 
                 if p == q:
-                    print(rownum + 1, row.index(row[p]) + 1)
+                    # print(rownum + 1, row.index(row[p]) + 1)
+                    pass
                     flag = True
                     break
 
@@ -39,7 +41,8 @@ def main(n):
                 length = abs(q - p + 1)
                 rn = rownum + length // 2
 
-                print(rn + 1, int(mr + 1))
+                # print(rn + 1, int(mr + 1))
+                pass
                 flag = True
                 break
 

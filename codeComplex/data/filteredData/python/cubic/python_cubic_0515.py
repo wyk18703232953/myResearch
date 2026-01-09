@@ -21,7 +21,8 @@ def main(n):
 
     if K & 1:
         for _ in r:
-            print(*([-1] * M))
+            # print(*([-1] * M))
+            pass
         return
 
     X = [[0] * M for _ in r]
@@ -40,9 +41,8 @@ def main(n):
         X = Y
 
     for x in X:
-        print(*x)
-
-
+        # print(*x)
+        pass
 if __name__ == "__main__":
     # 示例调用：n = 3 时，生成 3x3 网格、K=6 的测试
     main(3)

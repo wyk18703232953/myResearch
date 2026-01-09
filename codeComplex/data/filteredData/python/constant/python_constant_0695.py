@@ -1,16 +1,12 @@
 from math import sin, pi
-import random
 
 def main(n):
-    # 根据规模 n 生成测试数据：
-    # 约束：n >= 3，r >= 1
-    if n < 3:
-        raise ValueError("n 必须 >= 3")
-    r = random.randint(1, 1000)
-
-    R = r * sin(pi / n) / (1 - sin(pi / n))
-    print(R)
-
+    # 由 n 同时控制多边形边数和半径，保证输入规模含义明确
+    # 多边形边数至少为 3
+    sides = max(3, n)
+    r = n
+    R = r * sin(pi / sides) / (1 - sin(pi / sides))
+    # print(R)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n = 6 运行
-    main(6)
+    main(10)

@@ -11,10 +11,12 @@ def main(n: int):
         segment_len = 10 ** i * 9 * (i + 1)
         if k > segment_len:
             k -= segment_len
+
         else:
             a = (k - 1) // (i + 1) + 10 ** i
             b = (k - 1) % (i + 1)
-            print(str(a)[b])
+            # print(str(a)[b])
+            pass
             break
 
 

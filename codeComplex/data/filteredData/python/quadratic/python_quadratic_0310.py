@@ -1,12 +1,17 @@
-import math
-import random
+def main(n):
+    import math
 
-def main(n: int):
-    # 生成测试数据
-    # k 在 [1, n] 之间随机选择
-    k = random.randint(1, n)
-    # 生成长度为 n 的整数数组，元素值在 [-1000, 1000] 之间
-    l = [random.randint(-1000, 1000) for _ in range(n)]
+    # Map n to problem size: choose k and build list l of length n
+    # Ensure k >= 1 and k <= n (for n >= 1)
+    if n <= 0:
+        return 0.0
+
+    # Deterministic choice for k: roughly n//3 (at least 1)
+    k = max(1, n // 3)
+
+    # Deterministic array generation
+    # Example pattern: l[i] = (i % 7) - 3  (includes positive, zero, negative)
+    l = [(i % 7) - 3 for i in range(n)]
 
     ans = float("-inf")
     for i in range(n):
@@ -18,9 +23,12 @@ def main(n: int):
             if c >= k:
                 ans = max(ans, sum1 / c)
 
-    print(ans)
+    # For experimental use, we print the result
+    # print(ans)
+    pass
+    return ans
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # Example deterministic call; adjust n as needed for experiments
     main(10)

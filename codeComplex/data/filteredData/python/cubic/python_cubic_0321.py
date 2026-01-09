@@ -1,44 +1,48 @@
-import random
+def main(n):
+    # Map n to sizes of the three arrays
+    # Make total size O(n): divide n roughly into three parts
+    c1 = n // 3
+    c2 = (n + 1) // 3
+    c3 = n - c1 - c2
+    if c1 < 0:
+        c1 = 0
+    if c2 < 0:
+        c2 = 0
+    if c3 < 0:
+        c3 = 0
 
-def main(n: int):
-    # 1. 根据规模 n 生成三种颜色数组长度
-    # 控制总状态数量 (c1+1)*(c2+1)*(c3+1) 约为 O(n^3)，避免过大
-    c1 = max(1, n)
-    c2 = max(1, n)
-    c3 = max(1, n)
+    # Deterministic generation of arrays r, g, b
+    # Use simple arithmetic progressions so that values are sorted
+    r = [i + 1 for i in range(c1)]
+    g = [2 * (i + 1) for i in range(c2)]
+    b = [3 * (i + 1) for i in range(c3)]
 
-    # 2. 生成测试数据：整数数组 r, g, b
-    # 数值范围可根据需要调整
-    r = sorted(random.randint(1, 10**4) for _ in range(c1))
-    g = sorted(random.randint(1, 10**4) for _ in range(c2))
-    b = sorted(random.randint(1, 10**4) for _ in range(c3))
+    # The original code sorted inputs; here they are already sorted
+    # but to preserve structure we can still call sorted (deterministic)
+    r = sorted(r)
+    g = sorted(g)
+    b = sorted(b)
 
-    # 3. 原始 DP 逻辑
+    # 3D DP array
     dp = [[[0 for _ in range(c3 + 1)] for _ in range(c2 + 1)] for _ in range(c1 + 1)]
-
     for i in range(c1 + 1):
         for j in range(c2 + 1):
             for k in range(c3 + 1):
                 if i > 0 and j > 0:
-                    dp[i][j][k] = max(
-                        dp[i][j][k],
-                        dp[i - 1][j - 1][k] + r[i - 1] * g[j - 1]
-                    )
+                    val = dp[i - 1][j - 1][k] + r[i - 1] * g[j - 1]
+                    if val > dp[i][j][k]:
+                        dp[i][j][k] = val
                 if i > 0 and k > 0:
-                    dp[i][j][k] = max(
-                        dp[i][j][k],
-                        dp[i - 1][j][k - 1] + r[i - 1] * b[k - 1]
-                    )
+                    val = dp[i - 1][j][k - 1] + r[i - 1] * b[k - 1]
+                    if val > dp[i][j][k]:
+                        dp[i][j][k] = val
                 if j > 0 and k > 0:
-                    dp[i][j][k] = max(
-                        dp[i][j][k],
-                        dp[i][j - 1][k - 1] + g[j - 1] * b[k - 1]
-                    )
+                    val = dp[i][j - 1][k - 1] + g[j - 1] * b[k - 1]
+                    if val > dp[i][j][k]:
+                        dp[i][j][k] = val
 
-    # 4. 输出最终结果
-    print(dp[c1][c2][c3])
-
-
+    # print(dp[c1][c2][c3])
+    pass
 if __name__ == "__main__":
-    # 示例：n = 30，可根据需要调整
+    # Example call for time complexity experiments
     main(30)

@@ -5,9 +5,11 @@ def main(n):
     for k in range(1, 2 * n + 1):
         if k > n + (n - 1):
             ans = 0
+
         else:
             if k <= n:
                 ans = (k - 1) // 2
+
             else:
                 x = n - (k - n)
                 ans = (x + 1) // 2
@@ -19,4 +21,5 @@ if __name__ == "__main__":
     # 示例：调用 main(10)，可按需修改或删除
     out = main(10)
     for k, val in out:
-        print(f"k={k}, result={val}")
+        # print(f"k={k}, result={val}")
+        pass

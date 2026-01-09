@@ -17,10 +17,12 @@ def main(n):
             return lower
         elif estimate(upper) == target:
             return upper
+
         else:
             mid = (lower + upper) // 2
             if estimate(mid) < target:
                 upper = mid
+
             else:
                 lower = mid
             return dicho(lower, upper, target)
@@ -28,9 +30,8 @@ def main(n):
     lower = 0
     upper = n
     ans = dicho(lower, upper, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可修改这里的 n 来运行不同规模
     main(10)

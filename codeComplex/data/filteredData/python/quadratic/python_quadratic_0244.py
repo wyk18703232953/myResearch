@@ -1,38 +1,40 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 为规模，随机生成 a, b
-    if n < 2:
-        n = 2
-    a = random.randint(1, n)
-    b = random.randint(1, n)
+    # Deterministically generate a, b based on n
+    # Ensure a and b are at least 1
+    a = (n % 3) + 1
+    b = ((n // 2) % 3) + 1
 
     c = max(a, b)
     if a != 1 and b != 1:
-        print('NO')
+        # print('NO')
+        pass
         return
-    elif n == 2 and c == 1:
-        print('NO')
+    if n == 2 and c == 1:
+        # print('NO')
+        pass
         return
-    elif n == 3 and c == 1:
-        print('NO')
+    if n == 3 and c == 1:
+        # print('NO')
+        pass
         return
+
+    if a == 1:
+        g = [[1] * n for _ in range(n)]
+        for i in range(n):
+            g[i][i] = 0
+        for i in range(c - 1, n - 1):
+            g[i][i + 1] = g[i + 1][i] = 0
+
     else:
-        if a == 1:
-            g = [[1] * n for _ in range(n)]
-            for i in range(n):
-                g[i][i] = 0
-            for i in range(c - 1, n - 1):
-                g[i][i + 1] = g[i + 1][i] = 0
-        else:
-            g = [[0] * n for _ in range(n)]
-            for i in range(c - 1, n - 1):
-                g[i][i + 1] = g[i + 1][i] = 1
-        print('YES')
-        for r in g:
-            print(''.join(str(x) for x in r))
+        g = [[0] * n for _ in range(n)]
+        for i in range(c - 1, n - 1):
+            g[i][i + 1] = g[i + 1][i] = 1
 
-
+    # print('YES')
+    pass
+    for r in g:
+        # print(''.join(str(x) for x in r))
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模为 5
-    main(5)
+    # Example call for complexity experiments
+    main(10)

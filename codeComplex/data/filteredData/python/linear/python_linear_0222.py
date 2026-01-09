@@ -1,16 +1,18 @@
-import random
-
-def main(n: int):
-    # 根据 n 生成测试数据：长度为 n 的仅由 '0' 和 '1' 组成的字符串
-    s = ''.join(random.choice('01') for _ in range(n))
+def main(n):
+    # Generate deterministic binary string s of length n
+    # Pattern: first char '1', others alternate '0' and '1'
+    if n <= 0:
+        return
+    s_chars = ['1'] + [('0' if i % 2 == 0 else '1') for i in range(1, n)]
+    s = ''.join(s_chars)
 
     if n == 1:
-        print(s)
+        # print(s)
+        pass
+
     else:
         zeros = s.count('0')
-        print('1' + zeros * '0')
-
-
+        # print('1' + zeros * '0')
+        pass
 if __name__ == "__main__":
-    # 示例：可自行修改 n 测试规模
-    main(5)
+    main(10)

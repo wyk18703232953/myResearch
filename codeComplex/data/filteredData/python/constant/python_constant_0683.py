@@ -1,16 +1,16 @@
 import math
-import random
 
-def main(n: int):
-    # 生成测试数据：半径 r，取区间 (0, 100] 的随机浮点数
-    r = random.uniform(0.1, 100.0)
-
-    # 按原逻辑进行计算
-    a = math.pi / n
+def main(n):
+    # 对应原始输入结构：两个浮点数 n_float, r
+    # 在这里用 n 作为 n_float 的规模参数，r 由 n 确定性生成
+    if n <= 0:
+        return
+    n_float = float(n)
+    r = float(n) + 0.5
+    a = math.pi / n_float
     s = math.sin(a)
     R = (r * s) / (1 - s)
-    print(R)
-
+    # print(R)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 自行指定
-    main(6)
+    main(100000)

@@ -1,39 +1,51 @@
-import random
-
 def main(n):
-    # n 用于控制测试数据规模，这里用来影响数字范围和随机性
-    max_digit = max(1, min(8, n))  # 数字 1~max_digit
-    letters = 'abcd'               # 限制在少量字母便于测试
-    # 生成格式为 "d1c1 d2c2 d3c3" 的字符串，其中 di 为数字字符，ci 为字母
-    parts = []
-    for _ in range(3):
-        d = str(random.randint(1, max_digit))
-        c = random.choice(letters)
-        parts.append(d + c)
-    s = ' '.join(parts)
+    # Generate a deterministic string s mimicking the original expected format "dX dX dX"
+    # where d is a digit and X is a lowercase letter.
+    # Length is fixed at 8: "a1 b2 c3" style, but deterministically from n.
+    # To make it scalable in terms of processing, we will call func multiple times.
+    digits = [(n + i) % 10 for i in range(3)]
+    chars = [chr(ord('a') + (n + i) % 26) for i in range(3)]
+    # construct s as "d0c0 d1c1 d2c2"
+    s = "{}{} {}{} {}{}".format(digits[0], chars[0], digits[1], chars[1], digits[2], chars[2])
 
     s1 = s[0:2]
     s2 = s[3:5]
     s3 = s[6:8]
 
-    def func(inp):
-        ans = 2
+    def func(inp, s_local):
+        ans_local = 2
         num = int(inp[0])
         c = inp[1]
-        ans = min(ans, 2 - int(s.find(str(num + 1) + c) != -1) - int(s.find(str(num + 2) + c) != -1))
-        ans = min(ans, 2 - int(s.find(str(num + 1) + c) != -1) - int(s.find(str(num - 1) + c) != -1))
-        ans = min(ans, 2 - int(s.find(str(num - 1) + c) != -1) - int(s.find(str(num - 2) + c) != -1))
-        ans = min(ans, 3 - s.count(inp))
-        return ans
+        ans_local = min(
+            ans_local,
+            2
+            - int(s_local.find(str(num + 1) + c) != -1)
+            - int(s_local.find(str(num + 2) + c) != -1),
+        )
+        ans_local = min(
+            ans_local,
+            2
+            - int(s_local.find(str(num + 1) + c) != -1)
+            - int(s_local.find(str(num - 1) + c) != -1),
+        )
+        ans_local = min(
+            ans_local,
+            2
+            - int(s_local.find(str(num - 1) + c) != -1)
+            - int(s_local.find(str(num - 2) + c) != -1),
+        )
+        ans_local = min(ans_local, 3 - s_local.count(inp))
+        return ans_local
 
+    # To scale with n, repeat the core logic n times and aggregate.
+    # This keeps the algorithm intact but increases work proportionally to n.
     ans = 2
-    ans = min(ans, func(s1))
-    ans = min(ans, func(s2))
-    ans = min(ans, func(s3))
+    for _ in range(max(1, n)):
+        ans = min(ans, func(s1, s))
+        ans = min(ans, func(s2, s))
+        ans = min(ans, func(s3, s))
 
-    print(s)    # 若只想保留原逻辑输出，可注释掉这一行
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

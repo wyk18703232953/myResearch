@@ -26,11 +26,13 @@ def main(n):
 
     if x[0] > 0:
         ans = (2 * y * x[0]) % p - (y - 1) % p
+
     else:
         ans = 0
 
     ans %= p
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

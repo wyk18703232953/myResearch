@@ -29,9 +29,8 @@ def main(n: int):
     for i in range(1, n // 2 + 2):
         ans = (ans + dp[n + 1][i] * fac[n - i + 1]) % MOD
 
-    print(ans % MOD)
-
-
+    # print(ans % MOD)
+    pass
 if __name__ == "__main__":
     # 示例：规模 n 的测试
     main(10)

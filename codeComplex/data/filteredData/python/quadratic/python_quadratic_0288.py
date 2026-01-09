@@ -20,9 +20,8 @@ def main(n: int):
         l.insert(k, j)
         ans += k - j
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可按需要修改或在其他地方导入调用
     main(5)

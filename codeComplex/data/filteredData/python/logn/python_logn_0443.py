@@ -15,6 +15,7 @@ def main(n):
         if ni > 31:
             # 任意正 k 都会直接走 YES 分支
             ki = 1
+
         else:
             limit = (4**ni - 1) // 3
             # 取一个不太极端的 k，尽量在可行范围内
@@ -30,11 +31,14 @@ def main(n):
         k = k_val
 
         if n > 31:
-            print("YES", n - 1)
+            # print("YES", n - 1)
+            pass
             continue
+
         else:
             if k > (4**n - 1) // 3:
-                print("NO")
+                # print("NO")
+                pass
                 continue
 
         l = (4**n - 1) // 3
@@ -53,9 +57,12 @@ def main(n):
         k3 = (2**(j + 1) - 1) * ((4**(n - j) - 1) // 3)
 
         if l - k2 - k3 >= k:
-            print("YES", n - i + 1)
+            # print("YES", n - i + 1)
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
 
 
 # 示例调用

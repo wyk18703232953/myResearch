@@ -1,46 +1,53 @@
-import random
-
 def main(n):
-    # 这里的 n 作为测试数量，生成 n 个随机整数进行测试
-    # 每个整数的绝对值上界可按需调整，例如 10**9
-    test_data = [random.randint(-10**9, 10**9) for _ in range(n)]
+    # 原程序逻辑：
+    # 读入一个整数 n，按其值进行处理并输出
+    # 为了可规模化，将构造一个长度为 n 的整数序列，对每个元素执行同样的逻辑
+    # 构造方式：第 i 个数为 i*(-1)**i，使正负交替，规模与 n 线性相关
+    results = []
+    for i in range(n):
+        x = i * (-1) ** i  # 可重复、确定性生成的“输入整数”
 
-    for x in test_data:
-        res = transform_number(x)
-        print(res)
-
-def transform_number(n):
-    if n >= 0:
-        return n
-    else:
-        a = str(n)[1:]  # 去掉负号
-        if len(a) > 2:
-            # 第一种删除策略：去掉倒数第二位
-            a1 = a[::-1][1:][::-1]
-            num1 = int(a1)
-
-            # 第二种删除策略：去掉倒数第三位
-            a2 = str(n)[1:]
-            b = a2[::-1]
-            p1 = b[0]
-            p2 = b[2:]
-            p = (p1 + p2)[::-1]
-            num2 = int(p)
-
-            small = min(num1, num2)
-            return -small
-
-        elif len(a) == 2:
-            m = a[0]
-            k = a[1]
-            small = min(int(m), int(k))
-            return -small
+        # 以下是对单个整数 x 执行原始算法的逻辑
+        if x >= 0:
+            results.append(x)
 
         else:
-            # 原程序对 len(a) == 1 的情况未明确处理
-            # 按原意：负的一位数只能是该数本身
-            return n
+            a = str(x)
+            a = a[1::]
+            if len(a) > 2:
+                a_tmp = a[::-1][1::][::-1]
+                num1 = int(a_tmp)
 
+                a2 = str(x)
+                a2 = a2[1::]
+                b = a2[::-1]
+                p1 = b[0]
+                p2 = b[2::]
+                p = p1 + p2
+                p = p[::-1]
+                num2 = int(p)
+
+                small = min(num1, num2)
+                results.append(-1 * small)
+            elif len(a) == 2:
+                m = a[0]
+                n_char = a[1]
+                small = min(int(m), int(n_char))
+                results.append(-1 * small)
+
+            else:
+                # 对于长度为 1 的情况，原程序没有显式处理逻辑
+                # 视为直接输出 x（与 "if x>=0" 对称处理）
+                results.append(x)
+
+    # 为了避免输出过大，仅在需要时可以打印最后一个结果
+    if results:
+        # print(results[-1])
+        pass
+
+    else:
+        # print(0)
+        pass
 if __name__ == "__main__":
-    # 示例：生成并处理 5 组测试数据
-    main(5)
+    # 示例调用，规模可自行调整
+    main(10)

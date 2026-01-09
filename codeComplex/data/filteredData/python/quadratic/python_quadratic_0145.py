@@ -1,27 +1,3 @@
-import random
-
-def main(n):
-    # 生成规模为 n 的测试数据
-    pieces_Dimension = n
-    nSquares = pieces_Dimension * pieces_Dimension
-
-    # 构造目标棋盘模式（与原逻辑一致）
-    squares = '01' * (-(-nSquares // 2))
-
-    # 随机生成 4 个碎片，每个碎片为长度 nSquares 的 0/1 字符串
-    def random_piece():
-        return ''.join(random.choice('01') for _ in range(nSquares))
-
-    piece1 = random_piece()
-    piece2 = random_piece()
-    piece3 = random_piece()
-    piece4 = random_piece()
-
-    brokenPieces = (piece1, piece2, piece3, piece4)
-
-    return nSquaresToRecolorIn(brokenPieces, nSquares, squares)
-
-
 def nSquaresToRecolorIn(brokenPieces, nSquares, squares):
     possible_nSquares = [
         (
@@ -31,10 +7,29 @@ def nSquaresToRecolorIn(brokenPieces, nSquares, squares):
         for piece in brokenPieces
     ]
     possible_nSquares.sort(key=lambda x: x[0])
-
     return (
         possible_nSquares[0][0]
         + possible_nSquares[1][0]
         + possible_nSquares[2][1]
         + possible_nSquares[3][1]
     )
+
+
+def main(n):
+    pieces_Dimension = max(1, n)
+    nSquares = pieces_Dimension * pieces_Dimension
+
+    piece1 = "".join("01"[(i + j) % 2] for i in range(pieces_Dimension) for j in range(pieces_Dimension))
+    piece2 = "".join("01"[(i * 2 + j) % 2] for i in range(pieces_Dimension) for j in range(pieces_Dimension))
+    piece3 = "".join("01"[(i + j * 2) % 2] for i in range(pieces_Dimension) for j in range(pieces_Dimension))
+    piece4 = "".join("01"[(i + j + 1) % 2] for i in range(pieces_Dimension) for j in range(pieces_Dimension))
+
+    brokenPieces = (piece1, piece2, piece3, piece4)
+    squares = "01" * (-(-nSquares // 2))
+
+    return nSquaresToRecolorIn(brokenPieces, nSquares, squares)
+
+
+if __name__ == "__main__":
+    # print(main(5))
+    pass

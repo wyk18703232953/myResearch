@@ -1,8 +1,4 @@
-import random
-import string
-
-
-def solve_single_case(n, k, s):
+def solve(n, k, s):
     sf = 'RGB' * (k + 2)
 
     max_s = 0
@@ -19,33 +15,37 @@ def solve_single_case(n, k, s):
 
 
 def main(n):
-    """
-    n: 规模，用来生成测试数据。
-       这里假设需要处理 n 个查询，每个查询的字符串长度也为 n。
-    """
-    # 随机生成 query_count（也可以直接用 n 做查询数，这里保持和 n 一致）
-    query_count = n
+    # n 作为总字符规模，构造若干组测试用例
+    # 设每组长度为 base_len，组数为 t
+    if n <= 0:
+        return
+
+    base_len = 10
+    if n < base_len:
+        base_len = n
+    t = max(1, n // base_len)
 
     results = []
+    for q in range(t):
+        # 为每个用例构造 n_i, k_i, s_i
+        # 这里让每个用例的长度随 q 线性变化，总体规模与 n 同阶
+        ni = max(1, base_len + q % (base_len))
+        ki = max(1, ni // 2)
 
-    for _ in range(query_count):
-        # 对每个查询生成字符串长度 n
-        length = n
+        # 构造确定性的字符串 s_i
+        # 使用循环 'RGB' 与位置索引的简单规则
+        pattern = "RGB"
+        s_list = [pattern[(i + q) % 3] for i in range(ni)]
+        s = "".join(s_list)
 
-        # 生成 k，保证 1 <= k <= length
-        k = random.randint(1, length)
+        res = solve(ni, ki, s)
+        results.append(res)
 
-        # 从 'R', 'G', 'B' 中随机生成一个长度为 length 的字符串
-        s = ''.join(random.choice('RGB') for _ in range(length))
-
-        ans = solve_single_case(length, k, s)
-        results.append(ans)
-
-    # 输出所有结果
-    for ans in results:
-        print(ans)
-
-
+    # 为防止 Python 优化掉计算，汇总输出一个确定性结果
+    total = 0
+    for x in results:
+        total ^= x
+    # print(total)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 生成规模为 5 的测试数据并运行
-    main(5)
+    main(10000)

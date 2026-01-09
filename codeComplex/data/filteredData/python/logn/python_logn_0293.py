@@ -14,14 +14,14 @@ def main(n: int):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     k2 = pow(2, k, modulo)
     ans = (x * k2 * 2 - k2 + 1) % modulo
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -1,23 +1,13 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 个学生，每人 3 门课的分数，0~100 随机
-    # 第一个学生作为目标学生
-    subjects = 3
-    scores = [
-        [random.randint(0, 100) for _ in range(subjects)]
-        for _ in range(n)
-    ]
-
     rank = 1
-    score = sum(scores[0])
-    for i in range(1, n):
-        student = sum(scores[i])
+    # 第一名的成绩，确定性构造：分数和为 3*n
+    score = sum((i % 7 + 1) for i in range(3 * n))
+    # 生成其余 n-1 个学生的成绩
+    for i in range(n - 1):
+        student = sum(((i + j) % 7 + 1) for j in range(3 * n))
         if student > score:
             rank += 1
-    print(rank)
-
-
+    # print(rank)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 5
-    main(5)
+    main(10)

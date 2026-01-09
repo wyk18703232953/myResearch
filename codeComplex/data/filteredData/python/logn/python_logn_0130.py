@@ -1,27 +1,30 @@
-from math import sqrt
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据：
-    # 这里我们让 k 与 n 同数量级，确保有一定随机性与覆盖面
-    # k 至少为 1
-    k = max(1, int(sqrt(n)) + random.randint(0, 5))
+    # 映射规则：
+    # 将原程序中的 n, k 映射为：
+    #   n_input = n
+    #   k = max(1, n)  （保证规模随 n 增长，且 k >= 1）
+    n_input = n
+    k = max(1, n)
 
-    # 原逻辑开始
     ub = k * (k + 1) // 2 - k + 1
 
-    if n > ub:
-        result = -1
-    elif n == ub:
-        result = k - 1
-    elif n == 1:
-        result = 0
-    elif n <= k:
-        result = 1
+    if n_input > ub:
+        # print(-1)
+        pass
+    elif n_input == ub:
+        # print(k - 1)
+        pass
+    elif n_input == 1:
+        # print(0)
+        pass
+    elif n_input <= k:
+        # print(1)
+        pass
+
     else:
         st = 1
         en = k - 1
-        target = n - 1
+        target = n_input - 1
         ub = k * (k - 1) // 2
         p = lambda x: ub - x * (x - 1) // 2
         ans = -1
@@ -31,17 +34,17 @@ def main(n):
             if p(md) <= target:
                 ans = md
                 en = md - 1
+
             else:
                 st = md + 1
 
         if p(ans) == target:
-            result = k - ans
+            # print(k - ans)
+            pass
+
         else:
-            result = k - ans + 1
-
-    print(result)
-
-
+            # print(k - ans + 1)
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main(n)，可根据需要修改 n
+    # 示例：使用 n = 10 进行一次调用
     main(10)

@@ -1,39 +1,44 @@
-import random
+import sys
 
 mod = 10**9 + 7
 
-def count_ones(m, n, mod):
+def count(m, n, mod):
     return (pow(2, m, mod) - 1) * pow(2, n, mod) % mod
 
 def main(n):
-    # 1. 生成规模为 n 的字符串 S（长度为 n，由 '0'、'1' 组成）
-    random.seed(0)
-    S = ''.join(random.choice('01') for _ in range(n))
-    
-    # 2. 生成查询个数 q（这里取 q = n，亦可按需调整规则）
-    q = n
-    
-    # 3. 生成 q 个区间 [l, r]，1 <= l <= r <= n
+    # n controls length of S; number of queries q is chosen as n
+    N = max(1, n)
+    q = N
+
+    # Deterministically generate S as a binary string using i % 2 pattern
+    S = ''.join('1' if i % 2 == 0 else '0' for i in range(N))
+
+    # Deterministically generate LR queries
+    # For scalability and coverage, create q intervals within [1, N]
     LR = []
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
-        LR.append((l, r))
-    
-    # 4. 预处理 LIST（前缀和：到当前位置为止 '1' 的个数）
+    for i in range(1, q + 1):
+        l = (i % N) + 1
+        r = ((i * 2) % N) + 1
+        if l > r:
+            l, r = r, l
+        LR.append([l, r])
+
     LIST = [0]
     for s in S:
         if s == "1":
             LIST.append(LIST[-1] + 1)
+
         else:
             LIST.append(LIST[-1])
-    
-    # 5. 处理并输出每个查询的结果
+
+    out_lines = []
     for l, r in LR:
-        ones = LIST[r] - LIST[l - 1]
-        zeros = (r - l + 1) - ones
-        print(count_ones(ones, zeros, mod))
+        m = LIST[r] - LIST[l - 1]
+        total_len = r - l + 1
+        n_zero = total_len - m
+        out_lines.append(str(count(m, n_zero, mod)))
+
+    sys.stdout.write("\n".join(out_lines))
 
 if __name__ == "__main__":
-    # 示例调用：可按需修改 n
     main(10)

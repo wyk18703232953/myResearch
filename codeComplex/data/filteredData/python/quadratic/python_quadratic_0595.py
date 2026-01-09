@@ -1,11 +1,12 @@
-import random
-
 def main(n):
-    # 生成测试数据：n, m, k 和数组 A
-    # 这里选择一种简单的生成方式，可按需要自行修改
-    m = max(1, n // 3)         # 保证 1 <= m <= n
-    k = random.randint(0, 10)  # 任意非负整数罚值
-    A = [random.randint(-10, 10) for _ in range(n)]
+    # Deterministic data generation based on n
+    # Map: n -> length of A; m and k derived from n
+    if n <= 0:
+        return 0
+
+    m = max(1, n // 3)
+    k = n // 2
+    A = [(i * 7 + 3) % 100 - 50 for i in range(n)]
 
     glans = 0
     for s in range(m):
@@ -43,9 +44,11 @@ def main(n):
                 minsum = B[i]
                 candidat = i
         glans = max(glans, B[ans[1]] - B[ans[0]])
-    print(glans)
+    # print(glans)
+    pass
+    return glans
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可按需修改 n
-    main(10)
+    # Example call for time complexity experiments
+    main(1000)

@@ -55,9 +55,8 @@ def main(n):
         test_n = i
         k = i * i
         ans = solve_case(test_n, k)
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # Example run with scale 10; change as needed.
     main(10)

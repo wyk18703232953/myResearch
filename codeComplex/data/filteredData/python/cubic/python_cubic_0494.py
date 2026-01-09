@@ -17,7 +17,8 @@ def main(n):
     if k & 1:
         for i in range(n):
             row = ["-1"] * m
-            print(" ".join(row))
+            # print(" ".join(row))
+            pass
         return
 
     # 否则执行原 answer() 的逻辑
@@ -46,9 +47,8 @@ def main(n):
 
     for i in range(n):
         row = [str(2 * dp[i][j][-1]) for j in range(m)]
-        print(" ".join(row))
-
-
+        # print(" ".join(row))
+        pass
 if __name__ == "__main__":
     # 示例: 运行规模 n=3
     main(3)

@@ -35,11 +35,12 @@ def main(n):
 
         max_xor = a_binary ^ b_binary
 
-        print(max_xor)
+        # print(max_xor)
+        pass
+
     else:
-        print(l ^ r)
-
-
+        # print(l ^ r)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

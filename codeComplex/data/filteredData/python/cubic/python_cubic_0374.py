@@ -56,9 +56,8 @@ def main(n):
                 dp[i + k + 1][j + k] += dp[i][j] * pow2[k - 1] * table[k + j][k]
 
     ans = sum(dp[-1]) % MOD
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(n)，这里可以修改 n 以进行不同规模测试
     main(10)

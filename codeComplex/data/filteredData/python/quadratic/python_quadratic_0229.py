@@ -1,14 +1,9 @@
-import math
-import sys
-import random
-
 def main(n):
-    # 生成测试数据
-    # 随机生成一个长度为 n 的数组 s，元素为 1~10^6
-    # 随机生成对应的代价数组 ce，元素为 1~10^6
-    random.seed(0)
-    s = [random.randint(1, 10**6) for _ in range(n)]
-    ce = [random.randint(1, 10**6) for _ in range(n)]
+    # Deterministically generate input data based on n
+    # s: strictly increasing sequence with minor pattern
+    s = [i + (i % 3) for i in range(n)]
+    # ce: deterministic cost pattern
+    ce = [(i * 7 + 3) % 1000 + 1 for i in range(n)]
 
     best = 10**9
     for j in range(1, n - 1):
@@ -17,18 +12,22 @@ def main(n):
         c = 10**9
         for i in range(j - 1, -1, -1):
             if s[i] < s[j]:
-                b = min(b, ce[i])
+                if ce[i] < b:
+                    b = ce[i]
         for k in range(j + 1, n):
             if s[k] > s[j]:
-                c = min(c, ce[k])
-        best = min(best, a + b + c)
+                if ce[k] < c:
+                    c = ce[k]
+        current = a + b + c
+        if current < best:
+            best = current
 
     if best >= 10**9:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(best)
-
-
+        # print(best)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(1000)

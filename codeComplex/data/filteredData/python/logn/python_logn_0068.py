@@ -1,34 +1,28 @@
-from math import *
-import random
+def main(n):
+    # 映射：将 n 映射为一对 (l, r)，保持 l <= r 且规模随 n 增长
+    # 这里构造一个确定性映射：
+    # l = n*(n+1)//2
+    # r = l + n
+    l_val = n * (n + 1) // 2
+    r_val = l_val + n
 
-def main(n: int):
-    # 1. 根据 n 生成测试数据
-    # 这里约定：生成一个区间 [l, r]，其中 0 <= l <= r < 2^n
-    # 若 n 过大会导致整数非常大，可按需要调整
-    if n <= 0:
-        l, r = 0, 0
-    else:
-        max_val = (1 << n) - 1
-        l = random.randint(0, max_val)
-        r = random.randint(l, max_val)
-
-    # 2. 将原逻辑封装
-    l_bin = list(bin(l)[2:])
-    r_bin = list(bin(r)[2:])
-    # 前导补零，使得长度一致
-    l_bin = ['0' for _ in range(len(r_bin) - len(l_bin))] + l_bin
+    l = list(bin(l_val)[2:])
+    r = list(bin(r_val)[2:])
+    if len(l) < len(r):
+        l = ['0'] * (len(r) - len(l)) + l
 
     s = ""
-    for i in range(len(r_bin)):
-        if l_bin[i] == r_bin[i]:
+    for i in range(len(r)):
+        if l[i] == r[i]:
             s += "0"
+
         else:
-            s += "1" * (len(r_bin) - i)
+            s += "1" * (len(r) - i)
             break
 
-    # 3. 输出结果
-    print(int(s, 2))
-
+    # 保持原程序输出行为
+    # print(int(s, 2))
+    pass
 if __name__ == "__main__":
-    # 可以在此处指定 n 进行简单测试
+    # 示例调用，可根据需要修改 n 的值进行规模化实验
     main(10)

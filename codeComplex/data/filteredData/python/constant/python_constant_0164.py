@@ -1,28 +1,39 @@
-import random
+def main(n):
+    # Interpret n as the number of different (l, r) test cases
+    # Generate deterministic test cases based on n
+    results = []
+    for i in range(n):
+        # Deterministic construction of l and r
+        # l is even when i is even, odd when i is odd
+        l = i * 2 + (i % 2)
+        # Ensure r >= l and j = r - l + 1 varies with i
+        r = l + (i % 5)  # j ranges from 1 to 5
+        j = r - l + 1
 
-def main(n: int):
-    # 依据规模 n 生成测试数据：构造一个区间 [l, r]，长度为 n
-    # 这里让 l 随机，r = l + n - 1
-    # 你也可以改成固定 l，例如 l = 1
-    l = random.randint(1, 100)
-    r = l + n - 1
+        if j == 3:
+            if l % 2 == 0:
+                results.append((l, l + 1, l + 2))
 
-    j = r - l + 1  # 区间长度
+            else:
+                results.append(-1)
+        elif j > 3:
+            if l % 2 == 0:
+                results.append((l, l + 1, l + 2))
 
-    if j == 3:
-        if l % 2 == 0:
-            print(l, l + 1, l + 2)
+            else:
+                results.append((l + 1, l + 2, l + 3))
+
         else:
-            print(-1)
-    elif j > 3:
-        if l % 2 == 0:
-            print(l, l + 1, l + 2)
+            results.append(-1)
+
+    # Output results for inspection / complexity experiment
+    for res in results:
+        if res == -1:
+            # print(-1)
+            pass
+
         else:
-            print(l + 1, l + 2, l + 3)
-    else:
-        print(-1)
-
-
+            # print(res[0], res[1], res[2])
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

@@ -7,12 +7,12 @@ def main(n):
     md = 1000000007
     if x > 0:
         result = (pow(2, k + 1, md) * x - pow(2, k, md) + 1) % md
+
     else:
         result = 0
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：可以在此处手动指定 n 进行测试
     main(10)

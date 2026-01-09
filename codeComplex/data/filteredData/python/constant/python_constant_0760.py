@@ -12,7 +12,8 @@ def main(n):
     # 原逻辑：在 0..10**5-1 中找满足条件的 i，并输出 n - i
     for i in range(10**5):
         if (i * (i + 1)) // 2 - (n - i) == k:
-            print(n - i)
+            # print(n - i)
+            pass
             break
 
 

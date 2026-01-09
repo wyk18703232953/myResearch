@@ -1,35 +1,25 @@
-import random
-
 def main(n):
-    # 生成测试数据：根据 n 构造 a, b
-    # 这里给出一种简单策略，你可按需修改：
-    # - 绝大多数情况下满足至少一个为 1
-    # - 偶尔生成 a > 1 且 b > 1 的情况测试 NO 分支
-    if n <= 1:
-        # 对于非常小的 n，强制 a=1,b=n 作为示例
-        a, b = 1, max(1, n)
-    else:
-        if random.random() < 0.2:
-            # 20% 概率生成 a>1 且 b>1
-            a = random.randint(2, max(2, n))
-            b = random.randint(2, max(2, n))
-        else:
-            # 至少有一个是 1
-            if random.random() < 0.5:
-                a = 1
-                b = random.randint(1, max(1, n))
-            else:
-                b = 1
-                a = random.randint(1, max(1, n))
+    # Deterministic generation of a, b from n
+    # Ensure at least 1
+    if n < 4:
+        size = 4
 
-    # 以下是原逻辑，只是搬进 main(n)，使用生成的 a, b
+    else:
+        size = n
+
+    a = (size % 3) + 1
+    b = ((size // 2) % 3) + 1
+
+    n = size
 
     if a > 1 and b > 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     if n in [2, 3] and a == 1 and b == 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     matrix = [[i in [j + 1, j - 1] for i in range(n)] for j in range(n)]
@@ -50,11 +40,10 @@ def main(n):
                 if i == j:
                     matrix[i][j] = False
 
-    print('YES')
+    # print('YES')
+    pass
     for row in matrix:
-        print("".join('1' if x else '0' for x in row))
-
-
-if __name__ == '__main__':
-    # 示例：调用 main(5)，你可以在外部按需调用不同的 n
-    main(5)
+        # print("".join('1' if x else '0' for x in row), flush=False)
+        pass
+if __name__ == "__main__":
+    main(10)

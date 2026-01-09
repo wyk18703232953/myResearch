@@ -11,10 +11,10 @@ def main(n):
     a = '8' * (n - 1) + '9'
     b = '1' * n
 
-    print(a)
-    print(b)
-
-
+    # print(a)
+    pass
+    # print(b)
+    pass
 if __name__ == "__main__":
     # 示例：可以根据需要修改 n 的默认测试规模
     main(1130)

@@ -1,5 +1,3 @@
-import random
-
 def lr(a):
     l = [0] * len(a)
     r = [0] * len(a)
@@ -13,28 +11,34 @@ def lr(a):
 
 
 def main(n):
-    # 生成一个 1..n 的随机排列作为测试数据
-    a = list(range(1, n + 1))
-    random.shuffle(a)
+    if n <= 0:
+        # print("NO")
+        pass
+        return
 
-    # 根据生成的 a 计算对应的 l, r
+    # Deterministic construction of a permutation a of size n
+    # Example: a is descending sequence from n to 1
+    a = [n - i for i in range(n)]
+
+    # Compute l and r using the same logic as lr
     l, r = lr(a)
 
-    # 按原逻辑尝试从 l, r 还原 a
-    a_rec = [0] * n
+    # Reconstruct a2 from l and r using original algorithm logic
+    a2 = [0] * n
     for i in range(n):
         for j in range(n):
             if l[j] + r[j] == i:
-                a_rec[j] = n - i
+                a2[j] = n - i
 
-    l1, r1 = lr(a_rec)
+    l1, r1 = lr(a2)
     if l1 != l or r1 != r:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-        print(' '.join(str(x) for x in a_rec))
-
-
+        # print("YES")
+        pass
+        # print(' '.join(str(i) for i in a2))
+        pass
 if __name__ == "__main__":
-    # 示例运行：可根据需要修改 n
     main(5)

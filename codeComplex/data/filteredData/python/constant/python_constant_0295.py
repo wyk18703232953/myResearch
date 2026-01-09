@@ -1,24 +1,17 @@
 from math import ceil
-import random
 
-def main(n: int):
-    # 生成测试数据：
-    # k: 组数 [1, n]
-    # n: 每人需要的题目数（沿用参数 n，或可自定义范围）
-    # s: 每张纸可出题数 [1, max(1, n//2)]
-    # p: 每包纸张数 [1, max(1, n)]
-    k = random.randint(1, n)
-    num_problems = n
-    s = random.randint(1, max(1, n // 2))
-    p = random.randint(1, max(1, n))
+def main(n):
+    # 将 n 映射为原程序的四个参数 k, n_people, s, p
+    # 保证参数均为正整数且随 n 规模化
+    k = max(1, n // 3)
+    n_people = max(1, n)
+    s = max(1, n // 2)
+    p = max(1, n // 4)
 
-    # 原始逻辑
-    sheetsforone = ceil(num_problems / s)
+    sheetsforone = ceil(n_people / s)
     sheetsfork = sheetsforone * k
     packs = ceil(sheetsfork / p)
-
-    print(int(packs))
-
+    # print(int(packs))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模为 100
-    main(100)
+    main(1000)

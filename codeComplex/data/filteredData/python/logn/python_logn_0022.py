@@ -1,16 +1,9 @@
-import random
+def main(n):
+    # 生成确定性输入：让 a 和 b 与 n 线性相关
+    # 保证 a <= b 且二者不同，以触发核心逻辑
+    a = n
+    b = 2 * n + 1
 
-def main(n: int):
-    # 生成两个随机正整数，范围根据 n 调整（用于控制数据规模）
-    # 这里将随机数上限设置为 2^n - 1，保证二进制位数不超过 n
-    if n <= 0:
-        return
-
-    max_val = (1 << n) - 1
-    a = random.randint(0, max_val)
-    b = random.randint(0, max_val)
-
-    # 保持与原逻辑相同
     a, b = min(a, b), max(a, b)
     A = bin(a)[2:]
     B = bin(b)[2:]
@@ -20,10 +13,11 @@ def main(n: int):
         if A[i] != B[i]:
             diff = len(A) - i
             break
-
-    print((2 ** diff) - 1)
+    result = (2 ** diff) - 1
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：规模 n = 10，可根据需要修改
-    main(10)
+    # 示例调用
+    # print(main(10))
+    pass

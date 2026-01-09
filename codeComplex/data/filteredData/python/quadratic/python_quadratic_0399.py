@@ -1,29 +1,29 @@
 import math
 from collections import defaultdict, deque
-import random
-import string
 
 def main(n):
-    # 生成测试数据：
-    # n: 字符串长度
-    # k: 拼接次数，设为 n（可按需调整策略）
-    k = n
+    # Map n to problem parameters:
+    # n: length of string st
+    # k: number of repetitions (bounded to keep size reasonable)
+    if n <= 0:
+        return
+    k = max(1, min(n, 10**6))
 
-    # 生成长度为 n 的随机小写字母串
-    st = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+    # Deterministically generate st of length n
+    # Example: periodic over lowercase letters
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    st = "".join(alphabet[i % 26] for i in range(n))
 
     res = st
     pos = 1
     cnt = 1
-
-    # 原逻辑：构造尽量短的最终串，使其包含 k 段，且每次拼接尽量利用前后缀重叠
     while cnt < k:
         suffix = 0
         counter = 0
-        # 检查当前位置 pos 开始，res 的后缀与 st 的前缀最长匹配长度
         for i in range(pos, len(res)):
             if res[i] == st[suffix]:
                 suffix += 1
+
             else:
                 counter = 1
                 break
@@ -38,5 +38,7 @@ def main(n):
         res += st[suffix:n]
         cnt += 1
         pos += 1
-
-    print(res)
+    # print(res)
+    pass
+if __name__ == "__main__":
+    main(10)

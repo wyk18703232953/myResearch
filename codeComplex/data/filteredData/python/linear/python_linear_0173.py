@@ -6,15 +6,18 @@ def main(n: int):
     # 原逻辑开始
     if n >= 6:
         for i in range(2, n - 1):
-            print(1, i)
+            # print(1, i)
+            pass
         for i in range(n - 1, n + 1):
-            print(2, i)
+            # print(2, i)
+            pass
+
     else:
-        print(-1)
+        # print(-1)
+        pass
     for i in range(2, n + 1):
-        print(1, i)
-
-
+        # print(1, i)
+        pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值进行测试
     main(10)

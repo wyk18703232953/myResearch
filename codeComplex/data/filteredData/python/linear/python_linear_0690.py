@@ -5,7 +5,8 @@ def main(n):
     s_max = n * (n + 1) // 2
     if s_min > s_max:
         # 理论上不会发生，n>=1 时总有 s_min <= s_max
-        print("No")
+        # print("No")
+        pass
         return
 
     # 这里选取中间值作为测试 s
@@ -13,9 +14,11 @@ def main(n):
 
     # 原逻辑开始
     if not 2 * n - 1 <= s <= n * (n + 1) // 2:
-        print('No')
+        # print('No')
+        pass
         return
-    print('Yes')
+    # print('Yes')
+    pass
 
     def ok(d):
         dep, cur, total_sum, m = 2, 1, 1, 0
@@ -31,6 +34,7 @@ def main(n):
         mid = (l + r) // 2
         if ok(mid):
             r = mid
+
         else:
             l = mid + 1
 
@@ -59,9 +63,11 @@ def main(n):
         while me[l_ptr] < i - 1 or dg == r:
             dg = 0
             l_ptr += 1
-        print(l_ptr + 1, end=' ')
+        # print(l_ptr + 1, end=' ')
+        pass
         dg += 1
-    print()
+    # print()
+    pass
 
 
 # 示例运行

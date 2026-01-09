@@ -1,5 +1,4 @@
 from math import floor
-import random
 
 CONST = 9
 
@@ -11,15 +10,14 @@ def solve(k):
     num_digits = i + 1
     num = floor((k - 1) / num_digits)
     num += floor(10 ** i)
-    print(('{}'.format(num))[(k - 1) % num_digits])
+    # print(('{}'.format(num))[(k - 1) % num_digits])
+    pass
 
 def main(n):
-    # 根据规模 n 生成 n 个测试数据，数值范围可按需调整
-    # 这里生成 1 到 10**12 之间的随机整数作为 k
-    test_data = [random.randint(1, 10**12) for _ in range(n)]
-    for k in test_data:
+    # 生成 n 个查询，第 i 个为 (i+1)*n，保证随 n 线性放大
+    for i in range(1, n + 1):
+        k = i * n
         solve(k)
 
-if __name__ == '__main__':
-    # 示例：运行规模为 5
-    main(5)
+if __name__ == "__main__":
+    main(10)

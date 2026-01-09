@@ -37,9 +37,8 @@ def main(n):
         otv += 10 ** (19 - i) * l[i]
 
     # 原程序输出
-    print(max(n - otv + 1, 0))
-
-
+    # print(max(n - otv + 1, 0))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可按需调整
     main(10)

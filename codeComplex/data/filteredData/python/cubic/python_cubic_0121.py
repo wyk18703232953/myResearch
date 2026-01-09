@@ -1,6 +1,3 @@
-import random
-import string
-
 def problem(s, p):
     n = len(s)
     F = [[n] * 26 for _ in range(n + 2)]
@@ -31,24 +28,29 @@ def problem(s, p):
 
 
 def main(n):
-    """
-    生成规模为 n 的测试数据并调用 problem。
-    约定：|s| = n，|p| = n（可按需要调整生成策略）。
-    """
-    # 生成长度为 n 的随机小写字符串 s 和 p
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-    p = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+    # n controls both the number of test cases and string sizes
+    t = max(1, n)  # number of test cases
+    results = []
+    for k in range(1, t + 1):
+        # deterministic generation of s and p based on k and n
+        len_s = max(1, n)
+        len_p = max(1, n // 2 + k % (n if n > 0 else 1))
 
-    # 调用原逻辑
-    ans = problem(s, p)
+        s_chars = []
+        for i in range(len_s):
+            # cycle through 'a' to 'z' deterministically
+            s_chars.append(chr(97 + (i + k) % 26))
+        s = "".join(s_chars)
 
-    # 输出结果（以及可选的测试数据展示）
-    print(ans)
-    # 如仅需输出结果，可删去以下两行
-    # print("s:", s)
-    # print("p:", p)
+        p_chars = []
+        for i in range(len_p):
+            p_chars.append(chr(97 + (i * 2 + k) % 26))
+        p = "".join(p_chars)
 
+        results.append(problem(s, p))
 
+    for r in results:
+        # print(r)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    main(5)

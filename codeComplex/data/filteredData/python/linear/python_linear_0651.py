@@ -1,17 +1,26 @@
-from collections import defaultdict
-import random
-
 def main(n):
-    # 1. 生成测试数据
-    # 生成数组元素范围 [-5, 5]，并保证 tar 存在于数组中
+    from collections import defaultdict
+
+    # Deterministically generate input:
+    # n: length of array
+    # tar: a value that appears multiple times but not trivially
+    # a: constructed using modular and arithmetic patterns
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
-    a = [random.randint(-5, 5) for _ in range(n)]
-    tar = random.choice(a)  # 确保 tar 在数组中
+    tar = (n // 3) + 1
+    a = [(i * 2 + (i // 3)) % (n // 2 + 3) for i in range(n)]
 
-    # 2. 原始逻辑开始
+    # Ensure tar appears at least once deterministically
+    if n >= 1:
+        a[0] = tar
+    if n >= 3:
+        a[n // 2] = tar
+    if n >= 5:
+        a[-1] = tar
+
     d = defaultdict(lambda: [])
     count = 0
     for i in range(n):
@@ -23,6 +32,7 @@ def main(n):
     for e in a[1:]:
         if e == tar:
             presum.append(presum[-1] + 1)
+
         else:
             presum.append(presum[-1])
 
@@ -44,9 +54,7 @@ def main(n):
 
         final = max(final, tt)
 
-    print(final + count)
-
-
+    # print(final + count)
+    pass
 if __name__ == "__main__":
-    # 示例调用：规模为 10
     main(10)

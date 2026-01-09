@@ -1,14 +1,13 @@
-import random
+def main(n):
+    # Map n to sizes of R, G, B
+    r = n
+    g = n
+    b = n
 
-def main(n: int):
-    # 这里用 n 控制每种颜色数量，示例：r = g = b = n
-    r = g = b = n
-
-    # 根据 n 生成测试数据（这里使用 1~100 的随机整数）
-    random.seed(0)  # 固定随机种子，保证可复现
-    R = [random.randint(1, 100) for _ in range(r)]
-    G = [random.randint(1, 100) for _ in range(g)]
-    B = [random.randint(1, 100) for _ in range(b)]
+    # Deterministically generate R, G, B based on n
+    R = [(i * 2 + 1) % (3 * n + 1) + 1 for i in range(r)]
+    G = [(i * 3 + 2) % (3 * n + 1) + 1 for i in range(g)]
+    B = [(i * 5 + 3) % (3 * n + 1) + 1 for i in range(b)]
 
     R.sort(reverse=True)
     G.sort(reverse=True)
@@ -30,9 +29,10 @@ def main(n: int):
         return ans
 
     result = calc(0, 0, 0)
-    print(result)
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：规模为 3
     main(3)

@@ -33,9 +33,8 @@ def main(n):
 
     # 输出结果
     for ans in results:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用中可以改成任意正整数
     main(10)

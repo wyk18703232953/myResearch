@@ -1,22 +1,26 @@
-import random
-
-def main(n: int):
+def main(n):
     c = 0
     lst = [4, 7, 47, 74, 447, 474, 744, 477, 747, 774]
-    if n in lst:
-        print("YES")
-    else:
-        for i in lst:
-            if n % i == 0:
-                print("YES")
-                c += 1
-                break
-        if c == 0:
-            print("NO")
+    results = []
+    # 将原来的单次输入扩展为 n 次规模化测试：测试 1..n
+    for x in range(1, n + 1):
+        if x in lst:
+            results.append("YES")
 
+        else:
+            for i in lst:
+                if x % i == 0:
+                    results.append("YES")
+                    c = c + 1
+                    break
 
+            else:
+                results.append("NO")
+    # 为避免超大量打印，这里仅返回最后一个结果和 YES 计数
+    # 若需要完整输出，可改为逐行打印 results
+    # print(results[-1] if results else "NO")
+    pass
+    # print(c)
+    pass
 if __name__ == "__main__":
-    # 根据规模 n 生成测试数据，这里示例为在 [1, 10^n] 范围内随机生成一个整数
-    n_scale = 3  # 可修改规模
-    test_n = random.randint(1, 10 ** n_scale)
-    main(test_n)
+    main(1000)

@@ -4,9 +4,8 @@ def main(n: int):
     # 可根据需要扩展为从 n 推导出更多数据结构（如数组等）
 
     ans = 1 + n // 2
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 作为测试规模
     main(10)

@@ -1,5 +1,3 @@
-import random
-
 def bigNumber(n, s):
     for i in range(s, n + 1):
         sumVal = 0
@@ -8,15 +6,20 @@ def bigNumber(n, s):
             sumVal += num % 10
             num //= 10
         if i - sumVal >= s:
-            print(n - i + 1)
+            # print(n - i + 1)
+            pass
             return
-    print(0)
+    # print(0)
+    pass
 
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 约定：1 <= s <= n
-    s = random.randint(1, n)
-    bigNumber(n, s)
+    # Deterministic mapping from n to original (n, s)
+    # Ensure s <= n to keep behavior meaningful
+    N = n
+    if N < 1:
+        N = 1
+    S = N // 2  # example: s is set to half of n deterministically
+    bigNumber(N, S)
 
-# 示例调用
-# main(100000)
+if __name__ == "__main__":
+    main(10)

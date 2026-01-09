@@ -1,38 +1,34 @@
 def main(n):
-    import random
+    # Map n to grid size h x w
+    # Use h = w = n for scalability
+    h = n
+    w = n
 
-    # 生成一个 h x w 的随机网格，n 作为规模参数
-    # 这里简单地取 h = w = max(1, n)，你可以根据需要修改生成规则
-    h = max(1, n)
-    w = max(1, n)
-
-    # 随机生成星号网格，'*' 或 '.'，星号概率可按需要调整
-    p_star = 0.4
-    rng = random.Random(0)  # 固定种子以便复现
-    grid = []
-    for _ in range(h):
-        row = []
-        for _ in range(w):
-            row.append('*' if rng.random() < p_star else '.')
-        grid.append("".join(row))
-
-    # 原程序逻辑开始（去掉 input，改用上面生成的 h, w, grid）
+    # Deterministically generate a pattern of '*' and '.'
+    # Example rule: cell (i,j) is '*' if (i*j) % 7 == 0 and (i+j) % 3 != 0
+    # i,j are 1-based for consistency with original code logic
     s = [list("." * (w + 2))]
-    for row in grid:
-        s.append(list("." + row + "."))
+    for i in range(1, h + 1):
+        row = ["."]
+        for j in range(1, w + 1):
+            if (i * j) % 7 == 0 and (i + j) % 3 != 0:
+                row.append("*")
+
+            else:
+                row.append(".")
+        row.append(".")
+        s.append(row)
     s.append(list("." * (w + 2)))
 
     b = [[0] * (w + 2) for _ in range(h + 2)]
     c = [[0] * (w + 2) for _ in range(h + 2)]
 
-    # 向下、向右累积
     for i in range(1, h + 2):
         for j in range(1, w + 2):
             if s[i][j] == "*":
                 b[i][j] = b[i - 1][j] + 1
                 c[i][j] = c[i][j - 1] + 1
 
-    # 向上、向左修正为最小臂长
     for i in range(h, -1, -1):
         for j in range(w, -1, -1):
             if s[i][j] == "*":
@@ -46,7 +42,6 @@ def main(n):
             if t > 0:
                 ans.append((i, j, t))
 
-    # 差分数组重建验证
     b = [[0] * (w + 2) for _ in range(h + 2)]
     c = [[0] * (w + 2) for _ in range(h + 2)]
 
@@ -56,20 +51,27 @@ def main(n):
         c[i][j - t] += 1
         c[i][j + t + 1] -= 1
 
+    valid = True
     for i in range(h + 1):
         for j in range(w + 1):
             b[i + 1][j] += b[i][j]
             c[i][j + 1] += c[i][j]
             if i != 0 and j != 0:
                 if (b[i][j] + c[i][j] > 0) != (s[i][j] == "*"):
-                    print(-1)
-                    return
+                    valid = False
 
-    print(len(ans))
+    # For determinism, still output something even if invalid.
+    # Original code would print -1 and exit; here we mimic it in the return/output.
+    if not valid:
+        # print(-1)
+        pass
+        return
+
+    # print(len(ans))
+    pass
     for item in ans:
-        print(*item)
-
-
+        # print(*item)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # Example deterministic call for complexity experiments
+    main(300)

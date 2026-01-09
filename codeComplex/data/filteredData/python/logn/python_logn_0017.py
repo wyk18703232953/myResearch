@@ -9,7 +9,8 @@ def main(n: int):
     l, r = 0, n
 
     if l == r:
-        print(0)
+        # print(0)
+        pass
         return
 
     binr, binl = bin(r)[2:], bin(l)[2:]
@@ -20,9 +21,8 @@ def main(n: int):
             binl = '1' * len(binl[i:])
             break
 
-    print(int(binl, 2))
-
-
+    # print(int(binl, 2))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

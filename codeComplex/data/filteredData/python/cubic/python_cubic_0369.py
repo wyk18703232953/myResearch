@@ -203,5 +203,6 @@ def main(n):
     for i, a in enumerate(ANS):
         ans = (ans + a * fa[i]) % P
 
-    print(ans)
+    # print(ans)
+    pass
     return ans

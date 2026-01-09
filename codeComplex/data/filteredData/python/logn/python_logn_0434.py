@@ -1,72 +1,45 @@
-#!/usr/bin/python
-# encoding:UTF-8
-
-import random
-
-from math import ceil
-
-
-def read_num_from_list(data, idx, num_type=int):
-    tmp_list = [num_type(x) for x in data[idx].strip().split()]
-    if len(tmp_list) == 1:
-        return tmp_list[0], idx + 1
-    else:
-        return tuple(tmp_list), idx + 1
-
-
-def solve(fin_lines):
-    out_lines = []
-    idx = 0
-    T, idx = read_num_from_list(fin_lines, idx)
-    for _ in range(T):
-        (n, k), idx = read_num_from_list(fin_lines, idx)
-        if n > 34 or k == 1:
-            out_lines.append(f"YES {n - 1}")
-        else:
-            f = [0]
-            for _ in range(n):
-                f.append(f[-1] * 4 + 1)
-            min_step = 1
-            max_step = 1 + f[n - 1]
-            out_range = 3
-            flag = True
-            for i in range(0, n):
-                if min_step <= k <= max_step:
-                    out_lines.append(f"YES {n - i - 1}")
-                    flag = False
-                    break
-                max_step += out_range
-                min_step += out_range
-                out_range = out_range * 2 + 1
-                if n - 2 - i >= 0:
-                    max_step += (out_range - 2) * f[n - 2 - i]
-
-            if flag:
-                out_lines.append("NO")
-    return out_lines
-
-
 def main(n):
-    """
-    n: 规模，用来控制测试数据规模
-       这里令 T = n，且对每个测试用例随机生成 (n_i, k_i)
-    """
-    random.seed(0)
+    # n is used as the number of test cases T
+    # For each test case i (1-based), we deterministically generate:
+    #   n_i = 1 + (i % 50)        -> keeps n_i within a small range including boundary 34
+    #   k_i = 1 + (i * 3)         -> grows linearly with i
+    # This preserves variety while being fully deterministic and scalable with n.
+    def solve_generated(T):
+        for i in range(1, T + 1):
+            n_i = 1 + (i % 50)
+            k_i = 1 + i * 3
 
-    T = n
-    lines = [str(T)]
-    for _ in range(T):
-        # 生成 n_i 在 [1, 50]，保证覆盖 n > 34 和 n <= 34 两种情况
-        ni = random.randint(1, 50)
-        # 生成 k_i 在 [1, 10^9]
-        ki = random.randint(1, 10**9)
-        lines.append(f"{ni} {ki}")
+            n_val, k_val = n_i, k_i
+            if n_val > 34 or k_val == 1:
+                # print('YES', n_val - 1)
+                pass
 
-    results = solve(lines)
-    for line in results:
-        print(line)
+            else:
+                f = [0]
+                for _ in range(0, n_val):
+                    f.append(f[-1] * 4 + 1)
+                min_step = 1
+                max_step = 1 + f[n_val - 1]
+                out_range = 3
+                flag = True
+                for j in range(0, n_val):
+                    if min_step <= k_val <= max_step:
+                        # print('YES', n_val - j - 1)
+                        pass
+                        flag = False
+                        break
+                    max_step += out_range
+                    min_step += out_range
+                    out_range = out_range * 2 + 1
+                    if n_val - 2 - j >= 0:
+                        max_step += (out_range - 2) * f[n_val - 2 - j]
+
+                if flag:
+                    # print('NO')
+                    pass
+
+    solve_generated(n)
 
 
-if __name__ == '__main__':
-    # 示例：规模 5
-    main(5)
+if __name__ == "__main__":
+    main(10)

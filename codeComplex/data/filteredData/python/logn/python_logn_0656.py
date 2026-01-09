@@ -14,9 +14,11 @@ def main(n: int):
             l = mid + 1
         elif val > k:
             r = mid
+
         else:
             # 原代码输出的是 n - mid
-            print(n - mid)
+            # print(n - mid)
+            pass
             return mid
 
     # 若二分未找到（理论上不应发生），可返回 None

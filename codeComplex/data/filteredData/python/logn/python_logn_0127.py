@@ -30,6 +30,7 @@ def min_splitters(n: int, k: int) -> int:
             return k - mid + 1
         elif mid_val > n:
             start = mid + 1
+
         else:
             end = mid
     return k - start + 1
@@ -41,6 +42,7 @@ def solve_single_case(n: int, k: int) -> int:
         return 0
     elif n <= k:
         return 1
+
     else:
         k -= 1
         n -= 1
@@ -84,9 +86,8 @@ def main(n: int):
     test_cases = generate_test_data(n)
     for ni, ki in test_cases:
         ans = solve_single_case(ni, ki)
-        print(ni, ki, ans)
-
-
+        # print(ni, ki, ans)
+        pass
 if __name__ == "__main__":
     # example: run main with some scale, e.g. 10
     main(10)

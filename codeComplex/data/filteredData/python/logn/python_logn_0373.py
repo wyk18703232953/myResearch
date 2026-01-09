@@ -26,12 +26,13 @@ def main(n):
     k = n + 1
 
     if x == 0:
-        print("0")
+        # print("0")
+        pass
+
     else:
         t = (((power(2, k, p)) * ((2 * x - 1) % p)) % p + 1) % p
-        print(t)
-
-
+        # print(t)
+        pass
 if __name__ == "__main__":
     # 示例：用 n = 10 运行
     main(10)

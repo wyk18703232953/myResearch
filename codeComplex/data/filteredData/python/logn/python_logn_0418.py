@@ -29,6 +29,7 @@ def main(n):
         # 可覆盖小值和较大值
         if ni <= 5:
             ki = ni  # 小规模时让 k 较小
+
         else:
             ki = ni * ni // 2  # 稍大一些
         cases.append((ni, ki))
@@ -56,12 +57,14 @@ def main(n):
 
         if min_splits <= k <= min_splits + max_buffer:
             outputs.append(f"YES {square_size}")
+
         else:
             outputs.append("NO")
 
     # 输出所有结果
     for line in outputs:
-        print(line)
+        # print(line)
+        pass
 
 
 # 示例: 直接运行 main(5) 做简单自测

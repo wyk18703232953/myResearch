@@ -8,6 +8,7 @@ def solve(moves, candies_end):
             return mid
         elif val < candies_end:
             high = mid - 1
+
         else:
             low = mid + 1
     return None  # 若无解，返回 None
@@ -25,8 +26,8 @@ def main(n):
     candies_end = ((moves - mid0) * (moves - mid0 + 1)) // 2 - mid0
 
     ans = solve(moves, candies_end)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时可在外部按需调用 main(n)
     main(10)

@@ -1,14 +1,22 @@
-import random
+def main(n):
+    # Map n to sizes of R, G, B
+    # For scalability and determinism, split n approximately into three parts
+    R = n // 3
+    G = (n + 1) // 3
+    B = n - R - G
 
-def main(n: int):
-    # 这里用 n 控制三种颜色数组的规模
-    # 为了简单，生成长度都为 n 的数组
-    R = G = B = n
+    # Ensure at least size 1 for non-trivial behavior
+    if R == 0:
+        R = 1
+    if G == 0:
+        G = 1
+    if B == 0:
+        B = 1
 
-    # 生成测试数据（元素值可按需调整范围）
-    r = [random.randint(1, 1000) for _ in range(R)]
-    g = [random.randint(1, 1000) for _ in range(G)]
-    b = [random.randint(1, 1000) for _ in range(B)]
+    # Deterministic generation of r, g, b arrays based on R, G, B
+    r = [i * 2 + 1 for i in range(R)]
+    g = [i * 3 + 2 for i in range(G)]
+    b = [i * 5 + 3 for i in range(B)]
 
     r.sort(reverse=True)
     g.sort(reverse=True)
@@ -16,30 +24,24 @@ def main(n: int):
 
     dp = [[[0 for _ in range(B + 1)] for _ in range(G + 1)] for _ in range(R + 1)]
     ans = 0
-
     for i in range(R + 1):
         for j in range(G + 1):
             for k in range(B + 1):
                 if i < R and j < G:
-                    dp[i + 1][j + 1][k] = max(
-                        dp[i + 1][j + 1][k],
-                        r[i] * g[j] + dp[i][j][k]
-                    )
+                    val = r[i] * g[j] + dp[i][j][k]
+                    if val > dp[i + 1][j + 1][k]:
+                        dp[i + 1][j + 1][k] = val
                 if i < R and k < B:
-                    dp[i + 1][j][k + 1] = max(
-                        dp[i + 1][j][k + 1],
-                        r[i] * b[k] + dp[i][j][k]
-                    )
+                    val = r[i] * b[k] + dp[i][j][k]
+                    if val > dp[i + 1][j][k + 1]:
+                        dp[i + 1][j][k + 1] = val
                 if k < B and j < G:
-                    dp[i][j + 1][k + 1] = max(
-                        dp[i][j + 1][k + 1],
-                        b[k] * g[j] + dp[i][j][k]
-                    )
-                ans = max(ans, dp[i][j][k])
-
-    print(ans)
-
-
+                    val = b[k] * g[j] + dp[i][j][k]
+                    if val > dp[i][j + 1][k + 1]:
+                        dp[i][j + 1][k + 1] = val
+                if dp[i][j][k] > ans:
+                    ans = dp[i][j][k]
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自行调整
-    main(3)
+    main(5)

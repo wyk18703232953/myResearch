@@ -4,9 +4,8 @@ def main(n: int):
     m = 3 * (2 ** n) + 5
 
     # 输出 m % 2**n
-    print(m % (2 ** n))
-
-
+    # print(m % (2 ** n))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可根据需要修改
     main(5)

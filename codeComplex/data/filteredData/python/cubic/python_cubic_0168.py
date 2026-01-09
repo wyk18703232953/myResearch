@@ -1,8 +1,7 @@
-import random
-
-def main(n: int):
-    # 生成规模为 n 的测试数据（元素值为 1..n 之间的随机整数）
-    a = [random.randint(1, n) for _ in range(n)]
+def main(n):
+    # Generate deterministic input data based on n
+    # Here n is the length of the list 'a'
+    a = [((i * 2 + 3) % 5) + 1 for i in range(n)]
 
     dp = [[-1] * (n + 1) for _ in range(n + 1)]
     for i in range(n):
@@ -24,9 +23,7 @@ def main(n: int):
             if dp[j][i] != -1:
                 dp2[i] = min(dp2[i], dp2[j] + 1)
 
-    print(dp2[n])
-
-
+    # print(dp2[n])
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10
     main(10)

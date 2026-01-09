@@ -1,26 +1,22 @@
-import random
+def main(n):
+    # 映射：原程序中数组长度 = n，p 为一个与 n 有关的确定性值
+    # 这里设定 p = n + 2，以保证 p > 1 且随规模线性变化
+    p = n + 2 if n > 0 else 2
 
-def main(n, p=1000, seed=0):
-    """
-    n: 数据规模，即生成的数组长度
-    p: 取模参数（需 > 0）
-    seed: 随机种子，为了可复现
-    """
-    random.seed(seed)
+    # 构造确定性数组 a，元素大小与 p 相关
+    # 使用简单算术构造：a[i] = (i * i + 3 * i + 1) % (2 * p)
+    a = [((i * i + 3 * i + 1) % (2 * p)) for i in range(n)]
 
-    # 生成测试数据：a 中为非负整数，这里设置为 [0, 10^6)
-    a = [random.randint(0, 10**6) for _ in range(n)]
-
-    # 原始逻辑
-    a_mod = [c % p for c in a]
-    s = sum(a_mod)
+    a = [c % p for c in a]
+    s = sum(a)
     sp = s % p
     if sp == s or sp + 1 == p:
-        print(sp)
+        # print(sp)
+        pass
+
     else:
-        print(sp + p)
-
-
+        # print(sp + p)
+        pass
 if __name__ == "__main__":
-    # 示例：n = 10
+    # 示例调用：可根据需要修改 n 来做规模实验
     main(10)

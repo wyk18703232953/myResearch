@@ -3,6 +3,7 @@ def bpow(base, exp, md):
         return 1
     if exp % 2 == 1:
         return (base * bpow(base, exp - 1, md)) % md
+
     else:
         k = bpow(base, exp // 2, md)
         return (k * k) % md
@@ -25,9 +26,8 @@ def main(n):
     if x != 0:
         ans -= pw - 1
     ans = (ans + md) % md
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=10 作为规模
     main(10)

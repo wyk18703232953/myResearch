@@ -73,22 +73,28 @@ def main(n):
             s.remove(gem)
 
     # 输出与原程序行为一致
-    print(6 - len(owned))
+    # print(6 - len(owned))
+    pass
     for color in s:
         if color == "purple":
-            print("Power")
+            # print("Power")
+            pass
         elif color == "green":
-            print("Time")
+            # print("Time")
+            pass
         elif color == "blue":
-            print("Space")
+            # print("Space")
+            pass
         elif color == "orange":
-            print("Soul")
+            # print("Soul")
+            pass
         elif color == "red":
-            print("Reality")
+            # print("Reality")
+            pass
+
         else:
-            print("Mind")
-
-
+            # print("Mind")
+            pass
 if __name__ == "__main__":
     # 示例：可根据需要修改测试规模
     main(3)

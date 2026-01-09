@@ -19,9 +19,8 @@ def main(n):
 
     # 输出结果
     for i in ans:
-        print(*i)
-
-
+        # print(*i)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(3) 生成 3x3 棋盘的测试输出
     main(3)

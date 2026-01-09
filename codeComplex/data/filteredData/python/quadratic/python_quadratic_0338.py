@@ -1,12 +1,10 @@
-from random import randint
-
 def construct_tree(n, d, k):
     nodes = []
     edges = []
 
     if d > n - 1:
         return None
-
+    
     if k == 1 and n > 2:
         return None
 
@@ -37,32 +35,24 @@ def construct_tree(n, d, k):
         edges.append([current[0], current_nodes_count])
         current[2] -= 1
         current_nodes_count += 1
-
+    
     if current_nodes_count == n + 1:
         return edges
     return None
 
 
 def main(n):
-    # 简单的测试数据生成策略：
-    # 1. 选择 d 在 [1, max(1, n-1)] 范围内
-    # 2. 选择 k 在 [1, max(1, n-1)] 范围内
-    # 可以根据需要调整策略，使更多情况下可构造出树
-    if n < 2:
-        d = 0
-        k = 1
-    else:
-        d = randint(1, n - 1)
-        k = randint(1, n - 1)
-
+    d = n // 2
+    k = (n % 5) + 2
     edges = construct_tree(n, d, k)
     if edges:
-        print("YES")
-        print('\n'.join(f"{u} {v}" for u, v in edges))
+        # print('YES')
+        pass
+        # print('\n'.join(['{0} {1}'.format(e[0], e[1]) for e in edges]))
+        pass
+
     else:
-        print("NO")
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 生成规模为 10 的测试
     main(10)

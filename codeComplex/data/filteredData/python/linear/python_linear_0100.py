@@ -1,16 +1,13 @@
-import random
+def main(n):
+    cost = [0] + [i + 1 for i in range(4)]
+    rows, cols = 4, n
+    a = []
+    for y in range(rows):
+        row = []
+        for x in range(cols):
+            row.append('.' if (x + y) % 2 == 0 else '#')
+        a.append(''.join(row))
 
-def main(n: int):
-    # 1. 生成测试数据
-    # 代价 cost[1..4]：随机 1..10
-    cost = [0] + [random.randint(1, 10) for _ in range(4)]
-    # 4 行、n 列的字符网格，'.' 或 '*'
-    a = [
-        ''.join(random.choice(['.', '*']) for _ in range(n))
-        for _ in range(4)
-    ]
-
-    # 2. 原算法逻辑
     mask = [0, 1, 51, 1911]
     inf, bs_size, full_bit = 10**9, 1 << 12, (1 << 12) - 1
     dp = [[inf] * bs_size for _ in range(4 * n + 1)]
@@ -26,28 +23,24 @@ def main(n: int):
                 continue
 
             if y == 0:
-                if dp[i + 4][full_bit] > cur + cost[4]:
-                    dp[i + 4][full_bit] = cur + cost[4]
+                nxt = cur + cost[4]
+                if dp[i + 4][full_bit] > nxt:
+                    dp[i + 4][full_bit] = nxt
 
-            if (is_dot | (bitset & 1)) and dp[i + 1][bitset >> 1] > cur:
-                dp[i + 1][bitset >> 1] = cur
+            if (is_dot | (bitset & 1)):
+                if dp[i + 1][bitset >> 1] > cur:
+                    dp[i + 1][bitset >> 1] = cur
 
             for k in range(1, min(4 - y, 3) + 1):
                 nb = bitset | mask[k]
-                if dp[i][nb] > cur + cost[k]:
-                    dp[i][nb] = cur + cost[k]
+                nxt = cur + cost[k]
+                if dp[i][nb] > nxt:
+                    dp[i][nb] = nxt
 
-    ans = min(dp[4 * n])
-
-    # 输出：先输出生成的数据，方便检查；最后输出答案
-    print("n:", n)
-    print("cost[1..4]:", cost[1:])
-    print("grid (4 x n):")
-    for row in a:
-        print(row)
-    print("answer:", ans)
+    result = min(dp[4 * n])
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # print(main(10))
+    pass

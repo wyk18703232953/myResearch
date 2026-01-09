@@ -3,6 +3,7 @@ def result(a, b):
         return 0
     if a > b:
         return a // b + result(a % b, b)
+
     else:
         return b // a + result(b % a, a)
 
@@ -17,9 +18,8 @@ def main(n):
     """
     a = n + 1
     b = 2 * n + 3
-    print(result(a, b))
-
-
+    # print(result(a, b))
+    pass
 if __name__ == "__main__":
     # 示例：用某个固定规模调用 main
     main(10)

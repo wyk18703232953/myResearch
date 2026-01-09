@@ -23,6 +23,7 @@ def process_query(n, v, ops):
             x2 = setting(bin(n2)[2:])  # kept for consistency, though unused
             if x1 == abe + 1:
                 v = p
+
             else:
                 v = n2
         elif j == "L":
@@ -60,8 +61,8 @@ def main(n):
         results.append(res)
 
     for r in results:
-        print(r)
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     # Example: run main with some scale, e.g., n = 10
     main(10)

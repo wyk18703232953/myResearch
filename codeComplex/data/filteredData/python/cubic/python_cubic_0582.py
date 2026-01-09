@@ -1,30 +1,11 @@
+import sys
+import math
+
 def main(n):
-    import random
+    # 生成确定性的 a 和 b，长度都为 n，内容为 0-9 的循环
+    a = ''.join(str(i % 10) for i in range(n))
+    b = ''.join(str((i * 3 + 1) % 10) for i in range(n))
 
-    # 生成测试数据 a, b
-    # a 为长度为 n 的数字字符串，首位不为 0
-    # b 为长度为 n 或 n+1 的数字字符串（随机）
-    if n <= 0:
-        print("")
-        return
-
-    # 生成 a
-    first_digit = str(random.randint(1, 9))
-    rest_digits = ''.join(str(random.randint(0, 9)) for _ in range(n - 1))
-    a = first_digit + rest_digits
-
-    # 随机决定 b 的长度为 n 或 n+1
-    if random.choice([True, False]):
-        len_b = n
-    else:
-        len_b = n + 1
-
-    # 生成 b（可为任意数字字符串，不保证与 a 有任何关系）
-    first_digit_b = str(random.randint(1, 9))
-    rest_digits_b = ''.join(str(random.randint(0, 9)) for _ in range(len_b - 1))
-    b = first_digit_b + rest_digits_b
-
-    # 以下为原逻辑，仅将 input() 替换为使用生成的 a, b
     dp = [0] * 11
     for ch in a:
         dp[int(ch)] += 1
@@ -57,6 +38,7 @@ def main(n):
                     dp[1] -= 1
                     a1.append(1)
                     ans += '1'
+
             else:
                 flag = 0
                 for j in range(9, -1, -1):
@@ -82,6 +64,7 @@ def main(n):
                                     a1.append(j1)
                                     ch_flag = 1
                                     break
+
                             else:
                                 if dp[j1] != 0:
                                     dp[a1[i1]] += 1
@@ -105,19 +88,16 @@ def main(n):
                         dp[int(a[i1])] += 1
                     for i1 in range(len(a1)):
                         dp[a1[i1]] -= 1
-
                     for i1 in range(len(a1)):
                         ans += str(a1[i1])
                         cmpr += b[i1]
                     i = index
             i += 1
+
     else:
-        # 原代码未处理 len(b) < len(a) 的情况，这里与原逻辑保持一致。
         ans = ''
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 5
-    main(5)
+    main(10)

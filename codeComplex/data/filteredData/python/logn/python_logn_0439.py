@@ -1,39 +1,41 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 随机生成 k，范围 [1, 2^(n+1)]，保证有一定覆盖度
-    if n <= 0:
-        return
-    k = random.randint(1, 2 ** (min(n + 1, 30)))  # 防止爆掉
+    # Interpret n as the number of test cases
+    test = n
+    results = []
+    while test:
+        test -= 1
 
-    # 原逻辑开始
-    if n == 2 and k == 3:
-        print("NO")
-        return
+        # Deterministic generation of (n_val, k_val) for each test case
+        n_val = 2 + test % 40
+        k_val = 1 + (test * 3) % (4 * (n_val + 1))
 
-    if n >= 32:
-        print("YES", n - 1)
-        return
+        n_local = n_val
+        k_local = k_val
 
-    val = [0]
-    for i in range(1, n + 1):
-        val.append(4 * val[i - 1] + 1)
+        if n_local == 2 and k_local == 3:
+            results.append("NO")
+            continue
+        if n_local >= 32:
+            results.append(f"YES {n_local - 1}")
+            continue
+        val = [0]
+        for i in range(1, n_local + 1):
+            val.append(4 * val[i - 1] + 1)
+        if val[n_local] < k_local:
+            results.append("NO")
+            continue
+        s = 0
+        t = 2
+        rem = 0
+        flag = 0
+        while s + t - 1 <= k_local and n_local > 0:
+            s = s + t - 1
+            t *= 2
+            n_local -= 1
+        results.append(f"YES {n_local}")
 
-    if val[n] < k:
-        print("NO")
-        return
-
-    s = 0
-    t = 2
-    while s + t - 1 <= k and n > 0:
-        s = s + t - 1
-        t *= 2
-        n -= 1
-
-    print("YES", n)
-
-
+    for line in results:
+        # print(line)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模可修改
     main(10)

@@ -1,40 +1,49 @@
-import random
-
 def main(n):
-    # 1. 生成规模为 n 的测试数据 a
-    # 这里生成 0~1000 的随机整数，可以按需修改数据范围
-    a = [random.randint(0, 1000) for _ in range(n)]
+    # Interpret n as both the length of the initial array and the number of queries
+    size = n
+    q = n
 
-    # 2. 构建 array，与原逻辑一致
+    # Deterministic generation of initial array 'a' of length 'size'
+    # Example pattern: a[i] = (i * 3) ^ (i + 5)
+    a = [(i * 3) ^ (i + 5) for i in range(1, size + 1)]
+
     array = []
     array.append(a)
 
-    for _ in range(n - 1):
+    # Build XOR triangle
+    for i in range(size - 1):
         aux = []
-        for j in range(1, len(array[-1])):
-            xor_val = array[-1][j - 1] ^ array[-1][j]
+        last = array[-1]
+        for j in range(1, len(last)):
+            xor_val = last[j - 1] ^ last[j]
             aux.append(xor_val)
         array.append(aux)
 
+    # Transform with max operation
     for j in range(1, len(array)):
         for k in range(len(array[j])):
             maximo = max(array[j][k], array[j - 1][k], array[j - 1][k + 1])
             array[j][k] = maximo
 
-    # 3. 根据 n 生成查询 q 以及 (l, r)
-    # 这里让 q 与 n 同规模，并随机生成合法的 [l, r]
-    q = n
+    # Deterministic generation of q queries (l, r)
+    # Ensure 1 <= l <= r <= size
     queries = []
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
+    for i in range(1, q + 1):
+        l = (i % size) + 1
+        r = size - (i % size)
+        if l > r:
+            l, r = r, l
+        if l == 0:
+            l = 1
+        if r < l:
+            r = l
+        if r > size:
+            r = size
         queries.append((l, r))
 
-    # 4. 输出查询结果（与原程序一样对 array 进行访问）
+    # Execute queries and print results
     for l, r in queries:
-        print(array[r - l][l - 1])
-
-
+        # print(str(array[r - l][l - 1]))
+        pass
 if __name__ == "__main__":
-    # 示例调用：可以修改 n 测试不同规模
-    main(5)
+    main(10)

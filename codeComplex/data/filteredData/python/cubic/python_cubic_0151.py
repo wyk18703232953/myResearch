@@ -1,4 +1,7 @@
-import random
+import io
+import os
+
+from functools import lru_cache
 from collections import defaultdict
 
 
@@ -8,7 +11,6 @@ def solve(N, A):
     valToLeftRight = defaultdict(lambda: defaultdict(set))
     # val -> rightEndpoint -> leftEndpoints
     valToRightLeft = defaultdict(lambda: defaultdict(set))
-
     # Initialize with intervals of length 1 (left and right endpoints inclusive)
     for i, x in enumerate(A):
         valToLeftRight[x][i].add(i)
@@ -60,16 +62,21 @@ def solve(N, A):
 
 
 def main(n):
-    # 生成规模为 n 的测试数据
-    # A 中的元素范围与原题假设一致：1..1000
-    random.seed(0)
+    # n: input scale -> length of array A
     N = n
-    A = [random.randint(1, 1000) for _ in range(N)]
+    if N <= 0:
+        # print(0)
+        pass
+        return
+
+    # Deterministic construction of A with values in [0, 1000]
+    # Pattern chosen to give some variety but remain simple/arithmetic.
+    # All operations are deterministic and only depend on N.
+    A = [((i * i + 31 * i + 7) % 1001) for i in range(N)]
 
     ans = solve(N, A)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # Example deterministic call; adjust n for experiments
     main(10)

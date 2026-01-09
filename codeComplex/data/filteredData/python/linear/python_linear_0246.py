@@ -7,6 +7,7 @@ def main(n: int):
         return
     if n < 3:
         k = min(2, n)
+
     else:
         k = n
 
@@ -14,34 +15,49 @@ def main(n: int):
         s = "."
         s = s + "#" * (k // 2)
         s = s + "." * (n - len(s))
-        print("YES")
-        print("." * n)
-        print(s)
-        print(s)
-        print("." * n)
+        # print("YES")
+        pass
+        # print("." * n)
+        pass
+        # print(s)
+        pass
+        # print(s)
+        pass
+        # print("." * n)
+        pass
+
     else:
         if k <= n - 2:
             a = "#" * k
             s = "." * ((n - k) // 2) + a + "." * ((n - k) // 2)
-            print("YES")
-            print("." * n)
-            print(s)
-            print("." * n)
-            print("." * n)
+            # print("YES")
+            pass
+            # print("." * n)
+            pass
+            # print(s)
+            pass
+            # print("." * n)
+            pass
+            # print("." * n)
+            pass
+
         else:
             k = k - n + 3
             a = "#" * k
             s = "." * ((n - k) // 2) + a + "." * ((n - k) // 2)
-            print("YES")
-            print("." * n)
-            print("." + "#" * (n - 2) + ".")
+            # print("YES")
+            pass
+            # print("." * n)
+            pass
+            # print("." + "#" * (n - 2) + ".")
+            pass
             s = list(s)
             s[n // 2] = "."
             s = "".join(s)
-            print(s)
-            print("." * n)
-
-
+            # print(s)
+            pass
+            # print("." * n)
+            pass
 if __name__ == "__main__":
     # 示例调用：可以在此修改 n 的大小进行测试
     main(7)

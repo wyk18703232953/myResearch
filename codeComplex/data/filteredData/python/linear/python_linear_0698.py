@@ -3,7 +3,8 @@ def main(n):
     # v 的上限不能超过 n-1（否则 v-fuel 很快用不完，直接取 n-1 比较合理）
     if n <= 1:
         # 对于 n<=1，原算法循环不会执行，这里直接输出 0
-        print(0)
+        # print(0)
+        pass
         return
 
     v = n - 1  # 可以根据需要调整生成策略
@@ -18,11 +19,11 @@ def main(n):
         res += i * miss
         fuel += miss - 1
         if v - fuel == 0:
-            print(res)
+            # print(res)
+            pass
             return
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模为 10
     main(10)

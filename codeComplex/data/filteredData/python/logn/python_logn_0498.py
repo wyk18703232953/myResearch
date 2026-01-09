@@ -19,4 +19,5 @@ if __name__ == "__main__":
     # 可以根据需要在这里替换或增加不同规模的 n 进行测试
     test_n = 100  # 示例规模，可修改
     result = main(test_n)
-    print(result)
+    # print(result)
+    pass

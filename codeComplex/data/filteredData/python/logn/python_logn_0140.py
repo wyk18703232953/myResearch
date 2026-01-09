@@ -17,6 +17,7 @@ def binary_search(k, n):
             return k - mid + 1
         elif s > n:
             low = mid + 1
+
         else:
             high = mid - 1
 
@@ -28,12 +29,14 @@ def solve(n, k):
         return 0
     elif n <= k:
         return 1
+
     else:
         n -= 1
         k -= 1
 
         if n > sum_upto(k):
             return -1
+
         else:
             return binary_search(k, n)
 
@@ -47,9 +50,8 @@ def main(n):
     k_test = n
 
     ans = solve(n_test, k_test)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

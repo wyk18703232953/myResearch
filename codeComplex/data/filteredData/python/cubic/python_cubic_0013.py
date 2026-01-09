@@ -1,14 +1,7 @@
-import random
-import string
-
-def main(n: int):
-    # 1. 生成长度为 n 的随机字符串，字符集为小写字母
-    if n <= 0:
-        print(0)
-        return
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-
-    # 2. 原逻辑：求最长重复子串的长度（可重叠）
+def main(n):
+    # Deterministically generate a string of length n
+    # Pattern: repeating lowercase letters 'a' to 'z'
+    s = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
     n = len(s)
     m = n - 1
     while m > 0:
@@ -28,8 +21,7 @@ def main(n: int):
         if f:
             break
         m -= 1
-    print(m)
-
+    # print(m)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10，可按需修改
-    main(10)
+    main(1000)

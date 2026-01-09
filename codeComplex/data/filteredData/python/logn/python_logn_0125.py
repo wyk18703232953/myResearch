@@ -4,11 +4,13 @@ def main(n):
     k = n
 
     if n == 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     if (k * k - k) // 2 + 1 < n:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     g, b = 0, k // 2
@@ -20,9 +22,8 @@ def main(n):
             g += b
         b //= 2
 
-    print(k - g)
-
-
+    # print(k - g)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

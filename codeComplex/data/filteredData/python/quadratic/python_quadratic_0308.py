@@ -1,16 +1,18 @@
-import random
+import math
+import collections
 
 def main(n):
-    # 生成测试数据：随机 k 和数组 arr
-    # 约束：1 <= k <= n，arr 为长度为 n 的随机整数数组
-    k = random.randint(1, n)
-    arr = [random.randint(-1000, 1000) for _ in range(n)]
+    # Interpret n as the length of the array; also set k deterministically
+    if n <= 0:
+        return
+    k = max(1, n // 3)
+    arr = [(i * 7 + 3) % 100 for i in range(n)]
 
-    ans = 0.0
+    ans = 0
     for i in range(n):
         val = arr[i]
         c = 1
-        sol = 0.0
+        sol = 0
         if c >= k:
             sol = max(sol, val / c)
         for j in range(i + 1, n):
@@ -19,10 +21,7 @@ def main(n):
             if c >= k:
                 sol = max(sol, val / c)
         ans = max(sol, ans)
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例运行：可根据需要修改 n 的大小
-    main(10)
+    main(1000)

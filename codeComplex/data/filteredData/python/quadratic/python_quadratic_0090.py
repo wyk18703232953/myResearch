@@ -1,14 +1,34 @@
+def main(n):
+    # Generate a deterministic n x n matrix of characters
+    # Use a simple pattern: chr(97 + (i+j) % 26) -> 'a'..'z'
+    a1_mat = [[chr(97 + (i + j) % 26) for j in range(n)] for i in range(n)]
+    # Let a2 be a fixed transformation of a1 to keep structure similar
+    # For determinism, we choose a2 as the result of rotating a1 once
+    a1 = Matrix(n, n, a1_mat)
+    a2 = Matrix(n, n, a1_mat)
+    a2.rotate()  # a2 becomes one rotation of original a1
+    a2_mat_snapshot = [row[:] for row in a2.mat]  # snapshot to avoid later in-place changes
+
+    # Now reproduce the original main-logic using fresh Matrix objects
+    a1 = Matrix(n, n, a1_mat)
+    a2 = Matrix(n, n, a2_mat_snapshot)
+    ans = []
+    for _ in range(4):
+        ans.extend([a1.rotate(), a1.fliph(), a1.flipv(), a1.fliph(), a1.flipv()])
+    result = ['No', 'Yes'][a2.mat in ans]
+    # print(result)
+    pass
+
+
 from copy import deepcopy
-import random
-import string
 
 
 class Matrix:
     def __init__(self, r, c, mat=None, id=None):
         self.r, self.c = r, c
-
         if mat is not None:
             self.mat = deepcopy(mat)
+
         else:
             self.mat = [[0 for _ in range(c)] for _ in range(r)]
 
@@ -37,9 +57,7 @@ class Matrix:
     def trace(self):
         res = 0
         for i in range(self.r):
-            for j in range(self.c):
-                if i == j:
-                    res += self.mat[i][j]
+            res += self.mat[i][i]
         return res
 
     def rotate(self):
@@ -77,25 +95,6 @@ class Matrix:
         return sq.mat
 
 
-def gen_random_matrix(n):
-    # 用随机小写字母生成 n×n 字符矩阵
-    chars = string.ascii_lowercase
-    return [[random.choice(chars) for _ in range(n)] for _ in range(n)]
-
-
-def main(n):
-    # 生成测试数据：两个 n×n 字符矩阵
-    mat1 = gen_random_matrix(n)
-    mat2 = gen_random_matrix(n)
-
-    a1 = Matrix(n, n, mat1)
-    a2 = Matrix(n, n, mat2)
-    ans = []
-
-    # 保持与原逻辑一致的操作序列
-    for _ in range(4):
-        ans.extend([a1.rotate(), a1.fliph(), a1.flipv(), a1.fliph(), a1.flipv()])
-
-    result = ['No', 'Yes'][a2.mat in ans]
-    print(result)
-    return result
+if __name__ == "__main__":
+    # Example fixed-size call for experimentation
+    main(5)

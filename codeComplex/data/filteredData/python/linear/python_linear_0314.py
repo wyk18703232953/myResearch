@@ -1,12 +1,16 @@
-from collections import deque
-import random
+def main(n):
+    from collections import deque
 
-def main(n: int):
-    # 生成测试数据
-    # 选择 m，确保 m <= n 且 m >= 1
-    m = max(1, n // 3)
-    # 生成 n 个非负整数，数值范围适当放大，以产生多样的模分布
-    arr = [random.randint(0, 10 * m) for _ in range(n)]
+    # 映射输入结构：
+    # 原程序：读取 n, m 和一个长度为 n 的数组 arr
+    # 在实验版本中：给定规模参数 n
+    # - 使用 m = max(1, n // 3 + 1) 作为模数规模（随 n 增长）
+    # - 生成长度为 n 的 arr，确定性构造：arr[i] = (i * 2 + 3) % (3 * m)
+    if n <= 0:
+        return
+
+    m = max(1, n // 3 + 1)
+    arr = [(i * 2 + 3) % (3 * m) for i in range(n)]
 
     mods = [0 for _ in range(m)]
     placement = [[] for _ in range(m)]
@@ -23,23 +27,23 @@ def main(n: int):
     for i in range(2 * m):
         mod = i % m
         if mods[mod] > target:
-            # 将多余的元素放入队列等待调整
             excess = mods[mod] - target
             for c in range(excess):
-                queue.append([mod, placement[mod][c]])
+                queue.append([i, placement[mod][c]])
             mods[mod] = target
         elif mods[mod] < target:
             while queue and mods[mod] < target:
-                prev_mod, idx = queue.popleft()
-                delta = (mod - prev_mod) % m
+                elem, indice = queue.popleft()
+                delta = (mod - elem) % m
                 mods[mod] += 1
                 cnt += delta
-                arr[idx] += delta
+                arr[indice] += delta
 
-    print(cnt)
-    print(' '.join(str(x) for x in arr))
-
-
+    # 保持原程序输出结构：先输出操作总数，再输出数组
+    # print(cnt)
+    pass
+    # print(' '.join(str(x) for x in arr))
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 n=10
+    # 示例规模调用，可按需修改或在外部多次调用 main(n)
     main(10)

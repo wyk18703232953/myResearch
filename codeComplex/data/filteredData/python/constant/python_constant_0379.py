@@ -1,22 +1,20 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 这里示例生成：
-    #   a, b 在 [0, n] 范围内
-    #   c 在 [0, min(a, b)] 范围内，以增加生成合理数据的概率
-    a = random.randint(0, n)
-    b = random.randint(0, n)
-    c = random.randint(0, min(a, b))
+    # 原程序需要 a, b, c, n 四个整数作为输入
+    # 这里将 n 解释为输入规模，用确定性方式生成 a, b, c, N_real
+    # 保持与原程序同样的变量含义：a, b, c, n(这里用 N_real 表示)
+    a = n
+    b = 2 * n
+    c = n // 2
+    N_real = 3 * n + 1  # 实际参与算法的 n
 
-    # 原始逻辑
-    p = a + b - c
-    f = n - p
-    if p >= n or c > a or c > b:
-        print("-1")
+    p = (a + b - c)
+    f = N_real - p
+    if p >= N_real or c > a or c > b:
+        # print("-1")
+        pass
+
     else:
-        print(f)
-
-# 示例：当作为脚本运行时，可指定一个规模
+        # print(f)
+        pass
 if __name__ == "__main__":
     main(10)

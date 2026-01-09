@@ -6,7 +6,8 @@ def main(n):
     # 这里的 n 视为规模参数，可根据需要生成测试数据
     # 原逻辑只依赖于一个整数 n，故直接使用该 n
     result = 2 * (n * (n - 1)) + 1
-    print(result)
+    # print(result)
+    pass
     return
 
 if __name__ == "__main__":

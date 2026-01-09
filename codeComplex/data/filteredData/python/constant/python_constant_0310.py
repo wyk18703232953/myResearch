@@ -1,18 +1,18 @@
 import math
-import random
 
-def main(n: int):
-    # 生成测试数据
-    # 保证 s, p 在合理范围内且不为 0
-    k = random.randint(1, max(1, n))
-    s = random.randint(1, max(1, n))
-    p = random.randint(1, max(1, n))
+def main(n):
+    # 将 n 映射到原程序的 k, n_items, s, p
+    # 保证各值为正整数，并随 n 线性扩展，且完全确定
+    k = max(1, n // 3)
+    n_items = max(1, n)
+    s = max(1, n // 2)
+    p = max(1, n // 4)
 
-    # 原逻辑
-    x = math.ceil(n / s)
+    x = math.ceil(n_items / s)
     y = math.ceil(x * k / p)
-    print(y)
+    # print(y)
+    pass
+    return y
 
 if __name__ == "__main__":
-    # 示例调用，规模可自行修改
     main(100)

@@ -3,13 +3,16 @@ from math import ceil
 def main(n: int):
     # 这里简单地把规模 n 作为原程序中的 n 直接使用
     if n == 1:
-        print(1)
+        # print(1)
+        pass
         return
     if n == 2:
-        print('1 2')
+        # print('1 2')
+        pass
         return
     elif n == 3:
-        print('1 1 3')
+        # print('1 1 3')
+        pass
         return
 
     o = 0
@@ -29,9 +32,8 @@ def main(n: int):
         j = pow(2, i)
         n //= 2
 
-    print(('1 ' if o else '') + ans + str((j // 2) * (t // (j // 2))))
-
-
+    # print(('1 ' if o else '') + ans + str((j // 2) * (t // (j // 2))))
+    pass
 if __name__ == "__main__":
     # 示例：自动生成一个规模为 30 的测试
     main(30)

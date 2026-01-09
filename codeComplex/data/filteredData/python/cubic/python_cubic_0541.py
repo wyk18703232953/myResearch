@@ -1,38 +1,47 @@
-from random import randint
-
 def main(n):
-    """
-    n 为规模参数，用来控制测试数据的大小范围。
-    这里我们根据 n 生成：
-      a: 1 到 (10^n - 1) 之间的随机整数
-      b: 在 [a, 10^n - 1] 之间的随机整数（保证有解更容易出现）
-    然后执行原程序的逻辑。
-    """
+    # n controls the number of digits of a and (roughly) the number of digits of b
+    # Ensure at least 1 digit
     if n <= 0:
         n = 1
-    max_val = 10 ** n - 1
 
-    # 生成测试数据
-    a = randint(1, max_val)
-    b = randint(a, max_val)  # 让 b >= a，便于产生较长答案
+    # Deterministically construct a n‑digit number a using digits cycling 1..9 then 0
+    digits_a = [(i % 10) for i in range(1, n + 1)]
+    # Avoid leading zero: if the first digit becomes 0, set it to 1
+    if digits_a[0] == 0:
+        digits_a[0] = 1
+    a = 0
+    for d in digits_a:
+        a = a * 10 + d
 
-    # 原逻辑开始
-    ans = ''
+    # Deterministically construct b based on n so that scale is comparable to a
+    # Here: b is a number with n digits, each digit = (n % 10)
+    digit_b = n % 10
+    if digit_b == 0:
+        digit_b = 9
+    b = 0
+    for _ in range(n):
+        b = b * 10 + digit_b
+
+    # Core algorithm from original program: build maximum string ans from digits of a
+    # such that the resulting number <= b
     c = sorted(list(str(a)))
+    ans = ""
 
     while c:
         for i in range(len(c) - 1, -1, -1):
-            # 尝试把 c[i] 放在当前位置，剩余数字保持原顺序
-            candidate_digits = list(ans) + [c[i]] + c[:i] + c[i + 1:]
-            candidate_val = int(''.join(candidate_digits))
-            if candidate_val <= b:
+            candidate_list = list(ans) + [c[i]] + c[:i] + c[i + 1:]
+            candidate = int("".join(candidate_list))
+            if candidate <= b:
                 ans += c[i]
                 c.pop(i)
                 break
 
-    print(ans)
+    # print(ans)
+    pass
+    return ans
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(3) 生成 3 位规模的数据并运行
-    main(3)
+    # Example deterministic calls for time‑complexity experiments
+    for size in (1, 2, 3, 5, 10):
+        main(size)

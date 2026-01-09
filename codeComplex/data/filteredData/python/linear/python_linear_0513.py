@@ -1,9 +1,12 @@
-import random
+def main(n):
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的 0/1 序列
-    a = [random.randint(0, 1) for _ in range(n)]
-    b = [random.randint(0, 1) for _ in range(n)]
+    # 生成长度为 n 的 0/1 序列 a, b，完全确定性
+    a = [(i // 2) % 2 for i in range(n)]
+    b = [(i * 3) % 2 for i in range(n)]
 
     ans = sum(q != w for q, w in zip(a, b))
     i = 1
@@ -17,9 +20,7 @@ def main(n: int):
             i += 1
         i += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

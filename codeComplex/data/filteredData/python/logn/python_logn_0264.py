@@ -15,12 +15,12 @@ def main(n):
     # 原逻辑
     if x == 0:
         ans = 0
+
     else:
         ans = (x * pow(2, k + 1, mod) - pow(2, k, mod) + 1 + mod) % mod
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 默认用一个示例规模调用
     main(10)

@@ -31,11 +31,12 @@ def main(n):
     for ni, ki in tests:
         ans = sol(ni, ki)
         if ans == -1:
-            print("NO")
+            # print("NO")
+            pass
+
         else:
-            print("YES", ans)
-
-
+            # print("YES", ans)
+            pass
 if __name__ == "__main__":
     # 示例：运行规模为 5 的测试
     main(5)

@@ -51,19 +51,26 @@ def main(n):
     area = a * b + c * d + e * f
     side = int(area ** 0.5)
     if side ** 2 != area or side not in al:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     if al.count(side) == 3:
         if s == 4 * side:
             rest = [x for x in al if x != side]
-            print(side)
+            # print(side)
+            pass
             for _ in range(side):
-                print("".join(["A" * rest[0], "B" * rest[1], "C" * rest[2]]))
+                # print("".join(["A" * rest[0], "B" * rest[1], "C" * rest[2]]))
+                pass
+
         else:
-            print(-1)
+            # print(-1)
+            pass
     elif al.count(side) > 1:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         x = al.index(side)
         y = x ^ 1
@@ -76,16 +83,18 @@ def main(n):
         A = [rest[0], rest[1]]
         B = [rest[2], rest[3]]
         if not (res in A and res in B):
-            print(-1)
+            # print(-1)
+            pass
             return
         o1, o2 = A[A.index(res) ^ 1], B[B.index(res) ^ 1]
-        print(side)
+        # print(side)
+        pass
         for _ in range(al[y]):
-            print(s1 * side)
+            # print(s1 * side)
+            pass
         for _ in range(res):
-            print("".join([s23[0] * o1, s23[1] * o2]))
-
-
+            # print("".join([s23[0] * o1, s23[1] * o2]))
+            pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

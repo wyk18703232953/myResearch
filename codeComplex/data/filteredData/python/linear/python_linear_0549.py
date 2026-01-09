@@ -22,12 +22,12 @@ def main(n):
     mx = 0
     for i in range(len(a)):
         if a[i] > mx:
-            print(i + 1)
+            # print(i + 1)
+            pass
             return
         mx = max(mx, a[i] + 1)
-    print(-1)
-
-
+    # print(-1)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

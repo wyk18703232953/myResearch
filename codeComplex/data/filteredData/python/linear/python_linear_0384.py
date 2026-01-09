@@ -1,14 +1,16 @@
-import random
-
 def main(n):
-    # 生成测试数据：m 条记录，每条为 [a0, a1]
-    # 可根据需要调整 m 和系数范围
-    m = max(1, n)  # 简单设为 m = n（至少为 1）
+    # Interpret n as both the original n and the number of rows m
+    m = n
+
+    # Deterministic generation of arr with shape (m, 2)
+    # arr[i] = [a, b] where:
+    #   a = i
+    #   b = (-1)**i * (i % 5 + 1)  -> alternating sign, bounded magnitude
     arr = []
-    for _ in range(m):
-        a0 = random.randint(-10, 10)
-        a1 = random.randint(-10, 10)
-        arr.append([a0, a1])
+    for i in range(m):
+        a = i
+        b = (1 if i % 2 == 0 else -1) * (i % 5 + 1)
+        arr.append([a, b])
 
     count = 0
     for i in range(m):
@@ -23,9 +25,7 @@ def main(n):
         if n % 2 == 0 and arr[i][1] > 0:
             count += n * (n - 1) * arr[i][1] // 2
 
-    print(count / n)
-
-
+    # print(count / n if n != 0 else 0)
+    pass
 if __name__ == "__main__":
-    # 示例调用
-    main(5)
+    main(10)

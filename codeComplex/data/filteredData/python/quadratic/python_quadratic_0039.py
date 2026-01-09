@@ -7,6 +7,7 @@ def main(n: int) -> int:
     for i in range(n):
         if i < n // 2:
             a.append('f')
+
         else:
             a.append('s')
 
@@ -18,6 +19,7 @@ def main(n: int) -> int:
             for j in range(n - 2, -1, -1):
                 if dp[i - 1][j] > 0:
                     dp[i][j + 1] = (dp[i][j + 1] + dp[i - 1][j]) % M
+
         else:
             for j in range(n - 2, -1, -1):
                 if dp[i - 1][j] > 0:

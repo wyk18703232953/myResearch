@@ -7,9 +7,8 @@ def main(n):
               (n * 5) // k + bool((n * 5) % k) +
               (n * 8) // k + bool((n * 8) % k))
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：可在此处指定 n 的测试规模
     main(10)

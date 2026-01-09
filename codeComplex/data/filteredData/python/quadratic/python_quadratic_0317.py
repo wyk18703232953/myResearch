@@ -18,9 +18,8 @@ def main(n):
             length = j - i + 1
             ans = max(ans, seg_sum / length)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以按需修改 n
     main(10)

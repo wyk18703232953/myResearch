@@ -1,17 +1,19 @@
-import random
+def main(n):
+    # 根据原始程序输入结构：
+    # 第一个 input() -> n
+    # 第二个 input() -> m
+    # 这里将规模参数 n 映射为原代码中的 n
+    # 并确定性构造 m
+    original_n = n
+    m = n * n + 3 * n + 7
 
-def main(n: int):
-    # 根据规模 n 生成测试数据 m
-    # 这里简单设定 m 为一个与规模相关的随机整数
-    random.seed(0)
-    m = random.randint(0, 10**6 * max(1, n))
+    if original_n <= 26:
+        result = m % (2 ** original_n)
 
-    # 原始逻辑
-    if n <= 26:
-        print(m % (2 ** n))
     else:
-        print(m)
+        result = m
 
-# 示例调用（实际使用时可由外部调用 main(n)）
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

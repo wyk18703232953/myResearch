@@ -20,15 +20,18 @@ def main(n):
 
         # 以下是原逻辑
         if a > k or b > k:
-            print(-1)
+            # print(-1)
+            pass
         elif (a - b) % 2:
-            print(k - 1)
+            # print(k - 1)
+            pass
         elif (a - k) % 2:
-            print(k - 2)
+            # print(k - 2)
+            pass
+
         else:
-            print(k)
-
-
+            # print(k)
+            pass
 if __name__ == '__main__':
     # 示例：以 n=10 作为规模运行
     main(10)

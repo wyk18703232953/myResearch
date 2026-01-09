@@ -13,11 +13,12 @@ def main(n):
     m = n * n
 
     if n <= 40:
-        print(m % power(2, n))
+        # print(m % power(2, n))
+        pass
+
     else:
-        print(m)
-
-
+        # print(m)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时可根据需要修改参数
     main(10)

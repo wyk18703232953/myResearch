@@ -11,9 +11,11 @@ def main(n):
 
     if l1 == r:
         result = 0
+
     else:
         if (r & (r - 1)) == 0:
             result = r ^ (r - 1)
+
         else:
             x = l1 ^ r
             p1 = 1
@@ -21,9 +23,8 @@ def main(n):
                 p1 *= 2
             result = p1 - 1
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：n 可根据需要修改
     main(10)

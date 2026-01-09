@@ -8,14 +8,17 @@ def main(n):
 
     for k in range(1, n + 1):
         if k < 10:
-            print(k)
+            # print(k)
+            pass
+
         else:
             for idx in range(0, max_block_index + 1):
                 if k > A[idx + 1]:
                     continue
                 a = 10 ** (idx + 1) + (k - A[idx] - 1) // (idx + 2)
                 b = (k - A[idx] - 1) % (idx + 2)
-                print(str(a)[b])
+                # print(str(a)[b])
+                pass
                 break
 
 

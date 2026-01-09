@@ -19,6 +19,7 @@ def convert_cell_notation(line: str) -> str:
             a2 = chr(r + ord('A')) + a2
             n2 = (n2 - r - 1) // 26
         return a2 + str(n1)
+
     else:
         # Excel style -> RC
         n2 = 0
@@ -41,7 +42,8 @@ def main(n: int):
         row = i * 10
         col = i * 7
         line = f"R{row}C{col}"
-        print(convert_cell_notation(line))
+        # print(convert_cell_notation(line))
+        pass
 
     # 生成后一半为 Excel 格式
     def num_to_col(x: int) -> str:
@@ -57,9 +59,8 @@ def main(n: int):
         col = i  # 用 i 生成列号，然后转为列字母
         col_letters = num_to_col(col)
         line = f"{col_letters}{row}"
-        print(convert_cell_notation(line))
-
-
+        # print(convert_cell_notation(line))
+        pass
 if __name__ == "__main__":
     # 示例：可在此处手动设置规模 n
     main(5)

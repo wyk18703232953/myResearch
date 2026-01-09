@@ -1,30 +1,42 @@
-import random
-
 def main(n):
-    # 生成测试数据：规模 n，对应原代码中的 n
-    # 这里选择 m 与 n 同阶，例如 m = n，用于生成 m 组 (x, d)
+    # 解释规模含义：
+    # n：原程序中的 n，同时也用来生成 m 以及后续测试数据规模
+    #
+    # 数据生成策略（完全确定性）：
+    # - 将 m 设为 n（即有 n 组 (x, d)）
+    # - 对于第 i 组：
+    #     x_i = i
+    #     d_i = (-1)**i * (i // 2 + 1)
+    #   但为简化并保持整数运算、避免幂运算开销，用符号模式：
+    #     i 偶数: d_i =  (i // 2 + 1)
+    #     i 奇数: d_i = -(i // 2 + 1)
+
     m = n
 
-    # 预先计算与 n 无关的量
     a = (n * (n - 1)) // 2
     n2 = n // 2
     b = n2 * (n2 + 1)
     if n % 2 == 0:
         b -= n2
-
     s = 0
 
-    # 生成测试数据并计算
-    # x, d 可根据需求调整，这里简单取一个对称范围内的随机数
-    for _ in range(m):
-        x = random.randint(-10**3, 10**3)
-        d = random.randint(-10**3, 10**3)
+    for i in range(m):
+        x = i
+        if i % 2 == 0:
+            d = i // 2 + 1
+
+        else:
+            d = -(i // 2 + 1)
+
         s += x * n
         s += d * (a if d > 0 else b)
 
-    print(s / n)
+    # 返回结果而不是打印，便于在实验环境中多次调用
+    return s / n
 
 
 if __name__ == "__main__":
-    # 示例：调用 main，规模可自行调整
-    main(10)
+    # 示例调用，可根据需要修改 n 规模进行实验
+    result = main(10)
+    # print(result)
+    pass

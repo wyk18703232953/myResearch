@@ -35,9 +35,8 @@ def main(n):
     d = ma.sqrt(9 + 8 * (n + k))
     gp = (-3 + d) / 2
     result = int(n - gp)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：使用规模 n = 10 运行
     main(10)

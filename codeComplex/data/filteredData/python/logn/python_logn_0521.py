@@ -12,4 +12,5 @@ def main(n):
     a = int(pow(10, x - 1)) + int(n / x)
     z = str(a)
     which = n % x
-    print(z[which])
+    # print(z[which])
+    pass

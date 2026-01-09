@@ -34,9 +34,8 @@ def main(n: int):
     # 也可以生成多个测试，例如对 1..n 每个位置进行测试。
     # 为展示原逻辑，这里输出 solve(n) 的结果。
     ans = solve(n)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：将规模设为 100（可按需要修改）
     main(100)

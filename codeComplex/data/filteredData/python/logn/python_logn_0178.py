@@ -29,4 +29,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：调用 main，规模自行设定
     result = main(10)
-    print(result)
+    # print(result)
+    pass

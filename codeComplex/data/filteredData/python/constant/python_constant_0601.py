@@ -7,9 +7,8 @@ def main(n: int) -> None:
     b = 5 * n
     c = 8 * n
     result = (a + k - 1) // k + (b + k - 1) // k + (c + k - 1) // k
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

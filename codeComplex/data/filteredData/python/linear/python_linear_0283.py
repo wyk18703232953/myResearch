@@ -1,17 +1,25 @@
-from collections import defaultdict
-import random
+def main(n):
+    from collections import defaultdict
 
-def generate_test_data(n):
-    # 随机生成 n 个只含 '(' 和 ')' 的字符串
-    # 长度在 1~10 之间，可按需调整规模
+    # Deterministic generation of n strings of parentheses
+    # Mix of balanced, left-heavy, right-heavy, and random-looking but deterministic patterns
     S = []
-    for _ in range(n):
-        length = random.randint(1, 10)
-        s = ''.join(random.choice('()') for _ in range(length))
-        S.append(s)
-    return S
+    for i in range(n):
+        # Length grows roughly with n to make it scalable
+        length = (i % 7 + 1) * (n // 10 + 1)
+        chars = []
+        for j in range(length):
+            # Deterministic pattern based on i and j
+            if (i + j) % 3 == 0:
+                chars.append('(')
+            elif (i * 2 + j) % 5 == 0:
+                chars.append(')')
 
-def solve(S):
+            else:
+                # Alternate to get some balance
+                chars.append('(' if j % 2 == 0 else ')')
+        S.append(''.join(chars))
+
     d1 = defaultdict(lambda: 0)
     d2 = defaultdict(lambda: 0)
     ans = 0
@@ -21,39 +29,34 @@ def solve(S):
         for c in s:
             if c == '(':
                 cum1 += 1
+
             else:
                 cum1 -= 1
             if cum1 < 0:
                 flag1 = False
         if flag1:
             ans += d2[cum1]
-
         cum2 = 0
         flag2 = True
         for i in reversed(range(len(s))):
             c = s[i]
             if c == ')':
                 cum2 += 1
+
             else:
                 cum2 -= 1
             if cum2 < 0:
                 flag2 = False
         if flag2:
             ans += d1[cum2]
-
         if cum1 == 0 and cum2 == 0 and flag1 and flag2:
             ans += 1
         if flag1:
             d1[cum1] += 1
         if flag2:
             d2[cum2] += 1
-    return ans
 
-def main(n):
-    S = generate_test_data(n)
-    ans = solve(S)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 5
-    main(5)
+    main(1000)

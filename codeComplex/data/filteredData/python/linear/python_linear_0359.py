@@ -1,32 +1,22 @@
-from math import sqrt, log2
-from collections import Counter
-import random
-
-def main(n: int):
-    # 生成长度为 n 的数字串，避免首位为 '0'
-    if n <= 0:
-        print(0)
-        return
-
-    first_digit = str(random.randint(1, 9))
-    if n > 1:
-        rest_digits = ''.join(str(random.randint(0, 9)) for _ in range(n - 1))
-        num_str = first_digit + rest_digits
-    else:
-        num_str = first_digit
+def main(n):
+    # 生成一个长度为 n 的数字字符串，使用确定性规则
+    # 这里用 (i % 10) 将下标映射到 0-9 的数字字符
+    digits = ''.join(str(i % 10) for i in range(n))
 
     ct = 0
     i = 0
     s = []
-    while i < len(num_str):
-        if not int(num_str[i]) % 3:
+    while i < len(digits):
+        if not int(digits[i]) % 3:
             ct += 1
             s.clear()
+
         else:
-            t = int(num_str[i]) % 3
+            t = int(digits[i]) % 3
             if 3 - t in s:
                 ct += 1
                 s.clear()
+
             else:
                 s.append(t)
         if len(s) == 3:
@@ -34,9 +24,8 @@ def main(n: int):
             s.clear()
         i += 1
 
-    print(ct)
-
-
+    # print(ct)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n 可在此修改
-    main(20)
+    # 示例：使用 n = 10 作为输入规模
+    main(10)

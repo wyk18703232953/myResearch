@@ -1,13 +1,18 @@
-import random
+def main(n):
+    # 为了保持原算法结构，需要 n, m, k, a
+    # 将输入规模映射为 n；设 m 与 n 同阶，k 为常数
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int) -> int:
-    # 生成测试数据
-    # 约束：保证 m >= 1，k >= 0，a 为非负整数
-    m = max(1, n // 3)        # 模数规模随 n 变化
-    k = random.randint(0, 10) # 每步常数扣减
-    a = [random.randint(0, 10) for _ in range(n)]
+    m = max(1, n // 3 + 1)
+    k = 5
 
-    # 原逻辑开始
+    # 构造长度为 n 的确定性整数数组 a
+    # 示例：a[i] = (i % 7) - 3，包含正负和零
+    a = [(i % 7) - 3 for i in range(n)]
+
     b = [0] * (n + 1)
     for i in range(1, n + 1):
         b[i] = b[i - 1] + m * a[i - 1] - k
@@ -19,13 +24,7 @@ def main(n: int) -> int:
         for j in range(0, m):
             if i > j:
                 ans = max(ans, b[i] - M[j] - k * ((m * i + m - (i - j)) % m))
-    result = ans // m
-
-    # 为了便于在外部看到使用的数据和结果，可以按需打印
-    # 这里仅返回结果；如需调试，可自行添加打印语句
-    return result
-
-
+    # print(ans // m)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    print(main(10))
+    main(1000)

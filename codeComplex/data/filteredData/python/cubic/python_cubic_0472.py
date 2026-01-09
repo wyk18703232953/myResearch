@@ -1,50 +1,60 @@
 from math import inf
-import random
 
 def main(n):
-    # 随机生成参数
-    m = n                           # 列数，这里简单设为 n
-    K = random.randint(1, 2 * n)    # 步数上限，可根据需要调整规模关系
+    # Map n to grid size and K
+    # Choose n as rows; derive cols and K deterministically
+    rows = max(1, n)
+    cols = max(1, n)
+    K = 2 * max(1, n // 2)  # ensure even K >= 2
 
-    # 随机生成边权，范围可按需调整
-    max_weight = 10
-    hor = [[random.randint(1, max_weight) for _ in range(m - 1)] + [inf] for _ in range(n)]
-    vert = [[random.randint(1, max_weight) for _ in range(m)] for _ in range(n - 1)] + [[inf] * m]
+    # Deterministic construction of hor and vert costs
+    # hor: rows x (cols+1) but last is inf, original input had cols entries then + [inf]
+    hor = []
+    for i in range(rows):
+        row = [(i + j) % 7 + 1 for j in range(cols)]  # small positive weights
+        row.append(inf)
+        hor.append(row)
 
-    # 如果 K 为奇数，直接输出 -1 表格
-    if K % 2:
-        for _ in range(n):
-            print(*([-1] * m))
-        return
+    # vert: (rows-1) x cols then add last row of inf
+    vert = []
+    for i in range(rows - 1):
+        row = [(i * 3 + j * 5) % 11 + 1 for j in range(cols)]
+        vert.append(row)
+    vert.append([inf] * cols)
 
     halfK = K // 2
-    # dp[k][i][j] = 从 (i,j) 出发，走 2k 步后回到 (i,j) 的最小代价
-    dp = [[[inf] * m for _ in range(n)] for _ in range(halfK + 1)]
-    dp[0] = [[0] * m for _ in range(n)]
+    dp = [[[inf] * cols for _ in range(rows)] for _ in range(halfK + 1)]
+    dp[0] = [[0] * cols for _ in range(rows)]
 
     def valid(i, j):
-        return 0 <= i < n and 0 <= j < m
+        return 0 <= i < rows and 0 <= j < cols
 
     for k in range(1, halfK + 1):
-        for i in range(n):
-            for j in range(m):
-                # 向右后再回来
-                if valid(i, j + 1):
-                    dp[k][i][j] = min(dp[k][i][j], dp[k - 1][i][j + 1] + 2 * hor[i][j])
-                # 向下后再回来
-                if valid(i + 1, j):
-                    dp[k][i][j] = min(dp[k][i][j], dp[k - 1][i + 1][j] + 2 * vert[i][j])
-                # 向上后再回来
-                if valid(i - 1, j):
-                    dp[k][i][j] = min(dp[k][i][j], dp[k - 1][i - 1][j] + 2 * vert[i - 1][j])
-                # 向左后再回来
-                if valid(i, j - 1):
-                    dp[k][i][j] = min(dp[k][i][j], dp[k - 1][i][j - 1] + 2 * hor[i][j - 1])
+        prev = dp[k - 1]
+        cur = dp[k]
+        for i in range(rows):
+            for j in range(cols):
+                best = cur[i][j]
+                if j + 1 < cols:
+                    cand = prev[i][j + 1] + 2 * hor[i][j]
+                    if cand < best:
+                        best = cand
+                if i + 1 < rows:
+                    cand = prev[i + 1][j] + 2 * vert[i][j]
+                    if cand < best:
+                        best = cand
+                if i - 1 >= 0:
+                    cand = prev[i - 1][j] + 2 * vert[i - 1][j]
+                    if cand < best:
+                        best = cand
+                if j - 1 >= 0:
+                    cand = prev[i][j - 1] + 2 * hor[i][j - 1]
+                    if cand < best:
+                        best = cand
+                cur[i][j] = best
 
     for row in dp[-1]:
-        print(*row)
-
-
+        # print(*row)
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 4，可按需修改或由外部调用 main(n)
-    main(4)
+    main(5)

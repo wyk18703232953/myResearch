@@ -19,12 +19,12 @@ def main(n):
         ans = 0
     elif k == 0:
         ans = (m + 2 * (x % m)) % m
+
     else:
         ans = (m + 2 * solve(x, k)) % m
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可修改 n 测试不同规模
     main(10)

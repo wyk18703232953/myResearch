@@ -52,6 +52,7 @@ def main(n):
         ans = getAns(cur_k, tmpN)
         if ans == -1:
             results.append("NO")
+
         else:
             results.append(f"YES {cur_n - ans}")
     return results
@@ -60,4 +61,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：运行规模 n=5，并打印结果
     for line in main(5):
-        print(line)
+        # print(line)
+        pass

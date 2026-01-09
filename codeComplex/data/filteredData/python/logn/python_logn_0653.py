@@ -7,6 +7,7 @@ def solve(n, k):
         a = n - mid
         if ((1 + a) * a) // 2 >= k + mid:
             l = mid
+
         else:
             r = mid
     return l
@@ -23,9 +24,8 @@ def main(n):
 
     k = max(1, n // 2)  # 生成与规模相关的 k
     ans = solve(n, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可修改 n 以改变规模
     main(10)

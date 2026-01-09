@@ -6,4 +6,5 @@ def main(n):
 if __name__ == "__main__":
     # 根据 n 生成测试数据，这里简单用一个示例规模
     test_n = 10
-    print(main(test_n))
+    # print(main(test_n))
+    pass

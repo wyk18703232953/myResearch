@@ -10,9 +10,11 @@ def main(n: int):
     if n <= 0:
         # 给一个固定的负数测试
         s = "-10"
+
     else:
         if n % 2 == 0:
             val = -n * n
+
         else:
             # 确保至少两位数，方便末两位删除逻辑
             val = -(n * 10 + 3)
@@ -33,19 +35,23 @@ def main(n: int):
             ans1 += s_abs_str[i]
         elif i == len(s_abs_str) - 1:
             ans2 += s_abs_str[i]
+
         else:
             ans1 += s_abs_str[i]
             ans2 += s_abs_str[i]
 
     if neg == 0:
-        print(s_abs_str)
+        # print(s_abs_str)
+        pass
+
     else:
         if str(min(int(ans1), int(ans2))) == "0":
-            print(0)
+            # print(0)
+            pass
+
         else:
-            print("-" + str(min(int(ans1), int(ans2))))
-
-
+            # print("-" + str(min(int(ans1), int(ans2))))
+            pass
 if __name__ == "__main__":
     # 示例调用：规模 n = 10
     main(10)

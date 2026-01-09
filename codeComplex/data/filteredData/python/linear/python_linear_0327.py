@@ -1,29 +1,22 @@
-import math
-import random
-
 def main(n):
-    # 1. 生成测试数据 M 和序列 a
-    # 约定：生成一个严格递增的序列 a[1..n]，并生成 M > a[n]
-    # 为了简单，生成差分在 [1, 10] 的递增序列
-    diffs = [random.randint(1, 10) for _ in range(n + 1)]  # n+1 段：a[1..n] 和 M
-    a = [0]
-    cur = 0
-    for d in diffs[:-1]:
-        cur += d
-        a.append(cur)
-    M = cur + diffs[-1]  # 最后一个差值用于生成 M
-    a.append(M)
+    # Deterministically generate M and array a based on n
+    M = max(1, 2 * n)
+    a = [0] + [i % (M // 2 + 1) + i // 2 for i in range(1, n + 1)] + [M]
+    a.sort()
+    a[0] = 0
+    a[-1] = M
 
-    # 2. 逻辑与原程序一致
     t1 = []
     t2 = []
     for i in range(n + 1):
         if i % 2 == 0:
             t1.append(a[i + 1] - a[i])
+
         else:
             t2.append(a[i + 1] - a[i])
     t2.append(0)
 
+    import math
     ans = sum(t1)
     p = 0
     q = sum(t2)
@@ -31,10 +24,7 @@ def main(n):
         p = p + t1[i]
         q = q - t2[i - 1]
         ans = max(ans, p + q - 1)
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

@@ -1,6 +1,10 @@
-# -*- coding: utf-8 -*-
-
-import random
+import math
+import collections
+import bisect
+import heapq
+import time
+import itertools
+import sys
 
 
 def interact(rect1, rect2):
@@ -34,37 +38,42 @@ def winrect(rect):
 
 
 def main(n):
-    """
-    n: 规模，用作测试数据的数量 T。
-       对于每个测试：
-         - N, M 在 [1, n]
-         - 在 N x M 网格内随机生成两个矩形 a, b
-    """
+    # n controls the number of test cases and the scale of N, M
+    if n <= 0:
+        return
+
     T = n
     ans = []
+    for ti in range(T):
+        # Deterministic generation of N, M (grid size)
+        N = 5 + (ti % max(1, n))  # at least 5
+        M = 7 + ((ti * 2) % max(1, n))
 
-    for _ in range(T):
-        # 随机生成棋盘大小
-        N = random.randint(1, n)
-        M = random.randint(1, n)
+        # Deterministic rectangles inside [1..N] x [1..M]
+        # First rectangle a
+        x1 = 1 + (ti * 3) % max(1, N // 2 + 1)
+        y1 = 1 + (ti * 5) % max(1, M // 2 + 1)
+        x2 = x1 + (1 + (ti % max(1, N - x1 + 1))) // 2
+        y2 = y1 + (1 + ((ti * 7) % max(1, M - y1 + 1))) // 2
+        if x2 > N:
+            x2 = N
+        if y2 > M:
+            y2 = M
 
-        # 随机生成矩形 a
-        x1 = random.randint(1, N)
-        x2 = random.randint(x1, N)
-        y1 = random.randint(1, M)
-        y2 = random.randint(y1, M)
-        a = (x1, y1, x2, y2)
-
-        # 随机生成矩形 b
-        x3 = random.randint(1, N)
-        x4 = random.randint(x3, N)
-        y3 = random.randint(1, M)
-        y4 = random.randint(y3, M)
-        b = (x3, y3, x4, y4)
+        # Second rectangle b
+        x3 = 1 + (ti * 4) % max(1, N)
+        y3 = 1 + (ti * 6) % max(1, M)
+        x4 = x3 + (1 + ((ti * 3) % max(1, N - x3 + 1))) // 2
+        y4 = y3 + (1 + ((ti * 2) % max(1, M - y3 + 1))) // 2
+        if x4 > N:
+            x4 = N
+        if y4 > M:
+            y4 = M
 
         w = winrect((1, 1, N, M))
+        a = (x1, y1, x2, y2)
+        b = (x3, y3, x4, y4)
         s, c = interact(a, b)
-
         if s == 0:
             w -= winrect(a) + winrect(b)
             w += area(a)
@@ -73,6 +82,7 @@ def main(n):
         elif s == area(b):
             w -= winrect(b)
             w += area(a) - area(b) - (winrect(a) - winrect(b))
+
         else:
             w += area(a) - winrect(a)
             w -= winrect(b)
@@ -80,9 +90,7 @@ def main(n):
 
         ans.append((w, N * M - w))
 
-    print('\n'.join(['{} {}'.format(a, b) for a, b in ans]))
-
-
+    # print('\n'.join(['{} {}'.format(a, b) for a, b in ans]))
+    pass
 if __name__ == "__main__":
-    # 示例：生成规模为 5 的测试数据
-    main(5)
+    main(10)

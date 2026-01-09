@@ -1,6 +1,4 @@
-import sys
 import math
-import random
 
 def ss(x):
     return x * (x + 1) // 2
@@ -13,19 +11,15 @@ def sol(x):
     return res - res1
 
 def main(n):
-    # n 作为查询数量，用来生成 n 组 [l, r] 测试数据
-    random.seed(0)
-    queries = []
-    MAX_VAL = 10**12
-
-    for _ in range(n):
-        l = random.randint(1, MAX_VAL)
-        r = random.randint(l, MAX_VAL)
-        queries.append((l, r))
-
-    for l, r in queries:
-        print(sol(r) - sol(l - 1))
-
+    # n 表示查询次数 q
+    q = n
+    # 确定性生成 q 组 [l, r]，使得区间规模随 n 增长
+    # 设定一个基础倍数，使 r 约为 2 * n * q 的量级
+    base = max(1, n)
+    for i in range(1, q + 1):
+        l = i * base
+        r = (i + 1) * base
+        # print(sol(r) - sol(l - 1))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 生成 5 组测试数据并输出结果
-    main(5)
+    main(10)

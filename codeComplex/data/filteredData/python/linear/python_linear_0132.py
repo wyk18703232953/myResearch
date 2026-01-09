@@ -11,6 +11,7 @@ def preprocess_f(maxnum):
     for i in range(1, maxnum):
         if i == 1:
             f[i] = 0
+
         else:
             f[i] = f[cntone(i)] + 1
     return f
@@ -23,6 +24,7 @@ def preprocess_c(maxnum, mod):
         for j in range(1, i + 1):
             if j == i:
                 c[i][j] = 1
+
             else:
                 c[i][j] = (c[i - 1][j - 1] + c[i - 1][j]) % mod
     return c
@@ -58,8 +60,10 @@ def main(n):
             dp[i][0] = 1
             if s1[i] == '1':
                 dp[i][1] = 1
+
             else:
                 dp[i][1] = 0
+
         else:
             for j in range(0, i + 2):
                 if j == 0:
@@ -67,6 +71,7 @@ def main(n):
                     continue
                 if s1[i] == '1':
                     dp[i][j] = (dp[i - 1][j - 1] + c[i][j]) % mod
+
                 else:
                     dp[i][j] = dp[i - 1][j] % mod
 
@@ -81,8 +86,8 @@ def main(n):
         ans -= 1
 
     # 与原程序一样，仅输出最终结果
-    print(ans % mod)
-
+    # print(ans % mod)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(n)，n 为规模参数
     main(10)

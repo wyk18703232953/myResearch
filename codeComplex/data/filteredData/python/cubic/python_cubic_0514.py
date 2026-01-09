@@ -36,7 +36,8 @@ def main(n):
     # 按原逻辑进行计算
     if k % 2 == 1:
         for _ in range(n):
-            print(*[-1 for _ in range(m)])
+            # print(*[-1 for _ in range(m)])
+            pass
         return
 
     half = k // 2
@@ -63,10 +64,10 @@ def main(n):
 
     for i in range(n):
         for j in range(m):
-            print(2 * dp[i][j][half], end=' ')
-        print()
-
-
+            # print(2 * dp[i][j][half], end=' ')
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
     # 示例调用：n 可根据需要修改
     main(4)

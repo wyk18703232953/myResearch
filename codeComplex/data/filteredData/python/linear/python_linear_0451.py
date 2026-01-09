@@ -1,72 +1,82 @@
-import random
-import string
-
 def main(n):
-    # 1. 生成测试数据规模
-    # n 为字符串 s 的长度
-    # 生成 m，保证 1 <= m <= 2n，且满足原程序中可能的各种分支
-    m = random.randint(1, 2 * n)
+    # Interpret n as the common length of strings s and t, and set m = n
+    m = n
 
-    # 2. 随机生成 s 和 t（包含和不包含 '*' 的情况）
-    #   - s 长度为 n
-    #   - t 长度为 m
-    # 随机决定 s 是否含有 '*'
-    has_star = random.choice([True, False])
+    # Deterministic construction of s and t:
+    # - Prefix: first n//3 characters identical
+    # - Middle: place one '*' in s, corresponding character in t is 'a'
+    # - Suffix: alternate characters to sometimes match, sometimes not
+    # Ensure at least length 1
+    if n <= 0:
+        n = 1
+        m = 1
 
-    # 可用字符集合（不含 '*'）
-    letters = string.ascii_lowercase
+    # Build s and t as lists of characters
+    s_list = []
+    t_list = []
 
-    if has_star and n > 0:
-        # 在某个位置放一个 '*'
-        star_pos = random.randint(0, n - 1)
-        s_chars = []
-        for i in range(n):
-            if i == star_pos:
-                s_chars.append('*')
-            else:
-                s_chars.append(random.choice(letters))
-        s = ''.join(s_chars)
+    # prefix length
+    prefix_len = n // 3
+    if prefix_len > 0:
+        for i in range(prefix_len):
+            ch = chr(ord('a') + (i % 3))  # 'a','b','c' cycle
+            s_list.append(ch)
+            t_list.append(ch)
+
+    # position for '*' in s (if possible)
+    if n > 1:
+        star_pos = min(prefix_len, n - 1)
+
     else:
-        # 不含 '*'
-        s = ''.join(random.choice(letters) for _ in range(n))
+        star_pos = 0
 
-    # 生成 t：完全随机
-    t = ''.join(random.choice(letters) for _ in range(m))
+    for i in range(prefix_len, n):
+        if i == star_pos:
+            s_list.append('*')
+            t_list.append('a')
 
-    # 3. 以下是原逻辑（去掉 input，封装函数内，使用生成的 n, m, s, t）
-    # 输出 n, m, s, t 用于观察测试数据
-    print(f"n = {n}, m = {m}")
-    print(f"s = {s}")
-    print(f"t = {t}")
+        else:
+            # deterministic but varying pattern
+            s_list.append(chr(ord('d') + (i % 3)))  # 'd','e','f' cycle
+            t_list.append(chr(ord('d') + ((i + 1) % 3)))  # shifted
 
+    s = "".join(s_list)
+    t = "".join(t_list)
+
+    # Original core logic
     if n - 1 > m:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
         try:
             a = s.index('*')
-        except ValueError:
+        except:
             a = -1
-
         if a == -1:
             if s == t:
-                print('YES')
+                # print('YES')
+                pass
+
             else:
-                print('NO')
+                # print('NO')
+                pass
+
         else:
             for i in range(a):
                 if s[i] != t[i]:
-                    print('NO')
+                    # print('NO')
+                    pass
                     return
             i = 1
             while m - i >= a and n - i > a:
                 if s[n - i] != t[m - i]:
-                    print('NO')
+                    # print('NO')
+                    pass
                     return
                 i += 1
-            print('YES')
-
-
-# 示例调用
+            # print('YES')
+            pass
 if __name__ == "__main__":
-    # 可以修改 n 以生成不同规模的测试
+    # Example deterministic call for testing / benchmarking
     main(10)

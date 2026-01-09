@@ -35,19 +35,20 @@ def main(n):
 
         sp = path * 2 - 1
         if (ans < 0) or ((ans == 0) and (last > 0)):
-            print("No")
+            # print("No")
+            pass
             continue
 
         sq = path * path - sp
         if (ans == 1) and (last > sq) and (last < sp):
-            print("No")
+            # print("No")
+            pass
             continue
         elif (ans == 1) and (last >= sp):
             ans = ans - 1
 
-        print("Yes", ans)
-
-
+        # print("Yes", ans)
+        pass
 if __name__ == "__main__":
     # 示例：运行 5 组测试
     main(5)

@@ -29,9 +29,8 @@ def main(n):
     k = rem * (rem + 1) // 2 - ate
 
     ans = solve(n, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

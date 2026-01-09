@@ -1,14 +1,11 @@
-import random
-
-def main(n: int):
-    # 生成规模为 n 的测试数据：
-    # 这里假设 n 作为数值上界，用于控制输入数据的大小。
-    # 可以根据需要调整生成策略。
-    a = random.randint(0, n)
-    b = random.randint(0, n)
-    x = random.randint(0, n)
-    y = random.randint(0, n)
-    z = random.randint(0, n)
+def main(n):
+    # Deterministically generate inputs based on n
+    # a, b, x, y, z are linear functions of n to scale the problem size
+    a = 2 * n + 3
+    b = 3 * n + 5
+    x = n + 1
+    y = 2 * n + 1
+    z = n // 2 + 1
 
     r = 0
 
@@ -18,29 +15,31 @@ def main(n: int):
 
     if a > yellow:
         a -= yellow
+
     else:
         r += abs(a - yellow)
         a = 0
 
     if b > blue:
         b -= blue
+
     else:
         r += abs(b - blue)
         b = 0
 
     if a > green:
         a -= green
+
     else:
         r += abs(a - green)
 
     if b > green:
         b -= green
+
     else:
         r += abs(b - green)
 
-    print(r)
-
-
+    # print(r)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n = 100 作为规模
-    main(100)
+    main(10)

@@ -15,6 +15,7 @@ def min_splitters(n, k):
             return k - mid + 1
         elif summation > n:
             low = mid + 1
+
         else:
             high = mid
     return k - low + 2
@@ -35,12 +36,12 @@ def main(n):
         minSplitters = 1
     elif n > sum_consecutive(k):
         minSplitters = -1
+
     else:
         minSplitters = min_splitters(n, k)
 
-    print(minSplitters)
-
-
+    # print(minSplitters)
+    pass
 if __name__ == '__main__':
     # 示例：调用 main，规模可自行调整
     main(10)

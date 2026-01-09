@@ -1,5 +1,3 @@
-import random
-
 def pre(x, y):
     w = x * (y // 2) + (y % 2) * (x + 1) // 2
     b = x * (y // 2) + (y % 2) * x // 2
@@ -12,34 +10,30 @@ def count(x1, y1, x2, y2):
     return w, b
 
 def main(n):
-    """
-    使用规模参数 n 自动生成测试数据并执行逻辑。
-    约定：
-      - 测试用例数量 t = n
-      - 棋盘大小 n_i, m_i 在 [1, n]
-      - 矩形坐标在棋盘范围内随机生成
-    """
-    random.seed(0)
+    # n controls the number of test cases and the board / rectangle sizes deterministically
     t = n
-    for _ in range(t):
-        # 棋盘大小：1..n
-        N = random.randint(1, n)
-        M = random.randint(1, n)
+    for k in range(1, t + 1):
+        # Board dimensions grow with k to give scalable input
+        # Ensure minimum size 1x1
+        m = max(1, k + 1)          # width
+        row_n = max(1, k + 2)      # height
 
-        # 随机生成一个合法矩形 [x1, y1] - [x2, y2]
-        x1 = random.randint(1, N)
-        x2 = random.randint(x1, N)
-        y1 = random.randint(1, M)
-        y2 = random.randint(y1, M)
+        # First rectangle (white spill candidate)
+        x1 = 1
+        y1 = 1
+        x2 = min(row_n, 1 + k)     # grows with k but bounded by board
+        y2 = min(m, 1 + (k // 2))
 
-        # 再生成另一个合法矩形 [x3, y3] - [x4, y4]
-        x3 = random.randint(1, N)
-        x4 = random.randint(x3, N)
-        y3 = random.randint(1, M)
-        y4 = random.randint(y3, M)
+        # Second rectangle (black spill candidate)
+        # Shifted but still inside the board
+        x3 = max(1, 1 + (k // 3))
+        y3 = max(1, 1 + (k // 4))
+        x4 = min(row_n, x3 + (k // 2) + 1)
+        y4 = min(m, y3 + (k // 3) + 1)
 
-        w = pre(M, N)
-        b = M * N - w
+        # Core logic from original program
+        w = pre(m, row_n)
+        b = m * row_n - w
 
         # white spill
         wc, bc = count(x1, y1, x2, y2)
@@ -47,7 +41,7 @@ def main(n):
         b -= bc
         w += (x2 - x1 + 1) * (y2 - y1 + 1)
 
-        # black spill
+        # black spill with possible overlap
         if max(x1, x3) <= min(x2, x4) and max(y1, y3) <= min(y2, y4):
             x5 = max(x1, x3)
             y5 = max(y1, y3)
@@ -63,9 +57,7 @@ def main(n):
         b -= bc
         b += (x4 - x3 + 1) * (y4 - y3 + 1)
 
-        print(w, b)
-
-
+        # print(w, b)
+        pass
 if __name__ == "__main__":
-    # 示例：使用规模 n = 5 运行
     main(5)

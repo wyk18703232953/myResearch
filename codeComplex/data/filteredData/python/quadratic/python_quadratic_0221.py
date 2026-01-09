@@ -19,9 +19,8 @@ def main(n: int):
         dp[i] = v
 
     ans = min(dp)
-    print(ans if ans != float('inf') else -1)
-
-
+    # print(ans if ans != float('inf') else -1)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

@@ -1,49 +1,41 @@
-import random
-
 def main(n):
-    # n 为规模，这里用来生成三个长度之和为 n 的数组
-    # 你可以根据需要修改分配策略
-    n0 = n // 3
-    n1 = (n - n0) // 2
-    n2 = n - n0 - n1
-    sizes = [n0, n1, n2]
+    # Interpret n as the length of each of the three arrays
+    n0 = n1 = n2 = n
+    n_list = [n0, n1, n2]
 
-    # 生成测试数据：三个数组，元素为 1~100 的随机整数
+    # Deterministically generate a[0], a[1], a[2]
     a = []
-    for length in sizes:
-        arr = [random.randint(1, 100) for _ in range(length)]
+    for idx, size in enumerate(n_list):
+        if idx == 0:
+            arr = [i + 1 for i in range(size)]
+        elif idx == 1:
+            arr = [2 * i + 1 for i in range(size)]
+
+        else:
+            arr = [3 * i + 2 for i in range(size)]
         arr.sort(reverse=True)
         a.append(arr)
 
-    # DP 逻辑与原程序一致
-    dp = [[[0 for _ in range(sizes[2] + 1)]
-           for _ in range(sizes[1] + 1)]
-          for _ in range(sizes[0] + 1)]
-
+    dp = [[[0 for _ in range(n2 + 1)] for _ in range(n1 + 1)] for _ in range(n0 + 1)]
     ans = 0
-    for i in range(sizes[0] + 1):
-        for j in range(sizes[1] + 1):
-            for k in range(sizes[2] + 1):
-                if i < sizes[0] and j < sizes[1]:
-                    dp[i + 1][j + 1][k] = max(
-                        dp[i + 1][j + 1][k],
-                        dp[i][j][k] + a[0][i] * a[1][j]
-                    )
-                if i < sizes[0] and k < sizes[2]:
-                    dp[i + 1][j][k + 1] = max(
-                        dp[i + 1][j][k + 1],
-                        dp[i][j][k] + a[0][i] * a[2][k]
-                    )
-                if j < sizes[1] and k < sizes[2]:
-                    dp[i][j + 1][k + 1] = max(
-                        dp[i][j + 1][k + 1],
-                        dp[i][j][k] + a[1][j] * a[2][k]
-                    )
-                ans = max(ans, dp[i][j][k])
-
-    print(ans)
-
-
+    for i in range(n0 + 1):
+        for j in range(n1 + 1):
+            for k in range(n2 + 1):
+                if i < n0 and j < n1:
+                    val = dp[i][j][k] + a[0][i] * a[1][j]
+                    if val > dp[i + 1][j + 1][k]:
+                        dp[i + 1][j + 1][k] = val
+                if i < n0 and k < n2:
+                    val = dp[i][j][k] + a[0][i] * a[2][k]
+                    if val > dp[i + 1][j][k + 1]:
+                        dp[i + 1][j][k + 1] = val
+                if j < n1 and k < n2:
+                    val = dp[i][j][k] + a[1][j] * a[2][k]
+                    if val > dp[i][j + 1][k + 1]:
+                        dp[i][j + 1][k + 1] = val
+                if dp[i][j][k] > ans:
+                    ans = dp[i][j][k]
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 9（将被分配为三段）
-    main(9)
+    main(5)

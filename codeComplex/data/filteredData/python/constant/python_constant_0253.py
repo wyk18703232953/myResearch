@@ -6,9 +6,8 @@ def main(n: int):
 
     # 原逻辑：输出 m % (1 << n)
     result = m % (1 << n)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

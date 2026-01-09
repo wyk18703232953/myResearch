@@ -24,8 +24,8 @@ def main(n):
     # 根据规模 n 生成测试数据，这里示例：k = n
     k = n
     result = solve(k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(1000)
     main(1000)

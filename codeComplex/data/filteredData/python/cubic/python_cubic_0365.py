@@ -43,9 +43,8 @@ def main(n: int):
             dp[i][j] = v % md
 
     ans = sum(dp[-1]) % md
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可自行调整
     main(10)

@@ -7,15 +7,19 @@ def main(n: int):
     if n in fib:
         idx = fib.index(n)
         if n == 0:
-            print(0, 0, 0)
+            # print(0, 0, 0)
+            pass
         elif n == 1:
-            print(0, 0, 1)
+            # print(0, 0, 1)
+            pass
+
         else:
-            print(0, fib[idx - 2], fib[idx - 1])
+            # print(0, fib[idx - 2], fib[idx - 1])
+            pass
+
     else:
-        print("I'm too stupid to solve this problem")
-
-
+        # print("I'm too stupid to solve this problem")
+        pass
 if __name__ == "__main__":
     # 这里根据规模 n 生成测试数据
     # 例如：n 越大，测试的 Fibonacci 目标值越大

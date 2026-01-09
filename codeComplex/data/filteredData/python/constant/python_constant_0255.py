@@ -23,12 +23,12 @@ def main(n):
         ans = abs(pos - r) + 1
     elif l != 1 and r == n:
         ans = abs(pos - l) + 1
+
     else:
         ans = r - l + 2 + min(abs(pos - l), abs(pos - r))
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

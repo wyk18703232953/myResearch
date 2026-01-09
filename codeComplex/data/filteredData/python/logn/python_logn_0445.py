@@ -30,11 +30,12 @@ def main(n):
 
         ans = sol(n_i, k_i)
         if ans == -1:
-            print("NO")
+            # print("NO")
+            pass
+
         else:
-            print("YES", ans)
-
-
+            # print("YES", ans)
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 生成 5 组测试数据并输出结果
     main(5)

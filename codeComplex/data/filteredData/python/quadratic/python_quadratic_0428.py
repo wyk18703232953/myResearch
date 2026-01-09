@@ -42,4 +42,5 @@ def main(n):
 
 # 简单示例调用（调试时使用，正式使用时可删除或注释）
 if __name__ == "__main__":
-    print(main(5))
+    # print(main(5))
+    pass

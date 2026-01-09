@@ -1,35 +1,39 @@
-import random
-
 def main(n):
-    # 生成测试数据：n为规模，这里随机生成 k，范围可根据需要调整
-    # 保证 k 不为负且不过大
-    k = random.randint(0, max(1, n * (n + 1) // 4))
+    # Deterministic data generation:
+    # Original program reads two integers: n, k
+    # Here we treat the function argument `n` as the original `n`
+    # and generate a deterministic k based on n.
+    original_n = n
+    k = n // 2 + 1  # deterministic mapping from n to k
 
-    # 以下为原逻辑的无 input() 改写
+    # Core logic from original program
+    a_n = original_n
+    a_k = k
     i = 1
     count = 0
     cursum = 0
-    while count < n:
-        if cursum < k:
+    while count < a_n:
+        if cursum < a_k:
             cursum += i
+
         else:
             break
         count += 1
         i += 1
+    count += cursum - a_k
+    if a_n == count:
+        result = cursum - a_k
 
-    count += cursum - k
-
-    if n == count:
-        print(cursum - k)
     else:
-        ans = cursum - k
+        ans = cursum - a_k
         extra = 0
-        while count < n:
+        while count < a_n:
             extra += i
             count += (i + 1)
             i += 1
-        print(ans + extra)
-
+        result = ans + extra
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自定义
-    main(10)
+    # Example deterministic call for time complexity experiments
+    main(1000)

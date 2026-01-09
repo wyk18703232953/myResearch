@@ -14,6 +14,7 @@ def main(n):
             if c1[1] > m:
                 c1[0] += 1
                 c1[1] = 1
+
         else:
             ans.append(tuple(c2))
             c2[1] -= 1
@@ -23,9 +24,8 @@ def main(n):
         moves -= 1
         p += 1
     for i in ans:
-        print(*i)
-
-
+        # print(*i)
+        pass
 if __name__ == "__main__":
     # 简单测试：使用 n = 3 作为示例规模
     main(3)

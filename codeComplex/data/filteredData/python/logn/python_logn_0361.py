@@ -10,12 +10,12 @@ def main(n):
 
     if x == 0:
         result = 0
+
     else:
         result = (pow(2, k, mod) * (2 * x - 1) + 1) % mod
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == '__main__':
     # 示例：可以在此修改 n 进行本地测试
     main(5)

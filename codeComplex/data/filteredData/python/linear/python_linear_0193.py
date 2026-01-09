@@ -1,35 +1,32 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # 约束猜测自原程序：时间 t 不超过 1000（因 f = [0]*1001）
-    # 为保证有意义，令：
-    #   1 <= n
-    #   1 <= t <= 1000
-    #   1 <= a, b, c <= 10
-    t = random.randint(1, 1000)
-    a = random.randint(1, 10)
-    b = random.randint(1, 10)
-    c = random.randint(1, 10)
+    # Deterministically generate parameters based on n
+    # Ensure t is at least 2 to make range(1, t) non-empty and indices valid
+    a = n % 7 + 1
+    b = n % 5 + 1
+    c = n % 6 + 1
+    t = max(2, n + 1)
 
-    # 生成 n 个时间点，每个在 [1, t] 内
-    l = [random.randint(1, t) for _ in range(n)]
+    # Generate list l of size n with values in [1, min(1000, t-1)]
+    max_val = min(1000, t - 1)
+    if max_val <= 0:
+        max_val = 1
+    l = [(i % max_val) + 1 for i in range(n)]
 
-    # 原逻辑
     f = [0] * 1001
     for i in l:
-        f[i] += 1
+        if 0 <= i <= 1000:
+            f[i] += 1
 
     tmp = 0
     for i in range(1, t):
-        tmp += (t - i) * f[i]
+        if i <= 1000:
+            tmp += (t - i) * f[i]
 
     tmp = n * a + tmp * c - tmp * b
-    ans = max(n * a, tmp)
-
-    print(ans)
-
+    result = max(n * a, tmp)
+    # print(result)
+    pass
+    return result
 
 if __name__ == "__main__":
-    # 示例：规模 n=10
     main(10)

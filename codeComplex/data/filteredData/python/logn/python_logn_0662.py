@@ -32,4 +32,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：用 n = 100 运行一次
-    print(main(100))
+    # print(main(100))
+    pass

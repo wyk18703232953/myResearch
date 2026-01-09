@@ -1,50 +1,45 @@
-import random
-
 def main(n):
-    # n 为总规模，这里简单地按比例拆成三个序列长度
-    # 可根据需要调整拆分策略
-    n0 = n // 3
-    n1 = (n - n0) // 2
-    n2 = n - n0 - n1
-    sizes = [n0, n1, n2]
+    # Map n to problem sizes: split n into three parts as evenly as possible
+    x = n // 3
+    y = (n + 1) // 3
+    z = n - x - y
+    n_list = [x, y, z]
 
-    # 生成测试数据：随机整数，范围可根据需要调整
+    # Deterministic data generation
     a = []
-    for length in sizes:
-        arr = [random.randint(1, 1000) for _ in range(length)]
+    # For each of the three arrays, generate values in a simple deterministic pattern
+    for idx in range(3):
+        length = n_list[idx]
+        # Example deterministic generation: descending sequence based on index and position
+        arr = [ (length - i) * (idx + 1) for i in range(length) ]
+        # Original code sorts in reverse; this construction is already non-increasing, but keep sort to preserve logic
         arr.sort(reverse=True)
         a.append(arr)
 
-    dp = [[[0 for _ in range(sizes[2] + 1)]
-           for _ in range(sizes[1] + 1)]
-           for _ in range(sizes[0] + 1)]
+    # DP dimensions based on n_list
+    x_len, y_len, z_len = n_list
+    dp = [[[0 for _ in range(z_len + 1)] for _ in range(y_len + 1)] for _ in range(x_len + 1)]
     ans = 0
 
-    for i in range(sizes[0] + 1):
-        for j in range(sizes[1] + 1):
-            for k in range(sizes[2] + 1):
-                cur = dp[i][j][k]
-                if i < sizes[0] and j < sizes[1]:
-                    dp[i + 1][j + 1][k] = max(
-                        dp[i + 1][j + 1][k],
-                        cur + a[0][i] * a[1][j]
-                    )
-                if i < sizes[0] and k < sizes[2]:
-                    dp[i + 1][j][k + 1] = max(
-                        dp[i + 1][j][k + 1],
-                        cur + a[0][i] * a[2][k]
-                    )
-                if j < sizes[1] and k < sizes[2]:
-                    dp[i][j + 1][k + 1] = max(
-                        dp[i][j + 1][k + 1],
-                        cur + a[1][j] * a[2][k]
-                    )
-                if cur > ans:
-                    ans = cur
+    for i in range(x_len + 1):
+        for j in range(y_len + 1):
+            for k in range(z_len + 1):
+                if i < x_len and j < y_len:
+                    val = dp[i][j][k] + a[0][i] * a[1][j]
+                    if val > dp[i + 1][j + 1][k]:
+                        dp[i + 1][j + 1][k] = val
+                if i < x_len and k < z_len:
+                    val = dp[i][j][k] + a[0][i] * a[2][k]
+                    if val > dp[i + 1][j][k + 1]:
+                        dp[i + 1][j][k + 1] = val
+                if j < y_len and k < z_len:
+                    val = dp[i][j][k] + a[1][j] * a[2][k]
+                    if val > dp[i][j + 1][k + 1]:
+                        dp[i][j + 1][k + 1] = val
+                if dp[i][j][k] > ans:
+                    ans = dp[i][j][k]
 
-    print(ans)
-    return ans
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 30
-    main(30)
+    main(9)

@@ -1,27 +1,27 @@
-import random
+def main(n):
+    # Interpret n as the length of arr
+    # Deterministically generate k and arr
+    if n <= 0:
+        return
 
-def main(n, k=None, max_val=10**5):
-    # 生成测试数据：长度为 n 的数组，元素范围 [1, max_val]
-    # 尽量保证不同元素个数 >= k（如果可能）
-    if k is None:
-        # 默认取一个相对合理的 k
-        k = max(1, min(n, 5))
-    k = min(k, n)
+    # Choose k deterministically based on n, ensure 1 <= k <= min(n, some upper bound)
+    # For complexity experiments, let k vary with n but remain valid.
+    k = max(1, min(n, n // 3 if n >= 3 else 1))
 
-    # 构造前 k 个元素互不相同，后面随便填
-    base_vals = list(range(1, k + 1))
-    arr = base_vals + [random.randint(1, max_val) for _ in range(n - k)]
+    # Generate arr with values in a bounded range [1, max_val]
+    max_val = 10**5
+    # Use a simple deterministic pattern; wrap values into [1, max_val]
+    arr = [((i * 7 + 3) % max_val) + 1 for i in range(n)]
 
-    # 原逻辑开始
     count = [0] * (max_val + 1)
 
-    for x in arr:
-        count[x] += 1
+    for v in arr:
+        count[v] += 1
 
-    # 不同元素个数
     s = sum(1 for c in count if c > 0)
     if s < k:
-        print('-1 -1')
+        # print('-1 -1')
+        pass
         return
 
     r = n - 1
@@ -44,9 +44,8 @@ def main(n, k=None, max_val=10**5):
         count[arr[l]] -= 1
         l += 1
 
-    print(l + 1, r + 1)
-
-
+    # print(l + 1, r + 1)
+    pass
 if __name__ == "__main__":
-    # 示例：n=10，k=3
-    main(10, 3)
+    # Example call for time complexity experiments
+    main(10**5)

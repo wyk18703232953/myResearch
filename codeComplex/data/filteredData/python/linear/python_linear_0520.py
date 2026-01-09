@@ -1,5 +1,4 @@
 from collections import deque
-import random
 
 def removeUsed(adj, used):
     to_remove = []
@@ -9,7 +8,7 @@ def removeUsed(adj, used):
     for s in to_remove:
         adj.remove(s)
 
-def solve(a, s):  # a - adjacency list as list of sets, s - sequence
+def solve(a, s):
     if s[0] != 0:
         return False
     q = deque()
@@ -35,30 +34,23 @@ def solve(a, s):  # a - adjacency list as list of sets, s - sequence
         used[cur_s] = True
     return True
 
-def generate_tree(n):
-    """Random tree on vertices 0..n-1."""
+def generate_tree_and_sequence(n):
+    # Generate a simple deterministic tree:
+    # Node 0 connected to all others (star tree)
     a = [set() for _ in range(n)]
     for v in range(1, n):
-        u = random.randint(0, v - 1)
-        a[u].add(v)
-        a[v].add(u)
-    return a
-
-def generate_sequence(n):
-    """Random permutation of 0..n-1."""
-    s = list(range(0, n))
-    random.shuffle(s)
-    return s
+        a[0].add(v)
+        a[v].add(0)
+    # Deterministic BFS-like sequence: 0,1,2,...,n-1
+    s = list(range(n))
+    return a, s
 
 def main(n):
-    random.seed(0)  # fixed seed for reproducibility; remove or change as needed
-    a = generate_tree(n)
-    s = generate_sequence(n)
-    # Make a deep copy of adjacency sets because solve modifies them
-    a_copy = [set(neigh) for neigh in a]
-    result = solve(a_copy, s)
-    print("Yes" if result else "No")
-
-# 示例调用（测试时可取消注释）
-# if __name__ == "__main__":
-#     main(5)
+    if n <= 0:
+        return
+    a, s = generate_tree_and_sequence(n)
+    res = solve(a, s)
+    # print("Yes" if res else "No")
+    pass
+if __name__ == "__main__":
+    main(10)

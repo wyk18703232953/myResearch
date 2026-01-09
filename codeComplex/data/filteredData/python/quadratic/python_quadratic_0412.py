@@ -16,9 +16,8 @@ def main(n: int):
             ap = i
         i += 1
 
-    print(s + s[ap:] * (k - 1))
-
-
+    # print(s + s[ap:] * (k - 1))
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n
     main(10)

@@ -1,22 +1,20 @@
-import random
+def main(n):
+    # Interpret n as size parameter: build a grid with
+    # rows = n, cols = max(1, n) to ensure at least 1 column
+    rows = n
+    cols = max(1, n)
+    nm = rows * cols
 
-
-def solve(n, m, grid):
-    # grid: list[str] with length n, each of length m, chars '.' or '*'
-    ll = [c == '*' for _ in range(n) for c in grid[n - 1 - r][c_idx]  # reverse rows to match original input order
-          for r, row in enumerate(grid) for c_idx, c in enumerate(row)][-n * m:]
-    # The above is too convoluted; rebuild ll more directly:
+    # Deterministic pattern: '*' if (i + j) % 3 == 0 else '.'
     ll = []
-    for row in reversed(grid):  # original code read from top to bottom; we emulate same layout
-        for c in row:
-            ll.append(c == '*')
+    for i in range(rows):
+        for j in range(cols):
+            ll.append(((i + j) % 3) == 0)
 
-    nm = n * m
-    # Build RLUD the same way as original
-    RLUD = [*[range(i, i + m) for i in range(0, nm, m)],
-            *[range(i, nm, m) for i in range(m)]]
-
+    RLUD = [*[range(i, i + cols) for i in range(0, nm, cols)],
+            *[range(i, nm, cols) for i in range(cols)]]
     cc = [1000] * nm
+
     for f in (True, False):
         for r in RLUD:
             v = 0
@@ -25,6 +23,7 @@ def solve(n, m, grid):
                     v += 1
                     if cc[i] > v:
                         cc[i] = v
+
                 else:
                     v = 0
                     cc[i] = 0
@@ -40,6 +39,7 @@ def solve(n, m, grid):
             for i in r:
                 if v > cc[i]:
                     v -= 1
+
                 else:
                     v = cc[i]
                 if v:
@@ -49,40 +49,16 @@ def solve(n, m, grid):
             cc.reverse()
 
     if any(ll):
-        return "-1"
+        # print(-1)
+        pass
 
-    res = []
-    for i, c in enumerate(cc):
-        if c:
-            res.append(f"{i // m + 1} {i % m + 1} {c - 1}")
-    return f"{len(res)}\n" + "\n".join(res)
-
-
-def generate_grid(n, m, density=0.3, rnd=None):
-    if rnd is None:
-        rnd = random.Random(0)
-    grid = []
-    for _ in range(n):
-        row = ''.join('*' if rnd.random() < density else '.' for _ in range(m))
-        grid.append(row)
-    return grid
-
-
-def main(n):
-    # 这里根据规模 n 生成测试数据：
-    # 设定一个接近正方形的 n x m 网格，使得 n*m ≈ n（总规模）
-    # 简单起见，令行数为 max(1, int(n ** 0.5))，列数为 max(1, n // 行数)
-    rows = max(1, int(n ** 0.5))
-    cols = max(1, n // rows)
-    # 若 rows*cols < n，则补到不小于 n
-    while rows * cols < n:
-        cols += 1
-
-    grid = generate_grid(rows, cols)
-    result = solve(rows, cols, grid)
-    print(result)
-
-
+    else:
+        res = []
+        for i, c in enumerate(cc):
+            if c:
+                res.append(f'{i // cols + 1} {i % cols + 1} {c - 1}')
+        # print(len(res), '\n'.join(res), sep='\n')
+        pass
 if __name__ == "__main__":
-    # 示例：规模为 100
-    main(100)
+    # Example deterministic call for time complexity experiments
+    main(10)

@@ -10,12 +10,12 @@ def main(n):
 
     if x > 0:
         ans = (x * pow(2, k + 1, m) - pow(2, k, m) + 1) % m
+
     else:
         ans = 0
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

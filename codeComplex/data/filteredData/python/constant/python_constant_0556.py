@@ -1,27 +1,30 @@
-import random
+def main(n):
+    # 解释输入结构：
+    # 原程序需要四个整数 n, m, k, l
+    # 此处将参数 n 作为“输入规模”，并据此构造这四个数：
+    #   N = 4 * n
+    #   M = 2 * n + 1
+    #   K = n
+    #   L = n // 2
+    # 这些构造是确定性的且随 n 线性增长。
+    N = 4 * n
+    M = 2 * n + 1
+    K = n
+    L = n // 2
 
-def main(n: int):
-    # 生成测试数据：
-    # 在合理范围内随机生成 m, k, l
-    # 保证 m >= 1，k,l >= 0
-    m = random.randint(1, max(1, n))       # 1 ≤ m ≤ n
-    k = random.randint(0, n)               # 0 ≤ k ≤ n
-    l = random.randint(0, n)               # 0 ≤ l ≤ n
+    if K + L > N:
+        # print(-1)
+        pass
 
-    # 原逻辑
-    if k + l > n:
-        ans = -1
     else:
-        x = (k + l) // m + (1 if (k + l) % m != 0 else 0)
-        if x * m > n:
-            ans = -1
+        x = (K + L) // M + (1 if (K + L) % M != 0 else 0)
+        if x * M > N:
+            # print(-1)
+            pass
+
         else:
-            ans = x
-
-    # 输出：先输出生成的参数，再输出结果，方便检查
-    print(n, m, k, l, ans)
-
-
+            # print(x)
+            pass
 if __name__ == "__main__":
-    # 可以在这里指定规模 n 的测试，例如 n = 100
-    main(100)
+    # 示例：以 n = 10 作为规模进行一次调用
+    main(10)

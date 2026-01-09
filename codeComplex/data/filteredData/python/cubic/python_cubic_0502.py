@@ -18,7 +18,8 @@ def main(n):
     # 若 K 为奇数，无法回到原点，输出 -1（保持与原逻辑一致）
     if K & 1:
         for _ in r:
-            print(*([-1] * M))
+            # print(*([-1] * M))
+            pass
         return
 
     # DP：X[i][j] 为当前步数下，从 (i,j) 出发走指定步数后回到同一格的最小代价的一半
@@ -39,9 +40,8 @@ def main(n):
         X = Y
 
     for row in X:
-        print(*row)
-
-
+        # print(*row)
+        pass
 if __name__ == "__main__":
     # 示例：运行 main(3)
     main(3)

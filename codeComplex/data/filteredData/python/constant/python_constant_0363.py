@@ -18,11 +18,11 @@ def main(n):
         remaining_gems.pop(indexofcolor)
 
     # 输出与原程序一致
-    print(len(remaining_gems))
+    # print(len(remaining_gems))
+    pass
     for g in remaining_gems:
-        print(g)
-
-
+        # print(g)
+        pass
 if __name__ == "__main__":
     # 示例调用：这里可修改 n 来测试不同规模
     main(3)

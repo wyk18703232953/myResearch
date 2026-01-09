@@ -5,12 +5,12 @@ def main(n: int):
     # 原始逻辑
     if x == 0:
         result = 0
+
     else:
         result = x // 2 + 1 if x % 2 != 0 else x + 1
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：可以在这里调用 main 进行简单测试
     # 例如规模为 10：

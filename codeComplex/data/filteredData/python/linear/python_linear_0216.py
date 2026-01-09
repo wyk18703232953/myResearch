@@ -1,25 +1,20 @@
 def main(n):
-    import random
-
-    # 生成测试数据
-    # 生成随机 a, b
-    a = random.randint(-10, 10)
-    b = random.randint(-10, 10)
-
-    # 生成 n 组 (x, vx, vy)
-    # 数值范围可根据需要调整
-    xs = []
-    for _ in range(n):
-        x = random.randint(-10**6, 10**6)
-        vx = random.randint(-10**6, 10**6)
-        vy = random.randint(-10**6, 10**6)
-        xs.append((x, vx, vy))
+    # n: number of points
+    # Deterministically generate a, b based on n
+    a = n % 10 + 1
+    b = (n // 10) % 10 + 1
 
     dc = {}
-    for x, vx, vy in xs:
+    # Deterministically generate n triples (x, vx, vy)
+    for i in range(n):
+        x = i
+        vx = (i * 2) % (n + 1 if n > 0 else 1)
+        vy = (i * 3 + 1) % (n + 2 if n > 0 else 1)
+
         nx = x + vx
         ny = a * x + b + vy
         dd = a * nx - ny + b
+
         if dd not in dc:
             dc[dd] = {}
         if (vx, vy) not in dc[dd]:
@@ -36,9 +31,7 @@ def main(n):
         tt += pp * (pp + 1) // 2
         tot += tt * 2
 
-    print(tot)
-
-
-if __name__ == '__main__':
-    # 示例: 以 n = 10 运行
+    # print(tot)
+    pass
+if __name__ == "__main__":
     main(10)

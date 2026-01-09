@@ -14,6 +14,7 @@ def solve(a_str, b_str):
         seg_sum = c[dff + i + 1] - c[i]
         if item:
             ans += (dff + 1 - seg_sum)
+
         else:
             ans += seg_sum
     return ans
@@ -40,4 +41,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：规模为 5
-    print(main(5))
+    # print(main(5))
+    pass

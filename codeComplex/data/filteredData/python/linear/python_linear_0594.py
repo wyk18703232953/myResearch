@@ -7,9 +7,8 @@ def main(n: int):
         a = n // i
         r += (a + 2) * (a - 2 + 1) / 2
         i += 1
-    print(int(4 * r))
-
-
+    # print(int(4 * r))
+    pass
 if __name__ == "__main__":
     # 示例：可以在这里调用 main 并传入任意 n 作为规模
     # 比如测试 n = 100

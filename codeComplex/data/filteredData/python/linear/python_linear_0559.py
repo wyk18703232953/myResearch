@@ -21,6 +21,7 @@ def solve(a, k):
             if key not in cnt:
                 cnt[key] = [0, 0]
             cnt[key][1] += 1
+
         else:
             key = pre[i]
             if key not in cnt:
@@ -44,8 +45,8 @@ def main(n):
     a = [(i * 7 + 3) % (1 << k) for i in range(n)]
 
     ans = solve(a, k)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 为规模参数
     main(10)

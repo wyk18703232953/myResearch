@@ -1,13 +1,12 @@
-import random
-
-def main(n: int):
-    # 根据 n 生成测试数据，这里生成 s 为 [0, 10*n] 内的随机整数
-    s = random.randint(0, 10 * n)
-    # 原逻辑：输出 (s + n - 1) // n
-    print((s + n - 1) // n)
-
-
-# 示例调用（提交到OJ时可去掉或由外部调用 main(n)）
+def main(n):
+    # 映射：原程序中有两个输入 n 和 s
+    # 重构后：
+    #   - 使用参数 n 作为原程序的第一个输入
+    #   - 生成一个确定性的 s，规模同 n，设为 s = n * (n + 1)
+    original_n = n
+    s = n * (n + 1)
+    result = (s + original_n - 1) // original_n
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 可以根据需要修改 n 的取值
     main(10)

@@ -1,15 +1,12 @@
-import random
-import string
+def main(n):
+    # Generate deterministic string s of length n over lowercase letters
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    L = len(alphabet)
+    s = [alphabet[i % L] for i in range(n)]
 
-def main(n: int):
-    # 1. 生成测试数据：长度为 n 的随机小写字母串
-    #    若需要其他生成方式，可自行修改此部分
-    letters = string.ascii_lowercase
-    s = [random.choice(letters) for _ in range(n)]
-
-    # 原逻辑开始
     if len(set(s)) == len(s):
-        print('0')
+        # print('0')
+        pass
         return
 
     d = []
@@ -25,12 +22,14 @@ def main(n: int):
     for i in range(len(s)):
         if s[i] not in v:
             v[s[i]] = 1
+
         else:
             v[s[i]] += 1
 
     for i in d:
         if i not in v:
             v[i] = 1
+
         else:
             v[i] += 1
 
@@ -41,9 +40,7 @@ def main(n: int):
             if len(i) > mx:
                 mx = max(mx, len(i))
 
-    print(mx)
-
-
+    # print(mx)
+    pass
 if __name__ == "__main__":
-    # 示例运行：n = 10
     main(10)

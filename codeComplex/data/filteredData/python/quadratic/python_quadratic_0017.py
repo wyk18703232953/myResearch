@@ -19,9 +19,8 @@ def main(n):
         result.append(h)
 
     # 输出与原程序一致：同一行输出，空格分隔
-    print(" ".join(str(v) for v in result))
-
-
+    # print(" ".join(str(v) for v in result))
+    pass
 if __name__ == "__main__":
     # 示例：n=5，可按需修改
     main(5)

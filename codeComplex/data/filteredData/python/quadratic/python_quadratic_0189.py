@@ -35,9 +35,8 @@ def main(n):
     for lo, hi in queries:
         res.append(str(dp[hi - lo][lo - 1]))
 
-    print("\n".join(res))
-
-
+    # print("\n".join(res))
+    pass
 if __name__ == '__main__':
     # 示例：运行 main(5) 以演示
     main(5)

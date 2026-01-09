@@ -1,5 +1,3 @@
-import random
-
 def my_solve(n, m, graph, mask):
     if do_dfs_bool(n, graph, mask.copy()):
         c = get_cyclic(n, graph, mask)
@@ -56,7 +54,7 @@ def do_dfs(n, graph, mask):
             p, v = dfs(u, graph, mask, c, colors)
             if p and v:
                 return (p, v)
-    return ({}, None)
+    return (None, None)
 
 def dfs(u, graph, mask, c, colors):
     colors[u] = 1
@@ -69,8 +67,9 @@ def dfs(u, graph, mask, c, colors):
             if w:
                 return (p, w)
     colors[u] = 2
-    if len(c) > 0 and u in c.keys():
-        del c[u]
+    if len(c) > 0:
+        if u in c.keys():
+            del c[u]
     return (c, None)
 
 def test(n, m, edges):
@@ -84,25 +83,19 @@ def test(n, m, edges):
             graph[v] = []
     return my_solve(n, m, graph, mask)
 
-def generate_edges(n):
-    # 生成一个随机边集，可能包含环也可能无环
-    max_edges = n * (n - 1)
-    m = random.randint(0, max_edges)
-    edges = set()
-    while len(edges) < m:
-        u = random.randint(1, n)
-        v = random.randint(1, n)
-        if u != v:
-            edges.add((u, v))
-    return list(edges)
-
 def main(n):
-    random.seed(0)
-    edges = generate_edges(n)
-    m = len(edges)
-    return test(n, m, edges)
-
-if __name__ == '__main__':
-    # 示例调用：可自行修改 n
-    result = main(5)
-    print(result)
+    m = 2 * n
+    edges = []
+    for i in range(1, n + 1):
+        u = i
+        v = (i % n) + 1
+        edges.append((u, v))
+    for i in range(1, n + 1):
+        u = i
+        v = ((i + n // 2 - 1) % n) + 1
+        edges.append((u, v))
+    result = test(n, m, edges)
+    # print(result)
+    pass
+if __name__ == "__main__":
+    main(10)

@@ -26,12 +26,12 @@ def main(n):
         ans += n * x
         if d >= 0:
             ans += d * MAX
+
         else:
             ans += d * MIN
 
-    print(ans / n)
-
-
+    # print(ans / n)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，可根据需要修改 n
     main(10)

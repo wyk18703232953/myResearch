@@ -13,6 +13,7 @@ def main(n):
             elif i == j - 1:
                 if a[i] == a[j]:
                     dp[i][j] = a[i] + 1
+
             else:
                 for k in range(i, j):
                     if dp[i][k] and dp[k + 1][j] and dp[i][k] == dp[k + 1][j]:
@@ -27,11 +28,13 @@ def main(n):
         for j in range(i, n):
             if dp[i][j]:
                 ans[i] = min(ans[i], 1 + ans[j + 1])
+
             else:
                 ans[i] = min(ans[i], j - i + 1 + ans[j + 1])
 
     # 输出结果
-    print(ans[0])
+    # print(ans[0])
+    pass
 
 
 # 示例调用

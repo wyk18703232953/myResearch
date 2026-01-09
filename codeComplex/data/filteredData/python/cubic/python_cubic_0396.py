@@ -1,6 +1,13 @@
-import random
+import sys
+import math
+from fractions import Fraction
+import collections
+from itertools import permutations
+from collections import defaultdict, deque
+import threading
 
-# --------------------------- original helpers (kept as-is) ---------------------------
+MOD = 10**9 + 7
+omod = 998244353
 
 class SegmentTree:
     def __init__(self, data, default=0, func=lambda a, b: a + b):
@@ -53,7 +60,7 @@ class SegmentTree:
 
 
 class SegmentTree1:
-    def __init__(self, data, default=10 ** 6, func=lambda a, b: min(a, b)):
+    def __init__(self, data, default=10**6, func=lambda a, b: min(a, b)):
         self._default = default
         self._func = func
         self._len = len(data)
@@ -100,9 +107,6 @@ class SegmentTree1:
 
     def __repr__(self):
         return "SegmentTree({0})".format(self.data)
-
-
-MOD = 10 ** 9 + 7
 
 
 class Factorial:
@@ -166,74 +170,92 @@ class Combination:
             return 0
         k = min(k, n - k)
         f = self.factorial
-        return (
-            f.calc(n)
-            * f.invFactorial(max(n - k, k))
-            * f.invFactorial(min(k, n - k))
-            % self.MOD
-        )
+        return f.calc(n) * f.invFactorial(max(n - k, k)) * f.invFactorial(min(k, n - k)) % self.MOD
 
 
-# --------------------------- core logic wrapped into main(n) ---------------------------
+prime = [True for _ in range(10)]
+pp = [0] * 10
 
-def main(n):
-    """
-    n: scale parameter; we derive grid size and k from it and generate test data.
 
-    We will:
-    - set rows = max(1, n)
-    - set cols = max(1, min(n, 10))  # avoid huge memory
-    - set k = 2 * min(n, 10)        # even k, not too large
-    - generate random edge weights r (horizontal) and c (vertical)
-    - run the original DP and print the resulting grid
-    """
+def SieveOfEratosthenes(n=10):
+    p = 2
+    while p * p <= n:
+        if prime[p]:
+            for i in range(p, n + 1, p):
+                pp[i] += 1
+                prime[i] = False
+        p += 1
 
-    # derive problem parameters from n (you can modify this policy if needed)
-    rows = max(1, n)
-    cols = max(1, min(n, 10))
-    k = 2 * min(n, 10)  # must be even; DP is O(rows*cols*k)
 
-    # random seed for reproducibility (optional)
-    random.seed(1)
+def binarySearch(arr, n, key):
+    left = 0
+    right = n - 1
+    mid = 0
+    res = 0
+    while left <= right:
+        mid = (right + left) // 2
+        if arr[mid][0] > key:
+            right = mid - 1
 
-    # generate r: n x (m-1) non-negative weights
-    r = [[random.randint(1, 9) for _ in range(cols - 1)] for _ in range(rows)]
-    # generate c: (n-1) x m non-negative weights
-    c = [[random.randint(1, 9) for _ in range(cols)] for _ in range(rows - 1)]
+        else:
+            res = mid
+            left = mid + 1
+    return res
 
-    if k % 2 == 1:
-        # as in original code, output -1 grid for odd k
-        a = [-1] * cols
-        for _ in range(rows):
-            print(*a)
+
+def run_algorithm(n_rows, m_cols, k_steps, r, c):
+    n = n_rows
+    m = m_cols
+    k = k_steps
+    if k % 2:
+        for _ in range(n):
+            # print(*([-1] * m))
+            pass
         return
-
-    half = k // 2
-    INF = 10 ** 8
-    # dp[i][j][x]: min cost to take exactly x steps and end at (i, j)
-    dp = [[[0 for _ in range(half + 1)] for __ in range(cols)] for ___ in range(rows)]
-
-    for x in range(1, half + 1):
-        for i in range(rows):
-            for j in range(cols):
-                mn = INF
+    dp = [[[0 for _ in range((k // 2) + 1)] for _ in range(m)] for _ in range(n)]
+    for x in range(1, (k // 2) + 1):
+        for i in range(n):
+            for j in range(m):
+                mn = 10**8
                 if i > 0:
                     mn = min(mn, c[i - 1][j] + dp[i - 1][j][x - 1])
                 if j > 0:
                     mn = min(mn, r[i][j - 1] + dp[i][j - 1][x - 1])
-                if i < rows - 1:
+                if i < n - 1:
                     mn = min(mn, c[i][j] + dp[i + 1][j][x - 1])
-                if j < cols - 1:
+                if j < m - 1:
                     mn = min(mn, r[i][j] + dp[i][j + 1][x - 1])
                 dp[i][j][x] = mn
-
-    for i in range(rows):
+    for i in range(n):
         row_out = []
-        for j in range(cols):
-            row_out.append(str(2 * dp[i][j][half]))
-        print(" ".join(row_out))
+        for j in range(m):
+            row_out.append(str(2 * dp[i][j][k // 2]))
+        # print(" ".join(row_out))
+        pass
+
+
+def main(n):
+    if n < 1:
+        n = 1
+    n_rows = n
+    m_cols = n
+    k_steps = 2 * (n if n % 2 == 0 else n + 1)
+    r = []
+    for i in range(n_rows):
+        row = []
+        for j in range(m_cols - 1):
+            val = (i + 1) * (j + 2)
+            row.append(val)
+        r.append(row)
+    c = []
+    for i in range(n_rows - 1):
+        row = []
+        for j in range(m_cols):
+            val = (i + j + 3)
+            row.append(val)
+        c.append(row)
+    run_algorithm(n_rows, m_cols, k_steps, r, c)
 
 
 if __name__ == "__main__":
-    # example run with some scale n; adjust as desired
-    main(5)
+    main(3)

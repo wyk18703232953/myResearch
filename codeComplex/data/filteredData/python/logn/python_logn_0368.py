@@ -20,6 +20,7 @@ def main(n):
 
     if x == 0:
         ans = 0
+
     else:
         t1 = powr(2, k + 1) % MOD
         t1 = (t1 * x) % MOD
@@ -27,7 +28,8 @@ def main(n):
         t2 = (t2 - 1) % MOD
         ans = (t1 - t2) % MOD
 
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

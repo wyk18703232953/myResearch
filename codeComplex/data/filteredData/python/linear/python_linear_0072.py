@@ -1,27 +1,32 @@
-import random
-
 def main(n):
-    # 随机生成初始的 s（题意中为一个下界或初始值）
-    s = random.randint(0, 100)
+    # Deterministically generate s based on n
+    s = n // 2 + 1
 
     mins = s
+    my_dict = {}  # kept to preserve original structure, though unused
     mylist = []
 
-    # 根据 n 生成测试数据并计算 person + floor
-    for _ in range(n):
-        # 这里假设 person 和 floor 的取值范围为 [0, 100]
-        person = random.randint(0, 100)
-        floor = random.randint(0, 100)
+    # n represents the number of (person, floor) pairs
+    cnt = n
+    while cnt:
+        # Deterministic generation of person and floor
+        person = cnt
+        floor = (cnt * 2) % (n + 1) if n > 0 else 0
         mylist.append(person + floor)
+        cnt -= 1
 
-    val = max(mylist) if mylist else mins
+    if mylist:
+        val = max(mylist)
+
+    else:
+        val = 0
 
     if val < mins:
-        print(mins)
+        # print(mins)
+        pass
+
     else:
-        print(val)
-
-
+        # print(val)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，规模为 5
-    main(5)
+    main(10)

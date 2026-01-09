@@ -13,9 +13,8 @@ def main(n: int):
             res.append(f"{n // 2 + 1} {m - j}")
         if m % 2:
             res.append(f"{n // 2 + 1} {m // 2 + 1}")
-    print("\n".join(res))
-
-
+    # print("\n".join(res))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可按需修改 n
     main(5)

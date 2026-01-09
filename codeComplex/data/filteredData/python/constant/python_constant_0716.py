@@ -2,7 +2,8 @@ def main(n):
     k = n
 
     if k <= 9:
-        print(k)
+        # print(k)
+        pass
         return
 
     num_arr = [9 * (i + 1) * 10 ** i for i in range(11)]
@@ -11,6 +12,7 @@ def main(n):
     while True:
         if k <= num_arr[index]:
             break
+
         else:
             k -= num_arr[index]
             index += 1
@@ -23,9 +25,8 @@ def main(n):
 
     string_num = str(10 ** (digit - 1) + num - 1)
 
-    print(string_num[offset])
-
-
+    # print(string_num[offset])
+    pass
 if __name__ == "__main__":
     # 示例：根据规模 n 生成测试数据，这里直接使用 n 本身作为 k
     # 可自行修改 n 的值进行测试

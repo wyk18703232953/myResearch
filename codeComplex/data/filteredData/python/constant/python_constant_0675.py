@@ -1,12 +1,11 @@
-import random
+def interact_factory(a, b):
+    def interact(c, d):
+        return max(min((a ^ c) - (b ^ d), 1), -1)
+    return interact
 
-def interact(a, b, c, d):
-    # 原交互函数: return max(min((a ^ c) - (b ^ d), 1), -1)
-    return max(min((a ^ c) - (b ^ d), 1), -1)
-
-def solve(a, b):
+def solve_with_interactor(interact):
     def ask(c, d):
-        return interact(a, b, c, d)
+        return interact(c, d)
 
     relative = ask(0, 0)
     curA = 0
@@ -18,33 +17,27 @@ def solve(a, b):
 
         if q1 == q2:
             if relative == 1:
-                curA ^= 1 << i
+                curA ^= (1 << i)
+
             else:
-                curB ^= 1 << i
+                curB ^= (1 << i)
             relative = q1
         elif q2 == 1:
-            curA ^= 1 << i
-            curB ^= 1 << i
+            curA ^= (1 << i)
+            curB ^= (1 << i)
     return curA, curB
 
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 这里假设 a, b 为 [0, 2^n) 范围内的随机非负整数，n 不超过 30
-    n = min(n, 30)
-    max_val = 1 << n
-    a = random.randrange(max_val)
-    b = random.randrange(max_val)
-
-    curA, curB = solve(a, b)
-    return {
-        "a": a,
-        "b": b,
-        "recovered_a": curA,
-        "recovered_b": curB,
-        "correct": (a == curA and b == curB)
-    }
+    # 将 n 映射为 a, b 的规模：这里简单设定 a = n, b = n // 2
+    a = n
+    b = n // 2
+    interact = interact_factory(a, b)
+    curA, curB = solve_with_interactor(interact)
+    # 为了防止优化时被认为无用，返回结果
+    return curA, curB
 
 if __name__ == "__main__":
-    # 示例：使用 n = 10 运行
-    result = main(10)
-    print(result)
+    # 示例调用，可按需修改 n 进行规模实验
+    result = main(10**5)
+    # print(result)
+    pass

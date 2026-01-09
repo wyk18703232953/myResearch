@@ -1,44 +1,48 @@
-import random
-
 def main(n):
-    # 这里将 n 作为规模参数，用来生成 N, M, K
-    # 可以根据需要调整规模策略
+    # Map n to problem dimensions.
+    # Ensure positive sizes and even K for meaningful DP.
+    if n < 2:
+        n = 2
     N = n
     M = n
-    # 保证 K 为偶数（因为原逻辑中若 K 为奇数，直接输出 -1）
-    K = 2 * max(1, n // 2)
+    K = 2 * (n // 2)
 
-    # 生成测试数据：边权为 1~10 的正整数
-    HEdge = [[random.randint(1, 10) for _ in range(M - 1)] for _ in range(N)]
-    VEdge = [[random.randint(1, 10) for _ in range(M)] for _ in range(N - 1)]
+    # Deterministic generation of edge weights
+    HEdge = [[(i + j) % 7 + 1 for j in range(M - 1)] for i in range(N)]
+    if N > 1:
+        VEdge = [[(i * 2 + j) % 9 + 1 for j in range(M)] for i in range(N - 1)]
+
+    else:
+        VEdge = []
 
     if K % 2:
         for _ in range(N):
-            print(*[-1] * M)
+            # print(*[-1] * M)
+            pass
         return
 
+    half_k = K // 2
+    dp = [[[0] * M for _ in range(N)] for _ in range(half_k + 1)]
     INF = 10 ** 9
-    half = K // 2
-    dp = [[[0] * M for _ in range(N)] for _ in range(half + 1)]
 
-    for step in range(1, half + 1):
+    for step in range(1, half_k + 1):
+        prev_layer = dp[step - 1]
+        curr_layer = dp[step]
         for i in range(N):
             for j in range(M):
                 val1 = val2 = val3 = val4 = INF
                 if i > 0:
-                    val1 = dp[step - 1][i - 1][j] + VEdge[i - 1][j]
+                    val1 = prev_layer[i - 1][j] + VEdge[i - 1][j]
                 if i < N - 1:
-                    val2 = dp[step - 1][i + 1][j] + VEdge[i][j]
+                    val2 = prev_layer[i + 1][j] + VEdge[i][j]
                 if j > 0:
-                    val3 = dp[step - 1][i][j - 1] + HEdge[i][j - 1]
+                    val3 = prev_layer[i][j - 1] + HEdge[i][j - 1]
                 if j < M - 1:
-                    val4 = dp[step - 1][i][j + 1] + HEdge[i][j]
-                dp[step][i][j] = min(val1, val2, val3, val4)
+                    val4 = prev_layer[i][j + 1] + HEdge[i][j]
+                curr_layer[i][j] = min(val1, val2, val3, val4)
 
-    for row in dp[half]:
-        print(*[v * 2 for v in row])
-
-
-if __name__ == '__main__':
-    # 示例：调用 main(5)
+    for row in dp[half_k]:
+        # print(*[x * 2 for x in row])
+        pass
+if __name__ == "__main__":
     main(5)

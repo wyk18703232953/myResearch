@@ -1,80 +1,73 @@
-# -*- coding: utf-8 -*-
-
-import random
-
 def list2d(a, b, c):
     return [[c] * b for _ in range(a)]
 
 INF = 10 ** 18
 MOD = 10 ** 9 + 7
 
-def solve_case(S, T):
-    N = len(S)
-    M = len(T)
+def check(x, S, T, N, M):
+    T1 = T[:x] + '*'
+    T2 = T[x:] + '*'
+    m1 = len(T1)
+    m2 = len(T2)
 
-    def check(x):
-        T1 = T[:x] + '*'
-        T2 = T[x:] + '*'
-        m1 = len(T1)
-        m2 = len(T2)
+    dp = list2d(N + 1, m1, -1)
+    dp[0][0] = 0
+    for i in range(N):
+        s = S[i]
+        for j in range(m1):
+            k = dp[i][j]
+            if k != -1:
+                if dp[i + 1][j] < k:
+                    dp[i + 1][j] = k
+                if T1[j] == s:
+                    if dp[i + 1][j + 1] < k:
+                        dp[i + 1][j + 1] = k
+                if T2[k] == s:
+                    if dp[i + 1][j] < k + 1:
+                        dp[i + 1][j] = k + 1
+    return dp[N][m1 - 1] == m2 - 1
 
-        dp = list2d(N + 1, m1, -1)
-        dp[0][0] = 0
-        for i in range(N):
-            s = S[i]
-            for j in range(m1):
-                k = dp[i][j]
-                if k != -1:
-                    # skip S[i]
-                    if dp[i + 1][j] < k:
-                        dp[i + 1][j] = k
-                    # match with T1
-                    if j < m1 - 1 and T1[j] == s:
-                        if dp[i + 1][j + 1] < k:
-                            dp[i + 1][j + 1] = k
-                    # match with T2
-                    if k < m2 - 1 and T2[k] == s:
-                        if dp[i + 1][j] < k + 1:
-                            dp[i + 1][j] = k + 1
-        return dp[N][m1 - 1] == m2 - 1
+def generate_test_case(idx, n):
+    # Deterministically generate S and T for test case idx, scale with n
+    # Let length of S be n + idx, length of T be n//2 + idx//2 (at least 1)
+    lenS = n + idx
+    lenT = max(1, n // 2 + idx // 2)
 
-    for x in range(M):
-        if check(x):
-            return "YES"
-    return "NO"
+    # Build S as repeating lowercase letters pattern
+    S = ''.join(chr(ord('a') + (i % 26)) for i in range(lenS))
 
-def generate_test_case(n):
-    """
-    根据规模 n 生成一组 (S, T)：
-    - 字符集使用小写字母
-    - |S| ~ n
-    - |T| ~ n // 2（至少为 1）
-    """
-    alphabet = "abc"
-    len_S = max(1, n)
-    len_T = max(1, n // 2)
-
-    S = "".join(random.choice(alphabet) for _ in range(len_S))
-    T = "".join(random.choice(alphabet) for _ in range(len_T))
+    # Build T as another deterministic pattern derived from S
+    # For diversity, pick characters from S at positions with step based on idx+1
+    step = (idx + 1) % lenS or 1
+    T_chars = []
+    pos = 0
+    for _ in range(lenT):
+        T_chars.append(S[pos])
+        pos = (pos + step) % lenS
+    T = ''.join(T_chars)
     return S, T
 
 def main(n):
-    """
-    n: 规模参数，用于控制字符串长度和测试组数。
-    设计：
-      - 测试组数 t = max(1, min(10, n))
-      - 每组 |S| ≈ n，|T| ≈ n // 2
-    """
-    random.seed(0)
-    t = max(1, min(10, n))
-    print(t)
-    for _ in range(t):
-        S, T = generate_test_case(n)
-        print(S)
-        print(T)
-        # 输出原程序逻辑的结果
-        print(solve_case(S, T))
+    # Interpret n as: number of test cases = n,
+    # each test case size grows with n for scalability.
+    T_cases = max(1, n)
 
+    results = []
+    for t in range(T_cases):
+        S, T_str = generate_test_case(t, n)
+        N = len(S)
+        M = len(T_str)
+        ok = False
+        for x in range(M):
+            if check(x, S, T_str, N, M):
+                ok = True
+                break
+        results.append("YES" if ok else "NO")
+
+    # Output results to keep behavior observable
+    for res in results:
+        # print(res)
+        pass
 if __name__ == "__main__":
-    # 示例：使用 n = 10 运行
+    # Example deterministic call; adjust n to scale input size
     main(10)

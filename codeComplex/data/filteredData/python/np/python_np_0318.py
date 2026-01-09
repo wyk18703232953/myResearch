@@ -7,7 +7,8 @@ def main(n):
 
     # 若 k 太小，需避免访问负索引
     if k < 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     # dp[2][k+2][4]
@@ -46,9 +47,8 @@ def main(n):
     for i in range(4):
         total = (total + dp[1][k][i]) % MOD
 
-    print(total % MOD)
-
-
+    # print(total % MOD)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

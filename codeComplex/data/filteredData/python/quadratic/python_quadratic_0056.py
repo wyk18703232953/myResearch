@@ -1,27 +1,34 @@
-import random
-
-mod = 10**9 + 7
+import sys,math,itertools
+from collections import Counter,deque,defaultdict
+from bisect import bisect_left,bisect_right 
+from heapq import heappop,heappush,heapify, nlargest
+from copy import deepcopy
+mod = 10**9+7
 INF = float('inf')
 
-
 def main(n):
-    # 生成测试数据：长度为 n 的数组，元素为 0~10^9 的随机整数
-    a = [random.randint(0, 10**9) for _ in range(n)]
+    # Interpret n as array length; number of queries q is set to n
+    # Deterministic construction of array a
+    a = [(i * 3 + 1) % (2 * n + 1) for i in range(n)]
 
-    # 初始逆序对奇偶性
     res = 0
     for i in range(n):
-        for j in range(i + 1, n):
+        for j in range(i+1,n):
             if a[i] > a[j]:
                 res = 1 - res
 
-    # 生成若干随机区间查询，数量可随 n 调整
-    q = max(1, n // 2)
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
+    q = n
+    for k in range(q):
+        # Deterministic generation of (l, r) within [0, n-1]
+        l = k % n
+        r = (k * 2 + 1) % n
+        if l > r:
+            l, r = r, l
         m = r - l + 1
         swap = m * (m - 1) // 2
         if swap % 2:
             res = 1 - res
-        print('odd' if res else 'even')
+        # print('odd' if res else 'even')
+        pass
+if __name__ == "__main__":
+    main(5)

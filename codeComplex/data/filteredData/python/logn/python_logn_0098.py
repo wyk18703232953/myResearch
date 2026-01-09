@@ -20,6 +20,7 @@ def main(n: int):
         while z > -1:
             ans += 2 ** z
             z -= 1
+
     else:
         ct = 0
         stringa = ""
@@ -35,9 +36,8 @@ def main(n: int):
                 stringa += str((int(rs[i]) + 1) % 2)
         ans = (int(stringa, 2) ^ r)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

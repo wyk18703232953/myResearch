@@ -17,7 +17,8 @@ def main(n):
         k_val = k_i
 
         if n_val >= 32:
-            print("YES", n_val - 1)
+            # print("YES", n_val - 1)
+            pass
             continue
 
         possibleSize = -1
@@ -36,11 +37,12 @@ def main(n):
             sz += 1
 
         if possibleSize != -1:
-            print("YES", n_val - possibleSize)
+            # print("YES", n_val - possibleSize)
+            pass
+
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 作为规模为 5 的测试
     main(5)

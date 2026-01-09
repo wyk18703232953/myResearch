@@ -2,7 +2,8 @@ import os
 
 def log(*args, **kwargs):
     if os.environ.get('CODEFR'):
-        print(*args, **kwargs)
+        # print(*args, **kwargs)
+        pass
 
 
 def main(n):
@@ -16,9 +17,8 @@ def main(n):
     output = []
     for i in range(n):
         output.append(s[i % len(s)])
-    print(''.join(output))
-
-
+    # print(''.join(output))
+    pass
 if __name__ == "__main__":
     # 示例：可修改此处以测试不同规模
     main(10)

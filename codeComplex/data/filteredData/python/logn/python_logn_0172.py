@@ -13,6 +13,7 @@ def bin_search(n):
             return mid
         elif val > n:
             r = mid
+
         else:
             l = mid
     return l
@@ -32,6 +33,7 @@ def main(n):
         return 0
     elif n <= k:
         return 1
+
     else:
         return k - 1 - bin_search(k * (k - 1) // 2 - n + 1)
 
@@ -39,4 +41,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行
     n = 10
-    print(main(n))
+    # print(main(n))
+    pass

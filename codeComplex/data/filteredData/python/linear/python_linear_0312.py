@@ -1,21 +1,18 @@
-import random
-
 def main(n):
-    # 1. 生成测试数据
-    # 约定：m 在 [1, n] 范围内随机，a[i] 在 [0, 10**9] 范围内随机
+    # Ensure m >= 1
     if n <= 0:
         return
+    # Define m as a function of n to control bucket size; here choose roughly sqrt(n)
+    m = max(1, int(n**0.5))
+    # Generate deterministic array a of length n
+    # Pattern: a[i] = i % (2*m) to give varied residues
+    a = [i % (2 * m) for i in range(n)]
 
-    m = random.randint(1, n)
-    a = [random.randint(0, 10**9) for _ in range(n)]
-
-    # 2. 原始逻辑
     t = n // m
     remain = [[] for _ in range(m)]
     for i in range(n):
         x = a[i] % m
         remain[x].append(i)
-
     ans = 0
     f = []
     for i in range(2 * m):
@@ -29,12 +26,10 @@ def main(n):
             delta = abs(i - j)
             a[elm] += delta
             ans += delta
-
-    # 3. 输出结果
-    print(ans)
-    print(*a)
-
-
+    # print(ans)
+    pass
+    # print(*a)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
+    # Example call; adjust n to scale input size
     main(10)

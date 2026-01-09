@@ -52,9 +52,8 @@ def main(n):
 
     # 输出结果（模拟原来的 print）
     for v in res:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     # 这里给一个默认规模示例，可以按需要修改
     main(10**5)

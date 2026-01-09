@@ -71,9 +71,8 @@ def main(n):
 
     # 输出测试结果
     for n_i, k_i in tests:
-        print(f"n={n_i}, k={k_i} -> {solve(n_i, k_i)}")
-
-
+        # print(f"n={n_i}, k={k_i} -> {solve(n_i, k_i)}")
+        pass
 if __name__ == "__main__":
     # 示例：以 n=10 作为规模运行
     main(10)

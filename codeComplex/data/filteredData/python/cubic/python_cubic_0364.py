@@ -33,6 +33,7 @@ def main(n):
         for j in range(0, i // 2 + 1):
             if j == 0:
                 f[i][j] = mi_2[i - 1]
+
             else:
                 val = 0
                 for k in range(2, i):
@@ -45,7 +46,8 @@ def main(n):
     for i in range(0, n + 1):
         ans = (ans + f[n][i]) % mod
 
-    print(ans)
+    # print(ans)
+    pass
 
 
 # 示例调用（可根据需要注释或修改）

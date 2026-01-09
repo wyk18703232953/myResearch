@@ -1,5 +1,3 @@
-import random
-
 def solve(n, m, x, t):
     r = [0] * n
     d = [0] * m
@@ -10,6 +8,7 @@ def solve(n, m, x, t):
         if t[i]:
             d[cd] = x[i]
             cd += 1
+
         else:
             r[cr] = x[i]
             cr += 1
@@ -24,34 +23,103 @@ def solve(n, m, x, t):
 
 
 def main(n):
-    # 生成测试数据：
-    # n: 类型为0的元素个数
-    # 随机生成 m，满足 1 <= m <= max(1, n)
-    m = random.randint(1, max(1, n))
+    # 定义规模含义：
+    # 对于给定 n：
+    #   m = max(1, n // 2)  # d 的个数
+    #   n_r = max(1, n - m) # r 的个数
+    #   总长度为 n_r + m
+    if n <= 1:
+        m = 1
+        n_r = 1
 
-    # 一共需要 n + m 个位置
-    total = n + m
+    else:
+        m = max(1, n // 2)
+        n_r = max(1, n - m)
 
-    # 构造 t，使得其中恰好有 n 个 0 和 m 个 1
-    t = [0] * n + [1] * m
-    random.shuffle(t)
+    total = n_r + m
 
-    # 生成严格递增的 x（原题通常是有序坐标/时间等）
-    # 为简单起见，生成一个随机递增序列
-    x = []
-    cur = 0
-    for _ in range(total):
-        cur += random.randint(1, 10)
-        x.append(cur)
+    # 生成确定性的 x：严格递增，方便保持 r 和 d 各自有序
+    # x[i] = 2 * i  保证数值间隔充足
+    x = [2 * i for i in range(total)]
 
-    result = solve(n, m, x, t)
-    print("n:", n)
-    print("m:", m)
-    print("x:", x)
-    print("t:", t)
-    print("answer:", result)
+    # 生成确定性的 t，控制 r/d 的分布
+    # 先构造一个长度为 total 的二进制序列，
+    # 再根据需要调整，使得 0 的个数为 n_r，1 的个数为 m
+    t = [0] * total
+    # 先放 m 个 1 在偶数位置，如果不够再填奇数位置
+    ones_needed = m
+    for i in range(0, total, 2):
+        if ones_needed > 0:
+            t[i] = 1
+            ones_needed -= 1
 
+        else:
+            break
+    for i in range(1, total):
+        if ones_needed <= 0:
+            break
+        if t[i] == 0:
+            t[i] = 1
+            ones_needed -= 1
 
-# 示例调用
+    # 现在统计 1 的个数，确定 0 的个数是否为 n_r，不足则补 0，多余则裁剪前面的 0
+    ones = sum(t)
+    zeros = total - ones
+    if zeros > n_r:
+        # 需要把多余的 0 变成 1
+        need_to_flip = zeros - n_r
+        for i in range(total):
+            if need_to_flip == 0:
+                break
+            if t[i] == 0:
+                t[i] = 1
+                need_to_flip -= 1
+    elif zeros < n_r:
+        # 需要把多余的 1 变成 0
+        need_to_flip = n_r - zeros
+        for i in range(total):
+            if need_to_flip == 0:
+                break
+            if t[i] == 1:
+                t[i] = 0
+                need_to_flip -= 1
+
+    # 再次统计，确保合法
+    ones = sum(t)
+    zeros = total - ones
+    if ones != m:
+        # 若仍有偏差，在末尾强制修正，保证确定性
+        # 优先把末尾的元素改成 1 或 0
+        # 调整 1 的个数
+        if ones > m:
+            # 多的 1 改为 0
+            surplus = ones - m
+            for i in range(total - 1, -1, -1):
+                if surplus == 0:
+                    break
+                if t[i] == 1:
+                    t[i] = 0
+                    surplus -= 1
+        elif ones < m:
+            # 不足的 1 从后往前补
+            lack = m - ones
+            for i in range(total - 1, -1, -1):
+                if lack == 0:
+                    break
+                if t[i] == 0:
+                    t[i] = 1
+                    lack -= 1
+
+    # 最终截取前 total 个元素，保证长度不变
+    t = t[:total]
+
+    # 重新计算 r 和 d 的真实数量
+    n_r_real = total - sum(t)
+    m_real = sum(t)
+
+    # 调用原算法
+    result = solve(n_r_real, m_real, x, t)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    main(5)
+    main(10)

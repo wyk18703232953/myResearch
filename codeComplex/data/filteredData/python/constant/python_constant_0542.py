@@ -13,6 +13,7 @@ def main(n):
     # 原逻辑：输出 ceil(s / n)
     if s % n == 0:
         result = s // n
+
     else:
         result = s // n + 1
 
@@ -22,4 +23,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：可以自行修改 n 测试
-    print(main(10))
+    # print(main(10))
+    pass

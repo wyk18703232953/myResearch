@@ -1,17 +1,11 @@
 from collections import Counter
-import random
-import string
 
-
-def main(n: int):
-    # 根据 n 生成测试数据：生成三条长度为 n 的随机字符串
-    # 字符集选择大写字母，可按需要修改
-    def gen_str(length):
-        return ''.join(random.choice(string.ascii_uppercase) for _ in range(length))
-
-    a = gen_str(n)
-    b = gen_str(n)
-    c = gen_str(n)
+def main(n):
+    # Interpret n as both: string length and allowed changes
+    # Generate three deterministic strings of length n
+    a = ''.join(chr(ord('a') + (i % 3)) for i in range(n))
+    b = ''.join(chr(ord('b') + (i % 3)) for i in range(n))
+    c = ''.join(chr(ord('c') + (i % 3)) for i in range(n))
 
     fa = Counter(a)
     fb = Counter(b)
@@ -31,15 +25,17 @@ def main(n: int):
         lc = len(c) - 1
 
     if la > max(lb, lc):
-        print("Kuro")
+        # print("Kuro")
+        pass
     elif lb > max(la, lc):
-        print("Shiro")
+        # print("Shiro")
+        pass
     elif lc > max(la, lb):
-        print("Katie")
+        # print("Katie")
+        pass
+
     else:
-        print("Draw")
-
-
+        # print("Draw")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自行修改
-    main(5)
+    main(10)

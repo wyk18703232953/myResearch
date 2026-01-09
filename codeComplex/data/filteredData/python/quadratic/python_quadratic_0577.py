@@ -1,60 +1,60 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # q：查询次数，约为 n（也可以按需要自行调整规则）
-    # 对于每个查询：
-    #   - 随机生成 1 <= k <= n_i 的窗口大小
-    #   - 随机生成长度为 n_i 的字符串 s（只含 R/G/B）
-    q = max(1, n)  # 至少一个测试
-    print(q)
-    for _ in range(q):
-        # 为了多样性，可以让每个测试用例的长度在 [1, n] 之间波动
-        length = random.randint(1, n)
-        k = random.randint(1, length)
-        s = ''.join(random.choice('RGB') for _ in range(length))
+    # Interpret n as the number of test cases q
+    q = n
 
-        # 输出生成的测试数据（可选，如果只想要答案可以去掉这三行）
-        print(length, k)
-        print(s)
+    # Deterministic generation of test cases
+    # For test case t (0-based):
+    #   n_t = 5 + t
+    #   k_t = 3 + (t % 3), ensure k_t <= n_t
+    #   s_t: string of length n_t over 'R','G','B' generated deterministically
+    for t in range(q):
+        n_t = 5 + t
+        k_t = 3 + (t % 3)
+        if k_t > n_t:
+            k_t = n_t
 
-        # 以下是原逻辑的封装（对每个用例计算答案）
+        # Generate string s_t deterministically
+        chars = ['R', 'G', 'B']
+        s_list = [chars[(i + t) % 3] for i in range(n_t)]
+        s = "".join(s_list)
+
         min_ans = 10 ** 9
-        for i in range(length - k + 1):
+        for i in range(n_t - k_t + 1):
             count1 = 0
             count2 = 0
             count3 = 0
-            for j in range(k):
-                pos = i + j
-                r = s[pos]
-                mod = pos % 3
-
+            for j in range(k_t):
+                idx = i + j
+                mod = idx % 3
+                ch = s[idx]
                 if mod == 0:
-                    if r != "R":
+                    if ch != "R":
                         count1 += 1
-                    if r != "G":
+                    if ch != "G":
                         count2 += 1
-                    if r != "B":
+                    if ch != "B":
                         count3 += 1
                 elif mod == 1:
-                    if r != "G":
+                    if ch != "G":
                         count1 += 1
-                    if r != "B":
+                    if ch != "B":
                         count2 += 1
-                    if r != "R":
+                    if ch != "R":
                         count3 += 1
                 else:  # mod == 2
-                    if r != "B":
+                    if ch != "B":
                         count1 += 1
-                    if r != "R":
+                    if ch != "R":
                         count2 += 1
-                    if r != "G":
+                    if ch != "G":
                         count3 += 1
-
-            min_ans = min(min_ans, count1, count2, count3)
-
-        print(min_ans)
-
-
-# 示例：调用 main(10) 生成规模为 10 的测试数据并计算答案
-# main(10)
+            if count1 < min_ans:
+                min_ans = count1
+            if count2 < min_ans:
+                min_ans = count2
+            if count3 < min_ans:
+                min_ans = count3
+        # print(min_ans)
+        pass
+if __name__ == "__main__":
+    main(5)

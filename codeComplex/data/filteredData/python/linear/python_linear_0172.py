@@ -12,16 +12,19 @@ def main(n: int):
     test_n = n
 
     if test_n <= 5:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         for i in range(2, 5):
-            print(1, i)
+            # print(1, i)
+            pass
         for i in range(5, test_n + 1):
-            print(2, i)
+            # print(2, i)
+            pass
     for i in range(2, test_n + 1):
-        print(1, i)
-
-
+        # print(1, i)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，可按需修改或在其他模块中调用 main(n)
     main(10)

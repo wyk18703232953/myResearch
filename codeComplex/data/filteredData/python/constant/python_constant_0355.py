@@ -1,7 +1,5 @@
-import random
-
-def main(n: int):
-    # n 为已拥有的宝石数量，规模不超过 6
+def main(n):
+    kol = n
     dic = {
         'purple': 'Power',
         'green': 'Time',
@@ -11,33 +9,24 @@ def main(n: int):
         'yellow': 'Mind'
     }
 
-    # 约束：实际最多只能有 6 颗不同颜色的宝石
-    n = max(0, min(n, 6))
-
-    # 根据 n 随机生成测试数据：从 6 种颜色中选 n 种
     colors = list(dic.keys())
-    owned_colors = random.sample(colors, n)
-
-    kol = n
     r = []
+    # deterministically pick the first kol colors
+    for i in range(kol):
+        r.append(colors[i % len(colors)])
+
+    missing = 6 - kol if kol <= 6 else 0
+
     g = []
-    missing = 6 - kol
-
-    # 原逻辑：将拥有的宝石颜色记录到 r 中
-    for rocks in owned_colors:
-        r.append(rocks)
-
-    # 找出缺失的宝石对应的能力
     for key in dic:
         if r.count(key) == 0:
             g.append(dic[key])
 
-    # 输出结果
-    print(missing)
+    # print(missing)
+    pass
     for stone in g:
-        print(stone)
-
-
+        # print(stone)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(3)，可根据需要修改
+    # example call; adjust n as needed for experiments
     main(3)

@@ -6,6 +6,7 @@ def mu(a, n):
     q = mu(a, n // 2)
     if n % 2 == 0:
         return q * q % K
+
     else:
         return q * q % K * a % K
 
@@ -37,6 +38,7 @@ def calc(m, d, S, c):
         U = c[m][u] * c[S - u * d + m - 1][m - 1] % K
         if u % 2 == 0:
             res = (res + U) % K
+
         else:
             res = (res - U + K) % K
     return res
@@ -72,6 +74,7 @@ def main(n):
         for d in range(r, max_d + 1):
             if i < p:
                 A = (A + calc(p - i, d, s - d * i, c)) % K
+
             else:
                 if s - i * d == 0:
                     A += 1

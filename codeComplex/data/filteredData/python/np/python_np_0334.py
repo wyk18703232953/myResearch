@@ -29,13 +29,16 @@ def main(n):
                         if he <= 1:
                             nj = j + (he != me)
                             dp[i + 1][nj][he] = (dp[i + 1][nj][he] + val) % m
+
                         else:
                             nj = j + 1
                             dp[i + 1][nj][he] = (dp[i + 1][nj][he] + val) % m
+
                     else:
                         if he <= 1:
                             nj = j
                             dp[i + 1][nj][he] = (dp[i + 1][nj][he] + val) % m
+
                         else:
                             nj = j + (he != me) * 2
                             dp[i + 1][nj][he] = (dp[i + 1][nj][he] + val) % m
@@ -45,12 +48,13 @@ def main(n):
 
     # 输出对应 n-1 行、列 k 的四种状态之和
     if n - 1 < N and 0 <= k < 2 * N:
-        print(sum(dp[n - 1][k]) % m)
+        # print(sum(dp[n - 1][k]) % m)
+        pass
+
     else:
         # 若 n 或 k 超出预设 dp 范围则输出 0（或按需要调整）
-        print(0)
-
-
+        # print(0)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可自行修改测试规模
     main(5)

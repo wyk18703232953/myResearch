@@ -12,6 +12,7 @@ def main(n):
     # 可根据需要自行调整生成规则
     if n <= 2:
         k = 0
+
     else:
         # 上界只是为了防止某些 n 时组合数过大，影响运行时间
         from math import ceil
@@ -34,6 +35,7 @@ def main(n):
                 tmp = x
             elif ans[right] == '#':
                 tmp = '01'
+
             else:
                 tmp = ans[right]
 
@@ -67,11 +69,12 @@ def main(n):
 
     # 输出结果
     if ans[0] == '0':
-        print(''.join(ans))
+        # print(''.join(ans))
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == '__main__':
     # 示例：可在此处调用 main(n) 做简单测试
     # 用户可根据需要修改 n

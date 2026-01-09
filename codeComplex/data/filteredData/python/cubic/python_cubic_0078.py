@@ -1,5 +1,4 @@
 from math import log
-import random
 
 spaces = (" ", "\n", "\t")
 stops = ("", " ", "\n", "\t")
@@ -9,16 +8,19 @@ interestPoints = []
 
 
 class TPoint:
+    x = 0
+    y = 0
+    h = 0
+
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.h = 0  # эвристика
 
     def __str__(self):
         return "(" + str(self.x) + "," + str(self.y) + ")"
 
     def __eq__(self, other):
-        return isinstance(other, TPoint) and self.x == other.x and self.y == other.y
+        return self.x == other.x and self.y == other.y
 
     def __hash__(self):
         return self.x * 20000 + self.y
@@ -43,6 +45,7 @@ def addPoint(p, pointList):
         extendedPoints.add(p)
         pointList.append(p)
         return True
+
     else:
         return False
 
@@ -65,94 +68,91 @@ def extend(point, n, m, poinList):
         ok = addPoint(TPoint(point.x, point.y - 1), poinList) or ok
     if point.y < m:
         ok = addPoint(TPoint(point.x, point.y + 1), poinList) or ok
-
     return ok
 
 
+def det_rand_int(seed, n, m):
+    val = seed * 1103515245 + 12345
+    if val < 0:
+        val = -val
+    # map to [1, n] or [1, m] deterministically
+    x = (val % n) + 1
+    y = (val // 7 % m) + 1
+    return x, y
+
+
 def main(n):
-    """
-    参数 n 作为规模，构造一个 n x n 的棋盘，并随机生成起始点。
-    返回算法最终输出的 (x, y) 坐标。
-    """
-    # 清空全局集合，保证多次调用 main(n) 时互不影响
     global extendedPoints, startingPoints, interestPoints
+
     extendedPoints = set()
     startingPoints = set()
     interestPoints = []
 
-    # 规模设成 n x n
-    m = n
+    # map n to grid size and number of starting points
+    if n < 2:
+        g = 2
 
-    # 根据规模生成测试数据：随机生成 k 个起点
-    # 至少 1 个，至多 min(10, n*n)
-    max_k = min(10, n * n)
-    if max_k <= 0:
-        return (n, m)
+    else:
+        g = n
+    rows = g
+    cols = g
+    k = max(1, g // 2)
 
-    random.seed()
-    k = random.randint(1, max_k)
+    mscale = 5
 
-    # 随机生成 k 个不同的网格点作为 startingPoints
-    used = set()
-    while len(startingPoints) < k:
-        x = random.randint(1, n)
-        y = random.randint(1, m)
-        if (x, y) in used:
-            continue
-        used.add((x, y))
+    for i in range(1, k + 1):
+        x = (i * 37) % rows + 1
+        y = (i * 53) % cols + 1
         p = TPoint(x, y)
         startingPoints.add(p)
         extendedPoints.add(p)
 
-    mscale = 5
-
-    # 构建初始 interestPoints
     tmpPoints = []
     tmpPoints.append(TPoint(1, 1))
-    tmpPoints.append(TPoint(1, m))
-    tmpPoints.append(TPoint(n, 1))
-    tmpPoints.append(TPoint(n, m))
-    if n > 2 and m > 2:
-        tmpPoints.append(TPoint(int(n / 2), 1))
-        tmpPoints.append(TPoint(1, int(m / 2)))
-        tmpPoints.append(TPoint(int(n / 2), m))
-        tmpPoints.append(TPoint(n, int(m / 2)))
-        tmpPoints.append(TPoint(int(n / 2), int(m / 2)))
+    tmpPoints.append(TPoint(1, cols))
+    tmpPoints.append(TPoint(rows, 1))
+    tmpPoints.append(TPoint(rows, cols))
+    if rows > 2 and cols > 2:
+        tmpPoints.append(TPoint(rows // 2, 1))
+        tmpPoints.append(TPoint(1, cols // 2))
+        tmpPoints.append(TPoint(rows // 2, cols))
+        tmpPoints.append(TPoint(rows, cols // 2))
+        tmpPoints.append(TPoint(rows // 2, cols // 2))
 
     for p in tmpPoints:
         addPoint(p, interestPoints)
     for p in startingPoints:
-        extend(p, n, m, interestPoints)
+        extend(p, rows, cols, interestPoints)
 
     interestPoints.sort(reverse=True, key=sortKey)
     while len(interestPoints) > 3 * mscale:
         interestPoints.pop(len(interestPoints) - 1)
 
-    random.seed()
-
     if len(interestPoints) > 0:
         maxPoint = interestPoints[0]
-        for p in interestPoints:
+        for idx, p in enumerate(interestPoints):
             currentBeam = [p]
             canExtend = True
+            local_seed = (rows * 1000003 + cols * 10007 + idx * 97)
+            step = 0
             while canExtend:
-                addPoint(TPoint(random.randint(1, n), random.randint(1, m)), currentBeam)
+                xr, yr = det_rand_int(local_seed + step, rows, cols)
+                step += 1
+                addPoint(TPoint(xr, yr), currentBeam)
                 canExtend = False
                 for i in range(len(currentBeam)):
-                    if extend(currentBeam[i], n, m, currentBeam):
+                    if extend(currentBeam[i], rows, cols, currentBeam):
                         canExtend = True
                 currentBeam.sort(reverse=True, key=sortKey)
                 while len(currentBeam) > mscale:
                     currentBeam.pop(len(currentBeam) - 1)
             if currentBeam[0].h > maxPoint.h:
                 maxPoint = currentBeam[0]
-        # 返回最终坐标
-        return (maxPoint.x, maxPoint.y)
+        # print(str(maxPoint.x) + " " + str(maxPoint.y))
+        pass
+
     else:
-        return (n, m)
-
-
+        # print(str(rows) + " " + str(cols))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，并打印返回结果
-    x, y = main(10)
-    print(x, y)
+    main(10)

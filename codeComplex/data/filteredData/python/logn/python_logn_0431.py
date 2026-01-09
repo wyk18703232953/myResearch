@@ -10,6 +10,7 @@ def b(n: int, k: int):
         count = getsum(n - mid)
         if count <= k:
             l = mid
+
         else:
             r = mid
         if l - r <= 1:
@@ -41,19 +42,22 @@ def main(n: int):
 
         min_side = b(N, K)
         if min_side is None:
-            print('NO')
+            # print('NO')
+            pass
             continue
         K -= getsum(N - min_side)
         if N == 2 and min_side == 1 and K == 2:
-            print('NO')
+            # print('NO')
+            pass
             continue
         num_squares = (1 << (N - min_side)) * 2 - 1
         if K >= num_squares:
-            print('YES ' + str(min_side - 1))
+            # print('YES ' + str(min_side - 1))
+            pass
+
         else:
-            print('YES ' + str(min_side))
-
-
+            # print('YES ' + str(min_side))
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 进行测试
     main(5)

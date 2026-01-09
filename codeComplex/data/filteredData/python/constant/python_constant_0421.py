@@ -1,28 +1,28 @@
-import random
-
 def main(n):
-    # 生成测试数据：k 在 [1, 2*n] 范围内随机选取
-    if n <= 0:
-        return
+    # 将 n 映射为 (N, K)，构造确定性输入规模
+    # 这里设定 N = n，K = n//2 + 1，保证随 n 线性增长
+    N = max(1, n)
+    K = n // 2 + 1
 
-    k = random.randint(1, 2 * n)
+    # 原算法逻辑
+    if 2 * N - 1 < K:
+        result = 0
+    elif K <= N + 1:
+        if K % 2:
+            result = K // 2
 
-    # 原逻辑
-    if 2 * n - 1 < k:
-        print(0)
-    elif k <= n + 1:
-        if k % 2:
-            print(k // 2)
         else:
-            print(k // 2 - 1)
+            result = K // 2 - 1
+
     else:
-        t1 = k - n
-        if k % 2 == 0:
-            print(k // 2 - t1)
+        t1 = K - N
+        if K % 2 == 0:
+            result = K // 2 - t1
+
         else:
-            print(k // 2 - t1 + 1)
+            result = K // 2 - t1 + 1
 
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

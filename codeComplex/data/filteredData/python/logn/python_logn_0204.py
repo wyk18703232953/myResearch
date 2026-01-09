@@ -3,7 +3,9 @@ def main(n):
     s = n // 2
 
     if s >= n:
-        print('0')
+        # print('0')
+        pass
+
     else:
         for i in range(s, n + 2):
             l = 0
@@ -11,9 +13,8 @@ def main(n):
                 l += int(j)
             if i - l >= s:
                 break
-        print(n - i + 1)
-
-
+        # print(n - i + 1)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可自行调整
     main(1000)

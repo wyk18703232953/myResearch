@@ -7,6 +7,7 @@ def f(k):
         if k % 2 == 1:
             res *= a
             k -= 1
+
         else:
             a *= a
             k //= 2
@@ -21,15 +22,18 @@ def main(n):
     k = n  # 简单示例：令 k = n
 
     if n == 0:
-        print(0)
+        # print(0)
+        pass
     elif k == 0:
-        print((n * 2) % MOD)
+        # print((n * 2) % MOD)
+        pass
+
     else:
         first = (2 * n - 1) % MOD
         first *= f(k)
         first = (first + 1) % MOD
-        print(first)
-
+        # print(first)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，使用某个规模 n
     main(10)

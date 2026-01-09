@@ -1,10 +1,9 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # 可根据需要调整数据范围
-    nums = [random.randint(1, 10**6) for _ in range(n)]
-    costs = [random.randint(1, 10**6) for _ in range(n)]
+    # Deterministically generate nums and costs based on n
+    # Example: nums is a simple increasing sequence with some modulation,
+    # costs is a derived sequence to keep structure non-trivial but deterministic
+    nums = [(i * 3) % (n + 7) for i in range(n)]
+    costs = [(i * 5 + 2) % (n + 11) + 1 for i in range(n)]
 
     k = -1
 
@@ -30,9 +29,7 @@ def main(n):
                     k = nat + kc + costs[i]
                 k = min(nat + kc + costs[i], k)
 
-    print(k)
-
-
+    # print(k)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

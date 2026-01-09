@@ -1,18 +1,18 @@
-import random
-
 def main(n):
-    # 生成测试数据：随机生成满足 0 <= l[i], r[i] <= n 的数据
-    l = [random.randint(0, n) for _ in range(n)]
-    r = [random.randint(0, n) for _ in range(n)]
+    # Deterministically generate l and r based on n
+    # Example: l[i] = i % 3, r[i] = (i * 2) % 5
+    l = [(i % 3) for i in range(n)]
+    r = [((i * 2) % 5) for i in range(n)]
 
     a = [0 for _ in range(n)]
     m = []
     m_ = []
     for i in range(n):
-        m.append(l[i] + r[i])
-        m_.append(l[i] + r[i])
+        m_val = l[i] + r[i]
+        m.append(m_val)
+        m_.append(m_val)
     m.sort()
-    ma = m[-1] + 1
+    ma = m[-1] + 1 if n > 0 else 1
 
     for i in range(n):
         a[i] = ma - m_[i]
@@ -38,12 +38,13 @@ def main(n):
             break
 
     if res:
-        print("YES")
-        print(" ".join(str(x) for x in a))
+        # print("YES")
+        pass
+        # print(" ".join(str(x) for x in a))
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：可修改 n 以测试不同规模
-    main(5)
+    main(10)

@@ -12,6 +12,7 @@ def main(n: int):
             cur -= 5
             b.append(4)
             check = False
+
         else:
             check = True
             a.append(4)
@@ -21,10 +22,10 @@ def main(n: int):
     a.append(5)
     b.append(5)
 
-    print(*a, sep="")
-    print(*b, sep="")
-
-
+    # print(*a, sep="")
+    pass
+    # print(*b, sep="")
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 20 作为测试规模
     main(20)

@@ -1,45 +1,60 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 行，m 列，步数 k
-    # 这里约定 m = n，k = 2 * n（可按需调整）
-    m = n
-    k = 2 * n
+    # Map n to grid size and k
+    # For scalability and determinism:
+    # n >= 2: grid size n x n, k = 2 * n (even)
+    # n == 1: minimal valid grid 2 x 2, k = 2
+    if n <= 1:
+        rows = 2
+        cols = 2
+        k = 2
 
-    # 生成 reb1: n 行 m-1 列，边权为 1~10 的随机整数
-    reb1 = [[random.randint(1, 10) for _ in range(m - 1)] for _ in range(n)]
-    # 生成 reb2: n-1 行 m 列
-    reb2 = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
+    else:
+        rows = n
+        cols = n
+        k = 2 * n
 
+    # Deterministically generate reb1 (rows x (cols - 1)) and reb2 ((rows - 1) x cols)
+    # reb1[i][j] is the cost between (i,j) and (i,j+1)
+    # reb2[i][j] is the cost between (i,j) and (i+1,j)
+    reb1 = [[(i + 1) * (j + 2) for j in range(cols - 1)] for i in range(rows)]
+    reb2 = [[(i + 2) * (j + 1) for j in range(cols)] for i in range(rows - 1)]
+
+    # If k is odd (should not happen with the mapping above), output -1 grid
     if k % 2:
-        for _ in range(n):
-            print(" ".join(["-1"] * m))
+        for i in range(rows):
+            for j in range(cols):
+                # print(-1, end=" ")
+                pass
+            # print()
+            pass
         return
 
-    minsum = [[0] * m for _ in range(n)]
-    nminsum = [[0] * m for _ in range(n)]
+    minsum = [[0] * cols for _ in range(rows)]
+    nminsum = [[0] * cols for _ in range(rows)]
 
     for _ in range(k // 2):
-        for i in range(n):
-            for j in range(m):
+        for i in range(rows):
+            for j in range(cols):
                 cmin = 1000000000010
                 if i != 0:
                     cmin = min(cmin, minsum[i - 1][j] + reb2[i - 1][j])
-                if i != n - 1:
+                if i != rows - 1:
                     cmin = min(cmin, minsum[i + 1][j] + reb2[i][j])
                 if j != 0:
                     cmin = min(cmin, minsum[i][j - 1] + reb1[i][j - 1])
-                if j != m - 1:
+                if j != cols - 1:
                     cmin = min(cmin, minsum[i][j + 1] + reb1[i][j])
                 nminsum[i][j] = cmin
-        for i in range(n):
-            for j in range(m):
+        for i in range(rows):
+            for j in range(cols):
                 minsum[i][j] = nminsum[i][j]
 
     for row in minsum:
-        print(" ".join(str(v * 2) for v in row))
-
-
+        for val in row:
+            # print(val * 2, end=" ")
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n=4
-    main(4)
+    # Example deterministic call; adjust n as needed for experiments
+    main(5)

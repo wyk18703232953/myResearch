@@ -9,6 +9,7 @@ def fib(n):
         i = ser[-1] + ser[-2]
     if i != n:
         return -1
+
     else:
         return len(ser)
 
@@ -26,6 +27,7 @@ def main(n):
         a = 1
         b = 1
         c = 1
+
     else:
         ans = fib(n)
         if ans != -1:
@@ -33,10 +35,12 @@ def main(n):
             b = ser[ans-2]
             c = ser[ans-3]
     if ans != -1:
-        print(a, b, c)
-    else:
-        print("I'm too stupid to solve this problem")
+        # print(a, b, c)
+        pass
 
+    else:
+        # print("I'm too stupid to solve this problem")
+        pass
 if __name__ == "__main__":
     # 根据 n 生成测试数据，这里直接给一个示例 n
     test_n = 21

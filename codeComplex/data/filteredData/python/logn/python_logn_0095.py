@@ -8,9 +8,8 @@ def main(n: int):
     # 原始逻辑
     ans = (1 << ((l ^ r).bit_length())) - 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可自行修改 n 做简单测试
     main(5)

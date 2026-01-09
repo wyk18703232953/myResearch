@@ -1,15 +1,16 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # a 为数组 A 的长度（至少 2），b 为查询次数
-    a = max(2, n)          # 确保 a >= 2
-    b = n                  # 这里简单设为 n 次查询
+    # 数据规模设计：
+    # a：序列长度
+    # b：查询个数
+    # A：长度为 a 的整数序列，确定性生成
+    # 约定：a = max(2, n)，b = max(1, n)
+    a = max(2, n)
+    b = max(1, n)
 
-    # 生成 A：长度为 a 的随机整数序列
-    A = [random.randint(1, 100) for _ in range(a)]
+    # 生成 A：简单的确定性序列
+    # A[i] = (i % (n + 1)) + 1，保证正数、可变化
+    A = [(i % (n + 1)) + 1 for i in range(a)]
 
-    # 原逻辑开始
     A.append(-1)
     B = []
     Z = []
@@ -21,31 +22,50 @@ def main(n):
         if x > y:
             B.append(y)
             y = A[i + 2]
+
         else:
             B.append(x)
             x, y = y, A[i + 2]
 
-    # 构造 b 个查询 w
-    # 覆盖范围：1..len(Z)+len(B) 的一些值，保证既有 <=len(Z) 也有 >len(Z) 的情况
-    max_query = len(Z) + len(B)
-    if max_query == 0:
-        queries = [1] * b
-    else:
-        queries = [random.randint(1, max_query) for _ in range(b)]
+    # 生成 b 个查询 w，原本是从输入读取
+    # 这里使用确定性构造：
+    # 既包含小于等于 len(Z) 的值，也包含大于 len(Z) 的值
+    # w_k = k + 1，当需要大值时加上 len(Z)
+    queries = []
+    LZ = len(Z)
+    for i in range(b):
+        if i % 2 == 0:
+            # 偶数索引：保证在 1..LZ 范围内（若 LZ>0）
+            if LZ > 0:
+                w = (i % LZ) + 1
+
+            else:
+                w = 1
+
+        else:
+            # 奇数索引：构造大一些的数
+            if LZ > 0:
+                w = LZ + i + 1
+
+            else:
+                w = i + 2
+        queries.append(w)
 
     for w in queries:
         if w <= len(Z):
             AN.append(Z[w - 1])
+
         else:
-            # 注意：原程序这里有潜在除零，若 len(B)==0 且 w>len(Z) 会崩溃
-            # 为保持语义一致，这里也保持相同行为，不做防护
-            w_mod = w % len(B)
-            AN.append((x, B[w_mod - 1]))
+            if len(B) == 0:
+                # 极端情况下 B 为空，避免除以零，构造一个固定对
+                AN.append((x, x))
+
+            else:
+                w = w % len(B)
+                AN.append((x, B[w - 1]))
 
     for W in AN:
-        print(*W)
-
-
+        # print(*W)
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
     main(10)

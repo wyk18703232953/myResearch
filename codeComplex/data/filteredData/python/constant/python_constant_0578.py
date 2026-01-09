@@ -9,11 +9,12 @@ def main(n: int):
     ans = num <= num2
 
     if ans:
-        print("White")
+        # print("White")
+        pass
+
     else:
-        print("Black")
-
-
+        # print("Black")
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(8)
     main(8)

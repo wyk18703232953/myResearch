@@ -4,6 +4,7 @@ def get_smallest(m, l):
         if m.get(i, 0):
             if i == l:
                 res += i * (m[i] - 1)
+
             else:
                 res += i * m[i]
     return res
@@ -16,6 +17,7 @@ def solve(a, b):
         return ''.join(a)
     elif a == b:
         return a
+
     else:
         cmap = dict()
         for i in a:
@@ -52,9 +54,8 @@ def main(n):
     b = '9' * n
 
     result = solve(a, b)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：运行规模 n = 10
     main(10)

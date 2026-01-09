@@ -11,9 +11,8 @@ def main(n: int):
 
     remaining = k - total_digit - 1
     corr_num = str(pow(10, digit - 1) + remaining // digit)
-    print(corr_num[remaining % digit])
-
-
+    # print(corr_num[remaining % digit])
+    pass
 if __name__ == "__main__":
     # 示例：可在此处修改 n 进行测试
     main(15)

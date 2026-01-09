@@ -39,4 +39,5 @@ def main(n):
 if __name__ == "__main__":
     # 简单示例运行，可按需修改 n
     n = 20
-    print(main(n))
+    # print(main(n))
+    pass

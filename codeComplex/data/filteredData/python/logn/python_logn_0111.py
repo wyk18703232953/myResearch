@@ -13,7 +13,8 @@ def main(n: int):
 
     # 以下为原逻辑的无 input() 封装
     if l == r:
-        print(0)
+        # print(0)
+        pass
         return
 
     a = bin(l)
@@ -36,7 +37,8 @@ def main(n: int):
     if pos != -1:
         sol = pos
 
-    print((2 ** sol) - 1)
+    # print((2 ** sol) - 1)
+    pass
 
 
 # 示例：直接运行本文件时，给一个默认的 n

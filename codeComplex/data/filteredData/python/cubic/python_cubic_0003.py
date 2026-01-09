@@ -8,6 +8,7 @@ def raschot(d, e, g, h, a0, b):
     for x in (['0', '1'] if a0[d] == '?' else [a0[d]]):
         if d == e:
             a = [x]
+
         else:
             a = ['0', '1'] if a0[e] == '?' else [a0[e]]
         for y in a:
@@ -32,11 +33,12 @@ def main(n):
             m -= c
             a0[i] = '1'
     if a0[0] == '0':
-        print(''.join(a0))
+        # print(''.join(a0))
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可根据需要修改测试规模
     main(5)

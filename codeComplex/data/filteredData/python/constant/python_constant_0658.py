@@ -1,13 +1,11 @@
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据：三点 (x, y)，坐标范围可按需调整
-    # 这里将 x, y 控制在 [0, n] 范围内
-    a = [random.randint(0, n), random.randint(0, n)]
-    b = [random.randint(0, n), random.randint(0, n)]
-    c = [random.randint(0, n), random.randint(0, n)]
+    # Generate deterministic input data based on n
+    # Each of a, b, c is a list of two integers like original usage [x, y]
+    # Use n to scale coordinates so complexity grows with n
+    a = [0, 0]
+    b = [n, n // 2]
+    c = [n // 2, n]
 
-    # 按原程序逻辑排序
     a, b, c = sorted([a, b, c])
 
     path = []
@@ -19,11 +17,10 @@ def main(n):
         path.append((i, c[1]))
 
     unique_path = list(set(path))
-    print(len(unique_path))
+    # print(len(unique_path))
+    pass
     for x, y in unique_path:
-        print(x, y)
-
-
+        # print(x, y)
+        pass
 if __name__ == "__main__":
-    # 可在此修改 n 的默认测试规模
     main(10)

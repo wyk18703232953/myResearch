@@ -1,55 +1,43 @@
-import random
-
-# 预处理：最小质因子或本题所需的“平方因子”化简
-MAXV = 10_000_000
-
 pfs = [i * i for i in range(1, 3163)]
-p = [i for i in range(0, MAXV + 1)]
-for i in range(1, MAXV + 1):
+p = [i for i in range(0, 10000001)]
+for i in range(1, 10000001):
     if p[i] == i:
         for j in pfs:
-            v = i * j
-            if v > MAXV:
+            if i * j > 10000000:
                 break
-            p[v] = i
+            p[i * j] = i
 
+def run_case(n, k, zc):
+    s = [p[zc[i]] for i in range(0, len(zc))]
+    dp = [n] * (k + 1)
+    dp[0] = 1
+    ys = [{}] * (n + 1)
+    for i in range(0, len(s)):
+        for j in range(k, -1, -1):
+            if dp[j] == n:
+                continue
+            if ys[j].get(s[i], -1) != -1:
+                if j < k and dp[j] < dp[j + 1]:
+                    dp[j + 1] = dp[j]
+                    ys[j + 1] = ys[j]
+                dp[j] += 1
+                ys[j] = {}
+            ys[j][s[i]] = 1
+    return min(dp)
 
 def main(n):
-    """
-    n: 规模参数，用于生成随机测试数据。
-       我们令：
-       - t = 1（测试组数）
-       - k = max(1, n // 5)
-       - 数组 zc 长度 = n
-       - zc[i] 在 [1, MAXV] 内随机
-    """
-    random.seed(1)
-
-    t = 1
-    for _ in range(t):
-        k = max(1, n // 5)
-        zc = [random.randint(1, MAXV) for _ in range(n)]
-
-        s = [p[x] for x in zc]
-        dp = [n] * (k + 1)
-        dp[0] = 1
-        ys = [{} for _ in range(n + 1)]
-
-        for val in s:
-            for j in range(k, -1, -1):
-                if dp[j] == n:
-                    continue
-                if ys[j].get(val, -1) != -1:
-                    if j < k and dp[j] < dp[j + 1]:
-                        dp[j + 1] = dp[j]
-                        ys[j + 1] = ys[j].copy()
-                    dp[j] += 1
-                    ys[j] = {}
-                ys[j][val] = 1
-
-        print(min(dp))
-
+    t = max(1, n)
+    results = []
+    for case_id in range(1, t + 1):
+        k = case_id % 10 + 1
+        length = case_id % 20 + 1
+        length = min(length, n + 1)
+        zc = [((i + 1) * (case_id + 1)) % 10000000 + 1 for i in range(length)]
+        res = run_case(length, k, zc)
+        results.append(res)
+        # print(res)
+        pass
+    return results
 
 if __name__ == "__main__":
-    # 示例：调用 main(1000)
-    main(1000)
+    main(3)

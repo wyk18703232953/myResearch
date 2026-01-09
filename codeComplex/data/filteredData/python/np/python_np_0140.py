@@ -24,7 +24,8 @@ def main(n):
         i += 1
 
     result = ' '.join(map(str, ans + sorted(all_nums)[::-1]))
-    print(result)
+    # print(result)
+    pass
     return result
 
 

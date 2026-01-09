@@ -1,44 +1,29 @@
-import random
+def main(n):
+    # Deterministically generate parameters a, b from n
+    # Ensure a, b are positive and small, but vary with n
+    a = (n % 3) + 1
+    b = ((n // 3) % 3) + 1
 
-def main(n: int):
-    # 生成测试数据：随机选择 a, b，满足题目逻辑的约束
-    # 约束来自原逻辑：若 min(a, b) > 1 则直接 NO
-    if n <= 0:
-        return
-
-    # 随机生成 a, b（1 到 n 之间），同时保证 min(a, b) == 1 的概率更高一些
-    if random.random() < 0.7:
-        # 强制其中一个为 1
-        if random.random() < 0.5:
-            a = 1
-            b = random.randint(1, n)
-        else:
-            b = 1
-            a = random.randint(1, n)
-    else:
-        a = random.randint(1, n)
-        b = random.randint(1, n)
-
-    # 原逻辑开始（去掉 input 和 exit，使用返回结束）
+    # Core logic from original program
     if min(a, b) > 1:
-        print('NO')
-        return
+        return "NO\n"
 
     M = [[0] * n for _ in range(n)]
 
+    output_lines = []
+
     if a == 1 and b == 1:
         if n == 1:
-            print('YES')
-            print('0')
-            return
+            output_lines.append("YES")
+            output_lines.append("0")
+            return "\n".join(output_lines) + "\n"
         if n == 2 or n == 3:
-            print('NO')
-            return
+            return "NO\n"
         for i in range(1, n):
             M[i - 1][i] = 1
             M[i][i - 1] = 1
+
     else:
-        # assume b == 1
         s = n - max(a, b) + 1
         for i in range(s):
             for j in range(s):
@@ -50,14 +35,15 @@ def main(n: int):
                     if i != j:
                         M[i][j] = 1 - M[i][j]
 
-    print('YES')
+    output_lines.append("YES")
     for i in range(n):
-        print(''.join(map(str, M[i])))
+        output_lines.append("".join(map(str, M[i])))
+
+    return "\n".join(output_lines) + "\n"
 
 
 if __name__ == "__main__":
-    # 示例：运行若干不同规模的测试
-    for size in [1, 2, 3, 4, 5]:
-        print(f"n = {size}")
-        main(size)
-        print("-" * 20)
+    # Example deterministic call for time complexity experiments
+    result = main(10)
+    # print(result, end="")
+    pass

@@ -8,9 +8,8 @@ def main(n: int):
         e -= 1
         if e > 0:
             c += e
-    print(c * 4)
-
-
+    # print(c * 4)
+    pass
 if __name__ == "__main__":
     # 示例：可在此处修改 n 以测试不同规模
     test_n = 100

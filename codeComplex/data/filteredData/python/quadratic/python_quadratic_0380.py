@@ -38,4 +38,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例调用：可自行修改 n 观察结果
-    print(main(5))
+    # print(main(5))
+    pass

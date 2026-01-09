@@ -2,13 +2,16 @@ def main(n: int):
     # 直接使用给定逻辑，将原来的 input() 去掉，封装为 main(n)
 
     if n == 3:
-        print('1 1 3')
+        # print('1 1 3')
+        pass
         return
     if n == 1:
-        print('1')
+        # print('1')
+        pass
         return
     if n == 2:
-        print('1 2')
+        # print('1 2')
+        pass
         return
 
     d = 2
@@ -25,10 +28,12 @@ def main(n: int):
     k = n / d
     if k < 1.5:
         ans.append(d)
+
     else:
         ans.append(d + d // 2)
 
-    print(' '.join(str(i) for i in ans))
+    # print(' '.join(str(i) for i in ans))
+    pass
 
 
 # 下面示例：根据 n 自动生成测试数据并调用 main

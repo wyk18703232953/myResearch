@@ -1,20 +1,21 @@
-import random
-import string
+def main(n):
+    # 生成长度为 n 的确定性字符串
+    # 使用循环字符 'a' 到 'z'
+    if n <= 0:
+        # print(0)
+        pass
+        return
+    chars = [chr(ord('a') + (i % 26)) for i in range(n)]
+    st = ''.join(chars)
 
-def main(n: int):
-    # 1. 生成测试数据：长度为 n 的随机小写字符串
-    st = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-
-    # 2. 原逻辑：求最长重复子串长度
     m = 0
     length = len(st)
     for i in range(length):
         for j in range(i, length + 1):
             if st[i:j] in st[i + 1:length] and len(st[i:j]) > m:
                 m = len(st[i:j])
-    print(m)
-
-
+    # print(m)
+    pass
 if __name__ == "__main__":
-    # 示例：n 可根据需要调整
+    # 示例调用，可根据需要修改 n
     main(10)

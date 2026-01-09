@@ -5,16 +5,18 @@ def main(n):
     # 选择一个简单的规则：若 n > 1，则 v = n // 2，否则 v = 1。
     if n > 1:
         v = n // 2
+
     else:
         v = 1
 
     if n > v:
         val = v - 1 + int(((n - v) * (n - v + 1)) / 2)
-        print(val)
+        # print(val)
+        pass
+
     else:
-        print(n - 1)
-
-
+        # print(n - 1)
+        pass
 if __name__ == "__main__":
     # 示例：可在此处调用 main 测试不同规模
     main(10)

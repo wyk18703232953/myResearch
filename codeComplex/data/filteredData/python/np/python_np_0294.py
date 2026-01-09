@@ -61,4 +61,5 @@ def main(n: int):
 
 if __name__ == "__main__":
     # 示例：调用 main(10)，真实使用时由外部调用 main(n)
-    print(main(10))
+    # print(main(10))
+    pass

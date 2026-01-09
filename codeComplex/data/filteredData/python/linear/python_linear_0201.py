@@ -1,19 +1,21 @@
-import random
+def main(n):
+    # Interpret n as: number of times; s is derived deterministically from n
+    # Generate s deterministically
+    s = n // 3
 
-def main(n: int):
-    # 随机生成 s（休息时间），范围可根据需要调整
-    s = random.randint(0, 10)
-
-    # 生成 n 个随机时间点（小时 0~23，分钟 0~59），按时间升序
     times = []
-    for _ in range(n):
-        h = random.randint(0, 23)
-        m = random.randint(0, 59)
-        times.append(60 * h + m)
-    times.sort()
-
     result = 0
     need = True
+
+    # Deterministically generate n time points (h, m)
+    # Pattern: i-th time is at minute (i * (s + 2)) modulo 1440, sorted
+    for i in range(n):
+        total_minutes = (i * (s + 2)) % (24 * 60)
+        h = total_minutes // 60
+        m = total_minutes % 60
+        times.append(60 * h + m)
+
+    times.sort()
 
     if n == 1:
         if 0 + s + 1 <= times[0]:
@@ -33,9 +35,7 @@ def main(n: int):
     hour = result // 60
     minute = result % 60
 
-    print(hour, minute)
-
-
+    # print(hour, minute)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 5
-    main(5)
+    main(10)

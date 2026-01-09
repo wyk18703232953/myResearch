@@ -1,23 +1,21 @@
 import math
-import random
 
 
-def main(n: int):
-    # 根据规模 n 生成测试数据：
-    # 生成两个不超过 2^n - 1 的非负整数 a, b（至少有一个非零）
-    if n <= 0:
-        a, b = 0, 0
+def main(n):
+    # 生成确定性的输入 a, b，随 n 变化规模增大
+    # 这里令 a, b 都在 [1, 2^n - 1] 范围内，且构造方式确定
+    if n <= 1:
+        # 保证非零，避免立即退出循环
+        a = 1
+        b = 1
+
     else:
-        max_val = (1 << n) - 1
-        a = random.randint(0, max_val)
-        b = random.randint(0, max_val)
-        if a == 0 and b == 0:
-            # 保证不是全 0，避免一开始就退化为 0、0 的情况
-            a = 1
+        a = (1 << n) - 1          # 全 1 的 n 位数
+        b = (1 << (n - 1)) + 1    # 最高位和最低位为 1 的 n 位数
 
-    orig_a, orig_b = a, b  # 如果需要调试可用
+    a_orig, b_orig = a, b
 
-    # 以下为原逻辑（去掉 input() 部分）
+    # 原核心逻辑
     while a != 0 and b != 0:
         x = int(math.log(a, 2))
         y = int(math.log(b, 2))
@@ -27,16 +25,22 @@ def main(n: int):
         b = b & (~(1 << y))
 
     if a == 0 and b == 0:
-        print(0)
+        result = 0
+
     else:
         if b > a:
             a, b = b, a
         x = int(math.log(a, 2)) + 1
         b = (1 << x) - 1
         a = a | b
-        print(a)
+        result = a
+
+    # print(result)
+    pass
+    return result
 
 
-# 示例调用（提交到评测系统时可删除或注释）
 if __name__ == "__main__":
-    main(10)
+    # 示例：用不同规模调用 main
+    for n in range(1, 6):
+        main(n)

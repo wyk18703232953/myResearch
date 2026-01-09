@@ -1,12 +1,10 @@
-import random
-import string
-
 def main(n):
-    # 生成测试数据：两个长度为 n 的小写字母串 s, t
-    # 这里默认随机生成，如需其他分布可自行修改
-    letters = string.ascii_lowercase
-    s = [random.choice(letters) for _ in range(n)]
-    t = [random.choice(letters) for _ in range(n)]
+    # Generate deterministic test data based on n
+    # s and t are strings of length n over lowercase letters
+    # Use simple periodic patterns to ensure mismatches exist for analysis.
+    l = [chr(i + 97) for i in range(26)]
+    s = [l[i % 26] for i in range(n)]
+    t = [l[(i + 1) % 26] for i in range(n)]
 
     d = {}
     ans = 0
@@ -16,8 +14,6 @@ def main(n):
         if s[i] != t[i]:
             d[(s[i], t[i])] = i
             ans += 1
-
-    l = [chr(i + 97) for i in range(26)]
 
     for i in l:
         for j in l:
@@ -43,9 +39,9 @@ def main(n):
             if x != -1:
                 break
 
-    print(ans)
-    print(x, y)
-
-# 示例调用
+    # print(ans)
+    pass
+    # print(x, y)
+    pass
 if __name__ == "__main__":
     main(10)

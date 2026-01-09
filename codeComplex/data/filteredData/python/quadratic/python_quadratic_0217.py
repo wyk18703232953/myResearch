@@ -1,28 +1,29 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 行、m 列的 0/1 矩阵
-    # 这里设定 m = n（可按需要修改生成策略）
-    m = n
-    a = [[random.randint(0, 1) for _ in range(m)] for _ in range(n)]
+    # Interpret n as both number of rows and columns for scalability
+    rows = n
+    cols = n
 
-    ignorable = [True] * n
+    # Deterministic generation of a: rows x cols matrix of 0/1
+    # Example pattern: a[i][j] = (i + j) % 2
+    a = [[(i + j) % 2 for j in range(cols)] for i in range(rows)]
 
-    for i in range(m):
+    ignorable = [True] * rows
+
+    for i in range(cols):
         cnt = 0
-        for j in range(n):
+        for j in range(rows):
             cnt += a[j][i]
         if cnt == 1:
-            for j in range(n):
+            for j in range(rows):
                 if a[j][i]:
                     ignorable[j] = False
 
     if any(ignorable):
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可按需修改 n
-    main(5)
+    main(10)

@@ -1,11 +1,13 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据：n 个随机正整数，范围可按需要调整
-    l = [random.randint(1, 10**6) for _ in range(n)]
-
+def main(n):
+    # n: length of the list
+    if n <= 0:
+        # print(0)
+        pass
+        return
+    # deterministic data generation
+    l = [(i * 2 + 1) for i in range(1, n + 1)]
     l.sort()
-    s = {l[0]}
+    s = set([l[0]])
     res = 1
     for i in l:
         f = 1
@@ -16,9 +18,7 @@ def main(n: int) -> int:
         if f:
             s.add(i)
             res += 1
-    print(res)
-    return res
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

@@ -3,11 +3,14 @@ def main(n: int):
     while n > 0:
         if n != 3:
             k = n // 2 + n % 2
-            print((str(t) + ' ') * k, end='')
+            # print((str(t) + ' ') * k, end='')
+            pass
             n -= k
             t *= 2
+
         else:
-            print(t, t, t * 3)
+            # print(t, t, t * 3)
+            pass
             n = 0
 
 

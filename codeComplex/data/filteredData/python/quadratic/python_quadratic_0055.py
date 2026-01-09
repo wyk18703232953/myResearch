@@ -1,21 +1,21 @@
-import random
+def main(n):
+    # Map n to problem parameters
+    N = n
+    Q = n
 
-def main(n: int):
-    # 生成测试数据
-    N = n  # 数组规模
-    Q = n  # 查询次数，也设为 n，可按需要调整策略
+    # Deterministic generation of array A of length N
+    # Example: A[i] = (i * 7 + 3) % (N + 5)
+    A = [(i * 7 + 3) % (N + 5) for i in range(N)]
 
-    # 生成一个包含 0~10^9 之间随机整数的数组
-    A = [random.randint(0, 10**9) for _ in range(N)]
-
-    # 随机生成 Q 个区间 [l, r]，1-based
+    # Deterministic generation of Q queries (l, r), 0-based indices
+    # Ensure 0 <= l <= r < N
     queries = []
-    for _ in range(Q):
-        l = random.randint(1, N)
-        r = random.randint(l, N)
+    for i in range(Q):
+        l = i % N
+        r = (N - 1 - (i * 3 % N))
+        if l > r:
+            l, r = r, l
         queries.append((l, r))
-
-    # 以下是原始逻辑
 
     cnt = 0
     for i in range(N):
@@ -28,14 +28,12 @@ def main(n: int):
     Ans = [None] * Q
     for qu in range(Q):
         l, r = queries[qu]
-        if (r - l + 1) * (r - l) // 2 & 1:
+        length = r - l + 1
+        if (length * (length - 1) // 2) & 1:
             cnt ^= 1
-
         Ans[qu] = 'odd' if cnt else 'even'
 
-    print('\n'.join(Ans))
-
-
+    # print('\n'.join(Ans))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(1000)

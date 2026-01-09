@@ -1,79 +1,43 @@
 import bisect
-import random
-import string
 
 ls2int = lambda ls: int(''.join(map(str, ls)))
-
 
 def candidates(digs, num):
     if not digs:
         return [[]]
-
     res = []
     i = bisect.bisect_left(digs, num[0])
-
-    # lead with same digit
     if num[0] in digs:
-        for suffix in candidates(digs[:i] + digs[i + 1 :], num[1:]):
+        for suffix in candidates(digs[:i] + digs[i+1:], num[1:]):
             res.append([digs[i]] + suffix)
-
-    # lead with next smallest digit:
     if i > 0:
         i -= 1
-        res.append([digs[i]] + list(reversed(digs[:i] + digs[i + 1 :])))
-
+        res.append([digs[i]] + list(reversed(digs[:i] + digs[i+1:])))
     return res
-
 
 def solution(a, b):
     digits = [int(x) for x in sorted(a)]
     ceiling = [int(x) for x in b]
-
-    assert len(digits) <= len(ceiling), "solution does not exist"
+    assert len(digits) <= len(ceiling), 'solution does not exist'
     if len(digits) < len(ceiling):
         return ls2int(digits[::-1])
     return max(ls2int(ls) for ls in candidates(digits, ceiling))
 
-
-def gen_test_data(n):
-    # n controls the length of string a
-    # length of b is either n or n+1, to ensure many valid cases
+def main(n):
     if n <= 0:
         n = 1
+    # 生成长度为 n 的字符串 a，由 0-9 周期数字构成
+    a = ''.join(str(i % 10) for i in range(n))
+    # 生成长度为 n 或 n+1 的字符串 b，保证 len(a) <= len(b)
+    if n % 2 == 0:
+        # 同长度，首位为 1 以避免前导 0 的极端情况
+        b = '1' + ''.join(str((i * 2 + 3) % 10) for i in range(n - 1))
 
-    # generate a: n random digits, avoid all zeros to keep non-trivial
-    a_digits = [random.choice(string.digits) for _ in range(n)]
-    # avoid all leading zeros if possible
-    if all(d == '0' for d in a_digits):
-        a_digits[0] = '1'
-    a = ''.join(a_digits)
-
-    # decide length of b
-    len_b = n if random.random() < 0.7 else n + 1
-
-    # generate b as a random number with len_b digits, not smaller than 10^(len_b-1)
-    first_digit = random.randint(1, 9)
-    other_digits = [random.randint(0, 9) for _ in range(len_b - 1)]
-    b = str(first_digit) + ''.join(str(d) for d in other_digits)
-
-    return a, b
-
-
-def main(n):
-    a, b = gen_test_data(n)
-    try:
-        ans = solution(a, b)
-        print(a)
-        print(b)
-        print(ans)
-    except AssertionError:
-        # If generated data violates len(a) <= len(b), regenerate once
-        a, b = gen_test_data(n)
-        ans = solution(a, b)
-        print(a)
-        print(b)
-        print(ans)
-
-
+    else:
+        # 长度比 a 多 1，首位为 1，其余为简单算术生成
+        b = '1' + ''.join(str((i * 3 + 1) % 10) for i in range(n))
+    result = solution(a, b)
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

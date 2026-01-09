@@ -1,41 +1,53 @@
-import random
-
 def main(n):
-    # 1) 生成规模为 n 的随机测试数据
-    # 原代码中：a 是长度为 n 的整数数组
-    a = [random.randint(0, 10**9) for _ in range(n)]
+    # n 表示初始数组 a 的长度
+    if n <= 0:
+        return
+
+    # 确定性生成长度为 n 的数组 a
+    # 这里使用简单的算术构造：a[i] = (i * 3 + 1) % 1000
+    a = [(i * 3 + 1) % 1000 for i in range(n)]
 
     array = []
     array.append(a)
 
-    # 2) 按原逻辑构造 xor 三角形
+    # 构造基于相邻异或的三角形结构
     for _ in range(n - 1):
         aux = []
         for j in range(1, len(array[-1])):
-            xor_val = array[-1][j - 1] ^ array[-1][j]
-            aux.append(xor_val)
+            x = array[-1][j - 1] ^ array[-1][j]
+            aux.append(x)
         array.append(aux)
 
-    # 3) 进行“最大值传播”处理
+    # 对每一层应用 max 传递规则
     for j in range(1, len(array)):
         for k in range(len(array[j])):
-            maximo = max(array[j][k], array[j - 1][k], array[j - 1][k + 1])
-            array[j][k] = maximo
+            m = max(array[j][k], array[j - 1][k], array[j - 1][k + 1])
+            array[j][k] = m
 
-    # 4) 生成测试查询数据 q 以及若干 (l, r)
-    # 这里设定 q = n，查询若干随机区间，保证 1 <= l <= r <= n
+    # 生成确定性的查询数量 q
+    # 为了保证可规模化，这里令 q 与 n 同阶：q = n
     q = n
+
+    # 生成 q 个确定性区间查询 (l, r)，满足 1 <= l <= r <= n
     queries = []
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
+    for i in range(1, q + 1):
+        # 使用简单的算术构造生成 l, r
+        l = (i % n) + 1
+        r = n - (i % n)
+        if l > r:
+            l, r = r, l
+        if l < 1:
+            l = 1
+        if r > n:
+            r = n
+        if l > r:
+            l = r = (i % n) + 1
         queries.append((l, r))
 
-    # 5) 输出每个查询的结果（保留原有输出格式）
+    # 按原逻辑输出查询结果
     for l, r in queries:
-        print(str(array[r - l][l - 1]))
-
-
-# 示例：运行 main 并指定规模
+        # print(str(array[r - l][l - 1]))
+        pass
 if __name__ == "__main__":
-    main(5)
+    # 示例规模调用，可按需修改 n 进行实验
+    main(10)

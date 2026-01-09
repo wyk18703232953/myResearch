@@ -4,9 +4,8 @@ def main(n):
 
     # 原逻辑：输入 n，输出 (n // 2) + 1
     result = (test_n // 2) + 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -1,17 +1,13 @@
-import random
-
 def main(n):
-    # 随机生成 n 组测试数据，每组两个正整数 a, b
-    # 可根据需要调整数据范围
-    test_data = []
-    for _ in range(n):
-        # 生成范围在 1~10^6 的随机整数
-        a = random.randint(1, 10**6)
-        b = random.randint(1, 10**6)
-        test_data.append((a, b))
+    # Interpret n as the number of test cases
+    t = n
 
-    # 按照原逻辑处理每组数据并输出结果
-    for a, b in test_data:
+    # Deterministically generate t pairs (a, b)
+    # Example: a = i + 1, b = 2*i + 3 to ensure positivity and variety
+    pairs = [(i + 1, 2 * i + 3) for i in range(t)]
+
+    results = []
+    for a, b in pairs:
         if a > b:
             a, b = b, a
         ans = 0
@@ -19,9 +15,15 @@ def main(n):
             ans += b // a
             b %= a
             a, b = b, a
-        print(ans)
+        results.append(ans)
+
+    # For timing experiments, typically just ensure the loop runs; here we return results
+    return results
 
 
 if __name__ == "__main__":
-    # 示例：运行时可修改这里的 n
-    main(5)
+    # Example fixed-scale call
+    res = main(10)
+    for x in res:
+        # print(x)
+        pass

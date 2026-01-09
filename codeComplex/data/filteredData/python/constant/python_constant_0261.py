@@ -16,9 +16,8 @@ def main(n: int):
     dl = abs(pos - l) + 1
     dr = abs(pos - r) + 1
     ans = dr * (r < n) if l == 1 else dl if r == n else min(dl, dr) + r - l + 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

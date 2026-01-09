@@ -6,11 +6,11 @@ def main(n):
     ipcolor = allcolor[:min(n, len(allcolor))]
 
     diff = list(set(allcolor) - set(ipcolor))
-    print(len(diff))
+    # print(len(diff))
+    pass
     for c in diff:
-        print(op[allcolor.index(c)])
-
-
+        # print(op[allcolor.index(c)])
+        pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(3)

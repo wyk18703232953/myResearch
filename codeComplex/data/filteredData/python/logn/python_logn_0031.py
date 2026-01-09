@@ -11,6 +11,7 @@ def solve(l: int, r: int) -> int:
     c2 = cntbit(r)
     if c2 > c1:
         return 2 ** c2 - 1
+
     else:
         x = l ^ r
         c = cntbit(x)
@@ -26,14 +27,14 @@ def main(n: int):
     """
     if n < 1:
         l, r = 1, 1
+
     else:
         l = 1 << (n - 1)       # 2^(n-1)
         r = (1 << n) - 1       # 2^n - 1
 
     result = solve(l, r)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，按规模 5 生成测试数据并输出结果
     main(5)

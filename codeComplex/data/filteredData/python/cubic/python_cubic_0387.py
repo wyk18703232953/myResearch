@@ -52,7 +52,8 @@ def main(n):
         c += f[n][i]
 
     ans = c % M
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

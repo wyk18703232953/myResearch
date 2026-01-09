@@ -5,7 +5,8 @@ def main(n: int):
 
     mod = 998244353
     if K == 1:
-        print(2)
+        # print(2)
+        pass
         return
 
     dp = [[0] * 4 for _ in range(K + 1)]
@@ -40,6 +41,7 @@ def main(n: int):
                         nx[k + 2][1] = (nx[k + 2][1] + val) % mod
                     nx[k][2] = (nx[k][2] + val) % mod
                     nx[k][3] = (nx[k][3] + val) % mod
+
                 else:
                     if k + 1 <= K:
                         nx[k + 1][0] = (nx[k + 1][0] + val) % mod
@@ -48,9 +50,8 @@ def main(n: int):
                     nx[k][3] = (nx[k][3] + val) % mod
         dp = nx
 
-    print(sum(dp[K]) % mod)
-
-
+    # print(sum(dp[K]) % mod)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

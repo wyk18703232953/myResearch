@@ -1,58 +1,45 @@
-import random
-import string
+def main(n):
+    # 映射含义：
+    # n: 字符串 b 的长度，字符串 a 的长度为 n 或 n+1（如果包含通配符 *）
+    # 构造方式完全确定性，不依赖外部输入
 
+    # 构造 b 为长度为 n 的小写字母序列（循环 'a' 到 'z'）
+    b = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
 
-def main(n: int):
-    """
-    n 作为规模参数，用来控制生成字符串的最大长度。
-    逻辑：
-    - 生成一个模式串 a，长度在 [1, n]，包含至多一个 '*'（随机决定是否含有 '*'）。
-    - 生成一个待匹配串 b，长度在 [1, n]。
-    - 按照原程序逻辑判断并打印 YES/NO。
-    """
+    # 构造 a：
+    # 为了同时覆盖有 '*' 和无 '*' 两种情况：
+    # 若 n 为偶数：构造包含 '*' 的模式
+    # 若 n 为奇数：构造不包含 '*' 的完整字符串
+    if n == 0:
+        # 边界情况：n=0
+        a = ""
+        m = 0
 
-    if n <= 0:
-        return
-
-    # 随机生成模式串 a（可能含有 0 或 1 个 '*'）
-    # 先随机决定是否包含 '*'
-    has_star = random.choice([True, False])
-
-    # 字符集：小写字母
-    chars = string.ascii_lowercase
-
-    if has_star:
-        # 保证长度至少为 1，最多 n
-        length_a = random.randint(1, n)
-        # 至少要有一个位置留给 '*'
-        if length_a == 1:
-            # 只能是 '*' 本身
-            a = '*'
-        else:
-            # 在 [0, length_a - 1] 位置中选一个位置放 '*'
-            star_pos = random.randint(0, length_a - 1)
-            a_list = []
-            for i in range(length_a):
-                if i == star_pos:
-                    a_list.append('*')
-                else:
-                    a_list.append(random.choice(chars))
-            a = ''.join(a_list)
     else:
-        # 不含 '*'，长度 [1, n]
-        length_a = random.randint(1, n)
-        a = ''.join(random.choice(chars) for _ in range(length_a))
+        if n % 2 == 0:
+            # 有通配符的情况：
+            # a 形如 prefix + '*' + suffix
+            # prefix 长度为 n//2，suffix 长度为 n//4
+            # 如果 n 太小（比如 2），suffix 可能为 0 长度
+            prefix_len = n // 2
+            suffix_len = n // 4
 
-    # 生成待匹配串 b，长度 [1, n]
-    length_b = random.randint(1, n)
-    b = ''.join(random.choice(chars) for _ in range(length_b))
+            prefix = ''.join(chr(ord('a') + ((i * 3) % 26)) for i in range(prefix_len))
+            suffix = ''.join(chr(ord('a') + ((i * 5 + 1) % 26)) for i in range(suffix_len))
 
-    # ---------------- 原始逻辑开始 ----------------
+            a = prefix + '*' + suffix
+            m = len(a)
+
+        else:
+            # 无通配符的情况：a 与 b 相同长度
+            a = ''.join(chr(ord('a') + ((i * 7 + 2) % 26)) for i in range(n))
+            m = len(a)
+
+    # 下面是原算法逻辑（去除所有输入依赖）
     flag = 0
     for c in a:
         if c == '*':
             flag = 1
-
     if flag == 1:
         a1, a2 = a.split('*')
         Len1 = len(a1)
@@ -62,17 +49,21 @@ def main(n: int):
         if Len2:
             b2 = b[-Len2:]
         if a1 == b1 and a2 == b2 and Len1 + Len2 <= len(b):
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
+            # print('NO')
+            pass
+
     else:
         if a == b:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
-    # ---------------- 原始逻辑结束 ----------------
-
-
+            # print('NO')
+            pass
 if __name__ == "__main__":
-    # 示例：使用 n = 10 运行一次
+    # 示例调用：可按需修改 n 进行规模化实验
     main(10)

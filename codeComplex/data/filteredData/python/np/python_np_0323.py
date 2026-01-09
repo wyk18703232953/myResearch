@@ -58,9 +58,8 @@ def main(n):
     k = max(0, n // 2)
 
     result = solve(n, k)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example: run main with some n for local testing.
     # In external use, caller should call main(n) directly.

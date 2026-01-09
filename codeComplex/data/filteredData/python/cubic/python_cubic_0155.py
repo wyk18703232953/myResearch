@@ -1,9 +1,11 @@
-import random
+def main(n):
+    # n: length of array A
+    if n <= 0:
+        return 0
 
-def main(n: int):
-    # 生成规模为 n 的测试数据 A
-    # 这里生成 1 到 3 之间的随机整数，可按需要修改
-    A = [random.randint(1, 3) for _ in range(n)]
+    # Deterministic data generation for A
+    # Example: A[i] = (i % 5) + 1
+    A = [(i % 5) + 1 for i in range(n)]
 
     DP = [[-1] * (n + 1) for _ in range(n + 1)]
     for i in range(n):
@@ -20,15 +22,17 @@ def main(n: int):
 
     ANS = [2000] * (n + 1)
     ANS.append(0)
-    for i in range(0, n):
+    for i in range(n):
         ANS[i] = min(ANS[i], ANS[i - 1] + 1)
         for j in range(i, n):
             if DP[i][j] != -1:
                 ANS[j] = min(ANS[j], ANS[i - 1] + 1)
 
-    print(ANS[n - 1])
+    result = ANS[n - 1]
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

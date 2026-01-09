@@ -1,18 +1,15 @@
-import math
-import random
-
 def main(n):
-    # 生成测试数据：给定规模 n，构造 n 和 k
-    # 这里示例设定：n 为题目中的 n，k 取 1 到 n 之间的随机值
-    if n < 1:
-        return
-    k = random.randint(1, n)
+    # 映射：给定规模 n，构造一对 (N, K)，均与 n 同阶，以便控制输入规模
+    # 例如：N = n*n, K = n
+    N = n * n
+    K = n
 
-    # 原逻辑开始
-    n_val = n - 1
-    k_val = k - 1
+    # 原始算法逻辑开始
+    n_val = N - 1
+    k_val = K - 1
     if n_val > (k_val * (k_val + 1)) // 2:
-        print(-1)
+        result = -1
+
     else:
         l = -1
         r = k_val + 1
@@ -20,10 +17,13 @@ def main(n):
             m = (l + r) // 2
             if n_val > (m * (2 * k_val - m + 1)) // 2:
                 l = m
+
             else:
                 r = m
-        print(r)
+        result = r
 
-# 示例调用
+    # print(result)
+    pass
 if __name__ == "__main__":
-    main(10)
+    # 示例调用，可根据需要修改 n 的值做规模实验
+    main(1000)

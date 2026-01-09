@@ -7,12 +7,12 @@ def main(n):
         ans = (k - 1) // 2
     elif n * 2 > k:
         ans = n - k // 2
+
     else:
         ans = 0
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

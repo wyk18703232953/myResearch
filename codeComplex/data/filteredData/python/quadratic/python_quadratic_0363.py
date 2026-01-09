@@ -1,17 +1,19 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：随机生成 n 行 n 列由 '.' 和 '*' 构成的地图
+def main(n):
+    # Interpret n as the size of a square grid: n x n
+    # Deterministic generation of MAP with pattern based on indices
     m = n
     MAP = []
-    for _ in range(n):
+    for i in range(n):
         row = []
-        for _ in range(m):
-            # 简单随机：'*' 概率 1/3
-            row.append('*' if random.randint(0, 2) == 0 else '.')
+        for j in range(m):
+            # Simple deterministic pattern: star if (i+j) is even
+            if (i + j) % 2 == 0:
+                row.append("*")
+
+            else:
+                row.append(".")
         MAP.append(row)
 
-    # 以下为原逻辑，仅将输入改为使用生成的 MAP、n、m
     T0 = [[0] * (m + 1) for _ in range(n + 1)]
     T1 = [[0] * (m + 1) for _ in range(n + 1)]
     Y0 = [[0] * (m + 1) for _ in range(n + 1)]
@@ -59,7 +61,9 @@ def main(n: int):
                 SUF[i][j] = "*"
 
     if SUF != MAP:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         ANSLIST = []
         for i in range(n):
@@ -67,11 +71,10 @@ def main(n: int):
                 if ANS[i][j] != 0:
                     ANSLIST.append((i + 1, j + 1, ANS[i][j] - 1))
 
-        print(len(ANSLIST))
+        # print(len(ANSLIST))
+        pass
         for ans in ANSLIST:
-            print(*ans)
-
-
+            # print(*ans)
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
     main(5)

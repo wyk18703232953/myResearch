@@ -1,9 +1,7 @@
-import random
-
-def main(n: int) -> None:
-    # 生成测试数据：长度为 n 的整数序列，可自行调整生成规则
-    # 这里生成 1~(n//2+1) 之间的随机整数，允许重复
-    l = [random.randint(1, max(1, n // 2 + 1)) for _ in range(n)]
+def main(n):
+    # Generate deterministic input list l of length n
+    # Example pattern: repeating sequence of 0,1,2,...
+    l = [i % 3 for i in range(n)]
 
     i = 0
     ans = 0
@@ -27,4 +25,7 @@ def main(n: int) -> None:
 
         i += 1
 
-    print(ans)
+    # print(ans)
+    pass
+if __name__ == "__main__":
+    main(10)

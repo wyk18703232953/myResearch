@@ -1,46 +1,60 @@
-import random
+import sys, math, itertools
+from collections import Counter, deque, defaultdict
+from bisect import bisect_left, bisect_right
+from heapq import heappop, heappush, heapify, nlargest
+from copy import deepcopy
 
-mod = 10 ** 9 + 7
+mod = 10**9 + 7
 INF = float('inf')
 
 
-def main(n: int):
-    # 生成测试数据：n 行，m 列（这里令 m = n，必要可自行调整）
-    m = n
+def main(n):
+    # 映射规模：构造一个近似平方的矩阵 n = rows * cols
+    if n <= 0:
+        # print('NO')
+        pass
+        return
 
-    # 生成一个 n x m 的 0/1 矩阵（字符）
-    # 保证至少有一行不是“必需行”（否则结果必然为 NO，测试不全面）
+    rows = int(n ** 0.5)
+    if rows == 0:
+        rows = 1
+    cols = (n + rows - 1) // rows  # 向上取整，保证 rows * cols >= n
+
+    # 构造确定性的 0/1 矩阵 s，大小为 rows x cols
+    # 规则：位置 (i, j) 是 '1' 当且仅当 (i * cols + j) % 3 == 0
+    # 最后一行多出的元素也按同一规则填充
     s = []
-    for _ in range(n):
-        row = [random.choice(['0', '1']) for _ in range(m)]
-        # 避免全 0 行导致所有灯计数为 0 时测试无意义，可适当强制至少一个 1
-        if all(c == '0' for c in row):
-            row[random.randrange(m)] = '1'
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            idx = i * cols + j
+            if idx < n and idx % 3 == 0:
+                row.append('1')
+
+            else:
+                row.append('0')
         s.append(row)
 
-    # 统计每列的 ‘1’ 数量
-    lampcnt = [0] * m
-    for i in range(n):
-        for j in range(m):
+    n_rows = rows
+    m_cols = cols
+
+    lampcnt = [0] * m_cols
+    for i in range(n_rows):
+        for j in range(m_cols):
             if s[i][j] == '1':
                 lampcnt[j] += 1
 
-    # 判定是否存在一行 i，使得对所有灯 j，
-    # 若该灯只被这一行点亮（lampcnt[j] == 1），则该行在该灯上是“唯一”的；
-    # 原代码含义：是否存在一行不是对某个灯“唯一负责”的（即删去该行后仍有解）
     res = False
-    for i in range(n):
+    for i in range(n_rows):
         only = False
-        for j in range(m):
+        for j in range(m_cols):
             if s[i][j] == '1' and lampcnt[j] == 1:
                 only = True
         if not only:
             res = True
 
-    # 输出与原程序一致
-    print('YES' if res else 'NO')
-
-
+    # print('YES' if res else 'NO')
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # 示例调用：可以修改 n 以改变输入规模
+    main(1000)

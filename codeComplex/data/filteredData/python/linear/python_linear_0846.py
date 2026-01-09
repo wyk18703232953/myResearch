@@ -1,11 +1,12 @@
-import random
+def main(n):
+    # 生成确定性输入数据：长度为 n 的整数数组
+    # 使用简单的算术构造，保证可重复
+    arr = [(i * 7 + 3) % (n + 5) for i in range(n)] if n > 0 else []
 
-def main(n: int):
-    # 生成测试数据：n个互不相等的随机整数
-    # 为了更清晰地测试，可让数组形成一个“山峰”结构
-    # 示例策略：随机生成 n 个整数再打乱
-    arr = list(range(1, n + 1))
-    random.shuffle(arr)
+    if n == 0:
+        # print("NO")
+        pass
+        return
 
     x = arr.index(max(arr))
     cur = max(arr)
@@ -21,18 +22,18 @@ def main(n: int):
             ok *= (arr[l] < cur)
             cur = arr[l]
             l -= 1
+
         else:
             if arr[l] > arr[r]:
                 ok *= (arr[l] < cur)
                 cur = arr[l]
                 l -= 1
+
             else:
                 ok *= (arr[r] < cur)
                 cur = arr[r]
                 r += 1
-    print("YES" if ok else "NO")
-
-
+    # print("YES" if ok else "NO")
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

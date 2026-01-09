@@ -1,5 +1,3 @@
-import random
-
 def find_segment(arr, n, k):
     f = [0] * 100001
     L = 0
@@ -13,26 +11,26 @@ def find_segment(arr, n, k):
         while count == k:
             f[arr[L]] -= 1
             if f[arr[L]] == 0:
-                print(L + 1, R + 1)
+                # print(L + 1, R + 1)
+                pass
                 return
             L += 1
-    print(-1, -1)
+    # print(-1, -1)
+    pass
+
 
 def main(n):
-    # 生成测试数据：
-    # n：数组长度
-    # k：目标不同元素个数，设为 1 到 min(n, 50) 之间的随机值
-    k = random.randint(1, min(n, 50))
-    # 元素值范围控制在 [1, 10^5] 以内，与原代码频次数组兼容
-    max_val = 100000
-    arr = [random.randint(1, max_val) for _ in range(n)]
-
-    # 输出生成的数据（如果不需要，可以删除这两行打印）
-    print("n =", n, "k =", k)
-    print("arr =", arr)
-
+    # 定义 k 为规模的一部分，这里设为 min(n, 20)
+    k = min(n, 20)
+    if n == 0:
+        # print(-1, -1)
+        pass
+        return
+    # 构造一个确定性的数组，元素值控制在 1..100000 以内
+    # 使用简单的线性同余形式保证分布均匀且确定
+    arr = [((i * 37 + 11) % 100000) + 1 for i in range(n)]
     find_segment(arr, n, k)
 
+
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可在此修改 n 的值
-    main(10)
+    main(1000)

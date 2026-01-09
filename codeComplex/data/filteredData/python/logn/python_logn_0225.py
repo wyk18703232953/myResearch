@@ -1,30 +1,35 @@
-import random
-
-def sum_of_digits(x: int) -> int:
+def sum_of_digits(n):
     ans = 0
-    while x:
-        ans += x % 10
-        x //= 10
+    while n:
+        ans += n % 10
+        n //= 10
     return ans
 
-def main(n: int):
-    # 根据规模 n 生成测试数据
-    # 这里令搜索上界为 n，本身即为原程序中的 n
-    # s 随机生成在 [0, n] 范围内（也可根据需要调整生成策略）
-    s = random.randint(0, n)
+def main(n):
+    # 映射：输入规模 n -> 原程序中的 n, s
+    # 原程序输入结构为：两个整数 n, s
+    # 这里设定：
+    #   原 n = n
+    #   原 s = n // 2  （确定性构造，随规模线性变化）
+    N = n
+    S = n // 2
 
-    lo, hi = 0, n
-    x = n + 1
+    lo = 0
+    hi = N
+    x = N + 1
     while lo <= hi:
         mid = (lo + hi) // 2
-        if mid - sum_of_digits(mid) >= s:
-            x = min(x, mid)
+        if mid - sum_of_digits(mid) >= S:
+            if mid < x:
+                x = mid
             hi = mid - 1
+
         else:
             lo = mid + 1
-    result = n - x + 1
-    print(result)
+    result = N - x + 1
+    # print(result)
+    pass
+    return result
 
 if __name__ == "__main__":
-    # 示例：调用 main，规模为 10^6
-    main(10**6)
+    main(10)

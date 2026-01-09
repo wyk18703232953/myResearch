@@ -6,9 +6,8 @@ def main(n):
     result = ((8 * n + k - 1) // k +
               (5 * n + k - 1) // k +
               (2 * n + k - 1) // k)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以修改这里的 n 进行测试
     main(10)

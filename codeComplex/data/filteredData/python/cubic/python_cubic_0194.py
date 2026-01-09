@@ -44,9 +44,8 @@ def main(n):
 
     cal(0, n - 1)
     cal2(0, n - 1)
-    print(dp3[0][n - 1])
-
-
+    # print(dp3[0][n - 1])
+    pass
 if __name__ == "__main__":
     # 示例运行
     main(5)

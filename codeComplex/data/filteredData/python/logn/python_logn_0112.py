@@ -1,50 +1,21 @@
-# -*- coding: utf-8 -*-
-"""
-Converted version:
-- No input()
-- main(n) as entry, where n is the scale (controls test data generation)
-- Generates test pairs (l, r) based on n and processes them
-"""
+def main(n):
+    import math
+    # 确定性生成输入：将 n 映射为一对整数 (l, r)
+    # 这里设定一个可扩展的映射方式：
+    # l = n
+    # r = n ^ (n // 2)
+    l = n
+    r = n ^ (n // 2)
 
-import math
-import random
+    l_xor_r = l ^ r
+    if l_xor_r:
+        k = int(math.log(l_xor_r, 2))
+        result = (1 << (k + 1)) - 1
+        # print(result)
+        pass
 
-def process_pair(l: int, r: int) -> int:
-    """
-    Original logic encapsulated into a function:
-    Given l and r, compute:
-        x = l ^ r
-        if x == 0: return 0
-        else:
-            k = floor(log2(x))
-            return (1 << (k + 1)) - 1
-    """
-    x = l ^ r
-    if x:
-        k = int(math.log(x, 2))
-        return (1 << (k + 1)) - 1
     else:
-        return 0
-
-def main(n: int):
-    """
-    n controls how many test cases to generate.
-    For each i in [0, n-1], generate a pair (l, r) and print result.
-    Test data strategy (simple and deterministic for reproducibility):
-      l = i
-      r = (2 * i + 1)
-    You can change the generation strategy as needed.
-    """
-    results = []
-    for i in range(n):
-        l = i
-        r = 2 * i + 1
-        res = process_pair(l, r)
-        results.append(res)
-    # Output results, one per line
-    for val in results:
-        print(val)
-
+        # print(0)
+        pass
 if __name__ == "__main__":
-    # Example: run main with a chosen scale
     main(10)

@@ -1,14 +1,17 @@
-import random
+def main(n):
+    # Map n to sizes of the three arrays
+    if n <= 0:
+        # print(0)
+        pass
+        return
+    R = max(1, n // 3)
+    G = max(1, (n - R) // 2)
+    B = max(1, n - R - G)
 
-def main(n: int):
-    # 根据规模 n 生成 R, G, B（可按需调整生成规则）
-    # 这里简单设为都等于 n，且保证非负
-    R = G = B = max(0, n)
-
-    # 生成测试数据：随机整数，范围可根据需要修改
-    r = [random.randint(1, 1000) for _ in range(R)]
-    g = [random.randint(1, 1000) for _ in range(G)]
-    b = [random.randint(1, 1000) for _ in range(B)]
+    # Deterministic data generation
+    r = [i * 2 + 1 for i in range(R)]
+    g = [i * 3 + 2 for i in range(G)]
+    b = [i * 5 + 3 for i in range(B)]
 
     r.sort(reverse=True)
     g.sort(reverse=True)
@@ -21,25 +24,21 @@ def main(n: int):
         for j in range(G + 1):
             for k in range(B + 1):
                 if i < R and j < G:
-                    dp[i + 1][j + 1][k] = max(
-                        dp[i + 1][j + 1][k],
-                        dp[i][j][k] + r[i] * g[j]
-                    )
+                    val = dp[i][j][k] + r[i] * g[j]
+                    if val > dp[i + 1][j + 1][k]:
+                        dp[i + 1][j + 1][k] = val
                 if j < G and k < B:
-                    dp[i][j + 1][k + 1] = max(
-                        dp[i][j + 1][k + 1],
-                        dp[i][j][k] + g[j] * b[k]
-                    )
+                    val = dp[i][j][k] + g[j] * b[k]
+                    if val > dp[i][j + 1][k + 1]:
+                        dp[i][j + 1][k + 1] = val
                 if i < R and k < B:
-                    dp[i + 1][j][k + 1] = max(
-                        dp[i + 1][j][k + 1],
-                        dp[i][j][k] + r[i] * b[k]
-                    )
-                ans = max(ans, dp[i][j][k])
+                    val = dp[i][j][k] + r[i] * b[k]
+                    if val > dp[i + 1][j][k + 1]:
+                        dp[i + 1][j][k + 1] = val
+                if dp[i][j][k] > ans:
+                    ans = dp[i][j][k]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 3 的测试
-    main(3)
+    main(30)

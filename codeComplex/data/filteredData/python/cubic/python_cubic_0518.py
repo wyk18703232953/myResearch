@@ -1,73 +1,69 @@
-import random
+import sys
+
 
 def main(n):
-    # 随机生成测试数据规模：
-    # n 行, m 列, k 为偶数步数
-    m = max(1, n)                      # 设 m 与 n 同级别
-    # 生成一个合理的偶数 k，与 n,m 同级别
-    k = max(2, 2 * (n // 2))           # 保证 k 为偶数且 >= 2
-
-    # 生成权值矩阵：right 权值为 n×m, down 权值为 (n-1)×m
-    # 权值范围可以自行调整
-    MAX_W = 10**3
-    right = [[random.randint(1, MAX_W) for _ in range(m)] for _ in range(n)]
-    down = [[random.randint(1, MAX_W) for _ in range(m)] for _ in range(n - 1)]
-
-    if k & 1:
-        # k 为奇数时，无解，输出 -1
-        for _ in range(n):
-            print(*([-1] * m))
+    if n <= 0:
         return
 
-    # DP 数组：mem[i][j][t] 表示从 (i,j) 出发走 t 步的最小代价
-    half_k = k // 2
-    INF = float('inf')
-    mem = [[[INF] * (half_k + 1) for _ in range(m)] for _ in range(n)]
+    # Map n to grid size and steps:
+    # n controls both rows/cols and k. This is deterministic and scalable.
+    rows = n
+    cols = n
+    k = 2 * ((n % 5) + 1)  # always even, in [2, 10]
 
-    # 边界：走 0 步代价为 0
-    for i in range(n):
-        for j in range(m):
+    # Precompute globals used by valid()
+    global dx, dy
+    dx, dy = (0, 1, 0, -1, 1, -1, 1, -1), (1, 0, -1, 0, 1, -1, -1, 1)
+
+    # Define valid using current rows/cols
+    def valid(x, y):
+        return -1 < x < rows and -1 < y < cols
+
+    # Deterministic construction of right and down edge weights
+    right = [[0] * cols for _ in range(rows)]
+    down = [[0] * cols for _ in range(rows)]
+
+    # Right edges: row i, column j connects (i,j) -> (i,j+1)
+    # Use simple arithmetic based on indices
+    for i in range(rows):
+        for j in range(cols):
+            # Any non-negative weight; keep small to avoid overflow noise
+            right[i][j] = (i + j + 1)
+
+    # Down edges: row i, column j connects (i,j) -> (i+1,j)
+    for i in range(rows - 1):
+        for j in range(cols):
+            down[i][j] = (i * 2 + j + 1)
+
+    # DP memory: mem[i][j][t] = min cost to reach (i,j) in t steps
+    half = k // 2
+    mem = [[[float('inf')] * (half + 1) for _ in range(cols)] for _ in range(rows)]
+
+    for i in range(rows):
+        for j in range(cols):
             mem[i][j][0] = 0
 
-    # 辅助函数：判断 (x,y) 是否在网格内
-    def valid(x, y):
-        return 0 <= x < n and 0 <= y < m
-
-    # 逐步扩展步数
-    for t in range(1, half_k + 1):
-        for i in range(n):
-            for j in range(m):
-                best = INF
-
-                # 上
+    for step in range(1, half + 1):
+        for i in range(rows):
+            for j in range(cols):
+                ans = []
                 if valid(i - 1, j):
-                    cost = mem[i - 1][j][t - 1] + down[i - 1][j]
-                    if cost < best:
-                        best = cost
-                # 下
+                    ans.append(mem[i - 1][j][step - 1] + down[i - 1][j])
                 if valid(i + 1, j):
-                    cost = mem[i + 1][j][t - 1] + down[i][j]
-                    if cost < best:
-                        best = cost
-                # 左
+                    ans.append(mem[i + 1][j][step - 1] + down[i][j])
                 if valid(i, j - 1):
-                    cost = mem[i][j - 1][t - 1] + right[i][j - 1]
-                    if cost < best:
-                        best = cost
-                # 右
+                    ans.append(mem[i][j - 1][step - 1] + right[i][j - 1])
                 if valid(i, j + 1):
-                    cost = mem[i][j + 1][t - 1] + right[i][j]
-                    if cost < best:
-                        best = cost
+                    ans.append(mem[i][j + 1][step - 1] + right[i][j])
+                mem[i][j][step] = min(ans)
 
-                mem[i][j][t] = best
-
-    # 输出从每个点出发走恰好 k 步的最小代价（往返，所以 *2）
-    for i in range(n):
-        row_ans = [mem[i][j][half_k] * 2 for j in range(m)]
-        print(*row_ans)
+    out_lines = []
+    for i in range(rows):
+        row_vals = [str(int(mem[i][x][-1] * 2)) for x in range(cols)]
+        out_lines.append(" ".join(row_vals))
+    sys.stdout.write("\n".join(out_lines))
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)
+    # Example deterministic call; adjust n to scale the experiment.
     main(5)

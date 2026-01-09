@@ -1,10 +1,8 @@
-import random
-import string
-
-def main(n: int):
-    # 生成长度为 n 的随机小写字母串作为测试数据
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-
+def main(n):
+    # 生成确定性字符串，长度为 n
+    # 使用重复模式 'abc' 构造
+    base = "abc"
+    s = "".join(base[i % 3] for i in range(n))
     n_len = len(s)
     Ans = 0
     for i in range(n_len):
@@ -16,7 +14,7 @@ def main(n: int):
                 R -= 1
             if L < R and Ans < j - i + 1:
                 Ans = j - i + 1
-    print(Ans)
-
-# 示例：需要时可调用 main(n)
-# main(10)
+    # print(Ans)
+    pass
+if __name__ == "__main__":
+    main(1000)

@@ -8,15 +8,18 @@ def main(n: int):
         a, b = 1, 1
     elif n <= 3:
         a, b = 1, 2
+
     else:
         a, b = 1, n - 1
 
     # 以下为原逻辑（移除 input() 并使用上面生成的 a, b）
     if min(a, b) > 1 or 1 < n < 4 and max(a, b) == 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
-    print('YES')
+    # print('YES')
+    pass
     f = int(a == 1)
     g = [a, b][f]
     r = [[f] * n for _ in range(n)]
@@ -26,7 +29,8 @@ def main(n: int):
         r[i][i + 1] ^= 1
         r[i + 1][i] ^= 1
     for x in r:
-        print(*x, sep='')
+        # print(*x, sep='')
+        pass
 
     johnny = 0  # 保留原变量以保持结构（未使用）
 

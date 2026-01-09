@@ -28,9 +28,8 @@ def main(n: int):
 
     # 输出从 1 到 n 的所有结果，每行一个
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(20)
     main(20)

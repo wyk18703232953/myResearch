@@ -1,114 +1,163 @@
 import copy
-import random
-
-
-def generate_matrix(a):
-    # 随机生成 a×a 的矩阵，元素为 '0' 或 '1'
-    return [[random.choice(['0', '1']) for _ in range(a)] for _ in range(a)]
-
-
-def equal_matrix(m1, m2, a):
-    for i in range(a):
-        for j in range(a):
-            if m1[i][j] != m2[i][j]:
-                return False
-    return True
-
-
-def rotate90(src, dst, a):
-    # 顺时针旋转90°
-    for i in range(a):
-        for j in range(a):
-            dst[a - 1 - j][i] = src[i][j]
-
-
-def rotate180(src, dst, a):
-    for i in range(a):
-        for j in range(a):
-            dst[a - 1 - i][a - 1 - j] = src[i][j]
-
-
-def rotate270(src, dst, a):
-    for i in range(a):
-        for j in range(a):
-            dst[j][a - 1 - i] = src[i][j]
-
-
-def flip_horizontal(src, a):
-    # 水平翻转（左右翻面）
-    listtemp = copy.deepcopy(src)
-    for i in range(a):
-        for j in range(a):
-            src[i][j] = listtemp[i][a - 1 - j]
-
 
 def main(n):
     a = n
-    # 1. 生成测试数据：随机生成两个矩阵 lista、listb
-    lista = generate_matrix(a)
-    listb = generate_matrix(a)
 
-    flag = 0
-
-    # 为了和原始代码逻辑保持一致，从这里开始基本照搬原逻辑
+    # 生成确定性的矩阵 lista 和 listb，大小为 a x a
+    # 元素为字符，通过简单算术构造
+    lista = []
+    listb = []
+    for i in range(a):
+        row_a = []
+        row_b = []
+        for j in range(a):
+            # 构造字符：在 'a' 到 'z' 之间循环
+            val_a = (i * a + j) % 26
+            val_b = (j * a + i) % 26
+            row_a.append(chr(ord('a') + val_a))
+            row_b.append(chr(ord('a') + val_b))
+        lista.append(row_a)
+        listb.append(row_b)
 
     listacpy = copy.deepcopy(lista)
+    flag = 0
+    mark = 0
 
-    # 一来就比（不变换）
-    if equal_matrix(listacpy, listb, a):
+    # 直接比较
+    for i in range(a):
+        for j in range(a):
+            if listacpy[i][j] != listb[i][j]:
+                mark = 1
+                break
+        if mark == 1:
+            break
+    if mark == 0:
         flag = 1
+    mark = 0
 
     # 转90°
-    if flag == 0:
-        rotate90(lista, listacpy, a)
-        if equal_matrix(listacpy, listb, a):
-            flag = 1
+    for i in range(a):
+        for j in range(a):
+            listacpy[a - 1 - j][i] = lista[i][j]
+
+    for i in range(a):
+        for j in range(a):
+            if listacpy[i][j] != listb[i][j]:
+                mark = 1
+                break
+        if mark == 1:
+            break
+    if mark == 0:
+        flag = 1
+
+    mark = 0
 
     # 转180°
-    if flag == 0:
-        rotate180(lista, listacpy, a)
-        if equal_matrix(listacpy, listb, a):
-            flag = 1
+    for i in range(a):
+        for j in range(a):
+            listacpy[a - 1 - i][a - 1 - j] = lista[i][j]
+
+    for i in range(a):
+        for j in range(a):
+            if listacpy[i][j] != listb[i][j]:
+                mark = 1
+                break
+        if mark == 1:
+            break
+    if mark == 0:
+        flag = 1
+
+    mark = 0
 
     # 转270°
-    if flag == 0:
-        rotate270(lista, listacpy, a)
-        if equal_matrix(listacpy, listb, a):
-            flag = 1
+    for i in range(a):
+        for j in range(a):
+            listacpy[j][a - 1 - i] = lista[i][j]
+
+    for i in range(a):
+        for j in range(a):
+            if listacpy[i][j] != listb[i][j]:
+                mark = 1
+                break
+        if mark == 1:
+            break
+    if mark == 0:
+        flag = 1
+    mark = 0
 
     # 翻面
-    if flag == 0:
-        flip_horizontal(lista, a)
+    listtemp = copy.deepcopy(lista)
+    for i in range(a):
+        for j in range(a):
+            lista[i][j] = listtemp[i][a - 1 - j]
 
-        # 翻面后直接比
-        listacpy = copy.deepcopy(lista)
-        if equal_matrix(listacpy, listb, a):
-            flag = 1
+    # 翻面后直接比
+    listacpy = copy.deepcopy(lista)
+    for i in range(a):
+        for j in range(a):
+            if listacpy[i][j] != listb[i][j]:
+                mark = 1
+                break
+        if mark == 1:
+            break
+    if mark == 0:
+        flag = 1
+    mark = 0
 
-        # 翻面后转90°
-        if flag == 0:
-            rotate90(lista, listacpy, a)
-            if equal_matrix(listacpy, listb, a):
-                flag = 1
+    # 翻面后转90°
+    for i in range(a):
+        for j in range(a):
+            listacpy[a - 1 - j][i] = lista[i][j]
 
-        # 翻面后转180°
-        if flag == 0:
-            rotate180(lista, listacpy, a)
-            if equal_matrix(listacpy, listb, a):
-                flag = 1
+    for i in range(a):
+        for j in range(a):
+            if listacpy[i][j] != listb[i][j]:
+                mark = 1
+                break
+        if mark == 1:
+            break
+    if mark == 0:
+        flag = 1
+    mark = 0
 
-        # 翻面后转270°
-        if flag == 0:
-            rotate270(lista, listacpy, a)
-            if equal_matrix(listacpy, listb, a):
-                flag = 1
+    # 翻面后转180°
+    for i in range(a):
+        for j in range(a):
+            listacpy[a - 1 - i][a - 1 - j] = lista[i][j]
+
+    for i in range(a):
+        for j in range(a):
+            if listacpy[i][j] != listb[i][j]:
+                mark = 1
+                break
+        if mark == 1:
+            break
+    if mark == 0:
+        flag = 1
+
+    mark = 0
+
+    # 翻面后转270°
+    for i in range(a):
+        for j in range(a):
+            listacpy[j][a - 1 - i] = lista[i][j]
+
+    for i in range(a):
+        for j in range(a):
+            if listacpy[i][j] != listb[i][j]:
+                mark = 1
+                break
+        if mark == 1:
+            break
+    if mark == 0:
+        flag = 1
 
     if flag == 1:
-        print("yes")
+        # print("yes")
+        pass
+
     else:
-        print("no")
-
-
+        # print("no")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(3)
-    main(3)
+    main(10)

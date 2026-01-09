@@ -1,8 +1,20 @@
-import random
+def main(n):
+    # n 表示列表长度
+    if n <= 0:
+        return
 
-def main(n: int):
-    # 生成规模为 n 的测试数据，这里生成 1~1000 之间的随机整数
-    l = [random.randint(1, 1000) for _ in range(n)]
+    # 确定性生成测试数据：
+    # 构造一个先严格递增后严格递减的序列（满足原判定条件）
+    # 示例模式：0,1,2,...,peak,...,2,1,0
+    # 为保证通用性，当 n < 3 时退化为简单递增序列
+    if n < 3:
+        l = [i for i in range(n)]
+
+    else:
+        peak = n // 2
+        inc_part = list(range(peak + 1))              # 0..peak
+        dec_part = list(range(peak - 1, -1, -1))      # peak-1..0
+        l = (inc_part + dec_part)[:n]
 
     to = l.index(max(l))
     ok = 1
@@ -15,10 +27,11 @@ def main(n: int):
             ok = 0
             break
     if ok:
-        print('YES')
-    else:
-        print('NO')
+        # print('YES')
+        pass
 
+    else:
+        # print('NO')
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

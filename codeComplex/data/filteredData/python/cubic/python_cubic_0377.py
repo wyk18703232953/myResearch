@@ -27,9 +27,8 @@ def main(n, m=10**9+7):
     for i in range(1, (n - 1) // 2 + 2):
         ans = (ans + dp[n + 1][i]) % m
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：n 可在此处自定义，用于自动生成规模为 n 的测试
     main(10)

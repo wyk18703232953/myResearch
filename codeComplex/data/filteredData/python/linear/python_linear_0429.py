@@ -1,33 +1,32 @@
-import random
+def main(n):
+    # 生成确定性输入数据：
+    # 原程序含义：有 n 行，每行若干整数，计算每行和，然后看第 1 行的和在所有行中的排序名次（按从大到小排序）。
+    # 这里用固定结构生成数据：第 i 行包含 (i+1) 个整数，为 [i, i+1, ..., i+(i+1)-1]
+    S = []
+    for i in range(n):
+        A = [i + j for j in range(i + 1)]
+        S.append(sum(A))
 
-def main(n: int):
-    # 生成测试数据：n 个参赛者，每个参赛者有随机科目数与成绩
-    # 为保证 Thomas 是第 1 个，his_scores 单独生成
-    num_subjects_thomas = random.randint(1, 5)
-    his_scores = [random.randint(0, 100) for _ in range(num_subjects_thomas)]
-    S = [sum(his_scores)]
+    if not S:
+        return  # 规模为 0 时无输出，保持程序确定性
 
-    # 其余 n-1 个参赛者
-    for _ in range(n - 1):
-        num_subjects = random.randint(1, 5)
-        scores = [random.randint(0, 100) for _ in range(num_subjects)]
-        S.append(sum(scores))
-
-    # 以下为原逻辑
     if S[0] == max(S):
-        print("1")
+        # print("1")
+        pass
         return
 
     thomas = S[0]
     rank = 1
     S.sort(reverse=True)
-    for total in S:
-        if total == thomas:
-            print(rank)
+    for v in S:
+        if v == thomas:
+            # print(rank)
+            pass
             return
+
         else:
             rank += 1
 
+
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

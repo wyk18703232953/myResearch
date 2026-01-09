@@ -1,63 +1,58 @@
-import random
-
 def is_prime(num):
     if num > 1:
         for i in range(2, num):
             if (num % i) == 0:
-                return False
+               return False
+
         else:
             return True
+
     else:
         return False
 
 
-def main(n):
-    # 1) 按位分解数字并输出不同的 10^i * digit
-    # 生成 n 个随机整数（1 到 10^9）
-    for _ in range(n):
-        x = random.randint(1, 10**9)
-        digits = []
-        new_digits = set()
-        t = x
-        if t in range(1, 10):
-            print(1)
-            print(t)
+def part1(n_values):
+    digits = []
+    new_digits = set()
+    outputs = []
+    for val in n_values:
+        n = val
+        if n in range(1, 10):
+            outputs.append("1")
+            outputs.append(str(n))
+
         else:
-            while t > 0:
-                digit = t % 10
+            while n > 0:
+                digit = n % 10
                 digits.append(digit)
-                t = t // 10
+                n = int(n / 10)
             i = 0
             for d in digits:
                 new_digits.add(d * 10 ** i)
                 i += 1
             if 0 in new_digits:
                 new_digits.remove(0)
-            print(len(new_digits))
-            for d in new_digits:
-                print(d, end=" ")
-            print("")
+            outputs.append(str(len(new_digits)))
+            outputs.append(" ".join(str(d) for d in new_digits))
+            new_digits.clear()
+            digits.clear()
+    return "\n".join(outputs)
 
-    # 2) 在数组中查找从 1..n 的元素索引（1-based）
-    # 生成一个 1..n 的随机排列
-    a = list(range(1, n + 1))
-    random.shuffle(a)
-    b = list(range(1, n + 1))
+
+def part2(n, a):
+    b = []
+    for i in range(1, n + 1):
+        b.append(i)
     results = []
     for l in b:
         results.append(a.index(l) + 1)
-    for r in results:
-        print(r, end=" ")
-    print("")
+    return " ".join(str(r) for r in results)
 
-    # 3) 统计被 k,l,m,n 中任意一个整除的 1..d 的数
-    # 根据 n 生成一些参数
-    k = random.randint(1, max(1, n))
-    l = random.randint(1, max(1, n))
-    m = random.randint(1, max(1, n))
-    nn = random.randint(1, max(1, n))
-    d = max(1, n * 2)
-    nums = list(range(1, d + 1))
+
+def part3(k, l, m, n, d):
+    nums = []
+    for i in range(1, d + 1):
+        nums.append(i)
     results = set()
     for num in nums:
         if num % k == 0:
@@ -66,34 +61,32 @@ def main(n):
             results.add(num)
         elif num % m == 0:
             results.add(num)
-        elif num % nn == 0:
+        elif num % n == 0:
             results.add(num)
-    print(len(results))
+    return str(len(results))
 
-    # 4) function problem（简单数学函数）
-    x = random.randint(-10**9, 10**9)
-    if x % 2 == 0:
-        result = x // 2
+
+def part4(n):
+    result = 0
+    if n % 2 == 0:
+        result = int(n / 2)
+
     else:
-        result = -1 * (x // 2 + 1)
-    print(result)
+        result = -1 * (int(n / 2) + 1)
+    return str(result)
 
-    # 5) General arrival 相关逻辑
-    # 构造长度为 n 的随机数组
-    a = [random.randint(-10**4, 10**4) for _ in range(n)]
-    b = list(dict.fromkeys(a))  # 去重并保序
 
-    # 找最大值及其在去重后数组中的索引
+def part5(a):
+    b = list(dict.fromkeys(a))
     max_index = 0
     i = 0
-    maxi = b[0]
+    maxi = a[0]
     while i < len(b):
         if b[i] >= maxi:
             maxi = b[i]
             max_index = i
         i += 1
 
-    # 找最小值及其在去重后数组中的索引
     min_index = 0
     i = 0
     mini = max(b)
@@ -102,27 +95,81 @@ def main(n):
             mini = b[i]
             min_index = i
         i += 1
-
     if len(a) == 2:
-        print(len(a) - 1)
+        first_out = str(len(a) - 1)
+
     else:
-        print((max_index - 0) + ((len(b) - 1) - min_index))
-    print(b)
-
-    # 6) 最后这段：将 n 分解为两个合数 first 和 second（与原始输入 n 对应）
-    # 使用参数 n 作为目标数
-    temp = n // 2
-    first = temp
-    second = n - temp
-    while is_prime(first) or is_prime(second):
-        first -= 1
-        second += 1
-        if first + second == n and (not is_prime(first) and not is_prime(second)):
-            break
-    print(first, end=" ")
-    print(second)
+        first_out = str((max_index - 0) + ((len(b) - 1) - min_index))
+    second_out = " ".join(str(x) for x in b)
+    return first_out + "\n" + second_out
 
 
+def part6(n):
+    temp = 0
+    first = 0
+    second = 0
+    if n % 2 == 0:
+        temp = int(n / 2)
+        first = temp
+        second = n - temp
+        while is_prime(first) or is_prime(second):
+            first -= 1
+            second += 1
+            if first + second == n and (not is_prime(first) and not is_prime(second)):
+                break
+
+    else:
+        temp = int(n / 2)
+        first = temp
+        second = n - first
+        while is_prime(first) or is_prime(second):
+            first -= 1
+            second += 1
+            if first + second == n and (not is_prime(first) and not is_prime(second)):
+                break
+    return f"{first} {second}"
+
+
+def main(n):
+    # Part 1 data: generate n numbers, increasing magnitude
+    # ensure they are positive and vary
+    n_values = [i * 11 + 1 for i in range(1, n + 1)]
+    out1 = part1(n_values)
+
+    # Part 2 data: permutation-like array of 1..n
+    a2 = [(i * 2) % n + 1 for i in range(n)]  # values in [1,n]
+    out2 = part2(n, a2)
+
+    # Part 3 data: choose simple divisors and range
+    k = 2 if n < 2 else 2
+    l = 3 if n >= 3 else 1 + (n % 3)
+    m = 4 if n >= 4 else 1 + (n % 4)
+    p = 5 if n >= 5 else 1 + (n % 5)
+    d = max(1, n * 5)
+    out3 = part3(k, l, m, p, d)
+
+    # Part 4 data: just n itself
+    out4 = part4(n)
+
+    # Part 5 data: array with duplicates, length n
+    a5 = [(i // 2) % max(1, (n // 3 + 1)) for i in range(n)] if n > 0 else [0]
+    out5 = part5(a5)
+
+    # Part 6 data: use an even number >= 4 derived from n
+    n6 = n * 2 + 4
+    out6 = part6(n6)
+
+    # print(out1)
+    pass
+    # print(out2)
+    pass
+    # print(out3)
+    pass
+    # print(out4)
+    pass
+    # print(out5)
+    pass
+    # print(out6)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

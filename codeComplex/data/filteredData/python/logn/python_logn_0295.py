@@ -5,6 +5,7 @@ def get(a, n):
         return 1
     if n % 2 == 1:
         return (get(a, n - 1) * a) % MOD
+
     else:
         b = get(a, n // 2) % MOD
         return (b * b) % MOD
@@ -16,11 +17,12 @@ def main(n):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print((x * get(2, k + 1) - get(2, k) + 1) % MOD)
-
-
+        # print((x * get(2, k + 1) - get(2, k) + 1) % MOD)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行
     main(10)

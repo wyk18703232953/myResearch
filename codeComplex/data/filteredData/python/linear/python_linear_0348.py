@@ -1,30 +1,31 @@
-import math
-import random
-
 def main(n):
-    # 根据 n 生成测试数据
-    # 随机生成 k（区间数量），这里设为 0 到 n 之间
-    k = random.randint(0, n)
-
-    # 随机生成 k 个区间 (l, r)，1 <= l <= r <= n
+    # 原程序结构：
+    # 第一行：n, k
+    # 接下来 k 行：l, r（但不使用）
+    # 然后根据 n 输出 1010... 交替的字符串
+    
+    # 这里将输入规模 n 直接作为原程序中的 n
+    # 构造确定性的 k 和区间 (l, r)
+    k = n  # 令查询次数与 n 同规模
+    
+    # 生成 k 个确定性的区间 [l, r]，不影响最终输出，仅保持结构
     intervals = []
-    for _ in range(k):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
+    for i in range(1, k + 1):
+        l = (i % n) + 1 if n > 0 else 1
+        r = n - (i % n)
+        if r < l:
+            l, r = r, l
         intervals.append((l, r))
-
-    # 原逻辑中实际上并未使用这些区间，仅仅读入
-    # 保持与原逻辑一致，仅根据 n 输出 1010... 交替串
-
-    result = []
+    
+    # 保持原算法逻辑：仅依据 n 输出交替的 1 和 0
+    output = []
     for i in range(1, n + 1):
         if i % 2 == 0:
-            result.append('0')
+            output.append('0')
+
         else:
-            result.append('1')
-
-    print(''.join(result))
-
+            output.append('1')
+    # print(''.join(output))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，真实使用时可以在此处修改 n
     main(10)

@@ -14,11 +14,12 @@ def main(n):
     m = Fast_power(2, n) + 123
 
     if n <= 40:
-        print(m % Fast_power(2, n))
+        # print(m % Fast_power(2, n))
+        pass
+
     else:
-        print(m)
-
-
+        # print(m)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(20)
     main(20)

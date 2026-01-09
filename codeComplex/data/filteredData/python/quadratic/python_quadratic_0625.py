@@ -1,9 +1,5 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：n 个 1~10^9 之间的随机正整数
-    a = [random.randint(1, 10**9) for _ in range(n)]
-
+def main(n):
+    a = [(i + 1) * ((i % 5) + 1) for i in range(n)]
     a.sort()
     k = 0
     used = [0] * n
@@ -14,4 +10,7 @@ def main(n: int):
         for j in range(i, n):
             if a[j] % a[i] == 0:
                 used[j] = True
-    print(k)
+    # print(k)
+    pass
+if __name__ == "__main__":
+    main(10)

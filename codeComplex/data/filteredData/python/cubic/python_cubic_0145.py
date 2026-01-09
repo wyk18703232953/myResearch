@@ -1,10 +1,8 @@
-import random
-
 def main(n):
-    # 生成测试数据，这里生成 1~3 之间的随机整数
-    # 可以根据需要修改数据分布
-    global a, dp
-    a = [random.randint(1, 3) for _ in range(n)]
+    # Deterministic generation of input array a of length n
+    # Example pattern: a[i] = (i % 3) + 1
+    a = [(i % 3) + 1 for i in range(n)]
+
     dp = [[False] * (n + 1) for _ in range(n + 1)]
 
     def solve(l, r):
@@ -20,18 +18,17 @@ def main(n):
             if left[0] == -1 or right[0] == -1:
                 tmp = min(tmp, left[1] + right[1])
             elif left == right:
-                tmp_val = left[0] + 1
-                dp[l][r] = (tmp_val, 1)
+                val = left[0] + 1
+                dp[l][r] = (val, 1)
                 return dp[l][r]
+
             else:
                 tmp = min(tmp, 2)
         dp[l][r] = (-1, tmp)
         return dp[l][r]
 
     solve(0, n)
-    print(dp[0][n][1])
-
-
+    # print(dp[0][n][1])
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 5 的测试
-    main(5)
+    main(10)

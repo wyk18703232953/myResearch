@@ -1,13 +1,9 @@
-import random
-import string
+def main(n):
+    # Deterministically generate input string S of length n
+    # Pattern: repeating lowercase letters 'a' to 'z'
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    S = "".join(alphabet[i % 26] for i in range(n))
 
-def main(n: int):
-    # 1. 生成规模为 n 的测试数据：随机字符串
-    # 可根据需要修改字符集
-    chars = string.ascii_lowercase
-    S = ''.join(random.choice(chars) for _ in range(n))
-
-    # 2. 原逻辑
     sLen, ans = len(S), 0
     for i in range(sLen):
         for till1 in range(i + 1, sLen):
@@ -22,9 +18,7 @@ def main(n: int):
                     ans = subLen
                 till2 += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，可自行修改规模
     main(10)

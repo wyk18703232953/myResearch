@@ -9,11 +9,12 @@ def main(n):
     up = (x * pow(2, k + 1, m)) % m
     down = pow(2, k, m) - 1
     if x == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print((up - down) % m)
-
-
+        # print((up - down) % m)
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

@@ -1,38 +1,39 @@
-import random
+def main(n):
+    import heapq  # kept as in original, though unused in logic
 
-def main(n: int):
-    # 预定义所有尺码
+    # Generate key list as in original code
     key = []
     for i in ['S', 'M', 'L']:
         for j in range(4):
             key.append(j * 'X' + i)
 
-    # 随机生成测试数据：两个长度为 n 的尺寸序列
-    prev_list = [random.choice(key) for _ in range(n)]
-    now_list = [random.choice(key) for _ in range(n)]
-
-    # 计数
+    # Initialize dictionaries
     prev = dict().fromkeys(key, 0)
     now = dict().fromkeys(key, 0)
-    for s in prev_list:
-        prev[s] += 1
-    for s in now_list:
-        now[s] += 1
 
-    # 抵消相同的尺码
+    # Deterministically generate "prev" multiset of sizes based on n
+    # Distribute counts across key patterns in a fixed cyclic manner
+    for i in range(n):
+        size = key[i % len(key)]
+        prev[size] += 1
+
+    # Deterministically generate "now" multiset of sizes based on n
+    # Use a shifted pattern to create differences
+    for i in range(n):
+        size = key[(i * 2) % len(key)]
+        now[size] += 1
+
+    # Core logic: cancel matching sizes
     for k in key:
         temp = min(prev[k], now[k])
         prev[k] -= temp
         now[k] -= temp
 
-    # 计算需要更换的数量（即剩余 now 中的数量之和）
     ans = 0
     for k in key:
         ans += now[k]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例运行：可以自行修改 n 测试规模
     main(10)

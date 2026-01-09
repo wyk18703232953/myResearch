@@ -16,12 +16,12 @@ def main(n: int):
 
     if x == 0:
         result = 0
+
     else:
         result = ((pow(2, k + 1, mod) * x) - (pow(2, k, mod) - 1)) % mod
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行
     main(10)

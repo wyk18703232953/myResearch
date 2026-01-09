@@ -32,11 +32,12 @@ def main(n):
             x += 1
 
     if x >= k:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例调用
     main(100)

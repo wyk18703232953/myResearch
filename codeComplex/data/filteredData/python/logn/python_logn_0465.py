@@ -23,6 +23,7 @@ def main(n: int):
     # 原程序中 a,b 实际是隐藏值，此处用 n 决定它们
     if n <= 0:
         a_hidden, b_hidden = 3, 1
+
     else:
         a_hidden = (3 + n * 7) & 0x3FFFFFFF
         b_hidden = (1 + n * 5) & 0x3FFFFFFF
@@ -41,6 +42,7 @@ def main(n: int):
             return -1
         elif ac < bd:
             return 1
+
         else:
             return 0
 
@@ -82,7 +84,8 @@ def main(n: int):
             c += local_powers[cp]
 
     # 输出最后推断出来的 a, b
-    print('!', a, b)
+    # print('!', a, b)
+    pass
 
 
 # 简单示例：需要时可调用 main(n)

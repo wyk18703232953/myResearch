@@ -8,6 +8,7 @@ def main(n: int):
         ans = 0
     elif k == 1 or k == 2 * n:
         ans = 2
+
     else:
         same = [0] * (k + 1)
         same[1] = 2
@@ -26,9 +27,8 @@ def main(n: int):
 
         ans = (same[k] + diff[k]) % limit
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

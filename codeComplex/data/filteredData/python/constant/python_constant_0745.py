@@ -6,9 +6,8 @@ def main(n: int):
     #
     # 当前保持与原程序等价：仅对规模 n 计算一次。
     result = 2 * n * n - 2 * n + 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

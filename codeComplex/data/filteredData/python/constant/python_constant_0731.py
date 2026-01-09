@@ -31,9 +31,8 @@ def main(n):
 
     # 输出所有结果，每个k对应一个答案
     for v in results:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     # 示例：运行规模 n = 20
     main(20)

@@ -16,15 +16,15 @@ def main(n):
         p = (l - off) // k
         if p == page:
             c += 1
+
         else:
             off += c
             c = 1
             ans += 1
             page = (l - off) // k
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10)

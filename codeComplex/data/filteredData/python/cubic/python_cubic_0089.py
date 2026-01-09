@@ -1,22 +1,24 @@
 from collections import Counter
-import random
 
-def main(n, seed=0):
-    random.seed(seed)
+def main(n):
+    # Ensure n is at least 1
+    if n <= 0:
+        n = 1
 
-    # 生成测试数据
-    # n: 元素数量
-    # k: 每个喜欢的颜色最多可选数量，设为 1~n 之间
-    k = random.randint(1, max(1, n))
+    # Define parameters based on n
+    k = max(1, n // 5)
+    m_unique = max(1, n // 4)
 
-    # 颜色编号范围和喜欢颜色范围都设为 1..n
-    c = [random.randint(1, n) for _ in range(n)]  # 所有物品的颜色
-    f = [random.randint(1, n) for _ in range(n)]  # 喜欢的颜色序列
+    # Build colors list c: length n, values in [1, m_unique]
+    c = [(i % m_unique) + 1 for i in range(n)]
 
-    # h 数组长度为 k+1，h[0] = 0，h[1..k] 随机生成
-    h = [0] + [random.randint(0, 10) for _ in range(k)]
+    # Build favorite list f: length n, same value domain as c
+    f = [((i * 2) % m_unique) + 1 for i in range(n)]
 
-    # 原逻辑
+    # Build happiness array h of length k + 1, 1-based in original code
+    # h[0] is dummy; h[1..k] are deterministic values
+    h = [0] + [i * i for i in range(1, k + 1)]
+
     cnt_all = Counter(c)
     cnt_fav = Counter(f)
 
@@ -35,9 +37,7 @@ def main(n, seed=0):
                     dp[x][ki + s] = max(dp[x][ki + s], dp[x - 1][s] + h[ki])
         ans += dp[m][t]
 
-    print(ans)
-    return ans
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

@@ -42,9 +42,8 @@ def main(n):
         results.append(solve(ni, ki))
     # 输出结果（与原程序表现一致）
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例：当需要测试规模为 5 时调用 main(5)
     main(5)

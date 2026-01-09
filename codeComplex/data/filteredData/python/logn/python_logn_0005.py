@@ -1,26 +1,22 @@
-import random
+def main(n):
+    # 根据 n 生成确定性输入规模
+    # 映射为两个整数 a, b
+    a = n
+    b = (n * 2 + 3)
 
-def main(n: int):
-    # 生成规模为 n 的测试数据：随机生成两个位数不超过 n 的非负整数
-    # 为了可控，这里让 a, b < 2^n
-    if n <= 0:
-        a, b = 0, 0
-    else:
-        limit = 1 << n
-        a = random.randrange(limit)
-        b = random.randrange(limit)
-
-    # 原逻辑开始
+    # 原始逻辑
     if a == b:
-        print(0)
+        # print(0)
+        pass
+
     else:
         x = a ^ b
         c = 1
         while x:
             x >>= 1
             c <<= 1
-        print(c - 1)
-
+        # print(c - 1)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模为 10
+    # 示例调用，可按需修改 n 的值进行规模化实验
     main(10)

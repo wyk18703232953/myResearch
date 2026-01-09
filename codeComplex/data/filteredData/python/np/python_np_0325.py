@@ -40,9 +40,8 @@ def main(n: int):
                         mem[i][val][k2] = add(base, mem[i][val][k2])
 
     ans = sum(mem[-1][k]) % mod
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(5)

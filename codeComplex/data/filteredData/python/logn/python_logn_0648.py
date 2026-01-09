@@ -1,7 +1,5 @@
-import random
-
 def wzor(n):
-    return (n * (n + 1)) / 2
+    return (n * (n + 1)) // 2
 
 def mafia(n, c):
     po = 1
@@ -10,21 +8,24 @@ def mafia(n, c):
     while po != ko:
         if wzor(sr) - (n - sr) >= c:
             ko = sr
+
         else:
             po = sr + 1
         sr = (po + ko) // 2
-
-    return int(wzor(po) - c)
+    return wzor(po) - c
 
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 保证 c 合理：0 <= c <= wzor(n)
-    max_c = int(wzor(n))
-    c = random.randint(0, max_c)
-    
+    # 解释输入规模映射：
+    # n 为原问题中的 n
+    # 令 c 为一个与 n 同阶的确定性值：c = n // 2
+    # 这样时间复杂度主要由 n 控制
+    if n < 1:
+        return None
+    c = n // 2
     result = mafia(n, c)
-    print(result)
+    # print(result)
+    pass
+    return result
 
 if __name__ == "__main__":
-    # 示例：使用 n = 10 作为规模
     main(10)

@@ -1,9 +1,9 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据：长度为 n 的 0/1 序列
-    a = [random.randint(0, 1) for _ in range(n)]
-    b = [random.randint(0, 1) for _ in range(n)]
+def main(n):
+    # Deterministically generate inputs a and b based on n
+    # a: pattern 0,1,0,1,...
+    # b: pattern 1,0,1,0,...
+    a = [i % 2 for i in range(n)]
+    b = [(i + 1) % 2 for i in range(n)]
 
     res = 0
 
@@ -12,6 +12,7 @@ def main(n: int) -> int:
             res += 1
             a[j] = 1
             a[j + 1] = 0
+
         elif (a[j] == 1) and (a[j + 1] == 0) and (b[j] == 0) and (b[j + 1] == 1):
             res += 1
             a[j] = 0
@@ -21,9 +22,7 @@ def main(n: int) -> int:
         if a[j] != b[j]:
             res += 1
 
-    print(res)
-    return res
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模为 10
     main(10)

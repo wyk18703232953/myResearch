@@ -15,7 +15,8 @@ def main(n):
             r += 1
 
     result = r + n - v + 1
-    print(result)
+    # print(result)
+    pass
     return result
 
 

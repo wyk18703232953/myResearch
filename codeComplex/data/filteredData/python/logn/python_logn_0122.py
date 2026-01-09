@@ -17,6 +17,7 @@ def bin_search_solution(n, k):
             return k - mid + 1
         if s > n:
             st = mid + 1
+
         else:
             end = mid
     return k - st + 2
@@ -27,12 +28,14 @@ def solve(n, k):
         return 0
     elif k >= n:
         return 1
+
     else:
         n -= 1
         k -= 1
 
         if suma(k) < n:
             return -1
+
         else:
             res = bin_search_solution(n, k)
             return res
@@ -49,9 +52,8 @@ def main(n):
     n_val = n
     k_val = max(1, n // 2)
     result = solve(n_val, k_val)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == '__main__':
     # 示例：用规模 n=10 运行
     main(10)

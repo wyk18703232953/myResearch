@@ -1,7 +1,3 @@
-import math
-import random
-
-
 def gcd(a, b):
     if a == 0:
         return b
@@ -12,19 +8,21 @@ def lcm(a, b):
     return (a * b) / gcd(a, b)
 
 
-def main(n: int):
-    # 生成测试数据
-    # 约定：r 为正整数，a 为严格递增的整数序列，长度为 n
+def main(n):
+    # 解释原程序输入结构：
+    # 第一行: n, r
+    # 第二行: n 个整数 a[i]
+    #
+    # 这里将参数 n 作为“圆的个数”，即原程序中的 n
+    # r 设为一个与规模无关的固定值，保证确定性
     if n <= 0:
         return
 
-    r = random.randint(1, 10)  # 半径
-    a = []
-    cur = 0
-    for _ in range(n):
-        # 每个位置与前一个位置间隔在 [1, 2*r] 之间
-        cur += random.randint(1, 2 * r)
-        a.append(cur)
+    r = 10  # 固定半径，保持算法逻辑不变
+
+    # 构造确定性的数组 a，长度为 n
+    # 使用简单线性构造，避免随机性
+    a = [i * 3 for i in range(n)]
 
     ans = []
     ans.append(r)
@@ -34,14 +32,13 @@ def main(n: int):
             if abs(a[j] - a[i]) <= 2 * r:
                 ymax = max(
                     ymax,
-                    ans[j] + math.sqrt(4 * r * r - (a[i] - a[j]) ** 2),
+                    ans[j] + (4 * r * r - (a[i] - a[j]) ** 2) ** 0.5
                 )
         ans.append(ymax)
 
-    # 输出与原逻辑一致：仅输出 ans（中间结果）
-    print(*ans)
-
-
+    # 保持与原程序相同的输出形式
+    # print(*ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10，可按需修改
+    # 示例调用：可根据需要修改 n 的大小进行实验
     main(10)

@@ -6,7 +6,8 @@ def mypw2(deg: int) -> int:
 
 def sol(n: int, k: int):
     if k == 0:
-        print("YES", n)
+        # print("YES", n)
+        pass
         return
     for side in range(1, n + 1):
         MIN = mypw2(side + 1) - side - 2
@@ -19,9 +20,11 @@ def sol(n: int, k: int):
         )
         MAX //= 3
         if MIN <= k <= MAX:
-            print("YES", n - side)
+            # print("YES", n - side)
+            pass
             return
-    print("NO")
+    # print("NO")
+    pass
 
 
 def main(n: int):

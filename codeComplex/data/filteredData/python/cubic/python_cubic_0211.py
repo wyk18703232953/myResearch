@@ -1,47 +1,43 @@
-import random
+def main(n):
+    # Interpret n as the size of each color group: r = g = b = n
+    r = g = b = n
 
+    # Deterministic generation of stick lengths:
+    # Three sequences of length n, constructed via simple arithmetic
+    red = [i + 1 for i in range(r)]
+    green = [2 * (i + 1) for i in range(g)]
+    blue = [3 * (i + 1) for i in range(b)]
 
-def main(n: int):
-    # 1. 根据规模 n 生成 r, g, b
-    #    可按需要调整生成逻辑，这里简单设为 1..n 范围内的随机数
-    r = random.randint(1, n)
-    g = random.randint(1, n)
-    b = random.randint(1, n)
+    # Original code sorts each list in descending order
+    sticks = [
+        sorted(red, reverse=True),
+        sorted(green, reverse=True),
+        sorted(blue, reverse=True),
+    ]
 
-    # 2. 生成三种颜色的棍子长度（1..10^4 随机）
-    sticks = []
-    for size in (r, g, b):
-        arr = [random.randint(1, 10_000) for _ in range(size)]
-        arr.sort(reverse=True)
-        sticks.append(arr)
-
-    # sticks[0]：红，sticks[1]：绿，sticks[2]：蓝
+    # Allocate 3D DP table: dp[i][j][k] for i red, j green, k blue used
     dp = [[[0 for _ in range(b + 1)] for _ in range(g + 1)] for _ in range(r + 1)]
     ans = 0
 
     for i in range(r + 1):
         for j in range(g + 1):
             for k in range(b + 1):
-                ans = max(ans, dp[i][j][k])
+                if dp[i][j][k] > ans:
+                    ans = dp[i][j][k]
                 if i < r and j < g:
-                    dp[i + 1][j + 1][k] = max(
-                        dp[i + 1][j + 1][k],
-                        dp[i][j][k] + sticks[0][i] * sticks[1][j],
-                    )
+                    val = dp[i][j][k] + sticks[0][i] * sticks[1][j]
+                    if val > dp[i + 1][j + 1][k]:
+                        dp[i + 1][j + 1][k] = val
                 if i < r and k < b:
-                    dp[i + 1][j][k + 1] = max(
-                        dp[i + 1][j][k + 1],
-                        dp[i][j][k] + sticks[0][i] * sticks[2][k],
-                    )
+                    val = dp[i][j][k] + sticks[0][i] * sticks[2][k]
+                    if val > dp[i + 1][j][k + 1]:
+                        dp[i + 1][j][k + 1] = val
                 if j < g and k < b:
-                    dp[i][j + 1][k + 1] = max(
-                        dp[i][j + 1][k + 1],
-                        dp[i][j][k] + sticks[1][j] * sticks[2][k],
-                    )
+                    val = dp[i][j][k] + sticks[1][j] * sticks[2][k]
+                    if val > dp[i][j + 1][k + 1]:
+                        dp[i][j + 1][k + 1] = val
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 5
-    main(5)
+    main(3)

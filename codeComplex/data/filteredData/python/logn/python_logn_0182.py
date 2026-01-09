@@ -9,13 +9,13 @@ def main(n: int):
         if md - sum(int(x) for x in str(md)) >= m:
             en = md - 1
             ans = md
+
         else:
             be = md + 1
 
     # 输出结果
-    print(n - ans + 1)
-
-
+    # print(n - ans + 1)
+    pass
 if __name__ == "__main__":
     # 示例：可修改为任意规模 n
     main(10**6)

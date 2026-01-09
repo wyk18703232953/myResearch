@@ -1,9 +1,5 @@
-import random
-
-def main(n: int) -> None:
-    # 根据规模 n 生成测试数据：n 个 1~10^9 之间的随机整数
-    a = [random.randint(1, 10**9) for _ in range(n)]
-
+def main(n):
+    a = [i % (n // 2 + 1) + 1 for i in range(n)]
     a = sorted(a)
     ans = 0
     b = [0] * n
@@ -13,9 +9,7 @@ def main(n: int) -> None:
             for j in range(i, n):
                 if a[j] % a[i] == 0:
                     b[j] = 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：可在此处修改 n 来测试
     main(10)

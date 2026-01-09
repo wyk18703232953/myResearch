@@ -1,18 +1,14 @@
-import random
-
 def main(n):
-    # 根据 n 生成测试数据：
-    # 原程序中有 n, m 两个输入，这里 m 未使用，仅构造一个与 n 同规模量级的 m 用于模拟
-    m = random.randint(1, max(1, 2 * n))
-
-    # 原逻辑开始
+    # 将原本的 (n, m) 输入结构映射为 (n, m=n)
+    # 原程序只使用 n，不使用 m
+    m = n
     c = 0
-    ans = ""
+    ans = []
     for _ in range(n):
-        ans += str(c ^ 1)
-        c = c ^ 1
-    print(ans)
-
-# 示例调用
+        c ^= 1
+        ans.append(str(c))
+    ans = "".join(ans)
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

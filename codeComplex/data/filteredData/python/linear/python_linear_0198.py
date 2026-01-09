@@ -10,12 +10,14 @@ def bootstrap(f, stack=[]):
     def wrappedfunc(*args, **kwargs):
         if stack:
             return f(*args, **kwargs)
+
         else:
             to = f(*args, **kwargs)
             while True:
                 if type(to) is GeneratorType:
                     stack.append(to)
                     to = next(to)
+
                 else:
                     stack.pop()
                     if not stack:
@@ -98,6 +100,7 @@ def divideCeil(n, x):
 def solve(n, a, b, c, t, ti):
     if b > c:
         return n * a
+
     else:
         ans = 0
         ti.sort()
@@ -122,8 +125,8 @@ def main(n):
     ti = [(i * 3) % (t + 1) for i in range(n)]
 
     ans = solve(n, a, b, c, t, ti)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

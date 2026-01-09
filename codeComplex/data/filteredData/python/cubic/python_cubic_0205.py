@@ -1,17 +1,12 @@
-import random
+def main(n):
+    # Interpret n as the size of each color array: rr = gg = bb = n
+    rr = gg = bb = n
 
-def main(n: int):
-    # 生成规模：三种颜色的数量
-    # 这里简单设定 rr + gg + bb ≈ n
-    rr = n // 3
-    gg = n // 3
-    bb = n - rr - gg
-
-    # 生成测试数据：随机正整数
-    # 可根据需要修改随机范围
-    r = [random.randint(1, 10**4) for _ in range(rr)]
-    g = [random.randint(1, 10**4) for _ in range(gg)]
-    b = [random.randint(1, 10**4) for _ in range(bb)]
+    # Deterministic data generation
+    # Example pattern: decreasing sequences so that sort(reverse=True) keeps them same
+    r = [rr - i for i in range(rr)]
+    g = [gg - i for i in range(gg)]
+    b = [bb - i for i in range(bb)]
 
     inf = 114514
     r = r + [inf]
@@ -25,7 +20,6 @@ def main(n: int):
     dp = []
     for _ in range(rr + 1):
         dp.append([[0] * (bb + 1) for _ in range(gg + 1)])
-
     ans = 0
     for i in range(rr + 1):
         ri = r[i]
@@ -45,9 +39,7 @@ def main(n: int):
                 dp[i][j][k] = dpijk
                 if ans < dpijk:
                     ans = dpijk
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(9)，可根据需要修改
-    main(9)
+    main(5)

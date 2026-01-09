@@ -1,56 +1,77 @@
-import random
-
 def main(n):
-    # 随机生成满足题意的 a, b
-    # 约束：min(a, b) <= 1 且 1 <= a, b <= n
-    if n <= 0:
-        return
+    # Deterministically generate a, b based on n
+    # Ensure coverage of different branches as n changes
+    if n == 1:
+        a, b = 1, 1
+    elif n == 2:
+        a, b = 1, 2
+    elif n == 3:
+        a, b = 2, 1
 
-    while True:
-        a = random.randint(1, n)
-        b = random.randint(1, n)
-        if min(a, b) <= 1:
-            break
+    else:
+        # For n >= 4, cycle through some deterministic (a,b) pairs
+        # based on n modulo 4 to vary behavior but remain deterministic
+        r = n % 4
+        if r == 0:
+            a, b = 1, 1
+        elif r == 1:
+            a, b = 1, 2
+        elif r == 2:
+            a, b = 2, 1
+        else:  # r == 3
+            a, b = 2, 2
 
-    # 从这里开始是原逻辑，去掉了 input()，使用 n, a, b
+    # Core logic from original program
     if min(a, b) > 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     m = max(a, b)
 
     if m == 1:
         if n == 1:
-            print('YES')
-            print(0)
+            # print('YES')
+            pass
+            # print(0)
+            pass
             return
         elif n < 4:
-            print('NO')
+            # print('NO')
+            pass
             return
+
         else:
-            print('YES')
+            # print('YES')
+            pass
             for row in range(n):
                 line = ['0'] * n
                 if row > 0:
                     line[row - 1] = '1'
                 if row < n - 1:
                     line[row + 1] = '1'
-                print(''.join(line))
+                # print(''.join(line))
+                pass
         return
 
-    print('YES')
+    # print('YES')
+    pass
 
     if a == 1:
         c = '1'
         d = '0'
+
     else:
         c = '0'
         d = '1'
-
     for row in range(n):
         if row < m - 1:
             line = [c] * n
+
         else:
             line = [c] * (m - 1) + [d] * (n - m + 1)
         line[row] = '0'
-        print(''.join(line))
+        # print(''.join(line))
+        pass
+if __name__ == "__main__":
+    main(10)

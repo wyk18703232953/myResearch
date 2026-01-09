@@ -13,9 +13,8 @@ def main(n: int):
             (j // 2 * (j // 2 + 1) - i // 2 * (i // 2 + 1))
             - (((j - j // 2) * (j - j // 2)) - ((i - i // 2) * (i - i // 2)))
         )
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：执行 5 组测试
     main(5)

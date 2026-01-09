@@ -1,14 +1,13 @@
 from collections import defaultdict
-import random
 
 mod = 998244353
 
 def main(n):
-    # 1. 生成规模为 n 的测试数据 a（整数数组）
-    # 这里示例：从 0~n 之间均匀随机生成 n 个数，可按需要自行调整分布
-    a = [random.randint(0, n) for _ in range(n)]
+    # Deterministic data generation: original program expects
+    # n, followed by n integers. We let array length be n and
+    # generate a simple pattern based on i.
+    a = [(i * 2 + 3) % (n + 5) for i in range(n)]
 
-    # 2. 原程序逻辑开始
     d = defaultdict(int)
     for x in a:
         d[x] += 1
@@ -20,7 +19,9 @@ def main(n):
 
     ba = [0] * m
     cn = [0] * (m + 1)
-    k = h = 0
+    k = 0
+    h = 0
+
     for i, x in enumerate(b):
         while h < m and x[0] >= b[h][0] * 2:
             h += 1
@@ -28,12 +29,14 @@ def main(n):
         while k < m and x[0] * 2 > b[k][0]:
             k += 1
         cn[k] += x[1]
+
     for i in range(m):
         cn[i + 1] += cn[i]
 
     dp = [0] * m
     dp[0] = 1
-    b_vals = [x[1] for x in b]
+    b_counts = [x[1] for x in b]
+
     for i in range(n):
         ndp = [0] * m
         for j in range(1, m):
@@ -43,15 +46,16 @@ def main(n):
             if dp[j] >= mod:
                 dp[j] -= mod
         for j in range(1, m):
-            ndp[j] += dp[ba[j]] * b_vals[j]
+            ndp[j] += dp[ba[j]] * b_counts[j]
             ndp[j] %= mod
         dp = ndp
 
-    ans = sum(dp) % mod
-    print(ans)
-    return ans
+    result = sum(dp) % mod
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10) 进行测试
+    # Example deterministic run
     main(10)

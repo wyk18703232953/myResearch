@@ -15,9 +15,8 @@ def main(n):
     a += k // x            # 第 k 位所在的具体数字
     digit = str(a)[k % x]  # 在该数字中的具体位
 
-    print(digit)
-
-
+    # print(digit)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(n)，n 为要查询的第 n 个数字位置
     # 这里给出一个示例测试，可以根据需要修改或批量生成 n

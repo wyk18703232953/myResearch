@@ -1,35 +1,29 @@
+import sys
 from collections import deque
-import random
 
 def main(n):
-    # 生成规模为 n 的测试数据：
-    # n 行 m 列的网格，m 与 n 同规模
+    # n controls grid size; ensure minimum size
+    n = max(2, n)
     m = n
 
-    # 随机生成 k（1 到 n 之间）
-    k = max(1, n // 3)
-    k = min(k, n * m)  # 不超过格子总数
-
-    # 随机生成 k 个起始点（不重复）
-    points = set()
-    while len(points) < k:
-        x = random.randrange(n)
-        y = random.randrange(m)
-        points.add((x, y))
-    points = list(points)
-    k = len(points)  # 实际数量
-
-    # 模拟原代码逻辑
+    # Deterministic construction of k and pairs:
+    # use k = n, and select n distinct cells along a pattern
+    k = n
     a = [[0] * m for _ in range(n)]
     dq = deque()
 
-    # 原代码将坐标从 1-based 转成 0-based，我们直接用 0-based
-    # line 数组按 [x1,y1,x2,y2,...] 形式
+    # Build "line" equivalent as in the original input:
+    # original expects 2*k integers (1-based indices), then subtracts 1
+    # Here we generate k positions deterministically:
     line = []
-    for x, y in points:
-        line.append(x)
-        line.append(y)
+    for i in range(k):
+        # simple deterministic mapping: row and col based on i
+        r = i % n
+        c = (i * 2) % m
+        line.append(r)
+        line.append(c)
 
+    # Apply the same logic as the original code (using 0-based indices directly)
     for i in range(0, 2 * k, 2):
         a[line[i]][line[i + 1]] = 1
         dq.append((line[i], line[i + 1]))
@@ -42,10 +36,11 @@ def main(n):
                 a[tx][ty] = 1
                 dq.append((tx, ty))
 
-    # 输出与原程序一致：最终填满时最后一个点的 1-based 坐标
-    print(f'{x+1} {y+1}')
-
+    # Return the final coordinates in 1-based form to mirror the original print
+    # print(f"{x + 1} {y + 1}")
+    pass
+    return x + 1, y + 1
 
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n
+    # example deterministic call
     main(5)

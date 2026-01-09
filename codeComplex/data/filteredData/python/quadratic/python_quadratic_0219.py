@@ -1,27 +1,24 @@
-import random
+def main(n):
+    # Interpret n as both number of rows and columns for scalability
+    rows = n
+    cols = n
 
-def main(n: int):
-    # 随机生成 m（列数），范围可根据需要调整
-    m = max(1, n // 2)
+    # Deterministically generate matrix 'a' with digits [0-9]
+    # Each row is a list of integers; digit computed from simple arithmetic
+    a = [[(i * cols + j) % 10 for j in range(cols)] for i in range(rows)]
 
-    # 生成测试数据：n 行，每行是一个长度为 m 的 0-9 随机整数列表
-    a = [
-        [random.randint(0, 9) for _ in range(m)]
-        for _ in range(n)
-    ]
+    # Compute column sums
+    colsums = [sum(a[i][j] for i in range(rows)) for j in range(cols)]
 
-    # 计算每一列的列和
-    colsums = [sum(a[i][j] for i in range(n)) for j in range(m)]
-
-    # 检查是否存在一行，其每个元素都严格小于对应列和
+    # Check rows against column sums
     for row in a:
         if all(rv < sv for (rv, sv) in zip(row, colsums)):
-            print("YES")
+            # print("YES")
+            pass
             return
 
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
-    # 示例调用，可按需修改 n
+    # Example fixed-scale call for repeatable experiments
     main(5)

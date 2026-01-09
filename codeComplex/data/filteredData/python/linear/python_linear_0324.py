@@ -1,33 +1,26 @@
-from collections import Counter
-import random
-import string
+def main(n):
+    from collections import Counter
 
-
-def main(n: int):
-    # 生成测试数据：两个长度为 n 的字符串列表 A 和 B
-    # 字符串由小写字母组成，长度为 1~5
-    def random_str(min_len=1, max_len=5):
-        length = random.randint(min_len, max_len)
-        return ''.join(random.choices(string.ascii_lowercase, k=length))
-
-    A = [random_str() for _ in range(n)]
-    B = [random_str() for _ in range(n)]
-
+    # Generate deterministic string lists of size n for a and b
+    # Pattern ensures some overlaps and some differences
     a = Counter()
     b = Counter()
 
-    for s in A:
+    # First list: strings based on i % (n//2 + 1) to create repetition
+    for i in range(n):
+        s = "s_" + str(i % (n // 2 + 1))
         a[s] += 1
-    for s in B:
+
+    # Second list: slightly shifted pattern to create differences
+    for i in range(n):
+        s = "s_" + str((i + 1) % (n // 2 + 1))
         b[s] += 1
 
     ans = 0
     for key in b:
         ans += max(b[key] - a[key], 0)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
     main(10)

@@ -10,14 +10,14 @@ def main(n: int):
         res.extend((multiplier,) * (cur_n - new_n))
         if cur_n == 3:
             multiplier *= 3
+
         else:
             multiplier *= 2
         cur_n = new_n
 
     res.extend((multiplier,) * cur_n)
-    print(*res)
-
-
+    # print(*res)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

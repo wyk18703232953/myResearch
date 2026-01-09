@@ -1,18 +1,27 @@
-from collections import defaultdict
-import random
-
 def main(n):
-    # 生成测试数据
-    # a, b 为任意整数（原代码中 b 实际未使用，这里仍然生成）
-    a = random.randint(-5, 5)
-    b = random.randint(-5, 5)
+    from collections import defaultdict
+
+    # Deterministic parameter generation
+    # Interpret n as number of points
+    # a and b are fixed deterministically as functions of n
+    # To exercise both branches, choose a != 0 for odd n, a == 0 for even n
+    if n <= 0:
+        return
+
+    if n % 2 == 1:
+        a = 1
+        b = 2
+
+    else:
+        a = 0
+        b = 3
 
     XV = []
-    for _ in range(n):
-        # 生成 x, vx, vy，范围可按需调整
-        x = random.randint(-10**6, 10**6)
-        vx = random.randint(-10**3, 10**3)
-        vy = random.randint(-10**3, 10**3)
+    # Deterministic construction of (x, vx, vy)
+    for i in range(n):
+        x = i
+        vx = (i * 2 + 1) % (n + 3)
+        vy = (i * 3 + 2) % (n + 5)
         XV.append((x, vx, vy))
 
     if a != 0:
@@ -23,12 +32,17 @@ def main(n):
         dvxy = defaultdict(int)
         for x, vx, vy in XV:
             k = -a * vx + vy
-            ans += max(0, d[k] - (dvx[(k, vx)] + dvy[(k, vy)] - dvxy[(k, vx, vy)]))
+            ans += max(
+                0,
+                d[k] - (dvx[(k, vx)] + dvy[(k, vy)] - dvxy[(k, vx, vy)]),
+            )
             d[k] += 1
             dvx[(k, vx)] += 1
             dvy[(k, vy)] += 1
             dvxy[(k, vx, vy)] += 1
-        print(ans * 2)
+        # print(ans * 2)
+        pass
+
     else:
         ans = 0
         d = defaultdict(lambda: defaultdict(int))
@@ -37,9 +51,7 @@ def main(n):
             ans += max(0, ds[vy] - d[vy][vx])
             d[vy][vx] += 1
             ds[vy] += 1
-        print(ans * 2)
-
-
+        # print(ans * 2)
+        pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10
     main(10)

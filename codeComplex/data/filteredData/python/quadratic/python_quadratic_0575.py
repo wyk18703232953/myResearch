@@ -1,5 +1,3 @@
-import random
-
 def givestringsk(k):
     t = ["R", "G", "B"]
     ans = []
@@ -17,32 +15,50 @@ def countdifferences(a, b):
             cnt += 1
     return cnt
 
-def solve_one_case(n, k, s):
-    patterns = givestringsk(k)
+def solve_single(n, k, s):
+    temp = givestringsk(k)
     ans = 10**18
     for i in range(k, n + 1):
-        segment = s[i - k:i]
-        for p in patterns:
-            ans = min(ans, countdifferences(segment, p))
+        for j in range(3):
+            ans = min(ans, countdifferences(s[i - k:i], temp[j]))
     return ans
 
 def main(n):
-    # 生成测试数据：随机选择 k，随机生成长度为 n 的 RGB 字符串
+    # n 表示字符串长度规模，同时设置 k 与测试组数 T
+    # 为保持可规模化和确定性：
+    #  - T = 3（固定三组测试）
+    #  - 对第 t 组测试，使用不同的 k
+    #  - 字符串 s 由周期 "RGB" 再加简单扰动构造
     if n <= 0:
-        return []
+        return
 
-    # k 在 1 到 n 之间
-    k = random.randint(1, n)
-    chars = ["R", "G", "B"]
-    s = "".join(random.choice(chars) for _ in range(n))
-
-    # 若需要多组测试，可自行调整 cases 数量
-    cases = [(n, k, s)]
-
+    T = 3
     results = []
-    for n_case, k_case, s_case in cases:
-        res = solve_one_case(n_case, k_case, s_case)
-        print(res)
+
+    for t in range(T):
+        length = n
+        k = max(1, min(length, 1 + (t * length) // (T + 1)))
+
+        base_pattern = ["R", "G", "B"]
+        s_list = []
+        for i in range(length):
+            ch = base_pattern[i % 3]
+            if (i + t) % 5 == 0:
+                if ch == "R":
+                    ch = "G"
+                elif ch == "G":
+                    ch = "B"
+
+                else:
+                    ch = "R"
+            s_list.append(ch)
+        s = "".join(s_list)
+
+        res = solve_single(length, k, s)
         results.append(res)
 
-    return results
+    for r in results:
+        # print(r)
+        pass
+if __name__ == "__main__":
+    main(10)

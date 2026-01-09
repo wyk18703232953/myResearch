@@ -23,6 +23,7 @@ def main(n):
     # b 为需要的满足条件的个数，取 n // 3（可按需要调整策略）
     if len(y) >= 2:
         a = y[-2] + y[-1] + 1
+
     else:
         a = 3
     b = max(1, n // 3)
@@ -50,11 +51,12 @@ def main(n):
 
     # 按原逻辑输出
     if j >= b:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，n 为规模
     main(10)

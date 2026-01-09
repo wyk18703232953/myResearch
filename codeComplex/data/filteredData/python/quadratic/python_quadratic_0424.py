@@ -24,11 +24,11 @@ def main(n):
                 cnt += 1
                 su = 0
         if cnt and su == 0:
-            print("YES")
+            # print("YES")
+            pass
             return
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

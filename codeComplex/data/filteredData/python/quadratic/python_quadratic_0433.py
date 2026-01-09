@@ -26,7 +26,8 @@ def main(n):
     s_chars = [str(x) for x in s]
 
     if len(set(s_chars)) == 1:
-        print('YES')
+        # print('YES')
+        pass
         return
 
     l = []
@@ -39,12 +40,13 @@ def main(n):
         if i > 0:
             r = solve(i, s_chars)
             if len(r) > 1 and len(set(r)) == 1:
-                print('YES')
+                # print('YES')
+                pass
                 break
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例运行：可根据需要修改规模
     main(10)

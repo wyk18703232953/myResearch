@@ -1,11 +1,3 @@
-from collections import defaultdict, deque, Counter
-from heapq import heappush, heappop
-import math
-import bisect
-import random
-import string
-
-
 def isPrime(x):
     for i in range(2, x):
         if i * i > x:
@@ -24,6 +16,7 @@ def ncr(n, r, p):
 
 
 def primeFactors(n):
+    import math
     l = []
     while n % 2 == 0:
         l.append(2)
@@ -45,7 +38,7 @@ def power(x, y, p):
     while y > 0:
         if (y & 1) == 1:
             res = (res * x) % p
-        y >>= 1
+        y = y >> 1
         x = (x * x) % p
     return res
 
@@ -75,16 +68,20 @@ def ceil(n, x):
     return n // x + 1
 
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的随机字符串
-    # 原逻辑只用到相邻是否相等，所以使用二元字符更能体现效果
-    alphabet = ['a', 'b']
-    s = [random.choice(alphabet) for _ in range(n)]
-    # 逻辑开始（原始代码去掉 input() 后的部分）
+def main(n):
+    # 生成长度为 n 的确定性字符串，周期性使用 'a','b','c'
+    if n <= 0:
+        # print(0)
+        pass
+        return
+    chars = ['a', 'b', 'c']
+    s = [chars[i % 3] for i in range(n)]
+
     l = [1]
     for i in range(n - 1):
         if s[i] != s[i + 1]:
             l[-1] += 1
+
         else:
             l.append(1)
 
@@ -92,10 +89,7 @@ def main(n: int):
     if len(l) > 1:
         if s[0] != s[-1]:
             ans = max(ans, l[0] + l[-1])
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例: 规模 n = 10
     main(10)

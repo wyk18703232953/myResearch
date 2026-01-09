@@ -1,21 +1,13 @@
-import random
-
 def main(n):
-    """
-    n: 生成的牌张数（规模参数）
-    牌格式为 '<数字><花色>'，如 '3m', '7p', '9s'
-    """
-    # 1. 根据 n 生成测试数据
-    # 牌面数字 1~9，花色 m, p, s
-    tiles = []
+    # Generate deterministic test data based on n
+    # We create a list of tiles like "1m", "2m", ..., cycling suits 'm','p','s'
     suits = ['m', 'p', 's']
-    for _ in range(n):
-        num = random.randint(1, 9)
-        suit = random.choice(suits)
-        tiles.append(f"{num}{suit}")
+    s = []
+    for i in range(n):
+        num = (i % 9) + 1  # 1..9
+        suit = suits[i % 3]
+        s.append(f"{num}{suit}")
 
-    # 2. 原逻辑封装
-    s = tiles
     hand = {'m': [], 'p': [], 's': []}
 
     for item in s:
@@ -46,9 +38,7 @@ def main(n):
             if b_needed < min_steps_needed:
                 min_steps_needed = b_needed
 
-    print(min_steps_needed)
-
-
+    # print(min_steps_needed)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n=13
-    main(13)
+    main(20)

@@ -74,7 +74,8 @@ def main(n):
                 dp[i][times] %= MOD
 
     ans = sum(dp[-1]) % MOD
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

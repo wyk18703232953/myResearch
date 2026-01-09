@@ -1,24 +1,28 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # 当 n == 1 时，原程序按字符串处理，这里用整数转字符串代替
-    if n == 1:
-        a = str(random.randint(-10**9, 10**9))
-        print(a)
+    # Determine input structure based on original program logic
+    if n <= 0:
         return
 
-    # n > 1 时，生成长度为 n 的整数数组
-    a = [random.randint(-10**9, 10**9) for _ in range(n)]
+    if n == 1:
+        # Original behavior: single string input and immediate output
+        # Deterministically generate a string based on n
+        a = "value_" + str(n)
+        # print(a)
+        pass
 
-    # 以下为原逻辑
-    b = [abs(i) for i in a]
-    if min(a) * max(a) > 0:
-        print(sum(b) - 2 * min(b))
     else:
-        print(sum(b))
+        # Original behavior: list of integers
+        # Here, we generate a deterministic list 'a' of length n
+        # Example pattern: a[i] = (-1)^i * (i + 1)
+        a = [(-1) ** i * (i + 1) for i in range(n)]
+        b = [abs(i) for i in a]
+        if min(a) * max(a) > 0:
+            # print(sum(b) - 2 * min(b))
+            pass
 
-
+        else:
+            # print(sum(b))
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，实际使用时可按需修改 n
-    main(5)
+    # Example call for time complexity experiments
+    main(10)

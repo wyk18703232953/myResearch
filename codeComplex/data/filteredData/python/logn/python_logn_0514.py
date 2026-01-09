@@ -10,7 +10,8 @@ def main(n):
             pos -= (c - 9 * (i + 1) * (10 ** i))
             v = pos // (i + 1)
             ch = str(10 ** i + v)[pos % (i + 1)]
-            print(ch)
+            # print(ch)
+            pass
             return
 
 # 示例调用

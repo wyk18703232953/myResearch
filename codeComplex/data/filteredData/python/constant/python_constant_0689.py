@@ -14,9 +14,11 @@ def main(n):
         m = (ri + le) / 2.0
         if p(n, r + m) < n * m * 2.0:
             ri = m
+
         else:
             le = m
-    print(m)
+    # print(m)
+    pass
 
 # 示例调用
 if __name__ == "__main__":

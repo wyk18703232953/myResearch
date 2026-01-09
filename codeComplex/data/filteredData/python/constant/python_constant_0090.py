@@ -8,6 +8,7 @@ def main(n):
         else:  # 偶数
             if val % 3 == 0:
                 return (val - 2) * (val - 1) * (val - 3)
+
             else:
                 return max(
                     val * (val - 1) * (val - 3),
@@ -22,9 +23,8 @@ def main(n):
 
     # 输出测试结果
     for val, ans in results:
-        print(f"n={val}, result={ans}")
-
-
+        # print(f"n={val}, result={ans}")
+        pass
 if __name__ == "__main__":
     # 示例：可调整这里的 n 以改变测试规模
     main(10)

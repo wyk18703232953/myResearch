@@ -10,14 +10,14 @@ def main(n):
         mid = (ok + ng) >> 1
         if mid - sum(map(int, str(mid))) >= s:
             ok = mid
+
         else:
             ng = mid
 
     # 原逻辑输出
     ans = max(0, n - ok + 1)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：运行 main(10**12) 或其他规模
     main(10**12)

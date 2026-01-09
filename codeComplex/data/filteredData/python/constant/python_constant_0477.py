@@ -7,9 +7,8 @@ def main(n):
     if h * n < k:
         h += 1
 
-    print(h)
-
-
+    # print(h)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，可按需要调整
     main(10)

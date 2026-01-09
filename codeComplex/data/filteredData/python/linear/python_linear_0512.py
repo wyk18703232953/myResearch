@@ -1,9 +1,8 @@
-import random
-
 def main(n):
-    # 生成测试数据：长度为 n 的由 '0' 和 '1' 组成的字符串
-    a = [random.choice(['0', '1']) for _ in range(n)]
-    b = [random.choice(['0', '1']) for _ in range(n)]
+    # Generate deterministic test data based on n
+    # a and b are lists of characters '0' and '1'
+    a = [str((i // 2) % 2) for i in range(n)]
+    b = [str((i // 3) % 2) for i in range(n)]
 
     ans = 0
 
@@ -20,9 +19,11 @@ def main(n):
     for i in range(n):
         ans += a[i] != b[i]
 
-    print(ans)
+    return ans
 
 
 if __name__ == "__main__":
-    # 示例：n=10，可按需修改
-    main(10)
+    # Example deterministic call for experimentation
+    result = main(10)
+    # print(result)
+    pass

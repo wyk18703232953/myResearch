@@ -26,7 +26,8 @@ def main(n: int):
 
     # 按要求，这里打印输出；也可以仅返回 results 供外部使用
     for ans in results:
-        print(ans)
+        # print(ans)
+        pass
 
     return results
 

@@ -1,9 +1,10 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据：n 个正整数，范围可按需要调整
-    # 这里生成 1 ~ 10**6 内的随机数
-    a = [random.randint(1, 10**6) for _ in range(n)]
+def main(n):
+    # Generate deterministic input of size n
+    # Original structure:
+    # n: integer
+    # a: list of n integers
+    # Here we generate a list whose behavior is deterministic for analysis.
+    a = [(i % 5) + 1 for i in range(1, n + 1)]
 
     a.sort(reverse=True)
 
@@ -18,10 +19,7 @@ def main(n: int) -> int:
             a.remove(x)
         cnt += 1
 
-    return cnt
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
-    # 示例：当作脚本运行时，给定一个规模测试
-    n = 10
-    print(main(n))
+    main(1000)

@@ -13,9 +13,8 @@ def main(n: int):
         candidates.append(s[:-2] + s[-1])
 
     nums = list(map(int, candidates))
-    print(max(nums))
-
-
+    # print(max(nums))
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(5)

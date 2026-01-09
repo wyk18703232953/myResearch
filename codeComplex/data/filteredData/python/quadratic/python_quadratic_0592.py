@@ -1,30 +1,30 @@
-import random
-
 def main(n):
-    # 随机生成测试数据：
-    # t：测试组数，1 <= t <= 10
-    # 对于每组：随机生成 1 <= k <= n 的 k，随机生成长度为 n 的字符串 s（只含 'R','G','B'）
-    t = random.randint(1, 10)
-    rgb = 'RGB' * 1000
-
-    for _ in range(t):
-        k = random.randint(1, n)
-        s = ''.join(random.choice('RGB') for _ in range(n))
-
+    rgb = 'RGB' * (n + 5)
+    # Interpret n as number of test cases
+    T = n
+    results = []
+    for t in range(1, T + 1):
+        # Deterministically generate n_t and k_t for each test
+        nt = t + 2  # length of string, at least 3
+        kt = max(1, nt // 2)  # window size
+        # Generate deterministic test string s of length nt
+        # pattern based on index to be deterministic and non-trivial
+        chars = ['R', 'G', 'B']
+        s = ''.join(chars[(i + t) % 3] for i in range(nt))
         ans = 3000
-        # 遍历三个可能的起点偏移 w
         for w in range(3):
-            # 枚举所有长度为 k 的子串起点
-            for e in range(n - k + 1):
+            if nt < kt:
+                break
+            for e in range(nt - kt + 1):
                 temp = 0
-                for i in range(k):
+                for i in range(kt):
                     if s[e + i] != rgb[w + i]:
                         temp += 1
                 if temp < ans:
                     ans = temp
-        print(ans)
-
-
+        results.append(ans)
+    for r in results:
+        # print(r)
+        pass
 if __name__ == "__main__":
-    # 示例调用，n 为规模，可按需修改
-    main(10)
+    main(5)

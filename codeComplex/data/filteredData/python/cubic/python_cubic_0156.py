@@ -1,5 +1,4 @@
-import random
-import math
+import copy, bisect, itertools, heapq, math
 from heapq import heappop, heappush, heapify
 from collections import Counter, defaultdict, deque
 
@@ -10,71 +9,38 @@ _ep = 10**(-12)
 alphabet = [chr(ord('a') + i) for i in range(26)]
 
 
-def examA_generate(n):
-    # 规模 n: 生成 T=n 组 (N, M)
-    T = n
-    cases = []
-    for _ in range(T):
-        M = random.randint(1, max(1, n))
-        # 保证既有能整除也有不能整除的情况
-        if random.random() < 0.5:
-            k = random.randint(0, n)
-            N = M * k
-        else:
-            N = random.randint(0, n)
-        cases.append((N, M))
-    return T, cases
-
-
-def examA_run(T, cases):
+def examA(T, NM_pairs):
     ans = []
     for i in range(T):
-        N, M = cases[i]
-        if M == 0 or N % M != 0:
+        N, M = NM_pairs[i]
+        if N % M != 0:
             ans.append("NO")
+
         else:
             ans.append("YES")
-    return ans
+    for v in ans:
+        # print(v)
+        pass
+    return
 
 
-def examB_generate(n):
-    # 规模 n: T=n 组，每组 N 随机，数组长度约为 n/2
-    T = n
-    cases = []
-    for _ in range(T):
-        N = random.randint(1, max(1, n))
-        A = [random.randint(-n, n) for _ in range(N)]
-        cases.append((N, A))
-    return T, cases
-
-
-def examB_run(T, cases):
+def examB(T, Ns, As):
     ans = []
-    for i in range(T):
-        N, A = cases[i]
-        A = A[:]  # avoid modifying input
+    for t in range(T):
+        A = As[t][:]
         A.sort()
         ans.append(A[::-1])
-    return ans
+    for v in ans:
+        # print(" ".join(map(str, v)))
+        pass
+    return
 
 
-def examC_generate(n):
-    # 规模 n: T=n 组
-    # N: 1..min(10, n), K: 1..5, A: sum magnitude about n
-    T = n
-    cases = []
-    for _ in range(T):
-        N = random.randint(1, min(10, n if n > 0 else 1))
-        K = random.randint(1, 5)
-        A = [random.randint(0, n) for _ in range(N)]
-        cases.append((N, K, A))
-    return T, cases
-
-
-def examC_run(T, cases):
+def examC(T, NK_list, As_list):
     ans = []
-    for _ in range(T):
-        N, K, A = cases[_]
+    for t in range(T):
+        N, K = NK_list[t]
+        A = As_list[t][:]
         sumA = sum(A)
         if sumA == 0:
             ans.append("YES")
@@ -87,7 +53,6 @@ def examC_run(T, cases):
             cur += now
             if cur >= sumA:
                 break
-        A = A[:]
         for i in range(N):
             A[i] *= -1
         heapify(A)
@@ -99,58 +64,50 @@ def examC_run(T, cases):
                 heappush(A, -a)
             elif a > l:
                 heappush(A, -(a - l))
-        if not A or heappop(A) == 0:
+        if (not A) or heappop(A) == 0:
             ans.append("YES")
+
         else:
             ans.append("NO")
-    return ans
+    for v in ans:
+        # print(v)
+        pass
+    return
 
 
-def examD_generate(n):
-    # 单组 (N, M)，N<=min(10,n+2) 保证可算
-    N = random.randint(2, min(10, n + 2 if n > 0 else 4))
-    M = random.randint(N - 1, max(N, n + 2))
-    return N, M
-
-
-def examD_run(N, M):
-    class combination:
-        # 只在模为素数时使用
-        def __init__(self, n, mod):
+def examD(N, M):
+    class combination():
+        def __init__(self, n, mod_):
             self.n = n
             self.fac = [1] * (n + 1)
             self.inv = [1] * (n + 1)
             for j in range(1, n + 1):
-                self.fac[j] = self.fac[j - 1] * j % mod
-
-            self.inv[n] = pow(self.fac[n], mod - 2, mod)
+                self.fac[j] = self.fac[j - 1] * j % mod_
+            self.inv[n] = pow(self.fac[n], mod_ - 2, mod_)
             for j in range(n - 1, -1, -1):
-                self.inv[j] = self.inv[j + 1] * (j + 1) % mod
+                self.inv[j] = self.inv[j + 1] * (j + 1) % mod_
 
-        def comb(self, n, r, mod):
+        def comb(self, n, r, mod_):
             if r > n or n < 0 or r < 0:
                 return 0
-            return self.fac[n] * self.inv[n - r] * self.inv[r] % mod
+            return self.fac[n] * self.inv[n - r] * self.inv[r] % mod_
 
     ans = 0
     if N == 2:
-        return ans
+        # print(ans)
+        pass
+        return
     C = combination(M, mod2)
     for i in range(N - 1, M + 1):
         cur = pow(2, N - 3, mod2) * (i - 1) * C.comb(i - 2, N - 3, mod2)
         ans += cur
         ans %= mod2
-    return ans
+    # print(ans)
+    pass
+    return
 
 
-def examE_generate(n):
-    # N = n，A 中元素为 1..3
-    N = max(1, n)
-    A = [random.randint(1, 3) for _ in range(N)]
-    return N, A
-
-
-def examE_run(N, A):
+def examE(N, A):
     dp = [[-1] * (N + 1) for _ in range(N + 1)]
     for i in range(N):
         dp[i][i + 1] = A[i]
@@ -161,33 +118,78 @@ def examE_run(N, A):
                     dp[i][i + l] = dp[i][k] + 1
 
     L = [inf] * (N + 1)
-    L[0] = 0
     for i in range(1, N + 1):
         if dp[0][i] >= 1:
             L[i] = 1
     for i in range(N):
-        if L[i] == inf:
-            continue
         for k in range(1, N - i + 1):
             if dp[i][i + k] >= 1:
-                L[i + k] = min(L[i + k], L[i] + 1)
+                if L[i] + 1 < L[i + k]:
+                    L[i + k] = L[i] + 1
     ans = L[N]
-    return ans
+    # print(ans)
+    pass
+    return
 
 
-def examF_run():
+def examF():
     ans = 0
-    return ans
+    # print(ans)
+    pass
+    return
 
 
 def main(n):
-    # 根据原始脚本，默认执行 examE 的逻辑，
-    # 但这里也演示其它子题的调用方式。
-    N, A = examE_generate(n)
-    ansE = examE_run(N, A)
-    print(ansE)
+    # n controls overall scale.
+    # Define per-exam sizes deterministically from n.
+    T_A = max(1, n // 5)
+    T_B = max(1, n // 5)
+    T_C = max(1, n // 5)
+
+    # examA: generate T_A pairs (N, M) with values depending on n and index
+    NM_pairs = []
+    for i in range(T_A):
+        N = (i + 1) * (n + 2)
+        M = (i % 7) + 1
+        NM_pairs.append((N, M))
+
+    # examB: each test has length L_B = max(1, n // 10)
+    L_B = max(1, n // 10)
+    Ns_B = []
+    As_B = []
+    for t in range(T_B):
+        Ns_B.append(L_B)
+        arr = [(t + 1) * (i + 1) % (n + 10) for i in range(L_B)]
+        As_B.append(arr)
+
+    # examC: each test has N_C elements, K depends on t
+    T_C = max(1, n // 5)
+    N_C = max(1, n // 10)
+    NK_list = []
+    As_C = []
+    for t in range(T_C):
+        N = N_C
+        K = 2 + (t % 5)
+        NK_list.append((N, K))
+        A = [((i + 1) * (t + 3)) % (n + 20) for i in range(N)]
+        As_C.append(A)
+
+    # examD: choose N, M based on n
+    N_D = max(3, n // 5)
+    M_D = N_D + max(1, n // 7)
+
+    # examE: N_E = n, array constructed deterministically
+    N_E = max(1, n)
+    A_E = [((i // 2) % 3) + 1 for i in range(N_E)]
+
+    # Call exams sequentially
+    examA(T_A, NM_pairs)
+    examB(T_B, Ns_B, As_B)
+    examC(T_C, NK_list, As_C)
+    examD(N_D, M_D)
+    examE(N_E, A_E)
+    examF()
 
 
-if __name__ == '__main__':
-    # 示例：规模参数可以在这里修改
-    main(5)
+if __name__ == "__main__":
+    main(50)

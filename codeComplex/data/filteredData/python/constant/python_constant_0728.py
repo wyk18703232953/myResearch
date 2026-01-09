@@ -8,8 +8,10 @@ def main(n: int):
             position = difference % count
             difference = difference // count
             difference = decimal - difference
-            print(''.join(list(reversed(str(difference))))[position])
+            # print(''.join(list(reversed(str(difference))))[position])
+            pass
             break
+
         else:
             decimal = int(str(limit_int) * (count + 1))
             limit += int(str(limit_int) + '0' * count) * (count + 1)

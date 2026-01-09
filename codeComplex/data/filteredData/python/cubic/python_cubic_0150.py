@@ -1,20 +1,13 @@
-from collections import defaultdict
-import random
+def main(n):
+    from collections import defaultdict
 
-def main(n: int):
-    # 1. 生成规模为 n 的测试数据 X
-    # 这里示例生成范围在 [-5, 5] 的随机整数
-    random.seed(0)
-    X = [random.randint(-5, 5) for _ in range(n)]
+    # Map n to input size N and construct a deterministic array X of length N
+    N = max(1, n)
+    X = [(i * 3 + 7) % 10 for i in range(N)]
 
-    N = n
     dp = defaultdict(lambda: -1)
-
-    # 初始化 dp
     for i in range(N):
         dp[i + 1001] = X[i]
-
-    # 三重循环进行 dp 填充
     for i in range(2, N + 1):
         for j in range(N - i + 1):
             for k in range(1, i):
@@ -34,10 +27,7 @@ def main(n: int):
             if dp[j + (i + 1 - j) * 1001] == -1:
                 continue
             dp2[i + 1] = min(dp2[i + 1], dp2[j] + 1)
-
-    print(dp2[-1])
-
-
+    # print(dp2[-1])
+    pass
 if __name__ == "__main__":
-    # 示例调用：规模 n=5
-    main(5)
+    main(10)

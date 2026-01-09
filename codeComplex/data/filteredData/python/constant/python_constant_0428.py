@@ -6,6 +6,7 @@ def main(n):
         return (k - 1) // 2
     elif n * 2 > k:
         return n - k // 2
+
     else:
         return 0
 
@@ -13,4 +14,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时可由外部代码调用 main(n)
     result = main(10)
-    print(result)
+    # print(result)
+    pass

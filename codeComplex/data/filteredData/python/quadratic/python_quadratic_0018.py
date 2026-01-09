@@ -1,47 +1,41 @@
 from collections import defaultdict
-import random
 
-MOD = 10 ** 9 + 7
+def main(n):
+    mod = 10 ** 9 + 7
 
-# 预计算组合数和 dp
-MAXN = 1010
-comb = [[1]]
-for i in range(1, MAXN):
-    x = [1]
-    for j in range(1, i):
-        x.append((comb[i - 1][j - 1] + comb[i - 1][j]) % MOD)
-    x.append(1)
-    comb.append(x)
+    comb = [[1]]
+    for i in range(1, 1010):
+        x = [1]
+        for j in range(1, i):
+            x.append((comb[i - 1][j - 1] + comb[i - 1][j]) % mod)
+        x.append(1)
+        comb.append(x)
 
-dp = [1]
-for i in range(1, MAXN):
-    r = 0
-    for k in range(i):
-        r += dp[k] * comb[i - 1][k]
-        r %= MOD
-    dp.append(r)
+    dp = [1]
+    for i in range(1, 1010):
+        r = 0
+        for k in range(i):
+            r += dp[k] * comb[i - 1][k]
+            r %= mod
+        dp.append(r)
 
-def main(n: int):
-    """
-    n 为规模参数：
-    - 令 m = n
-    - 令列数 cols = n
-    - 共生成 m 行，每行是长度为 cols 的 0/1 串，作为测试数据
-    """
+    # Deterministic input generation based on n
+    # Interpret n as both number of rows and columns (m = n = n)
     m = n
-    cols = n
+    if m <= 0:
+        # print(1)
+        pass
+        return
+    if m > 1000:
+        m = 1000
+    cols = m
 
-    # 生成随机 0/1 矩阵数据：m 行，每行长度为 cols
-    matrix = []
-    for _ in range(m):
-        row = [random.randint(0, 1) for _ in range(cols)]
-        matrix.append(row)
-
-    # 将原 input 读入逻辑替换为对 matrix 的处理
     ns = [0 for _ in range(m)]
     for j in range(cols):
+        # s[i] is deterministically generated as (i + j) % 2
         for i in range(m):
-            ns[i] |= matrix[i][j] << j
+            bit = (i + j) % 2
+            ns[i] |= bit << j
 
     dd = defaultdict(int)
     for e in ns:
@@ -49,10 +43,9 @@ def main(n: int):
 
     ans = 1
     for b in dd.values():
-        ans = ans * dp[b] % MOD
+        ans = ans * dp[b] % mod
 
-    print(ans)
-
-if __name__ == '__main__':
-    # 示例：以 n = 5 运行
-    main(5)
+    # print(ans)
+    pass
+if __name__ == "__main__":
+    main(10)

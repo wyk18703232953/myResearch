@@ -1,37 +1,37 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 固定 c = 1，并生成 n 个在 [1, 10] 范围内的整数作为数组 a
+    # Interpret n as the length of array a
+    # Deterministic construction:
+    # - let c be a fixed color, e.g., 1
+    # - array a cycles through values 1..K where K is bounded, e.g., 10
     c = 1
-    max_val = 10
-    a = [random.randint(1, max_val) for _ in range(n)]
+    K = 10
+    a = [(i % K) + 1 for i in range(n)]
 
-    # 原程序逻辑开始
-    f = []
-    for _ in range(0, 500001):
-        f.append(0)
-    l = []
-    for _ in range(0, 500001):
-        l.append([0])
+    # Core logic from original program
+    f = [0] * 500001
+    l = [[0] for _ in range(500001)]
     m = 0
+
     for i in range(n):
-        l[a[i]].append(f[a[i]] - m)
-        if a[i] == c:
-            m += 1
-        f[a[i]] += 1
-        l[a[i]].append(f[a[i]] - m)
+        val = a[i]
+        if val < 500001:
+            l[val].append(f[val] - m)
+            if val == c:
+                m += 1
+            f[val] += 1
+            l[val].append(f[val] - m)
+
     ma = 0
-    for i_list in l:
+    for arr in l:
         mi = 0
-        for j in i_list:
-            if j < mi:
-                mi = j
-            if ma < j - mi:
-                ma = j - mi
-    print(m + ma)
+        for v in arr:
+            if v < mi:
+                mi = v
+            if ma < v - mi:
+                ma = v - mi
 
-
+    # print(m + ma)
+    pass
 if __name__ == "__main__":
-    # 示例调用：可以根据需要修改 n
-    main(10)
+    # Example call; adjust n as needed for experiments
+    main(100000)

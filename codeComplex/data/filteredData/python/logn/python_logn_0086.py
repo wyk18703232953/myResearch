@@ -1,19 +1,13 @@
-from operator import xor
-import random
-
 def main(n):
-    # 根据规模 n 生成两个非负整数，控制在 n 位二进制以内
-    # 例如 n=10，则最多生成小于 2^10 的随机数
-    if n <= 0:
-        return
+    # Generate deterministic input of two integers based on n
+    # Map n to two numbers: a and b
+    # For example: a = n, b = 2*n + 1
+    r0 = n
+    r1 = 2 * n + 1
 
-    upper = 1 << n  # 2^n
-    a = random.randrange(upper)
-    b = random.randrange(upper)
+    from operator import xor
 
-    r = [a, b]
-
-    ms = xor(r[0], r[1])
+    ms = xor(r0, r1)
 
     max_val = 0
     s = 1
@@ -23,8 +17,7 @@ def main(n):
         max_val += s
         s <<= 1
 
-    print(max_val)
-
+    # print(max_val)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

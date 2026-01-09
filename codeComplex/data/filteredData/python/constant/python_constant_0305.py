@@ -1,20 +1,17 @@
-import math
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 这里将 n 作为原程序中的 n，
-    # 并生成合理范围内的 k, s, p
-    k = random.randint(1, max(1, n))      # 1 <= k <= n
-    s = random.randint(1, max(1, n))      # 1 <= s <= n
-    p = random.randint(1, max(1, n))      # 1 <= p <= n
+    # n represents the scale of the input; construct deterministic parameters
+    # Map n to k, n_val, s, p in a deterministic way
+    k = max(1, n % 10 + 1)
+    n_val = max(1, n)
+    s = max(1, (n % 7) + 1)
+    p = max(1, (n % 5) + 1)
 
-    # 原始逻辑
-    c = (n // s) if n % s == 0 else (n // s) + 1
+    c = (n_val // s) if n_val % s == 0 else (n_val // s) + 1
     result = (c * k) // p if (c * k) % p == 0 else ((c * k) // p) + 1
+    # print(result)
+    pass
+    return result
 
-    print(result)
 
 if __name__ == "__main__":
-    # 示例：调用 main，n 可按需修改或在其他地方被调用
-    main(10)
+    main(1000)

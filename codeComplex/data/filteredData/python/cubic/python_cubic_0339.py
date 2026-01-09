@@ -1,13 +1,18 @@
-import random
+import sys
 
-def main(n: int):
-    mod = 998244353
+mod = 998244353
 
-    # 3. 生成测试数据：生成 n 个在 [1, 10^9] 内的随机整数
-    a = [random.randint(1, 10**9) for _ in range(n)]
+def main(n):
+    # 生成确定性输入：长度为 n 的整数数组 a
+    # 这里选择 a[i] = (i * 2 + 1) % (3 * n + 1)，保证有序性后仍有一定分布
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-    # 原逻辑开始
+    a = [(i * 2 + 1) % (3 * n + 1) for i in range(n)]
     a.sort()
+
     dp = [1] + [0] * n
     for i in range(1, n + 1):
         x, pt = 1, i - 2
@@ -15,10 +20,8 @@ def main(n: int):
             x = x * (n - pt - 2) % mod
             pt -= 1
         dp[i] = (dp[i - 1] * (n - i) + dp[pt + 1] * x) % mod
-
-    print(dp[-1])
-
-
+    # print(dp[-1])
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自行修改
+    # 示例调用，可按需修改 n 的大小进行复杂度实验
     main(10)

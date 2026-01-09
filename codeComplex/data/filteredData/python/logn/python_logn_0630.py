@@ -1,9 +1,9 @@
 import math
-import random
 
 def gaosi(x):
     if x == 1:
         return 1
+
     else:
         return ((1 + x) * x) / 2
 
@@ -26,13 +26,14 @@ def solve(x, left):
             l = mid
 
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 约定：x = n，left 在 [1, x] 随机生成
-    x = max(1, n)
-    left = random.randint(1, x)
-    ans = solve(x, left)
-    print(f"x={x}, left={left}, answer={ans}")
-
+    # 将 n 作为 x 的规模，left 采用确定性的函数构造
+    # 遍历规模为 n 的输入区间，以保证可规模化
+    total = 0
+    for i in range(1, n + 1):
+        x = i
+        left = 1 + (i // 2)
+        total ^= solve(x, left)
+    # print(total)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

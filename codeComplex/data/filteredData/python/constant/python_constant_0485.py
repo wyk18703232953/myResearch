@@ -5,9 +5,8 @@ def main(n):
     s = k // n
     if k % n != 0:
         s += 1
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

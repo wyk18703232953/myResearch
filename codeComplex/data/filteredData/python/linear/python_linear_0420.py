@@ -10,6 +10,7 @@ def main(n):
         # 小规模手动构造示例
         x = 3
         a = list(range(1, n + 1))
+
     else:
         # 构造一个一般情况：
         # a = [1, 2, ..., n]
@@ -20,7 +21,8 @@ def main(n):
     # 以下为原逻辑移植，只去掉了 input/输出控制
     s = set(a)
     if len(s) != n:
-        print(0)
+        # print(0)
+        pass
         return
 
     ans = 0
@@ -33,13 +35,15 @@ def main(n):
             break
 
     if ans == 1:
-        print(1)
+        # print(1)
+        pass
     elif len(set(b)) == n:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(2)
-
-
+        # print(2)
+        pass
 if __name__ == "__main__":
     # 示例调用：规模为 5
     main(5)

@@ -14,13 +14,13 @@ def main(n: int):
 
         if candies - eat <= k:
             l = m
+
         else:
             r = m
 
     # 保持与原程序相同的输出行为
-    print(n - l)
-
-
+    # print(n - l)
+    pass
 if __name__ == "__main__":
     # 示例：运行 main，使用某个规模 n
     main(10)

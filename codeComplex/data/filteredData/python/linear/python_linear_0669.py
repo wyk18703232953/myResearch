@@ -1,16 +1,17 @@
-import random
+def main(n):
+    # Ensure n is non-negative and set a minimum length to meaningfully run the loop
+    if n < 0:
+        n = 0
 
-def main(n: int):
-    # 1. 生成测试数据
-    # 生成 n 个距离（原程序中使用位移 << 1，即距离为偶数）
-    # 为保持语义，这里生成原始“距离的一半”，再在逻辑里左移一位
-    base_dis = [random.randint(1, 10) for _ in range(n)]  # 原始距离的一半
-    # 生成 n 个地形字符
-    choices = ['G', 'W', 'L']
-    ter = ''.join(random.choice(choices) for _ in range(n))
+    # Generate deterministic distances: dis[i] = (i+1) << 1 (same as 2*(i+1)), then doubled again by original lambda
+    # Original: dis = list(map(lambda x: int(x) << 1, input().split()))
+    # So we generate base numbers [1,2,...,n] and shift left by 1
+    dis = [(i + 1) << 1 for i in range(n)]
 
-    # 2. 原始逻辑（将 input() 替换为生成的数据）
-    dis = list(map(lambda x: x << 1, base_dis))
+    # Generate deterministic terrain string ter of length n using pattern over 'G', 'W', 'L'
+    terrain_types = ['G', 'W', 'L']
+    ter = ''.join(terrain_types[i % 3] for i in range(n))
+
     st, ans = 0, 0
     time = {'G': 5, 'W': 3, 'L': 1}
     delta = {'G': 1, 'W': 1, 'L': -1}
@@ -27,6 +28,7 @@ def main(n: int):
         if st < 0:
             if hasWater:
                 ans += (-st) * 3
+
             else:
                 ans += (-st) * 5
             st = 0
@@ -34,11 +36,14 @@ def main(n: int):
 
     ans -= 4 * convert
     ans -= 2 * (st // 2 - convert)
+    result = ans // 2
 
-    # 输出最终结果
-    print(ans // 2)
+    # Keep a side effect like the original print for observability
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例运行：规模 n 可在此调整
-    main(5)
+    # Example call for testing / benchmarking; adjust n as needed
+    main(10)

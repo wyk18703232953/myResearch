@@ -10,9 +10,8 @@ def main(n):
     L = (n - 1) // s + 1
     L *= k
     result = (L - 1) // p + 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 100 为规模运行
     main(100)

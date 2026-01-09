@@ -1,9 +1,12 @@
-import random
-import string
+def main(n):
+    # 生成确定性的字符串作为输入，长度为 n
+    # 字符集选择固定的小写字母，按周期重复
+    base = "abcdefghijklmnopqrstuvwxyz"
+    if n <= 0:
+        a = ""
 
-def main(n: int):
-    # 根据规模 n 生成长度为 n 的随机小写字母串
-    a = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+    else:
+        a = "".join(base[i % len(base)] for i in range(n))
 
     l = 0
     for i in range(1, len(a)):
@@ -13,9 +16,8 @@ def main(n: int):
             if t != c:
                 if i > l:
                     l = i
-    print(l)
-
-
+    # print(l)
+    pass
 if __name__ == "__main__":
-    # 示例：可自行修改 n 测试规模
-    main(10)
+    # 示例调用，可按需修改 n 以做时间复杂度实验
+    main(1000)

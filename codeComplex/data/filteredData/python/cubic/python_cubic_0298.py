@@ -28,7 +28,8 @@ def main(n: int):
     - R, G, B 各为 1..r/g/b 的升序整数列表，作为示例数据
     """
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 简单的数据生成方式：让 r=g=b=n
@@ -49,9 +50,8 @@ def main(n: int):
     z = [[[-1 for _ in range(b + 1)] for _ in range(g + 1)] for _ in range(r + 1)]
 
     ans = solve(r, g, b, R, G, B, z)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 3 运行
     main(3)

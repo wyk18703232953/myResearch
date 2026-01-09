@@ -1,13 +1,33 @@
+def main(n):
+    # n is the matrix size (n x n), and also implicitly defines both matrices.
+    # Deterministically generate two n x n matrices of characters '0'..'9'.
+    def gen_matrix(size, offset):
+        # offset differentiates the two matrices but keeps determinism
+        return [[str((i * size + j + offset) % 10) for j in range(size)] for i in range(size)]
+
+    a1 = Matrix(n, n, gen_matrix(n, 0))
+    a2 = Matrix(n, n, gen_matrix(n, 1))
+
+    # Core logic from original main, without I/O or early exit
+    ans = "No"
+    for _ in range(4):
+        if a2.mat in [a1.rotate(), a1.fliph(), a1.flipv(), a1.fliph(), a1.flipv()]:
+            ans = "Yes"
+            break
+    # print(ans)
+    pass
+
+
 from copy import deepcopy
-import random
-import string
 
 
 class Matrix:
     def __init__(self, r, c, mat=None, id=None):
         self.r, self.c = r, c
+
         if mat is not None:
             self.mat = deepcopy(mat)
+
         else:
             self.mat = [[0 for _ in range(c)] for _ in range(r)]
             if id is not None:
@@ -25,8 +45,10 @@ class Matrix:
         mat0 = Matrix(self.r, other.c)
         for i in range(self.r):
             for j in range(other.c):
+                s = 0
                 for k in range(self.c):
-                    mat0.mat[i][j] += self.mat[i][k] * other.mat[k][j]
+                    s += self.mat[i][k] * other.mat[k][j]
+                mat0.mat[i][j] = s
         return mat0
 
     def dot_mul(self, other):
@@ -77,31 +99,6 @@ class Matrix:
         return sq.mat
 
 
-def gen_random_matrix_chars(n):
-    # 生成一个 n×n 的字符矩阵，字符从 '0'-'1' 或 '0'-'9','A'-'Z' 中选
-    alphabet = "01"
-    # 如需更多字符，可以改为：
-    # alphabet = string.digits + string.ascii_uppercase
-    return [[random.choice(alphabet) for _ in range(n)] for _ in range(n)]
-
-
-def main(n):
-    # 生成测试数据
-    mat1 = gen_random_matrix_chars(n)
-    mat2 = deepcopy(mat1)
-
-    # 随机对 mat2 做若干次变换（旋转/翻转），也可能不变
-    m2 = Matrix(n, n, mat2)
-    ops = [m2.rotate, m2.fliph, m2.flipv]
-    for _ in range(random.randint(0, 4)):
-        random.choice(ops)()
-
-    a1 = Matrix(n, n, mat1)
-    a2 = Matrix(n, n, m2.mat)
-
-    # 保持原逻辑：检查 a2 是否能通过旋转/翻转与 a1 一致
-    for _ in range(4):
-        if a2.mat in [a1.rotate(), a1.fliph(), a1.flipv(), a1.fliph(), a1.flipv()]:
-            print("Yes")
-            return
-    print("No")
+if __name__ == "__main__":
+    # Example deterministic call for testing / benchmarking
+    main(5)

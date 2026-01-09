@@ -1,28 +1,19 @@
-import random
+def main(n):
+    # 生成确定性输入数据
+    # 将 n 映射为 x, y, z, t1, t2, t3
+    x = n
+    y = n // 2
+    z = (n * 3) // 4
+    t1 = (n % 5) + 1
+    t2 = (n % 7) + 1
+    t3 = (n % 11) + 1
 
-def main(n: int):
-    # 根据规模 n 生成测试数据
-    # 这里示例为生成 n 组 (x, y, z, t1, t2, t3) 并逐组判断
-    results = []
-    for _ in range(n):
-        # 可按需调整数据范围
-        x = random.randint(-10**6, 10**6)
-        y = random.randint(-10**6, 10**6)
-        z = random.randint(-10**6, 10**6)
-        t1 = random.randint(1, 10**3)
-        t2 = random.randint(1, 10**3)
-        t3 = random.randint(1, 10**3)
+    if abs(x - y) * t1 >= abs(x - z) * t2 + t3 * 3 + abs(x - y) * t2:
+        # print('YES')
+        pass
 
-        if abs(x - y) * t1 >= abs(x - z) * t2 + t3 * 3 + abs(x - y) * t2:
-            results.append("YES")
-        else:
-            results.append("NO")
-
-    # 输出所有结果，每行一个
-    for r in results:
-        print(r)
-
-
+    else:
+        # print('NO')
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

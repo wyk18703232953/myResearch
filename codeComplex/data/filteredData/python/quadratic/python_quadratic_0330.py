@@ -9,11 +9,13 @@ def main(n):
     elif n == 2:
         d = 1
         k = 1
+
     else:
         # 尝试选择一个适中的直径与较大的度数，增加构造成功概率
         d = max(1, min(n - 1, n // 3))
         if d == 1:
             k = max(2, n - 1)  # 星形树
+
         else:
             k = 3
 
@@ -26,6 +28,7 @@ def main(n):
         if n == 2:
             if d != 1:
                 return 'NO'
+
             else:
                 return "YES\n1 2"
         if k < 2:
@@ -70,4 +73,5 @@ def main(n):
 # 例如：直接运行文件时，用一个默认 n 进行演示
 if __name__ == "__main__":
     n_demo = 10
-    print(main(n_demo))
+    # print(main(n_demo))
+    pass

@@ -28,12 +28,14 @@ def main(n):
     for i in range(n):
         if commands[i] == "+":
             positive += 1
+
         else:
             negative += 1
         if received[i] == "+":
             positive -= 1
         elif received[i] == "-":
             negative -= 1
+
         else:
             count += 1
 
@@ -42,9 +44,8 @@ def main(n):
     if positive >= 0 and negative >= 0:
         probability = (factorial(count) / (factorial(positive) * factorial(negative))) / cases
 
-    print("{0:.9f}".format(probability))
-
-
+    # print("{0:.9f}".format(probability))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可根据需要修改
     main(10)

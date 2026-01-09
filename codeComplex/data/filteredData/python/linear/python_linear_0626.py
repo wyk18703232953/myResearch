@@ -1,55 +1,55 @@
-import random
+def main(n):
+    # n controls the number of positions in the line (houses and riders combined)
+    # We will generate:
+    # - num_riders: about n // 3 riders
+    # - positions: 1..n as house positions
+    # - is_rider: deterministic pattern, roughly every 3rd position is a rider
+    num_positions = max(1, n)
+    positions = list(range(1, num_positions + 1))
+    is_rider_list = [(1 if (i % 3 == 0) else 0) for i in range(1, num_positions + 1)]
+    num_riders = sum(is_rider_list)
+    _ = 0  # placeholder for unused second value in the original input
 
+    houses = iter(positions)
+    is_rider_iter = iter(is_rider_list)
 
-def main(n: int):
-    # 1. 生成测试数据
-    # n 表示总人数（骑手 + 普通居民），至少需要 1 个骑手
-    if n < 1:
-        return
-
-    # 生成房屋位置：随机不重复整数并排序，使之更贴近原题场景
-    houses = sorted(random.sample(range(1, 3 * n + 1), n))
-
-    # 生成是否为骑手的标记：保证至少有一个骑手
-    is_rider = [0] * n
-    # 随机挑选若干人为骑手（至少 1 个）
-    rider_count = random.randint(1, n)
-    rider_indices = random.sample(range(n), rider_count)
-    for idx in rider_indices:
-        is_rider[idx] = 1
-
-    # 2. 原始逻辑
     current_left_driver = None
     current_citizens = []
     result = []
 
-    for house, r in zip(houses, is_rider):
-        if r:
+    for house, is_rider in zip(houses, is_rider_iter):
+        if is_rider:
             if current_left_driver is None:
-                # 第一个骑手前面的居民全部计入当前骑手
                 result.append(len(current_citizens))
+
             else:
-                # 存在左侧骑手，需要对区间内的居民做最近骑手划分
-                result.append(0)  # 先给左骑手的计数位
+                result.append(0)
                 for citizen in current_citizens:
                     if abs(citizen - current_left_driver) <= abs(citizen - house):
                         result[-2] += 1
+
                     else:
                         result[-1] += 1
 
             current_citizens = []
             current_left_driver = house
+
         else:
             current_citizens.append(house)
 
-    # 最后一个骑手右侧的所有居民都归这个骑手
-    if result:  # 至少有一个骑手
+    if result:
         result[-1] += len(current_citizens)
 
-    # 3. 输出结果
-    print(' '.join(map(str, result)))
+    else:
+        # No riders at all: in the original logic, result would never be created,
+        # but to keep a deterministic output, we can output a single number.
+        result = [len(current_citizens)]
+
+    # print(' '.join(map(str, result)))
+    pass
+    return num_riders, result
 
 
 if __name__ == "__main__":
-    # 示例：可根据需要调整 n
+    # Example deterministic call; adjust n to scale input size
     main(10)

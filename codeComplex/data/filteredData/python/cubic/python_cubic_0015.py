@@ -19,9 +19,8 @@ def main(n):
                 if 1 + k > ans:
                     ans = 1 + k
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 举例：调用 main(50)。评测时可由外部更改 n。
     main(50)

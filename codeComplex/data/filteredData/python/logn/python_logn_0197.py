@@ -16,6 +16,7 @@ def main(n):
 
         if curr_pos == max_pos:
             low = 1
+
         else:
             low = 0
         high = 9
@@ -40,7 +41,8 @@ def main(n):
             ans = min(ans, res)
             break
     result = n - ans + 1
-    print(result)
+    # print(result)
+    pass
     return result
 
 

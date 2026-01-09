@@ -13,7 +13,8 @@ def main(k):
         l.append(total)
 
     if k < 9:
-        print(k)
+        # print(k)
+        pass
         return
 
     t = 0
@@ -28,13 +29,14 @@ def main(k):
     number = n[t - 1] + value
 
     if offset == 0:
-        print(number % 10)
+        # print(number % 10)
+        pass
+
     else:
         number += 1
         offset -= 1
-        print(str(number)[offset])
-
-
+        # print(str(number)[offset])
+        pass
 if __name__ == "__main__":
     # 示例：根据规模 n 生成测试数据 k，并调用 main(k)
     # 这里简单用 n 作为 k，你可以根据需要改成任意生成方式

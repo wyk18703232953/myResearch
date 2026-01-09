@@ -18,12 +18,14 @@ def main(n):
         if a[i] == a[i + 1]:
             b.append(a[i])
             i += 2
+
         else:
             i += 1
 
     # 如果没有形成至少一对矩形，直接返回或打印提示
     if len(b) < 2:
-        print("Not enough pairs to form a rectangle")
+        # print("Not enough pairs to form a rectangle")
+        pass
         return
 
     m = 10 ** 14
@@ -34,9 +36,8 @@ def main(n):
             m = curr
             mi = i
 
-    print(b[mi], b[mi], b[mi + 1], b[mi + 1])
-
-
+    # print(b[mi], b[mi], b[mi + 1], b[mi + 1])
+    pass
 if __name__ == "__main__":
     # 示例调用：规模 n 可自行调整
     main(10)

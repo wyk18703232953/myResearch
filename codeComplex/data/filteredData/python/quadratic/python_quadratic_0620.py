@@ -1,16 +1,18 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据
-    # 约定：1 <= m <= n，k 为适当范围的非负整数，a 为整数数组
+def main(n):
+    # 映射含义：
+    # n -> 数组长度 n
+    # 令 m = max(1, n // 3)
+    # 令 k = max(1, n // 5)
     if n <= 0:
         return 0
 
-    m = random.randint(1, n)
-    k = random.randint(0, 10)
-    a = [random.randint(-10, 10) for _ in range(n)]
+    m = max(1, n // 3)
+    k = max(1, n // 5)
 
-    # 原逻辑
+    # 确定性生成数组 a，长度为 n
+    # 使用简单算术构造
+    a = [(i * 7 + i // 3 - i % 5) for i in range(n)]
+
     ret = 0
     for i in range(m):
         cur = 0
@@ -20,10 +22,11 @@ def main(n: int) -> int:
                 cur -= k
             cur += a[j]
             ret = max(ret, cur)
-
+    # print(ret)
+    pass
     return ret
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时由外部决定 n
-    print(main(10))
+    # 示例调用，可根据需要修改 n 的大小做时间复杂度实验
+    main(10)

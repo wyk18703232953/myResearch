@@ -12,9 +12,8 @@ def main(n: int):
         c *= 10
 
     c = 10 ** (l - 1) + k // l
-    print(str(c)[k % l])
-
-
+    # print(str(c)[k % l])
+    pass
 if __name__ == "__main__":
     # 示例调用：规模为 15
     main(15)

@@ -1,27 +1,23 @@
-import random
-
-def main(n: int):
-    # n 为测试数据规模，即生成的牌张数
-    # 牌的形式与原程序一致：'<数字><花色>'，数字为1-9，花色为'p','m','s'
+def main(n):
+    # n 控制牌的总数量，生成长度为 n 的牌列表 D
+    # 每张牌为 "数字+花色" 的两字符字符串，数字在 1..9 之间，花色在 ['p','m','s'] 中循环
     s = [0] * 10
     m = [0] * 10
     p = [0] * 10
 
-    # 生成测试数据：长度为 n 的牌序列
-    # 例如：["1p", "9m", "3s", ...]
     suits = ['p', 'm', 's']
     D = []
-    for _ in range(n):
-        num = random.randint(1, 9)
-        suit = random.choice(suits)
-        D.append(f"{num}{suit}")
+    for i in range(n):
+        num = (i % 9) + 1
+        suit = suits[i % 3]
+        D.append(str(num) + suit)
 
-    # 原始逻辑
     for i in D:
         if i[1] == 'p':
             p[int(i[0])] += 1
         elif i[1] == 'm':
             m[int(i[0])] += 1
+
         else:
             s[int(i[0])] += 1
 
@@ -36,22 +32,18 @@ def main(n: int):
             tmp += min(1, p[i + 1])
             tmp += min(1, p[i + 2])
             need = min(3 - tmp, need)
-
             tmp = 0
             tmp += min(1, m[i])
             tmp += min(1, m[i + 1])
             tmp += min(1, m[i + 2])
             need = min(3 - tmp, need)
-
             tmp = 0
             tmp += min(1, s[i])
             tmp += min(1, s[i + 1])
             tmp += min(1, s[i + 2])
             need = min(3 - tmp, need)
 
-    print(need)
-
-
+    # print(need)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(13)，可按需修改 n
-    main(13)
+    main(14)

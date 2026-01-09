@@ -1,21 +1,18 @@
 def main(n):
-    """
-    n: 数据规模，用于生成测试数据
-    """
-    import random
+    # Interpret n as N (array length)
+    # Choose M and K deterministically based on n
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-    # 根据 n 生成 N, M, K
-    # 这里约定：
-    #   N = n
-    #   1 <= M <= N
-    #   K 为 1 到 10 之间的整数
-    N = max(1, n)
-    M = random.randint(1, N)
-    K = random.randint(1, 10)
+    N = n
+    M = max(1, n // 3)  # ensure 1 <= M <= N
+    K = (n // 2) + 1
 
-    # 生成长度为 N 的数组 arr，元素范围可根据需求调整
-    # 这里用 -10 到 10 之间的随机整数
-    arr = [random.randint(-10, 10) for _ in range(N)]
+    # Deterministic construction of arr with length N
+    # Example pattern: arr[i] = (i % 7) - 3
+    arr = [(i % 7) - 3 for i in range(N)]
 
     res = 0
     for j in range(M):
@@ -28,9 +25,7 @@ def main(n):
             s += arr[i]
             res = max(res, s - mini)
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 生成规模为 10 的测试数据并运行逻辑
     main(10)

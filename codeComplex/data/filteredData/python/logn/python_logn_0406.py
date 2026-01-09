@@ -1,20 +1,26 @@
 def main(n):
-    import random
+    # 解释输入结构：
+    # 原程序：
+    # t
+    # n1 k1
+    # n2 k2
+    # ...
+    # 这里我们用 main(n) 构造 t 组数据
+    # 将 t 定义为 n
+    t = n
 
-    # 生成测试数据：t 组 (n_i, k_i)
-    # 这里让所有测试用例的 n_i = n，k_i 在 1 ~ 2^(2n) 范围内随机
-    # 可按需要修改生成策略
-    t = 5
-    test_cases = []
-    max_k = 1 << (2 * n)  # 2^(2n)，大致上界即可
-    for _ in range(t):
-        ni = n
-        ki = random.randint(1, max_k)
-        test_cases.append((ni, ki))
+    # 为了体现规模变化，同时保持确定性：
+    # 第 i 组用：
+    #   ni 在 [1, 60] 周期变化：ni = (i % 60) + 1
+    #   ki 为与 ni 相关的一个确定性整数：ki = i*i + ni
+    for ca in range(t):
+        ni = (ca % 60) + 1
+        ki = ca * ca + ni
 
-    for ni, ki in test_cases:
         if ni >= 40:
-            print("YES " + str(ni - 1))
+            # print("YES " + str(ni - 1))
+            pass
+
         else:
             ans = -1
             for m in range(1, ni + 1):
@@ -26,11 +32,12 @@ def main(n):
                     ans = ni - m
                     break
             if ans == -1:
-                print("NO")
+                # print("NO")
+                pass
+
             else:
-                print("YES " + str(ans))
-
-
+                # print("YES " + str(ans))
+                pass
 if __name__ == "__main__":
-    # 示例：运行规模 n=10
-    main(10)
+    # 示例：用 n=5 运行 5 组数据
+    main(5)

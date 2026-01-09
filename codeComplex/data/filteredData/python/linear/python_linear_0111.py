@@ -7,7 +7,8 @@ def main(n: int):
     result = sum(i for i in range(x, -1, -2))
 
     # 输出结果
-    print(result)
+    # print(result)
+    pass
 
 
 # 示例调用（提交到评测系统时通常不需要）

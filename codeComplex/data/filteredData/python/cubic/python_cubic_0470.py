@@ -31,6 +31,7 @@ def main(n):
     # 原逻辑开始
     if k % 2:
         dp = [[-1 for _ in range(m)] for _ in range(n)]
+
     else:
         k //= 2
         dp = [[0 for _ in range(m)] for _ in range(n)]
@@ -62,9 +63,8 @@ def main(n):
 
     # 输出结果
     for i in dp:
-        print(*i)
-
-
+        # print(*i)
+        pass
 if __name__ == "__main__":
     # 示例：运行 main(3)
     main(3)

@@ -42,9 +42,8 @@ def main(n):
         if not ff:
             break
 
-    print("YES" if ff else "NO")
-
-
+    # print("YES" if ff else "NO")
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改规模
     main(7)

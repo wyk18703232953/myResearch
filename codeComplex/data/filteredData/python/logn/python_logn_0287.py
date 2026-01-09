@@ -16,9 +16,8 @@ def main(n):
     ans = ((maxQ * (maxQ + 1) // 2 - minQ * (minQ + 1) // 2 + minQ) //
            (maxQ - minQ + 1)) % MOD
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，可根据需要修改
     main(10)

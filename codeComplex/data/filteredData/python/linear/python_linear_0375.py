@@ -1,22 +1,20 @@
-from sys import stdout
-import random
-import string
-
 def main(n):
-    # 生成规模为 n 的测试数据字符串 s，由 '0' 和 '1' 组成
-    # 为了更通用，也可以包含其他字符，这里按原逻辑关键是处理 '1'
-    # 这里使用 '0' 和 '1'，更符合题目的思路
-    s = ''.join(random.choice('01') for _ in range(n))
+    # 确定性生成字符串 s，长度约为 n，由 '1' 和 '2' 组成
+    if n <= 0:
+        s = ""
+
+    else:
+        chars = []
+        for i in range(n):
+            chars.append('1' if i % 2 == 0 else '2')
+        s = ''.join(chars)
 
     # 原始逻辑开始
     ans = s.replace('1', '') + '2'
     t = ans.find('2')
+    # 当 s 中没有 '2' 时，ans 为 "2"，t 为 0，ans[t:-1] 为空串
     result = ans[:t] + '1' * s.count('1') + ans[t:-1]
-
-    # 输出结果
-    stdout.write(result + '\n')
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：运行 main(10)
     main(10)

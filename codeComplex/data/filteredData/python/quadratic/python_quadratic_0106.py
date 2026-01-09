@@ -1,29 +1,23 @@
-import random
-import string
+def main(n):
+    N = n if n > 0 else 1
 
-def main(n: int):
-    # 生成随机地图，元素为 '.' 或 '#'
-    choices = ['.', '#']
-    map_2 = [[random.choice(choices) for _ in range(n)] for _ in range(n)]
+    # Deterministic generation of map_1 and map_2 as N x N character grids
+    # Use simple arithmetic to create a pattern of 'A'..'Z'
+    map_1 = [[chr(ord('A') + (i * N + j) % 26) for j in range(N)] for i in range(N)]
+    map_2 = [[chr(ord('A') + ((N - 1 - i) * N + (N - 1 - j)) % 26) for j in range(N)] for i in range(N)]
 
-    # 随机选择一种变换生成 map_1，以保证有一定概率为 "Yes"
-    transform_index = random.randint(0, 7)
+    maps = list()
 
-    maps = []
-    maps.append([[map_2[i][j] for j in range(n)] for i in range(n)])
-    maps.append([[map_2[i][n - 1 - j] for j in range(n)] for i in range(n)])
-    maps.append([[map_2[n - 1 - i][j] for j in range(n)] for i in range(n)])
-    maps.append([[map_2[n - 1 - i][n - 1 - j] for j in range(n)] for i in range(n)])
-    maps.append([[map_2[j][i] for j in range(n)] for i in range(n)])
-    maps.append([[map_2[j][n - 1 - i] for j in range(n)] for i in range(n)])
-    maps.append([[map_2[n - 1 - j][i] for j in range(n)] for i in range(n)])
-    maps.append([[map_2[n - 1 - j][n - 1 - i] for j in range(n)] for i in range(n)])
+    maps.append([[map_2[i][j] for j in range(N)] for i in range(N)])
+    maps.append([[map_2[i][N - 1 - j] for j in range(N)] for i in range(N)])
+    maps.append([[map_2[N - 1 - i][j] for j in range(N)] for i in range(N)])
+    maps.append([[map_2[N - 1 - i][N - 1 - j] for j in range(N)] for i in range(N)])
+    maps.append([[map_2[j][i] for j in range(N)] for i in range(N)])
+    maps.append([[map_2[j][N - 1 - i] for j in range(N)] for i in range(N)])
+    maps.append([[map_2[N - 1 - j][i] for j in range(N)] for i in range(N)])
+    maps.append([[map_2[N - 1 - j][N - 1 - i] for j in range(N)] for i in range(N)])
 
-    map_1 = maps[transform_index]
-
-    print(('No', 'Yes')[any(map_1 == el for el in maps)])
-
-
+    # print(('No', 'Yes')[any(map_1 == el for el in maps)])
+    pass
 if __name__ == "__main__":
-    # 示例：n = 5
     main(5)

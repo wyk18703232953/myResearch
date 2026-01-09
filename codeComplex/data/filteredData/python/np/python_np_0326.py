@@ -37,7 +37,8 @@ def main(n: int) -> int:
                         mem[i][val][k2] = add(mem[i][val][k2], mem[i - 1][j][k1])
 
     ans = sum(mem[-1][k]) % mod
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

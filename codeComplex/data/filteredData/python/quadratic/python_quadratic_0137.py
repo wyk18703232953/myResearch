@@ -1,22 +1,21 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据：4 个 n×n 的 0/1 字符串网格，中间用空行分隔（逻辑只用到网格内容）
+def main(n):
     pieces = []
-    for i in range(4):
-        grid = []
-        for _ in range(n):
-            # 随机生成一行，由 '0' 和 '1' 组成
-            row = ''.join(random.choice('01') for _ in range(n))
-            grid.append(row)
-        pieces.append(grid)
-
     blacks = [0] * 4
     whites = [0] * 4
 
-    # 按原逻辑计算每个棋盘的黑白格代价
+    # Deterministically generate 4 grids of size n x n
+    # Original input was '0'/'1' characters per cell; we mimic that.
     for i in range(4):
-        grid = pieces[i]
+        grid = []
+        for j in range(n):
+            # Deterministic pattern based on i, j, and k
+            row = []
+            for k in range(n):
+                # Create a pseudo "input" character '0' or '1'
+                val = (i + j + k) % 2  # 0 or 1
+                row.append(str(val))
+            grid.append("".join(row))
+
         count = 0
         for j in range(n):
             for k in range(n):
@@ -38,8 +37,8 @@ def main(n: int) -> int:
                         ans,
                         whites[white1] + whites[white2] + blacks[black1] + blacks[black2],
                     )
-    return ans
-
-# 示例：需要时可以直接调用 main(n)，例如：
-# result = main(5)
-# print(result)
+    # print(ans)
+    pass
+if __name__ == "__main__":
+    # Example call; adjust n as needed for experiments
+    main(5)

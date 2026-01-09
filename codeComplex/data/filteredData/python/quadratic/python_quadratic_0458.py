@@ -1,9 +1,7 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：1..n 的一个随机排列
-    a = list(range(1, n + 1))
-    random.shuffle(a)
+def main(n):
+    # n: size of permutation a (1..n)
+    # Deterministic generation: a is the identity permutation [1, 2, ..., n]
+    a = [i + 1 for i in range(n)]
 
     a_reverse = a.copy()
     status = []
@@ -15,7 +13,6 @@ def main(n: int):
     status[pos] = False
     fails = set()
     fails.add(pos)
-
     for i in range(n - 1, 0, -1):
         i_ = i - 1
         pos = a_reverse[i_]
@@ -32,12 +29,12 @@ def main(n: int):
     result = ""
     for i in status:
         if i is True:
-            result += "A"
+            result = result + "A"
+
         else:
-            result += "B"
-
-    print(result)
-
+            result = result + "B"
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(8)
-    main(8)
+    # Example deterministic call for time complexity experiments
+    main(10)

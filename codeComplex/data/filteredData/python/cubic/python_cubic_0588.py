@@ -1,105 +1,91 @@
+from bisect import bisect_left as bl
+from bisect import bisect_right as br
+from heapq import heappush, heappop, heapify
+import math
+from collections import *
+from functools import reduce, cmp_to_key
+from itertools import accumulate
 from functools import lru_cache
-import random
 
 M = mod = 998244353
 
 
 def factors(n):
-    return sorted(
-        set(
-            sum(
-                ([i, n // i] for i in range(1, int(n ** 0.5) + 1) if n % i == 0),
-                [],
-            )
-        )
-    )
+    return sorted(set(reduce(list.__add__, ([i, n // i] for i in range(1, int(n ** 0.5) + 1) if n % i == 0))))
 
 
 def inv_mod(n):
     return pow(n, mod - 2, mod)
 
 
-def main(n: int):
-    """
-    n: 位数规模（生成 a 的位数），b 则在 [0, 10^n - 1] 之间随机生成。
-    """
+def makenum(s):
+    return int(''.join(str(e) for e in s))
 
-    # 生成测试数据
-    # a 为一个 n 位非负整数（首位不为 0，除非 n=1）
-    if n <= 0:
-        raise ValueError("n must be positive")
 
-    digits_a = [random.randint(0, 9) for _ in range(n)]
-    if n > 1 and digits_a[0] == 0:
-        digits_a[0] = random.randint(1, 9)
-    a_val = int("".join(str(d) for d in digits_a))
+def givemax(a, b):
+    if len(a) > len(b):
+        return a
+    elif len(b) > len(a):
+        return b
 
-    # b 在 [0, 10^n - 1] 范围内随机
-    max_b = 10**n - 1
-    b_val = random.randint(0, max_b)
+    else:
+        for j in range(len(a)):
+            if a[j] > b[j]:
+                return a
+            elif b[j] > a[j]:
+                return b
+        return a
 
-    a = a_val
-    b = b_val
 
-    # 原程序逻辑开始
-    n_local = len(str(a))
+def solve(a, b):
+    n = len(str(a))
+    a_list = [int(i) for i in str(a)]
+    a_list.sort()
+    if len(str(b)) > n:
+        return ''.join(str(x) for x in sorted(a_list, reverse=1))
 
-    a_digits = [int(i) for i in str(a)]
-    a_digits.sort()
-
-    if len(str(b)) > n_local:
-        # 直接输出 a 的降序排列
-        print("".join(str(d) for d in sorted(a_digits, reverse=True)))
-        return
-
-    b_str = str(b)
-    b_digits = [int(i) for i in b_str]
-
-    def givemax(sa, sb):
-        # 比较两个数字字符串，返回数值更大的那个（长度优先，其次字典序）
-        if len(sa) > len(sb):
-            return sa
-        elif len(sb) > len(sa):
-            return sb
-        else:
-            return max(sa, sb)
+    b_list = [int(i) for i in str(b)]
 
     @lru_cache(None)
     def dp(l, equal=1):
-        # l: 还剩下的数字（tuple）
-        # equal: 当前前缀是否仍与 b 的前缀相等（1 是，0 否）
         if len(l) == 1:
-            if equal and l[0] > b_digits[-1]:
-                return "-inf"
-            return str(l[0])
-
+            return str(-float('inf')) if l[0] > b_list[-1] and equal else str(l[0])
         if not equal:
-            # 已经严格小于，后面直接放最大的排列
-            return "".join(str(e) for e in sorted(l, reverse=True))
-
-        # equal == 1
-        ans = ""
+            return ''.join(str(e) for e in sorted(l, reverse=1))
+        ans = ''
         l_list = list(l)
-        curr = b_digits[n_local - len(l_list)]
+        curr = b_list[n - len(l_list)]
         for i in range(len(l_list)):
-            d = l_list[i]
-            rest = tuple(l_list[:i] + l_list[i + 1 :])
-            if d < curr:
-                sub = dp(rest, 0)
-                if sub != "-inf":
-                    ans = givemax(ans, str(d) + sub)
-            elif d == curr:
-                sub = dp(rest, 1)
-                if sub != "-inf":
-                    ans = givemax(ans, str(d) + sub)
-        if ans == "":
-            return "-inf"
-        return ans
+            remaining = tuple(l_list[:i] + l_list[i + 1:])
+            if l_list[i] < curr and dp(remaining, 0) != '-inf':
+                ans = givemax(ans, str(l_list[i]) + dp(remaining, 0))
+            elif l_list[i] == curr and dp(remaining, 1) != '-inf':
+                ans = givemax(ans, str(l_list[i]) + dp(remaining, 1))
+        return str(ans)
 
-    result = dp(tuple(a_digits), 1)
-    print(result)
+    return dp(tuple(a_list), 1)
 
 
+def main(n):
+    if n <= 0:
+        # print("")
+        pass
+        return
+    # Deterministic construction of a and b from n
+    # a is an n-digit number with a simple repeating pattern
+    digits_a = [(i % 10) for i in range(1, n + 1)]
+    if digits_a[0] == 0:
+        digits_a[0] = 1
+    a = int(''.join(str(d) for d in digits_a))
+
+    # b is another n-digit number, derived deterministically from a
+    digits_b = [((d + 3) % 10) for d in digits_a]
+    if digits_b[0] == 0:
+        digits_b[0] = 2
+    b = int(''.join(str(d) for d in digits_b))
+
+    result = solve(a, b)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 5
-    main(5)
+    main(10)

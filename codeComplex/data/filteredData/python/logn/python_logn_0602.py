@@ -21,8 +21,10 @@ def main(n: int):
             MIN = ANS + 1
         elif val < k:
             MAX = ANS - 1
+
         else:
-            print(ANS)
+            # print(ANS)
+            pass
             break
 
 

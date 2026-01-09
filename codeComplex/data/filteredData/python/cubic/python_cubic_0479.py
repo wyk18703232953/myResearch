@@ -1,26 +1,35 @@
 import math
-import random
 
 M = 998244353
 P = 1000000007
 Inf = float('inf')
 
 
+def find_gt(a, x):
+    i = 0
+    lo, hi = 0, len(a)
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if a[mid] < x:
+            lo = mid + 1
+
+        else:
+            hi = mid
+    i = lo
+    if i != len(a):
+        return i
+
+    else:
+        return len(a)
+
+
 def solve(n, m, k, rt, do):
-    """
-    n, m: grid size
-    k: number of steps (original k from problem)
-    rt[i][j]: cost to go from (i, j) to (i, j+1), 0 <= i < n, 0 <= j < m-1
-    do[i][j]: cost to go from (i, j) to (i+1, j), 0 <= i < n-1, 0 <= j < m
-    """
     dp = [[0] * m for _ in range(n)]
-
     if k % 2 == 1:
-        # print -1 grid
+        res = []
         for _ in range(n):
-            print(*([-1] * m))
-        return
-
+            res.append([-1] * m)
+        return res
     k //= 2
     for _ in range(k):
         dp_next = [[P] * m for _ in range(n)]
@@ -37,33 +46,46 @@ def solve(n, m, k, rt, do):
                     ans = min(ans, dp[i][j + 1] + rt[i][j])
                 dp_next[i][j] = ans
         dp = dp_next
-
+    res = []
     for i in range(n):
+        row = []
         for j in range(m):
-            print(2 * dp[i][j], end=' ')
-        print()
+            row.append(2 * dp[i][j])
+        res.append(row)
+    return res
 
 
 def main(n):
-    """
-    n: problem scale, used here as n = m = n, and k derived from n.
-    Generates random test data based on n and runs solve.
-    """
+    # Interpret n as grid dimension; keep it at least 2 for edges to exist
+    if n < 2:
+        n = 2
+    # Use a simple deterministic mapping from n to (rows, cols, k)
+    # Here: n x n grid, k = n (evened if needed)
+    rows = n
+    cols = n
+    k = n
+    if k % 2 == 1:
+        k += 1
 
-    # Example generation strategy:
-    #   grid size: n x n
-    #   k: even number, e.g. min(2*n, 20) rounded to even
-    m = n
-    k = max(2, 2 * ((min(2 * n, 20) + 1) // 2))  # ensure even and not too large
+    # Deterministic generation of rt (n x m) and do ((n-1) x m)
+    # rt[i][j]: horizontal edge cost from (i,j) to (i,j+1), j in [0, m-2]
+    # do[i][j]: vertical edge cost from (i,j) to (i+1,j), i in [0, n-2]
+    rt = [[0] * cols for _ in range(rows)]
+    do = [[0] * cols for _ in range(rows - 1)]
 
-    # generate rt (n x (m-1)) and do ((n-1) x m) with positive random costs
-    rt = [[random.randint(1, 10) for _ in range(m - 1)] for _ in range(n)]
-    do = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
+    for i in range(rows):
+        for j in range(cols - 1):
+            # simple positive cost depending on i,j
+            rt[i][j] = (i + 1) * (j + 2)
 
-    # run the original logic
-    solve(n, m, k, rt, do)
+    for i in range(rows - 1):
+        for j in range(cols):
+            do[i][j] = (i + 2) * (j + 1)
 
+    result = solve(rows, cols, k, rt, do)
 
+    for row in result:
+        # print(*row)
+        pass
 if __name__ == "__main__":
-    # example call
-    main(4)
+    main(5)

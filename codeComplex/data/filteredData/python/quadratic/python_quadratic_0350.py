@@ -1,17 +1,18 @@
-import random
-import string
-
 def main(n):
-    # 生成长度为 n 的随机小写字符串 s
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-    # 打乱 s 得到 t（保证为同一多重集合）
-    t_list = list(s)
-    random.shuffle(t_list)
-    t = ''.join(t_list)
+    # Generate deterministic test data
+    # s and t are anagrams of each other to avoid early -1 termination
+    # s: sequence of first n lowercase letters modulo 26
+    # t: s rotated by 1 position to keep complexity similar to original algorithm
+    import string
 
-    # 以下为原算法逻辑（去掉输入）
+    letters = string.ascii_lowercase
+    s = [letters[i % 26] for i in range(n)]
+    t = s[1:] + s[:1] if n > 0 else []
+
+    # Core logic from original program (adapted to generated s, t)
     if sorted(s) != sorted(t):
-        print(-1)
+        # print(-1)
+        pass
         return
 
     s = list(s)
@@ -20,17 +21,17 @@ def main(n):
     for i in range(n):
         for j in range(i, n - 1):
             if s[j + 1] == t[i]:
-                # 把 s[j+1] 向左冒泡到位置 i
                 for k in range(j, i - 1, -1):
                     ans.append(k + 1)
                     s[k + 1], s[k] = s[k], s[k + 1]
                 break
 
-    print(len(ans))
+    # print(len(ans))
+    pass
+
     if ans:
-        print(*ans)
-
-
+        # print(*ans)
+        pass
 if __name__ == "__main__":
-    # 示例：规模设为 10，可按需要修改
+    # Example deterministic call for time complexity experiments
     main(10)

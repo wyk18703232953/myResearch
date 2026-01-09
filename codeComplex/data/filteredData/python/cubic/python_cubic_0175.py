@@ -1,8 +1,3 @@
-from collections import Counter, defaultdict
-import math
-import random
-import heapq as hq
-from math import sqrt
 from functools import reduce
 
 mod = int(1e9) + 7
@@ -14,9 +9,7 @@ def factors(n):
 
 
 def main(n):
-    # 生成测试数据：长度为 n 的数组 a，元素为 1~5 之间的随机整数
-    random.seed(0)
-    a = [random.randint(1, 5) for _ in range(n)]
+    a = [(i % 5) + 1 for i in range(n)]
 
     dp = [[0 for _ in range(n)] for _ in range(n)]
     for i in range(n):
@@ -35,9 +28,7 @@ def main(n):
             if dp[j][i - 1] != 0:
                 squeeze[i] = min(squeeze[i], squeeze[j] + 1)
 
-    print(squeeze[n])
-
-
+    # print(squeeze[n])
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

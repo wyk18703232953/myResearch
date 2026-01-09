@@ -33,6 +33,7 @@ def main(n):
     for v in k:
         if v == 1:
             t += 1
+
         else:
             ans = max(ans, t)
             t = 0
@@ -46,6 +47,7 @@ def main(n):
     for v in k:
         if v == 1:
             t += 1
+
         else:
             ans = max(ans, t)
             t = 0
@@ -57,4 +59,5 @@ def main(n):
 if __name__ == "__main__":
     # 可根据需要修改 n
     result = main(10)
-    print(result)
+    # print(result)
+    pass

@@ -6,25 +6,31 @@ def main(n):
 
     if n % 2 == 0:
         a, b = 1, 2
+
     else:
         a, b = 1, 1
 
     if min(a, b) != 1:
-        print("NO")
+        # print("NO")
+        pass
         return
     if a == b == 1 and n in (2, 3):
-        print("NO")
+        # print("NO")
+        pass
         return
 
-    print("YES")
+    # print("YES")
+    pass
     ONE, ZERO = ("10" if a > 1 else "01")
 
     edges = n - max(a, b)
     line = "0" + (ZERO, ONE)[edges > 0] * (n > 1) + ZERO * (n - 2)
-    print(line)
+    # print(line)
+    pass
 
     for y in range(1, n):
         line = ZERO * (y - 1) + (ZERO, ONE)[y <= edges] + "0"
         if y < n - 1:
             line += (ZERO, ONE)[y < edges] + ZERO * (n - y - 2)
-        print(line)
+        # print(line)
+        pass

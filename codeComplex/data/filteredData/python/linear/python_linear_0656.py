@@ -1,29 +1,21 @@
-from collections import Counter
-import random
-
 def main(n):
-    # 随机生成总长度 s（正数）
-    s = random.uniform(1.0, 1000.0)
+    from collections import Counter
 
-    # 生成一棵有 n 个节点的随机树，节点编号为 1..n
-    # 使用简单的随机生成方法：对每个节点 i (2..n)，连到 [1..i-1] 中的随机节点
+    # Map n to the number of nodes; ensure at least 2 nodes for a tree
+    N = max(2, n)
+    # Deterministic s based on N
+    s = N
+
+    # Build a deterministic tree: a simple path 1-2-3-...-N
     d = Counter()
-    edges = []
-    for i in range(2, n + 1):
-        p = random.randint(1, i - 1)
-        edges.append((p, i))
-        d[p] += 1
-        d[i] += 1
+    for i in range(1, N):
+        u, v = i, i + 1
+        d[u] += 1
+        d[v] += 1
 
-    # 如果 n == 1，则只有一个节点，按原题意义没有边，叶子数视为 1
-    if n == 1:
-        l = 1
-    else:
-        l = sum(deg == 1 for deg in d.values())
-
+    l = sum(val == 1 for val in d.values())
     ans = s / l * 2
-    print(f"{ans:.10f}")
-
+    # print('%.10f' % ans)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 5 的随机测试
-    main(5)
+    main(10)

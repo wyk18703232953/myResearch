@@ -13,6 +13,7 @@ def main(n):
             # 判断是否为某个 3x3 块的中心
             if 1 <= i < n - 1 and 1 <= j < m - 1 and (i % 3 == 1) and (j % 3 == 1):
                 dp[i][j] = '.'  # 中心空
+
             else:
                 dp[i][j] = '#'  # 其余填 '#'
 
@@ -39,11 +40,12 @@ def main(n):
                             dp2[k][h] = '#'
 
     if dp == dp2:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(9) 进行测试
     main(9)

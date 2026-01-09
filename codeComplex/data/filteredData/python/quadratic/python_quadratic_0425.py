@@ -1,8 +1,8 @@
-import random
-
-def main(n: int):
-    # 生成长度为 n 的数字串作为测试数据，这里用随机的 0~9
-    s = ''.join(str(random.randint(0, 9)) for _ in range(n))
+def main(n):
+    # 生成确定性的输入：
+    # 将 n 作为字符串长度，构造由 0/1/2 组成的字符串
+    # 保证每次相同 n 生成的数据一致
+    s = ''.join(str((i * 7) % 3) for i in range(n))
 
     l = []
     total = 0
@@ -19,13 +19,13 @@ def main(n: int):
                 sum1 = 0
                 r = r + 1
         if r >= 2 and sum1 == 0 and flag == 1:
-            print("YES")
+            # print("YES")
+            pass
             p = 1
             break
     if p == 0:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # 示例调用：可根据需要修改 n 以进行规模实验
+    main(1000)

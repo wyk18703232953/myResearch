@@ -1,28 +1,23 @@
 from collections import deque
-import random
 
 def main(n):
-    # 1. 根据规模 n 生成 N, M
-    # 这里简单设定：N = n, M = n
+    # Interpret n as grid size; ensure at least 2x2 grid
+    if n < 2:
+        n = 2
     N = n
     M = n
 
-    # 2. 生成若干起始点 K 和列表 T（长度为 2K）
-    # 设定 K 与 n 有关，例如 K = max(1, n // 2)
-    K = max(1, n // 2)
-
-    # 随机生成 K 个起始坐标 (x, y)，范围在 [1, N] x [1, M]
-    # T = [x1, y1, x2, y2, ...]
+    # Deterministically generate K and T based on n
+    # Use K starting points along the main diagonal (or until we run out of cells)
+    K = n
     T = []
-    for _ in range(K):
-        x = random.randint(1, N)
-        y = random.randint(1, M)
+    for i in range(1, K + 1):
+        x = (i - 1) % N + 1
+        y = (i - 1) % M + 1
         T.extend([x, y])
 
-    # 3. 原逻辑封装（不再读写文件）
     graph = [[0] * (M + 1) for _ in range(N + 1)]
     queue = deque()
-
     for i in range(0, 2 * K - 1, 2):
         graph[T[i]][T[i + 1]] = 1
         queue.append((T[i], T[i + 1]))
@@ -40,10 +35,7 @@ def main(n):
                     graph[x_moves[i]][y_moves[i]] = 1
                     queue.append((x_moves[i], y_moves[i]))
 
-    # 4. 输出结果（直接打印）
-    print(f"{x} {y}")
-
-
+    # print(f"{x} {y}")
+    pass
 if __name__ == "__main__":
-    # 示例调用，可按需修改 n
     main(10)

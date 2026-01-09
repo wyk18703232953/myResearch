@@ -36,9 +36,8 @@ def main(n):
                     dp[i][j][k] = dp[i][j - 1][k - 1] + g[j - 1] * b[k - 1]
                 ans = max(ans, dp[i][j][k])
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(3)

@@ -1,5 +1,7 @@
-import random
-from collections import defaultdict
+import math
+import heapq, bisect
+from collections import deque, defaultdict
+from fractions import Fraction
 
 mod = 10 ** 9 + 7
 mod1 = 998244353
@@ -18,7 +20,6 @@ class TreeNode:
 
 
 class AvlTree:
-
     def __init__(self):
         self._tree = None
 
@@ -36,6 +37,7 @@ class AvlTree:
             if k < node.key:
                 if node.left:
                     node = node.left
+
                 else:
                     node.left = TreeNode(k, v)
                     node.left.parent = node
@@ -43,10 +45,12 @@ class AvlTree:
             elif node.key < k:
                 if node.right:
                     node = node.right
+
                 else:
                     node.right = TreeNode(k, v)
                     node.right.parent = node
                     return node.right
+
             else:
                 node.value = v
                 return
@@ -60,7 +64,6 @@ class AvlTree:
         return x.num_total if x else 0
 
     def _rebalance(self, node):
-
         n = node
         while n:
             lh = self.get_height(n.left)
@@ -78,6 +81,7 @@ class AvlTree:
                 if self.get_height(n.right.right) < self.get_height(n.right.left):
                     self._rotate_right(n.right)
                 self._rotate_left(n)
+
             else:
                 n = n.parent
 
@@ -86,10 +90,12 @@ class AvlTree:
         if node.parent:
             if AvlTree._is_left(node):
                 node.parent.left = replacement
+
             else:
                 node.parent.right = replacement
             replacement.parent = node.parent
             node.parent = None
+
         else:
             self._tree = replacement
             replacement.parent = None
@@ -102,9 +108,11 @@ class AvlTree:
         if node.parent:
             if AvlTree._is_left(node):
                 node.parent.left = None
+
             else:
                 node.parent.right = None
             self._rebalance(node.parent)
+
         else:
             self._tree = None
         node.parent = None
@@ -124,9 +132,11 @@ class AvlTree:
             node.value = nxt.value
             if self._is_leaf(nxt):
                 self._remove_leaf(nxt)
+
             else:
                 self._remove_one(nxt)
             self._rebalance(node)
+
         else:
             self._remove_one(node)
 
@@ -143,6 +153,7 @@ class AvlTree:
                 node = node.left
             elif node.key < k:
                 node = node.right
+
             else:
                 return node
         return None
@@ -156,6 +167,7 @@ class AvlTree:
             elif node.num_left < x:
                 x -= node.num_left
                 node = node.right
+
             else:
                 return (node.key, node.value)
         raise IndexError("Out of ranges")
@@ -175,6 +187,7 @@ class AvlTree:
         elif AvlTree._is_left(node):
             node.parent.left = node.left
             node.left.parent = node.parent
+
         else:
             node.parent.right = node.left
             node.left.parent = node.parent
@@ -195,6 +208,7 @@ class AvlTree:
         elif AvlTree._is_left(node):
             node.parent.left = node.right
             node.right.parent = node.parent
+
         else:
             node.parent.right = node.right
             node.right.parent = node.parent
@@ -392,6 +406,7 @@ def powm(a, n, m):
     if n % 2 == 0:
         s = powm(a, n // 2, m)
         return s * s % m
+
     else:
         return a * powm(a, n - 1, m) % m
 
@@ -418,6 +433,7 @@ def binarySearchCount(arr, n, key):
         if arr[mid] < key:
             count = mid + 1
             left = mid + 1
+
         else:
             right = mid - 1
     return count
@@ -445,65 +461,66 @@ def countGreater(arr, n, k):
         if arr[m] >= k:
             leftGreater = m
             r = m - 1
+
         else:
             l = m + 1
     return n - leftGreater
 
 
-def main(n):
-    """
-    n: problem scale. Here we interpret it as the number of distinct card types.
-    We will generate:
-      - k: max copies usable per type, between 1 and min(5, n)
-      - cards: list of length n*k, values in [1, n]
-      - l: list of length n, values in [1, n]
-      - h: list of length k+1, h[0] unused (same as original code expecting h[0]=0 after shift)
-    Then we run the original DP logic and print the resulting ans.
-    """
-    if n <= 0:
-        print(0)
-        return
+def find(x, y, k, h):
+    dp = [[0 for _ in range(y + 1)] for _ in range(x + 1)]
+    for i in range(1, x + 1):
+        for j in range(y + 1):
+            up_to = min(j, k)
+            for t in range(up_to + 1):
+                val = dp[i - 1][j - t] + h[t]
+                if val > dp[i][j]:
+                    dp[i][j] = val
+    return dp[x][y]
 
-    # Generate parameters
-    k = random.randint(1, max(1, min(5, n)))  # keep k fairly small so DP is manageable
 
-    # cards: length n * k, values between 1 and n
-    cards = [random.randint(1, n) for _ in range(n * k)]
-
-    # l: length n, values between 1 and n
-    l = [random.randint(1, n) for _ in range(n)]
-
-    # h: benefit array, length k+1; we will make h[0] = 0 after shifting as in original
-    raw_h = [random.randint(0, 10) for _ in range(k)]  # generate k values for h[1..k]
-    h = [0] + raw_h  # so that h[t] is defined for t in [0..k]
-
+def core_logic(n, k, cards, l, h):
+    h = [0] + h
     count = defaultdict(int)
     rt = defaultdict(int)
 
-    def find(x, y):
-        # x = rt[i], y = count[i] in original
-        dp = [[0 for _ in range(y + 1)] for _ in range(x + 1)]
-        for i in range(1, x + 1):
-            for j in range(y + 1):
-                # t: how many for this group (0..k, but cannot exceed j)
-                for t in range(min(j + 1, k + 1)):
-                    dp[i][j] = max(dp[i][j], dp[i - 1][j - t] + h[t])
-        return dp[x][y]
-
-    for v in cards:
-        count[v] += 1
-    for v in l:
-        rt[v] += 1
+    total_cards = n * k
+    for i in range(total_cards):
+        count[cards[i]] += 1
+    for i in range(n):
+        rt[l[i]] += 1
 
     ans = 0
     for key in rt:
         if count[key] == 0:
             continue
-        ans += find(rt[key], count[key])
+        ans += find(rt[key], count[key], k, h)
+    return ans
 
-    print(ans)
+
+def generate_data(n):
+    if n < 1:
+        n = 1
+    # Input structure:
+    # n (distinct values / boxes)
+    # k (max per box) mapped as max(1, n//2)
+    # cards: length n*k
+    # l: length n
+    # h: length k
+    k = max(1, n // 2)
+    # generate card values in [1, n] deterministically
+    cards = [(i % n) + 1 for i in range(n * k)]
+    # generate l values in [1, n], biased by (i*2+1) pattern
+    l = [((i * 2 + 1) % n) + 1 for i in range(n)]
+    # h has length k, h[t] = t^2 for some cost pattern
+    h = [t * t for t in range(1, k + 1)]
+    return n, k, cards, l, h
 
 
+def main(n):
+    n_in, k, cards, l, h = generate_data(n)
+    ans = core_logic(n_in, k, cards, l, h)
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # example run with some scale, e.g., n = 5
-    main(5)
+    main(10)

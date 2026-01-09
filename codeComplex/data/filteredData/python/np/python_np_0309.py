@@ -29,7 +29,8 @@ def main(n):
         ans += dp[N - 1][x][K - 1]
 
     ans = ans * 2 % mod
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

@@ -12,15 +12,15 @@ def main(n: int):
     k = max(1, n.bit_length())
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     a = pow(2, k, mod) % mod
     b = (2 * a) % mod
     ans = (((((x % mod) * (b % mod)) % mod) - (a % mod) + 1) + mod) % mod
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

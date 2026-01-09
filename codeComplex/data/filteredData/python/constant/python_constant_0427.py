@@ -11,19 +11,21 @@ def main(n):
     k = max(1, min(2 * n, n))  # 示例：k = n（保证 1 <= k <= 2n）
 
     if k > n + n - 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     if k - 1 <= n:
         ml = 1
         mr = k - 1
-        print((mr - ml + 1) // 2)
+        # print((mr - ml + 1) // 2)
+        pass
+
     else:
         mr = n
         ml = k - n
-        print((mr - ml + 1) // 2)
-
-
+        # print((mr - ml + 1) // 2)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时可在此处修改 n 测试不同规模
     main(10)

@@ -1,81 +1,92 @@
-import random
-
 def main(n):
-    # 规模参数：我们用 n 同时作为行数、列数和步数上限的一部分来源
-    # 为了保持原程序含义，这里构造：
-    #   n_rows = n
-    #   m_cols = n
-    #   k_steps = n（可按需要调整生成规则）
-    n_rows = n
-    m_cols = n
-    k_steps = n
+    # Map n to grid size and k (must be even to exercise main logic)
+    # Ensure n is at least 2 to have a meaningful grid
+    if n < 2:
+        n_effective = 2
 
-    # 生成测试数据：边权 wh (横向) 和 wv (纵向)
-    # wh: n_rows 行，每行 m_cols-1 个权值，范围 1..10
-    # wv: n_rows-1 行，每行 m_cols 个权值，范围 1..10
+    else:
+        n_effective = n
+
+    # Define grid dimensions and k based on n_effective
+    rows = n_effective
+    cols = n_effective
+    # Choose k as an even number depending on n_effective but capped for dp size (max k index 24)
+    k = min(2 * (n_effective // 2 + 1), 24)
+    if k % 2 == 1:
+        k += 1
+    if k < 2:
+        k = 2
+
+    n_val = rows
+    m_val = cols
+
+    # Deterministic generation of wh (left-right weights) of size n x (m-1)
     wh = []
-    for _ in range(n_rows):
-        if m_cols > 1:
-            row = [random.randint(1, 10) for _ in range(m_cols - 1)]
-        else:
-            row = []
+    for i in range(n_val):
+        row = []
+        for j in range(m_val - 1):
+            # Simple deterministic weight formula
+            row.append((i + 1) * (j + 2) % 17 + 1)
         wh.append(row)
 
+    # Deterministic generation of wv (top-bottom weights) of size (n-1) x m
     wv = []
-    for _ in range(n_rows - 1):
-        row = [random.randint(1, 10) for _ in range(m_cols)]
+    for i in range(n_val - 1):
+        row = []
+        for j in range(m_val):
+            # Simple deterministic weight formula
+            row.append((i + 2) * (j + 1) % 19 + 1)
         wv.append(row)
 
-    n = n_rows
-    m = m_cols
-    k = k_steps
-
+    # Core logic from original code, adapted to generated n_val, m_val, k, wh, wv
     if k % 2 != 0:
-        ans = [[-1 for _ in range(m)] for _ in range(n)]
+        ans = [[-1 for _ in range(m_val)] for _ in range(n_val)]
         for res in ans:
-            print(*res)
-        return
+            # print(*res)
+            pass
 
-    # dp 尺寸按原程序：dp[505][505][25]
-    # 但只会用到 i<=n, j<=m, x<=k
-    MAX_N = 505
-    MAX_M = 505
-    MAX_K = 25  # 原代码第三维大小为 25
+    else:
+        # dp dimensions: i up to n_val, j up to m_val, x up to k
+        # Original uses dp[505][505][25], keep that but we will only index within needed ranges
+        max_n = 505
+        max_m = 505
+        max_k = 25
+        dp = [[[0 for _ in range(max_k)] for _ in range(max_m)] for _ in range(max_n)]
 
-    if k >= MAX_K:
-        # 若 k 过大会越界，简单截断到 MAX_K-1
-        k = MAX_K - 1
-
-    INF = 1234567890
-    dp = [[[0 for _ in range(MAX_K)] for _ in range(MAX_M)] for _ in range(MAX_N)]
-
-    for x in range(1, k + 1):
-        for i in range(1, n + 1):
-            for j in range(1, m + 1):
-                dp[i][j][x] = INF
-                if i != n:
-                    dp[i][j][x] = min(dp[i][j][x],
-                                      dp[i + 1][j][x - 1] + wv[i - 1][j - 1])
-                if i != 1:
-                    dp[i][j][x] = min(dp[i][j][x],
-                                      dp[i - 1][j][x - 1] + wv[i - 2][j - 1])
-                if j != m:
-                    dp[i][j][x] = min(dp[i][j][x],
-                                      dp[i][j + 1][x - 1] + wh[i - 1][j - 1])
-                if j != 1:
-                    dp[i][j][x] = min(dp[i][j][x],
-                                      dp[i][j - 1][x - 1] + wh[i - 1][j - 2])
-
-    for i in range(1, n + 1):
-        for j in range(1, m + 1):
-            ans = INF
-            for x in range(1, k + 1):
-                if k % x == 0 and (k // x) % 2 == 0:
-                    ans = min(ans, dp[i][j][x] * (k // x))
-            print(ans, end=" ")
-        print()
-
-
+        for x in range(1, k + 1):
+            for i in range(1, n_val + 1):
+                for j in range(1, m_val + 1):
+                    dp[i][j][x] = 1234567890
+                    if i != n_val:
+                        dp[i][j][x] = min(
+                            dp[i][j][x],
+                            dp[i + 1][j][x - 1] + wv[i - 1][j - 1],
+                        )
+                    if i != 1:
+                        dp[i][j][x] = min(
+                            dp[i][j][x],
+                            dp[i - 1][j][x - 1] + wv[i - 2][j - 1],
+                        )
+                    if j != m_val:
+                        dp[i][j][x] = min(
+                            dp[i][j][x],
+                            dp[i][j + 1][x - 1] + wh[i - 1][j - 1],
+                        )
+                    if j != 1:
+                        dp[i][j][x] = min(
+                            dp[i][j][x],
+                            dp[i][j - 1][x - 1] + wh[i - 1][j - 2],
+                        )
+        for i in range(1, n_val + 1):
+            row_out = []
+            for j in range(1, m_val + 1):
+                best = 1234567890
+                for x in range(1, k + 1):
+                    if k % x == 0 and (k // x) % 2 == 0:
+                        best = min(best, dp[i][j][x] * (k // x))
+                row_out.append(str(best))
+            # print(" ".join(row_out))
+            pass
 if __name__ == "__main__":
-    # 示例调用：可以修改这里的 n 观察不同规模
-    main(5)
+    # Example deterministic call; adjust n to scale input size for experiments
+    main(10)

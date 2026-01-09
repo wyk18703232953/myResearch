@@ -4,6 +4,7 @@ def check_combos(diff, n, size, start, picked, total, l, r, x, combination=None)
     if picked == size:
         if max(combination) - min(combination) >= x and l <= sum(combination) <= r:
             total += 1
+
     else:
         # 循环上界修正为 n - (size - picked) + 1 以保证区间非空
         for i in range(start, n - (size - picked) + 1):
@@ -31,7 +32,8 @@ def main(n):
     suitable_problemsets = 0
     for size in range(1, n + 1):
         suitable_problemsets += check_combos(diff, n, size, 0, 0, 0, l, r, x)
-    print(suitable_problemsets)
+    # print(suitable_problemsets)
+    pass
 
 
 # 示例调用

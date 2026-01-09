@@ -4,12 +4,13 @@ def main(n: int):
 
     for d in lucky_divisors:
         if n % d == 0:
-            print("YES")
+            # print("YES")
+            pass
             break
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 根据规模 n 生成测试数据：
     # 这里简单设定为用 n 本身作为待检测数字。

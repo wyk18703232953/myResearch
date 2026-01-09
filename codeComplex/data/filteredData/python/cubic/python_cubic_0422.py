@@ -1,12 +1,9 @@
-import random
-import math
-
-
 def solve(n, m, k, h, v):
     if k % 2:
         ans = "-1 " * m
         for _ in range(n):
-            print(ans)
+            # print(ans)
+            pass
         return
 
     dp = [[0] * (m + 1) for _ in range(n + 1)]
@@ -20,43 +17,40 @@ def solve(n, m, k, h, v):
                 u = 2 * v[i - 1][j] + dp[i - 1][j]
                 d = 2 * v[i][j] + dp[i + 1][j]
 
-                hor = min(l, r)
-                ver = min(u, d)
-
-                nxt[i][j] = min(hor, ver)
+                hor = l if l < r else r
+                ver = u if u < d else d
+                nxt[i][j] = hor if hor < ver else ver
 
         dp, nxt = nxt, dp
 
     for row in dp[:-1]:
-        print(" ".join(map(str, row[:-1])))
+        # print(" ".join(map(str, row[:-1])))
+        pass
 
 
 def main(n):
-    # 规模 n 控制网格大小，这里设置 m = n，k 与 n 相关
-    m = n
-    # 令 k 为偶数步数，避免直接输出 -1；保证至少 2 步
-    k = 2 * max(1, n // 2)
+    # Interpret n as base grid size; derive parameters deterministically
+    # Ensure at least 1x1 grid and even k where meaningful
+    if n < 1:
+        n = 1
 
-    # 生成测试数据：h 为 n x m，v 为 n-1 x m
-    # 使用较小的权重范围，便于调试和查看
-    max_w = 10
+    # Grid dimensions
+    rows = n
+    cols = n
 
-    # h[i][j]: 水平方向边权 (i, j) <-> (i, j+1)
-    h = [
-        [random.randint(1, max_w) for _ in range(m)] + [math.inf]
-        for _ in range(n)
-    ]
+    # Step count k: proportional to n, ensure it's at least 2 and even
+    k = (2 * n) if (2 * n) % 2 == 0 else (2 * n + 1)
 
-    # v[i][j]: 垂直方向边权 (i, j) <-> (i+1, j)
-    v = [
-        [random.randint(1, max_w) for _ in range(m)]
-        for _ in range(n - 1)
-    ]
-    v.append([math.inf] * m)
+    # Deterministic generation of h (n x (m+1)) and v ((n+1) x m effective)
+    # h[i][j] = (i + 1) * (j + 2), last column is +inf
+    h = [[(i + 1) * (j + 2) for j in range(cols)] + [float("+inf")] for i in range(rows)]
 
-    solve(n, m, k, h, v)
+    # v[i][j] = (i + j + 3), last row is +inf
+    v = [[i + j + 3 for j in range(cols)] for i in range(rows - 1)]
+    v.append([float("+inf")] * cols)
+
+    solve(rows, cols, k, h, v)
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5) 生成 5x5 网格的测试
     main(5)

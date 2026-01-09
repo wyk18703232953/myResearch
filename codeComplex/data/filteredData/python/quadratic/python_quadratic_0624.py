@@ -1,9 +1,8 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据：n 个正整数，范围可根据需要调整
-    a = sorted(random.randint(1, 10 ** 6) for _ in range(n))
-
+def main(n):
+    # Generate deterministic input array of size n
+    # Example pattern: a[i] = i+1 ensures diverse divisibility relations
+    a = [i + 1 for i in range(n)]
+    a.sort()
     ans = 0
     for i in range(n):
         f = 1
@@ -12,9 +11,7 @@ def main(n: int) -> int:
                 f = 0
                 break
         ans += f
-    print(ans)
-    return ans
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例调用，可根据需要修改规模
     main(10)

@@ -1,28 +1,17 @@
 def main(n):
-    """
-    参数:
-        n: 网格大小，将生成 n x n 的网格
-    说明:
-        原题有 n, m, k，这里为了参数化简化：
-        - 使用 n 作为行数和列数: m = n
-        - 令 k = 2*n（保证为偶数，且步数规模与网格规模相关）
-        - 根据 n 随机/规则生成 left 和 down 矩阵的测试数据
-    """
-
-    import random
-
-    # 派生参数
+    # Interpret n as grid size with square grid and fixed even k
+    # n must be at least 2 for down edges to exist; handle n==1 separately
+    if n <= 0:
+        return
     m = n
-    k = 2 * n  # 可根据需要调整规则，只要是非负整数即可
+    k = 2 * n  # even number of steps, scales with n
 
-    # 生成测试数据
-    # left: n x (m-1)，但原代码中 left[i] 是长度 m 的列表，其中使用到的是
-    # left[i][j-1] 和 left[i][j] (j从0到m-1)，因此这里直接生成 n x m，未使用的位置无影响
-    left = [[random.randint(1, 10) for _ in range(m)] for _ in range(n)]
-    # down: (n-1) x m，同理保持为 n-1 行，每行 m 列
-    down = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
+    # Deterministic generation of left and down costs
+    # left: n x m-1
+    left = [[(i + j + 1) % 7 + 1 for j in range(m - 1)] for i in range(n)]
+    # down: n-1 x m
+    down = [[(i * m + j + 3) % 9 + 1 for j in range(m)] for i in range(n - 1)]
 
-    # 原逻辑开始
     dp = [[(-1 if k & 1 else 0) for _ in range(m)] for _ in range(n)]
     if k & 1 == 0:
         for _ in range(k // 2):
@@ -40,9 +29,7 @@ def main(n):
             dp = dp1
 
     for row in dp:
-        print(*row)
-
-
+        # print(*row)
+        pass
 if __name__ == "__main__":
-    # 示例：规模为 4 的测试
-    main(4)
+    main(5)

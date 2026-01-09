@@ -1,6 +1,3 @@
-import random
-
-
 def bit_count(x):
     ans = 0
     while x:
@@ -22,7 +19,6 @@ def solve(n_str, k):
     for i in range(2, x + 1):
         dp[i] = dp[bit_count(i)] + 1
     dp1 = [[0] * (x + 1) for _ in range(x + 1)]
-    # length ; set bits
     for i in range(x + 1):
         dp1[i][0] = 1
     for i in range(1, x + 1):
@@ -47,27 +43,19 @@ def solve(n_str, k):
 
 
 def main(n):
-    """
-    n: 规模参数，用来生成测试数据。
-       我们生成一个长度为 n 的随机二进制串 n_str 和一个随机 k。
-    返回：根据原逻辑计算出的答案。
-    """
-    if n <= 0:
-        n = 1
+    # n 作为规模参数：生成长度为 n 的二进制字符串和对应的 k
+    # 生成确定性的 n_str：从 1 到 n 的奇偶性构造
+    n_str = ''.join('1' if i % 2 == 0 else '0' for i in range(1, n + 1))
+    # k 也由 n 确定性生成，映射到一个较小范围
+    if n <= 1:
+        k = 0
 
-    # 生成长度为 n 的随机二进制串，避免全为 0，至少有一位是 1
-    bits = [random.choice('01') for _ in range(n)]
-    if all(b == '0' for b in bits):
-        bits[random.randrange(n)] = '1'
-    n_str = ''.join(bits)
-
-    # k 的取值不需要特别大，这里设为 [0, n] 范围内的随机整数
-    k = random.randint(0, n)
-
-    return solve(n_str, k)
-
-
+    else:
+        # k 在 [0, max(1, bit_count(n))] 范围内循环
+        max_k = max(1, bit_count(n))
+        k = (n % (max_k + 1))
+    result = solve(n_str, k)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 进行一次测试
-    ans = main(10)
-    print(ans)
+    main(1000)

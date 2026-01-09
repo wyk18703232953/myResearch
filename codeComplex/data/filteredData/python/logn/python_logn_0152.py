@@ -24,6 +24,7 @@ def solve_single_case(n, k):
             return k - mid + 1
         if sum1 > n:
             left = mid + 1
+
         else:
             right = mid
     return k - left + 2
@@ -38,8 +39,8 @@ def main(n):
     k = n
 
     ans = solve_single_case(n, k)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：运行一个固定规模，实际使用时由外部调用 main(n)
     main(10)

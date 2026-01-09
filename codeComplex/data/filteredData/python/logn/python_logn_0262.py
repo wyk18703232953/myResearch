@@ -12,14 +12,14 @@ def main(n: int):
 
     if x == 0:
         ans = 0
+
     else:
         ans = (pow(2, k + 1, mod) * x % mod
                - (pow(2, k, mod) - 1 + mod) % mod
                + mod) % mod
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：规模为 10
     main(10)

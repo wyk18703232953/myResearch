@@ -1,6 +1,7 @@
 def subsets(L, i):
     if i == len(L):
         yield []
+
     else:
         for s in subsets(L, i + 1):
             yield s
@@ -21,8 +22,8 @@ def main(n):
     x = 1          # 最小难度差
 
     ans = computeValidProblemsets(problems, l, r, x)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == '__main__':
     # 示例运行：可以修改 n 测试不同规模
     main(5)

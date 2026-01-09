@@ -1,6 +1,5 @@
 import functools
 import time
-import random
 
 def timer(func):
     @functools.wraps(func)
@@ -8,20 +7,22 @@ def timer(func):
         stime = time.perf_counter()
         res = func(*args, **kwargs)
         elapsed = time.perf_counter() - stime
-        print(f"{func.__name__} in {elapsed:.4f} secs")
+        # print(f"{func.__name__} in {elapsed:.4f} secs")
+        pass
         return res
     return wrapper
 
-class Solver:
-    def __init__(self):
-        pass
+class solver:
+    # @timer
+    def __init__(self, s):
+        self.s = s
 
-    def solve(self, s: str) -> str:
-        s = list(s)
+    def __call__(self):
+        s = list(self.s)
         n = len(s)
 
-        res = []
-        p = n - 1
+        res = list()
+        p = n - 1        
         ones = 0
         zeros = 0
         while p >= 0:
@@ -37,18 +38,27 @@ class Solver:
         res.extend(['1'] * ones)
         res.extend(['0'] * zeros)
         res.reverse()
-        return ''.join(res)
+        # print(''.join(map(str, res)))
+        pass
 
-@timer
-def main(n: int):
-    # 生成长度为 n 的测试数据，字符从 '0','1','2' 中随机选择
-    chars = ['0', '1', '2']
-    test_str = ''.join(random.choice(chars) for _ in range(n))
+def generate_input_string(n):
+    if n <= 0:
+        return ""
+    chars = []
+    for i in range(n):
+        r = i % 3
+        if r == 0:
+            chars.append('0')
+        elif r == 1:
+            chars.append('1')
 
-    solver = Solver()
-    result = solver.solve(test_str)
-    print(result)
+        else:
+            chars.append('2')
+    return ''.join(chars)
+
+def main(n):
+    s = generate_input_string(n)
+    solver(s)()
 
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
-    main(10)
+    main(100000)

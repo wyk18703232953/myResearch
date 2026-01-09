@@ -11,9 +11,8 @@ def main(n):
             l = i
             break
     result = n - l + 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可根据需要调整或由外部调用传参
     main(10**6)

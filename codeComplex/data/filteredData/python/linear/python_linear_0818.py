@@ -1,19 +1,26 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成测试数据：
-    # 让 turns = n，candies 为一个在 1 到 n*(n+1)//2 范围内的随机整数
+def main(n):
+    # Interpret n as candies, and set turns = n as a scalable deterministic choice
     turns = n
-    max_candies = turns * (turns + 1) // 2
-    candies = random.randint(1, max_candies)
+    candies = n
 
     summ = 0
     turn = 0
-    while candies != summ - (turns - turn):
+    # Guard against non-termination: if no solution within reasonable bounds, break
+    # Here we limit turns tried to 2 * turns to keep it scalable and deterministic
+    max_turn_limit = 2 * turns if turns > 0 else 1
+    while candies != summ - (turns - turn) and turn < max_turn_limit:
         turn += 1
         summ += turn
-    print(turns - turn)
+    if turn >= max_turn_limit:
+        result = -1  # indicate no valid turn found within limit
+
+    else:
+        result = turns - turn
+
+    return result
+
 
 if __name__ == "__main__":
-    # 示例运行：可修改 n 测试不同规模
-    main(10)
+    # Example deterministic call
+    # print(main(10))
+    pass

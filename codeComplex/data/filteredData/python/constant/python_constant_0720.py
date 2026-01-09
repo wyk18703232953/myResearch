@@ -17,7 +17,9 @@ def main(n: int):
     # 处理一位数和多位数情况
     if NumofDigits == 1:
         # 一位数直接输出 k（假设从 1-9 对应 k=1..9）
-        print(k)
+        # print(k)
+        pass
+
     else:
         # 找到 k 落在的具体那个数
         result = (10 ** (NumofDigits - 1)) + int((k - (prev + 1)) / NumofDigits)
@@ -30,9 +32,8 @@ def main(n: int):
             i += 1
 
         result = str(result)
-        print(result[i])
-
-
+        # print(result[i])
+        pass
 if __name__ == "__main__":
     # 示例：自动生成一个测试规模 n 来调用 main
     # 可以根据需要修改生成测试数据的方式

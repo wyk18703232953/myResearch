@@ -21,6 +21,7 @@ def main(n):
     import math
     if n <= 1:
         height = 1
+
     else:
         height = int(math.log2(n)) + 1
 
@@ -39,6 +40,7 @@ def main(n):
                 p = x + maxx(x)
                 if x == p - maxx(p) // 2:
                     x = p
+
                 else:
                     x = x - maxx(x)
             elif ch == 'L':
@@ -46,9 +48,8 @@ def main(n):
             elif ch == 'R':
                 x = x + maxx(x) // 2
 
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
     # 可在此处指定规模 n，用于本地运行测试
     # 例如：

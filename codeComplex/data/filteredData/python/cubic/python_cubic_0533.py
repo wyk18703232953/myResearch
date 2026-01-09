@@ -1,50 +1,94 @@
-import random
+import os
+import sys
+from io import BytesIO, IOBase
 
 def main(n):
-    # 生成测试数据：长度为 n 的数字串 a 和 b，保证没有前导零
     if n <= 0:
         return
-
-    # a 和 b 都为长度为 n 的数字串
-    a_str = str(random.randint(10**(n-1), 10**n - 1))
-    b_str = str(random.randint(10**(n-1), 10**n - 1))
-
-    a = list(map(int, a_str))
-    b = list(map(int, b_str))
-
-    ans = []
-    la, lb = len(a), len(b)
-
+    a = [i % 10 for i in range(n)]
+    b = [((n - i) * 3) % 10 for i in range(n)]
+    ans, la, lb = [], len(a), len(b)
     if la != lb:
-        # 和原逻辑一致：若长度不同，输出 a 的降序排列
-        print("".join(map(str, sorted(a, reverse=True))))
-        return
+        # print(*sorted(a, reverse=True), sep="")
+        pass
 
-    for i in range(lb):
-        if b[i] in a:
-            ans.append(b[i])
-            a.remove(b[i])
-        else:
-            # 回退并寻找小于当前 b[i] 的最大可用数字
-            while i > -1:
-                ma = -1
-                for j in a:
-                    if j < b[i]:
-                        ma = max(ma, j)
-                if ma != -1:
-                    ans.append(ma)
-                    a.remove(ma)
-                    break
-                i -= 1
-                a.append(ans.pop())
-            a.sort()
-            while a:
-                ans.append(a.pop())
-            break
+    else:
+        i = 0
+        while i < lb:
+            if b[i] in a:
+                ans.append(b[i])
+                a.remove(b[i])
+                i += 1
 
-    print("".join(str(i) for i in ans))
+            else:
+                j = i
+                while j > -1:
+                    ma = -1
+                    for x in a:
+                        if x < b[j]:
+                            if x > ma:
+                                ma = x
+                    if ma != -1:
+                        ans.append(ma)
+                        a.remove(ma)
+                        break
+                    j -= 1
+                    if ans:
+                        a.append(ans.pop())
+                a.sort()
+                while a:
+                    ans.append(a.pop())
+                break
+        # print("".join(str(x) for x in ans))
+        pass
+
+
+BUFSIZE = 8192
+
+
+class FastIO(IOBase):
+    newlines = 0
+
+    def __init__(self, file):
+        self._fd = file.fileno()
+        self.buffer = BytesIO()
+        self.writable = "x" in file.mode or "r" not in file.mode
+        self.write = self.buffer.write if self.writable else None
+
+    def read(self):
+        while True:
+            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+            if not b:
+                break
+            ptr = self.buffer.tell()
+            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+        self.newlines = 0
+        return self.buffer.read()
+
+    def readline(self):
+        while self.newlines == 0:
+            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+            self.newlines = b.count(b"\n") + (not b)
+            ptr = self.buffer.tell()
+            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+        self.newlines -= 1
+        return self.buffer.readline()
+
+    def flush(self):
+        if self.writable:
+            os.write(self._fd, self.buffer.getvalue())
+            self.buffer.truncate(0), self.buffer.seek(0)
+
+
+class IOWrapper(IOBase):
+    def __init__(self, file):
+        self.buffer = FastIO(file)
+        self.flush = self.buffer.flush
+        self.writable = self.buffer.writable
+        self.write = lambda s: self.buffer.write(s.encode("ascii"))
+        self.read = lambda: self.buffer.read().decode("ascii")
+        self.readline = lambda: self.buffer.readline().decode("ascii")
 
 
 if __name__ == "__main__":
-    # 示例：规模 n = 5，可自行修改
-    main(5)
+    main(10)

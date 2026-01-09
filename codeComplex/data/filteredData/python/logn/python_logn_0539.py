@@ -16,6 +16,7 @@ def main(n: int):
             chk += mn
             if k < lengths[chk]:
                 mx = chk
+
             else:
                 mn = chk
         curlength = mx
@@ -29,7 +30,8 @@ def main(n: int):
         return result
 
     # 根据 n 生成测试数据：直接用 n 作为要查询的索引
-    print(getnum(n))
+    # print(getnum(n))
+    pass
 
 
 # 示例：如果需要手动运行，可取消下列注释

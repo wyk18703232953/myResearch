@@ -1,28 +1,24 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：rr, gg, bb 不超过 n
-    rr = random.randint(0, n)
-    gg = random.randint(0, n)
-    bb = random.randint(0, n)
-
-    # 每个颜色数组长度分别为 rr, gg, bb，元素为 1..n 的随机整数
-    r = [random.randint(1, n) for _ in range(rr)]
-    g = [random.randint(1, n) for _ in range(gg)]
-    b = [random.randint(1, n) for _ in range(bb)]
+def main(n):
+    # Map n to the sizes of the three arrays.
+    # Here we choose a simple deterministic mapping:
+    # rr + gg + bb <= n, and keep them balanced.
+    rr = n // 3
+    gg = n // 3
+    bb = n - rr - gg
 
     inf = 114514
-    r = r + [inf]
-    g = g + [inf]
-    b = b + [inf]
+
+    # Deterministic generation of r, g, b using simple arithmetic patterns
+    r = [i * 2 + 1 for i in range(rr)] + [inf]
+    g = [i * 3 + 2 for i in range(gg)] + [inf]
+    b = [i * 5 + 3 for i in range(bb)] + [inf]
+
     r.sort(reverse=True)
     g.sort(reverse=True)
     b.sort(reverse=True)
 
-    # dp[i][j][k] 定义与原程序一致
-    dp = []
-    for _ in range(rr + 1):
-        dp.append([[0] * (bb + 1) for _ in range(gg + 1)])
+    # Allocate dp with dimensions (rr+1) x (gg+1) x (bb+1)
+    dp = [[[0] * (bb + 1) for _ in range(gg + 1)] for _ in range(rr + 1)]
 
     ans = 0
     for i in range(rr + 1):
@@ -35,18 +31,23 @@ def main(n: int):
                     continue
                 dpijk = 0
                 if i > 0 and j > 0:
-                    dpijk = max(dp[i - 1][j - 1][k] + ri * gj, dpijk)
+                    val = dp[i - 1][j - 1][k] + ri * gj
+                    if val > dpijk:
+                        dpijk = val
                 if j > 0 and k > 0:
-                    dpijk = max(dp[i][j - 1][k - 1] + gj * bk, dpijk)
+                    val = dp[i][j - 1][k - 1] + gj * bk
+                    if val > dpijk:
+                        dpijk = val
                 if k > 0 and i > 0:
-                    dpijk = max(dp[i - 1][j][k - 1] + bk * ri, dpijk)
+                    val = dp[i - 1][j][k - 1] + bk * ri
+                    if val > dpijk:
+                        dpijk = val
                 dp[i][j][k] = dpijk
                 if ans < dpijk:
                     ans = dpijk
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 50
-    main(50)
+    # Example deterministic call; adjust n for scaling experiments
+    main(30)

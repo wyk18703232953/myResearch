@@ -1,5 +1,3 @@
-import random
-
 def solve(a, b):
     m = max(a, b)
     n = min(a, b)
@@ -12,19 +10,16 @@ def solve(a, b):
     k = m // n
     return k + solve(n, m - n * k)
 
+
 def main(n):
-    # 生成 n 组测试数据，每组为两个正整数 a, b
-    test_data = []
-    for _ in range(n):
-        # 控制数值规模，可根据需要调整上限
-        a = random.randint(1, 10**6)
-        b = random.randint(1, 10**6)
-        test_data.append((a, b))
-
-    # 执行并输出结果
-    for a, b in test_data:
-        print(solve(a, b))
-
+    # n 表示测试用例数量
+    res = []
+    for i in range(1, n + 1):
+        a = i
+        b = 2 * i + 1
+        res.append(solve(a, b))
+    for v in res:
+        # print(v)
+        pass
 if __name__ == "__main__":
-    # 示例：运行规模为 5
-    main(5)
+    main(10)

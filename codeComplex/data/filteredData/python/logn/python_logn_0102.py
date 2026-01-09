@@ -9,18 +9,21 @@ def main(n: int):
         r = l
 
     if l == r:
-        print(0)
+        # print(0)
+        pass
+
     else:
         if (r & (r - 1) == 0):
-            print(r ^ (r - 1))
+            # print(r ^ (r - 1))
+            pass
+
         else:
             x = l ^ r
             p = 1
             while p <= x:
                 p *= 2
-            print(p - 1)
-
-
+            # print(p - 1)
+            pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可按需要调整
     main(10)

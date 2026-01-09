@@ -7,9 +7,8 @@ def main(n):
     p = len(s) - 1
     while p > 0 and s[:p] != s[-p:]:
         p -= 1
-    print(s + s[p:] * (k - 1))
-
-
+    # print(s + s[p:] * (k - 1))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(3)
     main(3)

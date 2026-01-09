@@ -16,18 +16,21 @@ def main(n: int):
 
     # 原逻辑
     if l == 1 and r == n:
-        print(0)
+        # print(0)
+        pass
     elif l == 1 and r != n:
-        print(abs(r - cur) + 1)
+        # print(abs(r - cur) + 1)
+        pass
     elif r == n and l != 1:
-        print(abs(cur - l) + 1)
+        # print(abs(cur - l) + 1)
+        pass
+
     else:
         disa = abs(l - cur)
         disb = abs(r - cur)
         ans = min(disa, disb) + (r - l) + 2
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

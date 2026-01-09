@@ -1,23 +1,30 @@
-import random
+def main(n):
+    # 生成确定性输入数据：长度为 n 的列表 t
+    # 这里构造一种包含重复元素的模式，以匹配原算法行为需求
+    # t 的结构为：[i % max(1, n//3) for i in range(n)]
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int) -> None:
-    # 生成规模为 n 的测试数据：随机整数列表
-    # 这里假设元素为 1~n 的随机排列，如需其他分布可自行调整
-    t = list(range(1, n + 1))
-    random.shuffle(t)
+    base = max(1, n // 3)
+    t = [i % base for i in range(n)]
 
     sw = 0
-    # 按原逻辑处理列表 t
-    while t != []:
-        # pr 是 t[0] 在 t[1:] 中第一次出现的位置（1-based，再加 1）
-        pr = 1 + t[1:].index(t[0])
+
+    while t != [] and len(t) > 1:
+        # 若后缀中找不到与 t[0] 相同的元素，会抛出错误
+        # 为保持原逻辑，这里保证构造的数据总能在后面找到相同元素
+        # 但若意外构造失败，则跳出循环
+        try:
+            pr = 1 + t[1:].index(t[0])
+        except ValueError:
+            break
         sw += pr - 1
-        # 删除 t[0] 和 t[pr] 中间的元素
         t = t[1:pr] + t[pr+1:]
 
-    print(sw)
-
-
+    # print(sw)
+    pass
 if __name__ == "__main__":
-    # 示例：运行时可在此调整 n 的值
+    # 示例调用，可根据需要修改 n 的大小进行实验
     main(10)

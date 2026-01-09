@@ -1,39 +1,34 @@
-import random
+def main(n):
+    MOD = 1000000007
+    MOD2 = 1000000006
 
-MOD = 1000000007
-PHI_MOD = MOD - 1  # 1000000006
-
-
-def helper(n: int) -> int:
-    if n == 0:
-        return 1
-    p = 1
-    ret = 2
-    while n >= 2 * p:
-        p *= 2
-        ret = (ret * ret) % MOD
-    return (ret * helper(n - p)) % MOD
-
-
-def main(n: int) -> int:
-    # 根据规模 n 生成测试数据：
-    # x: 0 ~ MOD-1，k: 0 ~ n
-    x = random.randrange(0, MOD)
-    k = random.randrange(0, max(1, n))
+    # 确定性构造 x, k，随 n 增大而增大
+    x = n * n + 1
+    k = 2 * n + 3
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return 0
 
-    x %= MOD
-    k %= PHI_MOD
+    def helper(num):
+        if num == 0:
+            return 1
+        p = 1
+        ret = 2
+        while num >= 2 * p:
+            p *= 2
+            ret = (ret ** 2) % MOD
+        return ret * helper(num - p)
 
+    x = x % MOD
+    k = k % MOD2
     a = helper(k)
-    ans = (2 * a * x - a + 1) % MOD
-    print(ans)
+    # print((2 * a * x - a + 1) % MOD)
+    pass
     return 0
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # 示例：使用 n = 10 进行一次调用
     main(10)

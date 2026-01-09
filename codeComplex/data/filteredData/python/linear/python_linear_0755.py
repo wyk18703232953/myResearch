@@ -14,8 +14,8 @@ def main(n):
         _, i = min((x, i) for i, x in enumerate(a))
         a[i] = -a[i] - 1
 
-    print(*a)
-
+    # print(*a)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，实际使用时可修改为任意 n
     main(5)

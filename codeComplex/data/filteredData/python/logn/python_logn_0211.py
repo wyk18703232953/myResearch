@@ -11,6 +11,7 @@ def count_valid(n: int, s: int) -> int:
         ans += 10
     if ans > n:
         return 0
+
     else:
         return n - ans + 1
 
@@ -27,4 +28,5 @@ def main(n: int) -> int:
 if __name__ == "__main__":
     # 示例：运行 main(10**18) 或其他规模
     example_n = 10**6
-    print(main(example_n))
+    # print(main(example_n))
+    pass

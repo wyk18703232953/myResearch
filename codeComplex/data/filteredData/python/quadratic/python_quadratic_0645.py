@@ -1,16 +1,11 @@
-from collections import defaultdict as dd
-import random
+def main(n):
+    from collections import defaultdict as dd
 
-mod = 10 ** 9 + 7
+    mod = 10**9 + 7
 
-
-def main(n: int) -> int:
-    """
-    生成规模为 n 的测试数据并执行原逻辑。
-    返回计算结果（原程序的输出）。
-    """
-    # 生成测试数据：n 个 1~10^6 的正整数
-    a = [random.randint(1, 10 ** 6) for _ in range(n)]
+    # Deterministic data generation: array a of length n
+    # Example pattern: a[i] = (i % 7) + 1 to ensure divisibility structure
+    a = [(i % 7) + 1 for i in range(n)]
 
     b = sorted(a)
     c = dd(int)
@@ -20,18 +15,15 @@ def main(n: int) -> int:
     for i in range(n):
         if c[b[i]] == 0:
             val += 1
-            # 遍历所有元素，标记能被当前 b[i] 整除的数
             for j in range(n):
                 if b[j] % b[i] == 0:
                     c[b[j]] = val
 
-    for key in c:
-        ans = max(ans, c[key])
+    for i in c:
+        ans = max(ans, c[i])
 
-    print(ans)
-    return ans
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例调用：规模设为 6，与原输入示例规模一致
+    # Example call for time complexity experiments
     main(6)

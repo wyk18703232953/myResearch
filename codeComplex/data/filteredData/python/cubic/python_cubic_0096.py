@@ -29,8 +29,8 @@ def main(n):
                 ans = norm(ans + dp2[i] * dp2[j])
 
     ans = norm(ans * 2)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，使用某个固定规模，例如 n = 5
     main(5)

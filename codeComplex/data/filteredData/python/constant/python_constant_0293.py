@@ -14,9 +14,8 @@ def main(n: int):
 
     # 原始逻辑
     result = int((int((n + s - 1) / s) * k + p - 1) / p)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，传入规模 n
     main(10)

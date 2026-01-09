@@ -1,15 +1,9 @@
-import random
-import string
-
-def cint(c):
-    return ord(c) - 96
-
 def find_min_weight(n, k, stages):
     n = len(stages)
     min_weight = float('inf')
 
     def backtrack(s, w, t):
-        nonlocal min_weight
+        nonlocal min_weight 
 
         if t >= k:
             min_weight = min(min_weight, w)
@@ -18,12 +12,9 @@ def find_min_weight(n, k, stages):
         if s >= n - 1:
             return
 
-        for i in range(s + 1, n):
+        for i in range(s + 1, n, 1):
             if stages[i] - stages[s] > 1:
                 backtrack(i, w + stages[i], t + 1)
-
-    if not stages:
-        return -1
 
     backtrack(0, stages[0], 1)
 
@@ -34,23 +25,30 @@ def find_min_weight(n, k, stages):
 
 
 def main(n):
-    # 生成测试数据：
-    # 1) 随机选择字符串长度 L（1 到 n）
-    L = max(1, n)
-    # 2) 生成含有小写字母的随机字符串
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(L))
-    # 3) 将字符串转为 stages，模拟原逻辑：去重、映射、排序
-    stages = sorted(set(map(cint, s)))
-    # 4) 规模参数 n 不再从外部读入，这里使用 len(stages) 传入
-    #    生成 k（在 1 到 len(stages) 之间）
-    if len(stages) == 0:
-        return -1
-    k = random.randint(1, len(stages))
+    # 将 n 映射为问题规模：
+    # - 字符串长度 = n
+    # - k 与 n 相关，确保有一定搜索空间
+    if n <= 0:
+        return
 
-    return find_min_weight(len(stages), k, stages)
+    # 构造确定性字符串（仅小写字母），长度为 n
+    # 周期性使用 'a' 到 'z'
+    s_chars = [chr(ord('a') + (i % 26)) for i in range(n)]
+    s = "".join(s_chars)
 
+    # 原代码：stages = list(set(map(cint, insr())))
+    # cint: a->1, b->2, ...
+    stages = list(set(ord(c) - 96 for c in s))
+    stages.sort()
 
-# 示例：直接运行本文件时执行一次 main
+    # 定义 k：与去重后阶段数量相关，但不超过一定规模
+    m = len(stages)
+    if m == 0:
+        return
+    k = max(1, min(m, n // 3 if n >= 3 else 1))
+
+    result = find_min_weight(m, k, stages)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    result = main(10)
-    print(result)
+    main(10)

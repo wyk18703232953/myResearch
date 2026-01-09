@@ -6,9 +6,8 @@ def main(n):
 
     val = int(sqrt(9 + 8 * (n + k)))
     ans = (-3 + val) // 2
-    print(n - ans)
-
-
+    # print(n - ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可自行调整
     main(10)

@@ -16,6 +16,7 @@ def max_xor_in_range(l: int, r: int) -> int:
         while i < len(l_bin) and l_bin[i] == r_bin[i]:
             i += 1
         tam = len(l_bin) - i
+
     else:
         tam = len(r_bin)
 
@@ -31,7 +32,8 @@ def main(n: int):
     l = 0
     r = n
     ans = max_xor_in_range(l, r)
-    print(ans)
+    # print(ans)
+    pass
 
 
 # 示例：如需直接运行本文件，可取消以下注释并指定 n

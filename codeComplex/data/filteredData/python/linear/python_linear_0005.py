@@ -10,6 +10,7 @@ def main(n):
             row = i
             col = i
             tests.append(f"R{row}C{col}")
+
         else:
             # 列字母+行数字 格式
             # 将 i 转为 Excel 列名
@@ -38,14 +39,16 @@ def main(n):
                     r = co % 26
                     co //= 26
                     v += chr(65 + r)
-                print(v[::-1] + str(ro))
+                # print(v[::-1] + str(ro))
+                pass
                 break
+
             else:
                 co = co * 26 + ord(c) - 64
+
         else:
-            print("R{}C{}".format(ro, co))
-
-
+            # print("R{}C{}".format(ro, co))
+            pass
 if __name__ == "__main__":
     # 示例调用：规模为 5
     main(5)

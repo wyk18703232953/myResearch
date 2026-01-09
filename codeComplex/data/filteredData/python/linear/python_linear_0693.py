@@ -6,9 +6,8 @@ def main(n: int):
     ans = min(v, n - 1)
     for i in range(n - v - 1):
         ans += i + 2
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时可在外部以不同 n 调用 main
     main(10)

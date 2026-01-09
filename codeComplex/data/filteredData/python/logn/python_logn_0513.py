@@ -19,9 +19,8 @@ def get_kth_digit(i):
 def main(n):
     # 根据 n 生成测试数据：这里直接使用 n 作为查询位置
     i = n
-    print(get_kth_digit(i))
-
-
+    # print(get_kth_digit(i))
+    pass
 if __name__ == '__main__':
     # 示例：规模 n=100，可按需修改
     main(100)

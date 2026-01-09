@@ -27,12 +27,12 @@ def main(n):
 
     if x == 0:
         ans = 0
+
     else:
         ans = (bin_pow(2, k + 1) * x - bin_pow(2, k) + 1) % MOD
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=10 运行
     main(10)

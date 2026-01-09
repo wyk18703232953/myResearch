@@ -1,45 +1,41 @@
-import random
-
 def main(n):
-    # 随机生成一组合法的 (n, pos, l, r) 测试数据
-    # n: 规模，由调用者给定
-    # 约束：1 <= l <= r <= n, 1 <= pos <= n
-    if n < 1:
-        raise ValueError("n must be >= 1")
+    # Deterministically generate x = [n, pos, l, r]
+    # Interpret n as the total size/upper bound; derive other params from n
+    total_n = max(1, n)
+    pos = (n // 3) % total_n + 1
+    l = (n // 5) % total_n + 1
+    r = (n // 2) % total_n + 1
+    if l > r:
+        l, r = r, l
 
-    pos = random.randint(1, n)
-    l = random.randint(1, n)
-    r = random.randint(l, n)
-
-    x = [n, pos, l, r]
+    x = [total_n, pos, l, r]
 
     pos = x[1]
-    n = x[0]
+    n_val = x[0]
     l = x[2]
     r = x[3]
     step = 0
-
     if pos < l:
         step = l - pos + 1
-        if r < n:
+        if r < n_val:
             step += r - l + 1
     elif pos > r:
         step = pos - r + 1
         if l > 1:
             step += r - l + 1
+
     else:
-        if l > 1 and n > r:
+        if l > 1 and n_val > r:
             step += min(pos - l, r - pos) + r - l + 2
-        elif l == 1 and n > r:
+        elif l == 1 and n_val > r:
             step = r - pos + 1
-        elif l > 1 and n == r:
+        elif l > 1 and n_val == r:
             step += pos - l + 1
+
         else:
             step = 0
 
-    print(step)
-    return step
-
+    # print(step)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，规模为 10
     main(10)

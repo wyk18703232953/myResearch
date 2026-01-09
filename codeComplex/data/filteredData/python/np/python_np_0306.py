@@ -23,9 +23,8 @@ def main(n: int):
         dp = g
 
     ans = sum(dp[-1]) % mod
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可按需修改 n 的值
     main(5)

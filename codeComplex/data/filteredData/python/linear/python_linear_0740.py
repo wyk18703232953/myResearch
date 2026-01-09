@@ -1,45 +1,53 @@
-from sys import stdout
-import random
-
 def count(audrey, imba, banget):
     return (imba - audrey - 1) % (banget - 1)
 
 def main(n):
-    # 1. 生成测试数据
-    # n: 数组规模
-    # 生成 n 个互不相同的正整数
-    L = random.sample(range(1, 10 * n + 1), n)
+    # n controls both array size and query count
+    if n < 2:
+        n = 2
 
-    # 为了体现查询效果，生成 q 与 n 同级
+    # Deterministic generation of n (array size) and q (number of queries)
+    N = n
     q = n
-    # 生成 q 个查询：随机在 [1, 2n] 范围内
-    queries = [random.randint(1, 2 * n) for _ in range(q)]
 
-    # 2. 原逻辑开始
+    # Generate L: length N, ensure a maximum somewhere in the middle
+    # L[i] = (i * 2 + 3) % (N + 7) + 1, deterministic and varied
+    L = [((i * 2 + 3) % (N + 7)) + 1 for i in range(N)]
+    # Ensure a clear maximum at a fixed position (for determinism in indexmax)
+    max_pos = N // 3
+    if max_pos >= N:
+        max_pos = N - 1
+    L[max_pos] = max(L) + 5
     maxi = max(L)
     indexmax = L.index(maxi)
-    P = []
-    # 预处理阶段：记录最大值出现前的“对战”
-    for _ in range(indexmax):
-        P.append((L[0], L[1]))
-        if L[0] < L[1]:
-            L.append(L.pop(0))
-        else:
-            L.append(L.pop(1))
-    Y = tuple(L[1:])
 
-    # 3. 处理查询
+    P = []
+    # simulate the process to fill P
+    from collections import deque
+    dq = deque(L)
+    for _ in range(indexmax):
+        P.append((dq[0], dq[1]))
+        if dq[0] < dq[1]:
+            dq.append(dq.popleft())
+
+        else:
+            x = dq[1]
+            del dq[1]
+            dq.append(x)
+    Y = tuple(list(dq)[1:])
+
+    # Deterministic generation of q queries m
+    # m ranges from 1 up to something around N+q to cover both branches
+    queries = [1 + (i * 3) % (N + q) for i in range(q)]
+
     out_lines = []
     for m in queries:
         if m <= indexmax:
-            a, b = P[m - 1]
-            out_lines.append(f"{a} {b}")
+            out_lines.append(str(P[m - 1][0]) + " " + str(P[m - 1][1]))
+
         else:
-            idx = count(indexmax, m, n)
-            out_lines.append(f"{maxi} {Y[idx]}")
-    stdout.write("\n".join(out_lines) + "\n")
-
-
+            out_lines.append(str(maxi) + " " + str(Y[count(indexmax, m, N)]))
+    # print("\n".join(out_lines))
+    pass
 if __name__ == "__main__":
-    # 示例：以 n = 10 运行
     main(10)

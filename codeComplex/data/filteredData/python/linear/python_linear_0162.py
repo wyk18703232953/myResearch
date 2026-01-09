@@ -1,41 +1,32 @@
 from math import gcd
-import random
 
-
-def main(n: int):
-    # 随机生成 n 条形如 "(a+b)/c" 的数据，a,b,c 为正整数
-    # 保证分母 c > 0
-    qs = []
+def main(n):
     d = dict()
+    qs = []
+    for i in range(n):
+        # 确定性构造原程序中的字符串形式 "(a+b)/c"
+        a = i + 1
+        b = (i * 2 + 3) % (n + 5) + 1
+        c = (i * 3 + 7) % (n + 7) + 1
+        s = "(" + str(a) + "+" + str(b) + ")/" + str(c)
 
-    expressions = []
-    for _ in range(n):
-        # 生成 a, b, c
-        a = random.randint(1, 10)
-        b = random.randint(1, 10)
-        c = random.randint(1, 10)
-        # 构造形如 "(a+b)/c" 的字符串
-        s = f"({a}+{b})/{c}"
-        expressions.append(s)
+        # 原始解析逻辑
+        a_parsed = int(s[1:s.index('+')])
+        b_parsed = int(s[s.index('+') + 1: s.index(')')])
+        c_parsed = int(s[s.index(')') + 2:])
 
-    # 使用原逻辑处理
-    for s in expressions:
-        a = int(s[1:s.index('+')])
-        b = int(s[s.index('+') + 1: s.index(')')])
-        c = int(s[s.index(')') + 2:])
-        a = a + b
-        gc = gcd(a, c)
-        res = (a // gc, c // gc)
+        a_sum = a_parsed + b_parsed
+        gc = gcd(a_sum, c_parsed)
+        res = (a_sum // gc, c_parsed // gc)
         qs.append(res)
         if res in d:
             d[res] += 1
+
         else:
             d[res] = 1
 
     for q in qs:
-        print(d[q], end=' ')
-
-
+        # print(d[q], end=' ')
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 5
-    main(5)
+    main(10)

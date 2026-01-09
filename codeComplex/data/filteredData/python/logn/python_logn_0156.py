@@ -8,25 +8,27 @@ def main(n):
     k = 2 * n
 
     if n == 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     lo, hi = 1, k - 1
 
     if n > reach_max(hi, k):
-        print(-1)
+        # print(-1)
+        pass
         return
 
     while lo < hi:
         mid = (lo + hi) // 2
         if reach_max(mid, k) < n:
             lo = mid + 1
+
         else:
             hi = mid
 
-    print(lo)
-
-
+    # print(lo)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 可在此修改
     main(10)

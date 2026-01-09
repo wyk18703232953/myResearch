@@ -16,11 +16,12 @@ def main(n: int):
         res += mod
 
     if X == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print(res % mod)
-
-
+        # print(res % mod)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

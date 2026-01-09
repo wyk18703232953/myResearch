@@ -1,85 +1,81 @@
-# WARNING This code is just for fun. Reading it might give u a brainfreeze
+def main(n):
+    # Interpret n as original input parameter n; fix d and k as deterministic functions of n
+    # to provide a scalable input size. This preserves the original algorithm structure.
+    #
+    # You can adjust these mappings if you want different scaling behavior, but they must
+    # remain deterministic and only depend on n.
+    orig_n = max(1, n)                # ensure positive
+    d = max(1, orig_n // 2)           # example: diameter-like parameter
+    k = max(1, min(10, orig_n // 3))  # example: branching factor, capped
 
-import random
+    n_val, d_val, k_val = orig_n, d, k
 
-def solve(n, d, k):
     l = []
     i = 1
-    if n <= d:
-        return "NO", []
-    elif k == 1:
-        if n > 2:
-            return "NO", []
-        elif n == 2:
-            return "YES", [(1, 2)]
+    if n_val <= d_val:
+        # print("NO")
+        pass
+    elif k_val == 1:
+        if n_val > 2:
+            # print("NO")
+            pass
+        elif n_val == 2:
+            # print("YES")
+            pass
+            # print(1, 2)
+            pass
+
     else:
-        n += 1
+        n_val += 1
         flag = False
-        while i < min(d + 1, n):
-            l.append((i, i + 1))
+        while i < min(d_val + 1, n_val):
+            l.append(str(i) + " " + str(i + 1))
             i += 1
         i += 1
         cnt1 = 0
         cnt2 = 1
-        se = [[2, d + 1, 1]]
+        se = [[2, d_val + 1, 1]]
         while cnt1 < cnt2:
             start = se[cnt1][0]
             end = se[cnt1][1]
             mode = se[cnt1][2]
             kk = 3
-            while (i < n) and (kk <= k):
-                if i < n and not flag:
+            while (i < n_val) and (kk <= k_val):
+                if i < n_val and not flag:
                     j = start
-                    while i < n and j < end:
+                    while i < n_val and j < end:
                         if mode == 1:
                             c = min(j - start + 1, end - j)
+
                         else:
-                            c = min(end - j, d - end + j)
+                            c = min(end - j, d_val - end + j)
                         if c > 1:
                             se.append([i, i + c - 1, 2])
                             cnt2 += 1
                         ki = j
-                        while i < n and c > 0:
-                            l.append((ki, i))
+                        while i < n_val and c > 0:
+                            l.append(str(ki) + " " + str(i))
                             c -= 1
                             ki = i
                             i += 1
                         j += 1
+
                 else:
                     flag = True
                     break
                 kk += 1
             cnt1 += 1
-        if i < n or flag:
-            return "NO", []
+        if i < n_val or flag:
+            # print("NO")
+            pass
+
         else:
-            return "YES", l
-
-
-def generate_test(n):
-    # 根据规模 n 生成一组 (n, d, k)
-    # 这里简单生成：d, k 都在 [1, n] 范围内
-    if n < 2:
-        n = 2
-    d = random.randint(1, max(1, n - 1))
-    k = random.randint(1, max(1, n // 2))
-    return n, d, k
-
-
-def main(n):
-    # 生成测试数据
-    n_val, d, k = generate_test(n)
-
-    # 执行原逻辑
-    status, edges = solve(n_val, d, k)
-
-    # 输出与原程序风格一致
-    print(status)
-    if status == "YES":
-        for u, v in edges:
-            print(u, v)
-
-
+            # print("YES")
+            pass
+            # print('\n'.join(l))
+            pass
 if __name__ == "__main__":
-    # 示例调用：可以自行修改 n 以观察不同规模
+    # Example deterministic calls for experimentation
+    main(5)
     main(10)
+    main(20)

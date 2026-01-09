@@ -1,12 +1,8 @@
-import random
-import string
-
-def main(n: int):
-    # 生成测试数据：长度为 n 的宝可梦类型串
-    # 用小写字母表示不同类型，类型种类数为 min(26, max(1, n))
-    k = min(26, max(1, n))
-    types = string.ascii_lowercase[:k]
-    pokemons = ''.join(random.choice(types) for _ in range(n))
+def main(n):
+    # Deterministically generate a string of length n over a small alphabet
+    # Example pattern: repeating 'A', 'B', 'C', 'D'
+    chars = ['A', 'B', 'C', 'D']
+    pokemons = ''.join(chars[i % 4] for i in range(n))
 
     last = {}
     start_of_all = 0
@@ -24,9 +20,7 @@ def main(n: int):
         if i >= start_of_all and length < minlen:
             minlen = length
 
-    print(minlen)
-
-
+    # print(minlen)
+    pass
 if __name__ == "__main__":
-    # 示例：可在此处修改规模 n
-    main(10)
+    main(1000)

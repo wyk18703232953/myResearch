@@ -1,18 +1,22 @@
-import random
-
-def main(n: int):
-    # 生成一个 n 位的正整数 a（首位不为 0）
+def main(n):
+    # Deterministic generation of 'a' with exactly n digits.
+    # For scalability and determinism, construct digits via simple arithmetic.
+    # Ensure first digit is non-zero if n > 0.
     if n <= 0:
-        return
+        a = 0
 
-    first_digit = random.randint(1, 9)
-    other_digits = [random.randint(0, 9) for _ in range(n - 1)]
-    digits = [first_digit] + other_digits
-    a = 0
-    for d in digits:
-        a = a * 10 + d
+    else:
+        digits = []
+        for i in range(n):
+            if i == 0:
+                # Leading digit in [1..9] deterministically
+                d = (i % 9) + 1
 
-    # 原逻辑开始：根据 n 和生成的 a 判断输出 YES/NO
+            else:
+                d = (i % 10)
+            digits.append(str(d))
+        a = int("".join(digits))
+
     s = 0
     t = a
     b = []
@@ -26,7 +30,6 @@ def main(n: int):
     ans = False
     if s == 0:
         ans = True
-
     while i <= s:
         if s % i != 0:
             i += 1
@@ -37,6 +40,7 @@ def main(n: int):
         for j in range(n):
             if su > l:
                 break
+
             else:
                 su += b[j]
                 if su == l:
@@ -45,13 +49,12 @@ def main(n: int):
         if c == i:
             ans = True
         i += 1
-
     if ans:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 进行一次规模为 5 的测试
-    main(5)
+    main(10)

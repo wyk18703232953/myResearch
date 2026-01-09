@@ -48,8 +48,8 @@ def main(n):
                 b = column(x, 1).count(2)
                 c = column(x, 1).count(3)
                 s += (out1(a, b, c) + out2(a, b, c) + out3(a, b, c))
-    print(s % MOD)
-
+    # print(s % MOD)
+    pass
 if __name__ == "__main__":
     # 示例：规模 n=5
     main(5)

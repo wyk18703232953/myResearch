@@ -1,5 +1,4 @@
 import heapq
-import random
 
 
 def doxor(a, b):
@@ -11,7 +10,6 @@ def doxor(a, b):
 
 
 def main(n):
-    # 构造棋盘模板 a 和 b
     a, b = [], []
     for i in range(n):
         ai, bi = [], []
@@ -19,17 +17,31 @@ def main(n):
             if i % 2 == 0:
                 ai.append(j % 2)
                 bi.append((j % 2) ^ 1)
+
             else:
                 ai.append((j % 2) ^ 1)
                 bi.append(j % 2)
         a.append(ai)
         b.append(bi)
 
-    # 生成 4 个 n x n 的随机棋盘，元素为 0/1
     board = []
-    for _ in range(4):
-        b0 = [[random.randint(0, 1) for _ in range(n)] for _ in range(n)]
-        board.append(b0)
+
+    # Deterministic generation of 4 boards of size n x n
+    # Board 0: all zeros
+    b0 = [[0 for _ in range(n)] for _ in range(n)]
+    board.append(b0)
+
+    # Board 1: all ones
+    b1 = [[1 for _ in range(n)] for _ in range(n)]
+    board.append(b1)
+
+    # Board 2: row-based pattern
+    b2 = [[i % 2 for _ in range(n)] for i in range(n)]
+    board.append(b2)
+
+    # Board 3: column-based pattern
+    b3 = [[j % 2 for j in range(n)] for _ in range(n)]
+    board.append(b3)
 
     a_cnts = []
     b_cnts = []
@@ -37,15 +49,13 @@ def main(n):
         heapq.heappush(a_cnts, doxor(b0, a))
         heapq.heappush(b_cnts, doxor(b0, b))
 
-    ans = (
+    result = (
         heapq.heappop(a_cnts)
         + heapq.heappop(a_cnts)
         + heapq.heappop(b_cnts)
         + heapq.heappop(b_cnts)
     )
-    print(ans)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例调用：n 可按需要修改
     main(5)

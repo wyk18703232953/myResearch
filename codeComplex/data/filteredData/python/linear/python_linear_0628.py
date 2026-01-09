@@ -1,6 +1,7 @@
 def solve_one(n, k):
     if n >= 40:
         return "YES " + str(n - 1)
+
     else:
         ans = -1
         for m in range(1, n + 1):
@@ -13,6 +14,7 @@ def solve_one(n, k):
                 break
         if ans == -1:
             return "NO"
+
         else:
             return "YES " + str(ans)
 
@@ -28,9 +30,8 @@ def main(n):
 
     # 按原逻辑打印输出
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -13,9 +13,8 @@ def main(n):
                 yi = max(yi, ty + dy)
         y.append(yi)
 
-    print(*y)
-
-
+    # print(*y)
+    pass
 if __name__ == "__main__":
     # 示例：运行规模为 5
     main(5)

@@ -6,6 +6,7 @@ def lower_bound(n, k):
         pipes = mid * k - (mid + 2) * (mid - 1) // 2
         if pipes >= n:
             high = mid
+
         else:
             low = mid + 1
     return low
@@ -21,15 +22,18 @@ def main(n):
     k = n
 
     if n == 1:
-        print(0)
+        # print(0)
+        pass
+
     else:
         ans = lower_bound(n, k)
         if ans == k:
-            print(-1)
+            # print(-1)
+            pass
+
         else:
-            print(ans)
-
-
+            # print(ans)
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

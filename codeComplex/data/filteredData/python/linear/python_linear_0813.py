@@ -1,9 +1,9 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：长度为 n 的非负整数列表
-    # 这里生成 0 到 n 之间的随机数，可根据需要调整
-    lst = [random.randint(0, n) for _ in range(n)]
+def main(n):
+    # Deterministic data generation:
+    # Interpret n as the length of the list.
+    # Construct a list with a simple pattern that may include duplicates.
+    # Example: lst[i] = (i // 2) for i in range(n)
+    lst = [i // 2 for i in range(n)]
 
     st = set()
     flag = False
@@ -13,6 +13,7 @@ def main(n: int):
     for i in lst:
         if i not in st:
             st.add(i)
+
         else:
             flag = True
             count += 1
@@ -21,24 +22,32 @@ def main(n: int):
     sum1 = n * (n - 1) // 2
 
     if count > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
         return
 
     if not flag:
         if (sum(lst) - sum1) % 2 == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
-            print('sjfnb')
+            # print('sjfnb')
+            pass
+
     else:
         if (lol - 1) in lst or lol == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
             if (sum(lst) - sum1) % 2 == 0:
-                print('cslnb')
+                # print('cslnb')
+                pass
+
             else:
-                print('sjfnb')
-
-
+                # print('sjfnb')
+                pass
 if __name__ == "__main__":
-    # 示例调用，可根据需要修改 n
-    main(5)
+    # Example deterministic call for time complexity experiments
+    main(10)

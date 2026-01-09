@@ -9,6 +9,7 @@ def main(n):
         k = i * i
         if k <= n:
             t = i
+
         else:
             break
         i += 1
@@ -30,5 +31,7 @@ if __name__ == "__main__":
     # 示例：选择一个规模 n 进行测试，如 n = 10
     test_n = 10
     result = main(test_n)
-    print("n =", test_n)
-    print("result:", *result)
+    # print("n =", test_n)
+    pass
+    # print("result:", *result)
+    pass

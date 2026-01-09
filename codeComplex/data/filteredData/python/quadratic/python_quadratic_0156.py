@@ -1,5 +1,3 @@
-import random
-
 def solution(n, k, arr):
     ret = []
     grp = [None for _ in range(256)]
@@ -7,6 +5,7 @@ def solution(n, k, arr):
         if grp[i]:
             continue
         l = None
+        j = 1
         for j in range(1, k):
             if i - j < 0:
                 break
@@ -15,8 +14,9 @@ def solution(n, k, arr):
                 break
         if l is not None and grp[l] > i - k:
             grp[i] = grp[l]
+
         else:
-            ll = l + 1 if l is not None else max(0, i - k + 1)
+            ll = l + 1 if l else max(0, i - k + 1)
             for j in range(ll, i + 1):
                 grp[j] = ll
     for i in arr:
@@ -25,19 +25,17 @@ def solution(n, k, arr):
 
 
 def main(n):
-    # 生成测试数据：k 在 [1, n]，arr 为长度 n，元素在 [0, 255]
+    # n 作为数组长度规模
+    # k 随 n 确定性设置，限制在 1~10 之间
     if n <= 0:
-        return []
-    k = random.randint(1, max(1, n))
-    arr = [random.randint(0, 255) for _ in range(n)]
-    result = solution(n, k, arr)
-    print('n =', n)
-    print('k =', k)
-    print('arr =', ' '.join(map(str, arr)))
-    print('result =', ' '.join(map(str, result)))
-    return result
-
-
+        return
+    k = max(1, min(10, n // 5 + 1))
+    # 数组中的值限制在 0~255 之间
+    # 使用简单算术构造，保证确定性
+    arr = [(i * 7 + 3) % 256 for i in range(n)]
+    res = solution(n, k, arr)
+    # print(' '.join(map(str, res)))
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
-    main(10)
+    # 示例规模，可根据需要调整
+    main(20)

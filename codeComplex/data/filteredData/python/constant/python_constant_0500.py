@@ -16,17 +16,19 @@ def main(n):
         n_val, m_val, k_val = ni, mi, ki
         min_k = max(n_val, m_val)
         if min_k > k_val:
-            print(-1)
+            # print(-1)
+            pass
             continue
         if (n_val - m_val) % 2 == 0:
             if k_val % 2 == n_val % 2:
-                print(k_val)
+                # print(k_val)
+                pass
                 continue
-            print(k_val - 2)
+            # print(k_val - 2)
+            pass
             continue
-        print(k_val - 1)
-
-
+        # print(k_val - 1)
+        pass
 if __name__ == '__main__':
     # 示例：调用 main(5) 生成 5 组测试并输出
     main(5)

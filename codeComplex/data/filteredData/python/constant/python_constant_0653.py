@@ -69,11 +69,11 @@ def main(n):
                             ans = len(X)
                             ans_path = X
 
-    print(ans)
+    # print(ans)
+    pass
     for p in ans_path:
-        print(*p)
-
-
+        # print(*p)
+        pass
 if __name__ == "__main__":
     # 示例：规模设置为 5，可按需调整
     main(5)

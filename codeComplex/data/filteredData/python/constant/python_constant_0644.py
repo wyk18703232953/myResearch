@@ -57,9 +57,8 @@ def main(n):
     B = [a2, b2, n, n]
 
     w, b = solve(n, m, W, B)
-    print(w, b)
-
-
+    # print(w, b)
+    pass
 if __name__ == '__main__':
     # 示例：规模为 8
     main(8)

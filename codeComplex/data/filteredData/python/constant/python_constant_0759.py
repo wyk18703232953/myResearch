@@ -1,19 +1,13 @@
 import math
-import random
 
 def main(n):
-    # 生成测试数据：
-    # 原公式中 k 需满足判别式非负：
-    # (2n+3)^2 - 4(n^2 + n - 2k) >= 0
-    # 化简得到：k ≥ 2 - 0.5n - 0.25n^2
-    k_min = math.ceil(2 - 0.5 * n - 0.25 * n * n)
-    # 为了多样性，向上取若干范围
-    k_max = k_min + max(10, n)  # 简单给个上界
-    k = random.randint(k_min, k_max)
+    # 映射：原程序有两个输入 n, k
+    # 这里将外部 n 映射为原 n，k 由一个确定性函数生成
+    orig_n = n
+    k = orig_n * (orig_n + 1) // 4
 
-    a = (2 * n + 3 - math.sqrt((2 * n + 3) ** 2 - 4 * (n ** 2 + n - 2 * k))) // 2
-    print(int(a))
-
+    a = (2 * orig_n + 3 - math.sqrt((2 * orig_n + 3) ** 2 - 4 * (orig_n ** 2 + orig_n - 2 * k))) // 2
+    # print(int(a))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

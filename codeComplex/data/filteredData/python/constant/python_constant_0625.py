@@ -1,6 +1,7 @@
 def getsum(a, b):
     if a % 2 == 0:
         return (a + b) * ((b - a) // 2 + 1) // 2
+
     else:
         return -(a + b) * ((b - a) // 2 + 1) // 2
 
@@ -18,7 +19,9 @@ def main(n):
     # 处理并打印结果
     for l, r in queries:
         if l == r:
-            print(l if l % 2 == 0 else -l)
+            # print(l if l % 2 == 0 else -l)
+            pass
+
         else:
             print(
                 getsum(l if l % 2 == 1 else l + 1,

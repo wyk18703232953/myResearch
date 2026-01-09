@@ -1,10 +1,12 @@
 def solve_one(n, k):
     if n > 31:
-        print("YES", n - 1)
+        # print("YES", n - 1)
+        pass
         return
 
     if k > (4 ** n - 1) // 3:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     l = (4 ** n - 1) // 3
@@ -25,9 +27,12 @@ def solve_one(n, k):
     k3 = (2 ** (j + 1) - 1) * ((4 ** (n - j) - 1) // 3)
 
     if l - k2 - k3 >= k:
-        print("YES", n - i + 1)
+        # print("YES", n - i + 1)
+        pass
+
     else:
-        print("NO")
+        # print("NO")
+        pass
 
 
 def main(n):

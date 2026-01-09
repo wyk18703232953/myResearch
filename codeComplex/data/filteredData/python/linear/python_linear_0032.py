@@ -1,5 +1,3 @@
-import random
-
 def process(S):
     n = len(S)
     h_count = 0
@@ -15,6 +13,7 @@ def process(S):
     for i in range(h_count, n + h_count):
         if i > n - 1:
             i1 = i - n
+
         else:
             i1 = i
         i2 = i - h_count
@@ -25,13 +24,15 @@ def process(S):
         answer = min(answer, h_count - current)
     return answer
 
-def main(n):
-    # 生成长度为 n 的随机字符串 S，由 'H' 和 'T' 组成
-    S = ''.join(random.choice('HT') for _ in range(n))
-    result = process(S)
-    print(S)
-    print(result)
 
+def main(n):
+    if n <= 0:
+        return
+    # 确定性生成长度为 n 的字符串 S，由 'H' 和 '.' 组成
+    # 模式：索引 i 上，如果 i % 3 == 0 或 i % 5 == 0 则为 'H'，否则为 '.'
+    S = ''.join('H' if (i % 3 == 0 or i % 5 == 0) else '.' for i in range(n))
+    result = process(S)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：可以修改这里的 n 用于本地测试
     main(10)

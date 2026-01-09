@@ -1,35 +1,35 @@
-import random
-
 def main(n):
-    # 根据 n 生成测试数据：随机生成 s，保证 0 <= s <= n
-    if n < 0:
-        raise ValueError("n must be non-negative")
-    s = random.randint(0, n)
+    # 确定性生成原程序中的 n 和 s
+    # 原程序输入结构：两个整数 n, s
+    # 这里将 n 视为“输入规模”，并构造 s < n 的情况以保持程序逻辑有效
+    N = max(1, n)
+    S = N // 2  # 保证 S < N，当 N > 1 时
 
-    if s >= n:
-        print(0)
-        return
+    n_val, s = N, S
 
-    ans = 0
+    if s >= n_val:
+        # print(0)
+        pass
 
-    def sod(x):
-        s_ = str(x)
-        ret = 0
-        for ch in s_:
-            ret += int(ch)
-        return ret
+    else:
+        ans = 0
 
-    for nd in range(s, s + 1000):
-        if nd - sod(nd) >= s:
-            ans += 1
-        if nd == n:
-            break
-        if nd == (s + 369):
-            ans += (n - nd)
-            break
-    print(ans)
+        def sod(x):
+            s_str = str(x)
+            ret = 0
+            for ch in s_str:
+                ret += int(ch)
+            return ret
 
-
+        for nd in range(s, s + 1000):
+            if nd - sod(nd) >= s:
+                ans += 1
+            if nd == n_val:
+                break
+            if nd == (s + 369):
+                ans += (n_val - nd)
+                break
+        # print(ans)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(100000)
     main(100000)

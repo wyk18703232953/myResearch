@@ -1,28 +1,27 @@
-from collections import deque
-import random
-
 def main(n):
-    # 生成测试数据
-    # N 为队列长度，Q 为查询次数
-    N = n
-    if N < 2:
-        raise ValueError("N must be at least 2")
+    from collections import deque
 
-    Q = n  # 简单设为与 n 相同的规模
-    # 生成一个包含 1..N 的随机排列作为初始队列
-    arr = list(range(1, N + 1))
-    random.shuffle(arr)
-    que = deque(arr)
+    # Scale mapping:
+    # N = n (queue size), Q = n (number of queries)
+    # Queue contents: 1..N
+    # Queries: 1..Q
+    N = max(2, n)  # ensure N >= 2 to avoid division by zero in (N-1)
+    Q = n
 
+    que = deque(range(1, N + 1))
     ma = max(que)
 
     X = []
     k = -1
     c = 0
-    # 预处理比较过程
-    while c <= k + N + 5:
-        a = que.popleft()
-        b = que.popleft()
+    # The original condition: while c <= k+N+5
+    # We run the same structure, but must ensure it terminates deterministically.
+    # Here, we rely on the fact that with this process k will be set once max reaches front.
+    # To be safe for very small N, we add an upper bound proportional to N.
+    upper_bound = 5 * N + 10
+    while c <= k + N + 5 and c <= upper_bound:
+        a = deque.popleft(que)
+        b = deque.popleft(que)
 
         X.append((a, b))
         c += 1
@@ -30,22 +29,38 @@ def main(n):
             a, b = b, a
         if k < 0 and b == ma:
             k = c
-        que.appendleft(b)
-        que.append(a)
+        deque.appendleft(que, b)
+        deque.append(que, a)
 
-    # 构造 Q 个查询（这里简单设为查询 1..Q）
+    # In case k was never set (pathological for very small N), fall back to last c
+    if k < 0:
+        k = c - 1 if c > 0 else 0
+
+    # Generate Q queries deterministically: 1..Q
     queries = list(range(1, Q + 1))
 
-    # 回答查询并打印
+    results = []
     for qi in queries:
         i = qi - 1
         if i <= k:
-            print(*X[i])
+            results.append(f"{X[i][0]} {X[i][1]}")
+
         else:
-            i = (i - k) % (N - 1) + k
-            print(*X[i])
+            if N - 1 > 0:
+                idx = (i - k) % (N - 1) + k
+
+            else:
+                idx = k
+            results.append(f"{X[idx][0]} {X[idx][1]}")
+
+    # For timing experiments, usually you just want the work done; printing is optional.
+    # Here we return the results so the caller can decide what to do.
+    return results
 
 
 if __name__ == "__main__":
-    # 示例：以 n = 10 作为规模运行
-    main(10)
+    # Example deterministic call; adjust n as needed for experiments
+    out = main(10)
+    for line in out:
+        # print(line)
+        pass

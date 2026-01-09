@@ -1,21 +1,22 @@
-import random
-
-
-def generate_test_graph(n):
-    """
-    生成测试用有向图：
-    - 顶点编号为 1..n
-    - 随机生成一定数量的有向边
-    """
-    # 控制边的密度：大约在 n 到 2n 之间
-    m = random.randint(n, max(n, 2 * n))
-
+def get_deterministic_graph(n):
+    # Construct a directed graph with n nodes and O(n) edges deterministically.
+    # Node indices: 1..n
+    # Edges: i -> i+1 for i in 1..n-1 (a path)
+    # Additionally, for i multiple of 3, add edge i -> max(1, i-2)
+    # This guarantees at least one cycle for n >= 3.
     digraph = [[] for _ in range(n + 1)]
-    for _ in range(m):
-        u = random.randint(1, n)
-        v = random.randint(1, n)
-        if u != v:
-            digraph[u].append(v)
+    if n <= 1:
+        return digraph
+
+    # Path edges
+    for i in range(1, n):
+        digraph[i].append(i + 1)
+
+    # Extra edges creating cycles
+    for i in range(3, n + 1, 3):
+        to_node = i - 2
+        if to_node >= 1:
+            digraph[i].append(to_node)
 
     return digraph
 
@@ -63,27 +64,24 @@ def dfs_visit(graph, root, color, pi, u, v):
 
 
 def main(n):
-    """
-    n 为图的规模（顶点数量），根据 n 生成测试数据并执行原逻辑。
-    返回值为字符串 "YES" 或 "NO"。
-    """
-    digraph = generate_test_graph(n)
+    digraph = get_deterministic_graph(n)
     cicle = dfs(digraph)
     if cicle is None:
-        result = "YES"
+        # print("YES")
+        pass
+
     else:
         cicle.reverse()
         for i in range(len(cicle) - 1):
             c = dfs(digraph, cicle[i], cicle[i + 1])
             if c is None:
-                result = "YES"
+                # print("YES")
+                pass
                 break
+
         else:
-            result = "NO"
-    print(result)
-    return result
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
-    # 示例调用，可根据需要修改 n
-    main(5)
+    # Example deterministic call; adjust n for different input scales
+    main(10)

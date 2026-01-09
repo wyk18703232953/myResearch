@@ -1,19 +1,16 @@
-import random
+def main(n):
+    # Deterministically generate input array of size n
+    # Example pattern: a[i] = i//2 to force some duplicates, plus an offset pattern
+    a = [(i // 2) for i in range(n)]
 
-def main(n: int):
-    # 1. 生成测试数据：生成 n 个随机非负整数
-    # 根据原题意（类似 cf "cslnb/sjfnb" 问题），元素为非负整数即可
-    a = [random.randint(0, 10**6) for _ in range(n)]
-
-    # 原逻辑开始
     a = sorted(a)
     duplicates = {}
     d = None
     delta = 0
-
     for i, el in enumerate(a, 1):
         if el not in duplicates:
             duplicates[el] = 0
+
         else:
             d = el
             duplicates[el] += 1
@@ -21,15 +18,18 @@ def main(n: int):
         delta += el - min_value
 
     if sum(duplicates.values()) > 1 or duplicates.get(0, 0) >= 1 or (d is not None and d - 1 in duplicates):
-        print('cslnb')
+        # print('cslnb')
+        pass
     elif delta == 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
     elif delta % 2 == 1:
-        print('sjfnb')
+        # print('sjfnb')
+        pass
+
     else:
-        print('cslnb')
-
-
+        # print('cslnb')
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # Example fixed-scale call for experimentation
+    main(10)

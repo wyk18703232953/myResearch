@@ -4,9 +4,8 @@ def main(n: int):
     ans = 1
     for i in range(n):
         ans += 4 * i
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：自行指定规模 n
     main(10)

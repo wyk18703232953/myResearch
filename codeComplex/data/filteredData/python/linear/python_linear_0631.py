@@ -16,6 +16,7 @@ def solve_one(n, k):
         if k >= g[i]:
             if n >= MAX:
                 return f"YES {n - i}"
+
             else:
                 if k <= f[n] - ((1 << (i + 1)) - 1) * f[n - i]:
                     return f"YES {n - i}"
@@ -32,7 +33,8 @@ def main(n):
       - k_i 为与 g 和 f 有关的一些值，以覆盖多种情况
     """
     t = n  # 生成 n 组测试
-    print(t)
+    # print(t)
+    pass
 
     for i in range(1, t + 1):
         # 构造一个 n_i：在 1..n 中循环
@@ -46,16 +48,18 @@ def main(n):
                 ki = max(0, g[base_idx] - i)  # 小一点
             elif i % 3 == 2:
                 ki = g[base_idx]             # 恰好
+
             else:
                 ki = g[base_idx] + i         # 大一点
+
         else:
             # 对于很大的 ni，令 k 成为一个相对较大的数
             ki = g[MAX - 1] + i * 10
 
-        print(ni, ki)
-        print(solve_one(ni, ki))
-
-
+        # print(ni, ki)
+        pass
+        # print(solve_one(ni, ki))
+        pass
 if __name__ == "__main__":
     # 示例调用，按需要修改 n
     main(10)

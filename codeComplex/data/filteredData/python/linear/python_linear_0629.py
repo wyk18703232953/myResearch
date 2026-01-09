@@ -12,6 +12,7 @@ def solve_case(n, k):
     if n == 1:
         if k == 1:
             return "YES 0"
+
         else:
             return "NO"
     elif n == 2:
@@ -19,8 +20,10 @@ def solve_case(n, k):
             return "YES 1"
         elif k != 3 and k <= 5:
             return "YES 0"
+
         else:
             return "NO"
+
     else:
         siz = n - 1
         l = 1
@@ -31,9 +34,11 @@ def solve_case(n, k):
             l = l + cnt
             cnt = 2 * cnt + 1
             siz -= 1
+
         else:
             if k <= get_max(n):
                 return "YES 0"
+
             else:
                 return "NO"
 
@@ -53,9 +58,8 @@ def main(n):
 
     # 输出所有结果
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 进行测试
     main(5)

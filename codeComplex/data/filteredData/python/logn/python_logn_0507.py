@@ -8,14 +8,18 @@ def main(n):
         s = 9 * pow(10, i) * (i + 1)
         if k <= s:
             break
+
         else:
             k -= s
     pos = i + 1
     num = (pow(10, pos - 1) + (k // pos) - 1)
     if k % pos == 0:
-        print(str(num)[-1])
+        # print(str(num)[-1])
+        pass
+
     else:
-        print(str(num + (0 if pos == 1 else 1))[(k % pos) - 1])
+        # print(str(num + (0 if pos == 1 else 1))[(k % pos) - 1])
+        pass
 
 
 # 示例：自动生成一些测试数据并运行

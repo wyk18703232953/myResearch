@@ -19,12 +19,12 @@ def main(n: int):
 
     if m <= n:
         result = n - m + 1
+
     else:
         result = 0
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10**6)

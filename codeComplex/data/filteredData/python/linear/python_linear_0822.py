@@ -15,9 +15,8 @@ def main(n):
         t += 1
         i += t + 1
         c -= 1
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

@@ -1,16 +1,16 @@
-import random
-
-INF = 9999999999
-
-
 def main(n):
-    # 生成测试数据
-    # 生成 n 个不同的正整数作为 l（为了产生更丰富的递增关系）
-    l = random.sample(range(1, 10 * n + 1), n)
-    # 生成对应的随机代价数组 l2
-    l2 = [random.randint(1, 100) for _ in range(n)]
+    # Ensure n is at least 1 to avoid empty structures
+    if n <= 0:
+        return
+
+    # Deterministic data generation
+    # l: strictly increasing sequence ensures l[i] > l[j] when i > j
+    l = [i for i in range(1, n + 1)]
+    # l2: simple deterministic pattern
+    l2 = [(i * 2 + 1) for i in range(n)]
 
     dp_1 = l2.copy()
+    INF = 9999999999
     dp_2 = [INF] * n
     dp_3 = [INF] * n
 
@@ -26,11 +26,11 @@ def main(n):
 
     x = min(dp_3)
     if x == INF:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

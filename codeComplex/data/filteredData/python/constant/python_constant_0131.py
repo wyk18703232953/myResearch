@@ -1,22 +1,17 @@
-import random
-import math
-
 def main(n):
-    # 生成测试数据：随机选择 m，1 <= m <= n 且 m != 0
-    if n <= 0:
-        return 0
-
-    # 保证 m 在 [1, n] 中随机
-    m = random.randint(1, n)
+    # 解释：这里将输入规模 n 映射为 (A, B) 两个正整数
+    # 使用简单的确定性规则构造：
+    # A = n + 1
+    # B = n // 2 + 1  (确保 B >= 1)
+    A = n + 1
+    B = n // 2 + 1
 
     a = 0
-    x, y = n, m
-    while y:
-        a += x // y
-        x, y = y, x % y
-
-    print(a)
-
+    while B:
+        a += A // B
+        A, B = B, A % B
+    # print(a)
+    pass
 if __name__ == "__main__":
-    # 示例：可修改 n 测试规模
-    main(100)
+    # 示例：可以根据需要修改 n 以改变规模
+    main(10)

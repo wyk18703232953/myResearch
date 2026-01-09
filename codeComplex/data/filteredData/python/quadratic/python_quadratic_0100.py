@@ -1,5 +1,3 @@
-import random
-
 def flipH(A, N):
     B = [[0 for _ in range(N)] for _ in range(N)]
     for i in range(N):
@@ -26,52 +24,34 @@ def check(A, B, N):
                 return False
     return True
 
-def generate_random_matrix(N):
-    # 使用随机的 '0' 和 '1' 生成矩阵
-    return [[random.choice(['0', '1']) for _ in range(N)] for _ in range(N)]
-
-def transform_matrix(A, N):
-    # 随机选择一种与原题逻辑一致的变换来生成 X
-    choice = random.randint(0, 5)
-    B = flipH(A, N)
-    C = flipV(A, N)
-
-    if choice == 0:
-        return A
-    elif choice == 1:
-        return rotate90(A)
-    elif choice == 2:
-        return rotate90(rotate90(A))
-    elif choice == 3:
-        return rotate90(rotate90(rotate90(A)))
-    elif choice == 4:
-        return B
-    else:
-        return C
-
 def main(n):
     N = n
-    A = generate_random_matrix(N)
-    X = transform_matrix(A, N)
-
+    A = []
+    X = []
+    for i in range(N):
+        row = [chr(ord('a') + (i + j) % 26) for j in range(N)]
+        A.append(row)
+    for i in range(N):
+        row = [chr(ord('a') + (i * 2 + j * 3) % 26) for j in range(N)]
+        X.append(row)
     B = flipH(A, N)
     C = flipV(A, N)
     flag = False
-
     for _ in range(4):
         if check(A, X, N) or check(B, X, N) or check(C, X, N):
             flag = True
             break
+
         else:
             A = rotate90(A)
             B = rotate90(B)
             C = rotate90(C)
-
     if flag:
-        print("Yes")
-    else:
-        print("No")
+        # print("Yes")
+        pass
 
+    else:
+        # print("No")
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模为 4
-    main(4)
+    main(5)

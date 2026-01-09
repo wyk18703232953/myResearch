@@ -11,6 +11,7 @@ def main(n: int):
     if n % 2 == 0:
         x = n
         k = n // 2
+
     else:
         x = n // 2
         k = n
@@ -23,4 +24,5 @@ def main(n: int):
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行
     result = main(10)
-    print(result)
+    # print(result)
+    pass

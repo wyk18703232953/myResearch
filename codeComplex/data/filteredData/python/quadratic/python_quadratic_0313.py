@@ -1,97 +1,36 @@
-#------------------------template--------------------------#
-import os
-import sys
-from collections import *
-from bisect import *
-from io import BytesIO, IOBase
+import math
 
-BUFSIZE = 8192
-class FastIO(IOBase):
-    newlines = 0
-    def __init__(self, file):
-        self._fd = file.fileno()
-        self.buffer = BytesIO()
-        self.writable = "x" in file.mode or "r" not in file.mode
-        self.write = self.buffer.write if self.writable else None
-    def read(self):
-        while True:
-            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
-            if not b:
-                break
-            ptr = self.buffer.tell()
-            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
-        self.newlines = 0
-        return self.buffer.read()
-    def readline(self):
-        while self.newlines == 0:
-            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
-            self.newlines = b.count(b"\n") + (not b)
-            ptr = self.buffer.tell()
-            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
-        self.newlines -= 1
-        return self.buffer.readline()
-    def flush(self):
-        if self.writable:
-            os.write(self._fd, self.buffer.getvalue())
-            self.buffer.truncate(0), self.buffer.seek(0)
-class IOWrapper(IOBase):
-    def __init__(self, file):
-        self.buffer = FastIO(file)
-        self.flush = self.buffer.flush
-        self.writable = self.buffer.writable
-        self.write = lambda s: self.buffer.write(s.encode("ascii"))
-        self.read = lambda: self.buffer.read().decode("ascii")
-        self.readline = lambda: self.buffer.readline().decode("ascii")
-sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
-input = lambda: sys.stdin.readline().rstrip("\r\n")
 ALPHA = 'abcdefghijklmnopqrstuvwxyz'
 M = 998244353
 EPS = 1e-6
 
-def Ceil(a, b): 
-    return a // b + int(a % b > 0)
+def main(n):
+    # 映射 n 为原程序中的 n，k
+    if n < 2:
+        n_eff = 2
 
-def value():
-    return tuple(map(int, input().split()))
+    else:
+        n_eff = n
+    k = max(1, n_eff // 2)
 
-def array():
-    return [int(i) for i in input().split()]
+    # 生成长度为 n_eff 的确定性数组 a
+    # 使用简单算术构造，确保非负且有变化
+    a = [(i * 7 + 3) % 1000 for i in range(n_eff)]
 
-def Int():
-    return int(input())
-
-def Str():
-    return input()
-
-def arrayS():
-    return [i for i in input().split()]
-
-#-------------------------code---------------------------#
-
-import random
-
-def solve(n, k, a):
     ans = 0.0
-    for i in range(n - k + 1):
+
+    for i in range(n_eff - k + 1):
         num = sum(a[i:i + k])
         den = k
         ans = max(ans, num / den)
-        for j in range(i + k, n):
+
+        for j in range(i + k, n_eff):
             num += a[j]
             den += 1
             ans = max(ans, num / den)
-    return ans
 
-def main(n):
-    # 根据规模 n 生成测试数据
-    if n <= 0:
-        return
-    k = max(1, n // 2)  # 令 k 为大约一半长度，至少为 1
-    # 生成数组 a，元素为 1~100 的随机整数
-    a = [random.randint(1, 100) for _ in range(n)]
-    ans = solve(n, k, a)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例调用，可按需修改或删除
+    # 示例调用，可根据需要修改 n 以进行时间复杂度实验
     main(10)

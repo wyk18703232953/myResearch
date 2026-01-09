@@ -21,9 +21,8 @@ def main(n):
             if a[j] % 2 == 0:
                 m += a[j]
         ans = max(ans, m)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可修改 n 来改变生成的数据规模
     main(100)

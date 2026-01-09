@@ -1,12 +1,13 @@
-import random
+def main(n):
+    # n is the length of the array aa
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-INF = 10000
-
-
-def main(n: int):
-    # 生成测试数据：长度为 n 的数组 aa，元素为 1~5 的随机整数
-    random.seed(0)
-    aa = [random.randint(1, 5) for _ in range(n)]
+    # Deterministically generate the input array of length n
+    # Example pattern: aa[i] = (i % 5) + 1
+    aa = [(i % 5) + 1 for i in range(n)]
 
     dp = [[0] * (n + 1) for _ in range(n)]
 
@@ -29,9 +30,8 @@ def main(n: int):
         for j in range(i + 1, n + 1):
             if calc_dp(i, j) > 0:
                 dp2[j] = min(dp2[j], dp2[i] + 1)
-    print(dp2[n])
-
-
+    # print(dp2[n])
+    pass
 if __name__ == "__main__":
-    # 示例调用，可根据需要修改 n
+    # Example deterministic call for experimentation
     main(10)

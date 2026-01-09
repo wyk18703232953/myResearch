@@ -32,9 +32,8 @@ def main(n):
                     if (i + j + f) % 2 != int(s[k][i][j]):
                         cnt += 1
         res = min(res, cnt)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：规模为 4，可按需修改或在外部调用 main(n)
     main(4)

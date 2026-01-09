@@ -20,10 +20,12 @@ def main(n):
                 ans = 'YES 1'
             elif k == 3 or k > 5:
                 ans = 'NO'
+
             else:
                 ans = 'YES 0'
         elif n <= 32 and k > (4 ** n - 1) // 3:
             ans = 'NO'
+
         else:
             c, x = 0, n
             p2 = 2
@@ -34,9 +36,8 @@ def main(n):
                 x -= 1
                 p2 *= 2
             ans = 'YES %d' % (x,)
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例运行：规模参数可以在此修改
     main(10)

@@ -14,9 +14,8 @@ def main(n):
             low = i
             break
     result = max(n - low + 1, 0)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可在此处修改
     main(10**6)

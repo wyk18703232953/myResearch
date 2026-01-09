@@ -28,7 +28,9 @@ def main(n):
 
         if n_val > 31:
             # 原逻辑：n > 31 时必 YES n-1
-            print("YES {}".format(n_val - 1))
+            # print("YES {}".format(n_val - 1))
+            pass
+
         else:
             # 原逻辑：n <= 31 时进行区间查找
             start = 0
@@ -44,11 +46,12 @@ def main(n):
                     res = i
                     break
             if found:
-                print("YES {}".format(n_val - res))
+                # print("YES {}".format(n_val - res))
+                pass
+
             else:
-                print("NO")
-
-
+                # print("NO")
+                pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -1,25 +1,23 @@
-import random
-import string
-
-def main(n: int):
-    # 1. 生成测试数据：长度为 n 的随机字符串，字符从小写字母中选取
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-    
-    # 2. 原逻辑
+def main(n):
+    # 生成确定性字符串，长度由 n 决定
+    # 使用循环模式 'abc'，长度为 n
+    base_chars = ['a', 'b', 'c']
+    s = ''.join(base_chars[i % 3] for i in range(n))
     s = s * 3
-    length = len(s)
+    n_len = len(s)
     m, curr = 1, 1
-    for i in range(length - 1):
+    for i in range(n_len - 1):
         if s[i] != s[i + 1]:
             curr += 1
-            m = max(curr, m)
+            if curr > m:
+                m = curr
+
         else:
             curr = 1
-    result = min(m, length // 3)
-    
-    # 3. 输出结果
-    print(result)
+    result = min(m, n_len // 3)
+    return result
 
-# 示例调用
 if __name__ == "__main__":
-    main(10)
+    # 示例调用
+    # print(main(10))
+    pass

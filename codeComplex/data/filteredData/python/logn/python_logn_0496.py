@@ -13,9 +13,12 @@ def main(n: int):
     a = n // (i + 1)
     b = n % (i + 1)
     if b != 0:
-        print(str(10 ** i + a)[b - 1])
+        # print(str(10 ** i + a)[b - 1])
+        pass
+
     else:
-        print(str(10 ** i + a - 1)[-1])
+        # print(str(10 ** i + a - 1)[-1])
+        pass
 
 
 # 示例调用

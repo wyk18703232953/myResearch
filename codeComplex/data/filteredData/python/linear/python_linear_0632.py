@@ -17,6 +17,7 @@ def main(n):
         max_k = A(ni_capped)
         if max_k <= 0:
             ki = 1
+
         else:
             ki = max_k // 2
         test_cases.append((ni, ki))
@@ -26,11 +27,13 @@ def main(n):
         n_cur = n_val
 
         if n_cur > L:
-            print("YES", n_cur - 1)
+            # print("YES", n_cur - 1)
+            pass
             continue
 
         if k > A(n_cur):
-            print("NO")
+            # print("NO")
+            pass
             continue
 
         E = 1
@@ -49,11 +52,12 @@ def main(n):
                 break
 
         if n_cur >= 0:
-            print("YES", n_cur)
+            # print("YES", n_cur)
+            pass
+
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 运行规模为 5 的测试
     main(5)

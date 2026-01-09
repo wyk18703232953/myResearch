@@ -19,13 +19,13 @@ def main(n):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     t = pow2(k) * (2 * x - 1) % MOD
-    print((t + 1) % MOD)
-
-
+    # print((t + 1) % MOD)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

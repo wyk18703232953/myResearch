@@ -20,6 +20,7 @@ def main(n):
         x1, y1 = 1, 3
         x2, y2 = 1, 3
         x3, y3 = 1, 3
+
     else:
         # 简单拆分：1 + 1 + (n-2)
         a = 1
@@ -41,7 +42,8 @@ def main(n):
     fin = [["*" for _ in range(m)] for _ in range(m)]
 
     if (x1 * y1 + x2 * y2 + x3 * y3) != m ** 2:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     l = sorted([a, b, c], reverse=True)
@@ -53,17 +55,18 @@ def main(n):
     if m in [ini[0] + last[0], ini[1] + last[1]] and \
        (ini[0] + last[0] + ini[1] + last[1]) <= 2 * m:
         last = [ini[0] + last[0], ini[1] + last[1]]
+
     else:
         last = [ini[0] + last[1], ini[1] + last[0]]
 
     chnge(last, l[1][2], ini, fin=fin)
     chr_fill = l[2][2]
 
-    print(m)
+    # print(m)
+    pass
     for row in fin:
-        print("".join(row).replace("*", chr_fill))
-
-
+        # print("".join(row).replace("*", chr_fill))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

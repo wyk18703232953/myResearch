@@ -15,7 +15,8 @@ def main(n):
     # 3. 查找分解：原逻辑是找 i 使得 i 和 n-i 都为合数
     for i in range(4, n):
         if not a[i] and not a[n - i]:
-            print(i, n - i)
+            # print(i, n - i)
+            pass
             return
 
 if __name__ == "__main__":

@@ -1,9 +1,8 @@
-import random
-import string
-
-def main(n: int):
-    # 生成长度为 n 的随机小写字母串作为测试数据
-    S = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+def main(n):
+    # 生成确定性字符串 S，长度为 n
+    # 使用周期性模式方便控制规模：例如周期为 3 的 'abc'
+    base = "abc"
+    S = "".join(base[i % len(base)] for i in range(n))
 
     best = 0
     for i in range(len(S)):
@@ -15,8 +14,8 @@ def main(n: int):
                     c += 1
             if c >= 2:
                 best = max(best, len(s))
-    print(best)
-
+    # print(best)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 20
-    main(20)
+    # 示例调用，可根据需要修改 n 的大小进行时间复杂度实验
+    main(1000)

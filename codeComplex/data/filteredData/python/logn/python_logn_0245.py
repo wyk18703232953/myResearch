@@ -2,7 +2,6 @@ from collections import defaultdict, deque, Counter
 from heapq import heappush, heappop
 import math
 import bisect
-import random
 
 
 def isPrime(x):
@@ -53,7 +52,7 @@ def sieve(n):
     prime = [True for _ in range(n + 1)]
     p = 2
     while p * p <= n:
-        if prime[p]:
+        if prime[p] is True:
             for i in range(p * p, n + 1, p):
                 prime[i] = False
         p += 1
@@ -74,33 +73,24 @@ def ceil(n, x):
     return n // x + 1
 
 
-def main(n):
-    """
-    n 为规模参数，用于生成测试数据 (x, k)。
-    这里设定：
-      1 <= x <= n
-      0 <= k <= n
-    """
-    if n < 1:
-        n = 1
-
-    random.seed(1)
-    x = random.randint(0, n)
-    k = random.randint(0, n)
-
+def core_logic(x, k):
     p = 1000000007
     if x == 0:
-        print(0)
-    else:
-        a = power(2, k, p)
-        b = x + x - 1
-        b %= p
-        a = (a * b) % p
-        a += 1
-        a %= p
-        print(a)
+        return 0
+    a = power(2, k, p)
+    b = x + x - 1
+    b %= p
+    a = (a * b) % p
+    a += 1
+    a %= p
+    return a
 
 
+def main(n):
+    x = n
+    k = n * n
+    result = core_logic(x, k)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：以 n = 10 作为规模运行一次
     main(10)

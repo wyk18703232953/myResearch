@@ -1,41 +1,45 @@
-import random
+def roll(i, j, n, m, hor, ver, grid):
+    ways = []
+    if j:
+        ways.append(2 * hor[i][j - 1] + grid[i][j - 1])
+    if m - 1 - j:
+        ways.append(2 * hor[i][j] + grid[i][j + 1])
+    if i:
+        ways.append(2 * ver[i - 1][j] + grid[i - 1][j])
+    if n - 1 - i:
+        ways.append(2 * ver[i][j] + grid[i + 1][j])
+    return min(ways)
+
 
 def main(n):
-    # 生成规模：n 行，m 列，这里令 m = n，k 为偶数步数，示例设为 4
-    m = n
-    k = 4  # 可根据需要调整为其他非负整数（若为奇数，则输出全 -1）
+    # Interpret n as grid size; build n x n grid and related structures deterministically.
+    # Ensure n >= 1
+    if n <= 0:
+        return
 
-    # 生成测试数据：hor 为 n 行 m 列，ver 为 (n-1) 行 m 列
-    # 这里用 0~9 的随机整数作为边权
-    random.seed(0)
-    hor = [[random.randint(0, 9) for _ in range(m)] for _ in range(n)]
-    ver = [[random.randint(0, 9) for _ in range(m)] for _ in range(n - 1)]
+    rows = n
+    cols = n
 
-    grid = [[0] * m for _ in range(n)]
+    # Deterministic parameters derived from n
+    k = 2 * n  # even so that algorithm does real work
 
-    def roll(i, j):
-        ways = []
-        if j:
-            ways.append(2 * hor[i][j - 1] + grid[i][j - 1])
-        if m - 1 - j:
-            ways.append(2 * hor[i][j] + grid[i][j + 1])
-        if i:
-            ways.append(2 * ver[i - 1][j] + grid[i - 1][j])
-        if n - 1 - i:
-            ways.append(2 * ver[i][j] + grid[i + 1][j])
-        return min(ways)
+    # Deterministic construction of hor and ver based only on (i, j, n)
+    hor = [[(i + j * 2 + n) % 7 + 1 for j in range(cols)] for i in range(rows)]
+    ver = [[(i * 3 + j + n) % 5 + 1 for j in range(cols)] for i in range(rows - 1)]
+
+    grid = [[0] * cols for _ in range(rows)]
 
     if k % 2:
-        for _ in range(n):
-            print(" ".join(["-1"] * m))
+        for _ in range(rows):
+            # print(" ".join(["-1"] * cols))
+            pass
+
     else:
         for _ in range(k // 2):
-            new_grid = [[roll(i, j) for j in range(m)] for i in range(n)]
-            grid = [row[:] for row in new_grid]
-        for i in range(n):
-            print(" ".join(map(str, grid[i])))
-
-
+            new_grid = [[roll(i, j, rows, cols, hor, ver, grid) for j in range(cols)] for i in range(rows)]
+            grid = new_grid[:]
+        for i in range(rows):
+            # print(" ".join(map(str, grid[i])))
+            pass
 if __name__ == "__main__":
-    # 示例调用：规模 n = 5
     main(5)

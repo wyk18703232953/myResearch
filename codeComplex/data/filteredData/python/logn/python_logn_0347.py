@@ -14,12 +14,12 @@ def main(n):
 
     if x > 0:
         ans = (pow(2, k + 1, md) * x - pow(2, k, md) + 1) % md
+
     else:
         ans = 0
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

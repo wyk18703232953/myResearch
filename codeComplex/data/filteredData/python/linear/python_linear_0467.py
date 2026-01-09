@@ -12,13 +12,13 @@ def main(n):
     for i in range(len(s) - 1):
         if s[i] != s[i + 1]:
             c += 1
+
         else:
             cnt = max(c, cnt)
             c = 1
     cnt = max(cnt, c)
-    print(min(cnt, original_n))
-
-
+    # print(min(cnt, original_n))
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10)

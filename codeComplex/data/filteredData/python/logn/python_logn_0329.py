@@ -14,10 +14,11 @@ def main(n):
 
     if n != 0:
         z = (((2 * n - 1 + M) % M) * power(2, k) + 1) % M
+
     else:
         z = 0
-    print(z)
-
+    # print(z)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值
     main(10)

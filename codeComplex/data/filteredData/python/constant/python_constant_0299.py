@@ -1,20 +1,16 @@
 from math import ceil
-import random
 
-def main(n: int) -> None:
-    # 生成测试数据：
-    # k: 1~n 的用户数
-    # s: 每包可承载的页数 1~n
-    # p: 每本书的页数 1~n
-    # n: 题意中的 n，直接使用传入的 n 作为题目规模
-    k = random.randint(1, max(1, n))
-    s = random.randint(1, max(1, n))
-    p = random.randint(1, max(1, n))
+def main(n):
+    # 将 n 映射为原程序的四个参数 k, n_people, s, p
+    # 保证均为正整数且随 n 有规律变化
+    k = n % 10 + 1          # 1 ~ 10
+    n_people = n * 10 + 1   # 随 n 增长的需要抄写的人数
+    s = n % 7 + 1           # 每人一张纸可写的页数，1 ~ 8
+    p = (n % 5) + 1         # 每包纸张数，1 ~ 5
 
-    n_sheets = ceil(n / s) * k
+    n_sheets = ceil(n_people / s) * k
     n_p = ceil(n_sheets / p)
-    print(n_p)
-
+    # print(n_p)
+    pass
 if __name__ == "__main__":
-    # 示例：以 n = 100 运行
     main(100)

@@ -1,54 +1,62 @@
-import random
+import math
+
+def build_deterministic_input(n):
+    if n < 1:
+        n = 1
+    # Define grid size based on n
+    rows = n
+    cols = n
+    k = 2 * n  # ensure even, non-trivial path length
+    # Horizontal edges: (rows) lines, each with cols-1 weights
+    horizontal = []
+    for y in range(rows):
+        horizontal.append([(y + x + 1) % 7 + 1 for x in range(cols - 1)])
+    # Vertical edges: (rows-1) lines, each with cols weights
+    vertical = []
+    for y in range(rows - 1):
+        vertical.append([(2 * y + 3 * x + 2) % 9 + 1 for x in range(cols)])
+    return rows, cols, k, horizontal, vertical
 
 def main(n):
-    # 生成测试数据：n 行，m 列，k 为偶数
-    m = n  # 这里设为正方形网格，可按需要修改为其他函数，如 m = 2*n
-    k = 2 * max(1, n // 2)  # 保证为正且为偶数
+    nrows, mcols, k, horiz, vert = build_deterministic_input(n)
 
-    # 随机生成边权（1~9）
-    # 水平方向边：n 行，每行 m-1 个权值
-    horiz = [[random.randint(1, 9) for _ in range(m - 1)] for _ in range(n)]
-    # 垂直方向边：n-1 行，每行 m 个权值
-    vert = [[random.randint(1, 9) for _ in range(m)] for _ in range(n - 1)]
+    M = [[[] for _ in range(mcols)] for _ in range(nrows)]
+    S = [[-1] * mcols for _ in range(nrows)]
 
-    # 原代码逻辑开始（除了 input 改为使用上述测试数据）
-    M = [[[] for _ in range(m)] for _ in range(n)]
-    S = [[-1] * m for _ in range(n)]
-
-    # 构建水平方向的图
-    for y in range(n):
+    # Build horizontal edges
+    for y in range(nrows):
         L = horiz[y]
-        for x in range(m - 1):
-            M[y][x].append(((y, x + 1), L[x]))
-            M[y][x + 1].append(((y, x), L[x]))
+        for x in range(mcols - 1):
+            w = L[x]
+            M[y][x].append(((y, x + 1), w))
+            M[y][x + 1].append(((y, x), w))
 
-    # 构建垂直方向的图
-    for y in range(n - 1):
+    # Build vertical edges
+    for y in range(nrows - 1):
         L = vert[y]
-        for x in range(m):
-            M[y][x].append(((y + 1, x), L[x]))
-            M[y + 1][x].append(((y, x), L[x]))
+        for x in range(mcols):
+            w = L[x]
+            M[y][x].append(((y + 1, x), w))
+            M[y + 1][x].append(((y, x), w))
 
     if k % 2 == 0:
         for _ in range(k // 2):
-            S2 = [[0] * m for _ in range(n)]
-            for y in range(n):
-                for x in range(m):
-                    Mi = 10**30
+            S2 = [[0] * mcols for _ in range(nrows)]
+            for y in range(nrows):
+                for x in range(mcols):
+                    Mi = 10000000000000000000000
                     for ((a, b), p) in M[y][x]:
-                        Mi = min(Mi, max(0, S[a][b]) + p)
+                        val = max(0, S[a][b]) + p
+                        if val < Mi:
+                            Mi = val
                     S2[y][x] = Mi
             S = S2
-
-        for y in range(n):
-            for x in range(m):
+        for y in range(nrows):
+            for x in range(mcols):
                 S[y][x] *= 2
 
-    # 输出结果
-    for y in range(n):
-        print(' '.join(map(str, S[y])))
-
-
+    for y in range(nrows):
+        # print(' '.join(map(str, S[y])))
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模 n 可在此处修改
-    main(4)
+    main(5)

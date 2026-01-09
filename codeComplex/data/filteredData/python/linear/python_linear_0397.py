@@ -14,9 +14,8 @@ def main(n):
         ans = (ans + (i + 2) * (p * a[n - i - 1] % mod) % mod) % mod
         p = (2 * p) % mod
 
-    print(ans % mod)
-
-
+    # print(ans % mod)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

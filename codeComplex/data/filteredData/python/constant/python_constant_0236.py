@@ -10,11 +10,12 @@ def main(n: int):
             break
 
     if value:
-        print(m)
+        # print(m)
+        pass
+
     else:
-        print(m % (1 << n))
-
-
+        # print(m % (1 << n))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可按需修改或在外部导入调用 main(n)
     main(5)

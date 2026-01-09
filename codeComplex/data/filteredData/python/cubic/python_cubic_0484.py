@@ -1,64 +1,50 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 行 n 列的网格，k 为偶数步数
-    m = n
-    # 设定一个与规模相关的步数（偶数），例如 2*n
-    k = 2 * n
+    # Map n to grid size and k
+    # Choose square grid with side = max(1, n) and fixed even k related to n
+    rows = max(1, n)
+    cols = max(1, n)
+    # Ensure k is even and at least 2 for some movement; tie it to n for scaling
+    k = 2 * max(1, n // 2)
+
+    # Deterministic generation of right and down cost grids
+    # right: rows x (cols - 1), but original code assumes rows x cols with unused entries;
+    # here we match original structure: right is rows x cols, but only [i][0..cols-2] used
+    right = [[(i + j + 1) for j in range(cols)] for i in range(rows)]
+    # down: (rows - 1) x cols, but original code uses rows-1 x cols
+    down = [[(i * 2 + j + 1) for j in range(cols)] for i in range(max(0, rows - 1))]
+
+    # Handle odd k case exactly as original
     if k % 2 == 1:
-        k += 1
-
-    # 生成边权：right 为 n x (m-1)，down 为 (n-1) x m
-    # 原代码中 right[i] 和 down[i] 的长度分别是 m-1 和 m
-    # 为了保持一致，生成时按此尺寸生成
-    max_weight = 10
-    right = []
-    for _ in range(n):
-        # 每行 m-1 个水平边
-        row = [random.randint(1, max_weight) for _ in range(m - 1)]
-        right.append(row)
-
-    down = []
-    for _ in range(n - 1):
-        # 每行 m 个垂直边
-        row = [random.randint(1, max_weight) for _ in range(m)]
-        down.append(row)
-
-    # 若 k 为奇数，直接输出 -1（按题意），但这里保证了 k 为偶数
-    if k % 2 == 1:
-        for _ in range(n):
-            print(" ".join(["-1"] * m))
+        for _ in range(rows):
+            for _ in range(cols):
+                # print(-1, end=" ")
+                pass
+            # print()
+            pass
         return
 
-    k //= 2
+    half_k = k // 2
 
-    # dp[i][j][l] : 从 (i,j) 出发走 l 步的最小代价
-    dp = [[[0 for _ in range(k + 1)] for _ in range(m)] for _ in range(n)]
+    dp = [[[0 for _ in range(half_k + 1)] for _ in range(cols)] for _ in range(rows)]
 
-    for l in range(k):
-        for i in range(n):
-            for j in range(m):
+    for l in range(half_k):
+        for i in range(rows):
+            for j in range(cols):
                 dp[i][j][l + 1] = float("inf")
                 if i > 0:
-                    dp[i][j][l + 1] = min(dp[i][j][l + 1],
-                                          dp[i - 1][j][l] + down[i - 1][j])
+                    dp[i][j][l + 1] = min(dp[i][j][l + 1], dp[i - 1][j][l] + down[i - 1][j])
                 if j > 0:
-                    dp[i][j][l + 1] = min(dp[i][j][l + 1],
-                                          dp[i][j - 1][l] + right[i][j - 1])
-                if i < n - 1:
-                    dp[i][j][l + 1] = min(dp[i][j][l + 1],
-                                          dp[i + 1][j][l] + down[i][j])
-                if j < m - 1:
-                    dp[i][j][l + 1] = min(dp[i][j][l + 1],
-                                          dp[i][j + 1][l] + right[i][j])
+                    dp[i][j][l + 1] = min(dp[i][j][l + 1], dp[i][j - 1][l] + right[i][j - 1])
+                if i < rows - 1:
+                    dp[i][j][l + 1] = min(dp[i][j][l + 1], dp[i + 1][j][l] + down[i][j])
+                if j < cols - 1:
+                    dp[i][j][l + 1] = min(dp[i][j][l + 1], dp[i][j + 1][l] + right[i][j])
 
-    for i in range(n):
-        row_ans = []
-        for j in range(m):
-            row_ans.append(str(2 * dp[i][j][k]))
-        print(" ".join(row_ans))
-
-
+    for i in range(rows):
+        for j in range(cols):
+            # print(2 * dp[i][j][half_k], end=" ")
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
-    # 示例：运行 main(4)
-    main(4)
+    main(5)

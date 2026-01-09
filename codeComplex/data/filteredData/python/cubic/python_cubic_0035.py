@@ -1,9 +1,11 @@
-import random
-import string
+def main(n):
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int):
-    # 生成长度为 n 的测试字符串，字符集为小写字母
-    s = ''.join(random.choices(string.ascii_lowercase, k=n))
+    # 构造确定性的字符串，周期为 26
+    s = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
 
     m = 0
     length = len(s)
@@ -11,9 +13,7 @@ def main(n: int):
         for j in range(i, length + 1):
             if s[i:j] in s[i + 1:length] and len(s[i:j]) > m:
                 m = len(s[i:j])
-    print(m)
-
-
+    # print(m)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

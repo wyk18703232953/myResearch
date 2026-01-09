@@ -1,57 +1,59 @@
-import random
-
-def solve_single_case(n, k, s):
-    ans = k
-    sample = "RGB"
-    for i in range(n - k + 1):
-        # pattern starting with 'R'
-        cnt = 0
-        x = 0
-        for j in range(i, i + k):
-            if s[j] != sample[x]:
-                cnt += 1
-            x = (x + 1) % 3
-        ans = min(ans, cnt)
-
-        # pattern starting with 'G'
-        cnt = 0
-        x = 1
-        for j in range(i, i + k):
-            if s[j] != sample[x]:
-                cnt += 1
-            x = (x + 1) % 3
-        ans = min(ans, cnt)
-
-        # pattern starting with 'B'
-        cnt = 0
-        x = 2
-        for j in range(i, i + k):
-            if s[j] != sample[x]:
-                cnt += 1
-            x = (x + 1) % 3
-        ans = min(ans, cnt)
-    return ans
-
-
 def main(n):
-    # 生成 q 个测试用例，这里令 q = n
+    # Interpret n as: number of test cases q = n
+    # For each test case, deterministically construct (n_i, k_i, s_i)
+    # Keep original logic unchanged for each case
     q = n
-    results = []
+    sample = "RGB"
 
-    for _ in range(q):
-        # 对每个用例：
-        # 1. 随机生成长度为 n 的字符串 s（字符来自 R/G/B）
-        # 2. 随机生成 1 <= k <= n
-        k = random.randint(1, n)
-        s = ''.join(random.choice('RGB') for _ in range(n))
-        res = solve_single_case(n, k, s)
-        results.append(res)
+    for t in range(q):
+        # Deterministic construction of parameters per test case
+        # Let string length grow with test index
+        n_i = 5 + 3 * (t + 1)
+        # k_i between 1 and n_i, varying deterministically
+        k_i = 1 + (t * 2) % n_i
 
-    # 为了与原程序行为类似，这里只输出最后一个测试用例的结果
-    # 如果需要查看所有结果，可改成打印 results
-    print(results[-1])
+        # Deterministic construction of s: repeat "RGB" pattern, then alter some chars
+        base = (sample * ((n_i // 3) + 2))[:n_i]
+        # Introduce deterministic variations
+        s_list = list(base)
+        for i in range(0, n_i, 4):
+            # flip character in a deterministic cyclic way
+            if s_list[i] == 'R':
+                s_list[i] = 'G'
+            elif s_list[i] == 'G':
+                s_list[i] = 'B'
 
+            else:
+                s_list[i] = 'R'
+        s = "".join(s_list)
 
+        ans = k_i
+        for i in range(n_i - k_i + 1):
+            cnt = 0
+            x = 0
+            for j in range(i, i + k_i):
+                if s[j] != sample[x]:
+                    cnt += 1
+                x = (x + 1) % 3
+            ans = min(ans, cnt)
+
+            cnt = 0
+            x = 1
+            for j in range(i, i + k_i):
+                if s[j] != sample[x]:
+                    cnt += 1
+                x = (x + 1) % 3
+            ans = min(ans, cnt)
+
+            cnt = 0
+            x = 2
+            for j in range(i, i + k_i):
+                if s[j] != sample[x]:
+                    cnt += 1
+                x = (x + 1) % 3
+            ans = min(ans, cnt)
+
+        # print(ans)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    main(5)

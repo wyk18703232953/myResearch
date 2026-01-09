@@ -1,22 +1,22 @@
-import random
+def main(n):
+    # n 表示序列长度
+    if n <= 0:
+        return
 
-def main(n: int):
-    # 生成规模为 n 的测试数据：n 个 1 到 10 之间的随机整数
-    number_sequence = [random.randint(1, 10) for _ in range(n)]
-
+    number_sequence = [i % 10 + 1 for i in range(1, n + 1)]
     number_total = sum(number_sequence)
 
     current_total = 0
     current_position = 0
 
     for number in number_sequence:
-        current_total += number
-        current_position += 1
+        current_total = current_total + number
+        current_position = current_position + 1
         if current_total >= number_total / 2:
-            print(current_position)
+            # print(current_position)
+            pass
             break
 
 
 if __name__ == "__main__":
-    # 示例：可自行修改测试规模
     main(10)

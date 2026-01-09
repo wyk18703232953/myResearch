@@ -1,94 +1,89 @@
-import math
-import random
+def main(n):
+    import math
 
+    # Map n to tree size and k
+    if n < 2:
+        size = 2
 
-def main(n, k=None, edges=None, seed=0):
-    random.seed(seed)
+    else:
+        size = n
+    k = max(1, size // 4)
 
-    # 若未给出k和edges，则自动生成一个随机树及k
-    if k is None:
-        # 生成一个较合理的k：1 到 floor(log2(n)) 之间
-        max_k = max(1, int(math.log2(n))) if n > 1 else 1
-        k = random.randint(1, max_k)
+    # Deterministically generate a tree with 'size' nodes:
+    # Use a simple path 1-2-3-...-size to keep structure simple and deterministic.
+    edges = [(i, i + 1) for i in range(1, size)]
 
-    if edges is None:
-        # 生成一棵随机树：n个点，n-1条边
-        # 用随机父节点方法生成树
-        edges = []
-        for v in range(2, n + 1):
-            parent = random.randint(1, v - 1)
-            edges.append((parent, v))
+    # Original logic starts here, with n -> size
+    n_local = size
 
-    # 以下为原算法逻辑（移除 input），封装在 main 中
     degreelist = []
-    for _ in range(min(k + 1, math.floor(math.log2(n)) + 10)):
+    for i in range(min(k + 1, math.floor(math.log2(n_local)) + 10)):
         degreelist.append({})
     degrees = degreelist[0]
-    for i in range(1, n + 1):
+    for i in range(1, n_local + 1):
         degrees[i] = 0
-    for u, v in edges:
-        degrees[u] += 1
-        degrees[v] += 1
+    for guy in edges:
+        degrees[guy[0]] += 1
+        degrees[guy[1]] += 1
     small = []
     center = None
     done = False
-
     for i in range(k):
         if not done:
             small = []
             for guy in degrees:
                 if degrees[guy] == 2:
-                    print("No")
+                    # print("No")
+                    pass
                     done = True
                     break
                 if degrees[guy] == 3:
                     small.append(guy)
-                    if center is None:
+                    if center == None:
                         center = guy
                     elif center != guy:
-                        print("No")
+                        # print("No")
+                        pass
                         done = True
                         break
                 elif degrees[guy] > 1:
                     small.append(guy)
-            if done:
-                break
-
             degrees = degreelist[i + 1]
-
-            if center is not None and center not in small:
+            if center != None and center not in small:
                 if not done:
-                    print("No")
+                    # print("No")
+                    pass
                 done = True
                 break
             elif len(small) == 0:
                 if not done:
-                    print("No")
+                    # print("No")
+                    pass
                 done = True
                 break
-
             for guy in small:
                 degrees[guy] = 0
-            for u, v in edges:
-                if u in degrees and v in degrees:
-                    degrees[u] += 1
-                    degrees[v] += 1
+            for guy in edges:
+                if guy[0] in degrees and guy[1] in degrees:
+                    degrees[guy[0]] += 1
+                    degrees[guy[1]] += 1
             for guy in degrees:
                 if degrees[guy] > 1 and degreelist[i][guy] != degrees[guy]:
                     if not done:
-                        print("No")
+                        # print("No")
+                        pass
                     done = True
                     break
+
         else:
             break
-
     if not done:
         if len(degreelist[-1]) == 1:
-            print("Yes")
+            # print("Yes")
+            pass
+
         else:
-            print("No")
-
-
-# 示例调用：main(10)
-# 若需要指定 k 和 edges，可直接传入：
-# main(n=5, k=2, edges=[(1,2),(2,3),(3,4),(4,5)])
+            # print("No")
+            pass
+if __name__ == "__main__":
+    main(10)

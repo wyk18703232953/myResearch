@@ -7,13 +7,13 @@ def main(n):
     primo = min(n - 1, v)
     if primo == n - 1:
         result = primo
+
     else:
         rimane = n - primo
         result = primo - 1 + (rimane) * (rimane + 1) // 2
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -29,15 +29,17 @@ def main(n):
             L = M - 1
             if M < MN:
                 MN = M
+
         else:
             F = M + 1
 
     if MN == 1 << 64:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print(N - MN + 1)
-
-
+        # print(N - MN + 1)
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(1000000)

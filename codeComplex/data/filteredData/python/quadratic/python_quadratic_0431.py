@@ -1,5 +1,3 @@
-import random
-
 def check_ticket(digits):
     for target in range(900):
         seg_i = 0
@@ -18,6 +16,7 @@ def check_ticket(digits):
             elif int_d == target or seg_sum + int_d == target:
                 seg_i += 1
                 seg_sum = 0
+
             else:
                 seg_sum += int_d
 
@@ -30,17 +29,23 @@ def check_ticket(digits):
     return False
 
 
-def main(n):
-    # 根据 n 生成测试数据：n 位数字串，首位不为 0（与常见票号类似）
+def generate_digits(n):
     if n <= 0:
-        print("no")
-        return
+        return "0"
+    digits = []
+    for i in range(n):
+        digits.append(str(i % 10))
+    return "".join(digits)
 
-    first_digit = str(random.randint(1, 9))
-    other_digits = ''.join(str(random.randint(0, 9)) for _ in range(n - 1))
-    digits = first_digit + other_digits
 
+def main(n):
+    digits = generate_digits(n)
     if check_ticket(digits):
-        print("yes")
+        # print("yes")
+        pass
+
     else:
-        print("no")
+        # print("no")
+        pass
+if __name__ == "__main__":
+    main(20)

@@ -1,23 +1,22 @@
-import random
-import string
+def main(n):
+    # 生成确定性字符串作为输入，长度为 n
+    # 构造规则：前半部分递增字符，后半部分为其逆序，整体形成回文结构
+    base = [chr(ord('a') + (i % 26)) for i in range((n + 1) // 2)]
+    if n % 2 == 0:
+        s_list = base + base[::-1]
 
-def generate_test_data(n: int) -> str:
-    # 随机生成长度为 n 的字符串，字符集为小写字母
-    return ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+    else:
+        s_list = base + base[-2::-1]
+    s = "".join(s_list)
 
-def main(n: int) -> int:
-    s = generate_test_data(n)
-
+    # 原始逻辑
     while s != "":
         if s == s[::-1]:
-            s = s[:len(s) - 1]
+            s = s[:(len(s) - 1)]
+
         else:
             break
-
-    # 返回结果而不是打印，方便在测试框架中使用
-    return len(s)
-
+    # print(len(s))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可按需修改
-    result = main(10)
-    print(result)
+    main(10)

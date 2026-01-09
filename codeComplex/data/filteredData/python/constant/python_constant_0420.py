@@ -1,24 +1,25 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据：lst[0], lst[1]
-    # 这里简单设定：lst[0] 在 [1, n]，lst[1] 在 [1, 2n]
-    x = random.randint(1, max(1, n))
-    y = random.randint(1, max(2, 2 * n))
+    # 生成与原程序输入结构一致的测试数据："x y"
+    # 将 n 作为第一个整数，第二个整数为 2*n（可随 n 线性扩展）
+    x = n
+    y = 2 * n
 
     lst = [x, y]
 
     if lst[1] > 2 * lst[0] - 1:
-        print(0)
+        # print(0)
+        pass
+
     else:
+        countr = 0
         if lst[1] % 2 == 1:
             countr = (lst[1] - 1) // 2
+
         else:
             countr = (lst[1] - 2) // 2
         if lst[1] > lst[0] + 1:
             countr = countr - lst[1] + lst[0] + 1
-        print(countr)
-
+        # print(countr)
+        pass
 if __name__ == "__main__":
-    # 示例：以 n = 10 运行
     main(10)

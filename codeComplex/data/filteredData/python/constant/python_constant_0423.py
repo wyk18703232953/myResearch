@@ -120,7 +120,8 @@ def power_set(L):
 
 
 def fastPlrintNextLines(a):
-    print('\n'.join(map(str, a)))
+    # print('\n'.join(map(str, a)))
+    pass
 
 
 def sortByFirstAndSecond(A):
@@ -137,11 +138,12 @@ def main(n):
     k = n + 1  # 根据规模 n 生成测试数据
 
     if k <= n:
-        print((k - 1) // 2)
+        # print((k - 1) // 2)
+        pass
+
     else:
-        print(max((2 * n - k + 1) // 2, 0))
-
-
+        # print(max((2 * n - k + 1) // 2, 0))
+        pass
 if __name__ == "__main__":
     # 示例：可以在这里调用 main 进行简单测试
     # 修改下面的数字即可测试不同规模

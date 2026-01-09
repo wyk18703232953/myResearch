@@ -1,6 +1,12 @@
-import random
+import sys
 
-# segment tree for range max
+sys.setrecursionlimit(2 * 10**5 + 10)
+
+write = lambda x: sys.stdout.write(x + "\n")
+ninf = 0
+op = max
+
+
 class SG:
     def __init__(self, n, v=None):
         self._n = n
@@ -98,25 +104,11 @@ class SG:
         return 0
 
 
-op = max
-ninf = 0
-
-
 def main(n):
-    # generate test data
-    random.seed(0)
-    # array values
-    a = [random.randint(0, 10**9) for _ in range(n)]
-    # number of queries
-    q = n  # for example, generate n queries
-    # queries: random 1-indexed intervals
-    queries = []
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
-        queries.append((l, r))
+    # n: input size -> length of array a
+    # deterministic construction of a
+    a = [(i * 37) ^ (i // 3) for i in range(n)]
 
-    # original logic
     vs = [[0] * (n - i) for i in range(n)]
     vs[0] = a
     for i in range(1, n):
@@ -138,16 +130,20 @@ def main(n):
         sg = SG(len(col), col)
         sgs.append(sg)
 
+    # number of queries scales with n
+    q = n
     ans = []
-    for (l, r) in queries:
-        l -= 1
-        r -= 1
+    for i in range(q):
+        # deterministic query generation, 1-based to match original, then converted
+        l = (i * 2) % n
+        r = n - 1 - (i % n)
+        if l > r:
+            l, r = r, l
         val = sgs[r].query(l, r + 1)
         ans.append(val)
 
-    # output
-    print("\n".join(map(str, ans)))
+    write("\n".join(map(str, ans)))
 
 
 if __name__ == "__main__":
-    main(5)
+    main(1000)

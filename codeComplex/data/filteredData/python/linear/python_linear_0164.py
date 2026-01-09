@@ -1,39 +1,21 @@
-import random
-
-def main(n: int):
+def main(n):
     dict1 = {}
     dict2 = {}
-
-    # 根据 n 生成测试数据：
-    # 生成形如 "(a+b)/c" 的表达式，其中 a,b,c 为随机整数且 c != 0
-    expressions = []
-    for _ in range(n):
-        a = random.randint(-10, 10)
-        b = random.randint(-10, 10)
-        c = 0
-        while c == 0:
-            c = random.randint(-10, 10)
-        expr = f"({a}+{b})/{c}"
-        expressions.append(expr)
-
-    # 原逻辑
+    # 生成确定性输入数据：n 行形如 "(a+b)/c" 的表达式
+    # 设 a=i, b=i+1, c=(i%5)+1，避免除以 0
     for i in range(n):
-        s = expressions[i]
-        s = s.split('/')
-        c = int(s[1])
-        s = s[0].strip('(').strip(')').split('+')
-        a = int(s[0])
-        b = int(s[1])
+        a = i
+        b = i + 1
+        c = (i % 5) + 1
         ans = (a + b) / c
-        try:
+        if ans in dict2:
             dict2[ans] += 1
-        except KeyError:
+
+        else:
             dict2[ans] = 1
         dict1[i] = ans
-
     for i in range(n):
-        print(dict2[dict1[i]], end=' ')
-
+        # print(dict2[dict1[i]], end=' ')
+        pass
 if __name__ == "__main__":
-    # 示例调用
-    main(5)
+    main(10)

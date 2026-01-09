@@ -26,12 +26,12 @@ def main(n: int):
     re_ = k % di
     if re_ == 0:
         l = 1
+
     else:
         l = 10 ** (di - re_)
     re = int(re // l)
-    print(re % 10)
-
-
+    # print(re % 10)
+    pass
 if __name__ == "__main__":
     # 示例：根据规模 n 生成测试数据
     # 这里直接用 n 作为原程序的 k

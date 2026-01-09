@@ -1,39 +1,37 @@
 def main(n):
-    import random
-
-    # 生成测试数据
-    # n: 查询次数规模
-    # 约束：0 <= c <= 255, 1 <= k <= 256
-    k = random.randint(1, 256)
-    queries = [random.randint(0, 255) for _ in range(n)]
-
     a = [0 for _ in range(256)]
-    outputs = []
+    # 设计输入规模映射：
+    # k: 窗口大小，取 1 到 10 之间，与 n 相关但有上界
+    # 序列长度 m: 与 n 相关，并且元素值在 [0, 255] 内
+    k = max(1, min(10, n))
+    m = min(n, 256)
 
-    for c in queries:
+    # 生成确定性的序列 c_list，元素在 0..255
+    # 使用简单算术构造：c_i = (i * 37 + n) % 256
+    c_list = [(i * 37 + n) % 256 for i in range(m)]
+
+    # 原程序逻辑
+    output = []
+    for c in c_list:
         if a[c] != 0:
-            outputs.append(str(a[c] - 1))
+            output.append(str(a[c] - 1))
+
         else:
-            # 向左寻找可用区间起点
-            i = 0
             for x in range(c, c - k, -1):
                 if a[x] == 0:
                     i = x
+
                 else:
                     if c - a[x] + 1 < k:
                         i = a[x] - 1
                     break
                 if x == 0:
                     break
-            # 填充区间
             for x in range(int(i), c + 1):
                 a[x] = i + 1
-            outputs.append(str(i))
+            output.append(str(i))
 
-    # 按原逻辑输出（用空格分隔，末尾无多余空格）
-    print(" ".join(outputs))
-
-
+    # print(" ".join(output))
+    pass
 if __name__ == "__main__":
-    # 示例：规模为10
-    main(10)
+    main(100)

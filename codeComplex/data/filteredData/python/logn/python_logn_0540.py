@@ -3,7 +3,9 @@ def main(n: int):
     k = n
 
     if k <= 9:
-        print(k)
+        # print(k)
+        pass
+
     else:
         s = 9
         num_digits = 1
@@ -19,12 +21,12 @@ def main(n: int):
 
         if digit_pos / num_digits != digit_pos // num_digits:
             digit_pos = digit_pos - (digit_pos // num_digits) * num_digits
+
         else:
             digit_pos = 0
 
-        print(str(number)[digit_pos])
-
-
+        # print(str(number)[digit_pos])
+        pass
 if __name__ == "__main__":
     # 示例：根据规模 n 生成测试数据
     # 可根据需要修改 n 的值进行测试

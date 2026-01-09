@@ -1,35 +1,36 @@
-# A. Find Square (modified to use main(n) and generated test data)
-import random
+def main(n):
+    # Interpret n as grid size n x n
+    size = n
+    # Deterministically generate a grid with a block of 'B's in one row
+    # Place 'B's from column n//4 to 3n//4 (at least one B)
+    grid = []
+    start = size // 4
+    end = max(start, (3 * size) // 4)
+    for i in range(size):
+        if i == size // 2:
+            row = ['W'] * size
+            for j in range(start, end + 1):
+                if j < size:
+                    row[j] = 'B'
+            grid.append(''.join(row))
 
-def main(n: int):
-    # generate a random m (number of columns), at least 1
-    m = max(1, n)
+        else:
+            grid.append('W' * size)
 
-    # prepare an empty grid of '.'
-    grid = [['.' for _ in range(m)] for _ in range(n)]
+    top = [-1, -1]
+    bottom = [-1, -1]
 
-    # generate a random square size s (side length)
-    s = random.randint(1, min(n, m))
-
-    # choose random top-left position so that the square fits
-    top_row = random.randint(0, n - s)
-    left_col = random.randint(0, m - s)
-
-    # fill the square with 'B'
-    for i in range(top_row, top_row + s):
-        for j in range(left_col, left_col + s):
-            grid[i][j] = 'B'
-
-    # run the original logic on the generated grid
-    for i in range(n):
-        s_row = ''.join(grid[i])
-        left = s_row.find('B')
+    for i in range(size):
+        s = grid[i]
+        left = s.find('B')
         if left != -1:
-            right = s_row.rfind('B')
+            right = s.rfind('B')
             c = (right - left) // 2 + 1
-            print(i + c, left + c)
+            # Keep original 1-based style output
+            # print(i + c, left + c)
+            pass
             break
 
+
 if __name__ == "__main__":
-    # example call; adjust n as needed
-    main(5)
+    main(10)

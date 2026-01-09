@@ -61,9 +61,8 @@ def main(n):
                 s += (out1(a, b, c) + out2(a, b, c) + out3(a, b, c))
                 s %= MOD
 
-    print(s % MOD)
-
-
+    # print(s % MOD)
+    pass
 if __name__ == "__main__":
     # 示例运行：可根据需要修改 n
     main(5)

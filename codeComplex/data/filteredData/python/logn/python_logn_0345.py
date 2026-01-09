@@ -21,9 +21,8 @@ def main(n: int):
     y = n
     m = n * n
     result = mat_oz(y, m)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例: 使用 n = 10 运行
     main(10)

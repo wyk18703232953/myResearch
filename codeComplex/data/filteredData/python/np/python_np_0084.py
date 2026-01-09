@@ -45,17 +45,18 @@ def main(n):
     for c in s2:
         if c in '+-':
             pred_p += 1 if c == '+' else -1
+
         else:
             unknown += 1
 
     if unknown == 0 and correct_p == pred_p:
         p = 1.0
+
     else:
         p = solve(correct_p - pred_p, unknown)
 
-    print('{0:.9f}'.format(p))
-
-
+    # print('{0:.9f}'.format(p))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

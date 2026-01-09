@@ -8,7 +8,8 @@ def timer(func):
         stime = time.perf_counter()
         res = func(*args, **kwargs)
         elapsed = time.perf_counter() - stime
-        print(f"{func.__name__} in {elapsed:.4f} secs")
+        # print(f"{func.__name__} in {elapsed:.4f} secs")
+        pass
         return res
     return wrapper
 
@@ -35,7 +36,8 @@ class Solver:
             pp = max(0, p - l + 1)
             res.extend(ref[pp:p + 1])
             p = pp - 1
-        print(' '.join(map(str, res)))
+        # print(' '.join(map(str, res)))
+        pass
 
 def main(n):
     # 这里根据 n 生成测试数据：原题只需要一个整数 n

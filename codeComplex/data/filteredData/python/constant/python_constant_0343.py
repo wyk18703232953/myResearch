@@ -1,20 +1,15 @@
-import random
-
-def main(n: int) -> None:
-    # 生成测试数据：此处直接使用参数 n 作为待处理的数据
-    # 若需要批量测试，可自行在外部循环调用 main()
-    
+def main(n):
     if n == 0:
-        print(0)
+        # print(0)
+        pass
     elif n % 2 == 1:
-        print((n + 1) // 2)
+        # print((n + 1) // 2)
+        pass
+
     else:
-        print(n + 1)
-
-
-# 示例：如需批量测试，可取消下面注释
-# if __name__ == "__main__":
-#     for _ in range(5):
-#         n_test = random.randint(0, 100)
-#         print(f"n = {n_test} -> ", end="")
-#         main(n_test)
+        # print(n + 1)
+        pass
+if __name__ == "__main__":
+    # 示例：对若干固定规模进行调用，便于做时间复杂度实验
+    for size in range(0, 11):
+        main(size)

@@ -1,25 +1,23 @@
-import random
+def main(n):
+    m = str(n)
+    cand1 = int(m)
+    if len(m) >= 2:
+        cand2 = int(m[:-2] + m[-1:])
 
-def main(n: int):
-    # 生成一个 n 位的随机正整数，最高位不为 0
-    if n <= 0:
-        return
-    first_digit = random.randint(1, 9)
-    other_digits = [str(random.randint(0, 9)) for _ in range(n - 1)]
-    m = str(first_digit) + ''.join(other_digits)
+    else:
+        cand2 = int(m)
+    if len(m) >= 1:
+        cand3 = int(m[:-1]) if len(m) > 1 else int(m)
 
-    # 原逻辑迁移：对字符串 m 计算三种情况的最大值
-    # 1. 原数
-    # 2. 去掉倒数第二位（m[:-2] + m[-1:]）
-    # 3. 去掉最后一位（m[:-1]）
-    res = max(
-        int(m),
-        int(m[:-2] + m[-1:]) if len(m) >= 2 else int(m),
-        int(m[:-1]) if len(m) >= 1 else int(m)
-    )
-
-    print(res)
+    else:
+        cand3 = int(m)
+    return max(cand1, cand2, cand3)
 
 if __name__ == "__main__":
-    # 示例：生成一个 5 位数并执行逻辑
-    main(5)
+    # 示例：使用 n 的位数规模进行多次实验
+    for k in range(1, 6):
+        # 构造一个具有 k 位的确定性整数，例如：111...1 (k 个 1)
+        n = int("1" * k)
+        result = main(n)
+        # print(f"n={n}, result={result}")
+        pass

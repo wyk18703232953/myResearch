@@ -1,6 +1,5 @@
-# Converted version: parameterized main(n), no input(), with test data generation.
-
-import random
+import os, sys
+from io import BytesIO, IOBase
 from math import inf, isinf
 
 def solve(s, t):
@@ -23,25 +22,66 @@ def solve(s, t):
                 return 'YES'
     return 'NO'
 
+def generate_case(n, idx):
+    # Deterministically generate (s, t) based on n and test index
+    # Map n to lengths; keep them reasonable for experiments
+    len_t = max(2, n // 3 + (idx % 3))
+    len_s = max(len_t, n + idx)
+    alphabet = "abcd"
+    s = "".join(alphabet[(i + idx) % len(alphabet)] for i in range(len_s))
+    t = "".join(alphabet[(i * 2 + idx) % len(alphabet)] for i in range(len_t))
+    return s, t
 
 def main(n):
-    """
-    n: number of test cases to generate and solve.
-    Test data generation:
-      - Alphabet: lowercase letters a–c (small to keep patterns dense).
-      - |s| in [1, 20], |t| in [1, 10].
-    """
-    random.seed(0)
-    alphabet = 'abc'
+    # n controls number of test cases and scale of strings
+    t = max(1, n)
+    results = []
+    for i in range(t):
+        s, tt = generate_case(n, i)
+        results.append(solve(s, tt))
+    for r in results:
+        # print(r)
+        pass
 
-    for _ in range(n):
-        len_s = random.randint(1, 20)
-        len_t = random.randint(1, 10)
-        s = ''.join(random.choice(alphabet) for _ in range(len_s))
-        t = ''.join(random.choice(alphabet) for _ in range(len_t))
-        print(solve(s, t))
+# Fast IO Region (left intact but unused for input)
+BUFSIZE = 8192
+class FastIO(IOBase):
+    newlines = 0
+    def __init__(self, file):
+        self._fd = file.fileno()
+        self.buffer = BytesIO()
+        self.writable = "x" in file.mode or "r" not in file.mode
+        self.write = self.buffer.write if self.writable else None
+    def read(self):
+        while True:
+            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+            if not b:
+                break
+            ptr = self.buffer.tell()
+            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+        self.newlines = 0
+        return self.buffer.read()
+    def readline(self):
+        while self.newlines == 0:
+            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+            self.newlines = b.count(b"\n") + (not b)
+            ptr = self.buffer.tell()
+            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+        self.newlines -= 1
+        return self.buffer.readline()
+    def flush(self):
+        if self.writable:
+            os.write(self._fd, self.buffer.getvalue())
+            self.buffer.truncate(0), self.buffer.seek(0)
 
+class IOWrapper(IOBase):
+    def __init__(self, file):
+        self.buffer = FastIO(file)
+        self.flush = self.buffer.flush
+        self.writable = self.buffer.writable
+        self.write = lambda s: self.buffer.write(s.encode("ascii"))
+        self.read = lambda: self.buffer.read().decode("ascii")
+        self.readline = lambda: self.buffer.readline().decode("ascii")
 
-if __name__ == '__main__':
-    # Example: run with 5 auto-generated test cases
-    main(5)
+if __name__ == "__main__":
+    main(10)

@@ -1,4 +1,30 @@
-import random
+import bisect as bi
+
+def yes():
+    # print('YES')
+    pass
+
+def no():
+    # print('NO')
+    pass
+
+def dict(a):
+    d = {}
+    for x in a:
+        if d.get(x, -1) != -1:
+            d[x] += 1
+
+        else:
+            d[x] = 1
+    return d
+
+def find_gt(a, x):
+    i = bi.bisect_left(a, x)
+    if i != len(a):
+        return i
+
+    else:
+        return -1
 
 def cal(r, g, b, dp, R, G, B, nr, ng, nb):
     if dp[r][g][b] != -1:
@@ -13,30 +39,34 @@ def cal(r, g, b, dp, R, G, B, nr, ng, nb):
     dp[r][g][b] = best
     return dp[r][g][b]
 
+def generate_data(n):
+    # Map n to sizes of R, G, B; keep small to avoid huge 3D DP
+    nr = max(1, n // 3)
+    ng = max(1, n // 3)
+    nb = max(1, n - nr - ng)
+    max_len = 200
+    nr = min(nr, max_len)
+    ng = min(ng, max_len)
+    nb = min(nb, max_len)
+
+    R = [i + 1 for i in range(nr)]
+    G = [2 * (i + 1) for i in range(ng)]
+    B = [3 * (i + 1) for i in range(nb)]
+    return nr, ng, nb, R, G, B
+
 def main(n):
-    """
-    n: 控制规模的参数（最大颜色数量）；实际数量在 [1, n] 随机生成
-    """
-    # 生成测试数据规模
-    nr = random.randint(1, n)
-    ng = random.randint(1, n)
-    nb = random.randint(1, n)
-
-    # 生成颜色数组，元素值也可随 n 调整
-    R = [random.randint(1, 1000) for _ in range(nr)]
-    G = [random.randint(1, 1000) for _ in range(ng)]
-    B = [random.randint(1, 1000) for _ in range(nb)]
-
+    nr, ng, nb, R, G, B = generate_data(n)
+    max_dim = 200
+    dp = [[[-1 for _ in range(max_dim + 1)] for _ in range(max_dim + 1)] for _ in range(max_dim + 1)]
     R.sort(reverse=True)
     G.sort(reverse=True)
     B.sort(reverse=True)
+    result = cal(0, 0, 0, dp, R, G, B, nr, ng, nb)
+    # print(result)
+    pass
 
-    # dp 需要大小为 (nr+1) x (ng+1) x (nb+1)
-    dp = [[[-1 for _ in range(nb + 1)] for _ in range(ng + 1)] for _ in range(nr + 1)]
+M = 998244353
+P = 1000000007
 
-    ans = cal(0, 0, 0, dp, R, G, B, nr, ng, nb)
-    print(ans)
-
-if __name__ == '__main__':
-    # 示例：n 控制最大数组长度
-    main(50)
+if __name__ == "__main__":
+    main(10)

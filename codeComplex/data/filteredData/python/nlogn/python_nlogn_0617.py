@@ -15,4 +15,5 @@ def main(n: int) -> int:
 if __name__ == "__main__":
     # 你可以在这里自定义 n 的测试值
     test_n = 10
-    print(main(test_n))
+    # print(main(test_n))
+    pass

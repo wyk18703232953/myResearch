@@ -1,35 +1,48 @@
-from operator import xor
-from random import randint
-
 def main(n):
-    # 生成测试数据：
-    # 第一行：长度为 n 的数组（值在 0~10 之间）
-    # 第二行：查询个数 m
-    # 接下来 m 行：区间 [l, r]，1 <= l <= r <= n
-    a = [[randint(0, 10) for _ in range(n)]]
-    m = max(1, n)  # 至少 1 个查询
-    queries = []
-    for _ in range(m):
-        l = randint(1, n)
-        r = randint(l, n)
-        queries.append((l, r))
+    from operator import xor
 
-    # 原逻辑：预处理 a 的各层（异或）
-    for i in range(1, n):
-        a.append(list(map(xor, a[-1][:-1], a[-1][1:])))
+    # Interpret n as both the length of the initial array and the number of queries
+    length = n
+    m = n
 
-    # 原逻辑：转为每层上从下层向上取区间最大值
-    for i in range(n - 1):
-        a[i + 1] = list(map(max, a[i][:-1], a[i][1:], a[i + 1]))
+    # Deterministically generate the initial array a[0]
+    # Here: a[0][i] = (i + 1) ^ (i // 2)
+    base_row = [(i + 1) ^ (i // 2) for i in range(length)]
+    a = [base_row]
+
+    # Deterministically generate m queries (l, r) with 1 <= l <= r <= n
+    # Pattern ensures coverage and determinism
+    qur = []
+    for i in range(1, m + 1):
+        l = (i % length) + 1
+        r = length - (i % length)
+        if l > r:
+            l, r = r, l
+        if l == 0:
+            l = 1
+        if r < l:
+            r = l
+        qur.append([l, r])
 
     out = []
-    for l, r in queries:
+
+    # Build XOR layers
+    for i in range(1, length):
+        prev = a[-1]
+        a.append([xor(prev[j], prev[j + 1]) for j in range(len(prev) - 1)])
+
+    # Transform to max over intervals
+    for i in range(length - 1):
+        row_i = a[i]
+        row_next = a[i + 1]
+        a[i + 1] = [max(row_i[j], row_i[j + 1], row_next[j]) for j in range(len(row_next))]
+
+    # Answer queries
+    for l, r in qur:
         out.append(a[r - l][l - 1])
 
-    # 输出结果（每行一个答案）
-    print("\n".join(map(str, out)))
-
-
+    for v in out:
+        # print(v)
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 5
-    main(5)
+    main(10)

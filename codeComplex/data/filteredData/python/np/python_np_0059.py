@@ -35,15 +35,15 @@ def main(n):
 
     if QMarks < abs(TotalA - TotalB):
         result = 0.0
+
     else:
         x = (QMarks - abs(TotalA - TotalB)) // 2
         x += abs(TotalA - TotalB)
         num = ncr(QMarks, x)
         result = num / denominator
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(5)

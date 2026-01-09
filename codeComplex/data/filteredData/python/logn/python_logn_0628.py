@@ -21,12 +21,15 @@ def main(n):
                 break
             elif cleft > (candy_in - moves_left):
                 low = mid + 1
+
             else:
                 high = mid - 1
-        print(ans)
-    else:
-        print(0)
+        # print(ans)
+        pass
 
+    else:
+        # print(0)
+        pass
 if __name__ == "__main__":
     # 示例调用：规模 n = 10
     main(10)

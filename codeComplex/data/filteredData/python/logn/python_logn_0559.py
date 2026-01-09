@@ -24,9 +24,8 @@ def main(n):
     # 求出在该数字中的具体位置并输出对应数字字符
     pos = (k - sum_digits[i - 1]) % i
     # 原逻辑中当余数为 0 时索引为 -1，刚好取最后一位
-    print(str(ans)[pos - 1])
-
-
+    # print(str(ans)[pos - 1])
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(15) 寻找第 15 个数字
     # 可按需要修改 n 进行测试

@@ -1,58 +1,76 @@
-import random
-import string
-
 def main(n):
-    # 生成规模为 n 的模式串 a（长度为 n），以及文本串 b（长度为 m）
-    # 规则：随机决定是否包含 '*'，以及 b 的长度 m（在 [max(1, n-1), n+3] 之间）
-    if n <= 0:
-        return
+    # Interpret n as the common length of strings a and b (to keep logic meaningful)
+    # Generate deterministic test data:
+    # a will possibly contain one '*' at a deterministic position when n > 2
+    # b will be a related string so that both YES/NO paths can be exercised for different n.
+    m = n
 
-    # 随机决定是否在模式串中放置一个 '*'
-    has_star = random.choice([True, False])
+    # Construct base string from lowercase letters deterministically
+    base = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
 
-    if has_star and n >= 2:
-        # 在 [0, n-1] 之间选一个位置放 '*'
-        star_pos = random.randint(0, n - 1)
-        # 其他位置填充随机小写字母
-        chars = []
-        for i in range(n):
-            if i == star_pos:
-                chars.append('*')
-            else:
-                chars.append(random.choice(string.ascii_lowercase))
-        a = ''.join(chars)
+    if n == 0:
+        a = ""
+        b = ""
+    elif n == 1:
+        # simple case without '*'
+        a = base
+        b = base
+
     else:
-        # 不含 '*'
-        a = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+        # place '*' at position p for a when n >= 2
+        p = n // 2
+        a = base[:p] + '*' + base[p+1:]
 
-    # 确定 b 的长度 m：允许稍短、相等、稍长
-    m = random.randint(max(1, n - 1), n + 3)
-    b = ''.join(random.choice(string.ascii_lowercase) for _ in range(m))
+        # Construct b so that:
+        # - For even n, b is designed to satisfy the matching condition
+        # - For odd n, b is slightly modified to fail the matching
+        if n % 2 == 0:
+            # Matching case
+            # We need to create b of length m = n such that:
+            #   a[:i] == b[:i]
+            #   t == tt where t = a[i+1:] and tt = b[m - n + 1 + i:] = b[i+1:]
+            # So b should be identical to a but without the '*'
+            b = base
 
-    # 将原逻辑直接改写为函数体：用生成的 a, b, n, m
+        else:
+            # Non-matching case, change one character in the tail
+            b_list = list(base)
+            # change last character deterministically
+            b_list[-1] = chr(ord('z') - (n % 26))
+            b = ''.join(b_list)
+
+    # Original logic with a, b, n, m
     if '*' in a:
         c = a.replace('*', '')
         i = a.index('*')
         if c == b:
-            print("YES")
+            # print("YES")
+            pass
         elif a[:i] == b[:i]:
-            t = a[i + 1:]
+            t = a[i+1:]
             tt = b[m - n + 1 + i:]
             if t == tt and n - 1 <= m:
-                print("YES")
+                # print("YES")
+                pass
+
             else:
-                print("NO")
+                # print("NO")
+                pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
     elif n > m:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
         if a == b:
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，实际使用时可在外层自行多次调用
-    main(5)
+    main(10)

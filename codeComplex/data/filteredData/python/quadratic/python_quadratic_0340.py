@@ -1,5 +1,4 @@
 import string
-import random
 
 def swap(a, i, j):
     temp = a[i]
@@ -7,15 +6,20 @@ def swap(a, i, j):
     a[j] = temp
 
 def main(n):
-    # 生成测试数据：随机字符串 a, b，保证是变位词（字符频次相同）
-    letters = string.ascii_lowercase
-    # 随机生成 a
-    a = [random.choice(letters) for _ in range(n)]
-    # b 是 a 的乱序版本，保证可变换
-    b = a[:]
-    random.shuffle(b)
+    if n <= 0:
+        return
 
-    # 以下是原逻辑
+    # 确定性生成字符串 a 和 b，长度均为 n
+    letters = string.ascii_lowercase
+    L = len(letters)
+    a = [letters[i % L] for i in range(n)]
+    # 生成 b 为 a 的一个确定性排列（例如整体右移一位，循环）
+    if n > 1:
+        b = [a[-1]] + a[:-1]
+
+    else:
+        b = a[:]
+
     res_a = dict().fromkeys(list(string.ascii_lowercase), 0)
     res_b = dict().fromkeys(list(string.ascii_lowercase), 0)
 
@@ -25,34 +29,39 @@ def main(n):
         res_b[ch] += 1
 
     can = True
-    for k in res_a:
-        if res_a[k] != res_b[k]:
+    for ch in res_a:
+        if res_a[ch] != res_b[ch]:
             can = False
             break
 
     if not can:
-        print(-1)
-        return
+        # print(-1)
+        pass
 
-    ans = []
-    for i in range(n):
-        if a[i] == b[i]:
-            continue
-        idx = -1
-        for j in range(i + 1, n):
-            if a[j] == b[i]:
-                idx = j
-                break
-        for j in range(idx, i, -1):
-            ans.append(j)
-            swap(a, j, j - 1)
-
-    print(len(ans))
-    if ans:
-        print(' '.join(map(str, ans)))
     else:
-        print()
+        ans = []
+        for i in range(n):
+            if a[i] == b[i]:
+                continue
 
+            else:
+                idx = -1
+                for j in range(i + 1, n):
+                    if a[j] == b[i]:
+                        idx = j
+                        break
+                for j in range(idx, i, -1):
+                    ans.append(j)
+                    swap(a, j, j - 1)
+        # print(len(ans))
+        pass
+
+        if ans:
+            # print(' '.join(map(str, ans)))
+            pass
+
+        else:
+            # print()
+            pass
 if __name__ == "__main__":
-    # 示例调用，可以修改 n 测试不同规模
-    main(5)
+    main(10)

@@ -1,37 +1,46 @@
-from bisect import bisect_left
-import random
+def main(n):
+    mem = [1]
+    pos = []
+    power = []
 
-def main(n: int):
-    # 1. 生成规模为 n 的测试数据 a，形式为 [(x1, y1), (x2, y2), ...]
-    #    原题逻辑只要求 a 是可排序的整数对，这里随机生成：
-    #    x 为 1..2n 的不重复整数，y 为 1..n 的正整数
-    xs = list(range(1, 2 * n + 1))
-    random.shuffle(xs)
-    xs = xs[:n]
-    ys = [random.randint(1, n) for _ in range(n)]
-    a = list(zip(xs, ys))
+    # Deterministically generate n pairs (x, y)
+    # Ensure x is non-decreasing after sort and power > 0
+    a = []
+    for i in range(n):
+        x = i * 2
+        y = (i % 5) + 1
+        a.append([x, y])
 
-    # 按原代码逻辑：对 a 排序
     a.sort()
-
-    mem = [1]      # DP 数组
-    pos = []       # 存储 x
-    power = []     # 存储 y
 
     for x, y in a:
         pos.append(x)
         power.append(y)
 
     for i in range(1, n):
-        ix = bisect_left(pos, pos[i] - power[i]) - 1
+        # manual bisect_left to avoid extra imports
+        target = pos[i] - power[i]
+        lo, hi = 0, i
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if pos[mid] < target:
+                lo = mid + 1
+
+            else:
+                hi = mid
+        ix = lo - 1
+
         if ix == -1:
             mem.append(1)
+
         else:
             mem.append(mem[ix] + 1)
 
-    print(n - max(mem))
+    result = n - max(mem)
+    # print(result)
+    pass
+    return result
 
 
-# 示例：直接运行时给一个默认规模
 if __name__ == "__main__":
     main(10)

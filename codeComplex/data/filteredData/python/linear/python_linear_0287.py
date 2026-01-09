@@ -1,14 +1,13 @@
 from collections import defaultdict
-import random
 
 def num(s):
     l, r = 0, 0
-    for ch in s:
-        if l == 0 and ch == ")":
+    for i in s:
+        if l == 0 and i == ")":
             r += 1
-        elif ch == "(":
+        elif i == "(":
             l += 1
-        elif l and ch == ")":
+        elif l and i == ")":
             l -= 1
     return (l, r)
 
@@ -23,24 +22,34 @@ def f(mp, cnt):
             mp[l] -= 1
     return ans
 
-def generate_string():
-    # 随机生成一条括号串
-    length = random.randint(1, 20)
-    return ''.join(random.choice("()") for _ in range(length))
-
 def main(n):
-    # n 为字符串数量规模
-    random.seed(0)
+    # 生成 n 个确定性的括号串
+    # 第 i 个串长度为 i % 10 + 1，模式在几种构造之间切换
+    strings = []
+    for i in range(1, n + 1):
+        length = i % 10 + 1
+        typ = i % 4
+        if typ == 0:
+            s = "(" * length
+        elif typ == 1:
+            s = ")" * length
+        elif typ == 2:
+            half = length // 2
+            s = "(" * half + ")" * (length - half)
+
+        else:
+            s = ")" * (length // 2) + "(" * (length - length // 2)
+        strings.append(s)
+
     cnt = []
     mp = defaultdict(int)
-    for _ in range(n):
-        s = generate_string()
+    for s in strings:
         l = num(s)
         cnt.append(l)
         mp[l] += 1
-    result = f(mp, cnt)
-    print(result)
 
+    result = f(mp, cnt)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：可以修改这里的 n 测试规模
-    main(10)
+    main(1000)

@@ -1,25 +1,26 @@
-import random
-
-def main(n: int):
-    # 生成测试数据
-    # p 取一个与 n 相关但不太小的值，避免退化，例如随机取 [1, 10*n] 内
+def main(n):
+    # 映射：n 为数组长度，p 为一个与 n 相关的确定性值
     if n <= 0:
         return 0
 
-    p = random.randint(1, max(1, 10 * n))
-    # 生成 n 个非负整数，控制数值规模避免溢出
-    a = [random.randint(0, 10**6) for _ in range(n)]
+    p = n + 7  # 确定性构造的模数
 
-    # 原始逻辑
-    k = sum(a)
+    # 确定性生成数组 a，长度为 n
+    a = [(i * 3 + 1) % (p + 5) for i in range(n)]
+
     t = 0
+    k = 0
+    for i in range(n):
+        k += a[i]
     s = 0
     for i in range(0, n - 1):
         s += a[i]
         t = max(t, s % p + (k - s) % p)
-    print(t)
+    # print(t)
+    pass
+    return t
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # 示例调用，可根据需要调整 n 的大小进行时间复杂度实验
     main(10)

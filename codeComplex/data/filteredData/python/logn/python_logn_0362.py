@@ -17,9 +17,8 @@ def main(n):
     a = (a + 1) % MOD
     if x == 0:
         a = 0
-    print(int(a))
-
-
+    # print(int(a))
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

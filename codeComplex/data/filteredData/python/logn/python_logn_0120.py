@@ -1,42 +1,41 @@
-#!/usr/bin/env python3
-import random
-
 def solve(n, k):
     if n == 1:
-        print(0)
-        return
+        return 0
 
     if n <= k:
-        print(1)
-        return
+        return 1
 
     lo, hi = 1, k - 1
     while lo < hi:
         mid = lo + (hi - lo + 1) // 2
+
         cum = (k - 2 + mid - 1) * (k - mid) // 2
         if cum < n - k:
             hi = mid - 1
+
         else:
             lo = mid
 
     if lo == 1:
-        print(-1)
-        return
+        return -1
 
-    print(k - lo + 1)
+    return k - lo + 1
 
 
 def main(n):
-    """
-    n: problem规模，对应原程序中的 n。
-    自动生成 k，并调用 solve(n, k)。
-    """
-    # 生成测试数据：约束 k >= 1
-    # 令 k 在 [1, max(1, 2*n)] 之间随机选择
-    k = random.randint(1, max(1, 2 * n))
-    solve(n, k)
+    # 将 n 作为问题规模，构造 (n, k)：
+    # 令 k = max(2, n//2 + 1)，保证 k 与 n 同级别增长
+    if n < 2:
+        n_val = 1
+        k_val = 1
 
+    else:
+        n_val = n
+        k_val = max(2, n // 2 + 1)
 
+    ans = solve(n_val, k_val)
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # 示例调用：可根据需要调整 n 的大小进行规模化实验
     main(10)

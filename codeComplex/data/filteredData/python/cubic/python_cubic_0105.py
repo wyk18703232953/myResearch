@@ -1,5 +1,3 @@
-import random
-
 class edge(object):
     def __init__(self, ne, to, fl):
         self.ne = ne
@@ -22,7 +20,7 @@ def bfs():
     q = [S]
     deep[S] = 1
     lp = 0
-    while lp < len(q):
+    while len(q) > lp:
         x = q[lp]
         lp += 1
         i = he[x]
@@ -62,36 +60,18 @@ def dinic():
     return res
 
 def main(n):
-    """
-    n: problem size, we will generate:
-       - n vertices on the left
-       - m = n vertices on the right (hyper-edges)
-    The graph structure follows the original program:
-       S -> i (capacity = weight[i])
-       n + j -> T (capacity = w_j)
-       x_j -> n + j (capacity = INF)
-       y_j -> n + j (capacity = INF)
-    """
     global e, tot, S, T, he, INF, deep
 
-    random.seed(0)
+    # Scale: treat n as number of original nodes.
+    # Define number of extra nodes m as n (same order of magnitude).
+    if n <= 0:
+        return 0
 
-    m = n  # choose m proportional to n
+    m = n
 
-    # Generate weights for left side vertices: 1..n
-    weight = [0] + [random.randint(1, 10) for _ in range(n)]
+    # Deterministic weight generation for n nodes: weight[i] = (i % 10) + 1
+    weight = [0] + [ (i % 10) + 1 for i in range(1, n + 1) ]
 
-    # Generate m triples (x, y, w) with 1 <= x, y <= n, x != y
-    edges_data = []
-    for _ in range(m):
-        x = random.randint(1, n)
-        y = random.randint(1, n)
-        while y == x:
-            y = random.randint(1, n)
-        w = random.randint(1, 10)
-        edges_data.append((x, y, w))
-
-    # Initialize global structures
     e = [0, 0]
     tot = 1
     S = n + m + 1
@@ -101,21 +81,29 @@ def main(n):
 
     ans = 0
 
-    # S -> i
+    # Edges from S to original nodes with capacity = weight[i]
     for i in range(1, n + 1):
         addedge(S, i, weight[i])
 
-    # hyper edges
+    # Deterministic construction of m "item" nodes:
+    # For each i in 1..m:
+    #   x = (i % n) + 1
+    #   y = ((i * 2) % n) + 1
+    #   w = (i % 7) + 1
+    #   edges: (n+i -> T, cap=w), (x -> n+i, INF), (y -> n+i, INF)
     for i in range(1, m + 1):
-        x, y, w = edges_data[i - 1]
+        x = (i % n) + 1
+        y = ((i * 2) % n) + 1
+        w = (i % 7) + 1
         addedge(n + i, T, w)
         addedge(x, n + i, INF)
         addedge(y, n + i, INF)
         ans += w
 
     ans -= dinic()
-    print(ans)
+    # print(ans)
+    pass
+    return ans
 
 if __name__ == "__main__":
-    # example: run with n = 5
-    main(5)
+    main(10)

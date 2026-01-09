@@ -1,28 +1,28 @@
+import sys
 from collections import deque
-import random
 
+def main(n):
+    # Deterministically generate n, d, k from input scale n
+    # Ensure d < n so the original logic can proceed meaningfully
+    if n < 3:
+        n_val = 3
 
-def main(n: int):
-    # 生成测试数据：
-    # 合理地选择 d, k，使得大部分情况下可以构造出树，便于测试。
-    # 例如：
-    #   d: 直径，介于 1 和 min(n-1, 15) 之间
-    #   k: 最大度数，介于 2 和 min(n, 10) 之间
-    if n < 2:
-        # 原题至少需要 n>=2 才有意义
-        print("NO")
+    else:
+        n_val = n
+
+    # Define d as about half of n, but at least 1 and less than n
+    d = max(1, min(n_val - 1, n_val // 2))
+    # Define k as at least 2, and not too small compared to d
+    k = max(2, d // 2 + 1)
+
+    n_local = n_val
+
+    if d >= n_local:
+        # print("NO")
+        pass
         return
 
-    d = random.randint(1, min(n - 1, 15))
-    k = random.randint(2, min(n, 10))
-
-    # 下面是原逻辑的改写（移除 input，封装到 main 中）
-
-    if d >= n:
-        print("NO")
-        return
-
-    graph = [[] for _ in range(n + 1)]
+    graph = [[] for _ in range(n_local + 1)]
 
     for i in range(1, d + 2):
         graph[i].append(min(i - 1, d + 1 - i))
@@ -31,15 +31,16 @@ def main(n: int):
         graph[i].append(i + 1)
         graph[i + 1].append(i)
 
-    deg = [0] * (n + 1)
+    deg = [0] * (n_local + 1)
     deg[1] = 1
     deg[d + 1] = 1
     for i in range(2, d + 1):
         deg[i] = 2
 
-    for v in deg:
-        if v > k:
-            print("NO")
+    for x in deg:
+        if x > k:
+            # print("NO")
+            pass
             return
 
     p = d + 2
@@ -48,8 +49,7 @@ def main(n: int):
         q.append(i)
         while q:
             x = q.popleft()
-            # graph[x][0] 是该节点与“层数”（或与根的距离）有关的一个值
-            while graph[x][0] > 0 and deg[x] < k and p <= n:
+            while graph[x][0] > 0 and deg[x] < k and p <= n_local:
                 graph[x].append(p)
                 deg[x] += 1
                 graph[p].append(graph[x][0] - 1)
@@ -58,27 +58,27 @@ def main(n: int):
                 q.append(p)
                 p += 1
 
-    if p <= n:
-        print("NO")
-        return
+    if p <= n_local:
+        # print("NO")
+        pass
 
-    print("YES")
-    vis = [-1] * (n + 1)
+    else:
+        # print("YES")
+        pass
+        vis = [-1] * (n_local + 1)
+        for i in range(1, d + 2):
+            if vis[i] == -1:
+                q = deque()
+                q.append(i)
+                while q:
+                    x = q.popleft()
+                    vis[x] = 1
+                    for j in range(1, len(graph[x])):
+                        if vis[graph[x][j]] == -1:
+                            # print(x, graph[x][j])
+                            pass
+                            q.append(graph[x][j])
 
-    for i in range(1, d + 2):
-        if vis[i] == -1:
-            q = deque()
-            q.append(i)
-            while q:
-                x = q.popleft()
-                vis[x] = 1
-                for j in range(1, len(graph[x])):
-                    to = graph[x][j]
-                    if vis[to] == -1:
-                        print(x, to)
-                        q.append(to)
-
-
-# 需要时可在此调试：
-# if __name__ == "__main__":
-#     main(10)
+if __name__ == "__main__":
+    # Example deterministic call for experimentation
+    main(10)

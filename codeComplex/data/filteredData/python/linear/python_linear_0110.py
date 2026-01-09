@@ -14,4 +14,5 @@ if __name__ == "__main__":
     # 根据 n 生成测试数据：此处直接用若干典型规模进行测试
     test_ns = [1, 2, 5, 10, 11, 20]
     for n in test_ns:
-        print(f"n = {n}, result = {main(n)}")
+        # print(f"n = {n}, result = {main(n)}")
+        pass

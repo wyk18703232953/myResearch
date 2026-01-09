@@ -17,9 +17,8 @@ def main(n):
                     best = candidate
         ys.append(best)
 
-    print(*ys)
-
-
+    # print(*ys)
+    pass
 if __name__ == "__main__":
     # 示例：规模为 5
     main(5)

@@ -26,9 +26,8 @@ def main(n: int):
     for k in range(1, n + 1):
         results.append(solver.solve(k))
     # 输出结果：一行字符串
-    print("".join(results))
-
-
+    # print("".join(results))
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 20 运行
     main(20)

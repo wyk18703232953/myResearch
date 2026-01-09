@@ -1,18 +1,21 @@
-import random
+def main(n):
+    # 根据 n 构造确定性输入规模
+    # 原程序需要 n 和 s，这里的 n 作为规模参数，
+    # 实际计算中使用:
+    #   n_input = n + 1  (避免除零)
+    #   s_input = n * (n + 1)
+    n_input = n + 1
+    s_input = n * (n + 1)
 
-def main(n: int):
-    # 根据 n 生成测试数据：随机生成 s，保证 s >= 0
-    # 这里令 s 在 [0, n * 10] 范围内随机
-    s = random.randint(0, n * 10)
-
-    big = s // n
-    r = s - big * n
+    big = s_input // n_input
+    r = s_input - big * n_input
     if r > 0:
-        print(big + 1)
+        result = big + 1
+
     else:
-        print(big)
+        result = big
 
-
-# 示例调用（如需测试可取消注释）
-# if __name__ == "__main__":
-#     main(5)
+    # print(result)
+    pass
+if __name__ == "__main__":
+    main(10)

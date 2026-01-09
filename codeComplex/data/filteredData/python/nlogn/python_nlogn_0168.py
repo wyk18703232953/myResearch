@@ -21,9 +21,8 @@ def main(n: int):
         ans += 1
         tmp = l
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例运行：规模 n = 10
     main(10)

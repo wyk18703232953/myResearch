@@ -1,24 +1,24 @@
-import random
-
 def main(n):
-    # 生成测试数据：规模为 n 的数组 a，以及 k（不同数的个数目标）
-    # 数组元素取值范围 1..n（可根据需要调整）
-    a = [random.randint(1, n) for _ in range(n)]
-    # k 取 1..n 之间的随机值（也可固定、可作为参数传入）
-    k = random.randint(1, n)
+    # 确定性数据生成
+    # 令 k 与 n 相关，保证 1 <= k <= n 且不过大
+    if n <= 0:
+        # print(-1, -1)
+        pass
+        return
+    k = max(1, n // 3)
+    # 生成数组 a，元素值在 [1, n] 范围内，使用确定性规则
+    # 将 a 构造为前 n 个按 (i % (n // 2 + 1)) + 1 映射的值，保证有重复
+    mod_base = n // 2 + 1
+    a = [(i % mod_base) + 1 for i in range(n)]
 
     i = 0
     d = 0
     x = -1
     y = -1
-    MAXV = 10**5 + 1
-    s = [0] * MAXV
+    s = [0] * (10**5 + 1)
 
     for j in range(len(a)):
         val = a[j]
-        if val >= MAXV:
-            # 简单防御：若生成数据超出计数数组范围，可扩展或限制生成范围
-            continue
         s[val] += 1
         i += 1
         if s[val] == 1:
@@ -37,9 +37,8 @@ def main(n):
         x = -1
         y = -1
 
-    print(x, y)
-
-
+    # print(x, y)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可根据需要修改
+    # 示例：可以根据需要修改 n 以做规模化实验
     main(10)

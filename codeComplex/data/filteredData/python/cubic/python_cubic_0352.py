@@ -1,40 +1,35 @@
 def main(n):
-    # 预处理最大值按 n 缩放
-    max_val = min(10**7, max(1, n * 10))
-    # 预处理平方数
-    import math
-    limit = int(math.isqrt(max_val)) + 2
-    squares = [i * i for i in range(1, limit)]
+    # Map n to problem scale:
+    # number of test cases T = max(1, n // 3)
+    # for each test: N = n, K = min(20, max(1, n // 10))
+    # A is a list of N integers in [1, base_n] deterministically generated
+    T = max(1, n // 3)
+    N = max(1, n)
+    K = min(20, max(1, n // 10))
 
-    # 预处理 p 数组（与原代码一致）
-    p = [i for i in range(max_val + 1)]
-    for i in range(1, max_val + 1):
+    # Precomputation upper bound for p-array
+    base_n = max(10, N)
+
+    squares = [i * i for i in range(1, int(base_n**0.5) + 2)]
+    p = [i for i in range(base_n + 1)]
+    for i in range(1, base_n + 1):
         if p[i] == i:
             for sq in squares:
                 v = i * sq
-                if v > max_val:
+                if v > base_n:
                     break
                 p[v] = i
 
-    # 根据 n 生成测试数据
-    # 构造一次测试：N = n, K = min(20, n)，A 为 1..N 内的随机数
-    import random
-    random.seed(0)
-    N = max(1, n)
-    K = min(20, N)  # K 不宜太大以免运算时间过长
-    t = 1           # 测试组数
-
     results = []
-
-    for _ in range(t):
-        # 生成 N 个在 [1, max_val] 的随机数
-        raw_A = [random.randint(1, max_val) for _ in range(N)]
-        A = [p[a] for a in raw_A]
+    for t in range(T):
+        # Deterministic generation of A of length N with values in [1, base_n]
+        # example pattern: (i^2 + 3i + 7) % base_n + 1
+        A_raw = [((i * i + 3 * i + 7 + 11 * t) % base_n) + 1 for i in range(N)]
+        A = [p[a] for a in A_raw]
 
         dp = [N] * (K + 1)
         dp[0] = 1
         used = [set() for _ in range(K + 1)]
-
         for a in A:
             for j in range(K, -1, -1):
                 if dp[j] == N:
@@ -42,19 +37,19 @@ def main(n):
                 if a in used[j]:
                     if j < K and dp[j + 1] > dp[j]:
                         dp[j + 1] = dp[j]
-                        used[j + 1] = used[j].copy()
+                        used[j + 1] = set(used[j])
                     dp[j] += 1
-                    used[j] = {a}
+                    used[j] = set([a])
+
                 else:
                     used[j].add(a)
-
         results.append(min(dp))
 
-    # 输出结果（与原逻辑的 print 对齐）
-    for r in results:
-        print(r)
+    # For time complexity experiments, we can return the last result or all results
+    return results[-1] if results else None
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(1000)
-    main(1000)
+    # Example deterministic call; adjust n for scaling experiments
+    # print(main(1000))
+    pass

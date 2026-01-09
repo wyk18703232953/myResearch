@@ -17,11 +17,12 @@ def main(n):
         if s % val == 0:
             cnt += 1
     if cnt > 0:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例：以 100 为规模调用
     main(100)

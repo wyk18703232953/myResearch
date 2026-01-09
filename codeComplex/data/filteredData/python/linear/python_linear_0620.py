@@ -1,46 +1,38 @@
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据
-    # 这里令 m = n（可按需要调整生成规则）
-    m = n
+    # Interpret n as the number of "shops" (m); let number of "positions" be 2*m
+    # So original: n_original + m_original = 2*m  and m_original = m
+    # => n_original = m
+    m = max(1, n)
+    total = 2 * m  # corresponds to n + m in original code
 
-    # 生成 n + m 个坐标，严格递增
-    # 随机生成步长，避免重复坐标
-    steps = [random.randint(1, 10) for _ in range(n + m)]
-    xs = []
-    cur = 0
-    for step in steps:
-        cur += step
-        xs.append(cur)
+    # Deterministic generation of xs (positions), strictly increasing
+    # For example: xs[i] = i
+    xs = list(range(total))
 
-    # 生成 ts：长度为 n + m，含有 m 个 1 和 n 个 0
-    ts = [1] * m + [0] * n
-    random.shuffle(ts)
+    # Deterministic generation of ts:
+    # First m positions are type-1 (ts[i]=1), next m positions are type-0 (ts[i]=0)
+    # This guarantees both kinds appear and matches original constraints (need some 1s and 0s)
+    ts = [1 if i < m else 0 for i in range(total)]
 
-    # 保证至少有一个 1（若生成逻辑改变时可防御）
-    if 1 not in ts:
-        ts[random.randrange(n + m)] = 1
-
-    # 以下为原始算法逻辑
-    pos = [-1 for _ in range(n + m)]
+    # Core logic from original program, unchanged
+    pos = [-1 for _ in range(total)]
     if ts[0]:
         pos[0] = 0
-    for i in range(1, n + m):
+    for i in range(1, total):
         pos[i] = pos[i - 1]
         if ts[i]:
             pos[i] += 1
 
     result = [0 for _ in range(m)]
     left = 0
-    leftC = 0  # 保留原变量名但未使用
+    leftC = 0
     right = 0
-    rightC = 0  # 保留原变量名但未使用
+    rightC = 0
 
-    for i in range(n + m):
+    for i in range(total):
         if ts[i] == 0:
             right = max(i, right)
-            while right + 1 < n + m and not ts[right]:
+            while right + 1 < total and not ts[right]:
                 right += 1
             mP, mD = 0, 20000000
             if ts[left]:
@@ -50,12 +42,12 @@ def main(n):
                 mD = xs[right] - xs[i]
                 mP = pos[right]
             result[mP] += 1
+
         else:
             left = i
 
-    print(*result)
-
-
+    # print(*result)
+    pass
 if __name__ == "__main__":
-    # 调用示例：规模 n = 5
-    main(5)
+    # Example deterministic call for complexity experiments
+    main(10)

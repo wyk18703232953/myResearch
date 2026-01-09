@@ -1,6 +1,7 @@
 def solve_case(n, k):
     if n >= 32:
         return "YES " + str(n - 1)
+
     else:
         ans = -1
         for i in range(1, n + 1):
@@ -14,6 +15,7 @@ def solve_case(n, k):
                 break
         if ans != -1:
             return "YES " + str(ans)
+
         else:
             return "NO"
 
@@ -32,9 +34,8 @@ def main(n):
         results.append(solve_case(ni, ki))
     # 输出所有结果，每行一条
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10) 生成 10 组测试并输出
     main(10)

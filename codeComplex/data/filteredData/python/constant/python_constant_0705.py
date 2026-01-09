@@ -6,12 +6,12 @@ def main(n: int):
 
     if v >= n - 1:
         ans = n - 1
+
     else:
         ans = v + ((2 + (2 + n - v - 2)) * (n - v - 1)) // 2
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 可按需要修改
     main(10)

@@ -8,7 +8,8 @@ def main(n):
 
     t = 0
     if k == 0:
-        print("Invalid input")
+        # print("Invalid input")
+        pass
         return
 
     d = 0
@@ -30,8 +31,10 @@ def main(n):
                 n = n + 1
                 break
             n = n + 1
+
         else:
-            print(9)
+            # print(9)
+            pass
             return
 
     u = abs(u)
@@ -41,10 +44,12 @@ def main(n):
     if p == 0:
         q = 10 ** (n - 1) + m - 1
         o = q % 10
+
     else:
         q = 10 ** (n - 1) + m
         o = (q // (10 ** (n - p))) % 10
-    print(o)
+    # print(o)
+    pass
 
 
 # 示例：调用 main(10)

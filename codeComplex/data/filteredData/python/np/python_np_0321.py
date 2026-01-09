@@ -60,9 +60,8 @@ def main(n):
     # 根据规模 n 生成测试数据，这里简单设定 k = n
     k = n
     res = solve(n, k)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 进行测试
     main(5)

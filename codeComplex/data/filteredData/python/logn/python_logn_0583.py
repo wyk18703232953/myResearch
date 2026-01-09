@@ -13,9 +13,11 @@ def solve(n, k):
             break
         elif res < k:
             l = x + 1
+
         else:
             r = x - 1
-    print(n - x)
+    # print(n - x)
+    pass
 
 
 def main(n):

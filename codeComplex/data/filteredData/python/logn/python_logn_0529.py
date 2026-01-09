@@ -16,9 +16,8 @@ def main(n: int):
 
     num = pow_10 + div
 
-    print(str(num)[rem])
-
-
+    # print(str(num)[rem])
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(100)
     main(100)

@@ -1,35 +1,40 @@
-from functools import reduce
-from operator import ior
-import random
-
 def main(n):
-    # n 代表 nk 的规模，这里同时也用作 m 的规模（比特长度）
-    nk = max(2, n)          # 至少 2 个，否则原逻辑直接 "NO"
-    m = max(1, n)           # 至少 1 位二进制
+    # Interpret n as the number of bitmasks (nk) and the bit-length (m)
+    # To keep it meaningful, set nk = max(2, n), m = max(1, n)
+    nk = max(2, n)
+    m = max(1, n)
 
-    # 生成测试数据：nk 个随机 m 位二进制数
-    # 为了可控，这里用随机数；如需可重复性，可设置随机种子
+    # Deterministically generate nk binary strings of length m
+    # Using simple arithmetic pattern based on index
     a = []
-    for _ in range(nk):
-        # 生成 0 到 2^m - 1 的随机数
-        val = random.getrandbits(m)
+    for i in range(nk):
+        # Generate an integer whose bits follow a deterministic pattern
+        # Example: bits set where (j + i) % 3 == 0
+        val = 0
+        for j in range(m):
+            if (j + i) % 3 == 0:
+                val |= (1 << j)
         a.append(val)
 
     if nk == 1:
-        print("NO")
+        # print("NO")
+        pass
         return
+
+    from functools import reduce
+    from operator import ior
 
     num = reduce(ior, a)
     for i in range(nk):
         k = a.copy()
         k.pop(i)
-        n_val = reduce(ior, k)
-        if n_val == num:
-            print("YES")
+        n_or = reduce(ior, k)
+        if n_or == num:
+            # print("YES")
+            pass
             return
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可根据需要修改或删除
-    main(5)
+    # Example call for time-complexity experiment
+    main(10)

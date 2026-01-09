@@ -1,14 +1,13 @@
-import random
-
 def main(n):
-    # 生成测试数据：m 在 [n, 2n] 之间，保证每个位置大概率被多次选中
-    m = random.randint(n, 2 * n)
-
+    # Interpret n as both n (size) and m (number of elements), matching original input structure
+    m = n
     square = [0] * n
-    # 生成 m 个 1..n 之间的随机位置
-    l = [random.randint(1, n) for _ in range(m)]
-
+    # Deterministically generate list l of length m with values in [1, n]
+    # Use a simple cyclic pattern: 1,2,...,n,1,2,... based on index
+    l = [(i % n) + 1 for i in range(m)]
     for x in l:
         square[x - 1] += 1
-
-    print(min(square))
+    # print(min(square))
+    pass
+if __name__ == "__main__":
+    main(10)

@@ -49,9 +49,8 @@ def main(n):
             + (h - f + 1) * (g - e + 1)
             + calc(j, k, l, q)
         )
-        print(n * m - black, black)
-
-
+        # print(n * m - black, black)
+        pass
 if __name__ == "__main__":
     # 示例调用：规模 n = 8
     main(8)

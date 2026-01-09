@@ -1,16 +1,24 @@
-from collections import deque
-import random
+def main(n):
+    from collections import deque
 
-INF = 1000_000_000
+    # Define problem size mapping:
+    # n: size of array
+    # q: number of queries
+    if n <= 1:
+        n = 2
+    q = n
 
-
-def solve_single_case(n, q, arr, queries):
+    # Deterministic array generation: permutation-like pattern
+    # Make sure max element is at the end to exercise the loop
+    arr = [((i * 3) % n) + 1 for i in range(n - 1)]
+    arr.append(n)
     maxval = max(arr)
+
     d = deque(arr)
     ans = {}
     count = 1
 
-    # 模拟直到最大值到达队首
+    # Simulate until maxval reaches the front
     while d[0] != maxval:
         a = d.popleft()
         b = d.popleft()
@@ -19,43 +27,38 @@ def solve_single_case(n, q, arr, queries):
         if a > b:
             d.append(b)
             d.appendleft(a)
+
         else:
             d.append(a)
             d.appendleft(b)
 
-    # 后续循环中最大值固定在队首，剩余元素形成周期
-    cycle_len = n - 1
-    results = []
+    # Now d[0] == maxval, the rest forms a cycle
+    cycle = list(d)[1:]  # elements after maxval
+    cycle_len = len(cycle)
+
+    # Deterministic generation of query list
+    # Queries cover:
+    # - first few steps (<= count)
+    # - some beyond count to hit the cyclic behavior
+    queries = []
+    # first half: within [1, count]
+    for i in range(1, min(q // 2 + 1, count + 1)):
+        queries.append(i)
+    # second half: beyond count, including multiple wraps
+    base = max(count, 1)
+    while len(queries) < q:
+        queries.append(base + len(queries) - (len(queries) // 2))
+
+    # Process queries as original logic
     for m in queries:
         if m in ans:
-            results.append(ans[m])
+            # print(ans[m][0], ans[m][1])
+            pass
+
         else:
-            idx = (m - count) % cycle_len  # 0-based index in cycle
-            results.append((maxval, d[1 + idx]))
-    return results
-
-
-def main(n):
-    # 生成一组测试数据，规模由 n 控制
-    # 这里令数组长度为 n，最大查询次数也为 n
-    if n <= 1:
-        n = 2
-
-    # 随机生成数组，保证元素互不相同，范围 [1, 2n]
-    # 为了稳定，可以固定种子
-    random.seed(0)
-    arr = random.sample(range(1, 2 * n + 1), n)
-
-    # 生成 q 个随机查询，范围在 [1, 2n] 内
-    q = n
-    queries = [random.randint(1, 2 * n) for _ in range(q)]
-
-    # 求解并输出
-    results = solve_single_case(n, q, arr, queries)
-    for a, b in results:
-        print(a, b)
-
-
+            k = m - count
+            idx = (k % cycle_len)
+            # print(maxval, cycle[idx])
+            pass
 if __name__ == "__main__":
-    # 示例：可以在此调整 n 测试
-    main(5)
+    main(10)

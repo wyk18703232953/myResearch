@@ -1,17 +1,13 @@
-import random
-
 def main(n):
-    # 随机生成规模
+    # Interpret n as the size of both sequences g and b
     games = n
     bills = n
 
-    # 生成测试数据：
-    # g: 随机游戏价格（1~100）
-    # b: 随机账单额度（1~100），排序后更符合匹配逻辑的一般用法
-    g = [random.randint(1, 100) for _ in range(games)]
-    b = [random.randint(1, 100) for _ in range(bills)]
-    g.sort()
-    b.sort()
+    # Deterministic data generation
+    # g is a non-decreasing sequence
+    g = [i // 2 for i in range(games)]
+    # b is also non-decreasing, with a simple offset pattern
+    b = [i // 3 + 1 for i in range(bills)]
 
     total = 0
     i = 0
@@ -22,12 +18,10 @@ def main(n):
             total += 1
             i += 1
             j += 1
-        else:  # g[i] > b[j]
+        elif g[i] > b[j]:
             i += 1
 
-    print(total)
-
-
+    # print(total)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

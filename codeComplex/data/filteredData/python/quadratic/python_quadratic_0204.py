@@ -3,43 +3,42 @@ import math
 from collections import Counter as cnt
 from functools import reduce
 from typing import MutableMapping
-import random
 
 def factors(n):    
     return set(reduce(list.__add__, 
-                ([i, n // i] for i in range(1, int(n ** 0.5) + 1) if n % i == 0)))
+                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 
 class My_stack():
     def __init__(self):
         self.data = []
     def my_push(self, x):
-        return self.data.append(x)
+        return (self.data.append(x))
     def my_pop(self):
-        return self.data.pop()
+        return (self.data.pop())
     def my_peak(self):
-        return self.data[-1]
+        return (self.data[-1])
     def my_contains(self, x):
-        return self.data.count(x)
+        return (self.data.count(x))
     def my_show_all(self):
-        return self.data
+        return (self.data)
     def isEmpty(self):
-        return len(self.data) == 0
+        return len(self.data)==0
 
-arrStack = My_stack()
+arrStack = My_stack()    
 
 def decimalToBinary(n): 
     return bin(n).replace("0b", "")
 
-def isPrime(n): 
-    if n <= 1:
+def isPrime(n) : 
+    if (n <= 1) : 
         return False
-    if n <= 3:
+    if (n <= 3) : 
         return True
-    if (n % 2 == 0) or (n % 3 == 0):
+    if (n % 2 == 0 or n % 3 == 0) : 
         return False
     i = 5
-    while i * i <= n:
-        if (n % i == 0) or (n % (i + 2) == 0):
+    while(i * i <= n) : 
+        if (n % i == 0 or n % (i + 2) == 0) : 
             return False
         i = i + 6
     return True
@@ -57,52 +56,60 @@ def get_prime_factors(number):
         prime_factors.append(int(number))
     return prime_factors
 
-def get_frequency(lst):
-    dic = {}
-    for ele in lst:
+def get_frequency(list_):
+    dic={}
+    for ele in list_:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
 
 def Log2(x): 
-    return math.log10(x) / math.log10(2)
+    return (math.log10(x) / math.log10(2)) 
 
 def isPowerOfTwo(n): 
-    return math.ceil(Log2(n)) == math.floor(Log2(n))
+    return (math.ceil(Log2(n)) == math.floor(Log2(n))) 
 
-def main(n):
-    # 根据规模 n 生成测试数据：
-    # n 行，每行长度 m，m 与 n 同阶，这里设 m = max(1, n)
-    m = max(1, n)
-
-    # 构造一个 n x m 的 0/1 矩阵，元素为整数 0 或 1
-    l = [[random.randint(0, 1) for _ in range(m)] for _ in range(n)]
-
-    dic = {}
-    discarded = {}
-
+def core_logic(n, m, l):
+    dic={}
+    discarded={}
     for i in range(n):
         for j in range(m):
-            if l[i][j] == 1:
-                if j + 1 not in discarded:
-                    if j + 1 not in dic:
-                        dic[j + 1] = i + 1
+            if l[i][j]==1 :
+                if j+1 not in discarded:
+                    if j+1 not in dic:
+                        dic[j+1]=i+1
+
                     else:
-                        del dic[j + 1]
-                        discarded[j + 1] = 1
+                        del dic[j+1]
+                        discarded[j+1]=1
+    if len(dic)==0:
+        return "YES"
 
-    if len(dic) == 0:
-        print("YES")
     else:
-        kk = list(dic.values())
-        temp = list(set(kk))
-        if len(temp) == n:
-            print("NO")
-        else:
-            print("YES")
+        kk=list(dic.values())
+        temp=list(set(kk))
+        if len(temp)==n:
+            return "NO"
 
+        else:
+            return "YES"
+
+def generate_deterministic_matrix(n, m):
+    # Generate a deterministic n x m matrix of 0/1 integers
+    # Pattern: l[i][j] = ((i * m + j) % 3) // 2  gives repeating 0,0,1,...
+    return [[((i * m + j) % 3) // 2 for j in range(m)] for i in range(n)]
+
+def main(n):
+    # Interpret n as both number of rows and columns for scalability
+    if n <= 0:
+        n = 1
+    m = n
+    l = generate_deterministic_matrix(n, m)
+    result = core_logic(n, m, l)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
     main(5)

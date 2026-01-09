@@ -1,6 +1,3 @@
-import math
-import random
-
 def max_sub(arr, n):
     dp = [0] * n
     dp[0] = arr[0]
@@ -9,50 +6,50 @@ def max_sub(arr, n):
     return max(0, max(dp))
 
 
-def solve(n, m, k, arr):
+def main(n):
+    import math
+
+    # 映射规模：n 为数组长度，同时用于控制 m 和 k 的大小
+    if n <= 0:
+        return
+
+    # 确定性生成 n, m, k
+    N = n
+    m = max(1, (n % 10) + 1)  # 1 到 10 之间
+    k = (n // 2) + 3
+
+    # 生成数组 arr，长度为 N
+    # 使用简单算术构造，包含正负混合
+    arr = [((i * 2) % 11) - 5 for i in range(N)]
+
     q = -math.inf
-    # dp[i][j]: at position i, remainder j (mod m)
-    dp = [[q] * (m + 1) for _ in range(n)]
+    dp = [[q] * 11 for _ in range(300100)]
 
     if m == 1:
-        for i in range(n):
+        for i in range(N):
             arr[i] = arr[i] - k
-        return max_sub(arr, n)
+        result = max_sub(arr, N)
+        # print(result)
+        pass
+
     else:
-        for i in range(n):
+        for i in range(N):
             dp[i][1] = arr[i] - k
-            for j in range(1, m + 1):
+            for j in range(m):
                 if i - 1 < 0 or dp[i - 1][j] == q:
                     continue
                 nxt = (j + 1) % m
-                if nxt == 0:
-                    nxt = m
                 if nxt != 1:
-                    dp[i][nxt] = max(dp[i][nxt], dp[i - 1][j] + arr[i])
+                    dp[i][nxt] = dp[i - 1][j] + arr[i]
+
                 else:
-                    dp[i][nxt] = max(dp[i][nxt], arr[i] - k, dp[i - 1][j] + arr[i] - k)
-
+                    dp[i][nxt] = max(arr[i] - k, dp[i - 1][j] + arr[i] - k)
         ma = 0
-        for i in range(n):
-            for j in range(1, m + 1):
+        for i in range(N):
+            for j in range(m):
                 ma = max(ma, dp[i][j])
-        return ma
-
-
-def main(n):
-    # 生成测试数据：
-    # n: 数组长度（由调用者指定）
-    # m: 1 到 min(10, n) 之间
-    # k: 1 到 10 之间
-    # arr: 元素在 [-10, 10] 之间
-    if n <= 0:
-        return 0
-
-    random.seed(0)
-    m = random.randint(1, min(10, n))
-    k = random.randint(1, 10)
-    arr = [random.randint(-10, 10) for _ in range(n)]
-
-    ans = solve(n, m, k, arr)
-    print(ans)
-    return ans
+        # print(ma)
+        pass
+if __name__ == "__main__":
+    # 示例调用：可修改 n 来进行规模化实验
+    main(1000)

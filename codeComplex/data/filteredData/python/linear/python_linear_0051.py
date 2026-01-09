@@ -36,23 +36,27 @@ def main(n):
     for i in range(n):
         if a - lst[i] in temp:
             unionSet(i, temp[a - lst[i]])
+
         else:
             unionSet(i, n)
         if b - lst[i] in temp:
             unionSet(i, temp[b - lst[i]])
+
         else:
             unionSet(i, n + 1)
 
     pa = findSet(n)
     pb = findSet(n + 1)
     if pa == pb:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
         ans = [0 if findSet(i) == pb else 1 for i in range(n)]
-        print(*ans)
-
-
+        # print(*ans)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

@@ -1,38 +1,37 @@
-import random
-
 def main(n):
-    # 生成测试数据：根据规模 n 生成区间 [l, r]
-    # 这里选择让 r 在 [0, 2^n - 1] 内，且 l <= r
-    if n <= 0:
-        return 0
+    # n 作为输入规模，这里构造两个整数 l, r
+    # 确保 l <= r，规模随 n 线性变化
+    l = n
+    r = 2 * n + 5
 
-    max_val = (1 << n) - 1
-    r_num = random.randint(0, max_val)
-    l_num = random.randint(0, r_num)
+    r_bin = bin(r)[2:]
+    l_bin = bin(l)[2:]
 
-    l = bin(l_num)[2:]
-    r = bin(r_num)[2:]
+    r_bin_rev = r_bin[::-1]
+    l_bin_rev = l_bin[::-1]
 
-    r = r[::-1]
-    l = l[::-1]
+    if l_bin_rev == r_bin_rev:
+        # print(0)
+        pass
 
-    if l == r:
-        result = 0
     else:
-        l += '0' * (len(r) - len(l))
+        if len(l_bin_rev) < len(r_bin_rev):
+            l_bin_rev += '0' * (len(r_bin_rev) - len(l_bin_rev))
+
         p = -1
-        for i in range(len(r)):
-            if r[i] != l[i]:
+        for i in range(len(r_bin_rev)):
+            if r_bin_rev[i] != l_bin_rev[i]:
                 p = i
+
+        if p == -1:
+            # print(0)
+            pass
+            return
 
         a = '1' * p + '0'
         b = '0' * p + '1'
 
-        result = int(a, 2) ^ int(b, 2)
-
-    print(result)
-    return result
-
+        # print(int(a, 2) ^ int(b, 2))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 自行设定
     main(10)

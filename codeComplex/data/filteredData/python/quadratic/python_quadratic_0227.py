@@ -1,20 +1,12 @@
-import random
-
-INF = 9999999999
-
-
-def main(n: int):
-    # 生成测试数据
-    # 保证 n >= 1
-    if n <= 0:
-        return
-
-    # 随机生成 l 和 l2
-    # l 中元素不一定有序，以测试一般情况
-    l = [random.randint(1, n * 2) for _ in range(n)]
-    l2 = [random.randint(1, 10) for _ in range(n)]
+def main(n):
+    # 生成确定性测试数据
+    # l: 严格递增序列，保证大量可行对
+    l = [i for i in range(1, n + 1)]
+    # l2: 简单周期性权重
+    l2 = [(i % 7) + 1 for i in range(n)]
 
     dp_1 = l2.copy()
+    INF = 9999999999
     dp_2 = [INF] * n
     dp_3 = [INF] * n
 
@@ -29,11 +21,11 @@ def main(n: int):
 
     x = min(dp_3)
     if x == INF:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

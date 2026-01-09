@@ -1,5 +1,3 @@
-import random
-
 def operations(a, b):
     less = min(a, b)
     more = max(a, b)
@@ -11,18 +9,13 @@ def operations(a, b):
     return ops
 
 def main(n):
-    # 生成 n 组测试数据 (a, b)，取值范围可根据需要调整
-    test_cases = []
-    for _ in range(n):
-        # 保证 a, b 为正整数，避免除以 0
-        a = random.randint(1, 10**9)
-        b = random.randint(1, 10**9)
-        test_cases.append((a, b))
-
-    # 执行运算并输出结果
-    for a, b in test_cases:
-        print(operations(a, b))
-
+    results = []
+    for i in range(1, n + 1):
+        a = i
+        b = 2 * i + 1
+        results.append(operations(a, b))
+    for res in results:
+        # print(res)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模为 5
-    main(5)
+    main(10)

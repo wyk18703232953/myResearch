@@ -16,9 +16,11 @@ def func(x1, y1, x2, y2, x3, y3):
                     rect3.remove(i)
 
                 if rect1[0] + rect2[0] + rect3[0] == i:
-                    print(i)
+                    # print(i)
+                    pass
                     for j in range(i):
-                        print("A" * rect1[0] + "B" * rect2[0] + "C" * rect3[0])
+                        # print("A" * rect1[0] + "B" * rect2[0] + "C" * rect3[0])
+                        pass
                     return
 
                 rect1 = recta
@@ -44,12 +46,16 @@ def func(x1, y1, x2, y2, x3, y3):
                     if rect1[0] + rect2[0] == iii:
                         rect3.remove(iii)
                         if i + rect3[0] == iii:
-                            print(iii)
+                            # print(iii)
+                            pass
                             for j in range(iii):
                                 if j < rect1[0]:
-                                    print("C" * rect3[0] + "A" * i)
+                                    # print("C" * rect3[0] + "A" * i)
+                                    pass
+
                                 else:
-                                    print("C" * rect3[0] + "B" * ii)
+                                    # print("C" * rect3[0] + "B" * ii)
+                                    pass
                             return
                 rect1 = recta.copy()
                 rect2 = rectb.copy()
@@ -61,13 +67,17 @@ def func(x1, y1, x2, y2, x3, y3):
                     if rect1[0] + rect3[0] == ii:
                         rect2.remove(ii)
                         if i + rect2[0] == ii:
-                            print(ii)
+                            # print(ii)
+                            pass
 
                             for j in range(ii):
                                 if j < rect1[0]:
-                                    print("B" * rect2[0] + "A" * i)
+                                    # print("B" * rect2[0] + "A" * i)
+                                    pass
+
                                 else:
-                                    print("B" * rect2[0] + "C" * iii)
+                                    # print("B" * rect2[0] + "C" * iii)
+                                    pass
                             return
                 rect1 = recta.copy()
                 rect2 = rectb.copy()
@@ -79,18 +89,23 @@ def func(x1, y1, x2, y2, x3, y3):
                     if rect2[0] + rect3[0] == i:
                         rect1.remove(i)
                         if i == rect1[0] + ii:
-                            print(i)
+                            # print(i)
+                            pass
                             for j in range(i):
                                 if j < rect2[0]:
-                                    print("A" * rect1[0] + "B" * ii)
+                                    # print("A" * rect1[0] + "B" * ii)
+                                    pass
+
                                 else:
-                                    print("A" * rect1[0] + "C" * iii)
+                                    # print("A" * rect1[0] + "C" * iii)
+                                    pass
                             return
                 rect1 = recta.copy()
                 rect2 = rectb.copy()
                 rect3 = rectc.copy()
 
-    print(-1)
+    # print(-1)
+    pass
 
 
 def main(n):

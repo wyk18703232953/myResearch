@@ -1,35 +1,34 @@
-import random
+def ask(x, arr, n):
+    # original interactive ask(x) is replaced by deterministic access to arr
+    return arr[(x - 1) % n]
 
 def main(n):
-    # 生成测试数据：一个长度为 n 的数组 a，内部可以根据需求调整生成方式
-    # 这里使用 1..100 之间的随机整数
-    a = [random.randint(1, 100) for _ in range(n)]
+    # Ensure n is even because original code uses t = n // 2 and expects some structure
+    if n < 2:
+        return
 
-    # 被原程序 ask(x) 替代的函数：查询数组中第 x 个位置的值（1-based）
-    def ask(x):
-        return a[x - 1]
+    # Deterministically generate an array arr[1..n] (1-based logical indexing)
+    # Example pattern: first half increasing, second half offset by constant
+    # This ensures some structure but is fully deterministic.
+    arr = [(i + (i // (n // 2))) for i in range(1, n + 1)]
 
     t = n // 2
     if t & 1:
-        # 原程序输出 -1 并退出
-        print(-1)
+        # print('! -1')
+        pass
         return
 
     l = 1
     r = n
     while l < r:
         mid = (l + r) >> 1
-        # (mid + t - 1) % n + 1 为环状索引
-        if ask(mid) >= ask((mid + t - 1) % n + 1):
+        if ask(mid, arr, n) >= ask((mid + t - 1) % n + 1, arr, n):
             r = mid
+
         else:
             l = mid + 1
-
-    # 原程序输出为"! l"，这里直接输出 l 和用于调试的数组 a
-    print("answer index:", l)
-    print("array:", a)
-
-
+    # print('! %d' % l)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时由外部传入 n
+    # Example deterministic call; adjust n as needed for experiments
     main(10)

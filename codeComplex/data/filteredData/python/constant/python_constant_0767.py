@@ -6,9 +6,8 @@ def main(n):
     b = (9 + 8 * (n + k)) ** 0.5
     a = int(b)
     result = n - (a - 3) // 2
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

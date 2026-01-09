@@ -5,6 +5,7 @@ def main(n):
         return
     if n == 1:
         k = 1
+
     else:
         k = (1 << (n - 1)) - 1
 
@@ -14,14 +15,14 @@ def main(n):
     for i in range(n - 2, -1, -1):
         if k & (1 << i):
             post.append(v)
+
         else:
             pre.append(v)
         v += 1
 
     # 输出与原程序相同的格式
-    print(*pre, n, *reversed(post))
-
-
+    # print(*pre, n, *reversed(post))
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的值
     main(5)

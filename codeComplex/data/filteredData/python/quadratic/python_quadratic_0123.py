@@ -1,26 +1,35 @@
-import random
-
-mod = 10**9 + 7
-INF = float('inf')
-
-
 def main(n):
-    # 随机生成 m（边数/元素数），这里设为 1~2n 之间
-    m = random.randint(1, 2 * n)
+    import math, itertools
+    from collections import Counter, deque, defaultdict
+    from bisect import bisect_left, bisect_right
+    from heapq import heappop, heappush, heapify, nlargest
+    from copy import deepcopy
 
-    # 生成长度为 m 的数组 c，元素在 1..n 之间，仿照原题的 1-based 输入
-    c = [random.randint(1, n) for _ in range(m)]
+    mod = 10**9 + 7
+    INF = float('inf')
 
-    # 原程序逻辑开始
-    cnt = [0] * n
-    # 原程序将输入减 1 转为 0-based，这里直接在生成时减 1
+    # 映射：给定规模 n，构造 n, m 和数组 c
+    # 令 m = 2 * n，并让 c 中每个 0..n-1 至少出现一次，其余按 (i % n) 填充
+    orig_n = n
+    m = 2 * orig_n if orig_n > 0 else 0
+
+    # 生成 c（原来是 0-indexed 的输入）
+    c = []
+    if orig_n > 0:
+        # 先让每个 0..n-1 出现一次
+        c.extend(range(orig_n))
+        # 其余位置用 i % n 填充，保持确定性
+        for i in range(m - orig_n):
+            c.append(i % orig_n)
+
+    # 原始程序逻辑开始
+    n_val = orig_n
+    cnt = [0] * n_val
     for x in c:
-        cnt[x - 1] += 1
+        cnt[x] += 1
 
-    # 输出答案
-    print(min(cnt))
-
-
+    result = min(cnt) if cnt else 0
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，实际使用时由外部决定 n
-    main(5)
+    main(10)

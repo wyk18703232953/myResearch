@@ -19,8 +19,10 @@ def solve(n: int) -> int:
     elif n % 2 == 0:
         if n % 3 == 0:
             return (n - 1) * (n - 2) * (n - 3)
+
         else:
             return n * (n - 1) * (n - 3)
+
     else:
         return n * (n - 1) * (n - 2)
 
@@ -32,7 +34,8 @@ def main(n: int):
     2. 计算并打印答案。
     """
     ans = solve(n)
-    print(ans)
+    # print(ans)
+    pass
 
 
 # 示例：如需本地测试，可手动调用 main(n)

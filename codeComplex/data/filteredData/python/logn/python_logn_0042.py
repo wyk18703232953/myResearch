@@ -1,15 +1,7 @@
-import random
-
 def main(n):
-    # 生成测试数据：根据规模 n 生成 [l, r]
-    # 这里选择 r 的数量级与 n 相关，l 随机选择在 [0, r] 内
-    if n <= 0:
-        return 0
-
-    max_bit = min(60, n.bit_length() + 10)  # 控制 r 的大小
-    r = random.randint(1, (1 << max_bit) - 1)
-    l = random.randint(0, r)
-
+    # Interpret n as the upper bound r; fix l = 0 so core logic is preserved
+    l = 0
+    r = max(0, n)
     masks = []
     for i in range(64, -1, -1):
         if (1 << i) > r:
@@ -19,6 +11,7 @@ def main(n):
         for k in masks:
             if x < y:
                 x += k
+
             else:
                 y += k
         for j in range(64, -1, -1):
@@ -30,10 +23,7 @@ def main(n):
                 y += (1 << j)
         if min(x, y) < l or max(x, y) > r:
             masks.pop()
-    ans = sum(masks)
-    print(ans)
-    return ans
-
+    # print(sum(masks))
+    pass
 if __name__ == "__main__":
-    # 示例调用，n 可根据需要修改
-    main(1000)
+    main(10)

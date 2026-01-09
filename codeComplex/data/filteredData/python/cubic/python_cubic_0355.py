@@ -1,8 +1,6 @@
-import random
-
-def get_prime(limit):
+def get_prime(n):
     res = []
-    for i in range(2, limit):
+    for i in range(2, n):
         is_prime = True
         for x in res:
             if i % x == 0:
@@ -22,47 +20,54 @@ def get_mask(num):
         c = 0
         while num % p == 0:
             c += 1
-            num //= p
+            num = num // p
         if c % 2 == 1:
             dv.append(p)
         if num < p * p:
             break
+
     for x in dv:
         num *= x
+
     return num
 
 
-def solve_one(N, K, A):
-    dp = [N] * (K + 1)
-    dp[0] = 1
-    used = [{} for _ in range(K + 1)]
-    for a in A:
-        a = get_mask(a)
-        for j in range(K, -1, -1):
-            if dp[j] == N:
-                continue
-            if a in used[j]:
-                if j < K and dp[j + 1] > dp[j]:
-                    dp[j + 1] = dp[j]
-                    used[j + 1] = used[j].copy()
-                dp[j] += 1
-                used[j] = {}
-            used[j][a] = 1
-    return min(dp)
-
-
 def main(n):
-    # n 作为规模参数：生成 n 组测试
-    t = n
-    random.seed(1)
-    for _ in range(t):
-        # 为每组测试生成 N, K, A
-        N = max(1, n)          # 可按需求调整规模策略
-        K = min(10, N - 1) if N > 1 else 0
-        A = [random.randint(1, 10**6) for _ in range(N)]
-        ans = solve_one(N, K, A)
-        print(ans)
+    # Interpret n as both number of test cases and base size
+    T = n if n > 0 else 1
+    results = []
 
+    for t in range(T):
+        # For each test case, define N and K deterministically from t and n
+        # N grows with n and t, K is bounded by log scale of N
+        N = max(1, n + t)
+        K = max(0, min(10, N // 5))
 
+        # Generate array A of length N, values constructed deterministically
+        # Use a simple pattern that gives composite and non-trivial factorization
+        A = [i * i + 2 * i + 3 for i in range(1, N + 1)]
+
+        dp = [N] * (K + 1)
+        dp[0] = 1
+        used = [{} for _ in range(K + 1)]
+        for a in A:
+            a = get_mask(a)
+            for j in range(K, -1, -1):
+                if dp[j] == N:
+                    continue
+                if a in used[j]:
+                    if j < K and dp[j + 1] > dp[j]:
+                        dp[j + 1] = dp[j]
+                        used[j + 1] = dict(used[j])
+                    dp[j] += 1
+                    used[j] = {}
+                used[j][a] = 1
+        results.append(min(dp))
+
+    # Aggregate output to keep behavior deterministic
+    # (e.g., print each result on a new line)
+    for r in results:
+        # print(r)
+        pass
 if __name__ == "__main__":
-    main(3)
+    main(5)

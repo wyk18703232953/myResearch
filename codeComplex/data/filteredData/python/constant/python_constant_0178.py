@@ -1,6 +1,4 @@
 from math import gcd
-import random
-
 
 def func(left: int, right: int):
     if left == 1:
@@ -12,6 +10,7 @@ def func(left: int, right: int):
         if right - left > 2:
             left += 1
             return '{} {} {}'.format(left, left + 1, left + 2)
+
         else:
             if gcd(left, left + 2) != 1:
                 return '{} {} {}'.format(left, left + 1, left + 2)
@@ -19,26 +18,16 @@ def func(left: int, right: int):
     return '{} {} {}'.format(left, left + 1, left + 2)
 
 
-def main(n: int):
-    """
-    n 为规模参数，用于生成测试数据 [left, right] 区间。
-    这里简单设定：
-      1 <= left < right <= n
-    并随机生成一个合法区间。
-    """
-    if n < 3:
-        # 无法形成长度至少为 3 的区间，直接用固定区间测试
-        left, right = 1, 3
-    else:
-        left = random.randint(1, max(1, n - 2))
-        right = random.randint(left + 1, n)
-        if right - left < 2:
-            # 确保 right - left >= 2，尽量满足原函数有意义的输入
-            right = min(n, left + 2)
-
-    print(func(left, right))
-
-
-if __name__ == '__main__':
-    # 示例：以 n=100 运行
-    main(100)
+def main(n):
+    # 对于这个程序，原始输入是两个整数 left, right
+    # 将 n 解释为区间长度，使得 right - left + 1 = n
+    # 选择一个确定性的映射：left = 1，right = n
+    # 当 n < 3 时，算法会立即返回 -1，这也符合原逻辑
+    left = 1
+    right = n
+    result = func(left, right)
+    # print(result)
+    pass
+if __name__ == "__main__":
+    # 示例调用，可根据需要修改 n 的值进行规模化实验
+    main(10)

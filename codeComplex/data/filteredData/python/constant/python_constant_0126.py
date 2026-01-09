@@ -1,25 +1,23 @@
-import random
+def main(n):
+    # 确定性生成输入字符串 s
+    # 映射规则：
+    # - n 为偶数：正数字符串
+    # - n 为奇数：负数字符串（以 - 开头）
+    # - 数值部分为 n 的平方
+    if n % 2 == 0:
+        s = str(n * n)
 
-def main(n: int):
-    # 根据规模 n 生成一个测试整数字符串 s
-    # 这里设定生成范围为 [-10^n + 1, 10^n - 1]
-    if n <= 0:
-        n = 1
-    lower = -10 ** n + 1
-    upper = 10 ** n - 1
-    x = random.randint(lower, upper)
-    s = str(x)
+    else:
+        s = "-" + str(n * n)
 
     if int(s) < 0:
-        k = int(s) // 10  # 使用整除，匹配原逻辑应对负数的结果
+        k = int(s) / 10
         m = s[:len(s) - 2] + s[-1]
-        result = max(int(k), int(m))
+        # print(max(int(k), int(m)))
+        pass
+
     else:
-        result = int(s)
-
-    print(result)
-
-
+        # print(s)
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模 n = 3
-    main(3)
+    main(10)

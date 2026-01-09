@@ -20,14 +20,14 @@ def main(n):
 
     for s in seg:
         if inn(main_seg, s):
-            print(s[2], main_seg[2])
+            # print(s[2], main_seg[2])
+            pass
             return
         if main_seg[1] < s[1]:
             main_seg = s
 
-    print(-1, -1)
-
-
+    # print(-1, -1)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可根据需要修改
     main(5)

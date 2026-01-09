@@ -1,16 +1,10 @@
-import random
-import string
+def main(n):
+    # Generate a deterministic string s of length n over lowercase letters
+    # Pattern: repeated 'abcdefghijklmnopqrstuvwxyz'
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    s = "".join(alphabet[i % 26] for i in range(n))
 
-
-def main(n: int):
-    # 生成测试数据：长度为 n 的随机字符串，字符从小写字母中选取
-    # 保证至少有 1 个不同字符
-    if n <= 0:
-        return
-    alphabet = string.ascii_lowercase
-    s = ''.join(random.choice(alphabet) for _ in range(n))
-
-    # 原逻辑开始
+    # Core logic preserved, with input() removed
     u_set = set()
     for ch in s:
         u_set.add(ch)
@@ -34,9 +28,7 @@ def main(n: int):
         if d[s[i]] == 0:
             del d[s[i]]
 
-    print(ans)
-
-
-if __name__ == '__main__':
-    # 示例：调用 main(100)
-    main(100)
+    # print(ans)
+    pass
+if __name__ == "__main__":
+    main(1000)

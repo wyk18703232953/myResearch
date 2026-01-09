@@ -1,17 +1,9 @@
-import random
-
 def main(n):
-    # 生成测试数据：这里随机生成 L 和 R，满足 0 <= L[i], R[i] < n
-    # 并且 L[i] + R[i] < n，以避免明显无解的情况过多
-    L = []
-    R = []
-    for _ in range(n):
-        # 先随机一个 sum_，再拆成 L 和 R
-        sum_ = random.randint(0, n - 1)
-        l = random.randint(0, sum_)
-        r = sum_ - l
-        L.append(l)
-        R.append(r)
+    # Deterministic data generation based on n
+    # L[i]: number of greater elements to the left
+    # R[i]: number of greater elements to the right
+    L = [i % (n // 2 + 1) for i in range(n)]
+    R = [(n - 1 - i) % (n // 2 + 1) for i in range(n)]
 
     E = []
     otv = [0] * n
@@ -26,12 +18,12 @@ def main(n):
                 if E[j][1] > i:
                     otv[E[j][1]] += 1
                     x -= 1
+
             else:
                 break
 
         if x > 0:
-            print("NO")
-            return
+            return "NO"
 
         x = L[i]
         for j in range(n):
@@ -39,12 +31,12 @@ def main(n):
                 if E[j][1] < i:
                     otv[E[j][1]] += 1
                     x -= 1
+
             else:
                 break
 
         if x > 0:
-            print("NO")
-            return
+            return "NO"
 
     for i in range(n):
         r = 0
@@ -56,15 +48,16 @@ def main(n):
             if otv[z] > otv[i]:
                 l += 1
         if (r != R[i]) or (l != L[i]):
-            print("NO")
-            return
+            return "NO"
 
-    print("YES")
-    for i in range(n):
-        print(otv[i] + 1, end=' ')
-    print()
+    result = ["YES"]
+    result.append(" ".join(str(otv[i] + 1) for i in range(n)))
+    return "\n".join(result)
 
 
 if __name__ == "__main__":
-    # 示例：运行 main(5)
-    main(5)
+    # Example deterministic call for complexity experiments
+    n = 10
+    output = main(n)
+    # print(output)
+    pass

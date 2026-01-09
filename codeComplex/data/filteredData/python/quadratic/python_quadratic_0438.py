@@ -1,16 +1,23 @@
-import random
-
 def main(n):
-    # 生成测试数据：长度为 n 的 0/1 数组（可按需要修改生成方式）
-    arr = [random.randint(0, 1) for _ in range(n)]
+    # Interpret n as the length of the array
+    if n <= 0:
+        return
+
+    # Deterministic generation of arr: digits 0-9 repeating
+    # but ensure it's a list of integers as in the original (from string digits)
+    base_digits = [i % 10 for i in range(n)]
+    arr = base_digits
 
     ans = 0
 
     if n == 2:
         if arr[0] == arr[1]:
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
         return
 
     for l in range(1, n - 1):
@@ -33,9 +40,14 @@ def main(n):
             i += 1
 
         if len(set(v)) == 1:
-            print("YES")
+            # print("YES")
+            pass
             ans = 1
             return
 
     if not ans:
-        print("NO")
+        # print("NO")
+        pass
+if __name__ == "__main__":
+    # Example call for scalability/experiments
+    main(10)

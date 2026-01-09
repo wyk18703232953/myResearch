@@ -1,28 +1,29 @@
-import random
-import string
+def main(n):
+    # Deterministically generate s and t of length n over small alphabet
+    # Alphabet: 'a', 'b', 'c', 'd'
+    alphabet = ['a', 'b', 'c', 'd']
+    s = [alphabet[i % 4] for i in range(n)]
+    # Generate t as a deterministic permutation of s using a simple pattern
+    # Here we rotate indices by (n // 3 + 1) to get a permutation
+    shift = n // 3 + 1
+    t = [''] * n
+    for i in range(n):
+        t[(i + shift) % n] = s[i]
 
+    # Core algorithm logic from original code
+    s_list = s[:]  # work on a copy
+    t_str = ''.join(t)
 
-def main(n: int):
-    # 生成测试数据：随机字符串 s, t，保证 sorted(s) == sorted(t)
-    # 字符集使用小写字母
-    letters = string.ascii_lowercase
-    # 随机生成 s
-    s = [random.choice(letters) for _ in range(n)]
-    # t 为 s 的随机重排（保证是同构）
-    t = s[:]
-    random.shuffle(t)
-    t = ''.join(t)
-
-    # 下面是原逻辑，只是去掉了 input 并用生成的 s, t
-    s_work = s[:]  # 工作副本，按原代码行为是 list
-    if sorted(s_work) != sorted(t):
-        print(-1)
+    if sorted(s_list) != sorted(t_str):
+        # print(-1)
+        pass
         return
 
     lst = [0] * n
+    s_work = s_list[:]
     for i in range(n):
         for j in range(n):
-            if s_work[j] == t[i]:
+            if s_work[j] == t_str[i]:
                 lst[j] = i + 1
                 s_work[j] = "."
                 break
@@ -37,11 +38,15 @@ def main(n: int):
                     lst[j], lst[j + 1] = lst[j + 1], lst[j]
                     a.append(j + 1)
 
-    print(ans)
-    if ans > 0:
-        print(*a)
+    # print(ans)
+    pass
 
+    if a:
+        # print(*a)
+        pass
 
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可按需修改规模
-    main(5)
+    main(10)

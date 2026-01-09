@@ -1,23 +1,18 @@
-import random
-
 def main(n):
-    # 1. 生成测试数据
-    # 生成一个随机的 n 个点的置换 a（0-based）
-    a = list(range(n))
-    random.shuffle(a)
-    # 生成每个点的随机费用 c
-    # 这里费用取 1~10^9 的随机整数
-    c = [random.randint(1, 10**9) for _ in range(n)]
+    # Deterministic data generation based on n
+    # c: costs, length n
+    c = [(i * 7 + 3) % (10 ** 6) + 1 for i in range(n)]
+    # a: permutation-like mapping with some structure, 0-based indices
+    # create cycles of varying lengths deterministically
+    a = [(i * 2 + 1) % n for i in range(n)]
 
-    # 2. 原逻辑
     visited = [-1] * n
     res = 0
 
     for i in range(n):
         trace = []
-
         t = i
-        mn = 10**18
+        mn = 10 ** 18
         while visited[t] == -1:
             visited[t] = i
             trace.append(t)
@@ -28,15 +23,18 @@ def main(n):
 
         while trace:
             v = trace.pop()
-            mn = min(mn, c[v])
+            if c[v] < mn:
+                mn = c[v]
             if t == v:
                 break
 
         res += mn
 
-    print(res)
+    return res
 
 
 if __name__ == "__main__":
-    # 可以修改这里的 n 以改变规模
-    main(10)
+    # example call for time-complexity experiments
+    result = main(10**5)
+    # print(result)
+    pass

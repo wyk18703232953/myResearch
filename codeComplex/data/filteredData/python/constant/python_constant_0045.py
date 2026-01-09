@@ -7,11 +7,12 @@ def main(n):
             c = 1
             break
     if c == 1:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 按规模 n 生成测试数据：这里直接使用 n 本身作为待测数字
     # 可以根据需要修改为其他生成方式，例如 n 的倍数、随机数等

@@ -1,28 +1,23 @@
-import random
-
 def main(n):
-    # 生成测试数据：给定 n，构造一个模数 mod
-    # 要求：mod 为素数且 > n，便于取逆元；这里简单取一个固定的大质数
+    # Deterministically set mod as a function of n
     mod = 10**9 + 7
 
     le = 500
 
-    def mod_pow(x, y):
+    def pow_mod(x, y):  # x**y mod mod
         ans = 1
         x %= mod
         while y > 0:
-            if y & 1:
+            if y % 2 == 1:
                 ans = (ans * x) % mod
             x = (x * x) % mod
-            y >>= 1
+            y //= 2
         return ans
 
-    def inv(x):
-        # mod 为素数，使用费马小定理
-        return mod_pow(x, mod - 2)
+    def inv(x):  # modular inverse assuming mod is prime
+        return pow_mod(x, mod - 2)
 
-    # 预处理阶乘 (最多只用到 le-1)
-    M = [1]
+    M = [1]  # i! mod mod
     mul = 1
     for i in range(1, le):
         mul = (mul * i) % mod
@@ -37,50 +32,38 @@ def main(n):
     INVS = [0] + [inv(i) for i in range(1, n + 1)]
 
     D[1][1] = 1
-    for z in range(2, n + 1):
+    for z in range(2, n + 1):  # total number of "computers"
         l0 = z // 2 + 3
         l1 = z + 1
 
-        # 清空 ND
         for i in range(l0):
-            row = ND[i]
             for j in range(l1):
-                row[j] = 0
+                ND[i][j] = 0
 
-        # 转移 1：开始一个新段，长度为 1
         for i in range(l0):
             if i >= 1:
                 ND[i][1] += D[i - 1][0] * (z - (i - 1))
                 ND[i][1] %= mod
 
-        # 转移 2：把所有长度 >=1 的段收缩成长度 0（某种状态聚合）
         for i in range(l0):
-            s = 0
-            Di = D[i]
             for j in range(1, n + 1):
-                s += Di[j]
-            ND[i][0] = (ND[i][0] + s) % mod
+                ND[i][0] += D[i][j]
+                ND[i][0] %= mod
 
-        # 转移 3：在当前段上继续扩展
         for i in range(l0):
-            Di = D[i]
-            NDi = ND[i]
-            for j in range(2, l1):
-                p = Di[j - 1]
-                if p == 0:
-                    continue
-                p *= (z - (i - 1))
-                p %= mod
-                p *= INVS[j] * 2
-                p %= mod
-                NDi[j] = (NDi[j] + p) % mod
-
-        # 复制回 D
-        for i in range(l0):
-            Di = D[i]
-            NDi = ND[i]
             for j in range(l1):
-                Di[j] = NDi[j]
+                if j >= 2:
+                    p = D[i][j - 1]
+                    p *= (z - (i - 1))
+                    p %= mod
+                    p *= INVS[j] * 2
+                    p %= mod
+                    ND[i][j] += p
+                    ND[i][j] %= mod
+
+        for i in range(l0):
+            for j in range(l1):
+                D[i][j] = ND[i][j]
 
     ans = 0
     for i in range(L0):
@@ -88,9 +71,8 @@ def main(n):
             ans += D[i][j]
             ans %= mod
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n
-    main(10)
+    # Example deterministic call for time complexity experiments
+    main(500)

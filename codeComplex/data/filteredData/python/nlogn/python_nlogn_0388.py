@@ -24,9 +24,8 @@ def main(n):
             s -= w[0]
             del w[0]
 
-    print(*final)
-
-
+    # print(*final)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 进行测试
     main(5)

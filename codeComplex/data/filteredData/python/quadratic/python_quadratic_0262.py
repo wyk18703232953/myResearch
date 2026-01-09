@@ -15,10 +15,10 @@ def main(n: int) -> None:
     for i in range(valid_n - a * b):
         l[i][i + 1] = l[i + 1][i] = o
 
-    print(('YES', 'NO')[not valid_n])
-    print('\n'.join(map(''.join, l)))
-
-
+    # print(('YES', 'NO')[not valid_n])
+    pass
+    # print('\n'.join(map(''.join, l)))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

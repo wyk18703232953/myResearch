@@ -1,17 +1,14 @@
 import math
-import random
 
 def main(n):
-    # 生成测试数据：n 对区间 [l, r]
-    # 这里生成 1 <= l <= r <= 2 * n 的随机区间
-    intervals = []
-    for _ in range(n):
-        l = random.randint(1, 2 * n)
-        r = random.randint(l, 2 * n)
-        intervals.append((l, r))
+    # n 表示测试用例数量
+    results = []
+    for i in range(n):
+        # 确定性生成 l, r
+        # 让区间规模随 n 和 i 线性增长，便于规模化实验
+        l = i + 1
+        r = (i + 1) * 3
 
-    # 原逻辑处理
-    for l, r in intervals:
         l -= 1
         war1 = math.ceil(l / 2)
         if l % 2 == 1:
@@ -21,9 +18,12 @@ def main(n):
         if r % 2 == 1:
             war2 = -1 * war2
 
-        print(war2 - war1)
+        results.append(war2 - war1)
+    return results
 
-
-# 示例运行（可根据需要调整或移除）
 if __name__ == "__main__":
-    main(5)
+    # 示例调用：规模 n = 10
+    ans = main(10)
+    for v in ans:
+        # print(v)
+        pass

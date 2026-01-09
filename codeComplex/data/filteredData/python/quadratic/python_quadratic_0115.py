@@ -1,10 +1,15 @@
-import random
+def main(n):
+    # 映射：n -> 实际的 (n, m)
+    # 这里设定 m = n * 2，确保规模随 n 线性增长
+    m = n * 2
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int) -> int:
-    # 生成测试数据：m 次操作，每次随机选择 1..n 之间的一个位置
-    # 这里设定 m = n * n，可按需要调整规模
-    m = n * n
-    tL0 = [random.randint(1, n) for _ in range(m)]
+    # 确定性生成输入 tL0，长度为 m，元素范围在 [1, n]
+    # 使用简单算术构造 (i % n) + 1
+    tL0 = [(i % n) + 1 for i in range(m)]
 
     tL = [0] * n
     score = 0
@@ -14,10 +19,10 @@ def main(n: int) -> int:
         if 0 not in tL:
             score += 1
             for j in range(n):
-                tL[j] -= 1
+                tL[j] = tL[j] - 1
 
-    return score
-
+    # print(score)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 5，并打印结果
-    print(main(5))
+    # 示例调用，可根据需要调整 n 的大小进行时间复杂度实验
+    main(10)

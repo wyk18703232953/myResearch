@@ -1,4 +1,4 @@
-import random
+import sys
 
 def countR(ip):
     c = 0
@@ -21,25 +21,13 @@ def countG(ip):
             c += 1
     return c
 
-def main(n):
-    # 生成测试数据：
-    # 设定窗口大小 k，保证 1 <= k <= n
-    if n <= 0:
-        return
-    k = max(1, n // 2)
-
-    # 随机生成长度为 n 的字符串，仅包含 'R', 'G', 'B'
-    chars = ['R', 'G', 'B']
-    a = ''.join(random.choice(chars) for _ in range(n))
-
+def run_single_case(n, k, a):
     x = 'RGB' * 680
     y = 'GBR' * 680
     z = 'BRG' * 680
-
     xk = x[:k]
     yk = y[:k]
     zk = z[:k]
-
     op = 2001
     for j in range(n - k + 1):
         b = a[j:j + k]
@@ -54,9 +42,31 @@ def main(n):
             if b[jj] != zk[jj]:
                 zd += 1
         op = min(op, xd, yd, zd)
+    return op
 
-    print(op)
+def main(n):
+    # n controls both number of test cases and the scale of each case
+    t = n
+    results = []
+    for case_id in range(t):
+        # Deterministic generation of n_case and k
+        n_case = max(1, case_id + 2)  # lengths: 2,3,4,... for variety
+        max_k = min(2000, n_case)
+        k = max(1, (case_id * 3) % max_k + 1)
+        if k > n_case:
+            k = n_case
 
+        # Deterministic generation of string a of length n_case
+        # Pattern cycles over 'R', 'G', 'B' based on index and case_id
+        chars = ['R', 'G', 'B']
+        a = ''.join(chars[(i + case_id) % 3] for i in range(n_case))
+
+        op = run_single_case(n_case, k, a)
+        results.append(op)
+
+    # Output results to keep behavior similar to original program
+    for val in results:
+        # print(val)
+        pass
 if __name__ == "__main__":
-    # 示例：规模设为 10
-    main(10)
+    main(5)

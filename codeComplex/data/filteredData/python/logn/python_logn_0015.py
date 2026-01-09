@@ -6,12 +6,14 @@ def f(a, b):
             r[i] = "0"
             if int("".join(r), 2) >= a:
                 pass
+
             else:
                 r[i] = "1"
         if l[i] == "0" and r[i] == "0":
             l[i] = "1"
             if int("".join(l), 2) <= b:
                 pass
+
             else:
                 l[i] = "0"
     l = int("".join(l), 2)
@@ -30,9 +32,8 @@ def main(n):
     a = 1 << (n - 1)
     b = max_val
 
-    print(f(a, b))
-
-
+    # print(f(a, b))
+    pass
 if __name__ == "__main__":
     # 示例：可以在这里调用 main，规模自行调整
     main(5)

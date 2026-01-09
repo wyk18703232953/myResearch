@@ -11,9 +11,8 @@ def main(n):
     blue = 8 * n
 
     need = int(ceil(red / k)) + int(ceil(green / k)) + int(ceil(blue / k))
-    print(need)
-
-
+    # print(need)
+    pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 的取值
     main(10)

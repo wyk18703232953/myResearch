@@ -1,34 +1,43 @@
-import random
+def main(n):
+    # 原程序逻辑：处理一个整数输入 n
+    x = n
 
-def solve(n: int) -> int:
-    # 原逻辑的封装，返回结果而不是打印
-    if n >= 0:
-        return n
+    if x >= 0:
+        # print(x)
+        pass
+        return
+
     else:
-        s = str(abs(n))
+        s = str(abs(x))
         n1 = int(s[:len(s) - 1])
 
         temp = s[len(s) - 1]
-        n2_str = s[:len(s) - 2]
-        n2 = int(n2_str + temp) if n2_str != "" else int(temp)
 
-        if n1 <= n2:
-            return -n1 if n1 != 0 else 0
+        n2_prefix = s[:len(s) - 2]
+        if n2_prefix == "":
+            n2 = int(temp)
+
         else:
-            return -n2 if n2 != 0 else 0
+            n2 = int(n2_prefix + temp)
 
-def main(n: int):
-    # 根据规模 n 生成测试数据：
-    # 生成 [-10^n + 1, 10^n - 1] 范围内的随机整数
-    if n <= 0:
-        test_value = 0
+    if n1 <= n2:
+        if n1 != 0:
+            # print('-' + str(n1))
+            pass
+
+        else:
+            # print(0)
+            pass
+
     else:
-        limit = 10 ** n - 1
-        test_value = random.randint(-limit, limit)
+        if n2 != 0:
+            # print('-' + str(n2))
+            pass
 
-    result = solve(test_value)
-    print(result)
-
+        else:
+            # print(0)
+            pass
 if __name__ == "__main__":
-    # 示例：用 n=3 运行一次
-    main(3)
+    # 示例调用：使用 n 作为“输入规模”的同时也是原算法的输入
+    # 可以根据需要修改为任意确定性的整数
+    main(-123456)

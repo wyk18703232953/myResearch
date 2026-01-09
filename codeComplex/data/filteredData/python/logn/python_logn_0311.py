@@ -17,12 +17,13 @@ def main(n):
 
     if x == 0 or k == 0:
         ans = (x * 2) % MOD
+
     else:
         d = ((x * 4) - 1) - (x * 2)
         ans = ((x * 2) + (d * (fast_power(2, k) - 1))) % MOD
 
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：用 n = 10 作为规模运行
     main(10)

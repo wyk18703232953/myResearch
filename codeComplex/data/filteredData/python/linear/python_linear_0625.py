@@ -1,19 +1,17 @@
-import random
+def main(n):
+    # Interpret n as the number of positions (people), m will be the same as n
+    # Generate deterministic dist and taxi arrays
+    # dist: strictly increasing positions to respect the original logic that uses ordering
+    # taxi: first n//3 as taxis, others as non-taxis (deterministic pattern)
+    m = n
 
-def main(n: int):
-    # 生成测试数据
-    # n: 总人数
-    # m: 出租车数量，随机不超过 n
-    m = random.randint(1, n)
-    # 随机生成 n 个位置（1..10^9），并排序模拟一条线上的位置分布
-    dist = sorted(random.randint(1, 10**9) for _ in range(n))
-    # 随机选择 m 个位置作为有出租车的位置
-    taxi = [0] * n
-    taxi_indices = random.sample(range(n), m)
-    for idx in taxi_indices:
-        taxi[idx] = 1
+    # Generate distances as 1, 2, ..., n
+    dist = [i + 1 for i in range(n)]
 
-    # 原逻辑开始
+    # Generate taxi availability: first n//3 are taxis (1), rest are 0
+    split = n // 3
+    taxi = [1 if i < split else 0 for i in range(n)]
+
     dists = {}
     d = []
     for person in range(len(taxi)):
@@ -28,14 +26,17 @@ def main(n: int):
                 start += 1
             if abs(dist[person] - d[start]) <= abs(dist[person] - d[start + 1]):
                 dists[d[start]] += 1
+
             else:
                 dists[d[start + 1]] += 1
-    # 输出结果（与原程序行为等价：顺序为字典遍历顺序）
+    out = []
     for key in dists:
-        print(dists[key] if key != 10**11 else '', end=' ')
-    print()
+        if key != 10**11:
+            out.append(str(dists[key]))
 
-
+        else:
+            out.append('')
+    # print(' '.join(out))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模为 10
     main(10)

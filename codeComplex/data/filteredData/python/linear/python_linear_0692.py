@@ -21,6 +21,7 @@ def solve_one(n, s):
         mid = (lo + hi) >> 1
         if not good(mid, s, n):
             lo = mid + 1
+
         else:
             hi = mid
 
@@ -84,9 +85,12 @@ def main(n):
     s = (min_s + max_s) // 2  # 取一个中间值作为测试数据
 
     ans, parents = solve_one(n, s)
-    print(ans)
+    # print(ans)
+    pass
+
     if ans == "Yes":
-        print(*parents)
+        # print(*parents)
+        pass
 
 
 # 示例：直接运行时可以调用 main，例如：

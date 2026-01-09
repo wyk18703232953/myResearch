@@ -1,11 +1,18 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：m 为 1..n 之间的随机值，arr 为 0..10^9 之间的随机整数
+def main(n):
+    # Scale definition:
+    #   m: modulus
+    #   n: length of the array
+    # For determinism and scalability, set m as a function of n
+    # Ensure m >= 1 and not too large relative to n
     if n <= 0:
         return
-    m = random.randint(1, n)
-    arr = [random.randint(0, 10**9) for _ in range(n)]
+
+    # Example deterministic choice: m roughly sqrt(n), at least 1
+    m = max(1, int(n**0.5))
+
+    # Generate a deterministic array arr of length n
+    # Use simple arithmetic patterns
+    arr = [(i * 3 + 7) % (5 * m + 10) for i in range(n)]
 
     dp = [[] for _ in range(m)]
     for i in range(n):
@@ -18,12 +25,13 @@ def main(n: int):
     for _ in range(2):
         for i in range(m):
             if len(dp[i]) < k:
-                while s and len(dp[i]) < k:
+                while len(s) != 0 and len(dp[i]) < k:
                     x = s.pop()
                     y = arr[x] % m
                     if i > y:
                         ans[x] = ans[x] + (i - y)
                         res = res + (i - y)
+
                     else:
                         ans[x] = ans[x] + (m - 1 - y) + (i + 1)
                         res = res + (m - 1 - y) + (i + 1)
@@ -32,10 +40,10 @@ def main(n: int):
                 while len(dp[i]) > k:
                     s.append(dp[i].pop())
 
-    print(res)
-    print(*ans)
-
-
+    # print(res)
+    pass
+    # print(*ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    # Example deterministic call for time-complexity experiments
+    main(10_000)

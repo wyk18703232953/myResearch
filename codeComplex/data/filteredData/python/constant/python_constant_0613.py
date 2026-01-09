@@ -18,9 +18,8 @@ def main(n: int):
 
     # 输出结果
     for val in results:
-        print(val)
-
-
+        # print(val)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

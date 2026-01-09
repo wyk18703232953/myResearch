@@ -1,19 +1,17 @@
-import random
-
 def main(n):
-    # 随机生成 m, a, b，规模受 n 影响
-    # 保证 m >= 1
-    m = random.randint(1, max(1, 2 * n))
-    a = random.randint(1, max(1, 2 * n))
-    b = random.randint(1, max(1, 2 * n))
+    # 将 n 映射为原程序中的 n, m, a, b
+    # 保证 m > 0，且规模随 n 线性增长，保持确定性
+    N = n
+    M = n + 1
+    A = n + 2
+    B = n + 3
 
-    if n < m:
-        result = min(a * (m - n), b * n)
+    if N < M:
+        result = min(A * (M - N), B * N)
+
     else:
-        result = min(b * (n % m), a * (m - (n % m)))
-    print(result)
-
-
+        result = min(B * (N % M), A * (M - (N % M)))
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：可修改这里的参数测试不同规模
     main(10)

@@ -22,8 +22,8 @@ def main(n: int):
                     maxnok = nokk
                     delit = [i, j, f]
 
-    print(maxnok)
-
+    # print(maxnok)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(100) 进行测试，可根据需要修改 n 的值
     main(100)

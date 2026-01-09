@@ -1,47 +1,57 @@
-import random
+def main(n):
+    # Interpret n as grid size; keep grid roughly square and k proportional to size
+    if n <= 0:
+        return
+    rows = max(1, n // 2)
+    cols = max(1, n - rows)
+    k = max(1, n)  # ensure k >= 1
 
-def main(n: int):
-    # 可以根据需要调整 m 和 k 的生成方式
-    m = n                      # 这里简单设为与 n 相同的列数
-    k = 2 * n                  # 设为偶数，保证有解（原题 k 为步数）
+    # Generate deterministic edge weights
+    lr = [[1 + (i * cols + j) % 9 for j in range(cols - 1)] for i in range(rows)]
+    ud = [[1 + (i * cols + j * 2) % 9 for j in range(cols)] for i in range(rows - 1)]
 
-    # 生成测试数据：lr 为 n 行 m-1 列，ud 为 n-1 行 m 列
-    # 边权取值范围可根据需求调整
-    max_w = 10
-    lr = [[random.randint(1, max_w) for _ in range(m - 1)] for _ in range(n)]
-    ud = [[random.randint(1, max_w) for _ in range(m)] for _ in range(n - 1)]
+    m = cols
 
     if k % 2:
         arr = [-1] * m
-        for _ in range(n):
-            print(*arr)
+        for _ in range(rows):
+            # print(*arr)
+            pass
         return
 
     kk = k // 2
-    INF = 10**10
-    dp = [[[INF] * (kk + 1) for _ in range(m)] for _ in range(n)]
-
-    for i in range(n):
+    INF = 10 ** 10
+    dp = [[[INF] * (kk + 1) for _ in range(m)] for _ in range(rows)]
+    for i in range(rows):
         for j in range(m):
             dp[i][j][0] = 0
 
     for z in range(1, kk + 1):
-        for i in range(n):
+        for i in range(rows):
             for j in range(m):
+                val = dp[i][j][z]
                 if i > 0:
-                    dp[i][j][z] = min(dp[i][j][z], dp[i - 1][j][z - 1] + ud[i - 1][j])
-                if i < n - 1:
-                    dp[i][j][z] = min(dp[i][j][z], dp[i + 1][j][z - 1] + ud[i][j])
+                    cost = dp[i - 1][j][z - 1] + ud[i - 1][j]
+                    if cost < val:
+                        val = cost
+                if i < rows - 1:
+                    cost = dp[i + 1][j][z - 1] + ud[i][j]
+                    if cost < val:
+                        val = cost
                 if j > 0:
-                    dp[i][j][z] = min(dp[i][j][z], dp[i][j - 1][z - 1] + lr[i][j - 1])
+                    cost = dp[i][j - 1][z - 1] + lr[i][j - 1]
+                    if cost < val:
+                        val = cost
                 if j < m - 1:
-                    dp[i][j][z] = min(dp[i][j][z], dp[i][j + 1][z - 1] + lr[i][j])
+                    cost = dp[i][j + 1][z - 1] + lr[i][j]
+                    if cost < val:
+                        val = cost
+                dp[i][j][z] = val
 
-    ans = [[dp[i][j][kk] * 2 for j in range(m)] for i in range(n)]
-    for i in range(n):
-        print(*ans[i])
-
-
-# 示例调用
+    ans = [[dp[i][j][kk] * 2 for j in range(m)] for i in range(rows)]
+    for i in range(rows):
+        # print(*ans[i])
+        pass
 if __name__ == "__main__":
-    main(4)
+    # example call for experimental runs
+    main(10)

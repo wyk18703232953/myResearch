@@ -16,12 +16,12 @@ def main(n):
         ans = (pow(2, k + 1, MOD) * x) % MOD
         ans = (ans - pow(2, k, MOD)) % MOD
         ans = (ans + 1) % MOD
+
     else:
         ans = 0
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

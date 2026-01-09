@@ -1,13 +1,9 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # 生成一个长度为 n 的排列 a
-    a = list(range(1, n + 1))
-    random.shuffle(a)
-    # 生成一个长度为 n 的排列 b
-    b = a[:]  # 保证 b 中的元素一定都在 a 中，避免死循环
-    random.shuffle(b)
+    # 确定性生成输入数据
+    # a: 1..n
+    a = [i + 1 for i in range(n)]
+    # b: 将 a 向右循环平移一位
+    b = [a[-1]] + a[:-1] if n > 0 else []
 
     now = 0
     ans = []
@@ -19,12 +15,7 @@ def main(n):
             now += 1
             count += 1
         ans.append(str(count))
-    print("n =", n)
-    print("a:", " ".join(map(str, a)))
-    print("b:", " ".join(map(str, b)))
-    print("answer:", " ".join(ans))
-
-
-if __name__ == '__main__':
-    # 示例：规模为 10
+    # print(" ".join(ans))
+    pass
+if __name__ == "__main__":
     main(10)

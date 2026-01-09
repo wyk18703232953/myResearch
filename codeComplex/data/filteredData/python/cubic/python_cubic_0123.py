@@ -1,12 +1,4 @@
-from sys import stdout
-import random
-import string
-
-nxt = []
-
-
-def find_it(s, left, right):
-    global nxt
+def find_it(s, left, right, nxt):
     dp = [[1000 for _ in range(len(right) + 1)] for _ in range(len(left) + 1)]
     dp[0][0] = 0
     for i in range(len(left) + 1):
@@ -21,9 +13,7 @@ def find_it(s, left, right):
                     dp[i + 1][j] = nxt[ord(left[i]) - 97][dp[i][j]] + 1
     return dp[len(left)][len(right)] != 1000
 
-
-def solve_case(s, t):
-    global nxt
+def process_case(s, t):
     nxt = [[-1 for _ in range(len(s) + 1)] for _ in range(26)]
     for i, x in enumerate(s):
         nxt[ord(x) - 97][i] = i
@@ -31,29 +21,29 @@ def solve_case(s, t):
         for j in range(len(s) - 1, -1, -1):
             if nxt[i][j] != j:
                 nxt[i][j] = nxt[i][j + 1]
-
+    r = False
     for i in range(len(t)):
-        if find_it(s, t[:i], t[-len(t) + i:]):
-            return True
-    return False
-
+        res = find_it(s, t[:i], t[-len(t) + i:], nxt)
+        if res:
+            r = True
+            break
+    return "YES" if r else "NO"
 
 def main(n):
-    # 生成 n 组测试数据并输出结果
-    # 规模 n 控制测试用例数量；字符串长度根据 n 简单设置，可自行调整
-    random.seed(1)
-    for _ in range(n):
-        len_s = max(1, n % 20 + 5)
-        len_t = max(1, (n * 2) % 20 + 5)
-        s = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_s))
-        t = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_t))
-
-        if solve_case(s, t):
-            stdout.write("YES\n")
-        else:
-            stdout.write("NO\n")
-
-
+    results = []
+    # Interpret n as: number of test cases = n
+    # For test case i (0-based):
+    #   |s| = i + 1
+    #   |t| = i + 1
+    # Strings are deterministic over 'a'..'z' using modular patterns.
+    for i in range(n):
+        length_s = i + 1
+        length_t = i + 1
+        s = "".join(chr(97 + (j % 26)) for j in range(length_s))
+        t = "".join(chr(97 + ((j * 2) % 26)) for j in range(length_t))
+        results.append(process_case(s, t))
+    for res in results:
+        # print(res)
+        pass
 if __name__ == "__main__":
-    # 示例：运行 3 组随机测试
-    main(3)
+    main(5)

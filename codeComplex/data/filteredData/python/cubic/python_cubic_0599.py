@@ -1,56 +1,55 @@
-import random
-
 def main(n):
-    # 规模参数：n 行，m 列，最多可删 k 个 '1'
-    # 这里简单设置 m、k 为 n 的函数，也可按需要修改
-    m = max(1, n)          # 列数
-    k = max(0, n // 2)     # 可删除的 '1' 总数上限
+    # Map n -> original parameters:
+    # n_days = n
+    # m (string length) = n
+    # k (max removal operations) = n // 2
+    n_days = n
+    m = n
+    k = n // 2
 
-    # 3. 生成测试数据：随机 0/1 字符串
+    # Deterministic generation of DATA: n binary strings of length m
+    # Pattern: DATA[i][j] == '1' if (i + j) is even, else '0'
     DATA = []
-    for _ in range(n):
-        # 随机生成一行 0/1 串
-        row = ''.join(random.choice('01') for _ in range(m))
-        DATA.append(row)
+    for i in range(n_days):
+        s = ['1' if (i + j) % 2 == 0 else '0' for j in range(m)]
+        DATA.append(''.join(s))
 
     INF = 1 << 60
-    # dp[day][used_cost]
-    dp = [[INF] * (k + 10) for _ in range(n + 10)]
+    dp = [[INF] * (k + 10) for _ in range(n_days + 10)]
     dp[0][0] = 0
 
-    # COST[day][x]：第 day 行在删除 x 个 '1' 时，使该行剩下的 '1' 被包含的最小区间长度
-    COST = [[INF] * (k + 10) for _ in range(n + 10)]
-
+    COST = [[INF] * (k + 10) for _ in range(n_days + 10)]
     for i, string in enumerate(DATA):
-        stack = [idx for idx, ch in enumerate(string) if ch == '1']
+        stack = []
+        for j in range(m):
+            if string[j] == "1":
+                stack.append(j)
         L = len(stack)
-        # 删除 j 个 '1'
         for j in range(k + 10):
             if j >= L:
-                # 全删完，不需要区间
                 COST[i + 1][j] = 0
+
             else:
-                best = INF
-                # 保留 L - j 个连续的 '1'
                 for pos in range(j + 1):
                     l = pos
                     r = pos + L - 1 - j
-                    best = min(best, stack[r] - stack[l] + 1)
-                COST[i + 1][j] = best
+                    cost_val = stack[r] - stack[l] + 1
+                    if cost_val < COST[i + 1][j]:
+                        COST[i + 1][j] = cost_val
 
-    for day in range(1, n + 1):
+    for day in range(1, n_days + 1):
         for used_cost in range(k + 1):
             best = INF
+            row_cost = COST[day]
+            prev_row = dp[day - 1]
             for prev_cost in range(used_cost + 1):
-                cur = dp[day - 1][prev_cost] + COST[day][used_cost - prev_cost]
-                if cur < best:
-                    best = cur
+                val = prev_row[prev_cost] + row_cost[used_cost - prev_cost]
+                if val < best:
+                    best = val
             dp[day][used_cost] = best
 
-    ans = min(dp[n][used_cost] for used_cost in range(k + 1))
-    print(ans)
-
-
+    ans = min(dp[n_days][used_cost] for used_cost in range(k + 1))
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n
-    main(5)
+    main(50)

@@ -12,7 +12,8 @@ def l2d(n, m, val=0):
 
 def pmat(A):
     for ele in A:
-        print(*ele, end="\n")
+        # print(*ele, end="\n")
+        pass
 
 def main(n):
     """
@@ -23,7 +24,8 @@ def main(n):
     x = n
 
     if x <= 2:
-        print(x)
+        # print(x)
+        pass
         return
 
     if x % 2 == 1:
@@ -31,7 +33,9 @@ def main(n):
         a = x
         lcm_val = a * (a - 1) // gcd(a, a - 1)
         lcm_val = lcm_val * (a - 2) // gcd(lcm_val, a - 2)
-        print(lcm_val)
+        # print(lcm_val)
+        pass
+
     else:
         # 原代码：x 为偶数时在 [max(1,x-50), x] 上三重循环暴力求最大 lcm
         ans = 1
@@ -44,8 +48,8 @@ def main(n):
                     lcm123 = (lcm12 * n3) // gcd(lcm12, n3)
                     if lcm123 > ans:
                         ans = lcm123
-        print(ans)
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：自动生成一个规模为 100 的测试
     # 可根据需要修改 n 的默认测试值

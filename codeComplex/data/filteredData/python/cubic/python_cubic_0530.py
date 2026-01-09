@@ -1,8 +1,9 @@
-import random
+import math
 
 def rec(i, n, l, l2):
     if i == n:
         return []
+
     else:
         x = l2[i]
         flag = 0
@@ -17,10 +18,8 @@ def rec(i, n, l, l2):
                         p.append(j)
                         continue
                     mi = j
-
             if x == j:
                 flag = 1
-
             o.append(j)
             p.append(j)
 
@@ -41,50 +40,47 @@ def rec(i, n, l, l2):
         ans2 = [mi] + p
         if len(ans1) == n - i:
             return ans1
+
         else:
             return ans2
 
-
 def main(n):
-    """
-    自动生成规模为 n 的测试数据并执行原逻辑。
-    n: 控制第二个数 b 的位数（保证 n >= 1）
-    """
-    if n < 1:
-        raise ValueError("n must be >= 1")
+    if n <= 0:
+        # print("")
+        pass
+        return
 
-    # 生成 b：恰好 n 位，最高位不为 0
-    first_digit_b = random.randint(1, 9)
-    other_digits_b = [random.randint(0, 9) for _ in range(n - 1)]
-    l2 = [first_digit_b] + other_digits_b
-    b = int("".join(str(d) for d in l2))
+    # 确定性生成 a, b 的十进制字符串
+    # 保证都有 n 位，且不会以 0 开头
+    digits_a = [(i * 7 + 3) % 10 for i in range(n)]
+    digits_b = [(i * 9 + 4) % 10 for i in range(n)]
 
-    # 生成 a：位数在 [1, n+1] 之间，最高位不为 0
-    len_a = random.randint(1, n + 1)
-    first_digit_a = random.randint(1, 9)
-    other_digits_a = [random.randint(0, 9) for _ in range(len_a - 1)]
-    l1 = [first_digit_a] + other_digits_a
-    a = int("".join(str(d) for d in l1))
+    # 避免前导零
+    if digits_a[0] == 0:
+        digits_a[0] = 1
+    if digits_b[0] == 0:
+        digits_b[0] = 1
 
-    # 保持与原程序逻辑一致
-    e1 = str(a)
-    e2 = str(b)
-    l1 = [int(ch) for ch in e1]
-    l2 = [int(ch) for ch in e2]
+    e1 = "".join(str(d) for d in digits_a)
+    e2 = "".join(str(d) for d in digits_b)
+
+    a = int(e1)
+    b = int(e2)
+
+    l1 = [int(ch) for ch in str(a)]
+    l2 = [int(ch) for ch in str(b)]
 
     if len(l1) < len(l2):
         l1.sort(reverse=True)
         o = [str(i) for i in l1]
-        result = "".join(o)
+        # print("".join(o))
+        pass
+
     else:
-        n_local = len(l2)
-        ans = rec(0, n_local, l1, l2)
+        n2 = len(l2)
+        ans = rec(0, n2, l1, l2)
         w = [str(i) for i in ans]
-        result = "".join(w)
-
-    print(result)
-
-
+        # print("".join(w))
+        pass
 if __name__ == "__main__":
-    # 示例：规模为 5
-    main(5)
+    main(10)

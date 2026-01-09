@@ -19,18 +19,22 @@ def main(n):
         difference = add - sub
         
         if difference == choc:
-            print(sub)
+            # print(sub)
+            pass
             break
         elif difference < choc:
             bg = mid + 1  # 需要更大的mid
+
         else:
             end = mid - 1  # 需要更小的mid
+
     else:
         # 如果没找到精确解
-        print("No exact solution found")
+        # print("No exact solution found")
+        pass
         # 或者输出最接近的值
-        print(f"Closest: sub={tot - mid}, diff={difference}")
-
+        # print(f"Closest: sub={tot - mid}, diff={difference}")
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(100)
     main(100)

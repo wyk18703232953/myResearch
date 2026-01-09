@@ -14,6 +14,7 @@ def solve_mini(n, k):
     if n == 1:
         if k == 1:
             return (True, 0)
+
         else:
             return (False, None)
     if n == 2:
@@ -52,11 +53,12 @@ def main(t):
         k = i + 1
         ans, log = solve(n, k)
         if ans:
-            print("YES", log)
+            # print("YES", log)
+            pass
+
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     # 示例：运行 5 组测试数据
     main(5)

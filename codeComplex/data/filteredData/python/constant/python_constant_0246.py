@@ -5,9 +5,8 @@ def main(n: int):
     m = (n * 1234567) % (1 << (n + 1))
 
     # 原逻辑：输出 m % (2^n)
-    print(m % (1 << n))
-
-
+    # print(m % (1 << n))
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值做测试
     main(5)

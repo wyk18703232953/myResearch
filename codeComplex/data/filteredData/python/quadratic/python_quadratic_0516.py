@@ -1,77 +1,52 @@
-import random
-
-def main(n: int) -> None:
-    # 生成一个 n 行 m 列的随机网格，其中 '.' / '#' 随机分布
-    m = n  # 这里简单取 m = n，如需不同可自行修改
+def main(n):
+    # Map n to a square grid of size n x n for scalability
+    rows = n
+    cols = n
+    # Deterministic generation of grid a: pattern based on indices
+    # Use '#' when (i + j) % 3 == 0, else '.'
     a = []
-    for _ in range(n):
-        row = ''.join(random.choice(['.', '#']) for _ in range(m))
-        a.append(row)
+    for i in range(rows):
+        row_chars = ['#' if (i + j) % 3 == 0 else '.' for j in range(cols)]
+        a.append(''.join(row_chars))
 
-    for i in range(n):
-        for j in range(m):
+    # Original logic with n -> rows, m -> cols
+    for i in range(rows):
+        for j in range(cols):
             if a[i][j] == '.':
                 continue
             if i >= 2 and j >= 2:
-                if (
-                    a[i - 2][j - 2] == '#' and a[i - 2][j - 1] == '#' and a[i - 2][j] == '#'
-                    and a[i - 1][j] == '#' and a[i - 1][j - 2] == '#'
-                    and a[i][j - 1] == '#' and a[i][j - 2] == '#'
-                ):
+                if a[i-2][j-2] == '#' and a[i-2][j-1] == '#' and a[i-2][j] == '#' \
+                        and a[i-1][j] == '#' and a[i-1][j-2] == '#' and a[i][j-1] == '#' and a[i][j-2] == '#':
                     continue
-            if (
-                i >= 1 and i <= n - 2 and j >= 2
-                and a[i - 1][j - 2] == '#' and a[i - 1][j - 1] == '#' and a[i - 1][j] == '#'
-                and a[i][j - 2] == '#' and a[i + 1][j - 2] == '#'
-                and a[i + 1][j - 1] == '#' and a[i + 1][j] == '#'
-            ):
+            if i >= 1 and i <= rows-2 and j >= 2 and a[i-1][j-2] == '#' and a[i-1][j-1] == '#' and a[i-1][j] == '#' \
+                    and a[i][j-2] == '#' and a[i+1][j-2] == '#' and a[i+1][j-1] == '#' and a[i+1][j] == '#':
                 continue
-            if (
-                i <= n - 3 and j >= 2
-                and a[i][j - 1] == '#' and a[i][j - 2] == '#'
-                and a[i + 1][j] == '#' and a[i + 1][j - 2] == '#'
-                and a[i + 2][j] == '#' and a[i + 2][j - 1] == '#' and a[i + 2][j - 2] == '#'
-            ):
+            if i <= rows-3 and j >= 2 and a[i][j-1] == '#' and a[i][j-2] == '#' and a[i+1][j] == '#' \
+                    and a[i+1][j-2] == '#' and a[i+2][j] == '#' and a[i+2][j-1] == '#' and a[i+2][j-2] == '#':
                 continue
-            if (
-                i <= n - 3 and j >= 1 and j <= m - 2
-                and a[i][j - 1] == '#' and a[i][j + 1] == '#'
-                and a[i + 1][j - 1] == '#' and a[i + 1][j + 1] == '#'
-                and a[i + 2][j] == '#' and a[i + 2][j - 1] == '#' and a[i + 2][j + 1] == '#'
-            ):
+            if i <= rows-3 and j >= 1 and j <= cols-2 and a[i][j-1] == '#' and a[i][j+1] == '#' and a[i+1][j-1] == '#' \
+                    and a[i+1][j+1] == '#' and a[i+2][j] == '#' and a[i+2][j-1] == '#' and a[i+2][j+1] == '#':
                 continue
-            if (
-                i <= n - 3 and j <= m - 3
-                and a[i][j + 1] == '#' and a[i][j + 2] == '#'
-                and a[i + 1][j] == '#' and a[i + 1][j + 2] == '#'
-                and a[i + 2][j] == '#' and a[i + 2][j + 1] == '#' and a[i + 2][j + 2] == '#'
-            ):
+            if i <= rows-3 and j <= cols-3 and a[i][j+1] == '#' and a[i][j+2] == '#' and a[i+1][j] == '#' \
+                    and a[i+1][j+2] == '#' and a[i+2][j] == '#' and a[i+2][j+1] == '#' and a[i+2][j+2] == '#':
                 continue
-            if (
-                i <= n - 2 and i >= 1 and j <= m - 3
-                and a[i - 1][j] == '#' and a[i - 1][j + 1] == '#' and a[i - 1][j + 2] == '#'
-                and a[i][j + 2] == '#' and a[i + 1][j] == '#' and a[i + 1][j + 1] == '#' and a[i + 1][j + 2] == '#'
-            ):
+            if i <= rows-2 and i >= 1 and j <= cols-3 and a[i-1][j] == '#' and a[i-1][j+1] == '#' and a[i-1][j+2] == '#' \
+                    and a[i][j+2] == '#' and a[i+1][j] == '#' and a[i+1][j+1] == '#' and a[i+1][j+2] == '#':
                 continue
-            if (
-                i >= 2 and j <= m - 3
-                and a[i - 2][j] == '#' and a[i - 2][j + 1] == '#' and a[i - 2][j + 2] == '#'
-                and a[i - 1][j] == '#' and a[i - 1][j + 2] == '#'
-                and a[i][j + 1] == '#' and a[i][j + 2] == '#'
-            ):
+            if i >= 2 and j <= cols-3 and a[i-2][j] == '#' and a[i-2][j+1] == '#' and a[i-2][j+2] == '#' \
+                    and a[i-1][j] == '#' and a[i-1][j+2] == '#' and a[i][j+1] == '#' and a[i][j+2] == '#':
                 continue
-            if (
-                i >= 2 and j <= m - 2 and j >= 1
-                and a[i - 2][j - 1] == '#' and a[i - 2][j] == '#' and a[i - 2][j + 1] == '#'
-                and a[i - 1][j - 1] == '#' and a[i - 1][j + 1] == '#'
-                and a[i][j - 1] == '#' and a[i][j + 1] == '#'
-            ):
+            if i >= 2 and j <= cols-2 and j >= 1 and a[i-2][j-1] == '#' and a[i-2][j] == '#' and a[i-2][j+1] == '#' \
+                    and a[i-1][j-1] == '#' and a[i-1][j+1] == '#' and a[i][j-1] == '#' and a[i][j+1] == '#':
                 continue
-            print('NO')
-            return
-    print('YES')
+            # print('NO')
+            pass
+            return 'NO'
+    # print('YES')
+    pass
+    return 'YES'
 
 
 if __name__ == "__main__":
-    # 示例调用，n 可根据需要修改
-    main(5)
+    # Example deterministic call for time complexity experiments
+    main(10)

@@ -1,25 +1,25 @@
-import random
-import string as strlib
+def main(n):
+    # 生成确定性输入字符串，长度为 n
+    # 使用小写字母周期重复：'abc...zabc...'
+    if n <= 0:
+        string = ""
 
-def main(n: int):
-    # 1. 生成规模为 n 的随机测试字符串
-    # 字符集可按需调整，这里使用小写字母
-    s = ''.join(random.choice(strlib.ascii_lowercase) for _ in range(n))
+    else:
+        string = "".join(chr(ord('a') + (i % 26)) for i in range(n))
 
     totalmax = 0
-    for x in range(len(s)):
+    for x in range(len(string)):
         curr = ""
-        suffix = s[x:]
-        for y in suffix:
+        for y in string[x:]:
             curr += y
-            # 若在后缀 suffix 中 curr 出现至少两次，则更新答案
-            if suffix.rfind(curr) != suffix.find(curr):
+            if string[x:].rfind(curr) != string[x:].find(curr):
                 totalmax = max(totalmax, len(curr))
                 continue
-
-    print(totalmax)
+    # print(totalmax)
+    pass
+    return totalmax
 
 
 if __name__ == "__main__":
-    # 示例：n = 20，可按需修改
-    main(20)
+    # 示例：使用 n = 100 作为输入规模
+    main(100)

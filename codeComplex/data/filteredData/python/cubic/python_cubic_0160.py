@@ -1,26 +1,24 @@
-import random
-
-dp = []
-a = []
-
-
-def calcdp(l, r):
-    global dp, a
-    if l + 1 == r:
-        dp[l][r] = a[l]
+def calcdp_factory(a, dp):
+    def calcdp(l, r):
+        if l + 1 == r:
+            dp[l][r] = a[l]
+            return dp[l][r]
+        if dp[l][r] != 0:
+            return dp[l][r]
+        dp[l][r] = -1
+        for k in range(l + 1, r):
+            la = calcdp(l, k)
+            ra = calcdp(k, r)
+            if la > 0 and la == ra:
+                dp[l][r] = la + 1
         return dp[l][r]
-    if dp[l][r] != 0:
-        return dp[l][r]
-    dp[l][r] = -1
-    for k in range(l + 1, r):
-        la = calcdp(l, k)
-        ra = calcdp(k, r)
-        if la > 0 and la == ra:
-            dp[l][r] = la + 1
-    return dp[l][r]
+    return calcdp
 
+def solve(a):
+    n = len(a) - 1  # because original code appends a 0
+    dp = [[0] * (n + 1) for _ in range(n + 1)]
+    calcdp = calcdp_factory(a, dp)
 
-def solve(n):
     dp2 = [float('inf')] * (n + 1)
     dp2[0] = 0
     for i in range(n):
@@ -29,22 +27,17 @@ def solve(n):
                 dp2[j] = min(dp2[j], dp2[i] + 1)
     return dp2[n]
 
+def generate_data(n):
+    # Deterministic construction of array a of length n
+    # Pattern: a[i] = (i % 3) + 1 to create repeated small integers
+    a = [(i % 3) + 1 for i in range(n)]
+    a.append(0)  # as in original code
+    return a
 
 def main(n):
-    global dp, a
-    # 生成规模为 n 的测试数据，这里使用 1~3 的随机整数
-    a = [random.randint(1, 3) for _ in range(n)]
-    a.append(0)
-
-    dp = []
-    ll = [0] * (n + 1)
-    for _ in range(n + 1):
-        dp.append(list(ll))
-
-    ans = solve(n)
-    print(ans)
-
-
+    a = generate_data(n)
+    result = solve(a)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

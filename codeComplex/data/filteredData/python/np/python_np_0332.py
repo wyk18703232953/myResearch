@@ -38,6 +38,7 @@ def solve(N, K):
                     (dp[n - 1][0][k - 1] + dp[n - 1][1][k - 2]) % MOD +
                     (dp[n - 1][2][k] + dp[n - 1][3][k - 1]) % MOD
                 ) % MOD
+
             else:
                 dp[n][1][k] = (
                     (dp[n - 1][0][k - 1] + dp[n - 1][1][k]) % MOD +
@@ -61,8 +62,8 @@ def main(n):
     K = max(1, min(2 * N, n))
 
     result = solve(N, K)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：按需要手动指定规模
     main(10)

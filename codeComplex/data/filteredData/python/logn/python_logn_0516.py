@@ -14,9 +14,8 @@ def main(n):
     ans_number = (k - base_digit_number) // expo + 10 ** (expo - 1)
     ans_digit = str(ans_number)[(k - base_digit_number) % expo]
 
-    print(ans_digit)
-
-
+    # print(ans_digit)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=100 作为测试数据
     main(100)

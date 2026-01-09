@@ -1,15 +1,9 @@
-import random
+def main(n):
+    # Interpret n as: array length = n, k = max(1, n//3)
+    k = max(1, n // 3)
+    # Deterministic data generation: values[i] cycles through 1..(k+1)
+    values = [(i % (k + 1)) + 1 for i in range(n)]
 
-def main(n, k=None):
-    # 若未给定 k，则随机生成 1..n 之间的 k
-    if k is None:
-        k = random.randint(1, n)
-
-    # 生成测试数据：长度为 n 的数组，元素在 1..max(2k, n) 范围内
-    max_val = max(2 * k, n)
-    values = [random.randint(1, max_val) for _ in range(n)]
-
-    # 原始逻辑开始
     single, l, r = set(), -1, -1
     for i in range(n):
         single.add(values[i])
@@ -25,11 +19,11 @@ def main(n, k=None):
             break
 
     if len(single) < k:
-        print(-1, -1)
+        # print(-1, -1)
+        pass
+
     else:
-        print(l, r)
-
-
+        # print(l, r)
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模 n = 10
     main(10)

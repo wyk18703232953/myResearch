@@ -15,9 +15,8 @@ def main(n):
             rappend(str((n + 1) >> 1) + ' ' + str(m + 1 - i))
         if m & 1:
             rappend(str((n + 1) >> 1) + ' ' + str((m + 1) >> 1))
-    print('\n'.join(r))
-
-
+    # print('\n'.join(r))
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值做测试
     main(5)

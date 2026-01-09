@@ -22,9 +22,8 @@ def main(n: int):
                 a[i] -= k
                 ans = max(ans, a[i] - min1)
             min1 = min(min1, a[i])
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例运行：可以在这里调整 n 观测规模变化
     main(10)

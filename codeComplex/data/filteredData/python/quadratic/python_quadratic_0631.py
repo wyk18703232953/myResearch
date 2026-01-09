@@ -104,9 +104,8 @@ def main(n):
                 if f[j] and a[j] % a[i] == 0:
                     f[j] = 0
             f[i] = 0
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改或删除
     main(10)

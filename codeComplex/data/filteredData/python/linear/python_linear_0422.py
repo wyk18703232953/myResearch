@@ -1,41 +1,31 @@
-import random
+import sys
 from collections import Counter
 
-def main(n):
-    # 生成测试数据
-    # n: 数组长度
-    # x: 与运算的掩码，这里取一个与数组元素同数量级的随机数
-    max_val = max(1, n * 2)
-    x = random.randint(1, max_val)
-    a = [random.randint(1, max_val) for _ in range(n)]
-
-    # 输出生成的测试数据（如不需要可以去掉这两行）
-    print("n x:", n, x)
-    print("a:", *a)
-
-    # 原逻辑开始
+def core_logic(n, x, a):
     d = Counter(a)
     sa = set(a)
     if len(sa) < n:
-        print(0)
+        return 0
+
     else:
-        c = 0
         for i in a:
             k = i & x
             if k != i and k in d:
-                c = 1
-                print(1)
-                break
-        if c == 0:
-            z = []
-            for i in a:
-                z.append(i & x)
-            if len(set(z)) < n:
-                print(2)
-            else:
-                print(-1)
+                return 1
+        z = [i & x for i in a]
+        if len(set(z)) < n:
+            return 2
 
+        else:
+            return -1
 
+def main(n):
+    # Deterministic data generation
+    # Interpret n as array length; x chosen deterministically from n
+    x = (n // 2) ^ (n * 3 + 7)
+    a = [ (i * 17 + 23) & ((1 << 20) - 1) for i in range(n) ]
+    result = core_logic(n, x, a)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模为 10
     main(10)

@@ -1,30 +1,27 @@
-import random
-
-def main(n: int):
-    # 生成规模为 n 的测试数据：
-    # 生成一个长度为 n 的数字串 a（首位不为 0，若 n>1）
-    # 再生成一个不小于 len(a) 的 b，使得原逻辑有意义
+def main(n):
+    # Generate deterministic inputs a and b based on n
+    # a: n-digit number with pattern (i % 10)
+    # b: n-digit number with pattern ((i + 3) % 10), but ensure int(a) <= int(b) when lengths equal
     if n <= 0:
         return
 
-    # 生成 a
-    if n == 1:
-        a = str(random.randint(0, 9))
-    else:
-        first_digit = random.randint(1, 9)
-        other_digits = [str(random.randint(0, 9)) for _ in range(n - 1)]
-        a = str(first_digit) + "".join(other_digits)
+    # Construct string a
+    a = ''.join(str(i % 10) for i in range(n))
 
-    # 生成 b，使得 len(b) >= len(a)，这里简单生成同长度或更长的随机数
-    len_b = random.randint(len(a), len(a) + 2)
-    if len_b == 1:
-        b = str(random.randint(0, 9))
-    else:
-        first_digit_b = random.randint(1, 9)
-        other_digits_b = [str(random.randint(0, 9)) for _ in range(len_b - 1)]
-        b = str(first_digit_b) + "".join(other_digits_b)
+    # Construct preliminary b
+    b_digits = [(i + 3) % 10 for i in range(n)]
+    b = ''.join(str(d) for d in b_digits)
 
-    # 原逻辑开始
+    # Ensure when lengths equal, int(a) <= int(b) to avoid trivial "len(a) < len(b)" branch dominating
+    # If not, adjust b deterministically by increasing the first digit that is smaller than 9
+    if len(a) == len(b) and int(a) > int(b):
+        b_list = [int(ch) for ch in b]
+        for i in range(len(b_list) - 1, -1, -1):
+            if b_list[i] < 9:
+                b_list[i] += 1
+                break
+        b = ''.join(str(d) for d in b_list)
+
     la = [int(x) for x in a]
     res = []
     la.sort()
@@ -41,8 +38,11 @@ def main(n: int):
 
     if len(a) < len(b):
         for i in range(len(la)):
-            print(la[i], end='')
-        print()
+            # print(la[i], end='')
+            pass
+        # print()
+        pass
+
     else:
         for i in range(len(la)):
             cnt[la[i]] += 1
@@ -51,6 +51,7 @@ def main(n: int):
             if flag == 0 and cnt[lb[i]]:
                 res.append(lb[i])
                 cnt[lb[i]] -= 1
+
             else:
                 flag = i - 1
                 for j in range(lb[i] - 1, -1, -1):
@@ -83,10 +84,10 @@ def main(n: int):
                     cnt[v] -= 1
             flag -= 1
         for i in range(len(res)):
-            print(res[i], end='')
-        print()
-
-
+            # print(res[i], end='')
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # Example call for experimentation; adjust n as needed
+    main(10)

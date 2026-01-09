@@ -33,6 +33,7 @@ def sm(ln, k, m, s='', first=False, cache=None):
 
     if s:
         finish = int(s[0]) + 1
+
     else:
         finish = 10
 
@@ -68,9 +69,8 @@ def main(n):
 
     cache = {}
     res = (call(r, k, cache) - call(l - 1, k, cache)) % MOD
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 100 运行
     main(100)

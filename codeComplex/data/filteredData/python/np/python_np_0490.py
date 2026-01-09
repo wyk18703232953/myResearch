@@ -13,6 +13,7 @@ def gen(temp, i):
         for o in range(k):
             if temp[o] == 1:
                 j += s[o]
+
             else:
                 j += '_'
         outs.add(j)
@@ -67,8 +68,10 @@ class Graph:
                 self.topologicalSortUtil(i, visited, stack)
         stack = stack[::-1]
         # 保持原输出格式
-        print("yes")
-        print(" ".join(str(i + 1) for i in stack))
+        # print("yes")
+        pass
+        # print(" ".join(str(i + 1) for i in stack))
+        pass
 
 
 def generate_test_data(n):
@@ -133,7 +136,8 @@ def main(n):
         gen(temp, 0)
 
         if all_list[mt] not in outs:
-            print("no")
+            # print("no")
+            pass
             sys.exit(0)
 
         for pat in outs:
@@ -141,7 +145,9 @@ def main(n):
                 dg.addEdge(mt, patterns[pat])
 
     if dg.isCyclic():
-        print("no")
+        # print("no")
+        pass
+
     else:
         dg.topologicalSort()
 

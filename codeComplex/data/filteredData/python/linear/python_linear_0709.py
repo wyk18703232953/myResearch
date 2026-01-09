@@ -1,20 +1,21 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成由 '+' 和 '-' 组成的长度为 n 的测试字符串
-    # 这里简单设定每个位置 50% 概率为 '+'，50% 概率为 '-'
-    s = ''.join(random.choice(['+', '-']) for _ in range(n))
+    # 生成确定性的字符串 s，长度为 n
+    # 使用交替的 '+' 和 '-' 模式
+    s = ''.join('+' if i % 2 == 0 else '-' for i in range(n))
 
     t = 0
-    for ch in s:
-        if ch == '+':
+    for i in s:
+        if i == '+':
             t += 1
+
         else:
             t = max(t - 1, 0)
 
-    print(max(t, 0))
+    result = max(t, 0)
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    # 示例调用
+    # print(main(10))
+    pass

@@ -14,6 +14,7 @@ def solve_one_case(n, k):
             break
     if ans is not None:
         return "YES " + str(ans)
+
     else:
         return "NO"
 
@@ -31,9 +32,8 @@ def main(n):
         limit = (4 ** ni - 1) // 3
         ki = min(i + 1, limit)
         res = solve_one_case(ni, ki)
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例：用 n=5 作为规模运行
     main(5)

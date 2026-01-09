@@ -1,35 +1,37 @@
-import random
-
-def main(n: int) -> float:
-    # 生成测试数据：随机选择 k，随机生成长度为 n 的数组 arr
+def main(n):
+    # 映射：给定 n，构造 k 和长度为 n 的数组 arr
     if n <= 0:
         return 0.0
 
-    # k 至少为 1，至多为 n
-    k = random.randint(1, n)
+    # 合理选择 k，使其随 n 变化但始终不超过 n
+    # 这里设定 k = max(1, n // 3)
+    k = n // 3
+    if k < 1:
+        k = 1
+    if k > n:
+        k = n
 
-    # 生成数组元素，这里使用 [-10^3, 10^3] 区间的整数作为示例
-    arr = [random.randint(-1000, 1000) for _ in range(n)]
+    # 确定性生成数组 arr，长度为 n
+    # 使用简单的算术构造：arr[i] = (i * 3 + 1) % 10 + 1
+    arr = [((i * 3 + 1) % 10) + 1 for i in range(n)]
 
-    # 前缀和数组
     x = 0
     dp = []
     for i in range(n):
-        x += arr[i]
+        x = x + arr[i]
         dp.append(x)
 
-    # 计算答案
-    ans = float("-inf")
+    ans = 0.0
     for i in range(n):
         for j in range(i + k - 1, n):
-            # 区间 [i, j] 的和为 dp[j] - dp[i] + arr[i]
-            current_sum = dp[j] - dp[i] + arr[i]
-            length = j - i + 1
-            ans = max(ans, current_sum / length)
-
+            current = ((dp[j] - dp[i]) + arr[i]) / (j - i + 1)
+            if current > ans:
+                ans = current
     return ans
 
+
 if __name__ == "__main__":
-    # 示例：调用 main(10) 并打印结果
+    # 示例调用，可以修改 n 以做不同规模的实验
     result = main(10)
-    print(result)
+    # print(result)
+    pass

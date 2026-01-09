@@ -11,9 +11,13 @@ def main(n):
         n = n_case
         if n >= 50:
             if k == 0:
-                print("YES " + str(n))
+                # print("YES " + str(n))
+                pass
+
             else:
-                print("YES " + str(n - 1))
+                # print("YES " + str(n - 1))
+                pass
+
         else:
             a = [0] * (n + 1)
             b = [0] * (n + 1)
@@ -35,11 +39,12 @@ def main(n):
                     res = d
 
             if res == -1:
-                print("NO")
+                # print("NO")
+                pass
+
             else:
-                print("YES " + str(res))
-
-
+                # print("YES " + str(res))
+                pass
 if __name__ == "__main__":
     # 示例调用：规模 n = 10
     main(10)

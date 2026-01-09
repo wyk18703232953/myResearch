@@ -16,11 +16,13 @@ def main(n):
                 div = 0
                 s = 0
                 break
+
             else:
                 num += rem
             s = s % div
             div //= 10
         num += str(s)
+
     else:
         num = str(s)
 
@@ -29,9 +31,8 @@ def main(n):
         mini += 10
         mini -= mini % 10
 
-    print(max(0, n - mini + 1))
-
-
+    # print(max(0, n - mini + 1))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(100)
     main(100)

@@ -1,8 +1,7 @@
 import math
-import random
 
 
-def around(x, y, n, m, hor, ver, mtx):
+def around(x, y, hor, ver, mtx, n, m):
     a, b, c, d = [math.inf] * 4
 
     if x > 0:
@@ -20,35 +19,43 @@ def around(x, y, n, m, hor, ver, mtx):
     return min(a, b, c, d)
 
 
-def main(n):
-    # 这里将 n 作为矩阵的行数规模，
-    # 列数 m 与 n 相同，步数 k 也与 n 相关生成。
-    m = n
-    k = 2 * n  # 保证为偶数，避免原程序中直接输出 -1 的情况
+def generate_input(n):
+    if n < 2:
+        n = 2
+    # Matrix size n x n, step count k derived from n
+    rows = n
+    cols = n
+    k = 2 * n  # even, grows linearly with n
 
-    # 生成测试数据：权重为 1..9 的随机整数
-    hor = [[random.randint(1, 9) for _ in range(m - 1)] for _ in range(n)]
-    ver = [[random.randint(1, 9) for _ in range(m)] for _ in range(n - 1)]
+    # Deterministic generation of matrices hor (rows x (cols-1)) and ver ((rows-1) x cols)
+    hor = [[(i * cols + j) % 7 + 1 for j in range(cols - 1)] for i in range(rows)]
+    ver = [[(i * cols + j * 2 + 3) % 9 + 1 for j in range(cols)] for i in range(rows - 1)]
+    return rows, cols, k, hor, ver
+
+
+def main(n):
+    n_rows, m_cols, k, hor, ver = generate_input(n)
 
     if k % 2:
-        for _ in range(n):
-            print('-1 ' * m)
-        return
+        result = []
+        for _ in range(n_rows):
+            result.append([-1] * m_cols)
+        return result
 
-    _old = [[0] * m for _ in range(n)]
+    current = [[0] * m_cols for _ in range(n_rows)]
     for _ in range(k // 2):
-        _new = [[0] * m for _ in range(n)]
+        new = [[0] * m_cols for _ in range(n_rows)]
+        for x in range(m_cols):
+            for y in range(n_rows):
+                new[y][x] = around(x, y, hor, ver, current, n_rows, m_cols)
+        current = new
 
-        for x in range(m):
-            for y in range(n):
-                _new[y][x] = around(x, y, n, m, hor, ver, _old)
-
-        _old = _new
-
-    for row in _old:
-        print(*row)
+    return current
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    n = 5
+    res = main(n)
+    for row in res:
+        # print(*row)
+        pass

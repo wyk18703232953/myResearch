@@ -7,6 +7,7 @@ def mock_query(c, d):
         return 1
     elif res < 0:
         return -1
+
     else:
         return 0
 
@@ -30,6 +31,7 @@ def solve(max_bit):
         elif (last_ans, ans) == (-1, 1):
             b += bit
             last_ans = query(a, b)
+
         else:
             last_ans = ans
             ans = query(a + bit, b)
@@ -50,6 +52,7 @@ def main(n):
     # 这里简单使用 n 的位长度作为最高位下标
     if n <= 0:
         max_bit = 0
+
     else:
         max_bit = n.bit_length() - 1
 
@@ -66,4 +69,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：以 n=1<<30 规模测试
     res_a, res_b = main(1 << 30)
-    print("!", res_a, res_b)
+    # print("!", res_a, res_b)
+    pass

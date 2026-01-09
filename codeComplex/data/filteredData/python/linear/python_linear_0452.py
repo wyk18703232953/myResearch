@@ -1,46 +1,74 @@
-import random
-import string
+def main(n):
+    # n controls the length of s and t
+    # Ensure minimum size to avoid degenerate negative indices
+    if n < 1:
+        n = 1
+    m = n
 
-def generate_test_data(n):
-    # 随机生成 m，保证 m >= 1
-    # 为了覆盖更多情况，让 m 在 [max(1, n-2), n+2] 范围内浮动
-    m = random.randint(max(1, n - 2), n + 2)
+    # Deterministically construct s with a single '*' near the middle
+    # Pattern: increasing letters with one '*' inserted
+    base_chars = [chr(ord('a') + (i % 26)) for i in range(n)]
+    star_pos = n // 2
+    if n == 1:
+        # For n = 1, choose either '*' or a single character deterministically
+        if n % 2 == 0:
+            s = '*'
 
-    # 随机生成模式串 s，长度为 n，包含小写字母和'*'
-    chars = string.ascii_lowercase + '*'
-    s = ''.join(random.choice(chars) for _ in range(n))
+        else:
+            s = base_chars[0]
 
-    # 随机生成目标串 t，长度为 m，仅小写字母
-    t = ''.join(random.choice(string.ascii_lowercase) for _ in range(m))
+    else:
+        s_list = base_chars[:]
+        s_list[star_pos] = '*'
+        s = ''.join(s_list)
 
-    return n, m, s, t
+    # Deterministically construct t related to s
+    # Make t same length m, with a small modification based on n
+    t_chars = []
+    for i in range(m):
+        if i == (n // 3):
+            # introduce a deterministic difference at one position
+            t_chars.append(chr(ord('z') - (i % 26)))
 
-def solve(n, m, s, t):
+        else:
+            if base_chars:
+                t_chars.append(base_chars[i % len(base_chars)])
+
+            else:
+                t_chars.append('a')
+    t = ''.join(t_chars)
+
+    # Original logic, now using generated n, m, s, t
     if n == 1:
         if s == t or s == '*':
-            return 'YES'
+            # print('YES')
+            pass
+
         else:
-            return 'NO'
+            # print('NO')
+            pass
     elif s.count('*') == 0:
         if s == t:
-            return 'YES'
+            # print('YES')
+            pass
+
         else:
-            return 'NO'
+            # print('NO')
+            pass
     elif n > m + 1:
-        return 'NO'
+        # print('NO')
+        pass
+
     else:
         l = s.split('*')
         x = t[:len(l[0])]
         y = t[-len(l[1]):] if len(l[1]) > 0 else ''
         if (l[0] == x and l[1] == y) or (s[:1] == '*' and l[1] == y) or (l[0] == x and s[-1:] == '*'):
-            return 'YES'
+            # print('YES')
+            pass
+
         else:
-            return 'NO'
-
-def main(n):
-    n, m, s, t = generate_test_data(n)
-    ans = solve(n, m, s, t)
-    print(ans)
-
-# 示例调用：
-# main(5)
+            # print('NO')
+            pass
+if __name__ == "__main__":
+    main(10)

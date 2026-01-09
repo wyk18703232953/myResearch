@@ -12,6 +12,7 @@ class DisjointSet:
         y = self._fa[x]
         if self._fa[y] == y:
             return y
+
         else:
             z = self._fa[y] = self.get_father(y)
             return z
@@ -43,6 +44,7 @@ def solve(n, a, b, xs):
         if b1 + b2 == 1:
             if b1:
                 ds.union(i, g1)
+
             else:
                 ds.union(i, g2)
             if ds.get_father(g1) == ds.get_father(g2):
@@ -65,6 +67,7 @@ def main(n):
         # 最小规模时给一个简单数据
         a, b = 4, 7
         xs = [1] * n
+
     else:
         a, b = 10, 20
         xs = []
@@ -95,18 +98,26 @@ def main(n):
 
     group = solve(n, a, b, xs)
     if isinstance(group, list):
-        print('YES')
-        print('n =', n)
-        print('a =', a, 'b =', b)
-        print('xs =', ' '.join(map(str, xs)))
-        print('group =', ' '.join(map(str, group)))
+        # print('YES')
+        pass
+        # print('n =', n)
+        pass
+        # print('a =', a, 'b =', b)
+        pass
+        # print('xs =', ' '.join(map(str, xs)))
+        pass
+        # print('group =', ' '.join(map(str, group)))
+        pass
+
     else:
-        print('NO')
-        print('n =', n)
-        print('a =', a, 'b =', b)
-        print('xs =', ' '.join(map(str, xs)))
-
-
+        # print('NO')
+        pass
+        # print('n =', n)
+        pass
+        # print('a =', a, 'b =', b)
+        pass
+        # print('xs =', ' '.join(map(str, xs)))
+        pass
 if __name__ == "__main__":
     # 示例调用：规模为 10
     main(10)

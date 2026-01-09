@@ -1,14 +1,14 @@
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据
-    r = g = b = n
-    # 生成 n 个 1~100 的随机整数
-    s1 = [random.randint(1, 100) for _ in range(r)]
-    s2 = [random.randint(1, 100) for _ in range(g)]
-    s3 = [random.randint(1, 100) for _ in range(b)]
+    # Interpret n as the size for r, g, b and corresponding lists
+    r = n
+    g = n
+    b = n
 
-    # 以下为原逻辑
+    # Deterministically generate s1, s2, s3 based on n
+    s1 = [i + 1 for i in range(r)]
+    s2 = [2 * (i + 1) for i in range(g)]
+    s3 = [3 * (i + 1) for i in range(b)]
+
     s1.sort()
     s2.sort()
     s3.sort()
@@ -32,7 +32,7 @@ def main(n):
     for i in range(0, r + 1):
         for j in range(0, g + 1):
             for k in range(0, b + 1):
-                t1 = t2 = t3 = t4 = t5 = t6 = 0
+                t1, t2, t3, t4, t5, t6 = 0, 0, 0, 0, 0, 0
                 if i - 1 >= 0 and j - 1 >= 0:
                     t1 = dp[i - 1][j - 1][k] + (s1[i] * s2[j])
                 if i - 1 >= 0 and k - 1 >= 0:
@@ -48,9 +48,11 @@ def main(n):
 
                 dp[i][j][k] = max(t1, t2, t3, t4, t5, t6)
 
-    print(dp[r][g][b])
+    result = dp[r][g][b]
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：规模 n = 3
     main(3)

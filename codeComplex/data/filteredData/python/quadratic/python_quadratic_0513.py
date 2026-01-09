@@ -1,30 +1,33 @@
-from random import randint
-
 def main(n):
-    # 生成一个 n x n 的随机网格，包含 '.' 和 '#'
-    m = n
-    arr = [["." for _ in range(m)] for _ in range(n)]
-    arr2 = []
+    # Interpret n as both the number of rows and columns of the grid
+    rows = n
+    cols = n
 
-    # 根据 n 构造测试数据：随机填充 '#' 和 '.'
-    for _ in range(n):
+    # Deterministically generate arr2: a pattern of '#' and '.' based on indices
+    # For example, make a checkerboard-like pattern with some structure
+    arr2 = []
+    for i in range(rows):
         row = []
-        for _ in range(m):
-            row.append("#" if randint(0, 1) == 1 else ".")
+        for j in range(cols):
+            # Simple deterministic rule: place '#' when (i*j) % 3 == 0 and not on border,
+            # otherwise '.'. This ensures some interior '#' cells.
+            if 0 < i < rows - 1 and 0 < j < cols - 1 and (i * j) % 3 == 0:
+                row.append("#")
+
+            else:
+                row.append(".")
         arr2.append(row)
 
-    # 原逻辑：根据 arr2 计算 arr
-    for i in range(1, n - 1):
-        for j in range(1, m - 1):
+    # Initialize arr as in the original code
+    arr = [["." for _ in range(cols)] for _ in range(rows)]
+
+    # Core algorithm logic (unchanged except for using generated data)
+    for i in range(1, rows - 1):
+        for j in range(1, cols - 1):
             if (
-                arr2[i + 1][j] == "#" and
-                arr2[i][j + 1] == "#" and
-                arr2[i + 1][j + 1] == "#" and
-                arr2[i - 1][j] == "#" and
-                arr2[i][j - 1] == "#" and
-                arr2[i - 1][j - 1] == "#" and
-                arr2[i + 1][j - 1] == "#" and
-                arr2[i - 1][j + 1] == "#"
+                arr2[i + 1][j] == arr2[i][j + 1] == arr2[i + 1][j + 1]
+                == arr2[i - 1][j] == arr2[i][j - 1] == arr2[i - 1][j - 1]
+                == arr2[i + 1][j - 1] == arr2[i - 1][j + 1] == "#"
             ):
                 arr[i + 1][j] = "#"
                 arr[i][j + 1] = "#"
@@ -36,11 +39,12 @@ def main(n):
                 arr[i - 1][j + 1] = "#"
 
     if arr == arr2:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 进行一次运行
-    main(5)
+    # Example deterministic call for time complexity experiments
+    main(10)

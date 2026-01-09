@@ -50,11 +50,12 @@ def main(n):
         if int((y - x) * (y - x + 1) / 2) & 1:
             res ^= 1
         if res:
-            print("odd")
+            # print("odd")
+            pass
+
         else:
-            print("even")
-
-
+            # print("even")
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

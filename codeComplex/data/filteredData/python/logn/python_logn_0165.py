@@ -11,14 +11,15 @@ def main(n: int):
 
     c = 2 * (a - 1) - b * (b - 1)
     if c > 0:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         d = int((1 + (1 - 4 * c) ** 0.5) / 2)
         if d * (d - 1) + c > 0:
             d -= 1
-        print(b - d)
-
-
+        # print(b - d)
+        pass
 if __name__ == "__main__":
     # 示例：可修改为任意规模 n
     main(10)

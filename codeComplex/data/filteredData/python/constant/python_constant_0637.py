@@ -87,9 +87,8 @@ def main(n):
 
     # 输出结果
     for w, b in results:
-        print(w, b)
-
-
+        # print(w, b)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，生成 5 组测试数据并输出
     main(5)

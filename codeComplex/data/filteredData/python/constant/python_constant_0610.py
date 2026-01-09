@@ -1,6 +1,7 @@
 def s(k: int) -> int:
     if k % 2 == 0:
         return k // 2
+
     else:
         return - (k + 1) // 2
 
@@ -15,9 +16,8 @@ def main(n: int):
     for i in range(1, n + 1):
         l = i
         r = 2 * i
-        print(s(r) - s(l - 1))
-
-
+        # print(s(r) - s(l - 1))
+        pass
 if __name__ == "__main__":
     # 示例：运行 main(5) 生成 5 组测试并打印结果
     main(5)

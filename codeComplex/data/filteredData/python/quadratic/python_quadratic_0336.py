@@ -1,29 +1,29 @@
-from collections import deque
-import random
-
 def main(n):
-    # 生成测试数据：根据规模 n 构造 d, k
-    # 尝试让构造经常可行：d < n 且 k >= 2
-    if n <= 2:
-        d = n - 1
-        k = 1 if n == 2 else 0
-    else:
-        d = random.randint(1, max(1, n - 1))
-        k = random.randint(2, max(2, n // 2 + 1))
+    # Interpret n as the number of nodes.
+    # Deterministically derive parameters d and k from n.
+    if n < 2:
+        # For n < 2, the original algorithm is either trivial or invalid.
+        # To keep behavior deterministic and simple, just print NO.
+        # print("NO")
+        pass
+        return
 
-    # 原逻辑开始
+    # Define d in [1, n-1] and k >= 1 deterministically
+    d = max(1, (n - 1) // 2)
+    k = max(1, n // 3)
+
     if d + 1 > n:
-        print('NO')
+        # print("NO")
+        pass
         return
 
     ans = []
     dist = [0] * n
     deg = [0] * n
-
-    # 先构造主链（长度 d 的直径）
     for i in range(d + 1):
         if i == 0 or i == d:
             deg[i] = 1
+
         else:
             deg[i] = 2
         if i != d:
@@ -32,9 +32,11 @@ def main(n):
 
     for i in range(n):
         if deg[i] > k:
-            print('NO')
+            # print("NO")
+            pass
             return
 
+    from collections import deque
     q = deque(list(range(d + 1)))
     cur = d + 1
     while q and cur < n:
@@ -47,18 +49,20 @@ def main(n):
             q.append(v)
             q.append(cur)
             cur += 1
+
         else:
             continue
 
     if cur != n:
-        print('NO')
+        # print("NO")
+        pass
+
     else:
-        print('YES')
+        # print("YES")
+        pass
         for u, v in ans:
-            print(u, v)
-
-
-# 示例调用
+            # print(u, v)
+            pass
 if __name__ == "__main__":
-    # 按需要修改 n 来测试
+    # Example deterministic call for complexity experiments
     main(10)

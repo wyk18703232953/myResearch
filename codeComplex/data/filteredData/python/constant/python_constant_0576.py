@@ -1,18 +1,20 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：在 [1, n] x [1, n] 的棋盘上随机选一个点 (x, y)
-    x = random.randint(1, n)
-    y = random.randint(1, n)
+def main(n):
+    # Deterministically generate x, y based on n
+    x = n // 2 + 1
+    y = n // 3 + 1
+    if x > n:
+        x = n
+    if y > n:
+        y = n
 
     na = abs(x - 1) + abs(y - 1)
     nb = abs(n - x) + abs(n - y)
     if na <= nb:
-        print("white")
+        # print("white")
+        pass
+
     else:
-        print("black")
-
-
+        # print("black")
+        pass
 if __name__ == "__main__":
-    # 示例：可自行修改 n 测试
-    main(8)
+    main(10)

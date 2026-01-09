@@ -22,6 +22,7 @@ def main(n):
         mid = (low + high + 1) // 2
         if check(mid):
             low = mid
+
         else:
             high = mid - 1
 
@@ -31,4 +32,5 @@ def main(n):
 if __name__ == "__main__":
     n = 10
     result = main(n)
-    print(result)
+    # print(result)
+    pass

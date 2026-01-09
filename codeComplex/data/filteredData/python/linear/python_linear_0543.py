@@ -1,38 +1,33 @@
-import random
-
-def main(n: int):
-    # 1. 根据 n 生成测试数据，这里生成 [-10, 10] 范围内的随机整数
-    xs = [random.randint(-10, 10) for _ in range(n)]
-
-    # 2. 原始逻辑
+def main(n):
+    xs = [((i * 2) % 11) - 5 for i in range(n)]
     prefix = [-1 for _ in range(n)]
     suffix = [-1 for _ in range(n)]
     prefix[0] = 0
     pre_has_neg = [False for _ in range(n)]
     suffix[-1] = 0
     suf_has_neg = [False for _ in range(n)]
-
     for i in range(n):
         if i == 0:
             prefix[i] = xs[i]
+
         else:
             prefix[i] = prefix[i - 1] + xs[i]
-
     for i in reversed(range(n)):
         if i == n - 1:
             suffix[i] = xs[i]
+
         else:
             suffix[i] = suffix[i + 1] + xs[i]
-
     for i in range(n):
         if i == 0:
             pre_has_neg[i] = xs[i] <= 0
+
         else:
             pre_has_neg[i] = pre_has_neg[i - 1] or xs[i] <= 0
-
     for i in reversed(range(n)):
         if i == n - 1:
             suf_has_neg[i] = xs[i] <= 0
+
         else:
             suf_has_neg[i] = suf_has_neg[i + 1] or xs[i] <= 0
 
@@ -41,12 +36,13 @@ def main(n: int):
     for i in range(n):
         if i == 0:
             prebignum[i] = xs[i]
+
         else:
             prebignum[i] = min(prebignum[i - 1], xs[i])
-
     for i in reversed(range(n)):
         if i == n - 1:
             sufbignum[i] = xs[i]
+
         else:
             sufbignum[i] = min(sufbignum[i + 1], xs[i])
 
@@ -56,37 +52,41 @@ def main(n: int):
     for i in range(n):
         if i == 0:
             neg_pre[i] = min(xs[i], -xs[i])
+
         else:
             neg_pre[i] = neg_pre[i - 1] + min(xs[i], -xs[i])
 
     for i in reversed(range(n)):
         if i == n - 1:
             neg_suf[i] = min(xs[i], -xs[i])
+
         else:
             neg_suf[i] = neg_suf[i + 1] + min(xs[i], -xs[i])
 
     ans = -100000000000000000
     for i in range(n):
         tans = xs[i]
-        if i != 0:
-            if pre_has_neg[i - 1]:
-                tans -= neg_pre[i - 1]
-            else:
-                tans += prefix[i - 1]
-                tans -= prebignum[i - 1] * 2
+        if i == 0:
+            pass
+        elif pre_has_neg[i - 1]:
+            tans -= neg_pre[i - 1]
 
-        if i != n - 1:
-            if suf_has_neg[i + 1]:
-                tans -= neg_suf[i + 1]
-            else:
-                tans += suffix[i + 1]
-                tans -= sufbignum[i + 1] * 2
+        else:
+            tans += prefix[i - 1]
+            tans -= prebignum[i - 1] * 2
+
+        if i == n - 1:
+            pass
+        elif suf_has_neg[i + 1]:
+            tans -= neg_suf[i + 1]
+
+        else:
+            tans += suffix[i + 1]
+            tans -= sufbignum[i + 1] * 2
 
         ans = max(ans, tans)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

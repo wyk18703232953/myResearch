@@ -16,6 +16,7 @@ def main(n: int) -> int:
             s %= mod
             if l[i - 1] == 'f':
                 dp[i][j] = dp[i + 1][j + 1]
+
             else:
                 dp[i][j] = s
 
@@ -25,4 +26,5 @@ def main(n: int) -> int:
 if __name__ == "__main__":
     # 示例调用：可自行修改 n 测试
     n = 5
-    print(main(n))
+    # print(main(n))
+    pass

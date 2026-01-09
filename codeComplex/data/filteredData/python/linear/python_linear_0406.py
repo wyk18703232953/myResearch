@@ -1,20 +1,16 @@
-import random
+def main(n):
+    # Map n to problem parameters:
+    # - number of elements: n
+    # - initial m: n * 10 (arbitrary deterministic scaling)
+    # - arrays a, b of length n with simple deterministic values
+    m = n * 10
+    a = [i % 7 + 1 for i in range(1, n + 1)]
+    b = [i % 5 + 2 for i in range(1, n + 1)]
 
-def main(n: int):
-    # 1. 根据 n 生成测试数据
-    # m：初始重量，取一个较为中等的值
-    m = random.randint(1_000, 10_000)
-
-    # a, b：生成每个位置的参数，避免为 0
-    # 为了避免除法过大振荡，取相对适中的范围
-    a = [random.randint(1, 1000) for _ in range(n)]
-    b = [random.randint(1, 1000) for _ in range(n)]
-
-    # 2. 原算法逻辑（去掉 input()，封装在 main 中）
     low = 1.0
-    high = 1_000_000_000.0
+    high = 1000000000.0
     ans = -1.0
-    eps = 1e-6
+    eps = 0.000001
 
     while low <= high:
         if high - low < eps:
@@ -23,7 +19,6 @@ def main(n: int):
         try_val = mid
         init_wt = m + try_val
         isPossible = True
-
         for i in range(n):
             req1 = init_wt / a[i]
             try_val -= req1
@@ -38,16 +33,16 @@ def main(n: int):
                 isPossible = False
                 break
             init_wt -= req2
-
         if isPossible:
             ans = mid
             high = mid - eps
+
         else:
             low = mid + eps
 
-    if ans == -1:
+    if ans == -1.0:
         isPossible = True
-        try_val = 1_000_000_000.000001
+        try_val = 1000000000.000001
         init_wt = m + try_val
         for i in range(n):
             req1 = init_wt / a[i]
@@ -64,11 +59,9 @@ def main(n: int):
                 break
             init_wt -= req2
         if isPossible:
-            ans = 1_000_000_000.0
+            ans = 1000000000.0
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 运行一次
-    main(5)
+    main(1000)

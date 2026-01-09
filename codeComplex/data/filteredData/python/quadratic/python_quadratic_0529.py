@@ -9,14 +9,16 @@ def sol(R, C, m):
         count += line.count("#")
 
     if D:
-        print("Count:", count)
+        # print("Count:", count)
+        pass
 
     lookup = {}
     for r in range(1, R - 1):
         for c in range(1, C - 1):
 
             if D:
-                print("  row,col:", r, c)
+                # print("  row,col:", r, c)
+                pass
 
             offset = [(-1, -1), (-1, 0), (-1, 1),
                       (0, -1), (0, 1),
@@ -28,12 +30,14 @@ def sol(R, C, m):
             for o in offset:
                 cell = (r + o[0], c + o[1])
                 if D:
-                    print("  cell:", cell, m[cell[0]][cell[1]])
+                    # print("  cell:", cell, m[cell[0]][cell[1]])
+                    pass
                 h = hash_cell(cell[0], cell[1])
 
                 if m[cell[0]][cell[1]] == "#":
                     if h not in lookup:
                         lst.append(h)
+
                 else:
                     fail = True
                     break
@@ -79,4 +83,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：调用 main(10) 并打印结果
-    print(main(10))
+    # print(main(10))
+    pass

@@ -12,13 +12,13 @@ def main(n: int):
         comidos = movimentos - media
         if cedidos - comidos > doces_final:
             right = media
+
         else:
             left = media
 
     result = movimentos - left
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行
     main(10)

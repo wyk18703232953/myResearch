@@ -1,11 +1,17 @@
-import random
+def main(n):
+    # n is the length of the array
+    if n <= 0:
+        return "NO"
+    # Deterministic data generation:
+    # Create an array that increases then decreases with a single peak
+    # Example pattern: [0, 1, 2, ..., n//2, n//2 - 1, ..., 1] (length n, adjusted)
+    peak = n // 2
+    inc_part = list(range(peak + 1))
+    dec_length = n - len(inc_part)
+    dec_part = list(range(peak - 1, peak - 1 - dec_length, -1)) if dec_length > 0 else []
+    a = inc_part + dec_part
 
-def main(n: int):
-    # 生成规模为 n 的测试数据（整数数组）
-    # 这里生成区间 [0, 1000] 内的随机整数
-    a = [random.randint(0, 1000) for _ in range(n)]
-
-    # 以下为原逻辑
+    # Original logic
     i = a.index(max(a))
     v = True
     for j in range(0, i):
@@ -14,12 +20,11 @@ def main(n: int):
     for j in range(i, n - 1):
         if a[j] < a[j + 1]:
             v = False
-    if v is True:
-        print("YES")
-    else:
-        print("NO")
+    return "YES" if v else "NO"
 
 
 if __name__ == "__main__":
-    # 示例：可自行调整 n
-    main(10)
+    # Example deterministic call for time-complexity experiments
+    result = main(10)
+    # print(result)
+    pass

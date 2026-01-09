@@ -9,9 +9,8 @@ def main(n: int):
         x += 1
     a = (8 + 2) ** (x - 1)
     a += n // x
-    print(str(a)[n % x])
-
-
+    # print(str(a)[n % x])
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 100 作为测试规模
     main(100)

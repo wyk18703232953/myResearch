@@ -1,12 +1,3 @@
-import math
-import random
-from collections import defaultdict, deque, Counter
-from heapq import heappush, heappop
-from bisect import bisect_left, bisect_right
-
-alphabets = list('abcdefghijklmnopqrstuvwxyz')
-
-
 def isPrime(x):
     for i in range(2, x):
         if i * i > x:
@@ -15,7 +6,6 @@ def isPrime(x):
             return False
     return True
 
-
 def ncr(n, r, p):
     num = den = 1
     for i in range(r):
@@ -23,8 +13,8 @@ def ncr(n, r, p):
         den = (den * (i + 1)) % p
     return (num * pow(den, p - 2, p)) % p
 
-
 def primeFactors(n):
+    import math
     l = []
     while n % 2 == 0:
         l.append(2)
@@ -36,7 +26,6 @@ def primeFactors(n):
     if n > 2:
         l.append(n)
     return list(set(l))
-
 
 def power(x, y, p):
     res = 1
@@ -50,17 +39,15 @@ def power(x, y, p):
         x = (x * x) % p
     return res
 
-
 def SieveOfEratosthenes(n):
     prime = [True for _ in range(n + 1)]
     p = 2
     while p * p <= n:
-        if prime[p] is True:
+        if prime[p]:
             for i in range(p * p, n + 1, p):
                 prime[i] = False
         p += 1
     return prime
-
 
 def countdig(n):
     c = 0
@@ -69,37 +56,21 @@ def countdig(n):
         c += 1
     return c
 
-
 def prefix_sum(arr):
     r = [0] * (len(arr) + 1)
     for i, el in enumerate(arr):
         r[i + 1] = r[i] + el
     return r
 
-
 def divideCeil(n, x):
     if n % x == 0:
         return n // x
     return n // x + 1
 
-
-def ws(s):
-    print(s)
-
-
-def wi(n):
-    print(n)
-
-
-def wia(a):
-    print(' '.join([str(x) for x in a]))
-
-
 def power_set(L):
     cardinality = len(L)
     n = 2 ** cardinality
     powerset = []
-
     for i in range(n):
         a = bin(i)[2:]
         subset = []
@@ -107,58 +78,47 @@ def power_set(L):
             if a[-j - 1] == '1':
                 subset.append(L[j])
         powerset.append(subset)
-
     powerset_orderred = []
     for k in range(cardinality + 1):
         for w in powerset:
             if len(w) == k:
                 powerset_orderred.append(w)
-
     return powerset_orderred
 
-
 def fastPlrintNextLines(a):
-    print('\n'.join(map(str, a)))
-
+    # print('\n'.join(map(str, a)))
+    pass
 
 def sortByFirstAndSecond(A):
     A = sorted(A, key=lambda x: x[0])
     A = sorted(A, key=lambda x: x[1])
     return list(A)
 
-
 def main(n):
-    """
-    根据规模 n 生成一组 (n, k)，并输出原逻辑的结果。
-    原逻辑：
-        - 读入 n, k
-        - 若 k <= n: 输出 (k-1)//2
-        - 否则:      输出 max((2*n-k+1)//2, 0)
+    # Interpret n as the input size parameter.
+    # We deterministically construct (n, k) as in the original logic requiring two integers.
+    # Here we keep the "problem scale" as n, and choose k in a deterministic way:
+    # k ranges around n to cover both branches of the original condition.
+    # For time complexity experiments, we can run the core logic once on such a pair.
+    if n <= 0:
+        return
 
-    这里的 n 为规模参数，用来生成测试数据：
-        - 真实使用的 n_test = n
-        - k 在 [1, 2*n] 范围内随机生成（若 n=0，则固定为 0）
-    """
-    if n < 0:
-        n_test = 0
+    # Deterministic construction of k from n, ensuring variation:
+    # For small n, keep k within a simple range; for larger n, let k depend on n.
+    # Example choice: k = (3*n)//2 (so k > n for n>0) to exercise the second branch,
+    # but we can also run both branches by using two k's.
+    # To keep it scalable but still aligned with original single-test-case structure,
+    # we run once with a k derived from n.
+    k = (3 * n) // 2
+
+    if k <= n:
+        result = (k - 1) // 2
+
     else:
-        n_test = n
+        result = max((2 * n - k + 1) // 2, 0)
 
-    # 生成测试数据 k
-    if n_test == 0:
-        k = 0
-    else:
-        k = random.randint(1, 2 * n_test)
-
-    # 按原题逻辑计算答案
-    if k <= n_test:
-        ans = (k - 1) // 2
-    else:
-        ans = max((2 * n_test - k + 1) // 2, 0)
-
-    print(ans)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # Example deterministic call; adjust n here when running experiments
     main(10)

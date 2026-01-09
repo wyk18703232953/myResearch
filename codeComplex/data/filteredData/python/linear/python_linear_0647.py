@@ -1,52 +1,58 @@
-import random
+def main(n):
+    # Interpret n as the length of array a
+    # Deterministically generate c and a
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-MAXV = 500000
+    # Set c deterministically based on n, within the allowed value range
+    max_val = 500000
+    c = (n % max_val) + 1  # ensure 1..500000
 
-def solve(n, c, a):
-    nums = [[0] for _ in range(MAXV + 1)]
-    freq = [0] * (MAXV + 1)
+    # Generate a deterministically: values in [1, max_val], with some occurrences of c
+    a = []
+    for i in range(n):
+        # Create a pattern with periodic c and other values
+        if i % 5 == 0:
+            val = c
+
+        else:
+            # some other value different from c
+            val = ((i * 7) % max_val) + 1
+            if val == c:
+                val = (val % max_val) + 1
+        a.append(val)
+
+    nums = [[0] for _ in range(500001)]
+    freq = [0] * 500001
     minus = 0
 
-    for x in a:
-        if x == c:
+    for i in a:
+        if i == c:
             minus += 1
+
         else:
-            freq[x] += 1
-            nums[x].append(freq[x] - minus)
+            freq[i] += 1
+            nums[i].append(freq[i] - minus)
 
     tot = minus
-    suff = [row[:] for row in nums]
+    suff = [i[:] for i in nums]
 
-    for i in range(MAXV + 1):
-        # from len(nums[i]) - 2 down to 1
+    for i in range(500001):
         for j in range(len(nums[i]) - 2, 0, -1):
             suff[i][j] = max(suff[i][j], suff[i][j + 1])
 
-    freq = [0] * (MAXV + 1)
+    freq = [0] * 500001
     ans = tot
 
-    for x in a:
-        if x == c:
+    for i in a:
+        if i == c:
             continue
-        freq[x] += 1
-        ans = max(ans, suff[x][freq[x]] - nums[x][freq[x]] + 1 + tot)
+        freq[i] += 1
+        ans = max(ans, suff[i][freq[i]] - nums[i][freq[i]] + 1 + tot)
 
-    return ans
-
-
-def main(n: int):
-    # 生成测试数据：
-    # n 个元素的数组 a，元素取值范围 [1, MAXV]，c 为其中一个随机值
-    if n <= 0:
-        return None
-
-    a = [random.randint(1, MAXV) for _ in range(n)]
-    c = random.choice(a)
-
-    result = solve(n, c, a)
-    print(result)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：可在此修改 n 以测试不同规模
-    main(10)
+    main(1000)

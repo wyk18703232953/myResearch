@@ -11,11 +11,15 @@ def main(n: int):
     x -= 1
 
     if x * (x + 1) / 2 < z:
-        print(-1)
+        # print(-1)
+        pass
     elif z == 0:
-        print(0)
+        # print(0)
+        pass
     elif z == x:
-        print(1)
+        # print(1)
+        pass
+
     else:
         start = 1
         end = x
@@ -23,15 +27,15 @@ def main(n: int):
             mid = (end + start) // 2
             ans = (x * (x + 1) // 2) - ((mid - 1) * mid // 2)
             if ans == z:
-                print(x - mid + 1)
+                # print(x - mid + 1)
+                pass
                 return
             elif ans > z:
                 start = mid + 1
             else:  # ans < z
                 end = mid
-        print(x - end + 2)
-
-
+        # print(x - end + 2)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -16,12 +16,13 @@ def main(n: int):
 
     if n in d:
         ans = d[n]
+
     else:
         ans = f(n)
 
     for v in ans:
-        print(v, end=' ')
-
+        # print(v, end=' ')
+        pass
 if __name__ == "__main__":
     # 这里根据 n 生成测试数据，用户可自行修改 n 的值
     test_n = 10

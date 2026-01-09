@@ -24,9 +24,8 @@ def main(n):
         s = sum(m)
         if l <= s <= r and (max(m) - min(m)) >= x:
             res += 1
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 可在此修改
     main(5)

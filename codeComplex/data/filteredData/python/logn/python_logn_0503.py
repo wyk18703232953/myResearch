@@ -19,9 +19,8 @@ def main(n: int):
     number = 10 ** (num_digits - 1) + k // num_digits
     index = k % num_digits
     answer = str(number)[index]
-    print(answer)
-
-
+    # print(answer)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(15) 即求无限序列的第 15 位
     main(15)

@@ -4,6 +4,7 @@ def numtostr(a):
         if a % 26 == 0:
             var.append("Z")
             a = a // 26 - 1
+
         else:
             var.append(chr(a % 26 - 1 + ord("A")))
             a = a // 26
@@ -20,6 +21,7 @@ def strtonum(b):
     for elem in b:
         if par != 0:
             result += ((ord(elem) - ord("A")) * (26 ** par))
+
         else:
             result += ((ord(elem) - ord("A")) + 1)
 
@@ -55,6 +57,7 @@ def generate_test_data(n):
             row = i
             col = i * 3
             data.append(f"R{row}C{col}")
+
         else:
             # 字母数字格式：例如 BC23
             row = i * 2
@@ -69,13 +72,15 @@ def main(n):
         if "R" in s and "C" in s:
             try:
                 if int(s[1:s.index("C")]) and int(s[s.index("C") + 1:]):
-                    print(method1(s))
+                    # print(method1(s))
+                    pass
             except:
-                print(method2(s))
+                # print(method2(s))
+                pass
+
         else:
-            print(method2(s))
-
-
+            # print(method2(s))
+            pass
 if __name__ == "__main__":
     # 示例：规模为 5
     main(5)

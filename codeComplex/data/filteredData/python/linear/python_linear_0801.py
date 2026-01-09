@@ -1,14 +1,10 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # n: 数组规模
-    # m: 操作次数，取 1..n 之间随机值
-    # k: 分组大小，取 1..n 之间随机值
-    m = random.randint(1, n)
-    k = random.randint(1, n)
-    # 生成递增的 arr，模拟原题中常见的“已排序位置数组”
-    arr = sorted(random.sample(range(1, n + 1), m))
+    # Deterministic data generation
+    # Interpret n as m (length of arr); choose fixed k
+    m = max(1, n)
+    k = 5
+    # Generate arr as increasing integers starting from 1 with step 1
+    arr = [i + 1 for i in range(m)]
 
     modulo = 0
     tmp = 0
@@ -21,9 +17,7 @@ def main(n):
             tmp = 0
             op += 1
         tmp += 1
-    print(op)
-
-
+    # print(op)
+    pass
 if __name__ == "__main__":
-    # 示例：可以根据需要修改规模 n
     main(10)

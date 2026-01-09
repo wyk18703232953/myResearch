@@ -32,14 +32,15 @@ def main(n):
         non_delicious_count = banhmi_count - delicious_count
         if delicious_count == 0:
             enjoyment = 0
+
         else:
             enjoyment = enjoyment_list[delicious_count]
             enjoyment += (enjoyment_list[banhmi_count]
                           - enjoyment_list[delicious_count]
                           - enjoyment_list[non_delicious_count])
             enjoyment %= MOD
-        print(enjoyment)
-
+        # print(enjoyment)
+        pass
 if __name__ == '__main__':
     # 示例：调用 main(10)
     main(10)

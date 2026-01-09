@@ -1,18 +1,14 @@
-import random
+def main(n):
+    # Generate two deterministic binary strings of length n
+    # Pattern: '0' and '1' alternating with slight phase shift between arr1 and arr2
+    arr1_str = ''.join('0' if i % 2 == 0 else '1' for i in range(n))
+    arr2_str = ''.join('0' if (i + 1) % 3 == 0 else '1' for i in range(n))
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的二进制字符串
-    # 可根据需要调整生成规则
-    s1 = ''.join(random.choice('01') for _ in range(n))
-    s2 = ''.join(random.choice('01') for _ in range(n))
+    arr1 = bytearray(arr1_str.encode())
+    arr2 = bytearray(arr2_str.encode())
 
-    arr1 = s1.encode()
-    arr2 = s2.encode()
-    arr1 = bytearray(arr1)
-    arr2 = bytearray(arr2)
-
-    tot = 0
-    for i in range(n - 1):
+    length, tot = len(arr1), 0
+    for i in range(length - 1):
         if arr1[i] == 48 and arr1[i + 1] == 48 and arr2[i] == 48:
             tot += 1
             arr1[i] = 49
@@ -34,9 +30,7 @@ def main(n: int):
             arr1[i + 1] = 49
             arr2[i + 1] = 49
 
-    print(tot)
-
-
+    # print(tot)
+    pass
 if __name__ == "__main__":
-    # 示例调用：规模 n=10
     main(10)

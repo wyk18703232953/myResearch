@@ -1,21 +1,20 @@
-import random
-
 def main(n):
-    # 生成测试数据：sequence 长度为 n，fingerprint 长度为 m（这里取 m = n // 2）
+    # 映射：n -> 序列长度 n，指纹长度 m = max(1, n // 2)
     m = max(1, n // 2)
 
-    # 为避免过大整数，限制取值范围
-    max_value = max(10, n * 2)
+    # 生成确定性的 sequence（字符串列表）
+    sequence = [str(i) for i in range(n)]
 
-    # 随机生成由数字字符串组成的 sequence 和 fingerprint
-    sequence = [str(random.randint(0, max_value)) for _ in range(n)]
-    fingerprint = [str(random.randint(0, max_value)) for _ in range(m)]
+    # 生成确定性的 fingerprint
+    # 前半部分与 sequence 有交集，后半部分为与 sequence 不重叠的元素
+    overlap_len = min(m, n)
+    fingerprint = [str(i) for i in range(overlap_len)]
+    if m > overlap_len:
+        fingerprint += [str(n + i) for i in range(m - overlap_len)]
 
-    # 保持与原逻辑一致：输出 sequence 中出现在 fingerprint 中的元素（按 sequence 顺序）
+    # 保持原始算法逻辑：过滤出 sequence 中出现在 fingerprint 中的元素
     result = " ".join(i for i in sequence if i in fingerprint)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可按需修改 n
     main(10)

@@ -6,6 +6,7 @@ def main(n: int):
         z = fib[x] + fib[x - 1]
         if z <= n:
             fib.append(z)
+
         else:
             break
 
@@ -21,14 +22,20 @@ def main(n: int):
         if len(lis) == 1:
             lis.append(0)
             lis.append(0)
-            print(*lis)
+            # print(*lis)
+            pass
         elif len(lis) == 2:
             lis.append(0)
-            print(*lis)
+            # print(*lis)
+            pass
+
         else:
-            print(*lis)
+            # print(*lis)
+            pass
+
     else:
-        print("I'm too stupid to solve this problem")
+        # print("I'm too stupid to solve this problem")
+        pass
 
 
 # 示例自动生成测试数据并调用

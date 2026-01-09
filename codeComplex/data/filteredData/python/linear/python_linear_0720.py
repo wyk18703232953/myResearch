@@ -1,16 +1,21 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # n 为 b 的规模；令 m 也为 n，便于构造
+    # Interpret n as size of arrays b and g, with n >= 2 to have meaningful second_max
+    if n < 2:
+        n = 2
+
+    # Deterministic generation of b and g
+    # b: increasing sequence with some variation
+    b = [(i * 3) % (2 * n + 1) + i for i in range(n)]
+    # Ensure at least some spread
+    b[0] = 1
+    b[1] = 2
+
+    # g: shifted version to control first_min relation
+    g = [b[i] + (i % 3) for i in range(n)]
+
+    # Set m as function of n
     m = n
 
-    # 生成 b 和 g，保证为非负整数，范围可自行调整
-    # 这里取 [0, 100] 的随机整数
-    b = [random.randint(0, 100) for _ in range(n)]
-    g = [random.randint(0, 100) for _ in range(m)]
-
-    # 原逻辑开始
     first_max = 0
     second_max = 0
     for i in range(n):
@@ -23,12 +28,12 @@ def main(n):
     first_min = min(g)
 
     if first_max > first_min:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         total = sum(b) * m + sum(g) - m * first_max + (first_max - second_max) * (first_min != first_max)
-        print(total)
-
-
+        # print(total)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

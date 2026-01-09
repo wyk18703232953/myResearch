@@ -19,15 +19,18 @@ def main(n):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
     elif k == 0:
-        print((x * 2) % m)
+        # print((x * 2) % m)
+        pass
+
     else:
         temp = power(2, k)
         maxi = (((x * temp) % m) * 2) % m
         mini = (m + maxi - (2 * (temp - 1)) % m) % m
-        print((((maxi + mini) % m) * 500000004) % m)
-
+        # print((((maxi + mini) % m) * 500000004) % m)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n = 10
     main(10)

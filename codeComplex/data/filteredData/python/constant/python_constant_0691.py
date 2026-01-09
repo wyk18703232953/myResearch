@@ -1,18 +1,20 @@
 import math
-import random
 
-def main(n: int):
-    # 根据规模 n 生成测试数据：半径 r
-    # 这里简单设定 r = n，或也可用随机数，如：r = random.randint(1, 10 * n)
-    r = n
+def main(n):
+    # 映射：原程序中 n 为多边形边数，r 为内切圆半径
+    # 这里将输入规模参数 N 同时映射为 n 和 r，保证算法结构不变
+    if n <= 1:
+        return 0.0
+    sides = n
+    r = float(n)
 
-    a = math.pi / n
-    sin_val = math.sin(a)
+    angle = math.pi / sides
+    sin_val = math.sin(angle)
     R = r * sin_val / (1 - sin_val)
-
-    print(R)
-
+    return R
 
 if __name__ == "__main__":
-    # 示例：以 n = 10 运行
-    main(10)
+    # 示例调用：可根据需要调整 n 的大小进行时间复杂度实验
+    result = main(1000)
+    # print(result)
+    pass

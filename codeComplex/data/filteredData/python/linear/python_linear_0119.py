@@ -1,17 +1,13 @@
-# https://codeforces.com/problemset/problem/909/D
-
-import random
-import string
-
 def process(a):
     assert len(a) >= 2
-
+    
     n = len(a)
     min_ = float('inf')
 
     for i, (cnt, c) in enumerate(a):
         if i == 0 or i == n - 1:
             min_ = min(min_, cnt)
+
         else:
             min_ = min(min_, (cnt + 1) // 2)
 
@@ -19,6 +15,7 @@ def process(a):
     for i, (cnt, c) in enumerate(a):
         if i == 0 or i == n - 1:
             remain = cnt - min_
+
         else:
             remain = cnt - min_ * 2
 
@@ -27,6 +24,7 @@ def process(a):
 
         if len(b) == 0 or c != b[-1][1]:
             b.append([remain, c])
+
         else:
             pre_cnt, pre_c = b.pop()
             b.append([pre_cnt + remain, c])
@@ -34,16 +32,17 @@ def process(a):
     return b, min_
 
 
-def main(n: int):
-    # 1. 生成规模为 n 的测试数据字符串 S
-    # 使用小写字母随机生成长度为 n 的字符串
-    alphabet = string.ascii_lowercase
-    S = ''.join(random.choice(alphabet) for _ in range(n))
+def build_string(n):
+    # Deterministic construction of a non-trivial string of length n
+    # Pattern: "abca bcab cabc ..." (repeating over 'a'..'d')
+    chars = ['a', 'b', 'c', 'd']
+    s_list = [chars[i % 4] for i in range(n)]
+    return ''.join(s_list)
 
-    # 2. 按原逻辑处理 S
-    S += ' '
+
+def run_algorithm(S):
+    S = S + ' '
     cur = []
-
     cnt = 0
     pre = ''
     for x in S:
@@ -54,6 +53,7 @@ def main(n: int):
             cur.append([cnt, pre])
             cnt = 1
             pre = x
+
         else:
             cnt += 1
 
@@ -61,10 +61,15 @@ def main(n: int):
     while len(cur) not in [0, 1]:
         cur, min_ = process(cur)
         cnt += min_
+    return cnt
 
-    print(cnt)
 
-
+def main(n):
+    if n <= 0:
+        n = 1
+    S = build_string(n)
+    result = run_algorithm(S)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模设为 10
-    main(10)
+    main(1000)

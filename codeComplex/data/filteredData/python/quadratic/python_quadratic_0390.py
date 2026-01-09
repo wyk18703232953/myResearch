@@ -1,65 +1,66 @@
-import random
-
 def main(n):
-    # 随机生成一个 n x n 的字符矩阵，其中有一个或多个连续的 'B' 区域
-    m = n
-    li = [['W' for _ in range(m)] for _ in range(n)]
+    # Map n to matrix size: use n x n grid
+    rows = n
+    cols = n
 
-    # 随机生成一个矩形区域填充 'B'
-    top = random.randint(0, n - 1)
-    bottom = random.randint(top, n - 1)
-    left = random.randint(0, m - 1)
-    right = random.randint(left, m - 1)
+    # Deterministically generate grid with some 'B' cells
+    # Pattern: put 'B' on cells where (i + j) % k == 0 for a fixed k
+    k = 3 if n >= 3 else 1
+    li = []
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            if (i + j) % k == 0:
+                row.append('B')
 
-    for i in range(top, bottom + 1):
-        for j in range(left, right + 1):
-            li[i][j] = 'B'
+            else:
+                row.append('W')
+        li.append(row)
 
-    # 以下为原逻辑（寻找 'B' 区域的中心位置）
-    for j in range(m):
+    # Replicate original logic
+    n_local = rows
+    m_local = cols
+
+    for j in range(m_local):
         flag = False
-        for i in range(n):
+        for i in range(n_local):
             if li[i][j] == "B":
                 flag = True
                 position1 = i
                 break
-        if flag:
+        if flag == True:
             break
-
-    for j in range(m - 1, -1, -1):
+    for j in range(m_local - 1, -1, -1):
         flag = False
-        for i in range(n - 1, -1, -1):
+        for i in range(n_local - 1, -1, -1):
             if li[i][j] == "B":
                 flag = True
                 position2 = i
                 break
-        if flag:
+        if flag == True:
             break
-
-    for i in range(n):
+    for i in range(n_local):
         flag = False
-        for j in range(m):
+        for j in range(m_local):
             if li[i][j] == "B":
                 flag = True
                 position3 = j
                 break
-        if flag:
+        if flag == True:
             break
-
-    for i in range(n - 1, -1, -1):
+    for i in range(n_local - 1, -1, -1):
         flag = False
-        for j in range(m - 1, -1, -1):
+        for j in range(m_local - 1, -1, -1):
             if li[i][j] == "B":
                 flag = True
                 position4 = j
                 break
-        if flag:
+        if flag == True:
             break
 
     avg1 = (position1 + position2) // 2 + 1
     avg2 = (position3 + position4) // 2 + 1
-    print(avg1, avg2)
-
+    # print(avg1, avg2)
+    pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要改动 n
-    main(5)
+    main(10)

@@ -7,9 +7,8 @@ def main(n: int):
     while x > 0:
         curr += x
         x -= 2
-    print(ans + 2 * curr)
-
-
+    # print(ans + 2 * curr)
+    pass
 if __name__ == "__main__":
     # 根据 n 生成测试数据，这里简单地固定一个规模示例
     test_n = 5

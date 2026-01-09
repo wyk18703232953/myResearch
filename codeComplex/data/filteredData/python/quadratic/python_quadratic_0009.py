@@ -1,32 +1,23 @@
-import math
-import random
-
 def main(n):
-    # 生成测试数据
-    # 固定半径为 1 到 10 之间的随机整数
-    radii = random.randint(1, 10)
-    # 生成 n 个递增的 x 坐标，步长为 1 到 2*radii 之间的随机值
-    x_list = []
-    cur = 0
-    for _ in range(n):
-        step = random.randint(1, 2 * radii)
-        cur += step
-        x_list.append(cur)
+    import math
 
-    # 原始逻辑开始
+    # Deterministic data generation
+    # radius fixed, x_list constructed deterministically from n
+    radii = 5
+    x_list = [(i * 3) % (4 * radii) for i in range(n)]
+
     temp_arr = []
     for i in range(n):
         candidates = [radii]
         for j in range(i):
-            if abs(x_list[i] - x_list[j]) <= 2 * radii:
-                height = math.sqrt(4 * radii ** 2 - (x_list[i] - x_list[j]) ** 2) + temp_arr[j]
-                candidates.append(height)
+            dx = x_list[i] - x_list[j]
+            if abs(dx) <= 2 * radii:
+                val = math.sqrt(4 * radii ** 2 - dx ** 2) + temp_arr[j]
+                candidates.append(val)
         temp_arr.append(max(candidates))
 
     for v in temp_arr:
-        print(v, end=" ")
-    print()  # 换行，便于多次调用时阅读
-
+        # print(v, end=" ")
+        pass
 if __name__ == "__main__":
-    # 示例：规模为 5
-    main(5)
+    main(10)

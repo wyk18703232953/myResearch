@@ -42,4 +42,5 @@ def main(n):
 if __name__ == "__main__":
     # 例如用 n = 3 做一组测试
     result = main(3)
-    print(result)
+    # print(result)
+    pass

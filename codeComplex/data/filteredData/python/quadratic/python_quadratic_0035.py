@@ -8,7 +8,8 @@ def main(n: int) -> None:
 
     # 特判：原代码会访问 dp[0]，至少需要1行
     if lines <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     dp = [0] * lines
@@ -21,18 +22,19 @@ def main(n: int) -> None:
         # 你可以根据需要调整生成规则
         if i % 2 == 0:
             char_in = 'f'
+
         else:
             char_in = 's'
 
         if char_in == 'f':
             f += 1
+
         else:
             for j in range(1, f):
                 dp[j] = (dp[j] + dp[j - 1]) % MOD
 
-    print(dp[f - 1])
-
-
+    # print(dp[f - 1])
+    pass
 if __name__ == "__main__":
     # 示例：运行时可以自行修改n来做简单测试
     main(5)

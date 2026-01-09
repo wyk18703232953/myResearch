@@ -1,13 +1,31 @@
-from copy import deepcopy
-import random
-import string
+def main(n):
+    # n is the size of the n x n matrices
+    # deterministically generate two n x n matrices of characters
+    # First matrix: a[i][j] = chr((i + j) % 26 + 65) -> 'A'..'Z'
+    a1_mat = [[chr((i + j) % 26 + 65) for j in range(n)] for i in range(n)]
+    # Second matrix: apply a fixed pattern so complexity is comparable but data is deterministic
+    # Here we construct a2 by rotating a1 once and then flipping horizontally,
+    # which guarantees "Yes" for any n >= 1
+    tmp_matrix = Matrix(n, n, a1_mat)
+    tmp_matrix.rotate()
+    tmp_matrix.fliph()
+    a2_mat = tmp_matrix.mat
+
+    a1, a2, ans = Matrix(n, n, a1_mat), Matrix(n, n, a2_mat), []
+    for _ in range(4):
+        ans.extend([a1.rotate(), a1.fliph()])
+        a1.fliph()
+    # print(['No', 'Yes'][a2.mat in ans])
+    pass
 
 
 class Matrix:
     def __init__(self, r, c, mat=None, id=None):
         self.r, self.c = r, c
         if mat is not None:
-            self.mat = deepcopy(mat)
+            # deep copy via list comprehension to stay deterministic and simple
+            self.mat = [row[:] for row in mat]
+
         else:
             self.mat = [[0 for _ in range(c)] for _ in range(r)]
 
@@ -16,7 +34,7 @@ class Matrix:
         for i in range(self.r):
             for j in range(self.c):
                 mat0.mat[j][self.r - (i + 1)] = self.mat[i][j]
-        self.mat, self.r, self.c = deepcopy(mat0.mat), self.c, self.r
+        self.mat, self.r, self.c = [row[:] for row in mat0.mat], self.c, self.r
         return self.mat
 
     def flipv(self):
@@ -24,7 +42,7 @@ class Matrix:
         for i in range(self.r):
             for j in range(self.c):
                 mat0.mat[i][self.c - (j + 1)] = self.mat[i][j]
-        self.mat = deepcopy(mat0.mat)
+        self.mat = [row[:] for row in mat0.mat]
         return self.mat
 
     def fliph(self):
@@ -32,28 +50,10 @@ class Matrix:
         for i in range(self.r):
             for j in range(self.c):
                 mat0.mat[self.r - (i + 1)][j] = self.mat[i][j]
-        self.mat = deepcopy(mat0.mat)
+        self.mat = [row[:] for row in mat0.mat]
         return self.mat
 
 
-def gen_matrix(n, alphabet="01"):
-    # 生成 n×n 的随机字符矩阵
-    return [[random.choice(alphabet) for _ in range(n)] for _ in range(n)]
-
-
-def main(n):
-    # 根据 n 生成测试数据
-    a1_mat = gen_matrix(n)
-    a2_mat = gen_matrix(n)
-
-    a1 = Matrix(n, n, a1_mat)
-    a2 = Matrix(n, n, a2_mat)
-
-    ans = []
-    for _ in range(4):
-        ans.extend([a1.rotate(), a1.fliph()])
-        a1.fliph()
-
-    result = ['No', 'Yes'][a2.mat in ans]
-    print(result)
-    return result
+if __name__ == "__main__":
+    # example deterministic call for timing / scaling experiments
+    main(300)

@@ -24,6 +24,7 @@ def solve(n, k):
         return -1
     elif k >= n:
         return 1
+
     else:
         return bs(n, k, 2, k)
 
@@ -40,4 +41,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：运行 main(10) 进行简单测试
-    print(main(10))
+    # print(main(10))
+    pass

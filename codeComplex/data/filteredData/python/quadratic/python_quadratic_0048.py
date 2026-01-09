@@ -33,11 +33,13 @@ def main(n):
                 temp[i][j] = temp[i - 1][j - 1]
                 earlier[i][j] = add(earlier[i][j - 1], temp[i][j])
                 j += 1
+
         else:
             j = 0
             while j < n:
                 if j == 0:
                     temp[i][j] = earlier[i - 1][n - 1]
+
                 else:
                     temp[i][j] = earlier[i - 1][n - 1] - earlier[i - 1][j - 1]
                 earlier[i][j] = add(earlier[i][j - 1], temp[i][j])
@@ -50,7 +52,8 @@ def main(n):
         ans = add(ans, temp[n - 1][j])
         j += 1
 
-    print(ans % MOD)
+    # print(ans % MOD)
+    pass
 
 # 示例：直接运行文件时给一个默认规模
 if __name__ == "__main__":

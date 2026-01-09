@@ -4,11 +4,12 @@ def main(n: int):
     m = 2 * n
 
     if n > (m + 1) / 2:
-        print(m)
+        # print(m)
+        pass
+
     else:
-        print(int(m % (2 ** n)))
-
-
+        # print(int(m % (2 ** n)))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

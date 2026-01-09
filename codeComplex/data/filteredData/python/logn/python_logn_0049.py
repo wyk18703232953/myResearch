@@ -1,11 +1,8 @@
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据，这里用 n 作为 a 的上界
-    # 确保上界至少为 1，避免 random.randint(0, 0) 出错
-    upper = max(1, n)
-    a = random.randint(0, upper)
-    b = random.randint(0, upper)
+    # 映射：n 作为两个数的最大值范围
+    # 构造确定性输入 a, b
+    a = n
+    b = n // 2
 
     x = a ^ b
     ans = 1
@@ -13,9 +10,7 @@ def main(n):
         x //= 2
         ans *= 2
 
-    print(ans - 1)
-
-
+    # print(ans - 1)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

@@ -1,5 +1,3 @@
-import random
-
 def permuteDigits(a, b):
     n = len(a)
     if len(a) < len(b):
@@ -23,6 +21,7 @@ def permuteDigits(a, b):
             t = a[c]
             a = a[:c] + a[c+1:]
             a.insert(i, t)
+
         else:
             c = c + 1
 
@@ -35,35 +34,33 @@ def permuteDigits(a, b):
 
 
 def main(n):
-    # 1. 根据规模 n 生成测试数据
-    # 生成一个长度为 n 的随机数字串 aa（不以 0 开头）
+    # 输入结构识别：
+    # 原程序有两行字符串数字输入：aa, bb
+    # 然后将 aa 每位拆为整数列表 a，bb 每位拆为整数列表 b
+    # 这里将 n 映射为两个等长数字串的长度
     if n <= 0:
         return
 
-    first_digit = random.randint(1, 9)
-    other_digits = [random.randint(0, 9) for _ in range(n - 1)]
-    aa_digits = [first_digit] + other_digits
-    aa = "".join(str(d) for d in aa_digits)
+    # 确定性生成长度为 n 的数字串 aa、bb
+    # 使用简单算术构造，禁止任何随机性
+    # aa: 递增模式（从 1 开始，对 10 取模）
+    # bb: 递减模式（从 9 开始，对 10 取模）
+    aa_digits = [(i % 10) for i in range(1, n + 1)]
+    bb_digits = [((9 - i) % 10) for i in range(n)]
 
-    # 生成一个不大于 aa 的随机数字串 bb（长度 <= n）
-    # 这里简单生成同长度的随机数字串，再截断到不超过 aa 的排序上界
-    bb_len = random.randint(1, n)
-    first_digit_b = random.randint(1, 9)
-    other_digits_b = [random.randint(0, 9) for _ in range(bb_len - 1)]
-    bb_digits = [first_digit_b] + other_digits_b
-    bb = "".join(str(d) for d in bb_digits)
+    # 转换为原程序中的 a, b
+    a = aa_digits[:]
+    b = bb_digits[:]
 
-    # 2. 按原逻辑处理
-    a = [int(ch) for ch in aa]
-    b = [int(ch) for ch in bb]
-
+    # 原程序对 a 做降序排序
     a.sort(reverse=True)
 
     ans = permuteDigits(a, b)
-    s = "".join(str(x) for x in ans)
-    print(int(s))
-
-
+    s = ""
+    for x in ans:
+        s += str(x)
+    # print(int(s))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自行调整
+    # 示例：输入规模 n=8，对应于原注释中的 8 位数字示例
     main(8)

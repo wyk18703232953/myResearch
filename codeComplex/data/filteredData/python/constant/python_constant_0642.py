@@ -4,6 +4,7 @@ def wb(n, m, flip=False):
         w += 1
     if flip:
         return b, w
+
     else:
         return w, b
 
@@ -45,14 +46,14 @@ def main(n):
         wd, bd = wb(x4 - x3 + 1, y4 - y3 + 1, (x3 + y3) % 2 == 1)
         if ov:
             wo, bo = wb(x6 - x5 + 1, y6 - y5 + 1, (x5 + y5) % 2 == 1)
+
         else:
             wo, bo = 0, 0
 
         w = w + bm - wd - bo
         b = b - bm + wd + bo
-        print(w, b)
-
-
+        # print(w, b)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(3) 生成 3 组测试数据并输出结果
     main(3)

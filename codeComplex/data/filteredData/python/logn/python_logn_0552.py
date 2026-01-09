@@ -11,15 +11,16 @@ def main(n: int):
     n_digit -= 1  # 修正到实际位数
 
     if n_digit == 0:
-        print(k)
+        # print(k)
+        pass
+
     else:
         # 当前段中第 nth_num 个数
         nth_num = (k - 1) // (n_digit + 1) + 1
         num = 10 ** n_digit + nth_num - 1
         pos = (k - 1) % (n_digit + 1)
-        print(int(str(num)[pos]))
-
-
+        # print(int(str(num)[pos]))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(1000) 可测试第 1000 位
     main(1000)

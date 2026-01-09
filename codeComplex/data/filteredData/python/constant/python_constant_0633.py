@@ -5,6 +5,7 @@ def getcol(x1, y1, x2, y2):
     if dx % 2 and dy % 2:
         if (x1 + y1) % 2:
             b = b + 1
+
         else:
             w = w + 1
     return w, b
@@ -49,9 +50,8 @@ def main(n):
     final_w = woff + w1 - w3 + b1 - b3
     final_b = boff + w3 + b3 + b2 - b3 + w2 - w3
 
-    print(final_w, final_b)
-
-
+    # print(final_w, final_b)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=8 运行
     main(8)

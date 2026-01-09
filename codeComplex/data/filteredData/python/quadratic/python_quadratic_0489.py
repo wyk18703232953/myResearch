@@ -1,40 +1,31 @@
-import random
-
 def main(n):
-    # 生成测试数据：构造一个满足条件的 vals，然后据此反推 l 和 r
-    # 1. 随机生成 vals（1..n 的值，允许重复）
-    vals = [random.randint(1, n) for _ in range(n)]
+    # Deterministically generate l and r based on n
+    # Here we choose a simple pattern that scales with n
+    # l[i] and r[i] are constructed so that l[i] + r[i] is non-decreasing
+    l = [i // 2 for i in range(n)]
+    r = [((n - 1 - i) // 2) for i in range(n)]
 
-    # 2. 根据 vals 计算 l 和 r
-    l = []
-    r = []
-    for i in range(n):
-        li = sum(1 for x in vals[:i] if x > vals[i])
-        ri = sum(1 for x in vals[i:] if x > vals[i])
-        l.append(li)
-        r.append(ri)
-
-    # 以下是原逻辑（去掉 input，改用生成的 l, r）
     items = [(-l[i] - r[i], i) for i in range(n)]
     items.sort()
-    ans_vals = [1] * n
+    vals = [1] * n
     m = 1
     for i in range(1, n):
         if items[i - 1][0] != items[i][0]:
             m += 1
-        ans_vals[items[i][1]] = m
+        vals[items[i][1]] = m
 
     for i in range(n):
-        ln = sum(map(lambda x: x - ans_vals[i] > 0, ans_vals[:i]))
-        lr = sum(map(lambda x: x - ans_vals[i] > 0, ans_vals[i:]))
+        ln = sum(map(lambda x: x - vals[i] > 0, vals[:i]))
+        lr = sum(map(lambda x: x - vals[i] > 0, vals[i:]))
         if ln != l[i] or lr != r[i]:
-            print('NO')
+            # print('NO')
+            pass
             break
+
     else:
-        print('YES')
-        print(' '.join(str(i) for i in ans_vals))
-
-
+        # print('YES')
+        pass
+        # print(' '.join(str(i) for i in vals))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

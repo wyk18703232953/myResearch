@@ -1,28 +1,29 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：长度固定为 14，与原程序逻辑保持一致
-    # 可根据需要调整生成规则
-    xs = [random.randint(0, n) for _ in range(14)]
+def main(n):
+    # Generate deterministic input array xs of length 14 based on n
+    xs = [((i + 1) * (n + 1)) % 1000 for i in range(14)]
 
     res = 0
     for i in range(14):
         newxs = xs[:]
         newxs[i] = 0
-        base = xs[i] // 14
+        base_add = xs[i] // 14
         rem = xs[i] % 14
 
         for j in range(14):
-            newxs[j] += base
+            newxs[j] += base_add
 
         for j in range(rem):
             newxs[(i + 1 + j) % 14] += 1
 
-        res = max(res, sum(val for val in newxs if val % 2 == 0))
+        even_sum = 0
+        for val in newxs:
+            if val % 2 == 0:
+                even_sum += val
 
-    print(res)
+        if even_sum > res:
+            res = even_sum
 
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：n 用于控制随机数据规模
-    main(100)
+    main(10)

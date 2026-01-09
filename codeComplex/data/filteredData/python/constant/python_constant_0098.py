@@ -1,16 +1,11 @@
-import random
-
 def main(n):
-    for _ in range(n):
-        # 生成测试数据：两个正整数 a, b（可根据需要调整范围）
-        a = random.randint(1, 10**6)
-        b = random.randint(1, 10**6)
-
+    # n 表示测试用例数量
+    def process_pair(a, b):
         if a > b or a == b:
             c, d = a, b
+
         else:
             c, d = b, a
-
         e = [0]
 
         def fun(c, d):
@@ -22,9 +17,17 @@ def main(n):
                 fun(c, d)
 
         fun(c, d)
-        print(e[0])
+        return e[0]
 
+    # 确定性生成 n 组 (a, b)
+    results = []
+    for i in range(1, n + 1):
+        a = i + 1          # 保证 a > 0
+        b = (i // 2) + 1   # 保证 b > 0 且有变化
+        results.append(process_pair(a, b))
 
+    for res in results:
+        # print(res)
+        pass
 if __name__ == "__main__":
-    # 示例：运行规模 n = 5
     main(5)

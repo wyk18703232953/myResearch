@@ -1,49 +1,52 @@
 from collections import Counter
-import random
-import string
 
-def main(n: int):
-    # 1. 生成测试数据字符串 a、b
-    # 这里示例：从小写字母中随机生成长度为 n 的字符串 a、b
-    # 你可以按需求修改生成规则
-    a = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-    b = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+def main(n):
+    # 输入规模定义：
+    # 构造两个字符串 a, b，长度分别为 n 和 n（或 n-1 以覆盖 len(a) < len(b) 分支）
+    # 为了既能覆盖两种情况：当 n 为偶数时令 len(a) < len(b)，当 n 为奇数时令 len(a) >= len(b)
 
-    # ====== 原始逻辑开始（去掉 input，封装为 main(n)）======
-
-    if len(a) < len(b):
-        print(''.join(sorted(a)[::-1]))
+    if n <= 0:
         return
 
-    # 如果 a 和 b 长度不等，以 a 的长度为 n，b 截断或补齐（这里截断）
-    if len(b) != len(a):
-        if len(b) > len(a):
-            b = b[:len(a)]
-        else:
-            # 不足则简单重复填充
-            b = (b * ((len(a) + len(b) - 1) // len(b)))[:len(a)]
+    # 构造字符串 a, b，使用确定性的模式
+    # 字符集使用小写字母 'a' 到 'z'
+    letters = [chr(ord('a') + (i % 26)) for i in range(max(1, n))]
 
-    n = len(a)
+    if n % 2 == 0:
+        # 偶数：len(a) < len(b)
+        a_len = max(1, n - 1)
+        b_len = n
+
+    else:
+        # 奇数：len(a) >= len(b)
+        a_len = n
+        b_len = max(1, n - 1)
+
+    a = ''.join(letters[i % len(letters)] for i in range(a_len))
+    b = ''.join(letters[(i * 2) % len(letters)] for i in range(b_len))
+
+    if len(a) < len(b):
+        # print(''.join(sorted(a)[::-1]))
+        pass
+        return
+
     cnt = Counter(a)
+    n_local = len(a)
 
     def f(i=0, check=False):
-        if i == n:
+        if i == n_local:
             return []
-        # 按照原代码逻辑：从大到小枚举当前可用字符
         for j in sorted(cnt)[::-1]:
             if (check or j <= b[i]) and cnt[j]:
                 cnt[j] -= 1
                 res = f(i + 1, check or j < b[i])
-                if len(res) + i + 1 == n:
+                if len(res) + i + 1 == n_local:
                     res.append(j)
                     return res
                 cnt[j] += 1
         return []
 
-    ans = ''.join(f()[::-1])
-    print(ans)
-
-
+    # print(''.join(f()[::-1]))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可以自行修改 n
-    main(5)
+    main(10)

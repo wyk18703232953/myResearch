@@ -11,12 +11,12 @@ def main(n):
     if candidates:
         first_valid = candidates[0]
         result = max(n - first_valid + 1, 0)
+
     else:
         result = 0
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(1000)，可根据需要修改 n 的值进行测试
     main(1000)

@@ -27,7 +27,8 @@ def main(n):
 
         dk = (4 ** N - 1) // 3
         if K > dk:
-            print('NO')
+            # print('NO')
+            pass
             continue
 
         seq = []
@@ -40,7 +41,8 @@ def main(n):
             seq.append(s)
 
         if K >= seq[-1]:
-            print('YES', 0)
+            # print('YES', 0)
+            pass
             continue
 
         for i in range(N - 1):
@@ -58,11 +60,12 @@ def main(n):
             res += A * B
 
         if d <= res:
-            print('YES', happy)
+            # print('YES', happy)
+            pass
+
         else:
-            print('NO')
-
-
+            # print('NO')
+            pass
 if __name__ == "__main__":
     # Example: run main with n = 5 test cases
     main(5)

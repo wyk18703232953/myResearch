@@ -10,12 +10,14 @@ def makeArr(defaultVal, dimensionArr):  # eg. makeArr(0,[n,m])
     da = dimensionArr
     if len(da) == 1:
         return [dv for _ in range(da[0])]
+
     else:
         return [makeArr(dv, da[1:]) for _ in range(da[0])]
 
 
 def multiLineArrayOfArraysPrint(arr):
-    print('\n'.join([' '.join([str(x) for x in y]) for y in arr]))
+    # print('\n'.join([' '.join([str(x) for x in y]) for y in arr]))
+    pass
 
 
 def main(n):
@@ -49,6 +51,7 @@ def main(n):
 
     if k % 2 == 1:  # 保留原逻辑，虽然这里 k 总是偶数
         ans = makeArr(-1, [n, m])
+
     else:
         half = k // 2
         dp = makeArr(inf, [n, m, half + 1])  # dp[i][j][moves]

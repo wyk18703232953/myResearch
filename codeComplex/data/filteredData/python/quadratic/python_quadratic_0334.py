@@ -5,25 +5,32 @@ def main(n):
     if n <= 2:
         d = 1
         k = 1
+
     else:
         d = min(3, n - 1)   # 直径不超过 n-1
         k = min(3, n - 1)   # 每个节点度数上限不超过 n-1
 
     # 原程序逻辑开始
     if n == 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     if k == 1:
         if n == 2 and d == 1:
-            print("YES")
-            print(1, 2)
+            # print("YES")
+            pass
+            # print(1, 2)
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
         return
 
     if n < d + 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     co = 1
@@ -35,6 +42,7 @@ def main(n):
     def dfs(r, dist, co):
         if 2 <= r <= d:
             t = k - 2
+
         else:
             t = k - 1
         if co == n:
@@ -53,13 +61,15 @@ def main(n):
         co = dfs(i, max(i - 1, d - i + 1), co)
 
     if co == n:
-        print("YES")
+        # print("YES")
+        pass
         for j in ans:
-            print(*j)
+            # print(*j)
+            pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10) 进行测试
     main(10)

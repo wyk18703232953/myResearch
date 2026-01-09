@@ -1,30 +1,40 @@
-import random
+def main(n):
+    # Interpret n as both number of rows and columns
+    if n <= 0:
+        return
+    rows = n
+    cols = n
 
-def main(n: int):
-    # 生成一个 n 行 m 列的随机 01 矩阵，m 可根据需要设定
-    m = max(1, n)  # 简单设置：列数等于行数，且至少为 1
+    # Deterministically generate a binary grid of size rows x cols
+    # grid[i][j] is '1' if (i + j) is even, else '0'
     grid = []
-    for _ in range(n):
-        row = ''.join(random.choice('01') for _ in range(m))
-        grid.append(row)
+    for i in range(rows):
+        row_chars = []
+        for j in range(cols):
+            if (i + j) % 2 == 0:
+                row_chars.append('1')
 
-    cnts = [0 for _ in range(m)]
-    for i in range(n):
-        for j in range(m):
+            else:
+                row_chars.append('0')
+        grid.append(''.join(row_chars))
+
+    # Original algorithm logic
+    cnts = [0 for _ in range(cols)]
+    for i in range(rows):
+        for j in range(cols):
             cnts[j] += 0 if grid[i][j] == '0' else 1
 
-    for i in range(n):
+    for i in range(rows):
         flag = True
-        for j in range(m):
+        for j in range(cols):
             if grid[i][j] == '1' and cnts[j] == 1:
                 flag = False
                 break
         if flag:
-            print('YES')
+            # print('YES')
+            pass
             return
-    print('NO')
-
-
+    # print('NO')
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 进行一次运行
-    main(5)
+    main(10)

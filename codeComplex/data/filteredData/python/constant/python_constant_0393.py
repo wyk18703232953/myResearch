@@ -1,12 +1,15 @@
-import random
+import itertools
+import bisect
+import math
+from collections import *
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的由 '0' 和 '1' 组成的字符串
-    # 可根据需要调整生成规则
-    a = [random.choice(['0', '1']) for _ in range(n)]
-    b = [random.choice(['0', '1']) for _ in range(n)]
 
-    # 保留原逻辑
+def main(n):
+    # Generate two deterministic binary strings of length n
+    # Pattern: a[i] and b[i] depend on i in a fixed way
+    a = [('0' if (i % 3 == 0 or i % 5 == 0) else '1') for i in range(n)]
+    b = [('0' if (i % 2 == 0 or i % 7 == 0) else '1') for i in range(n)]
+
     ans = 0
     for i in range(n):
         if a[i] == "0":
@@ -21,12 +24,10 @@ def main(n: int):
                 a[i] = b[i + 1] = a[i + 1] = "X"
             elif i + 1 < n and a[i] == b[i] == a[i + 1]:
                 a[i] = b[i] = a[i + 1] = "X"
+
             else:
                 ans -= 1
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自行修改
     main(10)

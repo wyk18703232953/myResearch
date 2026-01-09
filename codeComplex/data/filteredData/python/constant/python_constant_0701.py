@@ -4,12 +4,12 @@ def main(n: int):
 
     if n - 1 > v:
         result = v - 1 + (n - v) * (n - v + 1) // 2
+
     else:
         result = n - 1
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

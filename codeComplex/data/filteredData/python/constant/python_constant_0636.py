@@ -37,6 +37,7 @@ def solve_one_case(N, M, m1, m2):
                 totB += size
             elif isin(x0, y0, m1):
                 pass
+
             else:
                 totB += size // 2
                 if size % 2 == 1:

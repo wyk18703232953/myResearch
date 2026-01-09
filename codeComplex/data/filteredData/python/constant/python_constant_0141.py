@@ -75,6 +75,7 @@ class SortedList:
 
         if _list_lens[pos]:
             _mins[pos] = _lists[pos][0]
+
         else:
             del _lists[pos]
             del _list_lens[pos]
@@ -93,6 +94,7 @@ class SortedList:
             mi = (lo + pos) >> 1
             if value <= _mins[mi]:
                 pos = mi
+
             else:
                 lo = mi
 
@@ -105,6 +107,7 @@ class SortedList:
             mi = (lo + idx) >> 1
             if value <= _list[mi]:
                 idx = mi
+
             else:
                 lo = mi
 
@@ -122,6 +125,7 @@ class SortedList:
             mi = (pos + hi) >> 1
             if value < _mins[mi]:
                 hi = mi
+
             else:
                 pos = mi
 
@@ -131,6 +135,7 @@ class SortedList:
             mi = (lo + idx) >> 1
             if value < _list[mi]:
                 idx = mi
+
             else:
                 lo = mi
 
@@ -157,6 +162,7 @@ class SortedList:
                 _list_lens[pos] = _load
                 del _list[_load:]
                 self._rebuild = True
+
         else:
             _lists.append([value])
             _mins.append(value)
@@ -275,12 +281,12 @@ def main(n):
             op += a // b
             a %= b
             a, b = b, a
+
         else:
             break
 
-    print(op)
-
-
+    # print(op)
+    pass
 if __name__ == '__main__':
     # 示例：可修改 n 测试不同规模
     main(10)

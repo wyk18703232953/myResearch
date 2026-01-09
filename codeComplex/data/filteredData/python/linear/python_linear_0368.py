@@ -1,15 +1,12 @@
-import random
+def main(n):
+    # Interpret n as both the size of k and p
+    # Generate deterministic test data
+    # k is a non-decreasing sequence
+    k = [i // 2 for i in range(n)]
+    # p is another sequence designed to have mixed >= relations
+    p = [(i * 3) // 4 for i in range(n)]
 
-def main(n: int):
-    # 生成测试数据
-    # n: k 的长度
-    # m: p 的长度，设为和 n 相同规模（可以按需调整）
-    m = n
-
-    # 生成 k 和 p，为了更有意义，生成升序整数序列
-    # 你可以根据需要调整数据生成策略
-    k = sorted(random.randint(1, 10 * n) for _ in range(n))
-    p = sorted(random.randint(1, 10 * n) for _ in range(m))
+    m = len(p)
 
     a = 0
     b = 0
@@ -19,12 +16,10 @@ def main(n: int):
             ans += 1
             a += 1
             b += 1
+
         else:
             a += 1
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10
     main(10)

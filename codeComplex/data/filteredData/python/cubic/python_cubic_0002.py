@@ -16,6 +16,7 @@ def main(n):
         for x in (['0', '1'] if s[l] == '?' else [s[l]]):
             if l == r:
                 a = [x]
+
             else:
                 a = ['0', '1'] if s[r] == '?' else [s[r]]
             for y in a:
@@ -34,11 +35,12 @@ def main(n):
             s[i] = '1'
 
     if s[0] == '0':
-        print(''.join(s))
+        # print(''.join(s))
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

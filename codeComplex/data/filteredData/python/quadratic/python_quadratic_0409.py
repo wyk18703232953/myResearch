@@ -17,4 +17,5 @@ def main(n: int) -> str:
 
 if __name__ == "__main__":
     # 示例运行：n = 10
-    print(main(10))
+    # print(main(10))
+    pass

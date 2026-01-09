@@ -45,7 +45,8 @@ def main(n, M=10**9+7):
         ans += dp[n][j]
         ans %= M
 
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 # 示例：可以在本文件直接调用 main 进行测试

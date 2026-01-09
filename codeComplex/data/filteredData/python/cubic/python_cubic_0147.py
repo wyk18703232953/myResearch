@@ -1,9 +1,7 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成测试数据 A
-    # 这里生成 1 到 5 之间的随机整数，可按需要调整
-    A = [random.randint(1, 5) for _ in range(n)]
+def main(n):
+    # Deterministically generate input array A of length n
+    # Example pattern: A[i] = (i % 5) + 1
+    A = [(i % 5) + 1 for i in range(n)]
 
     memo = [[None for _ in range(n + 1)] for _ in range(n + 1)]
     for i in range(n):
@@ -35,9 +33,7 @@ def main(n: int):
                     endEle = post[0] + 1
             memo[left][right] = [startEle, endEle, minLen]
 
-    print(memo[0][n - 1][2])
-
-
+    # print(memo[0][n - 1][2])
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

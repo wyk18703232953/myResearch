@@ -1,58 +1,53 @@
-import random
-
-INF = 10**20
-
-
 def main(n):
-    # 生成规模为 n 的测试数据
-    # 这里设定 m = n，k = 2 * n 作为示例，可按需调整
-    m = n
-    k = 2 * n
+    # Interpret n as grid size parameter:
+    # n >= 2 -> grid n x n, k = 2 * n (even)
+    # n == 1 -> minimal case, use 1x1 grid and k = 2
+    if n <= 1:
+        rows = 1
+        cols = 1
+        k = 2
 
-    # 生成边权：1~10 的随机整数
-    ea = [[random.randint(1, 10) for _ in range(m - 1)] for _ in range(n)]      # 水平边
-    eb = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]      # 垂直边
+    else:
+        rows = n
+        cols = n
+        k = 2 * n
 
-    # DP 数组初始化
-    dp = [[[INF] * m for __ in range(n)] for _ in range(k // 2 + 1)]
-    dp[0] = [[0] * m for _ in range(n)]
+    # Deterministic generation of ea (rows x (cols-1)) and eb ((rows-1) x cols)
+    # Ensure shapes match original constraints: ea: rows x cols, eb: (rows-1) x cols
+    # In original code ea has shape [n][m-1?] actually ea is used with j and j-1, j < m-1 indexing.
+    # Here we keep ea as rows x (cols-1) logically but allocate as rows x cols and only use valid indices.
+    ea = [[(i * cols + j + 1) for j in range(cols)] for i in range(rows)]
+    eb = [[(i * cols + j + 1) * 2 for j in range(cols)] for i in range(rows - 1)]
+
+    m = cols
+    n_rows = rows
+
+    dp = [[[10**20] * m for _ in range(n_rows)] for _ in range(k // 2 + 1)]
+    dp[0] = [[0] * m for _ in range(n_rows)]
 
     def show_ans():
         for line in dp[-1]:
-            print(' '.join(map(str, [d * 2 for d in line])))
-
-    # 若 k 为奇数，答案必为 -1
+            # print(' '.join(map(str, [d * 2 for d in line])))
+            pass
     if k % 2:
-        for _ in range(n):
-            print(' '.join(['-1'] * m))
+        for _ in range(n_rows):
+            # print(' '.join(['-1'] * m))
+            pass
         return
 
-    # 状态转移
     for t in range(1, k // 2 + 1):
-        for i in range(n):
+        for i in range(n_rows):
             for j in range(m):
-                cur = dp[t][i][j]
-                if i > 0:
-                    cost = dp[t - 1][i - 1][j] + eb[i - 1][j]
-                    if cost < cur:
-                        cur = cost
-                if i < n - 1:
-                    cost = dp[t - 1][i + 1][j] + eb[i][j]
-                    if cost < cur:
-                        cur = cost
-                if j > 0:
-                    cost = dp[t - 1][i][j - 1] + ea[i][j - 1]
-                    if cost < cur:
-                        cur = cost
+                if i:
+                    dp[t][i][j] = min(dp[t][i][j], dp[t - 1][i - 1][j] + eb[i - 1][j])
+                if i < n_rows - 1:
+                    dp[t][i][j] = min(dp[t][i][j], dp[t - 1][i + 1][j] + eb[i][j])
+                if j:
+                    dp[t][i][j] = min(dp[t][i][j], dp[t - 1][i][j - 1] + ea[i][j - 1])
                 if j < m - 1:
-                    cost = dp[t - 1][i][j + 1] + ea[i][j]
-                    if cost < cur:
-                        cur = cost
-                dp[t][i][j] = cur
-
+                    dp[t][i][j] = min(dp[t][i][j], dp[t - 1][i][j + 1] + ea[i][j])
     show_ans()
 
 
 if __name__ == "__main__":
-    # 示例运行：n = 5
     main(5)

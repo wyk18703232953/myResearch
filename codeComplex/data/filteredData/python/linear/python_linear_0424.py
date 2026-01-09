@@ -1,46 +1,50 @@
-import sys
 import math
-import random
 
-def main(n: int):
-    # 生成测试数据
-    # 约定：
-    #   a = n
-    #   b 在 [0, 2^17-1] 范围内随机生成（保证不超过 t 的长度）
-    #   l[i] 在 [0, 100000] 范围内随机生成
+def main(n):
+    # 映射：a = n，b 为与运算掩码，l 为长度为 a 的整数列表
     a = n
-    b = random.randint(0, (1 << 17) - 1)
-    l = [random.randint(0, 100000) for _ in range(a)]
+    if a <= 0:
+        return
+    b = (a * 37) ^ 12345
+    b &= 65535
+    if b == 0:
+        b = 1
 
-    # 原始逻辑开始
-    t = [[-1, 0] for _ in range(100001)]
+    # 生成确定性数据：l[i] 在 [0, 100000] 范围内
+    t_size = 100001
+    l = [((i * 31 + 7) * (a + 5)) % t_size for i in range(a)]
+
+    t = [[-1, 0] for _ in range(t_size)]
+
     for i in range(a):
         if t[l[i]][0] != -1:
-            print(0)
+            # print(0)
+            pass
             return
         t[l[i]][0] = 3
 
     s = math.inf
     for i in range(a):
-        idx = l[i] & b
-        if idx <= 100000 and t[idx][0] != -1:
-            if idx != l[i] and t[idx][0] != 1:
-                t[idx] = [1, min(2, t[idx][1] + 1)]
-        elif idx <= 100000:
-            t[idx] = [2, 1]
-        # 如果 (l[i] & b) > 100000，原代码会越界，这里简单跳过
+        key = l[i] & b
+        if key < t_size and t[key][0] != -1:
+            if key != l[i] and t[key][0] != 1:
+                t[key] = [1, min(2, t[key][1] + 1)]
+
+        else:
+            if key < t_size:
+                t[key] = [2, 1]
 
     for i in range(a):
-        idx = l[i] & b
-        if idx <= 100000 and t[idx][1] != 0 and t[idx][0] == 1:
-            s = min(s, t[idx][1])
+        key = l[i] & b
+        if key < t_size and t[key][1] != 0 and t[key][0] == 1:
+            s = min(s, t[key][1])
 
     if s == math.inf:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(s)
-
-
+        # print(s)
+        pass
 if __name__ == "__main__":
-    # 示例：运行规模 n = 10，可根据需要修改
-    main(10)
+    main(10000)

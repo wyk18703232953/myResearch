@@ -3,9 +3,8 @@ def main(n):
     # 因此测试数据即为传入的 n 本身，无需额外结构。
     # 直接按原逻辑计算并输出结果。
     result = 2 * (n * (n - 1)) + 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：可在此处手动指定规模进行测试
     main(10)

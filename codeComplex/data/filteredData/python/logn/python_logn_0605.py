@@ -6,6 +6,7 @@ def binary(n, k, low, high):
             return n - mid
         elif val > k:
             return binary(n, k, low, mid - 1)
+
         else:
             return binary(n, k, mid + 1, high)
     return None  # 未找到时的兜底返回，可按需要调整
@@ -18,9 +19,8 @@ def main(n):
     k = (mid * (mid + 1)) // 2 - (n - mid)
 
     result = binary(n, k, 1, n)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，使用某个规模 n
     main(10)

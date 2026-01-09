@@ -1,5 +1,3 @@
-import random
-
 class edge(object):
     def __init__(self, ne, to, fl):
         self.ne = ne
@@ -20,12 +18,14 @@ def addedge(x, y, z):
 
 
 def bfs():
-    global deep, S, T, he, e
+    global deep, T, S, he, e
     deep = [0 for _ in range(T + 1)]
     q = [S]
     deep[S] = 1
-    while q:
-        x = q.pop(0)
+    head = 0
+    while head < len(q):
+        x = q[head]
+        head += 1
         i = he[x]
         while i:
             y = e[i].to
@@ -65,53 +65,54 @@ def dinic():
     return res
 
 
+def generate_input(n):
+    # n controls the total number of vertices in original bipartite set + number of edges
+    # We map: number of original vertices = n//2 + 1, number of edges = n//2
+    # Ensure at least 1 vertex and 1 edge when n is small
+    if n < 2:
+        n_vertices = 1
+        m_edges = 1
+
+    else:
+        n_vertices = n // 2 + 1
+        m_edges = n // 2
+    # weights of size n_vertices, deterministic using simple formula
+    weight = [0] + [(i % 7) + 1 for i in range(1, n_vertices + 1)]
+    edges = []
+    for i in range(1, m_edges + 1):
+        # connect vertices in a deterministic structured way
+        x = (i % n_vertices) + 1
+        y = ((i * 2) % n_vertices) + 1
+        if x == y:
+            y = (y % n_vertices) + 1
+        w = (i % 10) + 1
+        edges.append((x, y, w))
+    return n_vertices, m_edges, weight, edges
+
+
 def main(n):
-    """
-    n: number of left-side nodes
-    We generate:
-      - m = n random hyper edges
-      - random weights for n nodes and m hyper edges
-    """
     global e, tot, S, T, he, INF, deep
+    n_vertices, m_edges, weight, edges = generate_input(n)
 
-    # Parameterization: choose m as a function of n
-    m = n  # can be adjusted as needed
-
-    # Generate node weights: 1..10
-    weight = [0] + [random.randint(1, 10) for _ in range(n)]
-
-    # Initialize graph
-    e = [0, 0]
-    tot = 1
-    S = n + m + 1
-    T = S + 1
-    he = [0 for _ in range(T + 1)]
-    INF = 10**9 + 7
-    deep = []
-
+    INF = 1000000007
     ans = 0
 
-    # Edges from S to left nodes
-    for i in range(1, n + 1):
+    e = [0, 0]
+    tot = 1
+    S = n_vertices + m_edges + 1
+    T = S + 1
+    he = [0 for _ in range(T + 1)]
+
+    for i in range(1, n_vertices + 1):
         addedge(S, i, weight[i])
-
-    # Generate m hyper edges, each connects two distinct left nodes x,y
-    # and has capacity w from hyper node to T
-    for i in range(1, m + 1):
-        x = random.randint(1, n)
-        y = random.randint(1, n)
-        while y == x:
-            y = random.randint(1, n)
-        w = random.randint(1, 10)
-        addedge(n + i, T, w)
-        addedge(x, n + i, INF)
-        addedge(y, n + i, INF)
+    for i in range(1, m_edges + 1):
+        x, y, w = edges[i - 1]
+        addedge(n_vertices + i, T, w)
+        addedge(x, n_vertices + i, INF)
+        addedge(y, n_vertices + i, INF)
         ans += w
-
     ans -= dinic()
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # Example call; adjust n as needed
-    main(5)
+    main(1000)

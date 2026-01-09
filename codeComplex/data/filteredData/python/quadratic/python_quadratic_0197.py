@@ -15,6 +15,7 @@ def main(n):
         for j in range(n - i):
             if i == 0:
                 li[i][j] = ar[j]
+
             else:
                 li[i][j] = li[i - 1][j] ^ li[i - 1][j + 1]
 
@@ -27,9 +28,8 @@ def main(n):
     for l in range(1, n + 1):
         for r in range(l, n + 1):
             # 与原程序一致的输出逻辑
-            print(li[r - l][l - 1])
-
-
+            # print(li[r - l][l - 1])
+            pass
 if __name__ == "__main__":
     # 示例：用 n = 5 运行
     main(5)

@@ -7,15 +7,15 @@ def main(n: int):
     n -= 1
     if n <= v:
         result = n
+
     else:
         answer = v
         for i in range(1, n - v + 1):
             answer += (i + 1)
         result = answer
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：运行 main，规模 n 可按需修改
     main(10)

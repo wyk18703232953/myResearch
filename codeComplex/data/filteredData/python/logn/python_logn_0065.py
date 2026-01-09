@@ -37,7 +37,8 @@ def main(n):
     k_int = int(''.join(k))
     m_int = int(''.join(m))
     result = bina(k_int) ^ bina(m_int)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

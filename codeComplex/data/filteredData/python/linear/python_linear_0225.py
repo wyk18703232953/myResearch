@@ -1,24 +1,18 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成测试数据字符串 s
-    # 这里约定：长度为 n，由 '0' 和 '1' 随机组成，且至少有一个 '1'，避免总为 "0"
+def main(n):
+    # 生成长度为 n 的二进制字符串，保证不全为 '0'
     if n <= 0:
-        s = "0"
-    else:
-        s = ''.join(random.choice('01') for _ in range(n))
-        if set(s) == {'0'}:
-            # 若全为 0，则随机挑一个位置改为 1，保证不全为 0
-            idx = random.randrange(n)
-            s = s[:idx] + '1' + s[idx + 1:]
-
-    # 原逻辑
+        return
+    # 构造方式：前半部分为 '1'，后半部分交替 '0' 和 '1'
+    half = n // 2
+    s = '1' * (half if half > 0 else 1) + ''.join('0' if i % 2 == 0 else '1' for i in range(n - (half if half > 0 else 1)))
+    if set(s) == {'0'}:
+        s = '1' + s[1:]
     if s == '0':
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print("1" + "0" * s.count('0'))
-
-
+        # print("1" + "0" * s.count('0'))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，n 为测试数据规模
     main(10)

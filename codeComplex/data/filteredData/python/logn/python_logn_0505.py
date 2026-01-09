@@ -29,9 +29,8 @@ def main(n: int):
     x = temp % a
     res = (10 ** a) - 1 - int(temp / a)
     ans = int((res % (10 ** (x + 1))) / (10 ** x))
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可按需修改
     main(1000)

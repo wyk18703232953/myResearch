@@ -4,6 +4,7 @@ def main(n: int):
     # 具体策略：取一个中间值 mid，构造 l, r
     if n <= 0:
         l, r = 0, 0
+
     else:
         # 限制 n 最大不超过 62（与原代码位宽一致）
         n_eff = min(n, 62)
@@ -19,13 +20,14 @@ def main(n: int):
     i = 0
 
     if l == r:
-        print(0)
+        # print(0)
+        pass
+
     else:
         while i < length and a[i] == b[i]:
             i += 1
-        print(2 ** (62 - i) - 1)
-
-
+        # print(2 ** (62 - i) - 1)
+        pass
 if __name__ == "__main__":
     # 示例调用：可修改 n 测试不同规模
     main(10)

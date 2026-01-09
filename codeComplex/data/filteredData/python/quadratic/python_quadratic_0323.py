@@ -1,23 +1,16 @@
 import sys
-import random
-
 
 def main(n):
-    # 随机生成满足约束的 d, k 测试数据
+    # Deterministic parameter generation based on n
+    # Ensure n is at least 2 to form a non-trivial tree
     if n < 2:
-        # 原题逻辑在 n>=2 时才有边，这里简单处理成无解
-        print("NO")
-        return
+        n = 2
+    # d grows like log n but at least 1 and at most n-1
+    d = max(1, min(n - 1, n.bit_length()))
+    # k at least 2, at most n
+    k = max(2, min(n, 3 + (n % 5)))
 
-    # 生成 k (分支因子)，至少为 2
-    k = random.randint(2, max(2, n // 2 + 1))
-
-    # 最大直径不会超过 n-1
-    max_d = n - 1
-    d = random.randint(1, max_d)
-
-    # 下面是原 main() 中的逻辑，去掉 input()
-
+    # Original logic starts here
     if d > n - 1:
         sys.stdout.write("NO\n")
         return
@@ -48,6 +41,7 @@ def main(n):
 
         par[cnode] = prevlevel[len(clevel) // cdiv]
         clevel.append(cnode)
+
         cnode += 1
 
     mdep = d // 2
@@ -73,6 +67,7 @@ def main(n):
     attach1 = clevel[0]
     if len(clevel) > firstchild:
         attach2 = clevel[-1]
+
     else:
         attach2 = prevlevel[-1]
         d2 -= 1
@@ -96,6 +91,7 @@ def main(n):
             par[cptr] = attach2
             attach2 = cptr
             d2 += 1
+
         else:
             par[cptr] = attach1
             attach1 = cptr
@@ -106,3 +102,7 @@ def main(n):
     sys.stdout.write("YES\n")
     for i in range(1, n):
         sys.stdout.write(str(i + 1) + " " + str(par[i] + 1) + "\n")
+
+
+if __name__ == "__main__":
+    main(10)

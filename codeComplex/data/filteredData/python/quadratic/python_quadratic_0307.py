@@ -1,7 +1,5 @@
-import random
-
 def helper(n, k, l):
-    res = 0.0
+    res = 0
     for i in range(n - k + 1):
         base_seg = l[i:i + k]
         sm_bseg = sum(base_seg)
@@ -17,14 +15,14 @@ def helper(n, k, l):
 
     return res
 
-def main(n):
-    # 生成测试数据：n 个整数，范围可按需调整
-    # 保证 1 <= k <= n
-    l = [random.randint(-1000, 1000) for _ in range(n)]
-    k = random.randint(1, n)
-    result = helper(n, k, l)
-    print(result)
 
+def main(n):
+    if n < 2:
+        n = 2
+    k = max(1, n // 2)
+    l = [(i * 3 + 1) % 1000 for i in range(n)]
+    result = helper(n, k, l)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10，可按需修改
     main(10)

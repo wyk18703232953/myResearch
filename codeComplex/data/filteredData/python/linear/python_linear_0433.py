@@ -1,17 +1,17 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：n 行，每行 4 个 1~100 的随机整数
+def main(n):
     r = []
-    for _ in range(n):
-        a, b, c, d = [random.randint(1, 100) for _ in range(4)]
+    for i in range(n):
+        a = i
+        b = i + 1
+        c = (i * 2) % (n + 1)
+        d = (i * 3) // (n + 1) if n > 0 else 0
         r.append(a + b + c + d)
-
+    if not r:
+        # print(0)
+        pass
+        return
     thomas = r[0]
-    rank = sorted(r, reverse=True).index(thomas) + 1
-    print(rank)
-
-
+    # print(sorted(r, reverse=True).index(thomas) + 1)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可根据需要修改 n
-    main(5)
+    main(10)

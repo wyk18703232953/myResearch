@@ -1,34 +1,32 @@
-import random
-
 def val(s):
     ans = ((int(s.split('+')[0][1:]) + int(s.split('+')[1].split(')')[0])) / int(s.split('/')[1]))
     return ans
 
 def main(n):
-    # 生成 n 条形如 "(a+b)/c" 的测试数据
-    # 为避免除零，c 从 1 开始取值
-    expressions = []
-    for _ in range(n):
-        a = random.randint(0, 100)
-        b = random.randint(0, 100)
-        c = random.randint(1, 10)
+    # 生成 n 个形如 "(a+b)/c" 的字符串，a,b,c 由下标 i 确定性构造
+    exprs = []
+    for i in range(n):
+        a = i
+        b = i % 7 + 1
+        c = (i % 5) + 1
         expr = f"({a}+{b})/{c}"
-        expressions.append(expr)
+        exprs.append(expr)
 
     s = []
     f = {}
-    for ss in expressions:
-        v = val(ss)
-        s.append(v)
-        if v not in f:
-            f[v] = 1
+    for i in range(n):
+        ss = exprs[i]
+        s.append(val(ss))
+        if s[i] not in f:
+            f[s[i]] = 1
+
         else:
-            f[v] += 1
+            f[s[i]] += 1
 
-    for v in s:
-        print(f[v], end=" ")
-    print()
-
+    for i in range(len(s)):
+        # print(f[s[i]], end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10
     main(10)

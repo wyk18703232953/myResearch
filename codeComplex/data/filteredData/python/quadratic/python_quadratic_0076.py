@@ -27,14 +27,14 @@ def main(n: int):
             c = (c + 1) % 2
         if c == 0:
             outputs.append("even")
+
         else:
             outputs.append("odd")
 
     # 按行输出结果
     for line in outputs:
-        print(line)
-
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 进行简单测试
     main(5)

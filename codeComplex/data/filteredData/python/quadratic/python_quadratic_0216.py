@@ -1,22 +1,23 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成一个 r x c 的 0/1 矩阵作为测试数据
-    # 这里简单设定 r = c = n，元素随机为 '0' 或 '1'
+def main(n):
+    # Interpret n as both number of rows and columns of the grid
     r = n
     c = n
-    a = []
-    for _ in range(r):
-        row = ''.join(str(random.randint(0, 1)) for _ in range(c))
-        a.append(row)
 
-    # 以下为原逻辑，无 input()
+    # Deterministically generate a binary grid as list of strings
+    # Pattern: a[i][j] = (i + j) % 2 converted to '0' or '1'
+    a = []
+    for i in range(r):
+        row_chars = []
+        for j in range(c):
+            row_chars.append(str((i + j) % 2))
+        a.append("".join(row_chars))
+
     pre = [[0 for _ in range(c)] for _ in range(r)]
     suf = [[0 for _ in range(c)] for _ in range(r)]
 
-    for j in range(c):
-        pre[0][j] = int(a[0][j])
-        suf[r - 1][j] = int(a[r - 1][j])
+    for i in range(c):
+        pre[0][i] = int(a[0][i])
+        suf[r - 1][i] = int(a[r - 1][i])
 
     for i in range(1, r):
         for j in range(c):
@@ -28,20 +29,22 @@ def main(n: int):
 
     ans = 'NO'
     for i in range(r):
-        ok = True
+        f = 1
         for j in range(c):
-            up = pre[i - 1][j] if i - 1 >= 0 else 0
-            down = suf[i + 1][j] if i + 1 < r else 0
+            up = 0
+            down = 0
+            if i - 1 >= 0:
+                up = pre[i - 1][j]
+            if i + 1 < r:
+                down = suf[i + 1][j]
             if up + down == 0:
-                ok = False
+                f = 0
                 break
-        if ok:
+        if f:
             ans = "YES"
             break
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：用 n = 5 运行一次
     main(5)

@@ -31,9 +31,8 @@ def main(n: int):
         dp[gcd] = (power[total] - 1 - complement + mod) % mod
 
     # 5. 输出结果
-    print(dp[1])
-
-
+    # print(dp[1])
+    pass
 if __name__ == "__main__":
     # 示例调用：n 可以按需要修改或由外部调用 main(n)
     main(10)

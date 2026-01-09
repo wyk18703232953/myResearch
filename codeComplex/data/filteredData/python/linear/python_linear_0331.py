@@ -1,20 +1,15 @@
-from itertools import accumulate
-import random
-
-def main(n: int):
-    # 1. 生成测试数据
-    # 随机生成 M，并生成 n 个严格递增且小于 M 的整数
-    # 保证 A 中元素在 [1, M-1] 且递增
+def main(n):
+    # Interpret n as the number of points between 0 and M.
+    # Deterministically generate A and M.
+    # Example: A = [1, 3, 6, 10, ...] (prefix sums of 1..n), M = last A + 5
     if n <= 0:
-        # 退化情况，直接输出 0
-        print(0)
+        # print(0)
+        pass
         return
 
-    M = max(2 * n + 1, 10)  # 简单设置一个与 n 相关的上界
-    # 从 [1, M-1] 中选 n 个不重复的数并排序
-    A = sorted(random.sample(range(1, M), n))
+    A = [i * (i + 1) // 2 for i in range(1, n + 1)]
+    M = A[-1] + 5
 
-    # 2. 按照原逻辑处理
     A = [0] + A + [M]
     D = []
     for i in range(n + 1):
@@ -26,10 +21,12 @@ def main(n: int):
         if i % 2 == 0:
             E.append(d)
             O.append(0)
+
         else:
             O.append(d)
             E.append(0)
 
+    from itertools import accumulate
     CE = [0] + E
     CE = list(accumulate(CE))
     CO = [0] + O
@@ -41,10 +38,7 @@ def main(n: int):
             continue
         temp = CE[i] + (D[i] - 1) + CO[-1] - CO[i + 1]
         ans = max(ans, temp)
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

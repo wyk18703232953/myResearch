@@ -5,9 +5,8 @@ def main(n: int):
     # 并对每个 i 调用下面的计算逻辑。
     
     result = 2 * (n ** 2) - 2 * n + 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

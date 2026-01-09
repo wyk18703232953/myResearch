@@ -4,6 +4,7 @@ def solve(x, k):
     mult = pow(2, k, DV)
     if x == 0:
         return 0
+
     else:
         return (2 * mult * x - mult + 1) % DV
 
@@ -15,6 +16,7 @@ def generate_test_data(n):
     if n <= 0:
         x = 0
         k = 0
+
     else:
         x = n
         k = n.bit_length()
@@ -23,8 +25,8 @@ def generate_test_data(n):
 def main(n):
     x, k = generate_test_data(n)
     ans = solve(x, k)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可修改为任意想测试的规模
     main(10)

@@ -7,11 +7,13 @@ def main(n):
     import math
 
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     if n == 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 求 k
@@ -22,10 +24,12 @@ def main(n):
 
     # 原始逻辑开始
     if n == 1:
-        print(0)
+        # print(0)
+        pass
         return
     if 1 + k * (k - 1) // 2 < n:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     l, r = 0, k - 1
@@ -33,13 +37,17 @@ def main(n):
         m = (l + r + 1) // 2
         if 1 + (m + k - 1) * (k - 1 - m + 1) // 2 >= n:
             l = m
+
         else:
             r = m - 1
 
     if 1 + (l + k - 1) * ((k - 1) - l + 1) // 2 < n:
-        print(k - 1 - l + 2)
+        # print(k - 1 - l + 2)
+        pass
+
     else:
-        print(k - 1 - l + 1)
+        # print(k - 1 - l + 1)
+        pass
 
 
 # 示例调用

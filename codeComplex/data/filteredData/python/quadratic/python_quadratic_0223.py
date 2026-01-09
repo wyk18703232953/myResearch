@@ -24,11 +24,12 @@ def main(n):
                 ans = min(ans, c[i] + d[j])
 
     if ans == INF:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

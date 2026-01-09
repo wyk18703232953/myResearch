@@ -1,32 +1,35 @@
-import random
+def main(n):
+    # Deterministic data generation:
+    # We simulate a tree-like parent array l of size n+1 (1-based),
+    # where for i in [2..n], l[i] = i//2 (a fixed structure, e.g., a binary heap parent relation).
+    # Then we follow the original algorithm on this generated structure.
 
-def main(n: int):
-    # 生成测试数据：构造一个长度为 n-1 的序列，每个元素在 [1, n] 范围内
-    # 保持与原代码语义：l[2..n] 存储读入的 n-1 个数
     d = [0] * (n + 1)
-    l = [0] * 2
+    l = [0, 0]  # l[0] unused, l[1] = 0 as in original code
     m = [0] * (n + 1)
+    a = 0
 
-    # 生成 n-1 个随机整数，范围 [1, n]
-    edges = [random.randint(1, n) for _ in range(n - 1)]
-
-    for a in edges:
+    # original: for _ in range(n-1): a=int(input()); l.append(a); m[a]+=1
+    # here: deterministically generate a parent for nodes 2..n
+    for i in range(2, n + 1):
+        a = i // 2
         l.append(a)
         m[a] += 1
 
+    # original: for i in range(1,n+1): if m[i]==0: d[l[i]]+=1
     for i in range(1, n + 1):
         if m[i] == 0:
-            # 注意：原代码里直接使用 d[l[i]]，这里保持一致
             d[l[i]] += 1
 
+    # original: for i in range(1,n+1): if m[i]>0 and d[i]<3: print("No"); break; else: print("Yes")
     for i in range(1, n + 1):
         if m[i] > 0 and d[i] < 3:
-            print("No")
+            # print("No")
+            pass
             break
+
     else:
-        print("Yes")
-
-
+        # print("Yes")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

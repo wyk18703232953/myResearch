@@ -1,8 +1,7 @@
 import math
-import random
 
 def calc(st, j):
-    ans = 10**30
+    ans = 9999999999999999999999
     if j >= len(st):
         return 0
     j = len(st) - j
@@ -10,8 +9,8 @@ def calc(st, j):
         ans = min(ans, st[i] - st[i - j + 1] + 1)
     return ans
 
-def solve(n, m, k, s):
-    inf = 10**30
+def run_algorithm(n, m, k, s):
+    inf = 99999999999999999999
     dp = [[inf for _ in range(k + 1)] for _ in range(n + 1)]
     for i in range(k + 1):
         dp[0][i] = 0
@@ -26,23 +25,34 @@ def solve(n, m, k, s):
                 dp[i][t + j] = min(dp[i][t + j], no + dp[i - 1][t])
     return dp[n][k]
 
-def generate_test_data(n):
-    # Scale other parameters based on n
-    m = max(1, n)          # length of each string
-    k = min(n, m)          # number of deletions allowed
+def generate_input(n):
+    # Interpret n as both number of rows and row length
+    if n <= 0:
+        n_rows = 1
+        m = 1
 
+    else:
+        n_rows = n
+        m = n
+    # Set k proportional to m but not exceeding total possible '1's
+    # Here choose k = m // 2 for determinism
+    k = m // 2
+    # Deterministically generate n_rows binary strings of length m
+    # Pattern: s[i][j] = '1' if (i * 131 + j * 17) % 3 == 0 else '0'
     s = []
-    for _ in range(n):
-        # generate a random binary string of length m
-        row = ''.join(random.choice('01') for _ in range(m))
-        s.append(row)
-    return n, m, k, s
+    for i in range(n_rows):
+        row = ['0'] * m
+        base = i * 131
+        for j in range(m):
+            if (base + j * 17) % 3 == 0:
+                row[j] = '1'
+        s.append(''.join(row))
+    return n_rows, m, k, s
 
 def main(n):
-    n, m, k, s = generate_test_data(n)
-    ans = solve(n, m, k, s)
-    print(ans)
-
+    n_rows, m, k, s = generate_input(n)
+    result = run_algorithm(n_rows, m, k, s)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # example: run with n = 5
-    main(5)
+    main(10)

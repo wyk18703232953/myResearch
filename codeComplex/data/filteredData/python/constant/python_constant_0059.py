@@ -16,11 +16,12 @@ def main(n: int):
                 break
 
     if cur == 0:
-        print(*x, sep=" ")
+        # print(*x, sep=" ")
+        pass
+
     else:
-        print("I'm too stupid to solve this problem")
-
-
+        # print("I'm too stupid to solve this problem")
+        pass
 if __name__ == "__main__":
     # 根据 n 生成测试数据，这里直接调用 main(n)
     # 可按需要修改测试规模

@@ -1,20 +1,23 @@
-import math
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据，这里生成 1~10 的随机整数
-    t = [random.randint(1, 10) for _ in range(n)]
+    if n <= 0:
+        return
+
+    # 确定性生成长度为 n 的列表 t
+    # 示例构造：t[i] = (i % 5) + 1，元素取值在 1~5 之间
+    t = [(i % 5) + 1 for i in range(n)]
 
     p = sum(t)
+    import math
     a = math.ceil(p / 2)
 
     u = 0
     for j in range(n):
         u += t[j]
         if u >= a:
-            print(j + 1)
+            # print(j + 1)
+            pass
             break
 
+
 if __name__ == "__main__":
-    # 示例：调用 main(5) 进行测试
-    main(5)
+    main(10)

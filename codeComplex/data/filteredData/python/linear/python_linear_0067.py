@@ -1,19 +1,12 @@
-import random
-
 def main(n):
-    # 随机生成总时间 s
-    s = random.randint(1, 10**5)
-
+    # 生成确定性输入：n 对 (f, t)，以及 s
+    s = n  # 将原始的 s 设置为与规模 n 相关的一个确定性值
     ans = s
-    for _ in range(n):
-        # 随机生成 f, t（可根据需要调整范围）
-        f = random.randint(0, 10**4)
-        t = random.randint(0, 10**4)
+    for i in range(n):
+        f = i
+        t = i * 2
         ans = max(ans, t + f)
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 5
-    main(5)
+    main(10)

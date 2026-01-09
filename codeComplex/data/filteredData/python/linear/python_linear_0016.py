@@ -1,6 +1,4 @@
-import random
-
-def f(n: int) -> bool:
+def f(n):
     k = 2
     while k * k <= n:
         if n % k == 0:
@@ -8,15 +6,7 @@ def f(n: int) -> bool:
         k += 1
     return True
 
-def main(n: int) -> None:
-    # 根据规模 n 生成测试数据：
-    # n 保持为给定规模；k 随机设为 [1, n]（至少 1，至多 n）
-    if n < 2:
-        print("NO")
-        return
-
-    k = random.randint(1, max(1, n // 2))
-
+def core_logic(n, k):
     a = []
     x = 0
     for i in range(2, n + 1):
@@ -26,11 +16,20 @@ def main(n: int) -> None:
         if a[i] + a[i + 1] + 1 in a:
             x += 1
     if x >= k:
-        print("YES")
+        return 'YES'
+
     else:
-        print("NO")
+        return 'NO'
 
+def main(n):
+    if n < 2:
+        n_effective = 2
 
+    else:
+        n_effective = n
+    k = max(1, n_effective // 10)
+    result = core_logic(n_effective, k)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，指定规模 n
-    main(50)
+    main(1000)

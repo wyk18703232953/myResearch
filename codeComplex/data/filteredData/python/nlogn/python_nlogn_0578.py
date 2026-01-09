@@ -3,19 +3,21 @@ def main(n):
     first = True
     while n:
         if not first:
-            print(' ', end='')
+            # print(' ', end='')
+            pass
         first = False
 
         if n == 3:
-            print(i, i, i * 3, end='')
+            # print(i, i, i * 3, end='')
+            pass
             break
 
-        print(' '.join([str(i)] * ((n + 1) // 2)), end='')
+        # print(' '.join([str(i)] * ((n + 1) // 2)), end='')
+        pass
         i <<= 1
         n >>= 1
-    print()
-
-
+    # print()
+    pass
 if __name__ == "__main__":
     # 示例：根据需要修改 n 进行测试
     test_n = 10

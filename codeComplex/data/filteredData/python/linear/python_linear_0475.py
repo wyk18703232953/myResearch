@@ -1,13 +1,9 @@
-import random
+import math
 from collections import defaultdict
 
-def solve_instance(n, c, a):
-    # Original solve() logic, without input()
-    c = [0] + c
-    a = [0] + a
+def solve(n, c, a):
     vis = [False] * (n + 1)
     ans = 0
-
     d = defaultdict(lambda: 0)
     cycleno = 0
 
@@ -18,7 +14,6 @@ def solve_instance(n, c, a):
                 d[cur] = cycleno
                 vis[cur] = True
                 cur = a[cur]
-
             if d[cur] == cycleno:
                 min_ = c[cur]
                 first = cur
@@ -28,24 +23,23 @@ def solve_instance(n, c, a):
                     cur = a[cur]
                 ans += min_
             cycleno += 1
-
     return ans
 
-
 def main(n):
-    # Generate test data for given n
-    # c[i] in [1, 1000], a is a random permutation of 1..n
-    c = [random.randint(1, 1000) for _ in range(n)]
+    # n: size of the permutation and cost array
+    # Deterministic data generation:
 
-    # Generate a random permutation to form a mapping a[1..n]
-    a = list(range(1, n + 1))
-    random.shuffle(a)
+    # costs c[1..n]; c[0] unused
+    # Use a simple deterministic pattern, e.g., c[i] = (i * 3) % (n + 7) + 1
+    c = [0] + [((i * 3) % (n + 7)) + 1 for i in range(1, n + 1)]
 
-    # Solve and print the answer
-    ans = solve_instance(n, c, a)
-    print(ans)
+    # permutation a[1..n]; a[0] unused
+    # Construct a deterministic permutation with mixed cycle structure
+    # Example: a[i] = (2*i) mod n + 1 gives a permutation on {1..n}
+    a = [0] + [((2 * i) % n) + 1 for i in range(1, n + 1)]
 
-
+    result = solve(n, c, a)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # Example: run main with n = 10
     main(10)

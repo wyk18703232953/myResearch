@@ -45,10 +45,13 @@ def main(n: int):
 
     # 如果 processed 已确定的 '+' 或 '-' 超过 actual 中对应的数量，则概率为 0
     if processedPos > actualPos or processedNeg > actualNeg:
-        print(0)
+        # print(0)
+        pass
     # 如果已确定部分已经完全等于目标，则概率为 1
     elif processedPos == actualPos and processedNeg == actualNeg:
-        print(1)
+        # print(1)
+        pass
+
     else:
         remainPos = actualPos - processedPos
         remainNeg = actualNeg - processedNeg
@@ -56,9 +59,8 @@ def main(n: int):
         # 组合数 C(remainPos + remainNeg, remainPos) / 2^(remainPos + remainNeg)
         ans = (factorial(remainPos + remainNeg) /
                (factorial(remainPos) * factorial(remainNeg))) / (2 ** (remainPos + remainNeg))
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

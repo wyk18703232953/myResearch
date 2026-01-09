@@ -5,7 +5,9 @@ def main(n: int):
     right = 2 * n
 
     if left == right:
-        print(0)
+        # print(0)
+        pass
+
     else:
         x = 1
         while x <= right:
@@ -16,12 +18,12 @@ def main(n: int):
         while y > 0 and (x <= left or x > right):
             if x <= left:
                 x += y
+
             else:
                 x -= y
             y //= 2
-        print(x ^ (x - 1))
-
-
+        # print(x ^ (x - 1))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可自行修改
     main(10)

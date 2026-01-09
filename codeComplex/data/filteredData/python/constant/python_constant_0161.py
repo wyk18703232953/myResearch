@@ -12,7 +12,8 @@ def main(n: int):
 
     for i in range(4, n):
         if not a[i] and not a[n - i]:
-            print(i, n - i)
+            # print(i, n - i)
+            pass
             return
 
 if __name__ == "__main__":

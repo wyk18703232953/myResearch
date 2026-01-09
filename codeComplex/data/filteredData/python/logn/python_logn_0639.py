@@ -8,6 +8,7 @@ def sol(lo, hi, actions, k):
             return eat_candies
         elif put_candies - eat_candies > k:
             hi = mid - 1
+
         else:
             lo = mid + 1
     return actions - hi
@@ -20,9 +21,8 @@ def main(n):
     k = max_diff // 2
 
     res = sol(1, n, n, k)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(100)
     main(100)

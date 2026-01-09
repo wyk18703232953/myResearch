@@ -8,12 +8,12 @@ def main(n):
         result = (k - 1) // 2
     elif n * 2 > k:
         result = n - k // 2
+
     else:
         result = 0
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可在此处修改 n 的值进行测试
     main(10)

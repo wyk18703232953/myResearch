@@ -5,16 +5,17 @@ def main(n):
     b = 2 * n
 
     if a == b:
-        print(0)
+        # print(0)
+        pass
+
     else:
         x = a ^ b
         c = 0
         while x:
             x = x // 2
             c += 1
-        print(2 ** c - 1)
-
-
+        # print(2 ** c - 1)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -1,27 +1,26 @@
-import random
-import string
+def main(n):
+    # Deterministically generate two strings based on n
+    # str1 length = n, str2 length = 1 (since original code only uses first char of str2)
+    if n <= 0:
+        str1 = ""
 
-def main(n: int):
-    # 生成测试数据：str1 长度为 n，str2 为随机长度（至少 1）
-    # 字符集使用小写字母
-    letters = string.ascii_lowercase
+    else:
+        # Generate a pattern of lowercase letters: 'a'..'z' cycling
+        str1 = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
+    # str2 single character depends on n deterministically
+    # Map n to a lowercase letter
+    ch2 = chr(ord('a') + (n % 26))
+    str2 = ch2
 
-    # 保证 n >= 1，否则生成一个最小规模
-    n = max(1, n)
-
-    str1 = ''.join(random.choice(letters) for _ in range(n))
-    str2_len = random.randint(1, max(1, n // 2))  # 自定义：str2 长度不超过 n/2
-    str2 = ''.join(random.choice(letters) for _ in range(str2_len))
-
-    # 以下为原逻辑移植
     lst = []
     lst_ans = []
-    l_count = 0  # 原代码中未使用，但保留
+    l_count = 0
     count = 0
 
     for i in str2:
         if count < 1:
             lst.append(i)
+
         else:
             break
 
@@ -31,18 +30,21 @@ def main(n: int):
             count += 1
         elif ord(i) < ord(lst[0]):
             lst_ans.append(i)
+
         else:
             lst_ans.append(lst[0])
             break
+
     else:
         lst_ans.append(lst[0])
 
-    # 输出结果
-    print('str1:', str1)
-    print('str2:', str2)
-    print('result:', ''.join(lst_ans))
+    # Return the result string instead of printing, to make it reusable in experiments
+    return ''.join(lst_ans)
 
 
 if __name__ == "__main__":
-    # 示例运行，可根据需要修改 n
-    main(10)
+    # Example deterministic calls for experimentation
+    for n in [1, 5, 10, 20]:
+        result = main(n)
+        # print(f"n={n}, result={result}")
+        pass

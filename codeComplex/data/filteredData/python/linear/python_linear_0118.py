@@ -11,4 +11,5 @@ def main(n: int) -> int:
 if __name__ == "__main__":
     # 示例：自行指定规模 n 测试
     example_n = 10
-    print(main(example_n))
+    # print(main(example_n))
+    pass

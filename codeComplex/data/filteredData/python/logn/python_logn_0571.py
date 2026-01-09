@@ -10,9 +10,8 @@ def main(n):
         x += 1
         y *= 10
     a = 10 ** (x - 1) + k // x
-    print(str(a)[k % x])
-
-
+    # print(str(a)[k % x])
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(100) 可根据需要自行修改测试规模
     main(100)

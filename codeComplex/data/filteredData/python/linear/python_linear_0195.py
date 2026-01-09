@@ -1,15 +1,14 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 生成参数 a, b, c, t
-    # 约束：0 <= l[i] <= t，保证原逻辑中的 k = t - l[i] 为非负
-    a = random.randint(1, 10)
-    b = random.randint(1, 10)
-    c = random.randint(1, 10)
-    # t 至少要不小于最大 l[i]，先生成 l，再设 t
-    l = [random.randint(0, 100) for _ in range(n)]
-    t = max(l) + random.randint(0, 50)
+    # 确定性生成输入数据
+    # 将 n 映射为原程序中的 n，a, b, c, t
+    # 这里让 a, b, c, t 随 n 以确定性方式变化
+    a = 2 + (n % 5)
+    b = 1 + (n % 3)
+    c = 1 + (n % 7)
+    t = n + 5
+
+    # 保证 l 中元素不大于 t，且随 n 增长
+    l = [(i * 2) % (t + 1) for i in range(1, n + 1)]
 
     if c > b:
         r = 0
@@ -17,11 +16,11 @@ def main(n):
             k = t - i
             k *= (c - b)
             r += k
-        print(a * n + r)
+        # print(a * n + r)
+        pass
+
     else:
-        print(a * n)
-
-
+        # print(a * n)
+        pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n
-    main(5)
+    main(10)

@@ -6,7 +6,9 @@ def main(n):
     ans = l ^ r
     x = bin(ans)[1:]
     if ans == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         ptr = -1
         po = 0
@@ -18,9 +20,8 @@ def main(n):
             if ptr == -len(x) - 1:
                 break
 
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例调用
     main(10)

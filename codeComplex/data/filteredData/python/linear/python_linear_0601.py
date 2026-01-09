@@ -4,23 +4,31 @@ def main(n: int):
 
     if n <= 10:
         for i in range(n):
-            print(0, i)
+            # print(0, i)
+            pass
         return
 
     # n > 10 的情况
-    print(0, 0)
+    # print(0, 0)
+    pass
     for i in range(4, n + 1, 3):
         k = (i // 3) * 2
-        print(k, 0)
-        print(k - 1, 1)
-        print(k - 2, 2)
+        # print(k, 0)
+        pass
+        # print(k - 1, 1)
+        pass
+        # print(k - 2, 2)
+        pass
 
     k = ((n + 1) // 3) * 2
     if n % 3 == 0:
-        print(k - 1, 1)
-        print(k - 2, 2)
+        # print(k - 1, 1)
+        pass
+        # print(k - 2, 2)
+        pass
     elif n % 3 == 2:
-        print(k - 2, 2)
+        # print(k - 2, 2)
+        pass
 
 
 # 示例：调用 main 生成测试

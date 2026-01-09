@@ -1,29 +1,38 @@
-import random
-
-MOD = 10 ** 9 + 7
-
 def main(n):
-    # 1. 生成规模为 n 的测试数据
-    # 生成一个长度为 n 的随机 01 串
-    s = 'x' + ''.join(random.choice('01') for _ in range(n))
+    MOD = 10 ** 9 + 7
 
-    # 设置查询数量 q，并随机生成 q 个区间查询
-    # 这里选择 q 与 n 同阶，可按需调整
+    # Map n to string length and query count deterministically
+    str_len = n
     q = n
-    queries = []
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
-        queries.append((l, r))
 
-    # 2. 原逻辑处理部分
-    c = [0] * (n + 1)
-    for i in range(1, n + 1):
+    # Deterministically generate a binary string of length str_len
+    # Pattern: s[i] = '1' iff i is odd (1-based index)
+    s = 'x' + ''.join('1' if (i % 2 == 1) else '0' for i in range(1, str_len + 1))
+
+    n_local = str_len
+
+    c = [0] * (n_local + 1)
+    for i in range(1, n_local + 1):
         c[i] = c[i - 1] + (s[i] == '1')
 
-    p2 = [1] * (2 * n + 1)
-    for i in range(1, 2 * n + 1):
+    p2 = [1] * (2 * n_local + 1)
+    for i in range(1, 2 * n_local + 1):
         p2[i] = p2[i - 1] * 2 % MOD
+
+    # Deterministically generate q queries (l, r) within [1, n_local]
+    # Example pattern: l = (i % n) + 1, r = n_local - (i % n)
+    # Ensure l <= r; if not, swap.
+    queries = []
+    if n_local == 0:
+        queries = []
+
+    else:
+        for i in range(q):
+            l = (i % n_local) + 1
+            r = n_local - (i % n_local)
+            if l > r:
+                l, r = r, l
+            queries.append((l, r))
 
     out = []
     for l, r in queries:
@@ -32,10 +41,13 @@ def main(n):
         ans = (p2[o + z] - 1 - p2[z] + 1) % MOD
         out.append(ans)
 
-    # 输出结果
-    print(*out, sep='\n')
+    # For experiment purposes, return the results instead of printing
+    return out
 
 
 if __name__ == "__main__":
-    # 示例运行：可以根据需要修改 n
-    main(10)
+    # Example deterministic call
+    results = main(10)
+    for v in results:
+        # print(v)
+        pass

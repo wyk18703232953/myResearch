@@ -3,10 +3,13 @@ def main(n):
     按题意：原程序为
         n, m, k, l = map(int, input().split())
         if m > n or (l + k + m - 1) // m * m > n:
-            print(-1)
+            # print(-1)
+            pass
+
         else:
             x = (l + k + m - 1) // m
-            print(x)
+            # print(x)
+            pass
 
     这里根据给定规模 n 自动生成 m, k, l 测试数据。
     可按需要调整生成策略。
@@ -22,10 +25,13 @@ def main(n):
 
     # 原逻辑
     if m > n or ((l + k + m - 1) // m) * m > n:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         x = (l + k + m - 1) // m
-        print(x)
+        # print(x)
+        pass
 
 
 # 示例调用

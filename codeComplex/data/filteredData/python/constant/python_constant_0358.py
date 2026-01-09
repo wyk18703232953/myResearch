@@ -23,6 +23,8 @@ def main(n: int):
         if a not in st:
             b.append(a)
 
-    print(len(b))
+    # print(len(b))
+    pass
     for k in b:
-        print(k)
+        # print(k)
+        pass

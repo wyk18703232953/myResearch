@@ -1,29 +1,36 @@
-import random
+def main(n):
+    # Interpreting n as both number of rows and columns in a square grid
+    rows = n
+    cols = n
 
-def main(n: int):
-    # 生成一个 n x n 的网格，随机选择一段连续的 'B'
-    m = n  # 这里假设为正方形网格，原代码未使用 m
-
+    # Deterministic grid generation:
+    # Create a single horizontal segment of 'B's in the middle row.
+    # Segment length is n if n is odd, else n-1 to keep it within bounds and non-empty.
     grid = []
-    chosen_row = random.randint(0, n - 1)
-    length = random.randint(1, m)          # 'B' 段长度
-    start_col = random.randint(0, m - length)
+    mid_row = rows // 2
+    seg_len = n if n % 2 == 1 else max(1, n - 1)
+    start_col = (cols - seg_len) // 2
 
-    for i in range(n):
-        if i == chosen_row:
-            row = ['.'] * m
-            for j in range(start_col, start_col + length):
-                row[j] = 'B'
-            grid.append(''.join(row))
+    for i in range(rows):
+        if i == mid_row:
+            row_chars = []
+            for j in range(cols):
+                if start_col <= j < start_col + seg_len:
+                    row_chars.append('B')
+
+                else:
+                    row_chars.append('.')
+            grid.append("".join(row_chars))
+
         else:
-            grid.append('.' * m)
+            grid.append("." * cols)
 
-    # 以下为原逻辑的封装，不使用 input()
+    # Original algorithm logic
     lock = 0
     Ccen = 0
     Rcen = 0
-    for i in range(n):
-        s = grid[i]
+    for i in range(rows):
+        s = str(grid[i])
         if ('B' in s) and (lock == 0):
             Rstart = s.index('B')
             cnt = s.count('B')
@@ -32,9 +39,7 @@ def main(n: int):
             Ccen = Cstart + (cnt // 2)
             lock = 1
 
-    print(Ccen + 1, Rcen + 1)
-
-
+    # print(Ccen + 1, Rcen + 1)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
     main(5)

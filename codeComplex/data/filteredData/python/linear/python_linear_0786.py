@@ -24,15 +24,18 @@ def main(n):
     nims = list(range(n))
 
     if is_winning_state(nims, n):
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
         x = sum(nims) - (n * (n - 1)) // 2
         if x % 2 == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
-            print('sjfnb')
-
-
+            # print('sjfnb')
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可按需修改或由外部调用 main(n)
     main(5)

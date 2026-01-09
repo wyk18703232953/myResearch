@@ -1,25 +1,24 @@
 from math import pi, sin
-from decimal import Decimal, getcontext
-import random
+from decimal import Decimal
 
+def main(n):
+    # 映射：原程序中有两个输入 n, r
+    # 这里将第一个输入设为 n，第二个输入 r 由 n 确定性生成
+    # 例如：r = n + 1，且保证 n >= 3（避免过小导致数值异常）
+    if n < 3:
+        n_local = 3
 
-def main(n: int):
-    """
-    n: 多边形边数规模，由调用者传入
-    这里根据 n 自动生成测试数据 r，并输出结果 R
-    """
-    # 根据需要设置精度
-    getcontext().prec = 50
+    else:
+        n_local = n
+    r = n_local + 1
 
-    # 根据 n 生成测试数据 r（示例：1 到 100 之间的随机整数）
-    r = random.randint(1, 100)
-
-    alpha = Decimal(pi) / Decimal(n)
+    alpha = Decimal(pi) / Decimal(n_local)
     a = Decimal(sin(alpha))
     R = Decimal((r * a) / (1 - a))
-    print(R)
-
+    return R
 
 if __name__ == "__main__":
-    # 示例：调用 main(6) 测试，实际使用时由外部传入 n
-    main(6)
+    # 示例：以 n = 10 调用
+    result = main(10)
+    # print(result)
+    pass

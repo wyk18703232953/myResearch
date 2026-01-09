@@ -10,21 +10,26 @@ def main(n: int):
 
     lf, rf = a - 1, n - b
     if lf == rf == 0:
-        print("0")
+        # print("0")
+        pass
     elif lf == 0:
-        print(abs(pos - b) + 1)
+        # print(abs(pos - b) + 1)
+        pass
     elif rf == 0:
-        print(abs(pos - a) + 1)
+        # print(abs(pos - a) + 1)
+        pass
+
     else:
         cl = abs(a - pos) + 1
         cr = abs(b - pos) + 1
         xn = abs(a - b) + 1
         if cl < cr:
-            print(cl + xn)
+            # print(cl + xn)
+            pass
+
         else:
-            print(cr + xn)
-
-
+            # print(cr + xn)
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

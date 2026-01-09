@@ -13,6 +13,7 @@ def main(n):
             for j in range(start_col, start_col + b_len):
                 row[j] = 'B'
             board.append(''.join(row))
+
         else:
             board.append('W' * m)
 
@@ -29,7 +30,8 @@ def main(n):
                 q = abs(m - s.index("B") - 1)    # 右端第一个 B 的列号（0-based）
 
                 if p == q:  # 只有一个 B
-                    print(rownum + 1, row.index(row[p]) + 1)
+                    # print(rownum + 1, row.index(row[p]) + 1)
+                    pass
                     flag = True
                     break
 
@@ -38,7 +40,8 @@ def main(n):
                 length = abs(q - p + 1)
                 rn = rownum + length // 2        # 垂直方向中心行（0-based）
 
-                print(rn + 1, int(mr + 1))       # 输出 1-based 坐标
+                # print(rn + 1, int(mr + 1))# 输出 1-based 坐标       
+                pass
                 flag = True
                 break
 

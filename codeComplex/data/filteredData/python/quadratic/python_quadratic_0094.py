@@ -1,51 +1,54 @@
-import random
-import string
-
 def main(n):
-    # 生成随机测试数据矩阵 m2
-    # 元素为 '0' 或 '1' 的 n x n 矩阵（字符串列表）
-    m2 = [
-        ''.join(random.choice('01') for _ in range(n))
-        for _ in range(n)
+    # n is the size N of the matrix (number of strings and string length)
+    N = n
+
+    # Deterministically construct m1 and m2 as lists of strings of length N
+    # Use simple arithmetic / patterns so that m1 is sometimes in ms and sometimes not,
+    # but always deterministically derived from n.
+    # Base string pattern: 'a', 'b', 'c', ... wrapping after 'z'
+    def make_matrix(offset):
+        return [
+            ''.join(
+                chr(ord('a') + ((i + j + offset) % 26))
+                for j in range(N)
+            )
+            for i in range(N)
+        ]
+
+    # Let m2 be a base matrix
+    m2 = make_matrix(0)
+
+    # For m1, choose either m2 or a slightly modified version based on n
+    # This keeps behavior deterministic.
+    if n % 2 == 0:
+        m1 = [row for row in m2]  # identical when n is even
+
+    else:
+        # modify one position deterministically when n is odd
+        m1 = m2[:]
+        if N > 0:
+            row0 = m1[0]
+            c = row0[0]
+            # change first character deterministically
+            c2 = chr(ord('a') + ((ord(c) - ord('a') + 1) % 26))
+            m1[0] = c2 + row0[1:]
+
+    ms = [
+        m2,
+        [x[::-1] for x in m2],
+        [x for x in reversed(m2)],
     ]
 
-    # 为了测试等价性，有一定概率让 m1 为 m2 的某种变换
-    # 否则 m1 为完全随机矩阵
-    def all_transforms(matrix):
-        # 根据原逻辑生成所有可能的变换
-        ms = [
-            matrix,
-            [x[::-1] for x in matrix],
-            [x for x in reversed(matrix)],
-        ]
+    a = []
+    for m in ms:
+        a.append(m)
+        a.append([x[::-1] for x in reversed(m)])
+        a.append([''.join(m[j][i] for j in range(N - 1, -1, -1)) for i in range(N)])
+        a.append([''.join(m[j][i] for j in range(N)) for i in range(N - 1, -1, -1)])
 
-        a = []
-        for m in ms:
-            a.append(m)
-            a.append([x[::-1] for x in reversed(m)])
-            a.append([''.join(m[j][i] for j in range(n - 1, -1, -1)) for i in range(n)])
-            a.append([''.join(m[j][i] for j in range(n)) for i in range(n - 1, -1, -1)])
-        return a
-
-    transforms = all_transforms(m2)
-    use_transform = random.choice([True, False])
-
-    if use_transform:
-        # 从所有变换中随机选择一个作为 m1
-        m1 = random.choice(transforms)
-    else:
-        # 完全随机 m1
-        m1 = [
-            ''.join(random.choice('01') for _ in range(n))
-            for _ in range(n)
-        ]
-
-    # 原逻辑判断
-    ms = transforms
-    result = ['NO', 'YES'][m1 in ms]
-    print(result)
-
-
+    ms = a
+    # print(['NO', 'YES'][m1 in ms])
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 5
+    # Example call; change n as needed for experiments
     main(5)

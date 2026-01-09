@@ -1,5 +1,3 @@
-import random
-
 def process(X, a, b):
     X1 = set(X)
     Other = set([])
@@ -15,6 +13,7 @@ def process(X, a, b):
             B.add(b - x)
         elif a - x not in X1 and b - x not in X1:
             return 'NO'
+
         else:
             Both.add(x)
     start = A.copy()
@@ -59,30 +58,28 @@ def process(X, a, b):
     for x in X:
         if x in A:
             answer.append(0)
+
         else:
             answer.append(1)
     return answer
 
 
 def main(n):
-    # 生成参数 a, b
-    # 确保 a != b，避免退化情况
-    a = random.randint(1, 10 * n)
-    b = a
-    while b == a:
-        b = random.randint(1, 10 * n)
-
-    # 生成测试数据 X（n 个整数，允许重复）
-    X = [random.randint(1, 10 * n) for _ in range(n)]
-
+    # n: length of X
+    # Deterministically construct a, b, and X
+    a = 2 * n + 3
+    b = 3 * n + 5
+    # X contains n distinct integers
+    X = [i for i in range(1, n + 1)]
     answer = process(X, a, b)
     if answer == 'NO':
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
-        print(' '.join(map(str, answer)))
-
-
+        # print('YES')
+        pass
+        # print(' '.join(map(str, answer)))
+        pass
 if __name__ == "__main__":
-    # 示例：可根据需要修改 n 的默认值
     main(10)

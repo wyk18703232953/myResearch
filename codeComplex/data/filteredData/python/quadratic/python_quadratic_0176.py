@@ -1,10 +1,11 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 和 k，以及长度为 n 的 ns 列表
-    # 这里示例设置 k 在 [1, 10] 范围内，ns[i] 在 [0, 255] 范围内
-    k = random.randint(1, 10)
-    ns = [random.randint(0, 255) for _ in range(n)]
+    # Determine k as a function of n for scalable experiments
+    # Ensure k >= 1 and reasonably sized relative to 256
+    k = max(1, min(50, n // 2))
+
+    # Generate ns deterministically within [0, 255]
+    # Repeat pattern 0..255 as needed, truncated to length n
+    ns = [(i * 7 + 13) % 256 for i in range(n)]
 
     done = [None] * 256
     ans = [None] * n
@@ -23,6 +24,7 @@ def main(n):
                     break
                 if kk + j <= c:
                     done[kk + j] = j
+
                 else:
                     done[kk + j] = -1
         elif done[c] == -1:
@@ -34,14 +36,11 @@ def main(n):
             a = done[j]
             for kk in range(j, c + 1):
                 done[kk] = a
-        else:
-            pass
         ans[i] = done[c]
 
-    ans = [str(x) for x in ans]
-    print(' '.join(ans))
-
-
+    ans_str = [str(x) for x in ans]
+    # print(" ".join(ans_str))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 进行一次运行
-    main(10)
+    # Example scalable call; adjust n for experiments
+    main(1000)

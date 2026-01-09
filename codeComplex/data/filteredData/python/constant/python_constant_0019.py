@@ -1,5 +1,4 @@
 import math
-import random
 
 def calc(v0, v, a, x):
     t = (v - v0) / a
@@ -13,26 +12,27 @@ def go(v0, v, a, x):
     return t + (x - x0) / v
 
 def main(n):
-    # 依据规模 n 生成测试数据
-    # n 控制数据的大致量级
-    random.seed(0)
-    # 确保 a>0, l>0, d>0, v>=1, w>=1
-    a = random.randint(1, max(2, n))
-    v = random.randint(1, max(2, n))
-    l = random.randint(1, max(10, n * 10))
-    d = random.randint(1, max(10, n * 10))
-    w = random.randint(1, max(2, v))
+    if n <= 0:
+        n = 1
+
+    # 确定性构造输入：
+    # a, v, l, d, w 都由 n 通过简单算术确定
+    a = n + 1
+    v = 2 * n + 3
+    l = 5 * n + 10
+    d = 3 * n + 4
+    w = (n % 7) + 1
 
     if w > v:
         w = v
-
     x, t = calc(0, w, a, d)
     if x == d:
-        ans = go(0, v, a, l)
-    else:
-        ans = t + go(w, v, a, (d - x) * 0.5) * 2 + go(w, v, a, l - d)
-    print(ans)
+        result = go(0, v, a, l)
 
+    else:
+        result = t + go(w, v, a, (d - x) * 0.5) * 2 + go(w, v, a, l - d)
+
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n=10 运行
     main(10)

@@ -8,9 +8,8 @@ def main(n):
     for i in range(n, 0, -1):
         cc += s // i
         s = s % i
-    print(cc)
-
-
+    # print(cc)
+    pass
 if __name__ == "__main__":
     # 示例：可以修改这里的 n 以测试不同规模
     main(10)

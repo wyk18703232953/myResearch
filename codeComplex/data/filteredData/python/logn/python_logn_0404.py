@@ -32,9 +32,8 @@ def main(n):
         ni = i + 1
         ki = 2 * (i + 1) + 1
         results.append(solve_one_case(ni, ki))
-    print("\n".join(results))
-
-
+    # print("\n".join(results))
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 5 为规模运行
     main(5)

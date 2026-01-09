@@ -1,30 +1,41 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成一个 n x n 的随机网格，元素为 '#' 或 '.'
+    # Interpret n as both the number of rows and columns of the grid
+    if n < 3:
+        n = 3  # minimal size to exercise the core logic
     m = n
+
+    # Deterministically generate the grid s of size n x m with '#' and '.'
+    # Example pattern: '#' when (i + j) % 3 == 0, else '.'
     s = []
-    for _ in range(n):
+    for i in range(n):
         row = []
-        for _ in range(m):
-            # 适当控制 '#' 的概率，避免太稀或太密
-            cell = '#' if random.random() < 0.4 else '.'
-            row.append(cell)
+        for j in range(m):
+            if (i + j) % 3 == 0:
+                row.append('#')
+
+            else:
+                row.append('.')
         s.append(row)
 
-    # 构造与原程序等价的逻辑
+    # Initialize t with '.'
     t = []
-    for _ in range(n):
+    for i in range(n):
         p = ['.'] * m
         t.append(p)
 
+    # Core algorithm logic unchanged
     for i in range(1, n - 1):
         for j in range(1, m - 1):
             f = 0
             if (
-                s[i - 1][j - 1] == '#' and s[i - 1][j] == '#' and s[i - 1][j + 1] == '#' and
-                s[i][j - 1] == '#' and s[i][j + 1] == '#' and
-                s[i + 1][j - 1] == '#' and s[i + 1][j] == '#' and s[i + 1][j + 1] == '#'
+                s[i - 1][j - 1] == '#'
+                and s[i - 1][j] == '#'
+                and s[i - 1][j + 1] == '#'
+                and s[i][j - 1] == '#'
+                and s[i][j + 1] == '#'
+                and s[i + 1][j - 1] == '#'
+                and s[i + 1][j] == '#'
+                and s[i + 1][j + 1] == '#'
             ):
                 f = 1
             if f == 1:
@@ -47,11 +58,11 @@ def main(n):
             break
 
     if f == 1:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例调用
-    main(5)
+    main(100)

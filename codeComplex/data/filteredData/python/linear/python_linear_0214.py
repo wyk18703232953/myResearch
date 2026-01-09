@@ -1,21 +1,22 @@
-def main(n: int):
-    import random
+import io
+import sys
 
-    # 生成测试数据
-    # 参数范围可按需要调整
-    a = random.randint(-10, 10)
-    b = random.randint(-10, 10)
 
-    # 随机生成 n 组 (x, vx, vy)
-    # 为避免数值过大，这里限制在较小范围
+def main(n):
+    # Deterministically generate a, b based on n
+    # Keep them non-trivial but simple
+    a = 2
+    b = 3
+
+    # Generate n lines of (x, vx, vy)
+    # Use simple arithmetic patterns to ensure determinism
     data = []
-    for _ in range(n):
-        x = random.randint(-10**4, 10**4)
-        vx = random.randint(-10**4, 10**4)
-        vy = random.randint(-10**4, 10**4)
+    for i in range(n):
+        x = i
+        vx = (i % 5) - 2        # values in [-2, 2]
+        vy = (i % 7) - 3        # values in [-3, 3]
         data.append((x, vx, vy))
 
-    # 原逻辑
     dc = {}
     for x, vx, vy in data:
         nx = x + vx
@@ -37,9 +38,8 @@ def main(n: int):
         tt += pp * (pp + 1) // 2
         tot += tt * 2
 
-    print(tot)
-
-
+    # print(tot)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
-    main(10)
+    # Example scale; adjust n for experiments
+    main(10_000)

@@ -21,9 +21,8 @@ def main(n):
     for i in range(1, n + 1):
         N = i  # 生成第 i 个测试数据
         ans = solve(N)
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：运行 main(10) 做简单测试
     main(10)

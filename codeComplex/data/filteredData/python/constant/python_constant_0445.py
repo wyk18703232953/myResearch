@@ -11,9 +11,8 @@ def main(n):
     l = [n, 2 * n]  # 根据 n 构造测试数据
     results = f(l)
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行，可按需修改
     main(10)

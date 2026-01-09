@@ -6,6 +6,7 @@ def main(n):
         # 原代码中如果 n 为 0，后续会打印 NO 并且矩阵为空
         # 为保持结构，这里还是生成 a, b，但不会真正用到矩阵
         a, b = 1, 1
+
     else:
         # 示例：让 a, b 随 n 变化，覆盖不同情况
         if n == 1:
@@ -14,6 +15,7 @@ def main(n):
             a, b = 1, 2
         elif n == 3:
             a, b = 2, 1
+
         else:
             # n >= 4 时给一个稳定可行的数据
             a, b = 2, 2
@@ -29,10 +31,10 @@ def main(n):
     for i in range(n - a * b):
         l[i][i + 1] = l[i + 1][i] = o
 
-    print(('YES', 'NO')[not n])
-    print('\n'.join(map(''.join, l)))
-
-
+    # print(('YES', 'NO')[not n])
+    pass
+    # print('\n'.join(map(''.join, l)))
+    pass
 if __name__ == "__main__":
     # 示例运行：可按需修改 n
     main(4)

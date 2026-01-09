@@ -1,13 +1,18 @@
-import random
+def main(n):
+    # Deterministically generate data based on n
+    # Interpret n as the length of arrays a and c
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int):
-    # 生成测试数据：
-    # c：长度为 n 的正整数数组
-    # a：长度为 n 的排列，表示每个点指向的下一个点（1-based）
-    c = [random.randint(1, 10**9) for _ in range(n)]
-    perm = list(range(1, n + 1))
-    random.shuffle(perm)
-    a = perm[:]  # a 为 1..n 的随机排列
+    # Generate a as a permutation with a single cycle:
+    # a[i] points to (i+1) % n + 1 (1-based)
+    a = [((i + 1) % n) + 1 for i in range(n)]
+
+    # Generate c deterministically, e.g., some varying costs
+    # Use a simple pattern: c[i] = (i * 7) % (n + 5) + 1 to avoid zeros
+    c = [((i * 7) % (n + 5)) + 1 for i in range(n)]
 
     u = [0] * len(a)
     ans = 0
@@ -40,10 +45,7 @@ def main(n: int):
             u[idx] = 2
             idx = a[idx] - 1
         ans += mn
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10
     main(10)

@@ -1,34 +1,37 @@
-import random
-
 def main(n):
-    # 随机生成一个 n x m 的 0/1 字符矩阵，m 可按需要定义，这里令 m = n
-    m = n
+    # Interpret n as both the number of rows and columns
+    rows = n
+    cols = n
 
-    # 生成测试数据 X（列表的列表，元素为'0'或'1'的字符）
+    # Deterministically generate X: matrix of '0'/'1' chars
+    # Example pattern: X[i][j] = '1' if (i + j) % 3 != 0 else '0'
     X = []
-    for _ in range(n):
-        row = [str(random.randint(0, 1)) for _ in range(m)]
+    for i in range(rows):
+        row = [('1' if (i + j) % 3 != 0 else '0') for j in range(cols)]
         X.append(row)
 
-    # 统计每一列中 '1' 的数量
+    # Core logic from original code
     nums = []
-    for col in range(m):
+    for i in range(cols):
         t = 0
-        for row in range(n):
-            t += int(X[row][col])
+        for j in range(rows):
+            t += int(X[j][i])
         nums.append(t)
 
-    # 按原逻辑判断是否存在某一行满足条件
-    for i in range(n):
+    for i in range(rows):
         ok = True
-        for j in range(m):
+        for j in range(cols):
             if X[i][j] == '1':
                 if nums[j] > 1:
                     continue
+
                 else:
                     ok = False
-                    break
-        if ok:
-            print("YES")
+        if ok is True:
+            # print("YES")
+            pass
             return
-    print("NO")
+    # print("NO")
+    pass
+if __name__ == "__main__":
+    main(10)

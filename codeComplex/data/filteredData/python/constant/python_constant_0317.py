@@ -1,5 +1,3 @@
-import random
-
 def even_sum(arr):
     temp_sum = 0
     for each in arr:
@@ -7,25 +5,26 @@ def even_sum(arr):
             temp_sum += each
     return temp_sum
 
+
 def main(n):
-    # 生成长度为 14 的 stones 数组，数值规模由 n 控制
-    # 这里设定每个元素在 [0, n] 区间内随机生成
-    stones = [random.randint(0, n) for _ in range(14)]
+    size = 14
+    stones = [(i + 1) * (n % 10 + 1) for i in range(size)]
 
     initial_sum = even_sum(stones)
 
-    for i in range(14):
+    for i in range(size):
         duplicate = list(stones)
         temp = stones[i]
         duplicate[i] = 0
         j = i
 
-        for each in range(14):
-            duplicate[each] += temp // 14
+        base_add = temp // size
+        for each in range(size):
+            duplicate[each] += base_add
+        temp = temp % size
 
-        temp = temp % 14
         while temp > 0:
-            if j == 13:
+            if j == size - 1:
                 j = -1
             j += 1
             duplicate[j] += 1
@@ -35,8 +34,7 @@ def main(n):
         if ts > initial_sum:
             initial_sum = ts
 
-    print(initial_sum)
-
+    # print(initial_sum)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 100
-    main(100)
+    main(1000)

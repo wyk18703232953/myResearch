@@ -12,6 +12,7 @@ def main(n: int):
     while (s + i * (9 * pow(10, i - 1))) < k:
         s += i * (9 * pow(10, i - 1))
         i += 1
+
     else:
         i -= 1
 
@@ -20,9 +21,8 @@ def main(n: int):
     y = k % (i + 1)
     x = pow(10, i) + x
     ss = str(x)
-    print(ss[y])
-
-
+    # print(ss[y])
+    pass
 if __name__ == "__main__":
     # 示例：n = 5
     main(5)

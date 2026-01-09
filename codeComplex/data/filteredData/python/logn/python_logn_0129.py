@@ -14,6 +14,7 @@ def bs(k, n):
             return k - mid + 1
         if total > n:
             st = mid + 1
+
         else:
             en = mid
     return k - st + 2
@@ -46,4 +47,5 @@ def main(n):
 if __name__ == '__main__':
     # 示例：运行若干规模的测试
     for size in [1, 2, 5, 10, 20]:
-        print(size, main(size))
+        # print(size, main(size))
+        pass

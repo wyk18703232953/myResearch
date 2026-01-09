@@ -29,9 +29,8 @@ def main(n):
     k = n if n > 0 else 1
 
     result = fn(string, k)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：当作为脚本直接运行时，用 n = 5 做一个简单演示
     main(5)

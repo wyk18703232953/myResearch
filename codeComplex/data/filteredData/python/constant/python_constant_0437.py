@@ -8,10 +8,10 @@ def main(n: int):
     line1 = '4' * len1
     line2 = '5' * len2 + '6'
 
-    print(line1)
-    print(line2)
-
-
+    # print(line1)
+    pass
+    # print(line2)
+    pass
 if __name__ == "__main__":
     # 这里可修改为任意需要的规模 n
     main(2229)

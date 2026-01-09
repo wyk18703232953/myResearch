@@ -12,6 +12,7 @@ def solve_one(n, k):
     if n == 1:
         if k == 1:
             return "YES 0"
+
         else:
             return "NO"
     elif n == 2:
@@ -19,8 +20,10 @@ def solve_one(n, k):
             return "YES 1"
         elif k != 3 and k <= 5:
             return "YES 0"
+
         else:
             return "NO"
+
     else:
         siz = n - 1
         l = 1
@@ -31,9 +34,11 @@ def solve_one(n, k):
             l = l + cnt
             cnt = 2 * cnt + 1
             siz = siz - 1
+
         else:
             if k <= get_max(n):
                 return "YES 0"
+
             else:
                 return "NO"
 
@@ -54,7 +59,8 @@ def main(t):
         k = k_candidate
         res = solve_one(n, k)
         results.append(res)
-        print(res)
+        # print(res)
+        pass
     return results
 
 

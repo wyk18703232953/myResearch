@@ -32,6 +32,7 @@ def main(n):
         if i > n:
             x = n - 1 if i % (n - 1) == 0 else i % (n - 1)
             results.append((a[0], a[x]))
+
         else:
             results.append(tuple(d[i]))
     return results
@@ -41,4 +42,5 @@ if __name__ == "__main__":
     # 示例运行：n = 5，可按需修改
     out = main(5)
     for pair in out:
-        print(*pair)
+        # print(*pair)
+        pass

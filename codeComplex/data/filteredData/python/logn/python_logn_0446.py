@@ -14,27 +14,24 @@ def sol(n, k):
         q = 2 * q + 3
     return -1
 
-
-def main(t):
-    """
-    t: 测试组数规模，用来生成 t 组 (n, k) 测试数据并运行 sol。
-    测试数据生成策略：
-      - n 在 [1, 50] 范围内
-      - k 在 [1, 10**6] 范围内
-    """
-    import random
-
-    random.seed(0)
-    for _ in range(t):
-        n = random.randint(1, 50)
-        k = random.randint(1, 10**6)
-        ans = sol(n, k)
+def main(n):
+    # 解释：将 n 视为测试用例数量 T
+    # 为每个测试用例生成 (ni, ki)，保持确定性
+    # 例如：
+    #   ni = 1 + (i % 50)   控制在较小范围，避免 4**n 过大
+    #   ki = i * i + 1
+    results = []
+    for i in range(1, n + 1):
+        ni = 1 + (i % 50)
+        ki = i * i + 1
+        ans = sol(ni, ki)
         if ans == -1:
-            print("NO")
+            results.append("NO")
+
         else:
-            print("YES", ans)
-
-
+            results.append("YES " + str(ans))
+    # 统一一次性输出，方便计时
+    # print("\n".join(results))
+    pass
 if __name__ == "__main__":
-    # 示例：规模 t = 5
-    main(5)
+    main(10)

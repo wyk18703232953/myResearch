@@ -50,9 +50,8 @@ def main(n):
 
     # 输出结果
     for line in results:
-        print(line)
-
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     # 示例调用：规模 n = 5
     main(5)

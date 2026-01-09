@@ -1,5 +1,3 @@
-import random
-
 def fun(grid, counter, n, m):
     for i in range(n):
         possible = True
@@ -12,27 +10,25 @@ def fun(grid, counter, n, m):
     return False
 
 def main(n):
-    # 生成规模为 n 的测试数据
-    # 这里令列数 m 与 n 相同，也可以根据需要修改为其他函数关系
-    m = n
-
+    m = max(1, n // 2)
     grid = []
     counter = [0] * m
-
-    # 随机生成由 '0' 和 '1' 组成的 n 行 m 列矩阵
-    for _ in range(n):
-        row = ''.join(random.choice('01') for _ in range(m))
-        grid.append(row)
-        for i in range(m):
-            if row[i] == '1':
-                counter[i] += 1
-
+    for i in range(n):
+        row = []
+        for j in range(m):
+            val = ((i + j) % 3 == 0)
+            row.append('1' if val else '0')
+        s = ''.join(row)
+        for j in range(m):
+            if s[j] == '1':
+                counter[j] += 1
+        grid.append(s)
     if fun(grid, counter, n, m):
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可根据需要修改 n
-    main(5)
+    main(10)

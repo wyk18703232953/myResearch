@@ -1,33 +1,31 @@
-import random
-
 def main(n):
-    # 1. 生成测试数据
-    # 控制 a 的位数不超过 n（至少 1 位）
-    digits = max(1, n)
-    # 生成一个 digits 位的随机正整数 a
-    a = random.randint(10**(digits - 1), 10**digits - 1)
-    # 生成一个上界 b，保证有一定概率存在可行解
-    # 这里让 b 在 [a//2, 10*a] 之间随机
-    b = random.randint(max(0, a // 2), max(1, 10 * a))
+    # n 表示整数 a 的位数
+    # 构造确定性的 a 和 b
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-    # 2. 原逻辑改写（不使用 input）
-    a_list = list(str(a))
-    a_list.sort()
+    # 构造一个有 n 位的整数 a：从 1~9 循环填充
+    digits = [(i % 9) + 1 for i in range(n)]
+    a_val = int(''.join(str(d) for d in digits))
+
+    # 构造上界 b：略大于 a 的一个确定性值
+    # 这里令 b = a_val * 2
+    b_val = a_val * 2
+
+    # 以下为原逻辑，只是用生成的 a_val, b_val
+    a = list(str(a_val))
+    a.sort()
     ans = []
-    while a_list:
-        for i in range(len(a_list) - 1, -1, -1):
-            c = ans + [a_list[i]] + a_list[:i] + a_list[i+1:]
-            if int(''.join(c)) <= b:
-                ans.append(a_list[i])
-                a_list.pop(i)
+    while a:
+        for i in range(len(a) - 1, -1, -1):
+            c = ans + [a[i]] + a[:i] + a[i+1:]
+            if int(''.join(c)) <= b_val:
+                ans.append(a[i])
+                a.pop(i)
                 break
-
-    # 3. 输出结果（可根据需要一起输出 a、b 以便调试）
-    print('a =', a)
-    print('b =', b)
-    print('answer =', ''.join(ans))
-
-
+    # print(''.join(ans))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模参数 n 可自行调整
-    main(5)
+    main(10)

@@ -1,78 +1,71 @@
-import random
-import string
+def main(n):
+    # Generate n deterministic test strings mixing both formats
+    # Pattern: for even i -> "R{row}C{col}", for odd i -> "{colLetters}{row}"
+    # Scale row and column sizes with n for experimentation
+    results = []
+    for i in range(1, n + 1):
+        row = i
+        col = i * 7 + 3  # deterministic column number
 
-def convert_rc_to_bc(s: str) -> str:
-    # R23C55 -> BC23
-    p = s.find('C')
-    r = int(s[1:p])
-    c = int(s[p + 1:])
+        if i % 2 == 0:
+            # RXCY format
+            s = f"R{row}C{col}"
 
-    v = []
-    while c > 0:
-        if c % 26 == 0:
-            v.append('Z')
-            c = (c - 1) // 26
         else:
-            v.append(chr(ord('A') + (c % 26 - 1)))
-            c //= 26
+            # Column letters from col, then row number (e.g., BC23)
+            c = col
+            v = []
+            while c > 0:
+                if c % 26 == 0:
+                    v.append('Z')
+                    c = (c - 1) // 26
 
-    v.reverse()
-    return f"{''.join(v)}{r}"
+                else:
+                    v.append(chr(ord('A') + (c % 26 - 1)))
+                    c //= 26
+            v.reverse()
+            s = "".join(v) + str(row)
 
+        # Apply original logic to s
+        p = s.find('C')
 
-def convert_bc_to_rc(s: str) -> str:
-    # BC23 -> R23C55
-    p = 0
-    while p < len(s) and not s[p].isdigit():
-        p += 1
+        # R23C55 -> BC23
+        if s[0] == 'R' and s[1].isdigit() and p > 1:
+            r = int(s[1:p])
+            c = int(s[(p + 1):])
 
-    sr = s[:p]
-    sc = s[p:]
+            v = list()
+            while c > 0:
+                if c % 26 == 0:
+                    v.append('Z')
+                    c = (c - 1) // 26
 
-    c = 0
-    for x in sr:
-        c = c * 26 + (ord(x) - ord('A') + 1)
+                else:
+                    v.append(chr(ord('A') + (c % 26 - 1)))
+                    c //= 26
 
-    return f"R{sc}C{c}"
+            v.reverse()
+            results.append("%s%d" % ("".join(v), r))
 
-
-def generate_rc_style(max_row: int = 10**6, max_col: int = 10**6) -> str:
-    r = random.randint(1, max_row)
-    c = random.randint(1, max_col)
-    return f"R{r}C{c}"
-
-
-def generate_bc_style(max_row: int = 10**6, max_col: int = 10**6) -> str:
-    # 生成列号 -> 字母
-    c = random.randint(1, max_col)
-    v = []
-    x = c
-    while x > 0:
-        if x % 26 == 0:
-            v.append('Z')
-            x = (x - 1) // 26
         else:
-            v.append(chr(ord('A') + (x % 26 - 1)))
-            x //= 26
-    v.reverse()
-    col_letters = ''.join(v)
+            p = 0
+            while p < len(s):
+                if s[p].isdigit():
+                    break
+                p += 1
 
-    r = random.randint(1, max_row)
-    return f"{col_letters}{r}"
+            sr = s[:p]
+            sc = s[p:]
 
+            c = 0
+            for x in sr:
+                c = c * 26 + (ord(x) - ord('A') + 1)
 
-def main(n: int):
-    random.seed(0)
-    for _ in range(n):
-        # 随机选择生成 RC 风格或 BC 风格字符串
-        if random.choice([True, False]):
-            s = generate_rc_style()
-            print(convert_rc_to_bc(s))
-        else:
-            s = generate_bc_style()
-            print(convert_bc_to_rc(s))
+            results.append("R%sC%d" % (sc, c))
 
-
+    # Keep I/O minimal and deterministic: print all results
+    for line in results:
+        # print(line)
+        pass
 if __name__ == "__main__":
-    # 示例：运行 main(5)
-    main(5)
+    main(10)

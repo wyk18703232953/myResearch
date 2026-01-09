@@ -36,9 +36,8 @@ def main(n):
     # 根据规模 n 生成测试数据：这里令 k = n
     k = n
     ans = solve(n, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 进行测试
     main(5)

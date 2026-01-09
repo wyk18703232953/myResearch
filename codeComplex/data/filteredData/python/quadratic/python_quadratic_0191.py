@@ -1,10 +1,8 @@
-import random
-
 def main(n):
-    # 生成测试数组 a（1 <= a[i] <= 10^9）
-    a = [random.randint(1, 10**9) for _ in range(n)]
+    # Generate deterministic input data based on n
+    # a: array of length n
+    a = [(i * 37 + 11) % 1000000007 for i in range(n)]
 
-    # 预处理 dp
     dp = [[0 for _ in range(n + 1)] for _ in range(n + 1)]
     for i in range(n):
         dp[0][i] = a[i]
@@ -15,23 +13,25 @@ def main(n):
         for j in range(n - i):
             dp[i][j] = max(dp[i][j], dp[i - 1][j], dp[i - 1][j + 1])
 
-    # 生成查询次数 q 和查询区间 [l, r]
-    q = max(1, n // 2)  # 示例：q 与 n 同级别
-    queries = []
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
-        queries.append((l, r))
+    # Generate deterministic queries
+    # Let number of queries be q = n (for scalability)
+    q = n
+    outputs = []
+    if n == 0:
+        # No valid queries when n == 0
+        # print()
+        pass
+        return
 
-    # 输出示例：先输出 a，再输出查询及答案
-    print("n =", n)
-    print("a =", a)
-    print("q =", q)
-    for l, r in queries:
-        ans = dp[r - l][l - 1]
-        print(f"query ({l}, {r}) -> {ans}")
+    for i in range(q):
+        # Deterministic construction of l, r with 1 <= l <= r <= n
+        l = (i % n) + 1
+        r = ((i * 7) % n) + 1
+        if l > r:
+            l, r = r, l
+        outputs.append(str(dp[r - l][l - 1]))
 
-
+    # print("\n".join(outputs))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 进行测试
     main(5)

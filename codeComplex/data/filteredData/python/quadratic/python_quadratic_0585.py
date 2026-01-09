@@ -1,30 +1,53 @@
-import random
-
 def main(n):
-    # 生成测试数据：构造 t 个测试用例
-    # 这里让 t 与 n 相同，每个用例的字符串长度也为 n
-    # 你可以根据需要修改生成策略
+    # Interpret n as: number of test cases t = n,
+    # and for each test case, string length and k both proportional to n.
+    # This makes total work scale roughly with n^3 (t * n * k).
     t = n
-    print(f"t = {t}")
-    for _ in range(t):
-        # 生成 k：1 <= k <= n
-        k = random.randint(1, n)
-        # 生成长度为 n 的字符串，只包含 'R', 'G', 'B'
-        s = ''.join(random.choice('RGB') for _ in range(n))
+    results = []
+    for case_id in range(t):
+        length = n
+        k = max(1, n // 2)
+        # Deterministically generate a string of length `length`
+        # using a repeating "RGB" pattern shifted by case_id mod 3
+        base = "RGB"
+        shift = case_id % 3
+        s_chars = []
+        for i in range(length):
+            s_chars.append(base[(i + shift) % 3])
+        s = "".join(s_chars)
 
-        print(f"n = {n}, k = {k}, s = {s}")
+        mini = length
 
-        mini = n
-        # 三种起始模式
-        for base in ("RGB", "GBR", "BRG"):
-            test = base * (k // 3 + 5)  # 保证长度足够
-            for i in range(n - k + 1):
-                count = 0
-                # 统计窗口 [i, i+k) 内与模式的不同字符数
-                for j in range(k):
-                    if s[i + j] != test[j]:
-                        count += 1
-                if count < mini:
-                    mini = count
+        test = "RGB" * (k // 3 + 5)
+        for i in range(length - k + 1):
+            count = 0
+            for j in range(k):
+                if s[i + j] != test[j]:
+                    count += 1
+            if count < mini:
+                mini = count
 
-        print(f"answer = {mini}")
+        test = "GBR" * (k // 3 + 5)
+        for i in range(length - k + 1):
+            count = 0
+            for j in range(k):
+                if s[i + j] != test[j]:
+                    count += 1
+            if count < mini:
+                mini = count
+
+        test = "BRG" * (k // 3 + 5)
+        for i in range(length - k + 1):
+            count = 0
+            for j in range(k):
+                if s[i + j] != test[j]:
+                    count += 1
+            if count < mini:
+                mini = count
+
+        results.append(str(mini))
+
+    # print("\n".join(results))
+    pass
+if __name__ == "__main__":
+    main(10)

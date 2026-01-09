@@ -11,12 +11,12 @@ def main(n: int):
 
     if x > 0:
         ans = pow(2, n + 1, mod) * x - pow(2, n, mod) + 1
+
     else:
         ans = 0
     ans %= mod
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

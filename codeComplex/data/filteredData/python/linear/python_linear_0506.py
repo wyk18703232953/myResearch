@@ -1,5 +1,3 @@
-import random
-
 def wins(mem, l, pos):
     if mem[pos] != 0:
         return mem[pos] == 1
@@ -25,18 +23,21 @@ def wins(mem, l, pos):
 
 
 def main(n):
-    # 根据 n 生成测试数据，这里生成 1..n 范围内的随机数
-    random.seed(0)
-    l = [random.randint(1, n) for _ in range(n)]
+    if n <= 0:
+        return ""
+    # 确定性生成长度为 n 的数组 l
+    # 模式：l[i] = (i % n) + 1，保证每个位置为 1..n 之间的整数
+    l = [(i % n) + 1 for i in range(n)]
 
     mem = [0 for _ in range(n)]
     ans = ""
     for i in range(n):
         ans += "A" if wins(mem, l, i) else "B"
-
-    print(ans)
+    # print(ans)
+    pass
+    return ans
 
 
 if __name__ == "__main__":
-    # 示例：运行规模为 10
+    # 示例调用，可根据需要修改 n 的大小做规模实验
     main(10)

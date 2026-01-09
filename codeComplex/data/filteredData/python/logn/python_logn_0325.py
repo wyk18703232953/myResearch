@@ -7,13 +7,14 @@ def main(n: int):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         # pow(2, k, MOD) 为 2^k mod MOD
         result = (pow(2, k, MOD) * ((2 * x - 1) % MOD) + 1) % MOD
-        print(result)
-
-
+        # print(result)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时按需修改 n
     main(10)

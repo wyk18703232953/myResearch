@@ -7,9 +7,8 @@ def main(n):
     ans += (2 * n) // k + int((2 * n) % k != 0)
     ans += (5 * n) // k + int((5 * n) % k != 0)
     ans += (8 * n) // k + int((8 * n) % k != 0)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例测试：生成规模 n 的测试数据并运行
     # 可按需修改 n 的取值

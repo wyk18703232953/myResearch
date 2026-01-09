@@ -1,16 +1,12 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # n : 最大元素值
-    # 随机构造 m（元素个数）与 k（页大小）
-    m = random.randint(1, n)
-    k = random.randint(1, max(1, n // 10))
+    # n 作为数组长度，也是 m；k 取一个与 n 相关的值，确保确定性
+    m = n
+    k = max(1, n // 3)
 
-    # 生成一个严格递增的序列 l，长度为 m，元素在 [1, n] 内
-    l = sorted(random.sample(range(1, n + 1), m))
+    # 构造一个严格递增的数组 l，模拟原来从输入读入的删除位置等场景
+    # 确保所有值在 1..n+k 范围内，并递增
+    l = [(i + 1) + (i // 2) for i in range(m)]
 
-    # 原逻辑
     out = 0
     d = 0
 
@@ -23,8 +19,7 @@ def main(n):
         d += add
         out += 1
 
-    print(out)
-
+    # print(out)
+    pass
 if __name__ == "__main__":
-    # 示例：n 可以按需修改
-    main(1000)
+    main(10)

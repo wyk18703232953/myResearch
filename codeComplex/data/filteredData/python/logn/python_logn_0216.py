@@ -28,10 +28,12 @@ def main(n):
         if ok(m, s):
             a = m - 1
             h = m - 1
+
         else:
             l = m + 1
     result = n - a
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

@@ -13,7 +13,8 @@ def main(n):
     # 确定具体的数字
     c = 10 ** (l - 1) + k // l
     # 输出该数字中的对应位
-    print(str(c)[k % l])
+    # print(str(c)[k % l])
+    pass
 
 
 # 示例：可根据需要修改测试规模 n

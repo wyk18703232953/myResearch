@@ -1,9 +1,3 @@
-import math
-import random
-
-mod = 1000000007
-
-
 def binary(n):
     return bin(n).replace("0b", "")
 
@@ -20,12 +14,15 @@ def pow2(n):
     return p
 
 
+import math
+
+
 def primeFactors(n):
     l = []
     while n % 2 == 0:
         l.append(2)
         n = n // 2
-    for i in range(3, int(math.isqrt(n)) + 1, 2):
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
         while n % i == 0:
             l.append(i)
             n = n // i
@@ -39,7 +36,7 @@ def primeFactorsCount(n):
     while n % 2 == 0:
         cnt += 1
         n = n // 2
-    for i in range(3, int(math.isqrt(n)) + 1, 2):
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
         while n % i == 0:
             cnt += 1
             n = n // i
@@ -63,10 +60,10 @@ def maxPrimeFactors(n):
     while n % 2 == 0:
         maxPrime = 2
         n >>= 1
-    for i in range(3, int(math.isqrt(n)) + 1, 2):
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
         while n % i == 0:
             maxPrime = i
-            n = n // i
+            n = n / i
     if n > 2:
         maxPrime = n
     return int(maxPrime)
@@ -75,9 +72,10 @@ def maxPrimeFactors(n):
 def countcon(s, i):
     c = 0
     ch = s[i]
-    for j in range(i, len(s)):
-        if s[j] == ch:
+    for i in range(i, len(s)):
+        if s[i] == ch:
             c += 1
+
         else:
             break
     return c
@@ -125,10 +123,12 @@ def p2(n):
 
 
 def seive(n):
-    if n < 2:
+    if n < 1:
         return []
     primes = [True] * (n + 1)
-    primes[0] = primes[1] = False
+    primes[0] = False
+    if n >= 1:
+        primes[1] = False
     i = 2
     while i * i <= n:
         if primes[i]:
@@ -136,14 +136,15 @@ def seive(n):
                 primes[j] = False
         i += 1
     pr = []
-    for i in range(2, n + 1):
+    for i in range(0, n + 1):
         if primes[i]:
             pr.append(i)
     return pr
 
 
 def ncr(n, r, p):
-    num = den = 1
+    num = 1
+    den = 1
     for i in range(r):
         num = (num * (n - i)) % p
         den = (den * (i + 1)) % p
@@ -172,21 +173,21 @@ def sod(n):
     return s
 
 
-def main(n):
-    # 根据规模 n 生成测试数据：
-    # 让 x 和 k 随着 n 增大而适度增大
-    random.seed(n)
-    x = random.randint(0, 10 ** (min(n, 9)))  # 防止过大溢出，控制在 1e9 量级
-    k = random.randint(0, max(1, n))
-
+def core_algorithm(x, k):
+    mod = 1000000007
     tp = pow(2, k + 1, mod)
     tp2 = pow(2, k, mod)
     ans = (tp * x - tp2 + 1) % mod
-    result = ans if x != 0 else 0
-    print(result)
-    return result
+    return ans if x != 0 else 0
 
 
+def main(n):
+    # Deterministically generate x and k from n
+    # Ensure x can be large to scale computation, k controls exponent size
+    x = n * n + 3 * n + 7
+    k = max(0, n // 2)
+    result = core_algorithm(x, k)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n=10 调用
     main(10)

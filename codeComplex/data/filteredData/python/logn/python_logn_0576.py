@@ -16,6 +16,7 @@ def kth_digit(k: int) -> str:
         inc = 9 * (10 ** (i - 1)) * i  # i 位数总共贡献的位数
         if cnt + inc >= k:
             break
+
         else:
             cnt += inc
 
@@ -23,6 +24,7 @@ def kth_digit(k: int) -> str:
     dig = (lft) / i
     if dig != int(dig):
         dig = int(dig + 1)
+
     else:
         dig = int(dig)
 
@@ -38,9 +40,8 @@ def main(n: int):
     测试数据示例：对 k = 1, 2, ..., n 分别计算对应的数字。
     """
     for k in range(1, n + 1):
-        print(kth_digit(k))
-
-
+        # print(kth_digit(k))
+        pass
 if __name__ == "__main__":
     # 示例：当需要运行时，可以自行设置 n 的大小
     # main(20)

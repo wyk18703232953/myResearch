@@ -20,7 +20,8 @@ def main(n):
     if n == 1:
         # 原程序中 n==1 时输出 [1]
         a = [1]
-        print(*a)
+        # print(*a)
+        pass
         return a
 
     # 生成一棵完全二叉树作为测试数据
@@ -36,14 +37,17 @@ def main(n):
         for i in range(n - 1, -1, -1):
             if len(tree[i]) == 0:
                 a[i] = 1
+
             else:
                 for j in tree[i]:
                     a[i] += a[j]
         a.sort()
+
     else:
         a = [1]
 
-    print(*a)
+    # print(*a)
+    pass
     return a
 
 

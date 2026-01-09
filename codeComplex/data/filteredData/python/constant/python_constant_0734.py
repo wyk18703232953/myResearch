@@ -23,11 +23,12 @@ def main(n: int):
     number = last + k  # 对应的数字
 
     if r == 0:
-        print(str(number - 1)[d - 1])
+        # print(str(number - 1)[d - 1])
+        pass
+
     else:
-        print(str(number)[r - 1])
-
-
+        # print(str(number)[r - 1])
+        pass
 if __name__ == "__main__":
     # 示例：运行 main(100)
     main(100)

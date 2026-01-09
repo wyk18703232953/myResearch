@@ -38,9 +38,8 @@ def main(n: int):
 
                 maskpre -= 1
 
-    print(dp[-1][-1])
-
-
+    # print(dp[-1][-1])
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n
     main(3)

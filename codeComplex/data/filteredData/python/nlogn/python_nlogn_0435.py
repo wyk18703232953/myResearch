@@ -17,6 +17,7 @@ def main(n):
         s1.add(x)
         if x not in d:
             d[x] = 1
+
         else:
             d[x] += 1
 
@@ -30,6 +31,7 @@ def main(n):
             if k != -1:
                 if x == val and d[val] == 1:
                     continue
+
                 else:
                     flag = True
                     break
@@ -40,9 +42,8 @@ def main(n):
     for val in s2:
         res += d[val]
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例运行：可修改参数测试不同规模
     main(10)

@@ -8,15 +8,18 @@ def main(n: int):
     y = 3 * n
 
     if y - x < 2:
-        print(-1)
+        # print(-1)
+        pass
     elif x % 2 != 0 and y - x == 2:
-        print(-1)
+        # print(-1)
+        pass
     elif x % 2 == 0:
-        print(x, x + 1, x + 2)
+        # print(x, x + 1, x + 2)
+        pass
+
     else:
-        print(x + 1, x + 2, x + 3)
-
-
+        # print(x + 1, x + 2, x + 3)
+        pass
 if __name__ == "__main__":
     # 示例：可以在此手动调整 n 做简单测试
     main(5)

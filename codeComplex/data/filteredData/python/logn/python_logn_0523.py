@@ -9,9 +9,8 @@ def main(n):
         i += 1
     r = r - (9 * i * 10 ** (i - 1))
     ans = str(((k - r) // i) + 10 ** (i - 1))[(k - r) % i]
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=100 作为测试规模
     main(100)

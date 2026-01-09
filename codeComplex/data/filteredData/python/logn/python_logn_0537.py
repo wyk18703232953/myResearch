@@ -12,11 +12,12 @@ def main(n: int):
     d = n // c
     k = 10 ** (c - 1) + d
     if r == 0:
-        print(int(str(k - 1)[-1]))
+        # print(int(str(k - 1)[-1]))
+        pass
+
     else:
-        print(int(str(k)[r - 1]))
-
-
+        # print(int(str(k)[r - 1]))
+        pass
 if __name__ == "__main__":
     # 示例：根据规模 n 生成测试数据
     # 这里直接调用 main(n)，用户可自行修改 n 以测试不同规模

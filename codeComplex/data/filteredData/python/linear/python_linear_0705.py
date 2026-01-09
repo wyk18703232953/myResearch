@@ -1,18 +1,18 @@
-import random
-
-def main(n: int):
-    # 生成长度为 n 的随机字符串，字符为 '+' 或 '-'
-    s = ''.join(random.choice('+-') for _ in range(n))
+def main(n):
+    # Generate a deterministic string of '+' and '-' of length n
+    # Example pattern: '+' if i is even, '-' if i is odd
+    s = ''.join('+' if i % 2 == 0 else '-' for i in range(n))
 
     cur = 0
     for a in s:
         cur = max(cur, 0)
         if a == '-':
             cur -= 1
+
         else:
             cur += 1
         cur = max(cur, 0)
-    print(cur)
-
-# 示例：需要时可调用 main(n)
-# main(10)
+    # print(cur)
+    pass
+if __name__ == "__main__":
+    main(10)

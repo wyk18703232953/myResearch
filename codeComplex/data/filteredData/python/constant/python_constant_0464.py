@@ -1,28 +1,31 @@
-import random
+def main(n):
+    # Deterministically generate points based on n
+    # ax, ay depend on n
+    ax = n
+    ay = n * 2
 
-def main(n: int):
-    # n 作为规模，这里用来控制随机数范围
-    # 随机生成 A(ax, ay), B(bx, by), C(cx, cy)
-    limit = max(1, n)
-    ax = random.randint(-limit, limit)
-    ay = random.randint(-limit, limit)
-    bx = random.randint(-limit, limit)
-    by = random.randint(-limit, limit)
-    cx = random.randint(-limit, limit)
-    cy = random.randint(-limit, limit)
+    # bx, by and cx, cy constructed to vary relative positions with n
+    bx = n // 2
+    by = n // 3
+
+    cx = n * 3
+    cy = n * 4
 
     if bx < ax < cx:
-        print("NO")
+        # print("NO")
+        pass
     elif cx < ax < bx:
-        print("NO")
+        # print("NO")
+        pass
     elif by < ay < cy:
-        print("NO")
+        # print("NO")
+        pass
     elif cy < ay < by:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
     main(10)

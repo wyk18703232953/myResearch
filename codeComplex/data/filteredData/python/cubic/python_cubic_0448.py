@@ -40,7 +40,8 @@ def main(n):
     # 原逻辑开始
     if k % 2:
         for _ in range(n):
-            print(' '.join(['-1'] * m))
+            # print(' '.join(['-1'] * m))
+            pass
         return
 
     k //= 2
@@ -62,9 +63,8 @@ def main(n):
     for row in DP0[:-1]:
         O.append(' '.join(str(val * 2) for val in row[:-1]))
 
-    print('\n'.join(O))
-
-
+    # print('\n'.join(O))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

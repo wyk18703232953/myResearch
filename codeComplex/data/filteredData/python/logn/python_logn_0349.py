@@ -19,11 +19,12 @@ def main(n):
     k += 1
     if n == 0:
         ans = 0
+
     else:
         ans = (((modpow(2, k)) * (n % MOD)) % MOD - (modpow(2, k - 1) - 1) % MOD) % MOD
 
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值进行测试
     main(10)

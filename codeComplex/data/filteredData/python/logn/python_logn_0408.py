@@ -60,6 +60,7 @@ def solve_one(N, K):
 
     if ok:
         return f"YES {depth_ans}"
+
     else:
         return "NO"
 
@@ -84,9 +85,8 @@ def main(n):
 
     # 输出格式：每行：N K 结果
     for N, K, res in results:
-        print(N, K, res)
-
-
+        # print(N, K, res)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

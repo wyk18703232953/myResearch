@@ -11,7 +11,8 @@ def main(n):
     ans = ((f(e) - f(s)) * pow(2, k * (mod - 2), mod)) % mod
     result = ans if x != 0 else 0
 
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

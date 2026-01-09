@@ -1,9 +1,8 @@
-import random
-
 def main(n):
-    # 生成测试数据：长度为 n 的两行，仅包含字符 '0' 和 '1'
-    a = [random.choice(['0', '1']) for _ in range(n)]
-    b = [random.choice(['0', '1']) for _ in range(n)]
+    # Generate two deterministic binary strings a and b of length n
+    # Using '0' and '1' pattern with simple arithmetic
+    a = [str((i // 2) % 2) for i in range(n)]
+    b = [str((i // 3) % 2) for i in range(n)]
 
     ans = 0
     for i in range(n):
@@ -19,12 +18,10 @@ def main(n):
                 a[i] = b[i + 1] = a[i + 1] = "X"
             elif i + 1 < n and a[i] == b[i] == a[i + 1]:
                 a[i] = b[i] = a[i + 1] = "X"
+
             else:
                 ans -= 1
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

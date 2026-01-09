@@ -1,16 +1,21 @@
 def main(n):
-    import random
-
-    # 生成测试数据：n 行 m 列网格，K 为偶数以便有意义的答案
+    # Interpret n as grid size; also define m and K deterministically from n
+    # For scalability tests you can vary n; m and K scale with n deterministically
     m = n
-    K = 2 * (n // 2 + 1)  # 保证 K 为偶数且随 n 增大
+    K = max(0, n // 2) * 2  # ensure K is even for meaningful computation
 
-    # 生成水平边权重：n 行，每行 m-1 个
-    horiz = [[random.randint(1, 10) for _ in range(m - 1)] for _ in range(n)]
-    # 生成竖直边权重：n-1 行，每行 m 个
-    vert = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
+    # Deterministic generation of edges input structure
+    # Original program expects:
+    # First line: n, m, K
+    # Next n lines: m integers (horizontal edges between columns)
+    # Next n-1 lines: m integers (vertical edges between rows)
 
-    # 构建 edges 结构，与原代码等价
+    # Generate horizontal edges weights: n rows, each with m integers
+    horiz = [[(i * m + j) % 7 + 1 for j in range(m)] for i in range(n)]
+    # Generate vertical edges weights: (n-1) rows, each with m integers
+    vert = [[(i * m + j) % 5 + 1 for j in range(m)] for i in range(n - 1)]
+
+    # Build edges structure exactly as original program
     edges = []
     for i in range(n):
         edges.append([[]])
@@ -25,12 +30,11 @@ def main(n):
             edges[i][j].append((0, 1, lis[j]))
             edges[i + 1][j].append((0, -1, lis[j]))
 
-    # 原始逻辑
     if K % 2 == 1:
         lis = [[-1] * m for _ in range(n)]
+
     else:
         lis = [[0] * m for _ in range(n)]
-
         for _ in range(1, (K // 2) + 1):
             new_lis = [[0] * m for _ in range(n)]
             for i in range(n):
@@ -45,9 +49,7 @@ def main(n):
                 lis[i][j] *= 2
 
     for row in lis:
-        print(*row)
-
-
+        # print(*row)
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 4
-    main(4)
+    main(10)

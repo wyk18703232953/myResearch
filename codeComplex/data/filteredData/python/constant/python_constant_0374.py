@@ -1,23 +1,26 @@
-import random
-
 def main(n):
-    # 生成测试数据：a, b, c, n
-    # 这里的 n 作为总和规模，同时生成 a,b,c 不超过 n
-    a = random.randint(0, n)
-    b = random.randint(0, n)
-    c = random.randint(0, min(a, b))  # 为了常见情况可行，约束 c <= a,b
-    total = n                         # 用 n 作为原代码中的 n（总数）
+    # 生成确定性输入 a, b, c, n_input 基于规模参数 n
+    # 让 n 作为原程序中的 n_input，同时构造与其相关的 a, b, c
+    a = n // 2 + 1
+    b = n // 3 + 2
+    c = min(a, b) - (n % 3)
 
-    # 原始逻辑
-    p = total - (a + b - c)
-    if c > a or c > b or p <= 0:
-        print(-1)
+    a_input = a
+    b_input = b
+    c_input = c
+    n_input = n
+
+    p = n_input - (a_input + b_input - c_input)
+    if c_input > a_input or c_input > b_input or p <= 0:
+        # print(-1)
+        pass
         return
     if p < 1:
-        print(-1)
-    else:
-        print(p)
+        # print(-1)
+        pass
 
+    else:
+        # print(p)
+        pass
 if __name__ == "__main__":
-    # 示例：规模设为 100
-    main(100)
+    main(10)

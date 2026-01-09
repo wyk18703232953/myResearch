@@ -14,18 +14,21 @@ def main(n: int):
 
     # 原始逻辑
     if l == r:
-        print(0)
+        # print(0)
+        pass
+
     else:
         if (r & (r - 1)) == 0:
-            print(r ^ (r - 1))
+            # print(r ^ (r - 1))
+            pass
+
         else:
             x = l ^ r
             p1 = 1
             while p1 <= x:
                 p1 *= 2
-            print(p1 - 1)
-
-
+            # print(p1 - 1)
+            pass
 if __name__ == "__main__":
     # 示例：可自行修改 n 的值进行测试
     main(10)

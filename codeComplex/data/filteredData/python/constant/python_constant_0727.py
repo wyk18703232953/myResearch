@@ -30,9 +30,8 @@ def main(n: int):
             s = str(x)[i]
             n -= 1
 
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     # 示例：根据规模 n 生成测试数据（这里直接使用 n 自身为规模）
     # 可在此处修改或批量测试不同的 n

@@ -1,18 +1,16 @@
 from math import pi, sin
-import random
 
-def main(n: int):
-    # 根据规模 n 生成测试数据：
-    # 原程序中 n 为多边形边数，r 为半径，这里按题意将两个量都由规模 n 决定
-    # 约定：多边形边数 sides = max(3, n)，半径 r = float(n)
-    sides = max(3, n)
-    r = float(n)
-
+def main(n):
+    # 将 n 解释为多边形边数，半径 r 也由 n 确定性生成
+    # 保证 n 至少为 3，以避免几何退化
+    if n < 3:
+        n = 3
+    sides = float(n)
+    r = float(n)  # 半径与 n 相同，确定性构造
     ang = pi / sides
     k = sin(ang)
     result = k * r / (1 - k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：用 n=10 作为规模运行
     main(10)

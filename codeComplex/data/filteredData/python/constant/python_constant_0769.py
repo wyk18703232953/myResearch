@@ -13,11 +13,12 @@ def main(n):
     s2 = (-b - d) // (2 * a)
 
     if 0 <= s1 <= n:
-        print(s1)
+        # print(s1)
+        pass
+
     else:
-        print(s2)
-
-
+        # print(s2)
+        pass
 if __name__ == "__main__":
     # 示例运行
     main(10)

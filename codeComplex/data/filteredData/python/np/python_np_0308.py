@@ -20,6 +20,7 @@ def main(n):
                 if k - (n - i) * 2 < val + 1 <= k:
                     NEXT[(0, val + 1)] = (NEXT.get((0, val + 1), 0) + NOW[key]) % mod
                     NEXT[(1, val + 1)] = (NEXT.get((1, val + 1), 0) + NOW[key] * 2) % mod
+
             else:
                 if k - (n - i) * 2 <= val <= k:
                     NEXT[key] = (NEXT.get(key, 0) + NOW[key]) % mod
@@ -33,9 +34,8 @@ def main(n):
         if key[1] == k:
             ANS = (ANS + NEXT[key]) % mod
 
-    print(ANS)
-
-
+    # print(ANS)
+    pass
 if __name__ == "__main__":
     # 可以在此处修改 n 的值进行测试
     main(5)

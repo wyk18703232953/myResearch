@@ -13,12 +13,13 @@ def main(n: int):
     for i in range(1, move + 1):
         curr += i
         if curr - (move - i) == can:
-            print(move - i)
+            # print(move - i)
+            pass
             break
+
     else:
-        print(0)
-
-
+        # print(0)
+        pass
 if __name__ == "__main__":
     # 示例：可根据需要修改测试规模
     main(10)

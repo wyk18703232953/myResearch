@@ -1,63 +1,41 @@
-from math import inf
-import random
-
-mod = 10**9 + 7
-mod2 = 998244353
-
-def l1d(n, val=0):
-    return [val for _ in range(n)]
-
-def l2d(n, m, val=0):
-    return [l1d(m, val) for _ in range(n)]
-
 def main(n):
-    # 生成测试数据：
-    # 将原来的 n, m, k 都与规模参数 n 相关联
-    # 这里设置 m = n，k = 2*n（保持偶数以产生非全 -1 输出）
-    m = n
-    k = 2 * n
+    from math import inf
 
-    # 生成随机的边权，范围可自行调整
-    # hor: n 行，每行 m-1 个数字
-    hor = []
-    for _ in range(n):
-        row = [random.randint(1, 10) for _ in range(m - 1)]
-        hor.append(row)
+    # Map n to grid size and k
+    # Ensure at least 1x1 grid and even k for non-trivial behavior
+    rows = max(1, n)
+    cols = max(1, n)
+    k = max(2, 2 * (n // 2))  # ensure k is even and >= 2
 
-    # ver: n-1 行，每行 m 个数字
-    ver = []
-    for _ in range(n - 1):
-        row = [random.randint(1, 10) for _ in range(m)]
-        ver.append(row)
+    # Deterministic generation of hor (rows x (cols-1)) and ver ((rows-1) x cols)
+    hor = [[(i + j + 1) % 10 + 1 for j in range(cols - 1)] for i in range(rows)]
+    ver = [[(i * 2 + j + 3) % 10 + 1 for j in range(cols)] for i in range(rows - 1)]
 
-    # 算法主体
     if k % 2:
-        ml = l2d(n, m, -1)
+        ml = [[-1 for _ in range(cols)] for _ in range(rows)]
         for row in ml:
-            print(*row)
+            # print(*row)
+            pass
         return
 
     k //= 2
-    dp = [l2d(n, m) for _ in range(k + 1)]
-
+    dp = [[[0 for _ in range(cols)] for _ in range(rows)] for _ in range(k + 1)]
     for f in range(1, k + 1):
-        for i in range(n):
-            for j in range(m):
+        for i in range(rows):
+            for j in range(cols):
                 a = inf
                 if i != 0:
                     a = min(a, 2 * ver[i - 1][j] + dp[f - 1][i - 1][j])
-                if i != n - 1:
+                if i != rows - 1:
                     a = min(a, 2 * ver[i][j] + dp[f - 1][i + 1][j])
                 if j != 0:
                     a = min(a, 2 * hor[i][j - 1] + dp[f - 1][i][j - 1])
-                if j != m - 1:
+                if j != cols - 1:
                     a = min(a, 2 * hor[i][j] + dp[f - 1][i][j + 1])
                 dp[f][i][j] = a
 
     for row in dp[-1]:
-        print(*row)
-
-
+        # print(*row)
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模 n = 4
-    main(4)
+    main(5)

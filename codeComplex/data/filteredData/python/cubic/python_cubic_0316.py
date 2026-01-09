@@ -36,7 +36,8 @@ def main(n):
 
     # 5. 输出结果
     result = find(0, 0, 0)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

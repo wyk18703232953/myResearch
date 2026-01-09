@@ -1,56 +1,43 @@
-import random
-
 def main(n):
-    # 1. 生成一棵有 n 个节点的随机树（节点编号 1..n）
-    # 使用随机生成的父节点构造一棵树
+    # Generate a deterministic tree with n nodes: a simple path 1-2-3-...-n
     dict1 = {}
-    for i in range(1, n + 1):
-        dict1[i] = []
-    # 生成树的边：对于每个节点 i(2..n)，随机选择 [1..i-1] 中的一个父节点
-    for child in range(2, n + 1):
-        parent = random.randint(1, child - 1)
-        dict1[parent].append(child)
-        dict1[child].append(parent)
+    for i in range(1, n):
+        x, y = i, i + 1
+        if y not in dict1:
+            dict1[y] = [x]
 
-    # 2. 根据 dict1 生成一个 BFS 序列，保证是合法序列
-    # BFS 从 1 开始
-    from collections import deque
-    visited = [False] * (n + 1)
-    q = deque([1])
-    visited[1] = True
-    bfs_order = []
-    while q:
-        node = q.popleft()
-        bfs_order.append(node)
-        # 为了多样性打乱邻居顺序
-        neighbors = list(dict1[node])
-        random.shuffle(neighbors)
-        for nei in neighbors:
-            if not visited[nei]:
-                visited[nei] = True
-                q.append(nei)
+        else:
+            dict1[y].append(x)
+        if x not in dict1:
+            dict1[x] = [y]
 
-    # 将 bfs_order 作为 arr（原程序中的输入序列）
-    arr = bfs_order
+        else:
+            dict1[x].append(y)
 
-    # 3. 按原程序逻辑运行判断
+    # Generate a deterministic BFS-like traversal array
+    # For a path 1-2-3-...-n, the natural BFS from 1 is [1,2,3,...,n]
+    arr = list(range(1, n + 1))
+
     if arr[0] != 1:
-        print("No")
+        # print("No")
+        pass
         return
 
     j = 0
     i = 1
     while i < n and j < n:
-        if arr[i] in dict1[arr[j]]:
+        if arr[i] in dict1.get(arr[j], []):
             i += 1
+
         else:
             j += 1
+
     if i != n and j == n:
-        print("No")
+        # print("No")
+        pass
+
     else:
-        print("Yes")
-
-
+        # print("Yes")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

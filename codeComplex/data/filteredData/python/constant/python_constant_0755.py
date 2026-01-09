@@ -8,9 +8,8 @@ def main(n):
     t = int(sqrt(8 * n + 8 * k + 9) + 0.0001)
     m = (t - 3) // 2
     result = n - m
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

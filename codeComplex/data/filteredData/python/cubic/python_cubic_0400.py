@@ -1,21 +1,18 @@
-import random
-
-def main(n: int):
-    # 生成规模
-    # 为保持原逻辑的一般性，这里令 m = n，k = 2*n（保证为偶数且随规模增长）
+def main(n):
+    # Interpret n as grid size n x n; set k as an even function of n
+    if n <= 0:
+        return
     m = n
-    k = 2 * n
+    k = 2 * n  # even, scales with n
 
-    # 生成测试数据：YOKO 为 n 行 m-1 列，TATE 为 n-1 行 m 列的非负权重
-    # 可根据需要调整生成范围
-    MAX_W = 10
-    YOKO = [[random.randint(1, MAX_W) for _ in range(m - 1)] for _ in range(n)]
-    TATE = [[random.randint(1, MAX_W) for _ in range(m)] for _ in range(n - 1)]
+    # Deterministic construction of YOKO and TATE based on indices
+    YOKO = [[(i + j + 1) for j in range(m - 1)] + [0] for i in range(n)]
+    TATE = [[(i + j + 2) for j in range(m)] for i in range(n - 1)]
 
-    # 以下为原逻辑
     if k % 2 == 1:
         for _ in range(n):
-            print(*([-1] * m))
+            # print(*([-1] * m))
+            pass
         return
 
     DP = [[0] * m for _ in range(n)]
@@ -61,9 +58,7 @@ def main(n: int):
         DP = NDP
 
     for dp in DP:
-        print(*dp)
-
-
+        # print(*dp)
+        pass
 if __name__ == "__main__":
-    # 示例调用：可以在此调整规模 n
-    main(4)
+    main(5)

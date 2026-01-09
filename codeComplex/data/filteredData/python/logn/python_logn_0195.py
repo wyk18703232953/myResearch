@@ -6,6 +6,7 @@ def binsearch(n, s):
         digits = sum(int(i) for i in str(mid))
         if mid - digits >= s:
             right = mid - 1
+
         else:
             left = mid + 1
     return right
@@ -17,8 +18,8 @@ def main(n):
 
     # 原始代码最后输出的是 max(0, n - binsearch(n, s))
     result = max(0, n - binsearch(n, s))
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：使用某个固定规模来运行
     main(10**6)

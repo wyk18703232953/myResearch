@@ -1,27 +1,8 @@
 import collections
-import random
-import string
 
-
-def main(n: int):
-    # 生成测试数据：随机字符串 s，t 为 s 的打乱版本
-    # 可根据需要调整字符集和生成规则
-    letters = string.ascii_lowercase  # 使用小写字母
-    if n <= 0:
-        # 无有效规模时，直接返回
-        return
-
-    # 生成长度为 n 的随机字符串 s
-    s = ''.join(random.choice(letters) for _ in range(n))
-    # t 为 s 的随机排列，保证 Counter 相同
-    t_list = list(s)
-    random.shuffle(t_list)
-    t = ''.join(t_list)
-
-    # 原始逻辑开始
+def transform_string(s, t):
     if collections.Counter(s) != collections.Counter(t):
-        print(-1)
-        return
+        return -1, []
 
     sl = list(s)
     st = list(t)
@@ -33,16 +14,37 @@ def main(n: int):
             ans.extend(list(range(k + p, p, -1)))
             sl.pop(k)
             st.pop(0)
+
         else:
             sl.pop(0)
             st.pop(0)
         p += 1
+    return len(ans), ans
 
-    print(len(ans))
-    if ans:
-        print(*ans)
+def generate_strings(n):
+    if n <= 0:
+        return "", ""
+    base = [chr(ord('a') + (i % 26)) for i in range(n)]
+    s = "".join(base)
+    # Deterministic transformation of s to t:
+    # rotate left by k where k = n // 3, then reverse whole string
+    k = n // 3
+    if k > 0:
+        rotated = s[k:] + s[:k]
 
+    else:
+        rotated = s
+    t = rotated[::-1]
+    return s, t
 
+def main(n):
+    s, t = generate_strings(n)
+    res, seq = transform_string(s, t)
+    # print(res)
+    pass
+
+    if res != -1 and seq:
+        # print(*seq)
+        pass
 if __name__ == "__main__":
-    # 示例调用，可根据需要修改或移除
-    main(5)
+    main(10)

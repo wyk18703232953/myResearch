@@ -6,9 +6,8 @@ def main(n: int):
     a, b, c = 2 * n, 5 * n, 8 * n
     ceil = lambda x, y: (x + y - 1) // y
     result = ceil(a, k) + ceil(b, k) + ceil(c, k)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模自行设定
     main(10)

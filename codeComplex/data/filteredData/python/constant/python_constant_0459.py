@@ -1,35 +1,33 @@
-import random
+def main(n):
+    # 映射：n 控制坐标规模，构造三个点 (a,b), (b1,b2), (c1,c2)
+    # 原逻辑只依赖相对位置，因此用确定性算式生成
+    a = n
+    b = n // 2
 
-def main(n: int):
-    # 生成测试数据：
-    # a,b 为基准点，范围 [-n, n]
-    a = random.randint(-n, n)
-    b = random.randint(-n, n)
+    # 保证生成的点与原点 (a,b) 不重合，且形式多样
+    b1 = a + (n % 5 + 1)
+    b2 = b + (n % 7 + 2)
 
-    # 为了有一定概率输出 YES 和 NO，混合构造和随机构造
-    def gen_point():
-        return random.randint(-n, n), random.randint(-n, n)
+    c1 = a + (n % 3 + 2)
+    # 为了触发不同分支，使用一个与 b2 有确定性差异的构造
+    c2 = b + ((n // 2) % 5 + 1)
 
-    # 随机生成两个点 (b1,b2), (c1,c2)
-    b1, b2 = gen_point()
-    c1, c2 = gen_point()
-
-    # 将原始逻辑中的平移操作应用到生成的数据
+    # 原算法
     b1 -= a
     b2 -= b
     c1 -= a
     c2 -= b
-
-    # 原始判定逻辑
     if b1 == 0 or b2 == 0 or c1 == 0 or c2 == 0:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
         if b1 * c1 < 0 or b2 * c2 <= 0:
-            print('NO')
+            # print('NO')
+            pass
+
         else:
-            print('YES')
-
-
+            # print('YES')
+            pass
 if __name__ == "__main__":
-    # 示例调用：可按需修改 n
     main(10)

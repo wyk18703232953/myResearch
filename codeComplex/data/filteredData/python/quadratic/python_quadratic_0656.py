@@ -22,7 +22,8 @@ def main(n):
     for i in range((n + 1) // 2):
         ans = (ans + f(n - i, i + 1)) % mod
 
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

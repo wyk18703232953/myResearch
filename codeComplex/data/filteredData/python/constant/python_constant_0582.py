@@ -6,11 +6,12 @@ def main(n: int):
 
     # 原逻辑
     if abs(x - 1) + abs(y - 1) <= abs(x - n) + abs(y - n):
-        print('White')
+        # print('White')
+        pass
+
     else:
-        print('Black')
-
-
+        # print('Black')
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(8)，实际使用时可在外部根据需要调用 main(n)
     main(8)

@@ -1,77 +1,101 @@
-def main(n):
-    import random
+import sys
 
-    # 1) 生成规模参数
-    # 将原来的 (n, m, k) 都用 main 的参数 n 来控制
-    # 这里设：
-    #   行数 rows = n
-    #   列数 cols = n
-    #   步数 k 取为一个不太大的偶数（例如 <= 20），避免 DP 维度过大
+def main(n):
+    # Interpret n as grid size; keep k fixed to preserve algorithm shape
+    if n <= 0:
+        return
     rows = n
     cols = n
-    # 保证 k 为偶数，且不超过 20
-    k = min(2 * ((n % 10) + 1), 20)
-    if k % 2 == 1:
-        k += 1
+    k = 10  # even, so paths of length k are considered
 
-    # 2) 根据 n 生成测试数据 l1, l2
-    # l1: rows x cols 的网格，左右边的代价
-    # l2: (rows-1) x cols 的网格，上下边的代价
-    # 代价随机在 1~9 之间
-    l1 = [[random.randint(1, 9) for _ in range(cols)] for _ in range(rows)]
+    # Deterministic generation of l1 (horizontal edges) and l2 (vertical edges)
+    # l1: rows x cols
+    # l2: (rows-1) x cols
+    l1 = [[(i * cols + j) % 9 + 1 for j in range(cols)] for i in range(rows)]
     if rows > 1:
-        l2 = [[random.randint(1, 9) for _ in range(cols)] for _ in range(rows - 1)]
+        l2 = [[((i + 1) * cols + j) % 9 + 1 for j in range(cols)] for i in range(rows - 1)]
+
     else:
+        # When n == 1, there are no vertical edges; create empty structure
         l2 = []
 
-    # 3) 核心逻辑（移除所有 input，直接使用上面生成的数据）
+    inf = 10 ** 18
+
     def check(x, y):
         return 0 <= x < rows and 0 <= y < cols
 
-    inf = 10 ** 18
-    # dp[i][j][t]: 从 (i,j) 出发，走恰好 t 步到任意点的最小代价的一半路径（原题思路）
+    # dp[i][j][t]: minimum cost to take t steps starting from (i, j)
+    # t ranges from 0..k//2; only 1..k//2 are used, but allocate full for clarity
     max_half = k // 2
-    dp = [[[inf] * (max_half + 1) for _ in range(cols)] for __ in range(rows)]
+    dp = [[[inf] * (max_half + 1) for _ in range(cols)] for _ in range(rows)]
 
-    # t = 1 初始化
+    # Initialize dp for 1 step
     for i in range(rows):
         for j in range(cols):
+            # move right
             if check(i, j + 1):
-                dp[i][j][1] = min(l1[i][j], dp[i][j][1])
+                if l1[i][j] < dp[i][j][1]:
+                    dp[i][j][1] = l1[i][j]
+            # move left
             if check(i, j - 1):
-                dp[i][j][1] = min(l1[i][j - 1], dp[i][j][1])
-            if check(i + 1, j) and rows > 1:
-                dp[i][j][1] = min(l2[i][j], dp[i][j][1])
-            if check(i - 1, j) and rows > 1:
-                dp[i][j][1] = min(l2[i - 1][j], dp[i][j][1])
+                if l1[i][j - 1] < dp[i][j][1]:
+                    dp[i][j][1] = l1[i][j - 1]
+            # move down
+            if check(i + 1, j):
+                if l2[i][j] < dp[i][j][1]:
+                    dp[i][j][1] = l2[i][j]
+            # move up
+            if check(i - 1, j):
+                if l2[i - 1][j] < dp[i][j][1]:
+                    dp[i][j][1] = l2[i - 1][j]
 
-    # t = 2..k//2
-    for t in range(2, max_half + 1):
+    # DP transitions for more steps
+    for steps in range(2, max_half + 1):
         for i in range(rows):
             for j in range(cols):
+                best = dp[i][j][steps]
+                # right
                 if check(i, j + 1):
-                    dp[i][j][t] = min(dp[i][j][t], l1[i][j] + dp[i][j + 1][t - 1])
+                    cost = l1[i][j] + dp[i][j + 1][steps - 1]
+                    if cost < best:
+                        best = cost
+                # left
                 if check(i, j - 1):
-                    dp[i][j][t] = min(dp[i][j][t], l1[i][j - 1] + dp[i][j - 1][t - 1])
-                if check(i + 1, j) and rows > 1:
-                    dp[i][j][t] = min(dp[i][j][t], l2[i][j] + dp[i + 1][j][t - 1])
-                if check(i - 1, j) and rows > 1:
-                    dp[i][j][t] = min(dp[i][j][t], l2[i - 1][j] + dp[i - 1][j][t - 1])
+                    cost = l1[i][j - 1] + dp[i][j - 1][steps - 1]
+                    if cost < best:
+                        best = cost
+                # down
+                if check(i + 1, j):
+                    cost = l2[i][j] + dp[i + 1][j][steps - 1]
+                    if cost < best:
+                        best = cost
+                # up
+                if check(i - 1, j):
+                    cost = l2[i - 1][j] + dp[i - 1][j][steps - 1]
+                    if cost < best:
+                        best = cost
+                dp[i][j][steps] = best
 
-    # 4) 计算答案
     ans = [[inf] * cols for _ in range(rows)]
     for i in range(rows):
         for j in range(cols):
-            if k % 2:
+            if k % 2 == 1:
                 ans[i][j] = -1
-            else:
-                ans[i][j] = 2 * dp[i][j][max_half]
 
-    # 5) 输出（只保留核心输出）
+            else:
+                val = dp[i][j][max_half]
+                if val >= inf:
+                    ans[i][j] = -1
+
+                else:
+                    ans[i][j] = 2 * val
+
+    out_lines = []
     for row in ans:
-        print(*row)
+        out_lines.append(" ".join(str(x) for x in row))
+    sys.stdout.write("\n".join(out_lines) + ("\n" if out_lines else ""))
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)
+    # Example deterministic call for timing/experiments
     main(5)

@@ -32,9 +32,8 @@ def main(n):
         if l <= diff_sum <= r and subset[-1] - subset[0] >= x:
             ans += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可自行调整
     main(4)

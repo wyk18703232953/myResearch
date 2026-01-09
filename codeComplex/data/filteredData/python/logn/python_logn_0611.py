@@ -17,6 +17,7 @@ def solve(n, k):
             return n - middle
         elif m_candies < k:
             lower_bound = middle
+
         else:
             upper_bound = middle
     return None
@@ -32,11 +33,12 @@ def main(n):
 
     result = solve(n, k)
     if result is not None:
-        print(result)
+        # print(result)
+        pass
+
     else:
-        print("No valid solution found")
-
-
+        # print("No valid solution found")
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可自行修改
     main(10)

@@ -22,9 +22,8 @@ def main(n: int):
         diff = newdiff
 
     ans = (same[-1] + diff[-1]) % MOD
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：运行 main(5)
     main(5)

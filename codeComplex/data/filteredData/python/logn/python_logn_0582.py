@@ -3,7 +3,8 @@ def main(n):
     # 为保证有解，先选 m，再反推 k
     if n <= 2:
         # 特殊情况下规模太小，直接处理
-        print(0)
+        # print(0)
+        pass
         return
 
     # 这里简单选取 m 为 n//3（也可以换成其他策略或随机选）
@@ -21,10 +22,12 @@ def main(n):
         m = (l + r) // 2
         S = ((n - m) ** 2 + n - 3 * m) // 2
         if S == k:
-            print(m)
+            # print(m)
+            pass
             break
         elif S < k:
             r = m
+
         else:
             l = m
 

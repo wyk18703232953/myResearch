@@ -1,47 +1,47 @@
-import random
+def main(n):
+    # n 作为输入规模，用于生成一对整数 [l, r]
+    # 确定性构造：让 r > l，且二者在高位有差异
+    # 使用 n 控制数值规模
+    if n < 2:
+        l_val = 0
+        r_val = 0
 
-def main(n: int):
-    """
-    n: 规模参数，用来生成测试数据。
-       这里用 n 表示 bit 位数（最大数约为 2^n-1）。
-    """
-    if n <= 0:
-        return
+    else:
+        # 保证 r > l，并随 n 增大
+        l_val = n
+        r_val = 2 * n
 
-    # 生成测试数据：在 [0, 2^n - 1] 范围内随机生成 l, r，并确保 l <= r
-    max_val = (1 << n) - 1
-    l = random.randint(0, max_val)
-    r = random.randint(0, max_val)
-    if l > r:
-        l, r = r, l
+    numeros = [l_val, r_val]
 
-    numeros = [l, r]
-
-    # 原逻辑开始
-    l_bin = bin(numeros[0])
-    r_bin = bin(numeros[1])
+    l = bin(numeros[0])
+    r = bin(numeros[1])
 
     p = -1
 
-    if len(r_bin) == len(l_bin):
-        for i in range(len(l_bin)):
-            if l_bin[i] != r_bin[i]:
+    if len(r) == len(l):
+        for i in range(len(l)):
+            if l[i] != r[i]:
                 p = i
                 break
         if numeros[0] != numeros[1]:
-            saida = 2 ** (len(r_bin) - p) - 1
-            print(saida)
+            saida = 2 ** (len(r) - p) - 1
+            # print(saida)
+            pass
+
         else:
-            print(0)
+            # print(0)
+            pass
 
     else:
         if numeros[0] != numeros[1]:
-            saida = 2 ** (len(r_bin) - 2) - 1
-            print(saida)
+            saida = 2 ** (len(r) - 2) - 1
+            # print(saida)
+            pass
+
         else:
-            print(0)
-
-
+            # print(0)
+            pass
 if __name__ == "__main__":
-    # 示例：以 n=10 运行一次
-    main(10)
+    # 示例：使用若干不同规模运行
+    for n in [1, 2, 10, 100, 1000]:
+        main(n)

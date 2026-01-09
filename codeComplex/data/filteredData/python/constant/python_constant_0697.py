@@ -1,15 +1,16 @@
 import math
-import random
 
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 此处设定 r 为 1 到 100 之间的随机整数
-    r = random.randint(1, 100)
-
+    r = 10  # 固定半径，规模由 n 控制
+    if n <= 1:
+        return 0.0
     t = math.sin(math.pi / n)
+    if t == 1:
+        return float('inf')
     res = r * t / (1 - t)
-    print(res)
+    # print(res)
+    pass
+    return res
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    main(1000)

@@ -1,31 +1,30 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 约定：
-    # 1 <= m <= n
-    # 0 <= k, l <= n
-    if n <= 0:
-        return -1
+    # 解释输入结构：
+    # 原程序需要四个整数 n, m, k, l
+    # 这里将传入的 n 视为原始的 n
+    # 其余 m, k, l 由 n 确定性构造
+    original_n = n
+    m = max(1, n // 2)
+    k = n // 3
+    l = n // 4
 
-    m = random.randint(1, n)
-    k = random.randint(0, n)
-    l = random.randint(0, n)
+    n, m, k, l = original_n, m, k, l
 
-    # 原逻辑
     if m > n:
-        return -1
+        # print(-1)
+        pass
     elif l + k > n:
-        return -1
+        # print(-1)
+        pass
+
     else:
         s = (l + k) // m + bool((l + k) % m)
         if s * m > n:
-            return -1
-        else:
-            return s
+            # print(-1)
+            pass
 
+        else:
+            # print(s)
+            pass
 if __name__ == "__main__":
-    # 示例：固定 n 来运行
-    n = 10
-    ans = main(n)
-    print(ans)
+    main(1000000)

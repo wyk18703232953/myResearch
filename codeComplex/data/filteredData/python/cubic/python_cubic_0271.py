@@ -1,46 +1,42 @@
-import random
+def main(n):
+    # Interpret n as the size of each color array, capped at 200
+    size = max(1, min(200, n))
 
-def main(n: int):
-    # 根据 n 生成三个序列的长度，保证不超过 200（原 dp 维度上限）
-    # 这里简单按 n 均分到 a, b, c，并截断到 200
-    a = min(200, max(1, n // 3))
-    b = min(200, max(1, n // 3))
-    c = min(200, max(1, n - a - b))
-    
-    # 生成测试数据：随机正整数
-    R = [random.randint(1, 1000) for _ in range(a)]
-    G = [random.randint(1, 1000) for _ in range(b)]
-    B = [random.randint(1, 1000) for _ in range(c)]
+    # Deterministically generate R, G, B based on size
+    R = [(i * 2 + 1) % 1000 for i in range(size)]
+    G = [(i * 3 + 2) % 1000 for i in range(size)]
+    B = [(i * 5 + 3) % 1000 for i in range(size)]
 
-    # dp 大小最多为 201^3，和原程序一致
-    dp = [[[0 for _ in range(201)] for _ in range(201)] for _ in range(201)]
+    a = len(R)
+    b = len(G)
+    c = len(B)
+
+    # Cap lengths at 200 to respect original dp dimensions
+    a = min(a, 200)
+    b = min(b, 200)
+    c = min(c, 200)
+    R = R[:a]
+    G = G[:b]
+    B = B[:c]
+
+    dp = [[[0 for _ in range(c + 1)] for _ in range(b + 1)] for _ in range(a + 1)]
 
     R.sort()
     G.sort()
     B.sort()
 
-    for i in range(len(R) + 1):
-        for j in range(len(G) + 1):
-            for k in range(len(B) + 1):
+    for i in range(a + 1):
+        for j in range(b + 1):
+            for k in range(c + 1):
                 if i and j:
-                    dp[i][j][k] = max(
-                        dp[i][j][k],
-                        dp[i - 1][j - 1][k] + R[i - 1] * G[j - 1]
-                    )
+                    dp[i][j][k] = max(dp[i][j][k], dp[i - 1][j - 1][k] + R[i - 1] * G[j - 1])
                 if j and k:
-                    dp[i][j][k] = max(
-                        dp[i][j][k],
-                        dp[i][j - 1][k - 1] + G[j - 1] * B[k - 1]
-                    )
+                    dp[i][j][k] = max(dp[i][j][k], dp[i][j - 1][k - 1] + G[j - 1] * B[k - 1])
                 if i and k:
-                    dp[i][j][k] = max(
-                        dp[i][j][k],
-                        dp[i - 1][j][k - 1] + R[i - 1] * B[k - 1]
-                    )
+                    dp[i][j][k] = max(dp[i][j][k], dp[i - 1][j][k - 1] + R[i - 1] * B[k - 1])
 
-    print(dp[len(R)][len(G)][len(B)])
-
-
+    # print(dp[a][b][c])
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模 n = 60
-    main(60)
+    # Example deterministic call for complexity experiments
+    main(100)

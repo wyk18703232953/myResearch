@@ -18,7 +18,8 @@ def main(n):
     """
     for j in range(2, int(n / 2) + 1):
         if not prime(j) and not prime(n - j):
-            print(j, n - j)
+            # print(j, n - j)
+            pass
             break
 
 

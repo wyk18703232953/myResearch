@@ -6,7 +6,9 @@ def main(n: int):
 
     mod = 1000 * 1000 * 1000 + 7
     if x == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         mul = pow(2, k + 1, mod)
         cnt = pow(2, k, mod)
@@ -16,9 +18,8 @@ def main(n: int):
         rev = pow(cnt, mod - 2, mod)
         assert rev * cnt % mod == 1
         ans *= rev
-        print(ans % mod)
-
-
+        # print(ans % mod)
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

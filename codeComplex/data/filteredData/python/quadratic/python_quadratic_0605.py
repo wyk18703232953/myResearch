@@ -1,7 +1,4 @@
-import random
-
 def max_subarray(A):
-    # Kadane 算法
     max_ending_here = max_so_far = A[0]
     for x in A[1:]:
         max_ending_here = max(x, max_ending_here + x)
@@ -9,22 +6,19 @@ def max_subarray(A):
     return max_so_far
 
 def main(n):
-    """
-    n: 规模参数，用来生成测试数据
-    这里约定：
-      - 数组长度 len(a) = n
-      - m 在 [1, n] 内随机
-      - k 在 [1, 10] 内随机
-      - a 中元素在 [-10, 10] 内随机
-    """
-    if n <= 0:
-        return 0
+    # 映射规则：
+    # n >= 3，用作数组长度；m 和 k 与 n 相关以保证可规模化
+    if n < 3:
+        n = 3
 
-    # 生成测试数据
+    # 构造 n, m, k
     length = n
-    a = [random.randint(-10, 10) for _ in range(length)]
-    m = random.randint(1, length)
-    k = random.randint(1, 10)
+    m = max(1, n // 3)      # 步长规模随 n 线性增长
+    k = max(1, n // 5)      # 惩罚值随 n 线性增长
+
+    # 构造数组 a，长度为 length，包含正负数，完全确定性
+    # 示例：a[i] = (i % 7) - 3
+    a = [(i % 7) - 3 for i in range(length)]
 
     ans = 0
     for i in range(m):
@@ -37,4 +31,7 @@ def main(n):
                 break
             s += m
         ans = max(max_subarray(li) - k, ans)
-    return ans
+    # print(ans)
+    pass
+if __name__ == "__main__":
+    main(1000)

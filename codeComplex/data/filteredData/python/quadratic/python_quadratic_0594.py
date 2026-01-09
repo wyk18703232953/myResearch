@@ -39,4 +39,5 @@ if __name__ == "__main__":
     # 可在此做简单示例调用
     # 例如：n = 10
     result = main(10)
-    print(result)
+    # print(result)
+    pass

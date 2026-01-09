@@ -1,16 +1,16 @@
-import random
-import string
-
-
 def main(n):
-    # 随机生成 1 <= k <= n
-    k = random.randint(1, n)
+    # Interpret n as the length of string s
+    # Deterministic generation of k and s based on n
+    if n <= 0:
+        return
 
-    # 随机生成长度为 n 的小写字母串 s
-    letters = string.ascii_lowercase
-    s = ''.join(random.choice(letters) for _ in range(n))
+    # Choose k as a simple deterministic function of n to make it scale with n
+    k = n // 2 + 1
 
-    # 原程序逻辑开始
+    # Generate a deterministic string s of length n using lowercase letters
+    # Pattern: cyclic over 'a' to 'z'
+    s = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
+
     m = -1
     for i in range(0, n - 1):
         ff = 0
@@ -21,7 +21,16 @@ def main(n):
         if ff == 0:
             m = i
 
-    print(s, end="")
+    # Reproduce the original output behavior
+    result = []
+    result.append(s)
     for _ in range(1, k):
         for j in range(m + 1, n):
-            print(s[j], end="")
+            result.append(s[j])
+
+    output = ''.join(result)
+    # print(output)
+    pass
+if __name__ == "__main__":
+    # Example deterministic call; adjust n as needed for experiments
+    main(10)

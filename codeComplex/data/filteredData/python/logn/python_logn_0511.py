@@ -11,16 +11,21 @@ def main(n: int):
 
     if y == 0:
         if i == 1:
-            print(x % 10)
+            # print(x % 10)
+            pass
+
         else:
-            print((10 ** (i - 1) + x - 1) % 10)
+            # print((10 ** (i - 1) + x - 1) % 10)
+            pass
+
     else:
         if i == 1:
-            print(x % 10)
+            # print(x % 10)
+            pass
+
         else:
-            print(((10 ** (i - 1) + x) // (10 ** (i - y))) % 10)
-
-
+            # print(((10 ** (i - 1) + x) // (10 ** (i - y))) % 10)
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(n) 进行测试，这里给一个默认值
     main(1000)

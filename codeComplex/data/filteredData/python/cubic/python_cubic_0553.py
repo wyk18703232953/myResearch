@@ -36,6 +36,7 @@ def solve(sa, sb):
                 digits_a[j] -= 1
                 if out > 0:
                     return "{}{}{}".format(out, j, largest(digits_a))
+
                 else:
                     return "{}{}".format(j, largest(digits_a))
 
@@ -47,6 +48,7 @@ def solve(sa, sb):
                 if int(smallest(digits_a)) <= b % (10 ** i):
                     out = 10 * out + j
                     break
+
                 else:
                     digits_a[j] += 1
 
@@ -66,11 +68,13 @@ def main(n):
     # 如果 n=1，sa="1"，sb="9"
     if n == 1:
         sb = "9"
+
     else:
         sb = "9" * n
 
     result = solve(sa, sb)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

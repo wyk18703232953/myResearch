@@ -6,6 +6,7 @@ def solve(n, d, k):
     if n == 2:
         if d > 1:
             return False, []
+
         else:
             return True, [(1, 2)]
     if (not 2 <= d <= n - 1) or k == 1:
@@ -39,6 +40,7 @@ def solve(n, d, k):
 
     if len(ans) == n - 1:
         return True, ans
+
     else:
         return False, []
 
@@ -62,6 +64,7 @@ def main(n):
         d, k = 1, 2
     elif n == 2:
         d, k = 1, 2  # 可行：YES, 边为 (1, 2)
+
     else:
         # 选择一个中等直径和度数，通常可行
         d = min(4, n - 1)
@@ -76,10 +79,16 @@ if __name__ == "__main__":
     n = 10
     ok, edges, d, k = main(n)
     if ok:
-        print("YES")
-        print(f"n={n}, d={d}, k={k}")
+        # print("YES")
+        pass
+        # print(f"n={n}, d={d}, k={k}")
+        pass
         for u, v in edges:
-            print(u, v)
+            # print(u, v)
+            pass
+
     else:
-        print("NO")
-        print(f"n={n}, d={d}, k={k}")
+        # print("NO")
+        pass
+        # print(f"n={n}, d={d}, k={k}")
+        pass

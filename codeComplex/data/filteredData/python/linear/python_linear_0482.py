@@ -1,28 +1,22 @@
 import collections
 import bisect
-import random
 
-def main(n: int):
-    # 1. 生成规模为 n 的随机测试数据
-    # 生成 n 段区间 [x, y]，保证 x <= y
-    starting = []
-    ending = []
-    for _ in range(n):
-        x = random.randint(0, 10**6)
-        y = random.randint(0, 10**6)
-        if x > y:
-            x, y = y, x
-        starting.append(x)
-        ending.append(y)
+def main(n):
+    starting = [(i * 3) % (2 * n + 1) for i in range(n)]
+    ending = [((i * 5) + 7) % (2 * n + 1) for i in range(n)]
 
-    # 2. 原始逻辑
+    if not starting or not ending:
+        # print(0)
+        pass
+        return
+
     ans = 0
     start_count = collections.Counter(starting)
     end_count = collections.Counter(ending)
-
-    s = sorted(starting)
-    e = sorted(ending)
-
+    s = starting.copy()
+    s.sort()
+    e = ending.copy()
+    e.sort()
     maxim = max(starting)
     minim = min(ending)
 
@@ -30,26 +24,32 @@ def main(n: int):
         if starting[i] == maxim:
             if start_count[maxim] > 1:
                 loc_max = maxim
+
             else:
                 pos = bisect.bisect_left(s, maxim)
-                loc_max = s[pos - 1]
+                loc_max = s[pos - 1] if pos - 1 >= 0 else maxim
+
         else:
             loc_max = maxim
 
         if ending[i] == minim:
             if end_count[minim] > 1:
                 loc_min = minim
+
             else:
                 pos = bisect.bisect_right(e, minim)
-                loc_min = e[pos]
+                if pos < len(e):
+                    loc_min = e[pos]
+
+                else:
+                    loc_min = minim
+
         else:
             loc_min = minim
 
         ans = max(ans, loc_min - loc_max)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模可自行调整
     main(10)

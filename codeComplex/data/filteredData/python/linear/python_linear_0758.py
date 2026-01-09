@@ -1,10 +1,9 @@
-import random
-
 def main(n):
-    # 根据 n 生成测试数据，这里生成 n 个范围在 [-10^9, 10^9] 的随机整数
-    a = [random.randint(-10**9, 10**9) for _ in range(n)]
+    # Generate deterministic input array of length n
+    # Example: a[i] = i - n//2 to have both negative and non-negative numbers
+    a = [i - n // 2 for i in range(n)]
 
-    # 原逻辑
+    # Core logic from original program
     for i in range(n):
         if a[i] >= 0:
             a[i] = -a[i] - 1
@@ -14,9 +13,8 @@ def main(n):
         a[i] = -a[i] - 1
 
     a_str = list(map(str, a))
-    print(" ".join(a_str))
-
-
+    # print(" ".join(a_str))
+    pass
 if __name__ == "__main__":
-    # 示例：可在此处指定规模 n
+    # Example call; adjust n as needed for experiments
     main(10)

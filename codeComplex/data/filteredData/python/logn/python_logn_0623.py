@@ -12,12 +12,12 @@ def main(n: int):
 
         if added - eaten >= k:
             low = eaten + 1
+
         else:
             high = eaten - 1
 
-    print(high)
-
-
+    # print(high)
+    pass
 if __name__ == "__main__":
     # 可在此修改 n 进行本地测试
     main(10)

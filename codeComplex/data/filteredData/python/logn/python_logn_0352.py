@@ -24,4 +24,5 @@ if __name__ == "__main__":
     # 示例：手动指定规模 n 进行测试
     n = 10
     result = main(n)
-    print(result)
+    # print(result)
+    pass

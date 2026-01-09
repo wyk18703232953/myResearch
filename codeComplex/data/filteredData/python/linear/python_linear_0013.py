@@ -16,9 +16,12 @@ def main(n):
 
     # 输出结果
     if c >= k:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
+        # print("NO")
+        pass
 
 
 # 示例调用

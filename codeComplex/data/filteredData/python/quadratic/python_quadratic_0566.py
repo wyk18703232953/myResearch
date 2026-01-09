@@ -15,9 +15,8 @@ def main(n: int) -> None:
         if m % 2 == 1:
             buf.append(f'{n // 2 + 1} {m // 2 + 1}\n')
 
-    print(*buf, sep='')
-
-
+    # print(*buf, sep='')
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

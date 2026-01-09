@@ -5,10 +5,12 @@ def prime2(n):
         if n % 2 == 0:
             cont += 1
             n = n // 2
+
         else:
             flag = False
     if n % 4 == 1:
         return [cont, "L"]
+
     else:
         return [cont, "R"]
 
@@ -19,6 +21,7 @@ def arrivo(n, start, char):
             pass
         elif (i == "U") and 2 * start == n + 1:
             pass
+
         else:
             [power, direc] = prime2(start)
             if i == "L":
@@ -28,6 +31,7 @@ def arrivo(n, start, char):
             else:  # 'U'
                 if direc == "L":
                     start += 2 ** power
+
                 else:
                     start -= 2 ** power
     return start
@@ -54,9 +58,8 @@ def main(n):
 
     # 输出结果
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == '__main__':
     # 示例：调用 main，n 可按需求修改
     main(10)

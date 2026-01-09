@@ -1,38 +1,44 @@
-from collections import deque
-import random
+def main(n):
+    from collections import deque
 
+    # Scale mapping:
+    # n -> grid of size (n x n)
+    # k (number of initially filled cells) = max(1, min(n*n, n))
+    rows = n
+    cols = n
+    k = max(1, min(rows * cols, n))
 
-def main(n: int):
-    # n: number of rows; also use n as number of columns for testing
-    m = n
+    # Deterministic generation of initial filled cells:
+    # pick k distinct cells along a deterministic pattern
+    initial_cells = []
+    for i in range(k):
+        x = (i * 2) % rows
+        y = (i * 3) % cols
+        initial_cells.append((x, y))
 
-    # Generate random number of initial points k (at least 1, at most n*m)
-    k = random.randint(1, min(n * m, max(1, n // 2)))
-
-    # Generate k distinct random cells as starting points
-    all_cells = [(i, j) for i in range(n) for j in range(m)]
-    random.shuffle(all_cells)
-    starts = all_cells[:k]
-
-    # Build grid and BFS queue
-    a = [[0] * m for _ in range(n)]
+    # Original logic begins (adapted to use generated data)
+    a = [[0] * cols for _ in range(rows)]
     dq = deque()
-    for x, y in starts:
-        a[x][y] = 1
-        dq.append((x, y))
+    for x, y in initial_cells:
+        if a[x][y] == 0:
+            a[x][y] = 1
+            dq.append((x, y))
 
     x, y = -1, -1
     while dq:
         x, y = dq.popleft()
         for tx, ty in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
-            if 0 <= tx < n and 0 <= ty < m and not a[tx][ty]:
+            if 0 <= tx < rows and 0 <= ty < cols and not a[tx][ty]:
                 a[tx][ty] = 1
                 dq.append((tx, ty))
 
-    # Output last filled cell in 1-based coordinates
-    print(f'{x + 1} {y + 1}')
+    # Return the final cell in 1-based coordinates (matching original program)
+    return (x + 1, y + 1)
 
 
 if __name__ == "__main__":
-    # example run with n=10
-    main(10)
+    # Example call for experimental purpose
+    n = 100
+    result = main(n)
+    # print(result)
+    pass

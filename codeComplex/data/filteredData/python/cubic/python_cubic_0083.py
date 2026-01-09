@@ -1,19 +1,13 @@
-import random
-
 def matching(n, m, path):
-    # Hopcroft–Karp O(E * V^0.5)
     match1 = [-1] * n
     match2 = [-1] * m
-
-    # Greedy initialization
     for node in range(n):
         for nei in path[node]:
             if match2[nei] == -1:
                 match1[node] = nei
                 match2[nei] = node
                 break
-
-    while True:
+    while 1:
         bfs = [node for node in range(n) if match1[node] == -1]
         depth = [-1] * n
         for node in bfs:
@@ -27,15 +21,15 @@ def matching(n, m, path):
                 if depth[next_node] == -1:
                     depth[next_node] = depth[node] + 1
                     bfs.append(next_node)
+
             else:
                 continue
             break
+
         else:
             break
-
         pointer = [len(c) for c in path]
         dfs = [node for node in range(n) if depth[node] == 0]
-
         while dfs:
             node = dfs[-1]
             while pointer[node]:
@@ -50,54 +44,25 @@ def matching(n, m, path):
                 elif depth[node] + 1 == depth[next_node]:
                     dfs.append(next_node)
                     break
+
             else:
                 dfs.pop()
-
     return n - match1.count(-1)
 
 
-def generate_test_data(n):
-    """
-    生成测试数据：
-    顶点编号为 0..n-1，随机生成边集合 edg（无自环、无重边）。
-    """
-    max_edges = n * n
-    # 控制边数在 [n, min(max_edges, 3n)] 范围内，确保有一定稠密度但不至于太大
-    m = random.randint(n, min(max_edges, 3 * n)) if n > 0 else 0
-
-    edges_set = set()
-    while len(edges_set) < m:
-        u = random.randint(0, n - 1)
-        v = random.randint(0, n - 1)
-        if u == v:
-            continue
-        if (u, v) in edges_set:
-            continue
-        edges_set.add((u, v))
-
-    edg = list(edges_set)
-    return n, len(edg), edg
-
-
-def main(n):
-    """
-    n 为规模参数：图有 n 个顶点（0..n-1），边由 generate_test_data(n) 随机生成。
-    返回原程序计算得到的最小代价 ans。
-    """
-    n, m, edg = generate_test_data(n)
-
+def experiment(n, m, edges):
     ans = float("inf")
     for centre in range(n):
         path = [[] for _ in range(n)]
         cost = 2 * n - 1
         extra = m
-        for u, v in edg:
+        for u, v in edges:
             if u == centre or v == centre:
                 cost -= 1
                 extra -= 1
+
             else:
                 path[u].append(v)
-
         maxMatch = matching(n, n, path)
         extra -= maxMatch
         cost += n - 1 - maxMatch + extra
@@ -105,9 +70,32 @@ def main(n):
     return ans
 
 
-# 示例：直接运行本文件时，用一个固定规模调用 main 并打印结果。
+def generate_data(n):
+    if n <= 1:
+        n_nodes = 1
+        edges = []
+        return n_nodes, len(edges), edges
+
+    n_nodes = n
+    edges = []
+    # deterministic edge generation: layered structure with some wrap-arounds
+    for u in range(n_nodes):
+        v1 = (u + 1) % n_nodes
+        v2 = (u * 2 + 1) % n_nodes
+        if u != v1:
+            edges.append((u, v1))
+        if u != v2 and v2 != v1:
+            edges.append((u, v2))
+    # clip to reasonable multiple to keep density bounded
+    max_m = 3 * n_nodes
+    edges = edges[:max_m]
+    return n_nodes, len(edges), edges
+
+
+def main(n):
+    n_nodes, m, edges = generate_data(n)
+    result = experiment(n_nodes, m, edges)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    random.seed(0)  # 保证可复现
-    n_example = 10
-    result = main(n_example)
-    print(result)
+    main(10)

@@ -1,25 +1,25 @@
-import random
-import math
-
 def main(n):
-    # 生成测试数据：
-    # k: 参加的人数 (1 ~ n)
-    # n: 每人需要的页数 (1 ~ n)
-    # s: 每包纸张中的页数 (1 ~ n)
-    # p: 每包纸张的本数 (1 ~ n)
-    k = random.randint(1, n)
-    need_pages = random.randint(1, n)
-    s = random.randint(1, n)
-    p = random.randint(1, n)
+    # 解释输入结构：
+    # 原程序：k, n, s, p = map(int, input().split())
+    # 为了时间复杂度实验，将单个规模参数 n 映射为这四个参数
+    #
+    # 设：
+    #   k = max(1, n // 3)
+    #   n_pages = n
+    #   s = max(1, n // 5)
+    #   p = max(1, n // 7)
+    #
+    # 保证参数均为正整数，且随 n 线性变化，便于规模扩展
+    
+    k = max(1, n // 3)
+    n_pages = n
+    s = max(1, n // 5)
+    p = max(1, n // 7)
 
-    # 计算总共需要的本数
-    total_sheets_per_person = (need_pages + s - 1) // s  # 每人需要的包数（向上取整）
-    total_sheets = total_sheets_per_person * k          # 总包数
-    result = (total_sheets + p - 1) // p                # 需要的本数（向上取整）
-
-    print(result)
-
+    result = ((n_pages + s - 1) // s * k + p - 1) // p
+    # print(result)
+    pass
+    return result
 
 if __name__ == "__main__":
-    # 示例调用：可以根据需要修改 n 的规模
-    main(100)
+    main(10)

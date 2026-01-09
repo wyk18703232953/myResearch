@@ -1,18 +1,18 @@
-import random
+def main(n):
+    # 生成确定性的测试数据：列表长度为 n
+    # 元素模式：i % (n // 2 + 1)，保证有重复和可能的 0
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int):
-    # 1. 生成规模为 n 的测试数据：整数数组 a
-    # 这里假设数据范围为 [-n, n]，可按需要调整
-    a = [random.randint(-n, n) for _ in range(n)]
+    a = [i % (n // 2 + 1) for i in range(n)]
 
-    # 2. 保持原逻辑：统计不同元素个数，如果包含 0 则减一
     b = set(a)
     res = len(b)
     if 0 in b:
         res -= 1
-
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

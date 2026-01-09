@@ -1,31 +1,43 @@
-import random
+def main(n):
+    # Deterministically generate strings a and b based on n
+    # Let a be a string of digits of length n
+    # Let b be a string of digits of length n (or longer, to exercise both branches)
+    # Here: a = "0..9" pattern repeated, b = "9..0" pattern repeated, both length n
+    a = "".join(str(i % 10) for i in range(n))
+    b = "".join(str(9 - (i % 10)) for i in range(n))
 
-def greedy(digits, s):
-    for i in range(9, -1, -1):
-        d = str(i)
-        if d in digits:
-            while digits[d] > 0:
-                s += d
-                digits[d] -= 1
-    return s
-
-def solve(a, b):
     digits = {}
+
+    def greedy(digits_dict, s):
+        for i in range(9, -1, -1):
+            d = str(i)
+            if d in digits_dict:
+                while digits_dict[d] > 0:
+                    s += d
+                    digits_dict[d] -= 1
+        return s
+
     for d in a:
         if d in digits:
             digits[d] += 1
+
         else:
             digits[d] = 1
 
     if len(a) < len(b):
-        return greedy(digits, "")
+        result = greedy(digits, "")
+        # print(result)
+        pass
+
     else:
         ind = 0
         cur = ""
         back = False
         done = False
+        output_printed = False
+
         while True:
-            if ind == len(a) or done:
+            if ind == len(a) or done is True:
                 break
             found = False
             for i in range(9, -1, -1):
@@ -40,15 +52,20 @@ def solve(a, b):
                     done = True
                     digits[x] -= 1
                     cur += x
-                    return greedy(digits, cur)
-            if not found:
+                    result = greedy(digits, cur)
+                    # print(result)
+                    pass
+                    output_printed = True
+                    break
+            if found is False:
                 back = True
                 break
             ind += 1
 
-        if not back and not done:
-            return cur
-        elif not done:
+        if back is False and done is False:
+            # print(cur)
+            pass
+        elif done is False:
             for i in range(ind - 1, -1, -1):
                 digits[cur[i]] += 1
                 for j in range(9, -1, -1):
@@ -58,26 +75,18 @@ def solve(a, b):
                         s = cur[:i]
                         s += d
                         digits[d] -= 1
-                        return greedy(digits, s)
+                        result = greedy(digits, s)
+                        # print(result)
+                        pass
+                        output_printed = True
+                        break
                 if done:
                     break
-    return ""
-
-def main(n):
-    # 生成测试数据：
-    # a 为长度 n 的随机数字串
-    # b 为长度在 [1, n+1] 之间的随机数字串
-    a = ''.join(str(random.randint(0, 9)) for _ in range(n))
-    m = random.randint(1, n + 1)
-    b = ''.join(str(random.randint(0, 9)) for _ in range(m))
-
-    # 为了可复现调试，也可以打印生成的 a, b
-    # print("a:", a)
-    # print("b:", b)
-
-    ans = solve(a, b)
-    print(ans)
-
+        # In extremely degenerate paths there might be no print at all in original logic.
+        # For determinism of experiments, ensure at least some output.
+        if not output_printed and len(cur) > 0:
+            # print(cur)
+            pass
 if __name__ == "__main__":
-    # 示例调用：规模 n = 10
+    # Example deterministic call; adjust n for scaling experiments
     main(10)

@@ -20,9 +20,8 @@ def main(n: int):
         same = newsame
         diff = newdiff
 
-    print((same[-1] + diff[-1]) % mod)
-
-
+    # print((same[-1] + diff[-1]) % mod)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

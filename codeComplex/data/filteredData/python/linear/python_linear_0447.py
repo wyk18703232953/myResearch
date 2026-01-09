@@ -1,47 +1,37 @@
-import random
-import string
-
 def main(n):
-    # 生成规模为 n 的测试数据：
-    # 原代码中有 n, m 和两个字符串 a, b。
-    # 这里我们令：
-    #   - a 的长度为 n
-    #   - b 的长度为 m（m 在 [max(1, n-2), n+2] 范围内随机）
-    #   - 保证 a 中至少有一个 '*'，但有一定概率没有（模拟原逻辑的两种分支）
+    # Deterministically generate n, m, a, b
+    # Interpret n as the base length for strings a and b
+    # Ensure m >= n to respect the original first line "n m"
+    m = n + (n // 2)
 
-    # 生成模式串 a
-    # 50% 概率生成含 '*' 的模式，50% 概率为完全普通字符串
-    has_star = random.choice([True, False])
-    alphabet = string.ascii_lowercase
+    # Construct pattern string a of length n with exactly one '*'
+    # Position of '*' is deterministically chosen as n // 2
+    if n == 0:
+        a = "*"
+        m = 1
 
-    if has_star and n >= 1:
-        # 随机选择 '*' 出现的位置（至少一个）
-        # 简化：只生成一个 '*'
-        star_pos = random.randint(0, n - 1)
-        a_chars = []
-        for i in range(n):
-            if i == star_pos:
-                a_chars.append('*')
-            else:
-                a_chars.append(random.choice(alphabet))
-        a = ''.join(a_chars)
     else:
-        # 不含 '*'
-        if n == 0:
-            a = ''
-        else:
-            a = ''.join(random.choice(alphabet) for _ in range(n))
+        star_pos = n // 2
+        prefix = "".join(chr(ord('a') + (i % 3)) for i in range(star_pos))
+        suffix = "".join(chr(ord('x') - (i % 3)) for i in range(n - star_pos - 1))
+        a = prefix + "*" + suffix
 
-    # 生成 b 的长度 m（允许和 a 有差别）
-    m = random.randint(max(1, max(0, n - 2)), n + 2)
-    b = ''.join(random.choice(alphabet) for _ in range(m))
+    # Construct b based on m to control match/no-match behavior deterministically
+    # Let b start with the same prefix as a's prefix, end with same suffix,
+    # and fill the middle with a deterministic pattern.
+    a_parts = a.split('*')
+    a1 = a_parts[0]
+    a2 = a_parts[1] if len(a_parts) > 1 else ""
 
-    # 以下为原逻辑的实现
+    middle_len = max(0, m - len(a1) - len(a2))
+    middle = "".join(chr(ord('k') + (i % 5)) for i in range(middle_len))
+    b = a1 + middle + a2
+
+    # Original core logic
     flag = 0
     for c in a:
         if c == '*':
             flag = 1
-
     if flag == 1:
         a1, a2 = a.split('*')
         Len1 = len(a1)
@@ -51,18 +41,20 @@ def main(n):
         if Len2:
             b2 = b[-Len2:]
         if a1 == b1 and a2 == b2 and Len1 + Len2 <= len(b):
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
+            # print('NO')
+            pass
+
     else:
         if a == b:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
-
-    # 如需调试，可返回生成的数据：
-    # return a, b, n, m
-
+            # print('NO')
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 进行一次测试
     main(10)

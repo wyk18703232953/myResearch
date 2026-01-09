@@ -17,6 +17,7 @@ def solve_once(n_raw, k_raw):
                 return k - mid + 1
             elif curr < n:
                 r = mid - 1
+
             else:
                 l = mid + 1
         return k - l + 2
@@ -35,9 +36,8 @@ def main(n):
     n_raw = n
     k_raw = n
     ans = solve_once(n_raw, k_raw)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：对若干规模进行测试
     for n in [1, 2, 5, 10, 20]:

@@ -56,4 +56,5 @@ def main(n):
 # 示例：直接运行本文件时做一次调用
 if __name__ == "__main__":
     # 例如取 n = 5 做测试
-    print(main(5))
+    # print(main(5))
+    pass

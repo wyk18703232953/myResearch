@@ -1,11 +1,14 @@
-import random
-
-def main(n: int):
-    # 生成三组点坐标 (ax, ay), (bx, by), (cx, cy)
-    # 坐标范围可根据 n 调整，这里使用 [1, n]
-    ax, ay = random.randint(1, n), random.randint(1, n)
-    bx, by = random.randint(1, n), random.randint(1, n)
-    cx, cy = random.randint(1, n), random.randint(1, n)
+def main(n):
+    # Deterministically generate three points based on n
+    # Point A
+    ax = n
+    ay = n * 2
+    # Point B
+    bx = n + 1
+    by = n * 2 + 1
+    # Point C
+    cx = n + 2
+    cy = n * 2 + 2
 
     x = [ax, bx, cx]
     y = [ay, by, cy]
@@ -14,11 +17,11 @@ def main(n: int):
     y.sort()
 
     if (x[1] != ax) and (y[1] != ay):
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
-    # 示例：n = 10
     main(10)

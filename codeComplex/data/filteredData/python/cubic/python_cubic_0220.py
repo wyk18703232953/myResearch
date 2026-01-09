@@ -1,22 +1,19 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成测试数据
-    # 设 rn, gn, bn 均与 n 成正比，这里简单设为 n
+def main(n):
+    # Map n to sizes of the three arrays in a balanced way
     rn = n
-    gn = n
-    bn = n
+    gn = max(1, n // 2)
+    bn = max(1, n // 3)
 
-    # 随机生成颜色数组，元素为 1~10^3 之间的整数
-    rr = [random.randint(1, 1000) for _ in range(rn)]
-    gg = [random.randint(1, 1000) for _ in range(gn)]
-    bb = [random.randint(1, 1000) for _ in range(bn)]
+    # Deterministic generation of rr, gg, bb
+    # Values are simple functions of index to keep them bounded yet non-trivial
+    rr = [(i * 2 + 1) % 1000 for i in range(rn)]
+    gg = [(i * 3 + 2) % 1000 for i in range(gn)]
+    bb = [(i * 5 + 3) % 1000 for i in range(bn)]
 
     rr.sort(reverse=True)
     gg.sort(reverse=True)
     bb.sort(reverse=True)
 
-    # 三维 DP
     dp = [[[-1] * (bn + 1) for _ in range(gn + 1)] for _ in range(rn + 1)]
     dp[0][0][0] = 0
     ans = 0
@@ -30,21 +27,24 @@ def main(n: int):
                 if pre > ans:
                     ans = pre
                 if i < rn and j < gn:
-                    val = pre + rr[i] * gg[j]
-                    if val > dp[i + 1][j + 1][k]:
-                        dp[i + 1][j + 1][k] = val
+                    v = pre + rr[i] * gg[j]
+                    if v > dp[i + 1][j + 1][k]:
+                        dp[i + 1][j + 1][k] = v
                 if i < rn and k < bn:
-                    val = pre + rr[i] * bb[k]
-                    if val > dp[i + 1][j][k + 1]:
-                        dp[i + 1][j][k + 1] = val
+                    v = pre + rr[i] * bb[k]
+                    if v > dp[i + 1][j][k + 1]:
+                        dp[i + 1][j][k + 1] = v
                 if j < gn and k < bn:
-                    val = pre + gg[j] * bb[k]
-                    if val > dp[i][j + 1][k + 1]:
-                        dp[i][j + 1][k + 1] = val
+                    v = pre + gg[j] * bb[k]
+                    if v > dp[i][j + 1][k + 1]:
+                        dp[i][j + 1][k + 1] = v
 
-    print(ans)
+    return ans
 
 
 if __name__ == "__main__":
-    # 示例：运行规模 n=3
-    main(3)
+    # Example deterministic call for timing/complexity experiments
+    n = 30
+    result = main(n)
+    # print(result)
+    pass

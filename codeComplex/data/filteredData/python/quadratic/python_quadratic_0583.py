@@ -1,62 +1,57 @@
-import random
-
-def solve_one(n, k, s):
-    mini = n
-
-    # pattern starting with 'R'
-    test = "RGB" * (k // 3 + 5)
-    for i in range(n - k + 1):
-        count = 0
-        for j in range(k):
-            if s[i + j] != test[j]:
-                count += 1
-        mini = min(count, mini)
-
-    # pattern starting with 'G'
-    test = "GBR" * (k // 3 + 5)
-    for i in range(n - k + 1):
-        count = 0
-        for j in range(k):
-            if s[i + j] != test[j]:
-                count += 1
-        mini = min(count, mini)
-
-    # pattern starting with 'B'
-    test = "BRG" * (k // 3 + 5)
-    for i in range(n - k + 1):
-        count = 0
-        for j in range(k):
-            if s[i + j] != test[j]:
-                count += 1
-        mini = min(count, mini)
-
-    return mini
-
-
 def main(n):
-    """
-    n: 问题规模参数，用来生成测试数据。
-       这里约定：
-       - 随机生成 t 个测试用例，t = max(1, n // 10)
-       - 每个测试的字符串长度为 len_s，区间为 [1, max(1, n)]
-       - 对每个测试随机选择 k，1 <= k <= len_s
-    """
-    t = max(1, n // 10)
-    colors = ['R', 'G', 'B']
+    # n controls both the number of test cases and the size parameters inside
+    # t = number of test cases
+    t = max(1, n // 3)
+
     results = []
 
-    for _ in range(t):
-        len_s = random.randint(1, max(1, n))
-        k = random.randint(1, len_s)
-        s = ''.join(random.choice(colors) for _ in range(len_s))
-        ans = solve_one(len_s, k, s)
-        results.append(ans)
+    for case_idx in range(t):
+        # Deterministically derive n_i and k_i from the global n and case index
+        # Ensure 1 <= k_i <= n_i
+        base = case_idx + 1
+        n_i = max(1, (n % 1000) + base)  # keep sizes moderate but growing
+        k_i = max(1, min(n_i, (base * 7 + n) % (n_i) + 1))
 
-    # 模拟原程序逐行输出答案
-    for x in results:
-        print(x)
+        # Deterministically generate string s of length n_i over 'R', 'G', 'B'
+        chars = ['R', 'G', 'B']
+        s = ''.join(chars[(i + base) % 3] for i in range(n_i))
 
+        mini = n_i
 
+        # Core algorithm from original code
+        test = "RGB" * (k_i // 3 + 5)
+        for i in range(n_i - k_i + 1):
+            count = 0
+            for j in range(k_i):
+                if s[i + j] != test[j]:
+                    count += 1
+            if count < mini:
+                mini = count
+
+        test = "GBR" * (k_i // 3 + 5)
+        for i in range(n_i - k_i + 1):
+            count = 0
+            for j in range(k_i):
+                if s[i + j] != test[j]:
+                    count += 1
+            if count < mini:
+                mini = count
+
+        test = "BRG" * (k_i // 3 + 5)
+        for i in range(n_i - k_i + 1):
+            count = 0
+            for j in range(k_i):
+                if s[i + j] != test[j]:
+                    count += 1
+            if count < mini:
+                mini = count
+
+        results.append(mini)
+
+    # Output all results to keep side effects similar to original
+    for ans in results:
+        # print(ans)
+        pass
 if __name__ == "__main__":
-    # 示例：可根据需要更改 n
-    main(30)
+    # Example deterministic call for complexity experiments
+    main(1000)

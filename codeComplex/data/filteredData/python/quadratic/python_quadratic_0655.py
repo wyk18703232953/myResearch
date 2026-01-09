@@ -18,8 +18,8 @@ def main(n: int):
     # 将 n 限制在 k 的索引范围内
     idx = n % len(k)
     # 输出结果
-    print(k[idx] % m)
-
+    # print(k[idx] % m)
+    pass
 if __name__ == "__main__":
     # 示例：可在此手动调用 main 进行测试
     main(0)

@@ -1,19 +1,13 @@
-import random
+def main(n):
+    # Deterministically generate inputs based on n
+    # yellow, blue
+    yellow = n
+    blue = 2 * n
 
-def main(n: int):
-    """
-    n 作为规模参数，用于控制生成测试数据的范围。
-    这里约定：
-    - yellow, blue 在 [0, n] 范围内随机生成
-    - y, g, b 在 [0, n] 范围内随机生成
-    如需固定数据，可在此处修改为确定性生成方式。
-    """
-    # 生成测试数据
-    yellow = random.randint(0, n)
-    blue = random.randint(0, n)
-    y = random.randint(0, n)
-    g = random.randint(0, n)
-    b = random.randint(0, n)
+    # y, g, b
+    y = n // 2
+    g = n // 3
+    b = n // 4
 
     count = 0
 
@@ -22,15 +16,13 @@ def main(n: int):
 
     yc = yellow - yt
     if yc < 0:
-        count += abs(yc)
+        count += -yc
 
     bc = blue - bt
     if bc < 0:
-        count += abs(bc)
+        count += -bc
 
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
-    # 示例：选择一个规模 n 运行
     main(10)

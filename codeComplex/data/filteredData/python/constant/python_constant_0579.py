@@ -1,18 +1,20 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：棋盘大小为 n，随机生成一个位置 (x, y)
-    # x, y 范围为 [1, n]
-    x = random.randint(1, n)
-    y = random.randint(1, n)
+def main(n):
+    # 原程序结构：
+    # n: 棋盘规模
+    # x, y: 坐标
+    # 这里将输入规模 n 直接作为棋盘规模
+    # x, y 由 n 确定性生成
+    x = n // 3 + 1
+    if x > n:
+        x = n
+    y = (2 * n) // 3 + 1
+    if y > n:
+        y = n
 
     d0 = max(x - 1, y - 1)
     d1 = max(n - x, n - y)
     result = 'White' if d0 <= d1 else 'Black'
-
-    # 输出结果
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，指定规模 n
-    main(8)
+    main(10)

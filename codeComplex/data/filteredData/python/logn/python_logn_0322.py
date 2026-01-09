@@ -10,14 +10,18 @@ def main(n):
     if n % 2 == 0:
         x = n
         k = n // 2
+
     else:
         x = n // 2
         k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
     elif k == 0:
-        print((2 * x) % mod)
+        # print((2 * x) % mod)
+        pass
+
     else:
         to = pow(2, k, mod)
         pre = (to * x) % mod
@@ -25,9 +29,8 @@ def main(n):
         first = (pre - prev + 1) % mod
         sec = (pre - prev) % mod
         ans = (first + sec) % mod
-        print((ans + mod) % mod)
-
-
+        # print((ans + mod) % mod)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，规模自定义
     main(10)

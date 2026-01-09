@@ -1,11 +1,14 @@
-import random
-
-def main(n: int):
-    # 生成测试数据
+def main(n):
+    # Scale definition:
+    # num_pixels = n
+    # max_group_size cycles deterministically between 1 and 10
     num_pixels = n
-    max_group_size = random.randint(1, 256)
-    pixels = [random.randint(0, 255) for _ in range(num_pixels)]
+    if num_pixels <= 0:
+        return
+    max_group_size = (n % 10) + 1
 
+    # Deterministic pixel generation in range [0, 255]
+    pixels = [(i * 37 + 13) % 256 for i in range(num_pixels)]
     groups = [None for _ in range(256)]
 
     for pixel in pixels:
@@ -24,15 +27,16 @@ def main(n: int):
                 and pixel - groups[smallest_of_group] + 1 <= max_group_size
             ):
                 group_color = groups[smallest_of_group]
+
             else:
                 group_color = smallest_of_group + 1
+
             smallest_of_group += 1
             for color in range(smallest_of_group, pixel + 1):
                 groups[color] = group_color
 
-    print(*(groups[pixel] for pixel in pixels))
-
-
+    output = [groups[pixel] for pixel in pixels]
+    # print(*output)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    main(1000)

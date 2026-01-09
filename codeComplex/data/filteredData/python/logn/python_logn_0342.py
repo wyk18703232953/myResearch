@@ -10,13 +10,13 @@ def main(n):
 
     if n == 0:
         result = 0
+
     else:
         result = c
 
     # 按原程序的行为打印结果
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的值进行测试
     main(10)

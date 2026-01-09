@@ -1,9 +1,12 @@
-import random
-import string
+def main(n):
+    # 确定性生成长度为 n 的字符串 t
+    # 使用小写字母循环构造，例如 n=1 -> "a", n=2 -> "ab", ..., n=27 -> "abcdefghijklmnopqrstuvwxyz" + "a"
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    if n <= 0:
+        t = ""
 
-def main(n: int):
-    # 生成长度为 n 的随机字符串，字符从小写字母中选
-    t = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+    else:
+        t = "".join(alphabet[i % 26] for i in range(n))
 
     n = len(t)
     maxi = 0
@@ -23,9 +26,8 @@ def main(n: int):
             if g > 1:
                 maxi = max(nr, maxi)
 
-    print(maxi)
-
-
+    # print(maxi)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
-    main(10)
+    # 示例：以 n=20 作为输入规模运行一次
+    main(20)

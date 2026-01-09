@@ -1,45 +1,44 @@
-import random
-import sys
+def main(n):
+    # Interpret n as the bit-length of the hidden numbers a and b
+    # Deterministically construct hidden a, b from n
+    # Example: use simple patterns based on n for reproducibility
+    global a, b, c, d
 
-
-def main(n: int):
-    """
-    n: 规模（比特数），将生成 0 <= a, b < 2^n 的随机数作为测试数据，
-    并通过交互过程恢复出 a, b。
-    """
-    # 生成测试数据 a, b
-    max_val = (1 << n) - 1
-    a = random.randint(0, max_val)
-    b = random.randint(0, max_val)
-
-    # 为了可重复测试，可以打印到 stderr
-    print(f"# hidden a={a}, b={b}, n={n}", file=sys.stderr)
-
-    # 交互函数：比较 (a ^ c) 与 (b ^ d)
-    def ask(c, d):
-        # 若 (a ^ c) < (b ^ d) 返回 -1
-        # 若 (a ^ c) == (b ^ d) 返回 0
-        # 若 (a ^ c) > (b ^ d) 返回 1
-        x = a ^ c
-        y = b ^ d
-        if x < y:
-            return -1
-        elif x > y:
-            return 1
-        else:
-            return 0
+    # Hidden values construction (deterministic, scalable)
+    # a: bits at positions where i % 2 == 0
+    # b: bits at positions where i % 3 == 0
+    a = 0
+    b = 0
+    for i in range(n):
+        if i % 2 == 0:
+            a |= (1 << i)
+        if i % 3 == 0:
+            b |= (1 << i)
 
     c = 0
     d = 0
 
-    def solve(mi, base):
-        nonlocal c, d
+    def ask(c_local, d_local):
+        # Simulate the original interactive judge deterministically.
+        # The original problem is the classic AtCoder interactive task:
+        # ask(c, d) returns:
+        #   -1 if (a ^ c) < (b ^ d)
+        #    0 if (a ^ c) == (b ^ d)
+        #    1 if (a ^ c) > (b ^ d)
+        ac = a ^ c_local
+        bd = b ^ d_local
+        if ac < bd:
+            return -1
+        elif ac > bd:
+            return 1
 
+        else:
+            return 0
+
+    def solve(mi, base):
         def solve_same():
             nonlocal c, d
-            print("# solve_same", file=sys.stderr)
             for i in range(mi, -1, -1):
-                print(f">> {i=} {c=} {d=}", file=sys.stderr)
                 bit = 1 << i
                 res1 = ask(c ^ bit, d)
                 res2 = ask(c, d ^ bit)
@@ -49,39 +48,31 @@ def main(n: int):
 
         def solve1():
             nonlocal c, d
-            print("# solve1", file=sys.stderr)
             for i in range(mi, -1, -1):
-                print(f">> {i=} {c=} {d=}", file=sys.stderr)
                 bit = 1 << i
                 res1 = ask(c ^ bit, d ^ bit)
                 if res1 == -1:
-                    # a[i] == 1, b[i] == 0
                     c |= bit
                     return solve(i - 1, ask(c, d))
+
                 else:
-                    # a[i] == b[i]
                     res2 = ask(c ^ bit, d)
                     if res2 == -1:
-                        # a[i] == b[i] == 1
                         c |= bit
                         d |= bit
 
         def solve2():
             nonlocal c, d
-            print("# solve2", file=sys.stderr)
             for i in range(mi, -1, -1):
-                print(f">> {i=} {c=} {d=}", file=sys.stderr)
                 bit = 1 << i
                 res1 = ask(c ^ bit, d ^ bit)
                 if res1 == 1:
-                    # a[i] == 0, b[i] == 1
                     d |= bit
                     return solve(i - 1, ask(c, d))
+
                 else:
-                    # a[i] == b[i]
                     res2 = ask(c, d ^ bit)
                     if res2 == 1:
-                        # a[i] == b[i] == 1
                         c |= bit
                         d |= bit
 
@@ -89,18 +80,20 @@ def main(n: int):
             solve_same()
         elif base == 1:
             solve1()
+
         else:
             solve2()
 
-    # 从最高位 n-1 开始
+    # Run the algorithm on bit positions [0..n-1]
     solve(n - 1, ask(0, 0))
-    print("! {} {}".format(c, d))
 
-    # 为验证算法正确性，可在 stderr 打印比较结果
-    print(f"# recovered c={c}, d={d}", file=sys.stderr)
-    print(f"# success={a == c and b == d}", file=sys.stderr)
+    # Return (c, d) so that external code can verify correctness or measure time
+    return c, d, a, b
 
 
 if __name__ == "__main__":
-    # 示例：n=30（与原程序 0..29 位一致）
-    main(30)
+    # Example deterministic call; change n to scale input size
+    n = 30
+    c, d, a, b = main(n)
+    # print(c, d, a, b)
+    pass

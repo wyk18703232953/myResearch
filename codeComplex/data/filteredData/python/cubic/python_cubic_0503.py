@@ -9,7 +9,8 @@ def main(n):
     if K % 2 == 1:
         # 原程序在 K 为奇数时全部输出 -1
         for _ in range(N):
-            print(*([-1] * M))
+            # print(*([-1] * M))
+            pass
         return
 
     # 生成 A (N × (M-1))，B ((N-1) × M) 的测试数据
@@ -59,9 +60,8 @@ def main(n):
         X = Y
 
     for x in X:
-        print(*x)
-
-
+        # print(*x)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(3)
     main(3)

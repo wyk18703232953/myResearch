@@ -13,6 +13,7 @@ def main(n: int) -> int:
         ans = 0
     elif n == 0:
         ans = 2 * x
+
     else:
         ans = (((c - 2) * pow(2, n - 1, MOD) + 1) + MOD) % MOD
 

@@ -19,14 +19,16 @@ def main(n):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         ans = (
             (((x % sp) * power(2, k)) % sp * 2) % sp
             - (power(2, k) - 1) % sp
         ) % sp
-        print(ans)
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例调用：可修改 n 测试不同规模
     main(10)

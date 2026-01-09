@@ -2,6 +2,7 @@ def quadratic(a, b, c):
     num = (b * b) - (4 * a * c)
     if num >= 0:
         return [(-b + (num ** 0.5)) / (2.0 * a), (-b - (num ** 0.5)) / (2.0 * a)]
+
     else:
         return [0.5, 0.5]
 
@@ -14,7 +15,8 @@ def main(n):
     for root in quadratic(1, 3, -2 * n - 2 * k):
         ans = n - root
         if ans > -1:
-            print(int(ans))
+            # print(int(ans))
+            pass
             return
 
 

@@ -1,14 +1,16 @@
-###############################
-# Converted from:
-# https://codeforces.com/contest/1010/problem/A
-# Logic wrapped into main(n) with generated test data.
-################################
-import random
-import math
+def main(n):
+    # Map n to problem parameters deterministically
+    # n: number of segments
+    # m: base weight
+    # up[i], down[i] are generated deterministically based on i and n
 
+    if n <= 0:
+        n = 1
 
-def solve(m, up, down):
-    n = len(up)
+    m = n * 10
+
+    up = [2 + (i % 5) for i in range(n)]
+    down = [2 + ((i * 3) % 7) for i in range(n)]
 
     def check(x):
         weight = m + x
@@ -19,7 +21,6 @@ def solve(m, up, down):
                 return False
             weight -= f
             fuel -= f
-
             f = weight / down[i]
             if fuel < f:
                 return False
@@ -31,40 +32,21 @@ def solve(m, up, down):
     r = 1e9 + 1e-6
 
     for _ in range(100):
-        mid = (l + r) / 2.0
+        mid = (r + l) / 2.0
         if check(mid):
             r = mid
+
         else:
             l = mid
         if r - l <= 1e-10:
             break
 
     if l >= 1e9 + 1e-6:
-        return -1
+        # print(-1)
+        pass
+
     else:
-        return l
-
-
-def main(n):
-    """
-    n: problem size (number of stages).
-    Generates random test data based on n and prints the answer
-    using the same logic as the original solution.
-    """
-    # Generate test data:
-    # m: base weight in [1, 1000]
-    m = random.randint(1, 1000)
-    # up[i], down[i] must be > 1 to avoid division issues; keep them small-ish.
-    up = [random.randint(2, 20) for _ in range(n)]
-    down = [random.randint(2, 20) for _ in range(n)]
-
-    ans = solve(m, up, down)
-    if ans == -1:
-        print(-1)
-    else:
-        print(f"{ans:.10f}")
-
-
+        # print(f"{l:.10f}")
+        pass
 if __name__ == "__main__":
-    # Example: run with n = 5
-    main(5)
+    main(10)

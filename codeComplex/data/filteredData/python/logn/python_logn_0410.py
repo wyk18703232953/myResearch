@@ -47,6 +47,7 @@ def main(n):
         elif i % 3 == 2:
             # 中等的 k
             k_i = g[min(n_i, 10)]
+
         else:
             # 较大的 k，尽量接近 f[n_i]
             k_i = f[n_i] if n_i < MAX else g[n_i % MAX]
@@ -54,12 +55,14 @@ def main(n):
         res = solve_one(n_i, k_i)
         if res[0] == "YES":
             results.append(f"YES {res[1]}")
+
         else:
             results.append("NO")
 
     # 输出结果
     for line in results:
-        print(line)
+        # print(line)
+        pass
 
     return results
 

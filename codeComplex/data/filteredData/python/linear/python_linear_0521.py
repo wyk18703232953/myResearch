@@ -1,22 +1,21 @@
 from collections import defaultdict
-import random
-
 
 def main(n):
-    # 1. 生成一棵 n 个节点的随机树，节点编号为 1..n
+    # Generate a deterministic tree with n nodes: a simple chain 1-2-3-...-n
     t = defaultdict(list)
-    for v in range(2, n + 1):
-        u = random.randint(1, v - 1)
+    for u in range(1, n):
+        v = u + 1
         t[u].append(v)
         t[v].append(u)
 
-    # 2. 生成一个 1..n 的随机排列 a
-    a = list(range(1, n + 1))
-    random.shuffle(a)
+    # Generate a deterministic permutation a of nodes 1..n
+    # Example pattern: odd numbers in ascending order, then even numbers in descending order
+    odds = [i for i in range(1, n + 1) if i % 2 == 1]
+    evens = [i for i in range(n if n % 2 == 0 else n - 1, 0, -2)]
+    a = odds + evens
 
     o = {a_: i for i, a_ in enumerate(a)}
 
-    # BFS 计算每个节点的层数 lv 和父亲 par
     i = 0
     q = [1]
     lv = {1: 0}
@@ -30,7 +29,6 @@ def main(n):
                 q.append(v)
                 par[v] = u
 
-    # depths[d] 中存储深度为 d 的节点，其父节点在排列 a 中的位置
     depths = defaultdict(list)
     for x in a:
         depths[lv[x]].append(o[par[x]])
@@ -46,9 +44,7 @@ def main(n):
         l = [lv[x] for x in a]
         ans = all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
-    print(('No', 'Yes')[ans])
-
-
+    # print(('No', 'Yes')[ans])
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

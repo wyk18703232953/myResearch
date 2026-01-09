@@ -1,27 +1,14 @@
-#!usr/bin/python
-
-import random
-
 def main(n):
-    # 生成测试数据：
-    # a 为长度 n 的随机数字串，首位不为 0
-    # b 为长度在 [1, n] 的随机数字串，首位不为 0
-    if n <= 0:
-        return
+    # Deterministically construct inputs a and b from n
+    # Ensure n >= 1
+    if n < 1:
+        n = 1
+    # Let a be a string of digits "0..9" repeated, length = n
+    a = ''.join(str(i % 10) for i in range(n))
+    # Let b length be max(1, n//2), digits pattern "9..0"
+    m = max(1, n // 2)
+    b = ''.join(str(9 - (i % 10)) for i in range(m))
 
-    def gen_number(length):
-        if length <= 0:
-            return "0"
-        first = str(random.randint(1, 9))
-        rest = "".join(str(random.randint(0, 9)) for _ in range(length - 1))
-        return first + rest
-
-    a_len = n
-    b_len = random.randint(1, n)
-    a = gen_number(a_len)
-    b = gen_number(b_len)
-
-    # 原逻辑开始
     length_of_a = len(a)
     length_of_b = len(b)
     found_digit = False
@@ -36,10 +23,13 @@ def main(n):
         c = int(a[i])
         n_count[c] += 1
 
+    output_chars = []
+
     if length_of_a < length_of_b:
         num = sorted(a, reverse=True)
         for i in range(0, length_of_a):
-            print(num[i], end="")
+            output_chars.append(str(num[i]))
+
     else:
         for i in range(0, length_of_b):
             digit = int(b[i])
@@ -47,6 +37,7 @@ def main(n):
                 num.append(digit)
                 n_count[digit] -= 1
                 appended_digit_count += 1
+
             else:
                 j = digit - 1
                 while j > -1:
@@ -71,9 +62,10 @@ def main(n):
                         j -= 1
                     if chk_finnish:
                         break
+
                 else:
                     found_digit = False
-                    while found_digit is False:
+                    while found_digit == False:
                         pop_up = num[appended_digit_count - 1]
                         del num[-1]
                         j = pop_up - 1
@@ -98,8 +90,16 @@ def main(n):
                     break
 
         for i in range(0, length_of_b):
-            print(num[i], end="")
+            output_chars.append(str(num[i]))
+
+    result = ''.join(output_chars)
+    # print(result)
+    pass
+    return result
+
 
 if __name__ == "__main__":
-    # 可以在此处修改 n 来进行测试
+    # Example deterministic calls for experimentation
     main(10)
+    main(50)
+    main(100)

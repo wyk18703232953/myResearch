@@ -1,18 +1,24 @@
-import random
+def main(n):
+    # Deterministic generation of a and b based on n
+    # a: string of digits length n (cycling 0-9)
+    # b: string of digits length n+1 (reverse cycling 9-0)
+    if n <= 0:
+        a_str = "0"
+        b_str = "0"
 
-def main(n: int):
-    # 生成测试数据：
-    # 1) a 为长度在 [1, n] 之间的随机数字串（允许前导零）
-    # 2) b 的长度至少为 len(a)，最多为 max(len(a), n)，保证有一定约束关系
-    la = random.randint(1, max(1, n))
-    lb = random.randint(max(1, la), max(la, n))
+    else:
+        a_digits = [str(i % 10) for i in range(n)]
+        b_digits = [str((9 - i) % 10) for i in range(n + 1)]
+        a_str = "".join(a_digits)
+        b_str = "".join(b_digits)
 
-    a = [str(random.randint(0, 9)) for _ in range(la)]
-    b = [str(random.randint(0, 9)) for _ in range(lb)]
+    a = list(a_str)
+    b = list(b_str)
 
-    # 以下为原始逻辑改写，无 input()
     if len(a) < len(b) or len(a) == 1:
-        print(''.join(sorted(a)[::-1]))
+        # print(''.join(sorted(a)[::-1]))
+        pass
+
     else:
         ans, tem = 0, []
 
@@ -33,9 +39,7 @@ def main(n: int):
         if tem:
             ans = max(ans, int(''.join(tem)))
 
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
     main(10)

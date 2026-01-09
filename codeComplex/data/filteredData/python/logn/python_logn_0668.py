@@ -12,12 +12,12 @@ def main(n):
         fx = (mid * (mid + 1)) // 2 - left + mid
         if fx <= moves:
             l = mid + 1
+
         else:
             r = mid - 1
     result = moves - r
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

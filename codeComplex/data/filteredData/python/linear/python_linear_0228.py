@@ -1,8 +1,3 @@
-# time - O(n)
-# space - O(1)
-
-import random
-
 def substring(x, s):
     count = 0
     ans = 0
@@ -10,6 +5,7 @@ def substring(x, s):
     for i in range(x):
         if s[i] == "x":
             count += 1
+
         else:
             if count >= 3:
                 ans += count - 2
@@ -19,17 +15,22 @@ def substring(x, s):
 
     return ans
 
+
 def main(n):
-    # 3/4 概率为 'x'，1/4 概率为非 'x'，以便较多测试到连续 'x'
-    chars = ['x', 'a']
-    weights = [0.75, 0.25]
-    s_list = random.choices(chars, weights=weights, k=n)
-    s = ''.join(s_list)
     x = n
-
+    # Deterministically generate a string of length n
+    # Pattern: blocks of 'x' of increasing length separated by 'a'
+    chars = []
+    current = 1
+    while len(chars) < x:
+        block_len = min(current, x - len(chars))
+        chars.extend('x' for _ in range(block_len))
+        if len(chars) < x:
+            chars.append('a')
+        current += 1
+    s = ''.join(chars[:x])
     result = substring(x, s)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：用 n = 20 运行
-    main(20)
+    main(10)

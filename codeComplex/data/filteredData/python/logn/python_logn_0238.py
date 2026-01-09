@@ -10,9 +10,8 @@ def main(n):
             break
 
     ans = max(n - low + 1, 0)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10^9) 或其他规模
     main(10**6)

@@ -1,16 +1,17 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据：4 个 n×n 的 0/1 矩阵
+def main(n):
+    # generate deterministic data matching the original input structure
+    # 4 boards, each n x n, values in {0,1}
     a = []
-    for _ in range(4):
-        grid = []
-        for _ in range(n):
-            row = [random.randint(0, 1) for _ in range(n)]
-            grid.append(row)
-        a.append(grid)
+    for i in range(4):
+        board = []
+        for y in range(n):
+            row = []
+            for x in range(n):
+                # deterministic pattern depending on i,y,x
+                row.append((i + x + y) % 2)
+            board.append(row)
+        a.append(board)
 
-    # 原逻辑开始
     b = []
     for i in range(4):
         b.append([])
@@ -20,6 +21,7 @@ def main(n: int) -> int:
                 for x in range(n):
                     if j == 1:
                         z = (x + y) % 2
+
                     else:
                         z = 1 - (x + y) % 2
                     c += a[i][y][x] != z
@@ -27,16 +29,10 @@ def main(n: int) -> int:
 
     ans = float("inf")
     for i in (3, 5, 6, 9, 10, 12):
-        ans = min(
-            ans,
-            b[0][i & 1]
-            + b[1][(i >> 1) & 1]
-            + b[2][(i >> 2) & 1]
-            + b[3][(i >> 3) & 1],
-        )
-    print(ans)
-    return ans
-
+        val = b[0][i & 1] + b[1][(i >> 1) & 1] + b[2][(i >> 2) & 1] + b[3][(i >> 3) & 1]
+        if val < ans:
+            ans = val
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例调用：规模为 5
     main(5)

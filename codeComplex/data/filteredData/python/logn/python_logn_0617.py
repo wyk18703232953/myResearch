@@ -13,16 +13,18 @@ def main(n: int):
         k_give = k_hodov - mid
         if ((k_give + 1) * (k_give / 2)) // 1 - mid < konf or k_give < 0:
             right = mid
+
         else:
             left = mid
 
     k_give = k_hodov - left
     if ((k_give + 1) * (k_give / 2)) // 1 - left == konf:
-        print(left)
+        # print(left)
+        pass
+
     else:
-        print(left - 1)
-
-
+        # print(left - 1)
+        pass
 if __name__ == "__main__":
     # 示例运行
     main(10)

@@ -5,13 +5,17 @@ def main(n):
     m = n  # m 在原代码中未被使用，仅为占位
 
     # 按原逻辑输出
-    print("8" * n)
+    # print("8" * n)
+    pass
+
     if n >= 1:
-        print("1" * (n - 1) + "2")
+        # print("1" * (n - 1) + "2")
+        pass
+
     else:
         # 若允许 n = 0，可约定输出为空行或不输出；此处选择输出空行
-        print("")
-
+        # print("")
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 可在此处修改测试
     main(5)

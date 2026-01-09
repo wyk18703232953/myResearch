@@ -12,19 +12,23 @@ def main(n: int):
 
     l = len(a) - 1
     if n > 3:
-        print(a[l - 4], a[l - 3], a[l - 1])
+        # print(a[l - 4], a[l - 3], a[l - 1])
+        pass
     elif n == 3:
-        print(1, 1, 1)
+        # print(1, 1, 1)
+        pass
     elif n == 2:
-        print(0, 1, 1)
+        # print(0, 1, 1)
+        pass
     elif n == 1:
-        print(0, 0, 1)
+        # print(0, 0, 1)
+        pass
     elif n == 0:
-        print(0, 0, 0)
-
-
+        # print(0, 0, 0)
+        pass
 if __name__ == "__main__":
     # 示例：用若干不同规模 n 进行测试
     for test_n in [0, 1, 2, 3, 5, 10]:
-        print(f"n = {test_n} -> ", end="")
+        # print(f"n = {test_n} -> ", end="")
+        pass
         main(test_n)

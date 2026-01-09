@@ -9,6 +9,7 @@ def main(n):
     posf = (n * (n - 1)) // 2
     if n % 2 != 0:
         negf = (n // 2) * (n // 2 + 1)
+
     else:
         negf = (n // 2) * (n // 2 - 1) + n // 2
 
@@ -19,12 +20,12 @@ def main(n):
         ans += n * x
         if d >= 0:
             ans += posf * d
+
         else:
             ans += negf * d
 
-    print(ans / n)
-
-
+    # print(ans / n)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可按需修改
     main(5)

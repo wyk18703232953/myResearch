@@ -21,9 +21,8 @@ def main(n: int):
             if M % 2 == 0:
                 dp[i] += M
     ans = max(dp)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

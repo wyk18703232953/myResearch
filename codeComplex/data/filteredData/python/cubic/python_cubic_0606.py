@@ -1,22 +1,24 @@
-import random
-
 def main(n):
-    # 依据规模 n 构造参数与测试数据
-    # 这里约定：
-    #   行数 = n
-    #   列数 m = n（可按需要调整策略）
-    #   允许删除的 '1' 总数 k = n // 2（也可调整）
+    # Map n to original parameters:
+    # n_rows = n, m = n (columns), k = n (max removals)
+    # This keeps input size roughly O(n^2) characters.
+    n_rows = n
     m = n
-    k = n // 2
+    k = n
 
-    # 生成随机 0/1 矩阵 table，大小为 n 行 m 列
-    # 为了尽量有一些 '1'，按 0.4 的概率放置 '1'
+    # Deterministic generation of table: pattern based on indices
     table = []
-    for _ in range(n):
-        row = ''.join('1' if random.random() < 0.4 else '0' for _ in range(m))
-        table.append(row)
+    for r in range(n_rows):
+        row_chars = []
+        for c in range(m):
+            # Simple deterministic pattern: '1' if (r + c) % 3 == 0, else '0'
+            if (r + c) % 3 == 0:
+                row_chars.append('1')
 
-    # 以下是原始逻辑，仅移除 input() 并封装到 main 中
+            else:
+                row_chars.append('0')
+        table.append(''.join(row_chars))
+
     dp = [0] * (k + 1)
 
     for a in table:
@@ -34,20 +36,25 @@ def main(n):
 
         for i in range(ni):
             for j in range(i, ni):
-                subdp[ni - (j - i + 1)] = min(subdp[ni - (j - i + 1)], one[j] - one[i] + 1)
+                length = j - i + 1
+                index = ni - length
+                cost = one[j] - one[i] + 1
+                if cost < subdp[index]:
+                    subdp[index] = cost
 
         next_dp = [10 ** 9] * (k + 1)
         for i in range(k, -1, -1):
+            base = dp[i]
             for j in range(ni + 1):
                 if i + j > k:
                     break
-                next_dp[i + j] = min(next_dp[i + j], dp[i] + subdp[j])
-
+                val = base + subdp[j]
+                if val < next_dp[i + j]:
+                    next_dp[i + j] = val
         dp = next_dp
 
-    print(min(dp))
-
-
+    result = min(dp)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：以 n = 5 运行
-    main(5)
+    main(200)

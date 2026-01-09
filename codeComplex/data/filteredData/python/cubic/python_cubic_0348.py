@@ -56,6 +56,7 @@ def solve_one_case(n, k, arr, primefactor):
                 l = left[i][t]
                 if l > 0:
                     dp[i][j] = min(dp[l - 1][j - t] + 1, dp[i][j])
+
                 else:
                     dp[i][j] = min(dp[i][j], 1)
 
@@ -86,7 +87,8 @@ def main(n):
 
     # 调用一次原逻辑
     ans = solve_one_case(n, k, arr, primefactor)
-    print(ans)
+    # print(ans)
+    pass
 
 
 # 示例：直接运行 main(10) 做一次测试

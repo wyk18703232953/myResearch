@@ -1,25 +1,19 @@
-import random
-import string as strlib
-
-def main(n: int):
-    # 1. 生成规模为 n 的测试数据：由小写字母随机组成的字符串
-    s = ''.join(random.choice(strlib.ascii_lowercase) for _ in range(n))
-
-    # 2. 原逻辑：寻找最长重复子串长度
-    n = len(s)
+def main(n):
+    # 生成长度为 n 的确定性字符串：周期为 26 的小写字母序列
+    string = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
+    n_len = len(string)
     check = True
-    for sub_len in range(n - 1, 0, -1):
-        for starting_index in range(n - sub_len + 1):
-            if s[starting_index:starting_index + sub_len] in s[starting_index + 1:]:
-                print(sub_len)
+    for sub_len in range(n_len - 1, 0, -1):
+        for starting_index in range(n_len - sub_len + 1):
+            if string[starting_index:starting_index + sub_len] in string[starting_index + 1:]:
+                # print(sub_len)
+                pass
                 check = False
                 break
         if not check:
             break
     if check:
-        print(0)
-
-
+        # print(0)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    main(1000)

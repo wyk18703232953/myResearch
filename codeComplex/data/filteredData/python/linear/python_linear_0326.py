@@ -1,7 +1,6 @@
 from collections import deque as de
 import math
 from collections import Counter as cnt
-import random
 
 class My_stack():
     def __init__(self):
@@ -30,9 +29,9 @@ def isPrime(n):
         return False
     i = 5
     while i * i <= n:
-        if (n % i == 0) or (n % (i + 2) == 0):
+        if n % i == 0 or n % (i + 2) == 0:
             return False
-        i += 6
+        i = i + 6
     return True
 
 def get_prime_factors(number):
@@ -53,20 +52,17 @@ def get_frequency(list_):
     for ele in list_:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
 
-def main(n: int):
-    # 可能的尺码
-    sizes = ["XXXS", "XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]
-
-    # 随机生成测试数据：pl 为现有尺码列表，nl 为需求尺码列表
-    pl = [random.choice(sizes) for _ in range(n)]
-    nl = [random.choice(sizes) for _ in range(n)]
+def main(n):
+    sizes = ["M", "S", "L", "XL", "XXL", "XXXL", "XS", "XXS", "XXXS"]
+    pl = [sizes[i % len(sizes)] for i in range(n)]
+    nl = [sizes[(i * 2) % len(sizes)] for i in range(n)]
 
     ans = 0
-
     pmc = pl.count("M")
     mc = nl.count("M")
     if pmc < mc:
@@ -112,8 +108,7 @@ def main(n: int):
     if pxxxsc < xxxsc:
         ans += xxxsc - pxxxsc
 
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10
-    main(10)
+    main(1000)

@@ -32,8 +32,8 @@ def generate_test_data(n: int) -> List[int]:
 def main(n: int) -> None:
     a = generate_test_data(n)
     result = solve_game(a)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

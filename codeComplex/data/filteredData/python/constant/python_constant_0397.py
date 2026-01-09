@@ -1,13 +1,11 @@
-import random
+def main(n):
+    # n is the length of each of the two strings
+    # Deterministic generation of two rows of '0'/'1'
+    # Example pattern: first row: alternating "0"/"1", second row: periodic blocks
+    row0 = [str(i % 2) for i in range(n)]
+    row1 = [str((i // 2) % 2) for i in range(n)]
 
-def main(n: int):
-    # 生成测试数据：两行长度为 n 的仅含 '0' 和 '1' 的字符串
-    # 可按需修改数据生成策略
-    s = [
-        [random.choice(['0', '1']) for _ in range(n)],
-        [random.choice(['0', '1']) for _ in range(n)]
-    ]
-
+    s = [row0, row1]
     cnt = 0
     for i in range(n - 1):
         if s[0][i] == s[1][i] == s[0][i + 1] == "0":
@@ -22,10 +20,8 @@ def main(n: int):
         elif s[0][i + 1] == s[1][i] == s[1][i + 1] == "0":
             cnt += 1
             s[0][i + 1] = s[1][i] = s[1][i + 1] = "X"
-
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
-    main(10)
+    # Example deterministic call for testing / benchmarking
+    main(1000)

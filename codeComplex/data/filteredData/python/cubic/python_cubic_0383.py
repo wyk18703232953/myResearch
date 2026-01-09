@@ -34,9 +34,8 @@ def main(n):
     R = 0
     for x in dp[N + 1][:N + 1]:
         R = (R + x) % MOD
-    print(R)
-
-
+    # print(R)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

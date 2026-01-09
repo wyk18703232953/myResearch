@@ -33,6 +33,7 @@ def solve_single_case(n, k):
 
     if min_splits <= k <= min_splits + max_buffer:
         return "YES", square_size
+
     else:
         return "NO", None
 
@@ -70,6 +71,7 @@ def main(n):
         res, val = solve_single_case(ni, ki)
         if res == "YES":
             out_lines.append(f"YES {val}")
+
         else:
             out_lines.append("NO")
 

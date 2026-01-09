@@ -14,8 +14,10 @@ def main(n):
     if v <= w or w * w > 2 * a * d:
         if v * v > 2 * a * l:
             ans = (2 * l / a) ** 0.5
+
         else:
             ans = l / v + v / 2 / a
+
     else:
         u = (w * w / 2 + a * d) ** 0.5
         if u > v:
@@ -24,17 +26,18 @@ def main(n):
                 + (v - w) / a
                 + (d - (v * v / 2 / a) - (v * v - w * w) / 2 / a) / v
             )
+
         else:
             m = (2 * u - w) / a
 
         if v * v > 2 * a * (l - d + w * w / 2 / a):
             ans = m - w / a + (2 * (l - d + (w * w / 2 / a)) / a) ** 0.5
+
         else:
             ans = m - w / a + (l - d + w * w / 2 / a) / v + v / 2 / a
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以修改这里的 n 或在外部导入 main 后自行调用
     main(10)

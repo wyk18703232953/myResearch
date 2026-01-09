@@ -13,12 +13,12 @@ def main(n):
     while s != n:
         if (s + 1) % (d + 1) == 0:
             res.append("1")
+
         else:
             res.append("0")
         s += 1
-    print("".join(res))
-
-
+    # print("".join(res))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

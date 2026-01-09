@@ -16,10 +16,12 @@ def main(n):
         mid = (l + r) // 2
         val = ((n - mid) * (n - mid + 1)) // 2 - mid
         if val == k:
-            print(mid)
+            # print(mid)
+            pass
             break
         elif val > k:
             l = mid
+
         else:
             r = mid
 

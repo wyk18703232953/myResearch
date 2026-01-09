@@ -40,12 +40,12 @@ def main(n):
             + dp[-1][k - 1][2]
             + dp[-1][k - 1][3]
         ) % mod
+
     else:
         ans = 0
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

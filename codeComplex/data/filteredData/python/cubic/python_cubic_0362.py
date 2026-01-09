@@ -53,7 +53,8 @@ def main(n):
                 nex[k + 1] %= MOD
         dp.append(nex)
     ans = sum(dp[-1]) % MOD
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

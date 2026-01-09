@@ -1,25 +1,30 @@
-import random
+def main(n):
+    # 解释输入结构：
+    # 原程序读取两个整数 a, b
+    # 这里用 n 的比特模式构造一个“接近但不同”的 b
+    # 保证：当 n > 0 时，a != b；当 n == 0 时，a == b
+    a = n
+    if n == 0:
+        b = 0
 
-def main(n: int):
-    # 生成测试数据：a, b 为 [0, 2^n) 内的随机整数
-    # 若 n 过大可根据需要截断
-    max_bits = max(1, min(n, 63))  # 保证不超过原程序的位数范围
-    a = random.randint(0, (1 << max_bits) - 1)
-    b = random.randint(0, (1 << max_bits) - 1)
-
-    # 原始逻辑
-    if a == b:
-        print(0)
     else:
-        idx = 0
+        # 将 n 的最低位翻转，保证 a != b 且规模随 n 变化
+        b = n ^ 1
+
+    idx = 0
+    if a == b:
+        # print(0)
+        pass
+
+    else:
         for i in range(63, -1, -1):
             set1 = (a >> i) & 1
             set2 = (b >> i) & 1
             if set1 != set2:
                 idx = i
                 break
-        print((1 << (idx + 1)) - 1)
-
+        # print((1 << (idx + 1)) - 1)
+        pass
 if __name__ == "__main__":
-    # 示例：可自行修改 n
+    # 示例调用：可根据需要修改 n 的值进行规模化实验
     main(10)

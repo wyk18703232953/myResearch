@@ -7,7 +7,8 @@ def main(n):
 
     # 2. 保留原有逻辑
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 预计算 2^i (mod)，长度仍按原程序 1024
@@ -34,9 +35,8 @@ def main(n):
 
     B = (L[q1] * T[t1]) % mod
 
-    print((A - B + 1) % mod)
-
-
+    # print((A - B + 1) % mod)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 可按需调整
     main(10)

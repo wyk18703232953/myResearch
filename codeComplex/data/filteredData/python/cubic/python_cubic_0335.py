@@ -1,11 +1,17 @@
-import random
+import sys
 
-def main(n: int):
-    mod = 998244353
+mod = 998244353
 
-    # 3. 生成测试数据：a 为长度为 n 的随机整数数组
-    # 可根据需要调整数据范围
-    a = [random.randint(1, 10**9) for _ in range(n)]
+def main(n):
+    # n: input size, interpreted as length of array a
+    if n <= 0:
+        # print(0)
+        pass
+        return
+
+    # Deterministic generation of a: a sorted list of n integers
+    # Example: a[i] = (i * 2 + 1) for i in range(n)
+    a = [(i * 2 + 1) for i in range(n)]
 
     a.sort()
     dp = [1] + [0] * n
@@ -15,10 +21,8 @@ def main(n: int):
             x = x * (n - pt - 2) % mod
             pt -= 1
         dp[i] = (dp[i - 1] * (n - i) + dp[pt + 1] * x) % mod
-
-    print(dp[-1])
-
-
+    # print(dp[-1])
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 5 的测试
-    main(5)
+    # Example deterministic call for experimentation
+    main(10)

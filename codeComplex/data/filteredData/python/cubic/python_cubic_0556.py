@@ -1,30 +1,13 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：
-    # a 为长度 n 的数字串，b 为长度 n 的数字串，且 b >= a，保证原逻辑中 num<=b 有合理意义
-    # 为简单起见，随机生成 a，然后在其基础上生成一个不小于它的 b
-    digits = "0123456789"
-    # 保证首位不为 0，避免无意义前导 0 情况
-    first_digit_a = random.choice(digits[1:])
-    a = first_digit_a + "".join(random.choice(digits) for _ in range(n - 1))
-
-    # 生成 b：随机决定是否等于 a 或稍微变大
-    if random.random() < 0.5:
-        b = a
-    else:
-        # 将 a 看作整数加上一个小随机数，保持位数不变的前提下尽量不溢出
-        a_int = int(a)
-        # 增量控制在 [1, 10^min(3, n)-1] 之间
-        inc = random.randint(1, 10 ** min(3, n) - 1)
-        b_int = a_int + inc
-        # 若发生位数增加，则退回为 a
-        if len(str(b_int)) > n:
-            b = a
-        else:
-            b = str(b_int).zfill(n)
-
-    # 以下为原逻辑（去掉 input() 后直接使用 a, b）
+def main(n):
+    # Deterministic generation of inputs a and b based on n
+    # a: string of digits of length n (repeating "0123456789")
+    # b: string of digits of length n (repeating "9876543210")
+    if n <= 0:
+        return
+    digits_a = "0123456789"
+    digits_b = "9876543210"
+    a = "".join(digits_a[i % 10] for i in range(n))
+    b = "".join(digits_b[i % 10] for i in range(n))
 
     v = sorted(a)
     v = v[::-1]
@@ -32,31 +15,32 @@ def main(n: int):
     for i in range(len(v)):
         x = x + v[i]
     v = x
-
     if len(a) < len(b):
-        print(v)
+        # print(v)
+        pass
+
     else:
         if b == a:
-            print(a)
+            # print(a)
+            pass
+
         else:
             fin = ""
             flag = False
             for j in range(len(a)):
                 for k in range(len(a)):
-                    num = fin + v[k] + "".join(sorted(v[:k] + v[k + 1 :]))
+                    num = fin + v[k] + ''.join(sorted(v[:k] + v[k+1:]))
                     if num <= b:
                         fin += v[k]
                         if int(v[k]) < int(b[j]):
                             flag = True
-                            v = v[:k] + v[k + 1 :]
+                            v = v[:k] + v[k+1:]
                             fin += v
-                        v = v[:k] + v[k + 1 :]
+                        v = v[:k] + v[k+1:]
                         break
                 if flag:
                     break
-            print(fin)
-
-
+            # print(fin)
+            pass
 if __name__ == "__main__":
-    # 示例：规模 n=5
-    main(5)
+    main(10)

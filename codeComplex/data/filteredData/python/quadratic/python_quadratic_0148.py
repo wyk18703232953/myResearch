@@ -1,12 +1,12 @@
-import random
-
 def main(n):
-    # 生成测试数据：4 个 n×n 的 0/1 矩阵
+    # Generate deterministic parts data based on n
+    # Original code reads 4 blocks, each with n lines of n digits (0/1)
+    # Here we construct a simple deterministic pattern using i, j, and block index b
     parts = []
-    for _ in range(4):
+    for b in range(4):
         part = []
-        for _ in range(n):
-            row = [random.randint(0, 1) for _ in range(n)]
+        for i in range(n):
+            row = [((i + j + b) % 2) for j in range(n)]
             part.append(row)
         parts.append(part)
 
@@ -15,7 +15,6 @@ def main(n):
         dt1 = 0
         exp = 1
 
-        # 第一种起始模式
         for h in range(n):
             for w in range(n):
                 if part[h][w] != exp:
@@ -23,7 +22,6 @@ def main(n):
                 exp = (exp + 1) % 2
 
         dt2 = 0
-        # 注意：第二种模式从当前 exp 继续，与原代码保持一致
         for h in range(n):
             for w in range(n):
                 if part[h][w] != exp:
@@ -40,13 +38,13 @@ def main(n):
             for k, part in enumerate(processed_parts):
                 if k == i or k == j:
                     a += part[0]
+
                 else:
                     a += part[1]
             ans = min(ans, a)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(3)，实际使用时请根据需要修改 n
-    main(3)
+    # Example call for complexity experiment
+    main(10)

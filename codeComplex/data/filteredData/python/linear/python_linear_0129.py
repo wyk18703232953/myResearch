@@ -1,4 +1,14 @@
+def bitcnt(X):
+    res = 0
+    v = X
+    while v:
+        res += v & 1
+        v >>= 1
+    return res
+
+
 class Combi:
+
     def __init__(self, N, mod=10**9 + 7):
         self.power = [1 for _ in range(N + 1)]
         self.rev = [1 for _ in range(N + 1)]
@@ -12,66 +22,51 @@ class Combi:
     def com(self, K, R):
         if not (0 <= R <= K):
             return 0
+
         else:
             return (self.power[K] * self.rev[K - R] * self.rev[R]) % self.mod
 
     def perm(self, K, R):
         if not (0 <= R <= K):
             return 0
+
         else:
             return (self.power[K] * self.rev[K - R]) % self.mod
 
 
-def bitcnt(X):
-    res = 0
-    v = X
-    while v:
-        res += v & 1
-        v >>= 1
-    return res
-
-
 def main(n):
-    """
-    n: 规模参数
-    这里根据 n 生成测试数据：
-      - 构造一个长度为 L 的二进制串 N_str（表示一个大整数），L = min(n, 1000)
-      - 构造 K = min( max(1, n // 10), 20 )
-
-    你可以根据需要修改测试数据生成方式。
-    """
     MOD = 10**9 + 7
-
-    # ---------- 生成测试数据 ----------
-    # 构造一个长度为 L 的二进制串，保证首位为 '1' 以避免前导零
-    L = min(max(1, n), 1000)
-    import random
-    random.seed(1)
-    bits = ['1'] + [random.choice(['0', '1']) for _ in range(L - 1)]
-    N_str = ''.join(bits)
-
-    # K 的构造：随规模变化的一个小整数
-    K = min(max(0, n // 10), 20)
-
-    # ---------- 原逻辑开始（用生成的 N_str, K） ----------
+    max_n = 1000
+    if n < 1:
+        n = 1
+    if n > max_n:
+        n = max_n
     c = Combi(10000)
-    NL = list(map(int, list(N_str)))[::-1]
+
+    # Generate deterministic NL and K from n
+    # NL: binary digits (reversed) of an n-bit pattern derived from n
+    NL = []
+    for i in range(n):
+        NL.append((i ^ n) & 1)
     N = len(NL)
+    if N == 0:
+        NL = [0]
+        N = 1
+    K = (n % 15)
 
     dp = [[0] * 1020 for _ in range(1020)]
 
     dp[0][0] = 1
     for pos, bit in enumerate(NL):
         if bit == 1:
-            for b in range(1010):
-                # 注意：原代码中 dp[pos][bit - 1] 当 bit=0 会索引到 -1，按原意应保护边界
-                if b - 1 >= 0:
-                    dp[pos + 1][b] = (dp[pos][b - 1] + c.com(pos, b)) % MOD
-                else:
-                    dp[pos + 1][b] = c.com(pos, b) % MOD
+            for bit_idx in range(1010):
+                dp[pos + 1][bit_idx] = (dp[pos][bit_idx - 1] + c.com(pos, bit_idx)) % MOD
+            continue
+
         else:
-            for b in range(1010):
-                dp[pos + 1][b] = dp[pos][b]
+            for bit_idx in range(1010):
+                dp[pos + 1][bit_idx] = dp[pos][bit_idx]
+            continue
 
     INF = 1 << 60
     cnt = [INF] * 1010
@@ -82,9 +77,8 @@ def main(n):
         cnt[i] = 1 + cnt[bitcnt(i)]
 
     if K == 0:
-        ans = dp[N][0] % MOD
-        print(ans)
-        return ans
+        result = dp[N][0]
+
     else:
         ans = 0
         for bc in range(1010):
@@ -92,11 +86,12 @@ def main(n):
                 ans += dp[N][bc]
         if K == 1:
             ans -= 1
-        ans %= MOD
-        print(ans)
-        return ans
+        result = ans % MOD
+
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例调用：可以根据需要修改 n
-    main(100)
+    main(1000)

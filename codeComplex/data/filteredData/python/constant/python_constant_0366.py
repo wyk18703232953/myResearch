@@ -1,7 +1,4 @@
-import random
-
-def main(n: int):
-    # 宝石字典
+def main(n):
     d = {
         'purple': 'Power',
         'green': 'Time',
@@ -10,21 +7,18 @@ def main(n: int):
         'red': 'Reality',
         'yellow': 'Mind'
     }
-
-    # 根据 n 生成测试数据：随机选择要“移除”的颜色键
-    # 实际可移除的最大数量不超过字典大小
-    n = max(0, min(n, len(d)))
-    colors = list(d.keys())
-    remove_keys = random.sample(colors, n)  # 随机选 n 个不同的 key
-
-    # 模拟原逻辑：依次 pop 掉这些 key
-    for key in remove_keys:
-        d.pop(key, None)
-
-    # 输出结果：剩余数量和对应的 value，每个占一行
-    print(len(d), *d.values(), sep='\n')
+    colors = ['purple', 'green', 'blue', 'orange', 'red', 'yellow']
+    # 确定性生成要删除的颜色序列：按顺序循环删除前 n 个
+    remove_order = [colors[i % len(colors)] for i in range(n)]
+    for color in remove_order:
+        d.pop(color, None)
+    # 收集输出结果，返回而不是直接打印，便于实验使用
+    remaining = list(d.values())
+    return len(d), remaining
 
 
 if __name__ == "__main__":
-    # 示例：可自行修改 n 测试
-    main(3)
+    # 示例：以 n = 3 运行
+    count, stones = main(3)
+    # print(count, *stones, sep="\n")
+    pass

@@ -1,35 +1,20 @@
-import random
-
-def main(n: int):
-    """
-    n: 测试数据规模，即测试用例个数
-    自动生成 n 组 (a, b)，并按原逻辑计算输出结果。
-    """
+def main(n):
     t = n
-    ans = ''
-    
-    # 生成测试数据：a, b 为正整数，避免为 0
-    # 可根据需要调整生成范围
-    test_data = []
-    for _ in range(t):
-        a = random.randint(1, 10**9)
-        b = random.randint(1, 10**9)
-        test_data.append((a, b))
-    
-    for a, b in test_data:
+    ans = []
+    for j in range(t):
+        a = j + 2
+        b = 2 * j + 3
         k = 0
         while a > 0 and b > 0:
             if a >= b:
                 k += a // b
                 a %= b
+
             else:
                 k += b // a
                 b %= a
-        ans += str(k) + '\n'
-    
-    print(ans, end='')
-
-
+        ans.append(str(k))
+    # print("\n".join(ans))
+    pass
 if __name__ == "__main__":
-    # 示例：运行 5 组测试
-    main(5)
+    main(10)

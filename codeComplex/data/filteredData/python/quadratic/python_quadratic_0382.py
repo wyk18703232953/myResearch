@@ -1,36 +1,32 @@
-import random
-import string
-
 def main(n):
-    # 随机生成一个 n 行 m 列的字符网格，并在其中放置一段连续的 'B'
-    # 保证至少有一行包含 'B'
-    m = max(1, n)  # 简单设定 m 与 n 同阶，也可按需调整
-    grid = []
+    # 映射关系：
+    # 原程序有两个输入：n(行数)、m(列数)
+    # 在重构中：n 表示行列的规模，同时用于生成矩阵行列数量
+    # 行数 = n，列数 = n
+    rows = n
+    cols = n
 
-    # 随机选择一行放置 B 段
-    b_row = random.randint(0, n - 1)
-    # 随机决定该行 B 段长度（至少 1，且不超过 m）
-    b_len = random.randint(1, m)
-    # 随机决定 B 段起始位置
-    b_start = random.randint(0, m - b_len)
-
-    for i in range(n):
-        if i == b_row:
-            row = ['.'] * m
-            for j in range(b_start, b_start + b_len):
-                row[j] = 'B'
-            grid.append(''.join(row))
-        else:
-            # 其他行随机生成不含 B 的字符
-            row = [random.choice(string.ascii_uppercase.replace('B', '')) for _ in range(m)]
-            grid.append(''.join(row))
-
-    # 以下为原逻辑的封装，使用生成的 grid 代替输入
     r = 0
     c = 0
     f = 1
-    for i in range(n):
-        s = grid[i]
+
+    # 生成确定性的字符串矩阵
+    # 规则：在第 rows//2 行放连续的一段 'B'，其余行全为 '.'
+    # B 段长度 = max(1, cols//3)，起始位置 = max(0, (cols - length)//2)
+    target_row = rows // 2 if rows > 0 else 0
+    length = max(1, cols // 3) if cols > 0 else 0
+    start = max(0, (cols - length) // 2) if cols > 0 else 0
+
+    for i in range(rows):
+        if i == target_row and cols > 0:
+            s_list = ['.'] * cols
+            for j in range(start, min(start + length, cols)):
+                s_list[j] = 'B'
+            s = ''.join(s_list)
+
+        else:
+            s = '.' * cols
+
         if f and "B" in s:
             f = 0
             ci = s.index('B')
@@ -38,5 +34,7 @@ def main(n):
             r = i + 1 + cc // 2
             c = ci + cc // 2 + 1
 
-    print(r, c)
-    return r, c, grid  # 若只需输出，可去掉 return
+    # print(r, c)
+    pass
+if __name__ == "__main__":
+    main(10)

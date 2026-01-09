@@ -1,14 +1,12 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 个数，保证在 0..255 范围内
-    # 随机生成 k，保证 k>=1 且不超过 256
-    k = random.randint(1, 256)
-    ps = [random.randint(0, 255) for _ in range(n)]
+    # Interpret n as the length of the sequence ps
+    # Generate deterministic ps values in [0, 255]
+    k = max(1, n // 3)  # deterministic relation between n and k
+    ps = [(i * 7) % 256 for i in range(n)]
 
     mapping = [-1 for _ in range(256)]
-    res = []
 
+    res = []
     for p in ps:
         if mapping[p] == -1:
             j = p - k + 1
@@ -18,12 +16,9 @@ def main(n):
                 mapping[i] = j
         res.append(mapping[p])
 
-    print("n =", n)
-    print("k =", k)
-    print("ps =", " ".join(map(str, ps)))
-    print("res =", " ".join(map(str, res)))
-
-
+    # print("n =", n, "k =", k)
+    pass
+    # print(" ".join(map(str, res)))
+    pass
 if __name__ == "__main__":
-    # 示例调用，规模可自行调整
     main(10)

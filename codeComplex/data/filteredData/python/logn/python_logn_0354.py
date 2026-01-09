@@ -16,13 +16,13 @@ def main(n):
 
     if x > 0:
         res = x * pow(2, k + 1, md) - pow(2, k, md) + 1
+
     else:
         res = 0
 
     res %= md
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：可以在此处手动指定n来运行
     # 如需批量测试，可自行循环调用 main(n)

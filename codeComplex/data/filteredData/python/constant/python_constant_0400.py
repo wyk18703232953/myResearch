@@ -1,19 +1,11 @@
-import random
-
 def get(a, x):
     return (a[0][x] == "0") + (a[1][x] == "0")
 
-def main(n):
-    # 3. 根据 n 生成测试数据：这里生成两行、长度为 n 的只含 '0'/'1' 的随机串
-    a = [
-        ''.join(random.choice('01') for _ in range(n)),
-        ''.join(random.choice('01') for _ in range(n))
-    ]
 
+def core(a):
+    n = len(a[0])
     if n == 1:
-        print(0)
-        return
-
+        return 0
     dp = [[-1, -1, -1] for _ in range(n)]
     z = get(a, 0)
     dp[0][z] = 0
@@ -28,9 +20,20 @@ def main(n):
             dp[i][0] = max(dp[i - 1][1] + 1, dp[i - 1][2] + (i != 1))
             dp[i][1] = dp[i - 1][2] + 1
             dp[i][2] = max(dp[i - 1])
+    return max(dp[-1])
 
-    print(max(dp[-1]))
+
+def main(n):
+    if n <= 0:
+        return 0
+    row0 = ''.join('0' if i % 2 == 0 else '1' for i in range(n))
+    row1 = ''.join('1' if (i // 2) % 2 == 0 else '0' for i in range(n))
+    a = [row0, row1]
+    ans = core(a)
+    # print(ans)
+    pass
+    return ans
 
 
-# 示例：需要时可调用 main(n)
-# main(10)
+if __name__ == "__main__":
+    main(10)

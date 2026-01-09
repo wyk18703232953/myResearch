@@ -1,43 +1,46 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 和 x，以及长度为 n 的数组 arr
-    # 可根据需要调整生成策略
-    x = random.randint(0, 2 * n)
-    arr = [random.randint(0, 2 * n) for _ in range(n)]
+    # Deterministically construct x and arr based on n
+    x = (n // 2) ^ (n * 3)
+    if x == 0:
+        x = 1
 
-    MAXV = 100100
-    f = [0] * MAXV
-    s = [0] * MAXV
-    can = [False] * MAXV
+    # Generate an array of length n with deterministic pattern
+    # Ensure values are within bounds of arrays sized 100100
+    MOD = 100000
+    arr = [((i * 17 + n * 31) ^ (i * i + 7)) % MOD for i in range(n)]
+
+    f = [0] * 100100
+    s = [0] * 100100
+    can = [False] * 100100
 
     for i in range(n):
-        v = arr[i]
-        if v < MAXV:
-            f[v] += 1
-        vx = v & x
-        if vx < MAXV:
-            s[vx] += 1
-            if vx != v:
-                can[vx] = True
+        val = arr[i]
+        ax = val & x
+        f[val] += 1
+        s[ax] += 1
+        if ax != val:
+            can[ax] = True
 
     ans = 3
-    for i in range(MAXV):
+    limit = 100100
+    for i in range(limit):
         if f[i] >= 2:
             ans = 0
             break
         if f[i] == 1 and s[i] >= 1:
             if can[i]:
-                ans = min(ans, 1)
+                if ans > 1:
+                    ans = 1
         if s[i] >= 2:
-            ans = min(ans, 2)
+            if ans > 2:
+                ans = 2
 
     if ans == 3:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    main(10000)

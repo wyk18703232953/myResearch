@@ -1,19 +1,22 @@
-import random
-
 def main(n):
-    # 生成参数 m, k（可根据需要调整生成策略）
-    # 这里让 m 在 [1, n] 内，k 在 [1, 10] 内
+    # 映射含义：
+    # m = n（循环周期）
+    # 序列长度 len(a) = 3 * n
+    # k = n // 2 + 1（保证随 n 变化）
     if n <= 0:
-        return
+        return 0
 
-    m = random.randint(1, n)
-    k = random.randint(1, 10)
+    m = n
+    k = n // 2 + 1
+    a_len = 3 * n
 
-    # 生成长度为 n 的数组 a，元素在 [-10, 10] 内
-    a = [random.randint(-10, 10) for _ in range(n)]
+    # 确定性构造 a
+    # a[i] 在 [-k, k] 内波动
+    a = [((i * 2) % (2 * k + 1)) - k for i in range(a_len)]
 
     def f(o):
-        r = e = 0
+        r = 0
+        e = 0
         for i, x in enumerate(a):
             if i < o:
                 continue
@@ -27,8 +30,11 @@ def main(n):
         return r
 
     ans = max(f(o) for o in range(m))
-    print(ans)
+    # print(ans)
+    pass
+    return ans
+
 
 if __name__ == "__main__":
-    # 示例：规模设为 10，可根据需要修改
+    # 示例：选择一个规模 n 调用
     main(10)

@@ -1,29 +1,24 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据，这里简单设定 k 为 1 到 n 之间的随机整数
+    # 映射：原程序中 n, k 两个输入，这里用 n 作为总体规模
+    # 设定 k 为与 n 有确定性关系的整数，保证不同情况都能覆盖
+    # 例如：k = max(1, n // 3) 保证 3*k <= n 对于较大 n 经常成立
     if n <= 0:
         return
-    k = random.randint(1, n)
+    k = max(1, n // 3)
 
     if k == 1:
-        print("1" + "0" * (n - 1))
+        result = "1" + "0" * (n - 1)
     elif 3 * k <= n:
-        print(
-            ("0" * ((n - k) // 2))
-            + "1"
-            + ("0" * (k - 2))
-            + "1"
-            + "0" * ((n - k) // 2)
-        )
+        result = ("0" * ((n - k) // 2)) + "1" + ("0" * (k - 2)) + "1" + "0" * ((n - k) // 2)
+
     else:
         tmp = "0" * ((n - k) // 2) + "1"
         s = tmp
         s = tmp * (n // len(tmp) + 1)
-        s = s[:n]
-        print(s)
+        result = s[:n]
 
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # 示例调用，可根据需要修改 n 的值进行规模化实验
     main(10)

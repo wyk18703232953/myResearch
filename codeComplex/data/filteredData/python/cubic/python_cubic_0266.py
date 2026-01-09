@@ -1,16 +1,12 @@
-import random
-
 def main(n):
-    # 可以根据需要调整 r, g, b 与 n 的关系
-    # 这里简单设为都等于 n
-    r = g = b = n
+    # Interpret n as the common size of the three color arrays
+    r = g = b = max(1, n)
 
-    # 生成测试数据：1 ~ 1000 的随机整数
-    R = [random.randint(1, 1000) for _ in range(r)]
-    G = [random.randint(1, 1000) for _ in range(g)]
-    B = [random.randint(1, 1000) for _ in range(b)]
+    # Deterministic data generation based on n and indices
+    R = [i * 2 + 1 for i in range(1, r + 1)]
+    G = [i * 3 + 2 for i in range(1, g + 1)]
+    B = [i * 5 + 3 for i in range(1, b + 1)]
 
-    # 原逻辑开始
     dp = [[[-1 for _ in range(b + 1)] for _ in range(g + 1)] for _ in range(r + 1)]
     R.sort(reverse=True)
     G.sort(reverse=True)
@@ -18,28 +14,27 @@ def main(n):
     R.insert(0, 0)
     G.insert(0, 0)
     B.insert(0, 0)
-    dp[0][0][0] = 0
-    ans = 0
-
-    for i in range(r + 1):
-        for j in range(g + 1):
-            for k in range(b + 1):
+    dp[0][0][0], ans = 0, 0
+    for i in range(0, r + 1):
+        for j in range(0, g + 1):
+            for k in range(0, b + 1):
                 if i == 0 and j == 0 and k == 0:
                     continue
                 if i and j and dp[i - 1][j - 1][k] != -1:
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      dp[i - 1][j - 1][k] + R[i] * G[j])
+                    val = dp[i - 1][j - 1][k] + R[i] * G[j]
+                    if val > dp[i][j][k]:
+                        dp[i][j][k] = val
                 if k and j and dp[i][j - 1][k - 1] != -1:
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      dp[i][j - 1][k - 1] + B[k] * G[j])
+                    val = dp[i][j - 1][k - 1] + B[k] * G[j]
+                    if val > dp[i][j][k]:
+                        dp[i][j][k] = val
                 if i and k and dp[i - 1][j][k - 1] != -1:
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      dp[i - 1][j][k - 1] + R[i] * B[k])
-                ans = max(ans, dp[i][j][k])
-
-    print(ans)
-
-
+                    val = dp[i - 1][j][k - 1] + R[i] * B[k]
+                    if val > dp[i][j][k]:
+                        dp[i][j][k] = val
+                if dp[i][j][k] > ans:
+                    ans = dp[i][j][k]
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 3
     main(3)

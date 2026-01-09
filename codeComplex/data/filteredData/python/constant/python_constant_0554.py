@@ -1,29 +1,31 @@
-import random
+def main(n):
+    # 映射规模参数 n 到原程序的 n, m, k, l
+    # 保证确定性且可规模化
+    if n < 4:
+        N = 4
 
-def main(n: int):
-    # 生成测试数据：
-    # n: 给定的规模
-    # 为了保证参数有意义，我们生成：
-    # m ∈ [1, max(1, n)]
-    # k, l ∈ [0, n]
-    if n <= 0:
-        return  # 规模无效时直接返回
+    else:
+        N = n
 
-    m = random.randint(1, max(1, n))
-    k = random.randint(0, n)
-    l = random.randint(0, n)
+    # 构造参数
+    total_n = N * 3
+    m = max(1, N // 2)
+    k = N
+    l = N // 3
 
     need = k + l
-    if need % m == 0 and need <= n:
-        print(need // m)
+    if need % m == 0 and need <= total_n:
+        # print(need // m)
+        pass
+
     else:
         x = need // m + 1
-        if x * m > n:
-            print(-1)
+        if x * m > total_n:
+            # print(-1)
+            pass
+
         else:
-            print(x)
-
-
+            # print(x)
+            pass
 if __name__ == "__main__":
-    # 示例：以 n = 100 作为规模运行
-    main(100)
+    main(10)

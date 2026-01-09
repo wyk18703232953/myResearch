@@ -15,9 +15,8 @@ def main(n):
 
     # 执行查询并打印结果
     for l, r in LR:
-        print(SUM(r) - SUM(l - 1))
-
-
+        # print(SUM(r) - SUM(l - 1))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

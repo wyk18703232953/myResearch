@@ -15,11 +15,12 @@ def main(n: int):
     b = x % (i + 1)
 
     if b != 0:
-        print(str(10 ** i + a)[b - 1])
+        # print(str(10 ** i + a)[b - 1])
+        pass
+
     else:
-        print(str(10 ** i + a - 1)[-1])
-
-
+        # print(str(10 ** i + a - 1)[-1])
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(1000)，可按需修改测试规模
     main(1000)

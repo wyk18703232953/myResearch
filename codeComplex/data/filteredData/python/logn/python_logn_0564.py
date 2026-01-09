@@ -15,9 +15,8 @@ def main(n: int):
     a += n // x
     ans = str(a)[n % x]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可在此处指定规模 n 进行测试
     main(100)

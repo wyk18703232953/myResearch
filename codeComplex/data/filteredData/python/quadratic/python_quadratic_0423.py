@@ -11,13 +11,14 @@ def main(n, k):
             break
 
     if f == 0:
-        print(s * k)
+        # print(s * k)
+        pass
+
     else:
         j = n - i
         final = s[j:]
-        print(s + final * (k - 1))
-
-
+        # print(s + final * (k - 1))
+        pass
 if __name__ == "__main__":
     # 示例：n=5, k=3，可按需修改
     main(5, 3)

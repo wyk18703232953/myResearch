@@ -1,33 +1,25 @@
-import random
+def main(n):
+    # Determine sizes for m and n based on input scale n
+    # Here: number of games = n, number of bills = n
+    games_count = n
+    bills_count = n
 
-def main(n: int):
-    # 生成测试数据
-    # n: 游戏数量
-    # m: 账单数量，这里设为 n 或 n 左右
-    m = n
-
-    # 生成游戏价格列表 c，价格在 1~100 之间递增或不递增均可
-    # 为了更贴近一般用例，这里生成非递减序列
-    c = sorted(random.randint(1, 100) for _ in range(n))
-    # 生成账单列表 a，价格在 1~100 之间
-    a = [random.randint(1, 100) for _ in range(m)]
+    # Deterministic generation of prices c and bills a
+    # c: game prices increasing with small variations
+    c = [(i % 7) + (i // 3) for i in range(games_count)]
+    # a: bills with values allowing some purchases
+    a = [(i % 10) + (i // 2) for i in range(bills_count)]
 
     ans = 0
     i = 0
     for bill in a:
         try:
-            # 在 c[i:] 中寻找第一个 <= bill 的游戏
-            offset = next(ind for ind, el in enumerate(c[i:]) if el <= bill)
-            i += offset + 1
+            i += next(ind for ind, el in enumerate(c[i:]) if el <= bill) + 1
             ans += 1
-            if i >= n:
-                break
         except StopIteration:
             break
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

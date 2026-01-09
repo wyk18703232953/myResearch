@@ -25,7 +25,8 @@ def main(n):
             s[i][j] = (s[i][j] + dp[i][j] + s[i][j + 1]) % MOD
 
     ans = s[n - 1][0] % MOD
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

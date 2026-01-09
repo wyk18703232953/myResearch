@@ -1,5 +1,5 @@
 from collections import Counter
-import random
+
 
 def check(A):
     CA = Counter(A)
@@ -22,16 +22,18 @@ def check(A):
 
 
 def main(n):
-    # 根据规模 n 生成测试数据：长度为 n 的非负整数数组
-    # 这里生成 0 到 2n 范围内的随机整数
-    A = [random.randint(0, 2 * n) for _ in range(n)]
-
+    # n 表示数组长度
+    # 构造一个确定性的非降数组，类似原题中的 A
+    # 示例构造：A[i] = i // 2，使得有一些重复元素但规模随 n 线性增长
+    A = [i // 2 for i in range(n)]
+    # 调用原逻辑
     if check(A):
-        print('sjfnb')
+        # print('sjfnb')
+        pass
+
     else:
-        print('cslnb')
-
-
+        # print('cslnb')
+        pass
 if __name__ == "__main__":
-    # 示例：可在此处指定规模 n 进行本地测试
-    main(5)
+    # 示例调用：可以根据需要修改 n 的大小做规模实验
+    main(10)

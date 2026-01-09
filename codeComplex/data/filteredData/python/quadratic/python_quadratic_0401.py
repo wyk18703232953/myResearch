@@ -32,6 +32,7 @@ def main(n):
 
     if fl:
         ans = s + s[l:n] * (k - 1)
+
     else:
         ans = s * k
 
@@ -41,4 +42,5 @@ def main(n):
 # 简单自测
 if __name__ == "__main__":
     # 示例运行：n = 5
-    print(main(5))
+    # print(main(5))
+    pass

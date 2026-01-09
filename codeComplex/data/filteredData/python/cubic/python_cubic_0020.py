@@ -21,11 +21,11 @@ def main(n):
                 break
 
     try:
-        print(max(allvalues))
+        # print(max(allvalues))
+        pass
     except ValueError:
-        print(0)
-
-
+        # print(0)
+        pass
 if __name__ == "__main__":
     # 示例：运行规模为 10 的测试
     main(10)

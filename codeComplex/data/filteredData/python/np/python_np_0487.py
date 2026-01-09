@@ -71,7 +71,8 @@ def main(n):
                 idxs.append(memo[val])
 
         if idx not in idxs:
-            print("NO")
+            # print("NO")
+            pass
             return
 
         for idx_to in idxs:
@@ -81,12 +82,14 @@ def main(n):
 
     flag, res = topological_sorted(graph)
     if flag:
-        print("YES")
-        print(*[i + 1 for i in res])
+        # print("YES")
+        pass
+        # print(*[i + 1 for i in res])
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # example: run with n = 5
     main(5)

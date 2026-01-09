@@ -7,9 +7,8 @@ def main(n):
 
     ans = round((-3 + math.sqrt(9 + 8 * (k + n))) / 2)
     result = n - ans
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时可根据需要修改
     main(10)

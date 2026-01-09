@@ -12,7 +12,8 @@ def main(n):
 
     l = len(str(s))
     if n < s:
-        print(0)
+        # print(0)
+        pass
         return
 
     if s + 10 * (l ** 2 + 1) <= n:
@@ -20,14 +21,14 @@ def main(n):
         for i in range(s, s + 10 * (l ** 2 + 1)):
             if s + ver(i) <= i:
                 ans += 1
+
     else:
         ans = 0
         for i in range(s, n + 1):
             if s + ver(i) <= i:
                 ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可按需要修改或由外部测试框架调用
     main(1000000)

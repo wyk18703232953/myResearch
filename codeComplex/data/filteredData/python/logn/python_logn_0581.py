@@ -1,7 +1,7 @@
 import math
-import random
 
-def cnt_digit_order(X: int) -> int:
+
+def cnt_digit_order(X):
     res = 0
     if X == 0:
         return 0
@@ -10,7 +10,7 @@ def cnt_digit_order(X: int) -> int:
     return res
 
 
-def solve_for_k(k: int) -> str:
+def solve(k):
     L = -1
     leftcnt = 0
     for length in range(1, 100):
@@ -25,17 +25,13 @@ def solve_for_k(k: int) -> str:
     return M[leftcnt]
 
 
-def main(n: int):
-    # 根据规模 n 生成测试数据：生成一个正整数 k
-    # 令 k 大致在 [1, 10^n] 的范围内（上界做个限制防止过大）
-    max_k = 10 ** min(n, 12)
-    k = random.randint(1, max_k)
-
-    # 核心逻辑
-    ans = solve_for_k(k)
-    print(ans)
-
-
+def main(n):
+    # 将 n 映射为原程序中的 k
+    # 这里选用简单的确定性映射：k = max(1, n)
+    k = max(1, n)
+    ans = solve(k)
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：可以修改这里的 n 进行规模测试
-    main(5)
+    # 示例调用：使用一个固定的 n 作为规模参数
+    main(10)

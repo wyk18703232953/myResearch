@@ -31,8 +31,8 @@ def main(n):
     a = n
     k = n
     result = solve(a, k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：使用某个固定规模调用 main
     main(10)

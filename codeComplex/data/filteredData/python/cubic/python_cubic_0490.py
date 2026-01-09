@@ -1,25 +1,26 @@
 from math import inf
-import random
 
 def main(n):
-    # 随机生成规模参数
-    # n: 行数
-    m = max(1, n)          # 列数，这里简单取 m = n，可按需修改
-    k = 2 * random.randint(1, n)  # 生成一个偶数步数，避免全 -1 情况
+    # Interpret n as grid size n x n, and k as an even value derived from n
+    if n <= 1:
+        n = 2
+    m = n
+    k = (n // 2) * 2  # ensure k is even and scales with n
+    if k == 0:
+        k = 2
 
-    # 生成测试数据 A (n x m-1) 和 B (n-1 x m)
-    # 权值范围可按需调整
-    max_weight = 10**3
-    A = [[random.randint(1, max_weight) for _ in range(m - 1)] for _ in range(n)]
-    B = [[random.randint(1, max_weight) for _ in range(m)] for _ in range(n - 1)]
+    # Deterministic generation of A (n x m) and B (n-1 x m)
+    # A[i][j] and B[i][j] are positive integers depending on indices
+    A = [[(i + j + 1) for j in range(m)] for i in range(n)]
+    B = [[(i + j + 2) for j in range(m)] for i in range(n - 1)]
 
-    # 如果 k 为奇数，输出 -1 矩阵并结束（按原逻辑，实际这里一般不会触发）
+    # Core logic from original code
     if k & 1:
         for _ in range(n):
-            print(' '.join(['-1'] * m))
+            # print('-1 ' * m)
+            pass
         return
 
-    # 动态规划计算
     X = [[0] * m for _ in range(n)]
     for _ in range(k // 2):
         Y = [[inf] * m for _ in range(n)]
@@ -36,9 +37,7 @@ def main(n):
         X = Y
 
     for row in X:
-        print(*row)
-
-
+        # print(*row)
+        pass
 if __name__ == "__main__":
-    # 示例调用：n 可自行修改
     main(5)

@@ -1,53 +1,44 @@
-import random
-import string
+def main(n):
+    # Deterministically generate T, and T pairs of strings (s, t) based on n
+    # Interpretation: n controls both T and the lengths of s and t
+    if n <= 0:
+        return
 
-def check(s: str, t: str) -> bool:
-    N = len(t)
-    for i in range(1, N + 1):
-        # split t into t1:[0,i), t2:[i,N)
-        dp = [0] + [-1] * i
-        for c in s:
-            for j in range(i, -1, -1):
-                tmp = dp[j]
-                # use c for t2
-                if dp[j] != -1 and i + dp[j] < N and t[i + dp[j]] == c:
-                    tmp = dp[j] + 1
-                # use c for t1
-                if j != 0 and t[j - 1] == c:
-                    tmp = max(tmp, dp[j - 1])
-                dp[j] = tmp
-        if dp[i] == N - i:
-            return True
-    return False
+    T = n  # number of test cases
+    base_len = max(1, n // 2)
 
+    test_cases = []
+    for ti in range(T):
+        len_s = base_len + (ti % 5)
+        len_t = base_len // 2 + (ti % 3) + 1
 
-def main(n: int):
-    """
-    n: problem size parameter, used to control lengths of s and t.
-       Here we generate:
-         - length of t:  between max(1, n//3) and max(1, n//2)
-         - length of s:  between len(t) and max(len(t), n)
-    """
-    random.seed(0)
+        # Generate s and t using a simple deterministic pattern over lowercase letters
+        s = ''.join(chr(ord('a') + ((ti * 7 + i * 3) % 26)) for i in range(len_s))
+        t = ''.join(chr(ord('a') + ((ti * 11 + i * 5) % 26)) for i in range(len_t))
 
-    T = 5  # number of test cases to generate
-    for _ in range(T):
-        # generate t
-        len_t = max(1, random.randint(max(1, n // 3), max(1, n // 2)))
-        t = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_t))
+        test_cases.append((s, t))
 
-        # generate s so that len(s) >= len(t) and up to n
-        max_s_len = max(len_t, n)
-        len_s = random.randint(len_t, max_s_len)
-        s = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_s))
+    for ti in range(T):
+        s, t = test_cases[ti]
+        N = len(t)
+        for i in range(1, N + 1):
+            dp = [0] + [-1] * i
+            for l, c in enumerate(s):
+                for j in range(i, -1, -1):
+                    tmp = dp[j]
+                    if dp[j] != -1 and i + dp[j] < N and t[i + dp[j]] == c:
+                        tmp = dp[j] + 1
+                    if j != 0 and t[j - 1] == c:
+                        if dp[j - 1] > tmp:
+                            tmp = dp[j - 1]
+                    dp[j] = tmp
+            if dp[i] == N - i:
+                # print("YES")
+                pass
+                break
 
-        # run the original logic
-        if check(s, t):
-            print("YES")
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
-    # example: n = 20
-    main(20)
+    main(10)

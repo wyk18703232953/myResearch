@@ -16,8 +16,8 @@ def main(n):
     b = -2 * r
     c = -(r * r)
     ans = solve(a, b, c)
-    print(f"{ans:.10f}")
-
+    # print(f"{ans:.10f}")
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(6) 或任意正整数规模
     main(6)

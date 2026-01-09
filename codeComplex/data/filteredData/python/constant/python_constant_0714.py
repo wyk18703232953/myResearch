@@ -5,15 +5,17 @@ def main(n):
     k = max(1, min(n, n // 2))
 
     if n == k:
-        print('1' * n)
+        # print('1' * n)
+        pass
     elif k == 1:
-        print('0' + '1' * (n - 1))
+        # print('0' + '1' * (n - 1))
+        pass
+
     else:
         x = (n - k) // 2
         a = '0' * x + '1'
-        print(a * (n // (x + 1)) + '0' * (n % (x + 1)))
-
-
+        # print(a * (n // (x + 1)) + '0' * (n % (x + 1)))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，给定一个规模 n
     main(10)

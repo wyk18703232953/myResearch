@@ -1,15 +1,8 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成两个整数 a, b
-    # 这里示例：a, b 在 [0, 2^n) 范围内随机生成
-    if n <= 0:
-        a = 0
-        b = 0
-    else:
-        upper = 1 << n
-        a = random.randrange(0, upper)
-        b = random.randrange(0, upper)
+def main(n):
+    # 在原程序中，输入是两个整数 a, b
+    # 这里将 n 映射为 a 和 b，用确定性方式生成
+    a = n
+    b = n * 2 + 1
 
     bitxor = a ^ b
 
@@ -18,10 +11,7 @@ def main(n: int):
         bitxor >>= 1
         res <<= 1
 
-    # 原程序行为：输出结果
-    print(res - 1)
-
-
+    # print(res - 1)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，n 可根据需要调整
     main(10)

@@ -1,24 +1,32 @@
-import random
-
 def main(n):
-    # 1. 生成规模 R, G, B（这里都设为 n，可按需要修改生成规则）
-    R = G = B = n
+    # Map n to sizes of R, G, B
+    # Ensure they are at least 1
+    R = max(1, n // 3)
+    G = max(1, n // 3 + (1 if n % 3 > 0 else 0))
+    B = max(1, n - R - G)
 
-    # 2. 生成测试数据：长度分别为 R, G, B 的随机正整数数组
-    # 数值范围可按需要调整，这里用 1~100
-    r = [random.randint(1, 100) for _ in range(R)]
-    g = [random.randint(1, 100) for _ in range(G)]
-    b = [random.randint(1, 100) for _ in range(B)]
+    # Deterministic generation of r, g, b based on R, G, B
+    r = [i + 1 for i in range(R)]
+    g = [2 * (i + 1) for i in range(G)]
+    b = [3 * (i + 1) for i in range(B)]
 
-    # 原逻辑开始
-    def f(t):
-        i, j, k = t
-        return (i + 1) * (G + 1) * (B + 1) + (j + 1) * (B + 1) + (k + 1)
+    r.sort()
+    g.sort()
+    b.sort()
 
-    max_area = [None] * ((R + 1) * (G + 1) * (B + 1) + 1)
+    # DP table sized by (R+1)*(G+1)*(B+1) stored in a 1D list
+    size_R = R + 1
+    size_G = G + 1
+    size_B = B + 1
+
+    max_area = [None] * (size_R * size_G * size_B)
+
+    def f(i, j, k):
+        # Convert (i, j, k) to a unique index in [0, size_R*size_G*size_B)
+        return (i + 1) * size_G * size_B + (j + 1) * size_B + (k + 1)
 
     def get_max_area(i, j, k):
-        temp = f((i, j, k))
+        temp = f(i, j, k)
         if max_area[temp] is not None:
             return max_area[temp]
 
@@ -33,13 +41,8 @@ def main(n):
         max_area[temp] = max(x1, x2, x3)
         return max_area[temp]
 
-    r.sort()
-    g.sort()
-    b.sort()
-
-    ans = get_max_area(R - 1, G - 1, B - 1)
-    print(ans)
-    return ans
-
-# 示例调用
-# main(3)
+    result = get_max_area(R - 1, G - 1, B - 1)
+    # print(result)
+    pass
+if __name__ == "__main__":
+    main(6)

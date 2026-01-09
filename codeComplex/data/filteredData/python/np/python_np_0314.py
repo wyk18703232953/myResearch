@@ -48,9 +48,8 @@ def main(n: int):
         num += dp[n - 1][K][i]
         num %= MOD
 
-    print(num)
-
-
+    # print(num)
+    pass
 if __name__ == "__main__":
     # 示例调用：规模 n = 20
     main(20)

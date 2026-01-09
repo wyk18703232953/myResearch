@@ -1,48 +1,53 @@
-import random
-
-INF = float('inf')
-mod = int(1e9) + 7
-
 def main(n):
-    """
-    n 用作规模参数，这里解释为：
-    r = g = b = n
-    并为 R, G, B 生成长度为 n 的随机测试数据（正整数）。
-    返回最大得分。
-    """
-    # 1. 生成规模
-    r = g = b = n
+    # Interpret n as total size of three arrays; split into r,g,b
+    # Deterministic partition
+    r = n // 3
+    g = (n // 3) + (n % 3 > 0)
+    b = n - r - g
+    if r <= 0:
+        r = 1
+    if g <= 0:
+        g = 1
+    if b <= 0:
+        b = 1
 
-    # 2. 生成测试数据（可根据需要自定义生成策略）
-    #   这里使用 1..1000 的随机整数
-    R = sorted(random.randint(1, 1000) for _ in range(r))
-    G = sorted(random.randint(1, 1000) for _ in range(g))
-    B = sorted(random.randint(1, 1000) for _ in range(b))
+    # Deterministic data generation
+    # Use simple arithmetic patterns to ensure repeatability
+    R = [i + 1 for i in range(r)]
+    G = [2 * (i + 1) for i in range(g)]
+    B = [3 * (i + 1) for i in range(b)]
 
-    # 3. 初始化 DP
+    R.sort()
+    G.sort()
+    B.sort()
+
+    # DP array
     dp = [[[0] * (b + 1) for _ in range(g + 1)] for _ in range(r + 1)]
 
-    # 4. 递归函数保持原逻辑
-    def recur(rr, gg, bb):
-        if (rr + gg + bb) == rr or (rr + gg + bb) == gg or (rr + gg + bb) == bb:
+    def recur(cr, cg, cb):
+        if (cr + cg + cb) == cr or (cr + cg + cb) == cg or (cr + cg + cb) == cb:
             return 0
-        if dp[rr][gg][bb]:
-            return dp[rr][gg][bb]
+        if dp[cr][cg][cb]:
+            return dp[cr][cg][cb]
         best = 0
-        if rr > 0 and gg > 0:
-            best = max(best, R[rr - 1] * G[gg - 1] + recur(rr - 1, gg - 1, bb))
-        if rr > 0 and bb > 0:
-            best = max(best, R[rr - 1] * B[bb - 1] + recur(rr - 1, gg, bb - 1))
-        if bb > 0 and gg > 0:
-            best = max(best, B[bb - 1] * G[gg - 1] + recur(rr, gg - 1, bb - 1))
-        dp[rr][gg][bb] = best
+        if cr > 0 and cg > 0:
+            val = R[cr - 1] * G[cg - 1] + recur(cr - 1, cg - 1, cb)
+            if val > best:
+                best = val
+        if cr > 0 and cb > 0:
+            val = R[cr - 1] * B[cb - 1] + recur(cr - 1, cg, cb - 1)
+            if val > best:
+                best = val
+        if cb > 0 and cg > 0:
+            val = B[cb - 1] * G[cg - 1] + recur(cr, cg - 1, cb - 1)
+            if val > best:
+                best = val
+        dp[cr][cg][cb] = best
         return best
 
-    # 5. 返回结果（不使用输入输出）
-    return recur(r, g, b)
-
-
-# 示例：直接运行文件时做一次测试
+    result = recur(r, g, b)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    ans = main(3)
-    print(ans)
+    # Example scale; adjust n to change input size
+    main(30)

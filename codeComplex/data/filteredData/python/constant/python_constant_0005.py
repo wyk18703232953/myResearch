@@ -1,43 +1,39 @@
 from math import sqrt
-import random
 
-
-def main(n: int):
-    # 生成测试数据：
-    # a: 加速度系数，1~n
-    # v: 初速度，1~n
-    # l: 总路程，1~(2n)
-    # d: 中间距离，1~l
-    # w: 速度限制，1~n
-    #
-    # 可根据需要自行调整生成策略
-    a = random.randint(1, max(1, n))
-    v = random.randint(1, max(1, n))
-    l = random.randint(1, max(2, 2 * n))
-    d = random.randint(1, l)
-    w = random.randint(1, max(1, n))
+def main(n):
+    # n 控制输入规模，这里构造一个与 n 相关但固定的输入
+    # 保证: a>0, v>0, l>0, d>=0, w>=0
+    a = max(1, n % 7 + 1)          # 加速度
+    v = max(1, (2 * n) % 10 + 1)   # 初速度
+    l = max(1, 5 * n + 10)         # 总路程
+    d = max(0, (3 * n) % l)        # 减速/限速区间长度
+    w = (n % (v + 1))              # 限速
 
     if v > w:
-        s1 = w ** 2 / (2 * a)
+        s1 = w ** 2 / 2 / a
         if d <= s1:
-            s = min(v ** 2 / (2 * a), l)
+            s = min(v ** 2 / 2 / a, l)
             t = sqrt(2 * s / a) + (l - s) / v
+
         else:
             t = sqrt(2 * s1 / a)
             s2 = min((d - s1) / 2, (v ** 2 - w ** 2) / (2 * a))
             if s2 == (d - s1) / 2:
                 t += 2 * (sqrt(2 * (s1 + s2) / a) - sqrt(2 * s1 / a))
+
             else:
                 t += 2 * (v - w) / a + (d - s1 - 2 * s2) / v
-            s3 = min((v ** 2 - w ** 2) / (2 * a), l - d)
+            s3 = min((v ** 2 - w ** 2) / 2 / a, l - d)
             t += sqrt(2 * (s3 + s1) / a) - sqrt(2 * s1 / a) + (l - d - s3) / v
+
     else:
-        s = min(v ** 2 / (2 * a), l)
+        s = min(v ** 2 / 2 / a, l)
         t = sqrt(2 * s / a) + (l - s) / v
 
-    print(t)
-
+    return t
 
 if __name__ == "__main__":
-    # 示例：规模 n = 10
-    main(10)
+    # 示例调用: 使用固定的 n 进行一次运行
+    result = main(10)
+    # print(result)
+    pass

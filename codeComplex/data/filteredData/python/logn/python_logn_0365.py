@@ -9,6 +9,7 @@ def fp(x, y):
     t = fp(x, y // 2) % mod
     if y % 2 == 1:
         return (t * t * x) % mod
+
     else:
         return (t * t) % mod
 
@@ -36,9 +37,8 @@ def main(n):
     # 例如：k 取为 n 的一半（向下取整）
     k = n // 2
     ans = solve(n, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模自定义
     main(10)

@@ -23,9 +23,8 @@ def main(n: int):
     test_cases = list(range(1, n + 1))
 
     for x in test_cases:
-        print(check_number(x))
-
-
+        # print(check_number(x))
+        pass
 if __name__ == "__main__":
     # 示例：运行规模为 10 的测试
     main(10)

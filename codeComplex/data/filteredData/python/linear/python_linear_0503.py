@@ -1,38 +1,42 @@
-import random
-
 def main(n):
-    # 生成测试数据：A 是 1..n 的随机排列
-    A = list(range(1, n + 1))
-    random.shuffle(A)
+    # Deterministically generate input data A of size n
+    # Permutation of 1..n using a simple reversible pattern
+    if n <= 0:
+        # print("")
+        pass
+        return
+
+    A = [(i * 2 + 1) % n + 1 for i in range(n)]
 
     PLACE = [None] * (n + 1)
     for i in range(n):
         PLACE[A[i]] = i
 
     al = n
-    WINLIST = [None] * (n + 1)  # 0:必败("B"),1:必胜("A")
+    WINLIST = [None] * (n + 1)  # 0: lose, 1: win; here use "A"/"B" as in original
 
     def move(x, al):
         place = PLACE[x]
-        # 向左跳
         for i in range(place, -1, -x):
             if A[i] > x and WINLIST[A[i]] == "B":
                 WINLIST[x] = "A"
                 return
-        # 向右跳
         for i in range(place, al, x):
             if A[i] > x and WINLIST[A[i]] == "B":
                 WINLIST[x] = "A"
                 return
         WINLIST[x] = "B"
+        return
 
     for j in range(n, 0, -1):
         move(j, al)
 
-    ANS = "".join(WINLIST[i] for i in A)
-    print(ANS)
+    ANS = ""
+    for i in A:
+        ANS += WINLIST[i]
 
-
+    # print(ANS)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10
+    # Example deterministic call; adjust n for scaling experiments
     main(10)

@@ -1,57 +1,62 @@
 from math import *
 from collections import *
-from random import *
 from decimal import Decimal
 from heapq import *
 from bisect import *
-import sys
 
 
-def main(n: int):
-    """
-    n 为规模参数，用来生成 r, g, b 以及对应长度的数组。
-    这里采用一种简单的生成策略：
-    - r, g, b 为 1..n 范围内的随机数
-    - rl, gl, bl 中的元素为 1..10^3 范围内的随机整数
-    """
-    # 为了可重复性，这里固定随机种子；如需真实随机可删掉下一行
-    seed(0)
+def main(n):
+    # Interpret n as total number of elements across three lists
+    # Split n into r, g, b as evenly as possible
+    if n < 3:
+        r = n
+        g = 0
+        b = 0
 
-    # 生成 r, g, b，至少为 1
-    r = randint(1, n)
-    g = randint(1, n)
-    b = randint(1, n)
+    else:
+        base = n // 3
+        rem = n % 3
+        r = base + (1 if rem > 0 else 0)
+        g = base + (1 if rem > 1 else 0)
+        b = base
 
-    # 生成测试数据
-    rl = [randint(1, 1000) for _ in range(r)]
-    gl = [randint(1, 1000) for _ in range(g)]
-    bl = [randint(1, 1000) for _ in range(b)]
+    # Deterministically generate lists rl, gl, bl based on r, g, b
+    rl = [i + 1 for i in range(r)]
+    gl = [2 * (i + 1) for i in range(g)]
+    bl = [3 * (i + 1) for i in range(b)]
 
     rl.sort()
     gl.sort()
     bl.sort()
 
-    # DP 三维数组：dp[i][j][k] 表示使用前 i 个红、j 个绿、k 个蓝时的最大值
+    # 3D DP array, same logic as original program
     dp = [[[0] * (b + 1) for _ in range(g + 1)] for _ in range(r + 1)]
-
     for i in range(r + 1):
         for j in range(g + 1):
             for k in range(b + 1):
                 if i + j + k < 2:
                     continue
+                best = dp[i][j][k]
                 if i and j:
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      dp[i - 1][j - 1][k] + rl[i - 1] * gl[j - 1])
+                    val = dp[i - 1][j - 1][k] + rl[i - 1] * gl[j - 1]
+                    if val > best:
+                        best = val
                 if j and k:
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      dp[i][j - 1][k - 1] + gl[j - 1] * bl[k - 1])
+                    val = dp[i][j - 1][k - 1] + gl[j - 1] * bl[k - 1]
+                    if val > best:
+                        best = val
                 if i and k:
-                    dp[i][j][k] = max(dp[i][j][k],
-                                      dp[i - 1][j][k - 1] + rl[i - 1] * bl[k - 1])
+                    val = dp[i - 1][j][k - 1] + rl[i - 1] * bl[k - 1]
+                    if val > best:
+                        best = val
+                dp[i][j][k] = best
 
-    print(dp[r][g][b])
+    result = dp[r][g][b]
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # Example deterministic call for time-complexity experiments
+    main(30)

@@ -1,21 +1,16 @@
-import random
-
 def main(n):
-    # 随机生成初始 s
-    s = random.randint(0, 100)
+    s = n * 2
     ans = s
-
-    # 随机生成 n 对 (f, t)
-    for _ in range(n):
-        f = random.randint(0, 100)
-        t = random.randint(0, 100)
-        if t > (s - f):
-            ans += t - (s - f)
-            s += t - (s - f)
-
-    print(ans)
-
+    s_i = s
+    pairs = [(i + 1, (i * 3) % (s + 5) + 1) for i in range(n)]
+    for f_i, t_i in pairs:
+        if t_i > (s_i - f_i):
+            delta = t_i - (s_i - f_i)
+            ans += delta
+            s_i += delta
+    return ans
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可根据需要调整 n
-    main(5)
+    for test_n in [1, 5, 10, 50]:
+        # print(test_n, main(test_n))
+        pass

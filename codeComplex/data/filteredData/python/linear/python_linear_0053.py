@@ -1,35 +1,12 @@
-import random
-
-def findSet(u, parents):
-    if parents[u] != u:
-        parents[u] = findSet(parents[u], parents)
-    return parents[u]
-
-
-def unionSet(u, v, parents, ranks):
-    up = findSet(u, parents)
-    vp = findSet(v, parents)
-    if up == vp:
-        return
-
-    if ranks[up] > ranks[vp]:
-        parents[vp] = up
-    elif ranks[up] < ranks[vp]:
-        parents[up] = vp
-    else:
-        parents[up] = vp
-        ranks[vp] += 1
-
-
 def main(n):
-    # 生成测试数据
-    # n: 数组大小
-    # 生成 ps 中的元素为 1..2n 的不重复随机数
-    ps = random.sample(range(1, 2 * n + 1), n)
-    # 根据 ps 中的最大值来生成 a, b，保证一定的可配对性
-    max_ps = max(ps)
-    a = random.randint(max_ps + 1, max_ps + 2 * n)
-    b = random.randint(max_ps + 1, max_ps + 2 * n)
+    # n: size of the input list ps
+    # Deterministic generation of inputs:
+    # Choose a and b as simple functions of n so they scale with n
+    a = 2 * n + 3
+    b = 3 * n + 5
+    # Generate ps as a deterministic list of n integers
+    # Make them diverse: some small, some larger via simple arithmetic
+    ps = [(i * 2 + 1) % (4 * n + 7) for i in range(n)]
 
     mapping = set(ps)
 
@@ -40,29 +17,53 @@ def main(n):
     ranks['A'] = 0
     ranks['B'] = 0
 
+    def findSet(u):
+        if parents[u] != u:
+            parents[u] = findSet(parents[u])
+        return parents[u]
+
+    def unionSet(u, v):
+        up = findSet(u)
+        vp = findSet(v)
+        if up == vp:
+            return
+        if ranks[up] > ranks[vp]:
+            parents[vp] = up
+        elif ranks[up] < ranks[vp]:
+            parents[up] = vp
+
+        else:
+            parents[up] = vp
+            ranks[vp] += 1
+
     for x in ps:
         if a - x in mapping:
-            unionSet(x, a - x, parents, ranks)
+            unionSet(x, a - x)
+
         else:
-            unionSet(x, 'B', parents, ranks)
+            unionSet(x, 'B')
 
         if b - x in mapping:
-            unionSet(x, b - x, parents, ranks)
+            unionSet(x, b - x)
+
         else:
-            unionSet(x, 'A', parents, ranks)
+            unionSet(x, 'A')
 
-    if findSet('A', parents) == findSet('B', parents):
-        print("NO")
+    if findSet('A') == findSet('B'):
+        # print("NO")
+        pass
+
     else:
-        print("YES")
+        # print("YES")
+        pass
+        out = []
         for i in ps:
-            if findSet(i, parents) == findSet('A', parents):
-                print("0", end=' ')
+            if findSet(i) == findSet('A'):
+                out.append('0')
+
             else:
-                print("1", end=' ')
-        print()
-
-
+                out.append('1')
+        # print(' '.join(out))
+        pass
 if __name__ == "__main__":
-    # 示例调用，规模可自行修改
-    main(5)
+    main(10)

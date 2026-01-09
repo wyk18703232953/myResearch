@@ -1,10 +1,8 @@
-import random
-import string
-
-def main(n: int):
-    # 生成长度为 n 的随机01串
-    a = [random.choice('01') for _ in range(n)]
-    b = [random.choice('01') for _ in range(n)]
+def main(n):
+    # 生成确定性的输入数据
+    # a 和 b 为长度为 n 的字符列表，由简单算术规则生成
+    a = [('a' if i % 2 == 0 else 'b') for i in range(n)]
+    b = [('b' if (i // 2) % 2 == 0 else 'a') for i in range(n)]
 
     ans = 0
     i = 0
@@ -14,9 +12,7 @@ def main(n: int):
             if i < n - 1 and a[i] == b[i + 1] and b[i] == a[i + 1]:
                 i += 1
         i += 1
-
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

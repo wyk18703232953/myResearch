@@ -10,9 +10,8 @@ def main(n: int):
             s = s + g
         g = g + 1
         s = g * 2
-    print(str(v))
-
-
+    # print(str(v))
+    pass
 if __name__ == "__main__":
     # 示例：自动生成一个规模为 10 的测试
     main(10)

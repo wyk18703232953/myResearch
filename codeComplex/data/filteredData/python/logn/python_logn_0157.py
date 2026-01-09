@@ -13,9 +13,11 @@ def function(total, l, r):
             return r - mid + 1
         elif result > total:
             left = mid + 1
+
         else:
             if sum_arith(r - mid + 2, r) > total:
                 return r - mid + 2
+
             else:
                 right = mid - 1
     return -1
@@ -42,10 +44,12 @@ def main(n):
         result = -1
     elif m_val < n_val:
         result = function(n_val, 1, m_val)
+
     else:
         result = 1
 
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

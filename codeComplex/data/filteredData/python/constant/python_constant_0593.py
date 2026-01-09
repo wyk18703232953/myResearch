@@ -12,7 +12,8 @@ def main(n: int):
         (n * 8 + k - 1) // k
     )
 
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

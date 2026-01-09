@@ -27,11 +27,12 @@ def main(n: int):
     digits = [int(i) for i in str(num)]
 
     if r == 0:
-        print(digits[-1])
+        # print(digits[-1])
+        pass
+
     else:
-        print(digits[r - 1])
-
-
+        # print(digits[r - 1])
+        pass
 if __name__ == "__main__":
     # 示例：生成规模为 100 的测试，查询第 100 位数字
     main(100)

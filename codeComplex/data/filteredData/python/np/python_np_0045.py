@@ -41,13 +41,14 @@ def main(n):
     dif = p - p1
 
     if q < abs(p1 - p) or dif > q:
-        print(0.0)
+        # print(0.0)
+        pass
         return
 
     m = abs(y - y1)
     pl = abs(x - x1)
-    print(per(m, pl) / (2 ** (m + pl)))
-
+    # print(per(m, pl) / (2 ** (m + pl)))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时可改为任意正整数规模
     main(10)

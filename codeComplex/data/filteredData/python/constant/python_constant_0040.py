@@ -13,14 +13,14 @@ def main(n):
                 break
 
         if luck and n % i == 0:
-            print("YES")
+            # print("YES")
+            pass
             ye = True
             break
 
     if not ye:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 根据规模 n 生成测试数据：这里将 n 本身作为测试输入
     # 可根据需要修改为其它生成规则

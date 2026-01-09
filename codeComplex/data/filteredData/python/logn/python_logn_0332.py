@@ -24,8 +24,8 @@ def main(n):
         x = i
         k = i
         ans = solve_one(x, k)
-        print(ans)
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：当 n = 5 时，生成 5 组测试数据并输出结果
     main(5)

@@ -1,21 +1,23 @@
-import random
-import string
+def main(n):
+    # Deterministically generate a string of length n
+    # Use repeating lowercase letters pattern
+    if n <= 0:
+        # print(0)
+        pass
+        return
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    m = len(alphabet)
+    line = "".join(alphabet[i % m] for i in range(n))
 
-def main(n: int):
-    # 1. 生成长度为 n 的随机测试字符串（由小写字母组成）
-    line = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-
-    # 2. 原始逻辑
+    n_len = len(line)
     temp = [0]
-    for i in range(1, n):
-        for j in range(n - i):
-            for k in range(1, n - i - j + 1):
-                if line[j:j+i] == line[j+k:j+k+i]:
+    for i in range(1, n_len):
+        for j in range(n_len - i):
+            for k in range(1, n_len - i - j + 1):
+                if line[j:j + i] == line[j + k:j + k + i]:
                     temp.append(i)
-
-    # 输出结果（最大重复子串长度）
-    print(max(temp))
-
+    # print(max(temp))
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n 可在此处调整
+    # Example call; adjust n as needed for experiments
     main(10)

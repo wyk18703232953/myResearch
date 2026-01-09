@@ -16,8 +16,10 @@ def main(n):
             right = mid
         elif total > k:
             left = mid + 1
+
         else:
-            print(mid)
+            # print(mid)
+            pass
             break
 
 

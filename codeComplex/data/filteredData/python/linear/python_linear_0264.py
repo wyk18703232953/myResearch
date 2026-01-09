@@ -1,7 +1,5 @@
 from collections import deque
 from types import GeneratorType
-import random
-
 
 def bfs(start, graph, explored, e):
     queue = deque([start])
@@ -19,6 +17,7 @@ def bfs(start, graph, explored, e):
         if e[0] == 0 and cnt != 1:
             ele = node
             break
+
         else:
             for neighbour in neighbours:
                 if neighbour not in visited:
@@ -32,41 +31,37 @@ def bootstrap(f, stack=[]):
     def wrappedfunc(*args, **kwargs):
         if stack:
             return f(*args, **kwargs)
+
         else:
             to = f(*args, **kwargs)
             while True:
                 if type(to) is GeneratorType:
                     stack.append(to)
                     to = next(to)
+
                 else:
                     stack.pop()
                     if not stack:
                         break
                     to = stack[-1].send(to)
             return to
-
     return wrappedfunc
 
 
-def build_random_tree(n):
-    """生成一个含 n 个节点的随机树，节点标签为 1..n"""
-    if n <= 0:
-        return {}
+def build_tree(n):
+    # Deterministically build a tree:
+    # For n >= 1, nodes are 1..n
+    # For i in 2..n, connect i with i//2 (forms a rooted tree)
     graph = {i: [] for i in range(1, n + 1)}
-    for v in range(2, n + 1):
-        u = random.randint(1, v - 1)
-        graph[u].append(v)
-        graph[v].append(u)
+    for i in range(2, n + 1):
+        p = i // 2
+        graph[p].append(i)
+        graph[i].append(p)
     return graph
 
 
-def main(n):
-    # 1. 生成规模为 n 的测试数据（随机树）
-    graph = build_random_tree(n)
-
-    # 2. 定义 solve，需要访问 graph, visited, r
-    visited = set()
-    r = [0]
+def run_algorithm(graph):
+    n = len(graph)
 
     @bootstrap
     def solve(i):
@@ -81,23 +76,21 @@ def main(n):
                 if k not in visited:
                     yield solve(k)
                     break
+
         else:
             r[0] = i
-
         yield
 
-    # 3. 按原逻辑执行
     roots = []
+    visited = set()
     ele = 0
     e = [ele]
-
     for i in graph:
         if len(graph[i]) == 1:
             roots.append(i)
 
     if not roots:
-        print("No")
-        return
+        return "No\n"
 
     x = roots[0]
     ans = []
@@ -105,37 +98,32 @@ def main(n):
     ans.append((str(x), str(ele)))
 
     for i in graph[ele]:
+        r = [0]
         if i not in visited:
-            r = [0]
-            # 重新绑定 r 给 solve 使用
-            @bootstrap
-            def solve_local(node):
-                cnt = 0
-                visited.add(node)
-                for k in graph[node]:
-                    if k not in visited:
-                        cnt += 1
-                if cnt >= 1:
-                    for k in graph[node]:
-                        if k not in visited:
-                            yield solve_local(k)
-                            break
-                else:
-                    r[0] = node
-                yield
-
-            solve_local(i)
+            solve(i)
             ans.append([str(r[0]), str(ele)])
 
+    out_lines = []
     if len(visited) == n:
-        print("Yes")
-        print(len(ans))
-        for i in ans:
-            print(" ".join(i))
+        out_lines.append("Yes")
+        out_lines.append(str(len(ans)))
+        for pair in ans:
+            out_lines.append(" ".join(pair))
+
     else:
-        print("No")
+        out_lines.append("No")
+    return "\n".join(out_lines) + "\n"
 
 
+def main(n):
+    if n <= 0:
+        # print("No")
+        pass
+        return
+    graph = build_tree(n)
+    result = run_algorithm(graph)
+    # print(result, end='')
+    pass
 if __name__ == "__main__":
-    # 示例：运行 main(10)
+    # Example deterministic call for testing / scaling
     main(10)

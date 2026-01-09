@@ -1,21 +1,16 @@
-import random
+def main(n):
+    # Deterministically generate s based on n
+    s = n * (n + 1) // 2
 
-def main(n: int):
-    # 1. 生成测试数据
-    # 随机生成一棵 n 个节点的树
-    # 节点编号为 1..n
-    edges = []
-    for i in range(2, n + 1):
-        # 随机连接到一个已有节点，形成一棵树
-        parent = random.randint(1, i - 1)
-        edges.append((parent, i))
-
-    # 随机生成 s（可根据需要调整范围，这里设为 1~10^6）
-    s = random.randint(1, 10**6)
-
-    # 2. 原逻辑计算
+    # Initialize degree list
     l = [0 for _ in range(n)]
-    for a, b in edges:
+
+    # Deterministically generate a tree with n nodes using a simple pattern:
+    # Connect node i with node (i+1) to form a path (1-2-3-...-n)
+    # which is a valid tree structure
+    for i in range(n - 1):
+        a = i + 1
+        b = i + 2
         l[a - 1] += 1
         l[b - 1] += 1
 
@@ -24,15 +19,12 @@ def main(n: int):
         if l[i] == 1:
             count += 1
 
-    # 为避免除零情况，这里做个保护；若无叶子，则结果设为 0.0
     if count == 0:
-        result = 0.0
+        result = 0
+
     else:
         result = (s / count) * 2
-
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

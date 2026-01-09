@@ -18,9 +18,11 @@ def main(n):
 
     while n:
         if n == 1:
-            print(last)
+            # print(last)
+            pass
             break
-        print((str(curpow) + ' ') * ((n + 1) // 2), end='')
+        # print((str(curpow) + ' ') * ((n + 1) // 2), end='')
+        pass
         curpow *= 2
         n //= 2
 

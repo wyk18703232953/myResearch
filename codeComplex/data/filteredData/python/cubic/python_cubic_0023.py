@@ -1,34 +1,29 @@
-import random
-import string
+def main(n):
+    # 根据 n 生成确定性的字符串 s
+    # 使用循环周期为 26 的小写字母序列
+    if n <= 0:
+        s = ""
 
-def main(n: int):
-    # 生成长度为 n 的测试字符串 s
-    # 为确保存在重复子串，至少使用较小的字符集
-    if n <= 1:
-        s = "a" * n
     else:
-        chars = string.ascii_lowercase[:5]  # 使用前 5 个小写字母
-        s = ''.join(random.choice(chars) for _ in range(n))
+        s = "".join(chr(ord('a') + (i % 26)) for i in range(n))
 
     length = len(s)
     answer = []
-
-    for i in range(length):
+    for i in range(0, length):
         for j in range(i + 1, length + 1):
             k = s[i:j]
             co = 0
-            for u in range(length):
+            for u in range(0, length):
                 if s[u:].startswith(k):
                     co += 1
             if co >= 2:
                 answer.append(len(k))
-
     if len(set(s)) == length:
-        print('0')
+        # print('0')
+        pass
+
     else:
-        print(max(answer))
-
-
+        # print(max(answer))
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n 可在此修改或由外部调用 main(n)
-    main(10)
+    main(100)

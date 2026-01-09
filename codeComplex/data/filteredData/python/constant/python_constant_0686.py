@@ -1,19 +1,17 @@
 import math
-import random
 
 def main(n):
-    # 生成测试数据：n 边形半径 r，取 1 到 100 的随机整数
-    r = random.randint(1, 100)
+    # Here n is treated as the original input scale for 'n' in the problem.
+    # We deterministically generate r based on n.
+    original_n = max(2, n)  # ensure valid for angle computation
+    r = n + 1
 
-    angle = math.pi / n
+    angle = math.pi / original_n
     c = math.sin(angle)
     k = c / (1 - c)
     R = k * r
-
-    # 保留 7 位小数输出
     R = float(format(R, '.7f'))
-    print(R)
-
+    # print(R)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(6) 表示 n=6
-    main(6)
+    main(10)

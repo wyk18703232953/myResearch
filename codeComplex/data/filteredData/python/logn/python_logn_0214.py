@@ -18,6 +18,7 @@ def solve(x: int, s: int) -> int:
             if (meio - 1) - somadig(meio - 1) < s:
                 return x - (meio - 1)
             fim = meio - 1
+
         else:
             comeco = meio + 1
 
@@ -35,9 +36,8 @@ def main(n: int):
     x = n
     s = n // 2
     ans = solve(x, s)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：规模为 100
     main(100)

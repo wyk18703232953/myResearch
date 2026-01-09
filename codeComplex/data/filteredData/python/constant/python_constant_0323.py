@@ -1,22 +1,21 @@
-import random
-
 def main(n):
-    # 生成长度固定为 14 的测试数据，元素值与规模 n 相关
-    # 这里设定每个元素在 [0, n] 范围内随机生成
-    a = [random.randint(0, n) for _ in range(14)]
+    # Generate deterministic input of length 14 based on n
+    # Example: values depend on n and index, but are fully deterministic
+    a = [((n + i * 3) % 50) for i in range(14)]
 
     h = 0
-    for idx in range(14):
+    for i_outer in range(14):
         b = a[:]
-        if idx == 13:
+        if i_outer == 13:
             j = 0
+
         else:
-            j = idx + 1
-        if a[idx] > 0:
+            j = i_outer + 1
+        if a[i_outer] > 0:
             c = 0
-            t = b[idx] % 14
-            x = b[idx] // 14
-            b[idx] = 0
+            t = b[i_outer] % 14
+            x = b[i_outer] // 14
+            b[i_outer] = 0
             for k in range(14):
                 b[k] += x
             while t > 0:
@@ -30,8 +29,8 @@ def main(n):
                     c += b[k]
             if c > h:
                 h = c
-    print(h)
-
-# 示例调用
+    # print(h)
+    pass
 if __name__ == "__main__":
-    main(100)
+    # Example call; adjust n as needed for experiments
+    main(1000)

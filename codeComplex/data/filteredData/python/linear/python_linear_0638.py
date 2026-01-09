@@ -18,6 +18,7 @@ def main(n):
         a = [1]
     elif n == 2:
         a = [2, 2]
+
     else:
         half = n // 2
         for i in range(half):
@@ -34,6 +35,7 @@ def main(n):
     for i in range(n):
         if a[i] == 1:
             ones.append(i + 1)
+
         else:
             others.append(i + 1)
 
@@ -46,10 +48,12 @@ def main(n):
         if len(ones) == 1:
             write("YES 0")
             write("0")
+
         else:
             write("NO")
         # 打印结果
-        print("\n".join(outputs))
+        # print("\n".join(outputs))
+        pass
         return
 
     dia = len(others)
@@ -82,6 +86,7 @@ def main(n):
                 this = ones.pop()
                 graph.append((this, others[j]))
                 cap[others[j]] -= 1
+
             else:
                 done = True
                 break
@@ -90,6 +95,7 @@ def main(n):
 
     if len(ones) > 0:
         write("NO")
+
     else:
         write("YES " + str(dia - 1))
         write(len(graph))
@@ -97,9 +103,8 @@ def main(n):
             write(f"{u} {v}")
 
     # --------- 3. 输出 ---------
-    print("\n".join(outputs))
-
-
+    # print("\n".join(outputs))
+    pass
 if __name__ == "__main__":
     # 示例调用：可修改 n 测试不同规模
     main(5)

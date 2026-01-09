@@ -16,6 +16,7 @@ def main(n):
         if i % 3 == 0:
             # 让 k 大于 A(ni)，使其走 NO 分支
             ki = A(ni) + i
+
         else:
             # 让 k 落在 [1, A(ni)]，多数情况在合法区间内
             ki = max(1, (A(ni) * (i % 10 + 1)) // 10)
@@ -51,14 +52,14 @@ def main(n):
 
         if n_local >= 0:
             results.append(f"YES {n_local}")
+
         else:
             results.append("NO")
 
     # 输出结果
     for line in results:
-        print(line)
-
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 运行规模为 5 的测试
     main(5)

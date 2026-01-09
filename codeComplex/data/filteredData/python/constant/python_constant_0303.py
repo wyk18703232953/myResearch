@@ -8,9 +8,8 @@ def main(n):
     # 原程序逻辑
     q = (n + s - 1) // s
     ans = (q * k + p - 1) // p
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 自行设定
     main(100)

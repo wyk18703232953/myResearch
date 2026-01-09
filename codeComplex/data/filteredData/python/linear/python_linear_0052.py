@@ -1,5 +1,3 @@
-import random
-
 def find(u, par):
     if u != par[u]:
         par[u] = find(par[u], par)
@@ -10,19 +8,10 @@ def union(u, v, par):
     v = find(v, par)
     par[u] = v
 
-def main(n):
-    # 1. 生成测试数据
-    # 随机生成数组 p，元素范围适当放大，避免过多重复
-    p = [random.randint(1, 2 * n) for _ in range(n)]
-    # 随机生成 a, b
-    a = random.randint(1, 3 * n)
-    b = random.randint(1, 3 * n)
-
-    # 2. 原逻辑
+def core_logic(n, a, b, p):
     mp = dict()
     for i in range(n):
         mp[p[i]] = i + 1
-
     par = [i for i in range(n + 2)]
 
     for i in range(n):
@@ -33,11 +22,18 @@ def main(n):
     B = find(n + 1, par)
 
     if A != B:
-        print('YES')
-        print(' '.join(['1' if find(i, par) == B else '0' for i in range(1, n + 1)]))
-    else:
-        print('NO')
+        res = ['1' if find(i, par) == B else '0' for i in range(1, n + 1)]
+        return "YES\n" + " ".join(res)
 
-# 示例调用
+    else:
+        return "NO"
+
+def main(n):
+    a = 2 * n + 3
+    b = 3 * n + 5
+    p = [(i * 2 + 1) % (4 * n + 7) for i in range(n)]
+    result = core_logic(n, a, b, p)
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

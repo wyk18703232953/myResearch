@@ -28,6 +28,7 @@ def main(n: int):
             flag = 1
             cur = m
             r = m
+
         else:
             l = m + 1
 
@@ -53,9 +54,12 @@ def main(n: int):
             cur = l
 
     if flag == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print(n - cur + 1)
+        # print(n - cur + 1)
+        pass
 
 
 # 示例：如需直接运行，可取消下面注释，并指定一个 n

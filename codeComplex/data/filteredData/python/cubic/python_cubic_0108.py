@@ -38,6 +38,7 @@ def count_game(k, n, x):  # k players, n points total, no player can have x poin
             break
         if i % 2:
             ans = (ans - C(k, i) * candy(t, k)) % base
+
         else:
             ans = (ans + C(k, i) * candy(t, k)) % base
     return ans
@@ -72,4 +73,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例: 使用 n = 10 生成一组测试数据并输出结果
-    print(main(10))
+    # print(main(10))
+    pass

@@ -1,44 +1,33 @@
 from collections import deque
-import random
 
-def main(n: int) -> int:
-    """
-    n: 规模，用于生成测试数据
-    返回：原程序的输出（oper）
-    """
-    # 根据 n 生成测试数据
-    # 这里约定：
-    #   m = n
-    #   k 在 [1, max(1, n//3)] 中随机取值
-    #   a 为长度为 m 的递增正整数序列，值在 [1, 10*n] 内
+def main(n):
+    # 解释输入结构：
+    # 原程序读取：n, m, k 和一个长度为 m 的数组
+    # 这里将 n 作为数组长度 m，同时令原来的 n = m，k = max(1, n // 3)
+    # 为了保证行为合理，构造一个递增数组 a，元素值从 1 开始，步长为 2
     m = n
-    k = max(1, n // 3)  # 可根据需要修改生成规则
-    k = random.randint(1, k)
+    if m <= 0:
+        # print(0)
+        pass
+        return
 
-    # 生成递增数组 a
-    a = []
-    cur = 0
-    for _ in range(m):
-        cur += random.randint(1, max(1, 10))  # 保证递增
-        a.append(cur)
+    orig_n = m
+    k = max(1, m // 3)
 
-    # 将原逻辑封装
-    dq = deque(a)
+    a = deque(1 + 2 * i for i in range(m))
+
     oper = 0
     rem = 0
-    while dq:
-        x = dq.popleft()
+    while a:
+        x = a.popleft()
         pg = (x - 1 - rem) // k
         lrem = 1
-        while dq and (dq[0] - 1 - rem) // k == pg:
-            dq.popleft()
+        while a and (a[0] - 1 - rem) // k == pg:
+            a.popleft()
             lrem += 1
         rem += lrem
         oper += 1
-
-    return oper
-
+    # print(oper)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，可以根据需要修改 n
-    result = main(10)
-    print(result)
+    main(10)

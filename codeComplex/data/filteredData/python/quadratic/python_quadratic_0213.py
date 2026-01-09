@@ -29,9 +29,8 @@ def main(n):
 
     # 原代码逻辑：如果存在 x 使得 x & s & ~t 为真，则输出 "YES"，否则 "NO"
     result = ("YES", "NO")[all(x & s & ~t for x in a)]
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

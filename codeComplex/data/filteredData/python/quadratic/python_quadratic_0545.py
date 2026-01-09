@@ -1,8 +1,7 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据：v 为 1~n 之间的随机整数
-    v = random.randint(1, n)
+def main(n):
+    # 映射：原程序中 n = 规模参数，v 作为 n 的函数确定生成
+    # 保持相对规模线性：设 v = n 的平方
+    v = n * n
 
     b = 0
     ans = 0
@@ -15,10 +14,7 @@ def main(n: int) -> int:
             ans += i
             b += 1
         b -= 1
-    print(ans)
-    return ans
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：可根据需要修改 n 的大小
-    main(10)
+    main(1000)

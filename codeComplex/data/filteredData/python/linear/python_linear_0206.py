@@ -1,19 +1,20 @@
-import random
-
 def main(n):
-    # 随机生成参数 s（题意中是以分钟为单位的间隔）
-    # 这里假设 s 在 1~30 之间
-    s = random.randint(1, 30)
+    # Interpret n as the number of time points (the original 'n')
+    # Fixed s for determinism and scalability behavior; can be tuned if needed
+    s = max(1, n // 3)
 
-    # 随机生成 n 个时间点（小时0~23，分钟0~59），并按时间先后排序
+    # Deterministic generation of n (hour, minute) pairs
+    # Ensure times are non-decreasing in minutes
     times = []
-    for _ in range(n):
-        a = random.randint(0, 23)
-        b = random.randint(0, 59)
-        times.append((a, b))
-    times.sort(key=lambda x: x[0] * 60 + x[1])
+    current_minutes = 0
+    for i in range(n):
+        # Step in minutes grows slowly with i to avoid enormous jumps
+        step = 1 + (i % 5)
+        current_minutes += step
+        hour = (current_minutes // 60) % 24
+        minute = current_minutes % 60
+        times.append((hour, minute))
 
-    # 原代码逻辑封装
     t = [[0, 0]]
     for j in range(n):
         a, b = times[j]
@@ -23,20 +24,23 @@ def main(n):
 
         if j == 0:
             if total >= s + 1:
-                print(0, 0)
-                return
+                # print(0, 0)
+                pass
+                break
 
         if total - last > 2 * s:
             u = last + s
-            print(u // 60, u % 60)
-            return
+            # print(u // 60, u % 60)
+            pass
+            break
 
         if j == n - 1:
             x = t[-1][0] * 60 + t[-1][1]
-            print((x + s + 1) // 60, (x + s + 1) % 60)
-            return
+            # print((x + s + 1) // 60, (x + s + 1) % 60)
+            pass
+            break
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # Example invocation; adjust n as needed for experiments
+    main(10)

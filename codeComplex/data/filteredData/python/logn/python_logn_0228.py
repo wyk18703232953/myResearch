@@ -6,6 +6,7 @@ def forninho(miolo, s):
         miolo = miolo // 10
     if premiolo - temp >= s:
         return 1
+
     else:
         return 0
 
@@ -23,13 +24,17 @@ def main(n):
         if forninho(miolo, s) == 1:
             r = miolo - 1
             result = miolo
+
         else:
             l = miolo + 1
 
     if result == -1:
-        print("0")
+        # print("0")
+        pass
+
     else:
-        print(n - result + 1)
+        # print(n - result + 1)
+        pass
 
 
 # 示例：运行 main(100) 进行测试

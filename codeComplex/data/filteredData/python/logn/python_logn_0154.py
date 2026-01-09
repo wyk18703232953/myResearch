@@ -11,6 +11,7 @@ def bs(st, en, n, k, s):
             return (k - mid) + 1
         elif s1 > n:
             st = mid + 1
+
         else:
             en = mid
     return (k - st) + 2
@@ -25,7 +26,8 @@ def main(n):
     if n <= 1:
         # 与原逻辑对应：如果输入的 (n+1) == 1，即 n == 0，则输出 0
         # 此处生成的数据无法满足 n-1 >= 0 时的正常流程，直接返回与原逻辑一致的输出
-        print(0)
+        # print(0)
+        pass
         return
 
     k = max(1, n // 2)
@@ -38,15 +40,18 @@ def main(n):
     s = sum_range(k_adj)
 
     if n_adj + 1 == 1:
-        print(0)
+        # print(0)
+        pass
     elif n_adj <= k_adj:
-        print(1)
+        # print(1)
+        pass
     elif n_adj > s:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(bs(1, k_adj, n_adj, k_adj, s))
-
-
+        # print(bs(1, k_adj, n_adj, k_adj, s))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 可根据需要调整
     main(10)

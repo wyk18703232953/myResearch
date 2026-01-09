@@ -14,9 +14,8 @@ def main(n):
         if f:
             cnt += 1
 
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     # 示例调用：可修改 n 测试
     main(10)

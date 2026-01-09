@@ -1,7 +1,5 @@
 import bisect
 from collections import defaultdict as dd
-import random
-
 
 def solve(l, d, s2, r):
     ans = ""
@@ -47,12 +45,12 @@ def solve(l, d, s2, r):
             d[l[ind - 1]] -= 1
             l.pop(ind - 1)
             break
+
         else:
             ans += str(l[ind])
             d[l[ind]] -= 1
             l.pop(ind)
         i += 1
-
     ll = []
     if lol:
         for i in d:
@@ -61,46 +59,45 @@ def solve(l, d, s2, r):
         ll.sort(reverse=True)
         co = 0
         for i in ll:
-            for _ in range(d[i]):
+            for j in range(d[i]):
                 if i == 0:
                     co += 1
                     if co > r:
                         break
                 ans += str(i)
-
-    print(ans)
+    # print(ans)
+    pass
 
 
 def main(n):
-    # 生成长度为 n 的 s1 和 s2（每位是 0-9 的数字）
-    # 保证两串非空且长度分布类似原逻辑
-    length_s1 = n
-    # s2 长度在 [n-2, n+2] 范围内随机选取，至少为 1
-    length_s2 = max(1, n + random.randint(-2, 2))
-
-    s1 = [random.randint(0, 9) for _ in range(length_s1)]
-    s2 = [random.randint(0, 9) for _ in range(length_s2)]
+    # Deterministic generation of s1 and s2 based on n
+    # s1 length = n, s2 length = n (to cover main branches)
+    # digits of s1 and s2 are in [0..9] generated deterministically
+    s1 = [(i * 3 + 1) % 10 for i in range(n)]
+    s2 = [(i * 5 + 2) % 10 for i in range(n)]
 
     z = s1.count(0)
     d = dd(int)
-    n_len = len(s1)
-    m_len = len(s2)
+    length_s1 = len(s1)
+    length_s2 = len(s2)
     l = sorted(s1)
-    for x in s1:
-        d[x] += 1
+    for i in s1:
+        d[i] += 1
 
     if len(s1) < len(s2):
-        # 原代码：直接输出从大到小的排列
-        ans = "".join(str(l[i]) for i in range(len(s1) - 1, -1, -1))
-        print(ans)
+        for i in range(len(s1) - 1, -1, -1):
+            # print(l[i], end="")
+            pass
+        # print()
+        pass
     elif len(s1) > len(s2):
-        r = m_len - (n_len - z)
-        l2 = l[z - r:]
-        solve(l2, d, s2, r)
+        r = length_s2 - (length_s1 - z)
+        l = l[z - r:]
+        solve(l, d, s2, r)
+
     else:
         solve(l, d, s2, 100)
 
 
 if __name__ == "__main__":
-    # 示例：n = 10
-    main(10)
+    main(1000)

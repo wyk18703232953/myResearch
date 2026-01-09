@@ -8,9 +8,8 @@ def main(n: int):
         x -= m
     for i in range(1, x + 1):
         ans.append(i)
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     # 示例：根据规模 n 生成测试数据并运行
     test_n = 100  # 可以在这里修改测试规模

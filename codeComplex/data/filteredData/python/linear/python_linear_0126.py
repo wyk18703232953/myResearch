@@ -23,7 +23,8 @@ def main(n):
         m[parent] += 1
 
     result = if_spruce(n, l, m)
-    print(result)
+    # print(result)
+    pass
 
 
 # 示例调用

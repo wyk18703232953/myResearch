@@ -30,11 +30,11 @@ def main(n):
         if length % 2 == 1:
             if r % 2 == 0:
                 z += r
+
             else:
                 z -= r
-        print(z)
-
-
+        # print(z)
+        pass
 if __name__ == "__main__":
     # 示例：运行规模 n=5
     main(5)

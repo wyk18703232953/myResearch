@@ -6,11 +6,14 @@ def main(n: int):
     limit = 998244353
 
     if k > 2 * n:
-        print(0)
+        # print(0)
+        pass
         return
     elif k == 1 or k == 2 * n:
-        print(2)
+        # print(2)
+        pass
         return
+
     else:
         same = [0] * (k + 1)
         same[1] = 2
@@ -29,9 +32,8 @@ def main(n: int):
                     diff[j] = diff[j] + 2 * same[j - 1] + diff[j - 2]
                     diff[j] %= limit
 
-        print((same[k] + diff[k]) % limit)
-
-
+        # print((same[k] + diff[k]) % limit)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10) 进行运行
     main(10)

@@ -1,15 +1,15 @@
 import math
-import random
 
-def main(n: int):
-    # 生成测试数据：随机生成一个半径 r，范围 [1, 100]
-    r = random.uniform(1.0, 100.0)
+def main(n):
+    # 映射：原程序中有两个输入 n, r
+    # 这里将第一个输入固定为 n，第二个输入 r 由 n 确定性生成
+    # 例如 r = n 的平方，保证随规模变化
+    input_n = n
+    r = n * n
 
-    # 原始计算逻辑
-    result = r / (1 / math.cos(math.pi * (n - 2) / (2 * n)) - 1)
-
-    print(result)
-
+    # 原始核心逻辑
+    result = r / (1 / math.cos(math.pi * (input_n - 2) / 2 / input_n) - 1)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 由此处指定
-    main(6)
+    main(10)

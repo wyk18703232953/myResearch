@@ -1,82 +1,108 @@
-import random
-import string
-
-
 def main(n):
-    """
-    n 为规模参数，用来生成测试数据：
-    - m 在 [max(1, n-3), n+3] 范围内随机生成
-    - s 为长度为 n 的模式串，含 0 或 1 个 '*'
-    - t 为长度为 m 的普通字符串（无 '*'）
-    """
+    # n controls the length of the target string t
+    # pattern s will contain at most one '*'
+    # make sure n >= 1
+    if n < 1:
+        n = 1
 
-    # 生成 m（长度与 n 接近）
-    m = random.randint(max(1, n - 3), n + 3)
+    # Construct n, m (lengths) deterministically
+    # Let m be length of pattern s, choose m between 1 and n+1
+    m = (n % 5) + 1  # m in [1,5]
+    # Constrain t length so that algorithm has meaningful cases
+    # Make t length between 1 and max(n, m+1)
+    t_len = max(1, n)
 
-    # 决定是否在 s 中放置 '*'
-    has_star = random.choice([True, False])
-    alphabet = string.ascii_lowercase
+    # Build pattern s deterministically with at most one '*'
+    # Cases: no '*', '*' at start, '*' at end, '*' in middle
+    mode = n % 4
+    base_chars = ['a', 'b', 'c', 'd', 'e', 'f']
 
-    if not has_star:
-        # 不含 '*'
-        s = ''.join(random.choice(alphabet) for _ in range(n))
-    else:
-        # 含一个 '*'
-        if n == 1:
-            s = '*'
+    if mode == 0:
+        # no '*', length = m
+        s_list = [base_chars[i % len(base_chars)] for i in range(m)]
+    elif mode == 1:
+        # '*' at start
+        if m == 1:
+            s_list = ['*']
+
         else:
-            star_pos = random.randint(0, n - 1)
-            chars = []
-            for i in range(n):
-                if i == star_pos:
-                    chars.append('*')
-                else:
-                    chars.append(random.choice(alphabet))
-            s = ''.join(chars)
+            s_list = ['*'] + [base_chars[i % len(base_chars)] for i in range(m - 1)]
+    elif mode == 2:
+        # '*' at end
+        if m == 1:
+            s_list = ['*']
 
-    # 生成 t：长度为 m，普通字符串
-    t = ''.join(random.choice(alphabet) for _ in range(m))
+        else:
+            s_list = [base_chars[i % len(base_chars)] for i in range(m - 1)] + ['*']
 
-    # ===== 原逻辑开始 =====
+    else:
+        # '*' in middle, if possible
+        if m == 1:
+            s_list = ['*']
+        elif m == 2:
+            s_list = ['*', base_chars[0]]
+
+        else:
+            ind = m // 2
+            left = [base_chars[i % len(base_chars)] for i in range(ind)]
+            right = [base_chars[(i + 1) % len(base_chars)] for i in range(m - ind - 1)]
+            s_list = left + ['*'] + right
+
+    s = ''.join(s_list)
+
+    # Build target string t of length t_len deterministically
+    t_list = [base_chars[(i + 2) % len(base_chars)] for i in range(t_len)]
+    t = ''.join(t_list)
+
+    # Now run original logic, with n,m as lengths of s,t
+    n_len = len(s)
+    m_len = len(t)
+
     if '*' not in s:
         if s == t:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
-    elif n > m + 1:
-        print('NO')
-    elif n == 1 and s == '*':
-        print('YES')
+            # print('NO')
+            pass
+    elif n_len > m_len + 1:
+        # print('NO')
+        pass
+    elif n_len == 1 and s == '*':
+        # print('YES')
+        pass
+
     else:
-        s_list = list(s)
-        t_list = list(t)
-        if s_list[0] == '*':
-            if s_list[1:] == t_list[-len(s_list[1:]):]:
-                print('YES')
+        s_chars = list(s)
+        t_chars = list(t)
+        if s_chars[0] == '*':
+            if s_chars[1:] == t_chars[-(len(s_chars[1:])):]:
+                # print('YES')
+                pass
+
             else:
-                print('NO')
-        elif s_list[-1] == '*':
-            if s_list[:n - 1] == t_list[:n - 1]:
-                print('YES')
+                # print('NO')
+                pass
+        elif s_chars[-1] == '*':
+            if s_chars[:n_len - 1] == t_chars[:n_len - 1]:
+                # print('YES')
+                pass
+
             else:
-                print('NO')
+                # print('NO')
+                pass
+
         else:
-            ind = s_list.index('*')
-            if (
-                s_list[:ind] == t_list[:ind]
-                and s_list[ind + 1:] == t_list[-len(s_list[ind + 1:]):]
-            ):
-                print('YES')
+            ind = s_chars.index('*')
+            if s_chars[:ind] == t_chars[:ind] and s_chars[ind + 1:] == t_chars[-len(s_chars[ind + 1:]):]:
+                # print('YES')
+                pass
+
             else:
-                print('NO')
-    # ===== 原逻辑结束 =====
-
-    # 如需调试，可打印生成的测试数据：
-    # print("n =", n, "m =", m)
-    # print("s =", s)
-    # print("t =", t)
-
-
+                # print('NO')
+                pass
 if __name__ == "__main__":
-    # 示例运行：规模为 5
-    main(5)
+    # Example deterministic calls for scaling
+    for size in [1, 2, 5, 10, 50, 100]:
+        main(size)

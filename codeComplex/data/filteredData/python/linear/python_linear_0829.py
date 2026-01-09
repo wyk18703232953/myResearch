@@ -1,18 +1,17 @@
-import random
-
 def matches(pos, c, case):
     if case == 0:
         return pos % 3 == "RGB".index(c)
     elif case == 1:
         return pos % 3 == "GBR".index(c)
+
     else:
         return pos % 3 == "BRG".index(c)
 
-def solve_one(n, k, s):
+
+def solve_single_case(n, k, s):
     mglobal = k
     r = g = b = 0
 
-    # initial window [0, k)
     for i, c in enumerate(s[:k]):
         r += not matches(i, c, 0)
         g += not matches(i, c, 1)
@@ -20,9 +19,8 @@ def solve_one(n, k, s):
 
     mglobal = min(mglobal, r, g, b)
 
-    # slide window
-    for i, c in enumerate(s[k:], start=k):
-        # leaving index i-k, entering index i
+    for i, c in enumerate(s[k:]):
+        i += k
         r += -(not matches(i - k, s[i - k], 0)) + (not matches(i, c, 0))
         g += -(not matches(i - k, s[i - k], 1)) + (not matches(i, c, 1))
         b += -(not matches(i - k, s[i - k], 2)) + (not matches(i, c, 2))
@@ -30,26 +28,47 @@ def solve_one(n, k, s):
 
     return mglobal
 
+
 def main(n):
-    """
-    n: problem scale, interpreted here as:
-       - number of test cases q = n
-       - for each test: random length L in [1, n], random k in [1, L]
-    """
-    random.seed(0)
+    # Interpret n as total length of all strings.
+    # We'll construct q test cases deterministically.
+    # Let q grow like max(1, n // 10), and each string length n_i ≈ 10.
+    if n <= 0:
+        return
 
-    q = n
+    q = max(1, n // 10)
     results = []
-    for _ in range(q):
-        L = random.randint(1, n)
-        k = random.randint(1, L)
-        s = ''.join(random.choice('RGB') for _ in range(L))
-        ans = solve_one(L, k, s)
-        results.append(ans)
 
-    # Output one result per line (like original multiple test cases)
-    for x in results:
-        print(x)
+    # total length should not exceed n, adjust per-case length
+    base_len = max(3, n // q)  # at least 3 for meaningful k
+    remaining = n
 
+    for t in range(q):
+        # Last case takes all remaining to ensure sum lengths == n
+        if t == q - 1:
+            length = max(3, remaining)
+
+        else:
+            length = min(base_len, remaining - 3 * (q - t - 1))
+            length = max(3, length)
+
+        remaining -= length
+
+        # Deterministic k between 1 and length
+        k = 1 + (t % length)
+
+        # Deterministic string s of length 'length'
+        # pattern cycles to keep structure but fully deterministic
+        pattern = "RGB"
+        s = "".join(pattern[(i + t) % 3] for i in range(length))
+
+        res = solve_single_case(length, min(k, length), s)
+        results.append(res)
+
+    # To keep behavior simple and deterministic, print one result per line
+    for r in results:
+        # print(r)
+        pass
 if __name__ == "__main__":
-    main(5)
+    # Example deterministic call; adjust n for different scales
+    main(1000)

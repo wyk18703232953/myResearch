@@ -39,6 +39,7 @@ def solve(n: int, d: int, k: int):
 
             if i <= (d + 2) / 2:
                 depth = i - 2
+
             else:
                 depth = d - i
 
@@ -56,6 +57,7 @@ def max_nodes(d: int, k: int) -> int:
     if d % 2:
         # d 为奇数
         return (q * (1 - q ** (d // 2)) // (1 - q) + 1) * 2
+
     else:
         # d 为偶数
         return (q * (1 - q ** (d // 2 - 1)) // (1 - q) + 1) * 3 + 1
@@ -104,6 +106,7 @@ def main(n: int):
 
     if n > maxi or n <= d:
         pprint("NO")
+
     else:
         pprint("YES")
         solve(n, d, k)

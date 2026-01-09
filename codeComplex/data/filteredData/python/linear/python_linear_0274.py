@@ -9,9 +9,8 @@ def main(n):
     # 原逻辑：给定 n, m, a, b，输出：
     # min(n % m * b, (m - n % m) * a)
     res = min(n % m * b, (m - n % m) * a)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n
     main(10)

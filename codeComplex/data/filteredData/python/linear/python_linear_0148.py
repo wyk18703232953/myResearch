@@ -1,28 +1,24 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # 约束：k >= 1，n >= 2（原逻辑中有遍历到 n-1）
-    if n < 2:
-        raise ValueError("n 必须 >= 2")
+    # 确定性生成 n, k, lst
+    # 保持原逻辑：前一行有 n 和 k，后一行为长度为 n 的数组
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-    k = random.randint(1, max(1, n))          # 随机生成 k
-    lst = [random.randint(0, 1000) for _ in range(n)]  # 随机生成数组
+    k = n + 3  # 任意与 n 相关的正整数，确保可规模化且确定
+    lst = [(i * 2 + 3) % (k + 5) for i in range(n)]
 
-    # 原始逻辑
     s = sum(lst)
     s2 = 0
     m = 0
     for i in range(n - 1):
         s2 += lst[i]
         s -= lst[i]
-        if (s2 % k) + (s % k) > m:
-            m = (s2 % k) + (s % k)
-
-    # 输出结果（可根据需要返回或打印）
-    print(m)
-    return m
-
+        v = (s2 % k) + (s % k)
+        if v > m:
+            m = v
+    # print(m)
+    pass
 if __name__ == "__main__":
-    # 示例运行：可修改 n 以测试不同规模
     main(10)

@@ -24,6 +24,7 @@ def main(n):
     for ch in a:
         if ch == '0':
             cnt0 += 1
+
         else:
             cnt1 += 1
         o.append(cnt0)
@@ -44,6 +45,7 @@ def main(n):
 
         if zs != 0:
             val = ( (z[os] - 1) % MOD * z[zs] ) % MOD
+
         else:
             val = (z[os] - 1) % MOD
         out_lines.append(str(val))

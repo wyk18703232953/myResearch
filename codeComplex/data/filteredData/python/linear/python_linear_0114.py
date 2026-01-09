@@ -8,7 +8,8 @@ def main(n: int) -> int:
     F = int(ceil(N / 2.0))
     ans = int((S + F) / 2)
 
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

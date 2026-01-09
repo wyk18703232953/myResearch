@@ -1,23 +1,23 @@
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据：随机整数序列（范围可自行调整）
-    s = [str(random.randint(0, 100)) for _ in range(n)]
+    # n 作为输入规模：生成长度为 n 的字符串列表
+    # 构造序列：0, 1, 2, ..., n-1
+    s = [str(i) for i in range(n)]
 
     l = []
     for j in s:
-        v = int(j) % 2
-        if not l or v != l[-1]:
-            l.append(v)
+        val = int(j) % 2
+        if not l or val != l[-1]:
+            l.append(val)
+
         else:
             l.pop()
 
     if len(l) < 2:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，n 可自行修改
     main(10)

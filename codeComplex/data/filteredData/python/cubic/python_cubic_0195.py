@@ -1,14 +1,13 @@
-import random
-
-INF = 10001
-mod = int(1e9) + 7
-
 def main(n):
-    # 生成测试数据：长度为 n 的数组 a，元素取值 1..5
-    a = [random.randint(1, 5) for _ in range(n)]
+    # Generate deterministic input of size n
+    # Original program: n is length of list a, read from stdin
+    # Here: we construct a list a of length n deterministically
+    if n <= 0:
+        return
+    a = [(i % 5) + 1 for i in range(n)]
 
-    # dp1[l][r]: 区间 [l, r] 能整体变为某个值的“层数”，不可则为 0
-    # dp3[l][r]: 区间 [l, r] 最少分成多少段，每段都能被“完全压缩”成一个值
+    INF = 10001
+
     dp1 = [[-1] * n for _ in range(n)]
     dp3 = [[INF] * n for _ in range(n)]
 
@@ -29,11 +28,8 @@ def main(n):
         return dp1[l][r]
 
     cal(0, n - 1)
-    # 返回结果，原代码是输出 dp3[0][n-1]
-    return dp3[0][n - 1]
-
-
+    # print(dp3[0][n - 1])
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    res = main(5)
-    print(res)
+    # Example deterministic call for complexity experiments
+    main(10)

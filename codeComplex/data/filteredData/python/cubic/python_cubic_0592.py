@@ -47,6 +47,7 @@ def solve(a: str, b: str) -> int:
                     mark[index.pop()] = 0
                     f.pop()
                     continue
+
                 else:
                     mark[index.pop()] = 0
                     f.pop()
@@ -106,9 +107,8 @@ def main(n: int):
     b = "9" * n
 
     ans = solve(a, b)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：n=5
     main(5)

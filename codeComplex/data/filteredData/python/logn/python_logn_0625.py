@@ -1,5 +1,3 @@
-import random
-
 def binary(n, k):
     lower = 1
     upper = n
@@ -7,25 +5,32 @@ def binary(n, k):
         mid = (lower + upper) // 2
         total = (mid * (mid + 1)) // 2
         if n - mid == total - k:
-            print(n - mid)
+            # print(n - mid)
+            pass
             break
+
         else:
             if n - mid > total - k:
                 lower = mid + 1
+
             else:
                 upper = mid
 
+
 def main(n):
-    # 生成测试数据：随机生成 1 <= k <= n
+    # 确定性生成 (n, k)
+    # 保证 k 在一个与 n 规模相关且可控的范围内
     if n <= 0:
         return
-    k = random.randint(1, n)
+    N = n
+    K = (n * (n + 1) // 2) // 2  # 与 n 规模相关的确定性构造
+    if N == 1 and K == 1:
+        # print(0)
+        pass
 
-    if n == 1 and k == 1:
-        print(0)
     else:
-        binary(n, k)
+        binary(N, K)
 
-# 示例调用
+
 if __name__ == "__main__":
     main(10)

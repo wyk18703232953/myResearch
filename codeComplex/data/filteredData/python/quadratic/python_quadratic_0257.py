@@ -1,29 +1,37 @@
-import random
+def main(n):
+    # Deterministically generate a, b based on n
+    if n <= 1:
+        a, b = 1, 1
 
-def main(n: int):
-    # 生成测试数据：根据 n 构造 a, b
-    # 保持题意有代表性：随机在 1 和 n 之间
-    if n < 2:
-        n = 2
-    a = random.randint(1, n)
-    b = random.randint(1, n)
+    else:
+        # Cycle through some deterministic (a, b) pairs depending on n
+        # while respecting original constraints domain (positive integers)
+        pattern = [
+            (1, 1),
+            (1, 2),
+            (2, 1),
+            (1, 3),
+            (3, 1),
+        ]
+        a, b = pattern[(n - 2) % len(pattern)]
 
+    # Core logic from original program
     if min(a, b) > 1 or ((n, a, b) in ((2, 1, 1), (3, 1, 1))):
-        print("NO")
+        # print("NO")
+        pass
         return
 
     res = [[0] * n for _ in range(n)]
     for i in range(0, n - max(a, b)):
         res[i][i + 1] = res[i + 1][i] = 1
     if a == 1:
-        res = [[e ^ 1 for e in row] for row in res]
+        res = [[e ^ 1 for e in l] for l in res]
 
-    print("YES")
+    # print("YES")
+    pass
     for i in range(n):
         res[i][i] = 0
-        print(*res[i], sep='')
-
-
+        # print(*res[i], sep='')
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
     main(5)

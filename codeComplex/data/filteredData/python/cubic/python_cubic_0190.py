@@ -1,12 +1,10 @@
-import random
+def main(n):
+    # Deterministically generate input array b of length n
+    # Values are in [1, 2023] to match the range used in original code
+    if n <= 0:
+        return 0
+    b = [(i % 2023) + 1 for i in range(n)]
 
-def main(n: int):
-    # 生成测试数据：b 为长度为 n 的数组，元素在 [1, 10] 范围内
-    # 数值上限不超过 2023 即可，原代码中使用到的最大值为 2023
-    max_val = 10
-    b = [random.randint(1, max_val) for _ in range(n)]
-
-    # 以下是原始逻辑的改写，无 input()
     e = [[-1] * (n + 1) for _ in range(2024)]
 
     d = [[] for _ in range(n)]
@@ -21,17 +19,16 @@ def main(n: int):
                 e[v + 1][i] = h
                 d[i].append(h)
 
-    a = [i for i in range(1, n + 1)]
+    a = [x for x in range(1, n + 1)]
     for s in range(n):
         for pos in d[s]:
-            if s > 0:
-                a[pos] = min(a[pos], a[s - 1] + 1)
-            else:
-                a[pos] = min(a[pos], 1)
-
-    print(a[n - 1])
+            a[pos] = min(a[pos], a[s - 1] + 1 if s > 0 else 1)
+    result = a[n - 1]
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：运行规模 n = 10
-    main(10)
+    # Example deterministic call for experimentation
+    main(1000)

@@ -20,11 +20,12 @@ def main(n: int):
     number = last + k
 
     if r == 0:
-        print(str(number - 1)[digit_len - 1])
+        # print(str(number - 1)[digit_len - 1])
+        pass
+
     else:
-        print(str(number)[r - 1])
-
-
+        # print(str(number)[r - 1])
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(15)，表示 index=15
     main(15)

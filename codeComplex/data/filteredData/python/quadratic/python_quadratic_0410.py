@@ -9,9 +9,8 @@ def main(n):
         if s[:i] == s[-i:]:
             c = i
     result = s + s[c:] * (k - 1)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(3)
     main(3)

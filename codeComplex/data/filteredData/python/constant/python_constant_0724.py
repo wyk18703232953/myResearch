@@ -24,4 +24,5 @@ if __name__ == "__main__":
     n = 100
     ans = main(n)
     if ans is not None:
-        print(ans)
+        # print(ans)
+        pass

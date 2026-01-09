@@ -1,60 +1,53 @@
-import random
-import string
+def main(n):
+    # Deterministically generate strings a and b based on n
+    # Use lowercase letters; ensure both are non-empty for n>=1
+    letters = [chr(ord('a') + (i % 26)) for i in range(max(1, n))]
+    # a is first n chars
+    a = ''.join(letters)
+    # b is reversed letters with a small deterministic shift
+    shift = (n // 2) % max(1, n)
+    b_list = letters[-shift:] + letters[:-shift]
+    b = ''.join(b_list[::-1])
 
-
-def check(res, j, a, b):
-    added = False
-    tmp = ""
-    for i in a:
-        if i == j and not added:
-            added = True
-        else:
-            tmp += i
-    tmp = res + j + tmp[::-1]
-    return tmp <= b
-
-
-def main(n: int):
-    """
-    规模 n：生成两个长度为 n 的小写字母串 a, b，保持与原逻辑一致：
-    若 len(a) < len(b) 的分支，用 len(a) < len(b) 的数据；
-    否则用 len(a) == len(b) 的数据。
-    """
-    # 随机决定走哪个分支：0 -> len(a) < len(b), 1 -> len(a) == len(b)
-    branch = random.randint(0, 1)
-
-    if branch == 0:
-        # len(a) < len(b)
-        len_a = max(1, n - 1)  # 至少 1
-        len_b = len_a + 1
-    else:
-        # len(a) == len(b)
-        len_a = len_b = max(1, n)
-
-    # 生成测试数据：小写字母串
-    a = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_a))
-    b = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_b))
-
-    # 原逻辑开始
     if len(a) < len(b):
-        a_list = sorted(a)[::-1]
-        res = ''.join(a_list)
-        print(res)
+        a_sorted = sorted(a)[::-1]
+        # print(''.join(a_sorted))
+        pass
         return
 
-    # len(a) == len(b)
+    def check(res, j, a_list, b_str):
+        added = False
+        tmp = ""
+        for ch in a_list:
+            if ch == j and not added:
+                added = True
+
+            else:
+                tmp += ch
+        tmp = res + j + tmp[::-1]
+        return tmp <= b_str
+
+    # len(a) == len(b) is not guaranteed in generated data.
+    # To keep original core logic for the main branch, we enforce equal length
+    # by trimming or padding a to match b.
+    if len(a) != len(b):
+        if len(a) > len(b):
+            a = a[:len(b)]
+
+        else:
+            # pad a deterministically with 'z' to reach len(b)
+            a = a + 'z' * (len(b) - len(a))
+
     res = ""
     n_len = len(a)
     a_list = sorted(list(a))[::-1]
     for _ in range(n_len):
-        for j in a_list:
+        for j in list(a_list):
             if check(res, j, a_list, b):
                 res += j
                 a_list.remove(j)
                 break
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 5
-    main(5)
+    main(10)

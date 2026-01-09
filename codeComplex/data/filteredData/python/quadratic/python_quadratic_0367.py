@@ -1,22 +1,23 @@
-import random
-
 def main(n):
-    # 随机生成一个 n x n 的网格，包含 '*' 和 '.'
+    # Interpret n as grid size: n x n
+    # Generate a deterministic pattern using '*'' and '.'
     m = n
     mat = []
-    for _ in range(n):
-        row = [random.choice(['*', '.']) for _ in range(m)]
-        mat.append([1 if c == '*' else 0 for c in row])
+    for i in range(n):
+        row = []
+        for j in range(m):
+            # Deterministic pattern: star if (i+j) is even and away from border for larger n
+            if n > 2 and 1 <= i <= n - 2 and 1 <= j <= m - 2 and (i + j) % 2 == 0:
+                row.append(1)
+
+            else:
+                row.append(0)
+        mat.append(row)
 
     ver = [[0 for _ in range(m)] for _ in range(n)]
     hor = [[0 for _ in range(m)] for _ in range(n)]
 
-    # dp[i][j][0]: 从左往右，当前点向左的长度
-    # dp[i][j][1]: 从上往下，当前点向上的长度
-    # dp[i][j][2]: 从右往左，当前点向右的长度
-    # dp[i][j][3]: 从下往上，当前点向下的长度
     dp = [[[0 for _ in range(4)] for _ in range(m)] for _ in range(n)]
-
     for i in range(1, n):
         for j in range(1, m):
             x, y = n - i - 1, m - j - 1
@@ -56,13 +57,15 @@ def main(n):
             break
 
     if chk:
-        print(len(stars))
+        # print(len(stars))
+        pass
         for s in stars:
-            print(*s)
+            # print(*s)
+            pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 生成 10x10 的随机测试数据并运行
+    # Example call for time complexity experiments
     main(10)

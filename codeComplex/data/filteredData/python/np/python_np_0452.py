@@ -18,6 +18,7 @@ def main(n):
         d1 = -val
         if s == 0:
             d0 = 0
+
         else:
             d1 = 0
         for i in range(y2):
@@ -30,9 +31,8 @@ def main(n):
         return max(f(v, 0), f(v, 1))
 
     result = h(n2 + 1) * r + h(n2) * (g - r)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

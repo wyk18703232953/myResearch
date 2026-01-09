@@ -1,9 +1,8 @@
-import random
-import string
-
-def main(n: int):
-    # 生成长度为 n 的随机字符串，字符集为小写字母
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+def main(n):
+    # Generate a deterministic string of length n
+    # Pattern: repeating lowercase letters 'a' to 'z'
+    chars = [chr(ord('a') + (i % 26)) for i in range(n)]
+    s = "".join(chars)
 
     n_len = len(s)
     m = n_len - 1
@@ -24,8 +23,7 @@ def main(n: int):
         if find:
             break
         m -= 1
-    print(m)
-
-# 示例调用
+    # print(m)
+    pass
 if __name__ == "__main__":
-    main(10)
+    main(1000)

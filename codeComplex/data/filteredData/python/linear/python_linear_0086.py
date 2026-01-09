@@ -1,21 +1,24 @@
 import math
-import random
 
-def main(n: int) -> int:
-    # 1. 生成测试数据：n 个灯塔 (a, b)
-    #   假设 a 为正整数且互不相同，b 为非负整数，且不超过 a
-    #   这样 a-b >= 0，避免越界问题
-    coords = set()
-    while len(coords) < n:
-        coords.add(random.randint(0, 5 * n))  # 控制范围，避免 maxA 过大
-    sortedA = sorted(coords)
+def main(n):
+    if n <= 0:
+        # print(0)
+        pass
+        return
+
+    # Deterministic data generation:
+    # Generate n beacons with positions strictly increasing
+    # a_i = i+1, b_i = (i % max(1, n//3)) + 1 to keep radii bounded but scalable
     beacons = {}
-    for a in sortedA:
-        b = random.randint(0, a)  # 确保 a-b >= 0
+    sortedKeys = [0] * n
+    radius_base = max(1, n // 3)
+    for i in range(n):
+        a = i + 1
+        b = (i % radius_base) + 1
+        sortedKeys[i] = a
         beacons[a] = b
 
-    # 原逻辑开始
-    sortedKeys = sortedA[:]  # 已经是排序后的 a
+    sortedKeys.sort()
     maxA = sortedKeys[-1]
 
     sumBeacons = [0] * (maxA + 1)
@@ -37,11 +40,7 @@ def main(n: int) -> int:
             f[i] += f[(i - 1) - numDestroyed]
         minF = min(minF, f[i] + n - i)
 
-    # 输出结果
-    print(minF)
-    return minF
-
-
+    # print(minF)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

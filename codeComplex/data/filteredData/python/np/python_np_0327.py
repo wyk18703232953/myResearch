@@ -27,7 +27,8 @@ def main(n):
                         mem[i][val][k2] = add(mem[i - 1][j][k1], mem[i][val][k2])
 
     ans = sum(mem[-1][k]) % mod
-    print(ans)
+    # print(ans)
+    pass
 
 # 示例：直接运行文件时给一个默认规模
 if __name__ == "__main__":

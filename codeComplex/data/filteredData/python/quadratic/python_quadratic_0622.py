@@ -1,21 +1,16 @@
 from itertools import accumulate
-import random
 
-
-def main(n: int) -> None:
-    # 生成测试数据
-    # n: 数组规模
-    # 随机生成 m,k 和数组 a
+def main(n):
+    # Interpret n as: array length; choose fixed small m and k relative to n
     if n <= 0:
         return
+    m = max(1, n // 3)  # number of groups
+    k = max(1, n // 5)  # decrement value
 
-    # 让 m 在 1..n 之间
-    m = random.randint(1, n)
-    # 生成 k 和数组元素，数值范围可根据需要调整
-    k = random.randint(1, 10)
-    a = [random.randint(0, 20) for _ in range(n)]
+    # Deterministic construction of array a of length n
+    # For variability, use simple arithmetic pattern
+    a = [(i * 2 + (i % 3) - (i // 2)) for i in range(n)]
 
-    # 原始逻辑开始
     als = []
     for i in range(m):
         ls = a[:]
@@ -23,7 +18,6 @@ def main(n: int) -> None:
             if j % m == i:
                 ls[j] -= k
         als.append(list(accumulate(ls)))
-
     ans = 0
     for i in range(m):
         ls = als[i]
@@ -35,10 +29,8 @@ def main(n: int) -> None:
             if j % m == i:
                 anstmp = max(anstmp, ls[j] - mn)
         ans = max(ans, anstmp)
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10
-    main(10)
+    # Example scale; adjust n to run time-complexity experiments
+    main(1000)

@@ -12,8 +12,8 @@ def main(n):
     k = n
 
     ans = solve(x, k)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模自定义
     main(10)

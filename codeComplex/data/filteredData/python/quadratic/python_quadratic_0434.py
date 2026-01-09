@@ -1,4 +1,6 @@
-import random
+import sys
+from collections import deque
+import bisect
 
 def chk(l, r, total):
     b = len(l)
@@ -24,17 +26,16 @@ def chk(l, r, total):
 
     return f
 
-
 def main(n):
-    # 生成长度为 n 的只含 0/1 的测试串（可按需调整生成规则）
-    s = ''.join(str(random.randint(0, 1)) for _ in range(n))
+    # 生成长度为 n 的数字串 s
+    # 构造方式：s[i] = (i % 9) + 1，保证都是 '1' 到 '9'
+    s = ''.join(str((i % 9) + 1) for i in range(n))
 
     l = []
     som = 0
     for ch in s:
-        val = int(ch)
-        l.append(val)
-        som += val
+        l.append(int(ch))
+        som += int(ch)
 
     flag = 0
     for i in range(2, n + 1):
@@ -48,11 +49,12 @@ def main(n):
             break
 
     if flag:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
+    # 示例调用：可根据需要调整 n 的值进行规模实验
     main(10)

@@ -18,9 +18,8 @@ def main(n):
     target_index = (N - 1) % terms
     answer_digit = str(target_number)[target_index]
 
-    print(answer_digit)
-
-
+    # print(answer_digit)
+    pass
 if __name__ == "__main__":
     # 示例：使用规模 n = 100
     main(100)

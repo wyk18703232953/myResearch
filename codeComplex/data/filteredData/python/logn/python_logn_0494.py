@@ -14,7 +14,9 @@ def main(n: int):
         NumofDigits += 1
 
     if NumofDigits == 1:
-        print(k)
+        # print(k)
+        pass
+
     else:
         result = (10 ** (NumofDigits - 1)) + int((k - (prev + 1)) / NumofDigits)
         i = 0
@@ -23,9 +25,8 @@ def main(n: int):
                 break
             i += 1
         result = str(result)
-        print(result[i])
-
-
+        # print(result[i])
+        pass
 if __name__ == "__main__":
     # 示例：自动生成一个规模 n 的测试数据
     # 这里简单地以 n 本身作为测试用的 k

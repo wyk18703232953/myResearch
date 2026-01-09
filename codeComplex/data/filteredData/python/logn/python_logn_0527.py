@@ -8,9 +8,8 @@ def main(n):
     while n_val > x * y:
         n_val, x, y = n_val - x * y, x + 1, y * 10
     a = str(10 ** (x - 1) + n_val // x)[n_val % x]
-    print(a)
-
-
+    # print(a)
+    pass
 if __name__ == "__main__":
     # 举例：调用 main(10)
     main(10)

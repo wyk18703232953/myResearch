@@ -11,6 +11,7 @@ def solve_range(l, r):
     if len(arrr) > len(arrl):
         ans = (1 << len(arrr)) - 1
         return ans
+
     else:
         ind = -1
         # 注意：solve 返回的是低位在前的列表
@@ -20,6 +21,7 @@ def solve_range(l, r):
                 break
         if ind == -1:
             return 0
+
         else:
             ans = (1 << (ind + 1)) - 1
             return ans
@@ -33,7 +35,8 @@ def main(n: int):
       - 若 n < 2，则直接输出 0（无法构造有效区间）
     """
     if n < 2:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 简单构造一组区间：l = n//2, r = n
@@ -45,9 +48,8 @@ def main(n: int):
         l, r = r, l
 
     ans = solve_range(l, r)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 100 作为规模运行
     main(100)

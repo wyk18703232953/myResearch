@@ -8,13 +8,13 @@ def main(n):
 
     if k == 1:
         s = "1" + "0" * (n - 1)
+
     else:
         tmp = "0" * ((n - k) // 2) + "1"
         s = tmp * (n // len(tmp) + 1)
         s = s[:n]
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

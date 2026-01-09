@@ -9,13 +9,13 @@ def main(n):
         val = (k - mid + 1 + k) * mid // 2 - (mid - 1)
         if val < n:
             l = mid
+
         else:
             r = mid
 
     result = -1 if r == k + 1 else r
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 为规模参数
     main(10)

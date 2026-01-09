@@ -1,31 +1,31 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：长度为 n 的数组和窗口最大长度 k
-    # 示例策略：元素在 [-1000, 1000] 范围内，k 在 [1, n] 内随机选择
+def main(n):
+    # n controls both the array size and the upper bound for k
     if n <= 0:
+        # print(0.0)
+        pass
         return
 
-    k = random.randint(1, n)
-    arr = [random.randint(-1000, 1000) for _ in range(n)]
+    # Deterministic generation of n and k
+    # Let the original n be N, and k be about N//3 at minimum 1
+    N = n
+    k = max(1, N // 3)
+
+    # Deterministic array: arr[i] = (i * 7) % 100 - 50  (values in [-50,49])
+    arr = [((i * 7) % 100) - 50 for i in range(N)]
 
     rsum = [0]
     maxx = 0.0
 
-    # 前缀和
-    for i in range(n):
+    for i in range(N):
         rsum.append(rsum[-1] + arr[i])
 
-    # 枚举长度为 ki 的连续子数组，计算其平均值，并维护最大平均值
-    for ki in range(k, n + 1):
-        for i in range(n - ki + 1):
+    for ki in range(k, N + 1):
+        for i in range(N - ki + 1):
             avg = (rsum[i + ki] - rsum[i]) / ki
             if avg > maxx:
                 maxx = avg
 
-    print(maxx)
-
-
+    # print(maxx)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可修改 n
-    main(10)
+    main(1000)

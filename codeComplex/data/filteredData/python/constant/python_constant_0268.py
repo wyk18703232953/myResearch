@@ -20,6 +20,7 @@ def main(n: int) -> int:
             pos = l
         if r != n:
             step += dif(pos, r) + 1
+
     else:
         if r != n:
             step += dif(pos, r) + 1
@@ -32,4 +33,5 @@ def main(n: int) -> int:
 
 if __name__ == "__main__":
     # 示例：调用 main(10)，可按需要修改 n
-    print(main(10))
+    # print(main(10))
+    pass

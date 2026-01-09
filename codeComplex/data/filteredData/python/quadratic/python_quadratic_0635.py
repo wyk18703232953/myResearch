@@ -21,9 +21,8 @@ def main(n):
 
     solver = APaintTheNumbers()
     ans = solver.solve(n, a)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：规模为 10
     main(10)

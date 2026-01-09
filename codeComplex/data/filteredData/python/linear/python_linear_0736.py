@@ -1,58 +1,55 @@
 from collections import deque
-import random
 
-def main(n: int):
-    # 1. 根据规模 n 生成测试数据
-    # 约定：q 也与 n 同阶，这里取 q = 2 * 10**5，保证有大于 1e5+1 的询问
-    q = 2 * 10**5
+def main(n):
+    # n controls the size of the initial deque A and the number of queries q
+    if n < 2:
+        n = 2
 
-    # 生成一个长度为 n 的序列 A
-    # 这里使用 1..n 的一个乱序排列作为测试数据
-    A = list(range(1, n + 1))
-    random.shuffle(A)
+    # Deterministic construction of initial deque A with n elements
+    # Example pattern: A[i] = (i * 2 + 1) % (3 * n) + 1
+    A = deque(((i * 2 + 1) % (3 * n) + 1) for i in range(n))
 
-    # 生成 q 个询问，每个询问是一个正整数
-    # 部分在 [1, 10**5+1]，部分远大于 10**5+1
+    # Deterministic construction of q queries
+    # Let q = n; queries cover both <= 1e5+1 and > 1e5+1
+    q = n
+    base = 10**5 + 1
     Q = []
-    limit = 10 ** 5 + 1
-    for _ in range(q):
-        if random.random() < 0.5:
-            # 一半概率在前 1e5+1 内
-            Q.append(random.randint(1, limit))
+    for i in range(q):
+        if i % 2 == 0:
+            Q.append((i % (base + 1)) + 1)   # in [1, base+1]
+
         else:
-            # 一半概率取更大的值
-            Q.append(random.randint(limit + 1, limit + 10 ** 9))
+            Q.append(base + 2 + i)           # > base+1
 
-    # 2. 原始逻辑
-    A_deque = deque(A)
-    ANS = [0]  # 占位，使 ANS[q] 与题目下标对齐
+    ANS = [0]
 
-    for _ in range(10 ** 5 + 1):
-        x = A_deque.popleft()
-        y = A_deque.popleft()
+    limit = 10**5 + 1
+    # Ensure we have enough elements in A for popping pairs
+    # Original logic assumes initial n from input is large enough, keep same loop
+    for _ in range(limit):
+        x = A.popleft()
+        y = A.popleft()
 
         ANS.append((x, y))
 
         if x > y:
-            A_deque.appendleft(x)
-            A_deque.append(y)
+            A.appendleft(x)
+            A.append(y)
+
         else:
-            A_deque.appendleft(y)
-            A_deque.append(x)
+            A.appendleft(y)
+            A.append(x)
 
-    ANS0 = A_deque[0]
-    B = list(A_deque)[1:]  # 长度 n-1 的循环部分
+    ANS0 = A[0]
+    B = list(A)[1:]
 
-    # 3. 输出答案（保持与原代码输出行为一致）
-    for qi in Q:
-        if qi <= 10 ** 5 + 1:
-            x, y = ANS[qi]
-            print(x, y)
+    for qq in Q:
+        if qq <= limit + 1:
+            # print(*ANS[qq])
+            pass
+
         else:
-            idx = (qi - 10 ** 5 - 2) % (n - 1)
-            print(ANS0, B[idx])
-
-
+            # print(ANS0, B[(qq - limit - 2) % (n - 1)])
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main(n)，可根据需要修改 n
-    main(5)
+    main(10**5)

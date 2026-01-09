@@ -10,11 +10,12 @@ def main(n: int):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print((pow(2, k, MOD) * (2 * x - 1) + 1) % MOD)
-
-
+        # print((pow(2, k, MOD) * (2 * x - 1) + 1) % MOD)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行
     main(10)

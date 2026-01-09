@@ -1,62 +1,95 @@
-from random import randint
+from collections import deque
+from collections import OrderedDict
+import math
+import sys
+import os
+import threading
+import bisect
+import operator
+import heapq
+from atexit import register
+from io import BytesIO
+import io
+
 
 def main(n):
-    """
-    n 用作规模参数，用来生成 r, g, b 以及三种颜色的数组长度上限。
-    这里简单设置：
-      r, g, b 在 [1, n] 内随机
-      各数组元素值在 [1, 10^4] 内随机
-    """
-    # 生成规模（限制在 200 以内，因为原 dp 固定到 205）
-    max_len = min(n, 200)
-    r = randint(1, max_len)
-    g = randint(1, max_len)
-    b = randint(1, max_len)
+    # 映射规则：
+    # n 控制 r, g, b 的大小，分别为:
+    # r = n
+    # g = max(1, n // 2)
+    # b = max(1, n // 3)
+    # 并且都不超过 200（因为 dp 数组是 205^3）
+    max_size = 200
+    r = min(n, max_size)
+    g = min(max(1, n // 2), max_size)
+    b = min(max(1, n // 3), max_size)
 
+    # 生成三种颜色的数组，每个长度分别为 r, g, b
+    # 使用简单的算术构造，保证确定性
     a = []
-    for _ in range(3):
-        # 每个数组长度与对应的 r/g/b 一致
-        # 第 0 个数组长度 r，第 1 个数组长度 g，第 2 个数组长度 b
-        # 为保持通用性，按 max_len 生成足够长度，再只用前 r/g/b 个
-        arr_len = max_len
-        arr = [randint(1, 10_000) for _ in range(arr_len)]
-        arr.sort(reverse=True)
-        a.append(arr)
+    a0 = [(i * 2 + 3) % 1000 + 1 for i in range(r)]
+    a1 = [(i * 3 + 5) % 1000 + 1 for i in range(g)]
+    a2 = [(i * 5 + 7) % 1000 + 1 for i in range(b)]
+    a.append(sorted(a0, reverse=True))
+    a.append(sorted(a1, reverse=True))
+    a.append(sorted(a2, reverse=True))
 
-    # 按原逻辑，只使用前 r/g/b 个
-    # a[0][:r], a[1][:g], a[2][:b]
-
-    # dp[i][j][k]：使用红 i 个、绿 j 个、蓝 k 个时的最大得分
-    # 原代码固定 205，这里沿用
-    LIMIT = 205
-    dp = [[[0 for _ in range(LIMIT)] for _ in range(LIMIT)] for _ in range(LIMIT)]
+    # DP 部分保持原始算法逻辑
+    max_dim = 205
+    dp = [[[0 for _ in range(max_dim)] for _ in range(max_dim)] for _ in range(max_dim)]
     answer = 0
 
     for i in range(r + 1):
         for j in range(g + 1):
             for k in range(b + 1):
-                cur = dp[i][j][k]
                 if i < r and j < g:
-                    dp[i + 1][j + 1][k] = max(
-                        dp[i + 1][j + 1][k],
-                        cur + a[0][i] * a[1][j]
-                    )
+                    val = dp[i][j][k] + a[0][i] * a[1][j]
+                    if val > dp[i + 1][j + 1][k]:
+                        dp[i + 1][j + 1][k] = val
                 if i < r and k < b:
-                    dp[i + 1][j][k + 1] = max(
-                        dp[i + 1][j][k + 1],
-                        cur + a[0][i] * a[2][k]
-                    )
+                    val = dp[i][j][k] + a[0][i] * a[2][k]
+                    if val > dp[i + 1][j][k + 1]:
+                        dp[i + 1][j][k + 1] = val
                 if j < g and k < b:
-                    dp[i][j + 1][k + 1] = max(
-                        dp[i][j + 1][k + 1],
-                        cur + a[1][j] * a[2][k]
-                    )
-                if cur > answer:
-                    answer = cur
+                    val = dp[i][j][k] + a[1][j] * a[2][k]
+                    if val > dp[i][j + 1][k + 1]:
+                        dp[i][j + 1][k + 1] = val
+                if dp[i][j][k] > answer:
+                    answer = dp[i][j][k]
 
-    print(answer)
+    # 下面这部分保持原程序结构，但使用确定性数据，不依赖输入
+    class Person:
+        def __init__(self, name, age):
+            self.name = name
+            self.age = age
+
+    p1 = Person("heelo", 27)
+
+    # 将 help 输出替换为简单的确定性属性访问结果，避免交互式帮助系统输出
+    person_info = (p1.name, p1.age)
+
+    age = 26
+    name = 'Swaroop'
+    formatted_str = 'Возрас {} -- {} лет'.format(name, age)
+
+    # 对 object 的 help 同样避免真实 help 调用，保持确定性与可控输出规模
+    object_info = ("object_base",)
+
+    # 返回一个汇总结果，包含 DP answer 和一些确定性派生值
+    return {
+        "r": r,
+        "g": g,
+        "b": b,
+        "dp_answer": answer,
+        "person_info": person_info,
+        "formatted_str": formatted_str,
+        "object_info": object_info,
+    }
 
 
 if __name__ == "__main__":
-    # 示例：规模 n=50
-    main(50)
+    # 示例调用：可根据需要修改 n
+    result = main(10)
+    # 为了和原程序一样有输出，这里仅输出 DP 的核心结果
+    # print(result["dp_answer"])
+    pass

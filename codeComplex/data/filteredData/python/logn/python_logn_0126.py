@@ -1,31 +1,28 @@
-import random
-
 def main(n):
-    # 生成测试数据：根据规模 n 生成一个合适的 k
-    # 这里简单设定 k 在 [1, max(2, 2*n)] 区间内随机取值
-    if n <= 0:
-        raise ValueError("n must be positive")
-    k = random.randint(1, max(2, 2 * n))
+    # 映射：给定规模 n，构造一对 (N, K)
+    # 这里令 N = n，K = max(1, min(n, 10^6))，保证可规模化且确定
+    N = n
+    K = n if n > 0 else 1
 
-    # 原逻辑开始
-    if n == 1:
-        ans = 0
-    elif k + (k - 1) * (k - 2) // 2 < n:
-        ans = -1
+    if N == 1:
+        # print(0)
+        pass
+    elif K + (K - 1) * (K - 2) // 2 < N:
+        # print(-1)
+        pass
+
     else:
         l = 0
-        r = k - 1
+        r = K - 1
         while r - l > 1:
             m = (l + r) // 2
-            if (2 * k - m + 1) * m // 2 - (m - 1) >= n:
+            if (2 * K - m + 1) * m // 2 - (m - 1) >= N:
                 r = m
+
             else:
                 l = m
-        ans = r
-
-    print(ans)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模可自行修改
+    # 示例调用，可按需修改 n 以做规模实验
     main(10)

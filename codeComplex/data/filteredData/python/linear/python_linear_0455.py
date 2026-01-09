@@ -6,9 +6,8 @@ def main(n):
     a = (n - k) // 2
     s1 = s.replace('(', '', a)
     s2 = s1.replace(')', '', a)
-    print(s2)
-
-
+    # print(s2)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

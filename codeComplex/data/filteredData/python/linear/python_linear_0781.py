@@ -1,12 +1,10 @@
 from collections import defaultdict as dd
-import random
 
 def main(n):
-    # 1. 生成测试数据：长度为 n 的非负整数数组 A
-    #   这里采用简单策略：A[i] = i 或附加一些随机扰动，保证可控
-    #   为更贴近原题性质（任意多重集），使用适度随机
-    random.seed(0)  # 固定种子便于复现
-    A = [random.randint(0, n // 2 + 1) for _ in range(n)]
+    # Deterministically generate input array A of length n
+    # Example pattern: A[i] = i // 2 (creates some duplicates, includes 0)
+    A = [i // 2 for i in range(n)]
+    n = len(A)
 
     C = dd(int)
     for a in A:
@@ -25,25 +23,26 @@ def main(n):
             ndup += 1
 
     if screwed or ndup > 1:
-        print('cslnb')
-        return
+        # print('cslnb')
+        pass
 
-    if ndup == 1:
-        if C[thedup - 1] != 0:
-            print('cslnb')
-            return
-
-    n_len = len(A)
-    target = sum(range(n_len))
-    cur = sum(A)
-    togo = cur - target
-
-    if togo % 2 == 0:
-        print('cslnb')
     else:
-        print('sjfnb')
+        if ndup == 1:
+            if C[thedup - 1] != 0:
+                # print('cslnb')
+                pass
+                return
 
+        target = sum(range(n))
+        cur = sum(A)
+        togo = cur - target
 
-# 示例调用（提交到评测时可删除或注释）
+        if togo % 2 == 0:
+            # print('cslnb')
+            pass
+
+        else:
+            # print('sjfnb')
+            pass
 if __name__ == "__main__":
-    main(5)
+    main(10)

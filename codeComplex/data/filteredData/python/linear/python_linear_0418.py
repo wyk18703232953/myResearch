@@ -1,24 +1,26 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 选取一个适当的 x（例如不太大的随机数）
-    x = random.randint(1, 2 * n + 5)
-    # 生成长度为 n 的数组 b，元素范围适度
-    b = [random.randint(1, 2 * n + 5) for _ in range(n)]
+    # Deterministic input generation
+    # Original input:
+    # n, x
+    # b (list of n integers)
+    #
+    # Here we fix x deterministically and generate b based on n.
+    x = (n * 3 + 5)  # deterministic x depending on n
+    b = [(i * 2 + (i // 3)) & ((1 << 20) - 1) for i in range(1, n + 1)]
 
-    # 原始逻辑开始
     d = {}
     flag = 0
     for i in b:
         if d.get(i):
             flag = 1
             break
+
         else:
             d[i] = 1
-
     if flag:
-        print(0)
+        # print(0)
+        pass
+
     else:
         flag = 0
         c = set()
@@ -29,12 +31,14 @@ def main(n):
                 flag = 1
                 break
         if flag:
-            print(1)
+            # print(1)
+            pass
         elif len(c) < n and flag == 0:
-            print(2)
-        else:
-            print(-1)
+            # print(2)
+            pass
 
+        else:
+            # print(-1)
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模自行设定
-    main(5)
+    main(10)

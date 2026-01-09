@@ -1,56 +1,52 @@
-from itertools import permutations as p
-import random
-
-# 模拟原来 rd()：逐个产生整数
-def rd(seq_iter):
-    for ch in seq_iter:
-        yield ch
-
 def f(n, t, data_iter):
     a = 0
-    f_flag = 1
-    # 共需要读取 2*n 个数（因为原来是 n 行，每行两位）
+    f_val = 1
     for _ in range(n):
-        for x in rd(next(data_iter)):
-            if x != f_flag:
+        for x in data_iter:
+            if x != f_val:
                 a += 1
-            f_flag = 1 - f_flag
-    # t < 3 时额外读一行丢弃
+            f_val = 1 - f_val
     if t < 3:
-        _ = next(data_iter)
+        for _ in data_iter:
+            pass
     return a
 
 def main(n):
-    # 生成测试数据：
-    # 总共需要读取 4 轮 f(n,t)
-    # 每轮：
-    #   读 n 行，每行两位 -> n
-    #   若 t < 3 再读 1 行 -> 3
-    # 所以共 4*n + 3 行，每行 2 个 0/1
-    total_lines = 4 * n + 3
-    raw_lines = []
-    for _ in range(total_lines):
-        # 每一“行”生成两个 0/1，拼成字符串，如 "01"
-        a = random.randint(0, 1)
-        b = random.randint(0, 1)
-        raw_lines.append(f"{a}{b}")
+    # Deterministic data generation to replace interactive inputs
+    # Original program structure:
+    #   n = int(input())
+    #   then for each i in range(4): m.append(f(n, i))
+    # Each f(n, t) consumed from rd(), which read digits from input() one-by-one.
+    #
+    # We emulate this by:
+    # - Creating a flat sequence of integers that would come from input
+    # - Slicing it deterministically per call so total consumption pattern
+    #   is independent of t for time-complexity experiments.
 
-    # 用迭代器模拟输入行
-    data_iter = iter(raw_lines)
+    from itertools import permutations as p
+
+    # Define a base sequence of "digit-like" integers (0 or 1) deterministically
+    # Its length must be large enough to cover all consumption in worst case.
+    # Each call to f(n, t) uses:
+    #   - main loop: n lines, each with some count; we approximate with 2*n
+    #   - plus an extra line when t < 3
+    # Here we just allocate 6*n elements per call to comfortably exceed usage.
+    per_call_len = 6 * n
+    total_len = 4 * per_call_len
+    base_data = [(i // 2) % 2 for i in range(total_len)]
 
     m = []
-    b_vec = [-1, -1, 1, 1]
-    for t in range(4):
-        m.append(f(n, t, data_iter))
+    for i in range(4):
+        start = i * per_call_len
+        end = start + per_call_len
+        data_slice = base_data[start:end]
+        m.append(f(n, i, data_slice))
 
-    # 最终计算与输出
+    b = [-1, -1, 1, 1]
     res = 2 * n ** 2 + min(
-        sum(x * y for x, y in zip(q, m))
-        for q in set(p(b_vec))
+        sum(x * y for x, y in zip(q, m)) for q in set(p(b))
     )
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：规模设为 5，可根据需要修改
-    main(5)
+    main(10)

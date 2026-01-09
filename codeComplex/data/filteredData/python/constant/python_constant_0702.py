@@ -1,23 +1,16 @@
-import random
+def main(n):
+    # 生成确定性输入：n 和 v
+    # 将原程序中的 n 固定为传入的 n，将 v 设为 n//2，保证规模关系随 n 变化
+    v = n // 2
 
-def main(n: int):
-    # 根据规模 n 生成测试数据
-    # 题意：原本是从输入读取 n 和 v，这里我们用参数 n 和随机生成的 v
-    # 保证 1 <= v <= n
-    if n <= 0:
-        return  # 或者根据需要处理非法 n
-
-    v = random.randint(1, n)
-
-    # 原逻辑
     if n < v + 2:
         result = n - 1
+
     else:
         result = int(v - 1 + (n - v) * (n - v + 1) / 2)
 
-    print(result)
-
-
-if __name__ == '__main__':
-    # 示例：调用 main，n 作为规模参数
+    # print(result)
+    pass
+if __name__ == "__main__":
+    # 示例调用，可根据需要修改 n 的值进行时间复杂度实验
     main(10)

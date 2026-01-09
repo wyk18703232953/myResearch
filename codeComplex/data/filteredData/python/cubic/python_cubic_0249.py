@@ -44,4 +44,5 @@ def main(n: int):
 if __name__ == "__main__":
     # 示例：n = 9，可以根据需要修改或由外部调用 main(n)
     result = main(9)
-    print(result)
+    # print(result)
+    pass

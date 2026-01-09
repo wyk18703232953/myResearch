@@ -1,14 +1,18 @@
-import random
-
-mod = 1000000007
-
 def nospace(l):
     ans = ''.join(str(i) for i in l)
     return ans
 
 def main(n):
-    # 生成测试数据：n 个 1~n 之间的随机整数
-    a = [random.randint(1, n) for _ in range(n)]
+    # n is the size of the array
+    if n <= 0:
+        # print(0)
+        pass
+        return
+
+    # Deterministic generation of array 'a' of length n
+    # Use a mix of values to exercise divisibility logic
+    a = [(i % 7) + 1 for i in range(1, n + 1)]
+
     a.sort()
 
     i = 0
@@ -22,4 +26,7 @@ def main(n):
                     a[j] = 0
                 j += 1
         i += 1
-    print(ans)
+    # print(ans)
+    pass
+if __name__ == "__main__":
+    main(10)

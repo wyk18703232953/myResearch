@@ -1,8 +1,7 @@
-import random
-
 def main(n):
-    # 生成测试数据：a 为长度为 n 的数组，元素范围 [1, n]
-    a = [random.randint(1, n) for _ in range(n)]
+    # Deterministic data generation: a[i] in [1, n]
+    # Example pattern: a[i] = (i % n) + 1
+    a = [(i % n) + 1 for i in range(n)]
     ans = [None] * n
 
     def get(p):
@@ -12,15 +11,14 @@ def main(n):
             ans[p] = "A"
         elif a[p] == n:
             ans[p] = "B"
+
         else:
             step = a[p]
-            # 向右跳
             for i in range(p + step, n, step):
                 if a[i] > a[p]:
                     if get(i) == "B":
                         ans[p] = "A"
                         return ans[p]
-            # 向左跳
             for i in range(p - step, -1, -step):
                 if a[i] > a[p]:
                     if get(i) == "B":
@@ -30,12 +28,16 @@ def main(n):
         return ans[p]
 
     if n == 1:
-        print("B")
+        result = "B"
+
     else:
         for i in range(n - 1, -1, -1):
             get(i)
-        print(''.join(ans))
+        result = ''.join(ans)
 
+    # For time-complexity experiments, we keep the output behavior
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可根据需要修改 n
-    main(5)
+    # Example call for testing; adjust n as needed for experiments
+    main(10)

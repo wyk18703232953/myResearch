@@ -1,9 +1,23 @@
-from random import randint
+import sys
+from collections import deque, defaultdict as dd
+from bisect import bisect, bisect_left, bisect_right, insort, insort_left, insort_right
+from itertools import permutations
+from datetime import datetime
+from math import ceil, sqrt, log, gcd
 
+abc = 'abcdefghijklmnopqrstuvwxyz'
+abd = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i': 8, 'j': 9, 'k': 10, 'l': 11, 'm': 12,
+       'n': 13, 'o': 14, 'p': 15, 'q': 16, 'r': 17, 's': 18, 't': 19, 'u': 20, 'v': 21, 'w': 22, 'x': 23, 'y': 24,
+       'z': 25}
 mod = 1000000007
 inf = float("inf")
+vow = ['a', 'e', 'i', 'o', 'u']
+dx, dy = [-1, 1, 0, 0], [0, 0, 1, -1]
 
-def permute(b, x, ind, ans):
+ans = []
+
+
+def permute(b, x, ind):
     if ind == len(b):
         return 1
     f = 0
@@ -21,42 +35,42 @@ def permute(b, x, ind, ans):
                     ans[j] = str(k)
                     x[k] -= 1
                 return 1
-            if permute(b, x, ind + 1, ans):
+            if permute(b, x, ind + 1):
                 return 1
             x[i] += 1
     return 0
 
 
-def solve(a, b):
+def generate_inputs(n):
+    if n < 1:
+        n = 1
+    # a is a number with n digits, descending from 9 to 0 cyclically
+    digits_a = [str(9 - (i % 10)) for i in range(n)]
+    a = int("".join(digits_a))
+    # b is a number with n digits, ascending from 0 to 9 cyclically
+    digits_b = [str(i % 10) for i in range(n)]
+    b = int("".join(digits_b))
+    return a, b
+
+
+def main(n):
+    a, b = generate_inputs(n)
     if len(str(a)) < len(str(b)):
         s = list(str(a))
         s.sort(reverse=True)
-        return "".join(s)
+        # print("".join(s))
+        pass
+
     else:
         x = [0] * 10
-        for i in str(a):
-            x[int(i)] += 1
-        b = str(b)
-        ans = ['0'] * len(b)
-        permute(b, x, 0, ans)
-        return "".join(ans)
-
-
-def main(n: int):
-    """
-    n 作为规模参数，用于控制随机生成数据的范围：
-    - a, b 为 [10^(n-1), 10^n - 1] 之间的整数（n >= 1）
-    """
-    if n <= 0:
-        n = 1
-    low = 10 ** (n - 1)
-    high = 10 ** n - 1
-    a = randint(low, high)
-    b = randint(low, high)
-    result = solve(a, b)
-    print(result)
-
-
+        for ch in str(a):
+            x[int(ch)] += 1
+        b_str = str(b)
+        global ans
+        ans = [0] * len(b_str)
+        permute(b_str, x, 0)
+        # print("".join(ans))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(3) 生成 3 位数规模的随机测试数据
-    main(3)
+    # example deterministic call
+    main(10)

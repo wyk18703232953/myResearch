@@ -28,6 +28,7 @@ def prime_factors(n):
     while i * i <= n:
         if n % i:
             i += 1
+
         else:
             n //= i
             factors.append(i)
@@ -48,9 +49,8 @@ def main(n):
 
     det = int(sqrt(9 + 8 * (n + k)) - 3) // 2
     result = n - det
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：规模为 10
     main(10)

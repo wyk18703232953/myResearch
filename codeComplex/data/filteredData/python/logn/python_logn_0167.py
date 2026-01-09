@@ -1,6 +1,7 @@
 def prod(n: int) -> int:
     if n % 2:
         return n * ((n + 1) // 2)
+
     else:
         return (n // 2) * (n + 1)
 
@@ -8,6 +9,7 @@ def prod(n: int) -> int:
 def total_count(n: int, k: int):
     if k >= n:
         return (0, 0, 1)
+
     else:
         count = 0
         l = 1
@@ -17,6 +19,7 @@ def total_count(n: int, k: int):
             mid = (l + r) // 2
             if n > s - prod(mid) + mid:
                 r = mid - 1
+
             else:
                 l = mid + 1
 
@@ -33,6 +36,7 @@ def solve(n: int, k: int) -> int:
         return 0
     elif k >= n:
         return 1
+
     else:
         n = n - k
         k = k - 2
@@ -54,9 +58,8 @@ def main(n: int):
     n_val = n
     k_val = max(1, n // 2)
     ans = solve(n_val, k_val)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为规模测试
     main(10)

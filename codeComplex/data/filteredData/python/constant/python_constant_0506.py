@@ -1,35 +1,35 @@
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据
-    q = n  # 这里将查询数量设为 n，可根据需要调整生成策略
+    # 解释规模映射：
+    # n 表示测试用例数量 q
+    # 每个用例 (n_i, m_i, k_i) 由 i 确定性生成
     Q = []
-    for _ in range(q):
-        # 生成 n, m, k，保证范围合理；可按需要修改生成规则
-        k = random.randint(1, 10 ** 6)
-        a = random.randint(1, k)
-        b = random.randint(1, k)
-        Q.append((a, b, k))
+    for i in range(1, n + 1):
+        ni = i
+        mi = i + 1
+        ki = 2 * i + 1
+        Q.append([ni, mi, ki])
 
-    # 原逻辑
-    for n_, m, k in Q:
-        if n_ > k or m > k:
-            print(-1)
+    results = []
+    for ni, mi, ki in Q:
+        if ni > ki or mi > ki:
+            results.append(-1)
             continue
 
-        x = max(n_, m) - min(n_, m)
-        y = k - max(n_, m)
+        x = max(ni, mi) - min(ni, mi)
+        y = ki - max(ni, mi)
 
         if x % 2 == 0 and y % 2 == 0:
-            print(k)
+            results.append(ki)
         elif x % 2 == 0 and y % 2 == 1:
-            print(k - 2)
+            results.append(ki - 2)
         elif x % 2 == 1 and y % 2 == 0:
-            print(k - 1)
+            results.append(ki - 1)
         elif x % 2 == 1 and y % 2 == 1:
-            print(k - 1)
+            results.append(ki - 1)
 
-
+    # 为了在复杂度实验中减少 IO 开销，统一一次性输出
+    for r in results:
+        # print(r)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模为 5
-    main(5)
+    main(10)

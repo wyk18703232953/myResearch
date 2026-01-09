@@ -1,20 +1,19 @@
-import random
+def main(n):
+    # Interpret n as the size of each color list
+    R = n
+    G = n
+    B = n
 
-def main(n: int):
-    # 生成测试数据规模：
-    # 三种颜色数量分别为 n，n，n
-    R = G = B = n
+    # Deterministic data generation
+    r = [i + 1 for i in range(R)]
+    g = [2 * (i + 1) for i in range(G)]
+    b = [3 * (i + 1) for i in range(B)]
 
-    # 随机生成正整数权值（可根据需要修改范围）
-    r = [random.randint(1, 10**3) for _ in range(R)]
-    g = [random.randint(1, 10**3) for _ in range(G)]
-    b = [random.randint(1, 10**3) for _ in range(B)]
-
-    # 原逻辑开始
     r.sort(reverse=True)
     g.sort(reverse=True)
     b.sort(reverse=True)
 
+    # Shift arrays to be 1-indexed
     r = [0] + r
     g = [0] + g
     b = [0] + b
@@ -40,9 +39,7 @@ def main(n: int):
                 if tmp > res:
                     res = tmp
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模 n=3
-    main(3)
+    main(5)

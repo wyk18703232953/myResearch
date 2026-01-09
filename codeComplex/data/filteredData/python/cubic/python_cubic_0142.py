@@ -1,16 +1,15 @@
-import random
-
 def main(n):
-    # 1. 生成测试数据：长度为 n 的数组 A，元素在 1..n 之间
-    N = n
-    if N <= 0:
-        print(0)
+    # n: input scale = length of array A
+    if n <= 0:
+        # print(0)
+        pass
         return
 
-    random.seed(0)  # 固定种子便于复现
-    A = [random.randint(1, N) for _ in range(N)]
+    # deterministic construction of A based on n
+    # mix of small and growing values to exercise merging behavior
+    A = [(i ^ (i // 2)) % (max(1, n // 3)) + (i % 5) for i in range(n)]
 
-    # 2. 原逻辑：区间消缩 DP
+    N = n
     dp = [[False for _ in range(N)] for _ in range(N)]
     for l in range(N):
         tmp = [A[l]]
@@ -30,9 +29,8 @@ def main(n):
             if dp[l - 1][r - 1]:
                 res[r] = min(res[r], 1 + res[l - 1])
 
-    print(res[N])
-
-
+    # print(res[N])
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10
+    # example deterministic call
     main(10)

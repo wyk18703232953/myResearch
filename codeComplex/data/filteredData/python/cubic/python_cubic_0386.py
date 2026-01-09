@@ -47,7 +47,8 @@ def main(n):
     for i in range(0, totNums + 1):
         ans = (ans + dp[totNums + 1][i]) % mod
 
-    print(ans)
+    # print(ans)
+    pass
 
 
 # 示例运行

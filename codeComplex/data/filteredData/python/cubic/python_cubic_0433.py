@@ -1,99 +1,99 @@
-from collections import deque
-from types import GeneratorType
 import math
-import heapq
-import random
-
 
 def encode(row, col, n, m):
     return row * m + col
 
-
 def main(n):
-    """
-    n 为规模参数，这里用来生成一个 n x n 的网格图，
-    k 设为一个与 n 相关的偶数步长（例如 k = 2 * n）。
-    返回值为一个 n x n 的二维列表，对应每个格子的答案。
-    """
-    # 规模设置
-    rows = n
-    cols = n
-    # k 必须是偶数，这里设为 2*n（可根据需要自行修改策略）
-    k = 2 * n
+    # Map n to grid and step parameters deterministically.
+    # Choose n as the side length of a square grid, k as an even walk length.
+    if n <= 1:
+        n_local = 1
+        m_local = 1
+
+    else:
+        n_local = n
+        m_local = n
+    # Ensure k is even and at least 2 so that the main logic runs.
+    k = 2 * max(1, n // 2)
+
+    n_rows = n_local
+    n_cols = m_local
+
+    # Deterministic edge weight generators based on indices.
+    # Horizontal edges: between (i, j) and (i, j+1) for j in [0, m-2]
+    horiz_weights = []
+    for i in range(n_rows):
+        row_weights = [(i * n_cols + j + 1) % 9 + 1 for j in range(n_cols - 1)]
+        horiz_weights.append(row_weights)
+
+    # Vertical edges: between (i, j) and (i+1, j) for i in [0, n-2]
+    vert_weights = []
+    for i in range(n_rows - 1):
+        row_weights = [((i + 1) * n_cols + j + 3) % 9 + 1 for j in range(n_cols)]
+        vert_weights.append(row_weights)
+
+    # If k is odd, answer is all -1 (following original logic).
     if k % 2 == 1:
-        # 不可能情况，保持与原逻辑一致
-        return [[-1] * cols for _ in range(rows)]
+        res = []
+        for _ in range(n_rows):
+            res.append(' '.join(['-1'] * n_cols))
+        # print('\n'.join(res))
+        pass
+        return
 
-    # 生成测试数据：网格边权为 1~10 的随机整数
-    # 水平边：rows 行，每行有 (cols - 1) 条边
-    horizontal_weights = [
-        [random.randint(1, 10) for _ in range(cols - 1)]
-        for _ in range(rows)
-    ]
-    # 垂直边： (rows - 1) 行，每行有 cols 条边
-    vertical_weights = [
-        [random.randint(1, 10) for _ in range(cols)]
-        for _ in range(rows - 1)
-    ]
-
-    total_nodes = rows * cols
+    total_nodes = n_rows * n_cols
     adj = [[] for _ in range(total_nodes)]
 
-    # 构建水平边
-    for i in range(rows):
-        weights = horizontal_weights[i]
-        for j in range(cols - 1):
-            cur = encode(i, j, rows, cols)
-            nex = encode(i, j + 1, rows, cols)
-            w = weights[j]
+    # Build adjacency using deterministic weights.
+    for i in range(n_rows):
+        for j in range(n_cols - 1):
+            cur = encode(i, j, n_rows, n_cols)
+            nex = encode(i, j + 1, n_rows, n_cols)
+            w = horiz_weights[i][j]
             adj[cur].append((nex, w))
             adj[nex].append((cur, w))
 
-    # 构建垂直边
-    for i in range(rows - 1):
-        weights = vertical_weights[i]
-        for j in range(cols):
-            cur = encode(i, j, rows, cols)
-            nex = encode(i + 1, j, rows, cols)
-            w = weights[j]
+    for i in range(n_rows - 1):
+        for j in range(n_cols):
+            cur = encode(i, j, n_rows, n_cols)
+            nex = encode(i + 1, j, n_rows, n_cols)
+            w = vert_weights[i][j]
             adj[cur].append((nex, w))
             adj[nex].append((cur, w))
 
-    # DP 数组：dp[t][v] 表示从节点 v 走 t 步的最小花费
+    # Dynamic programming table flattened: dp[t][node] => dp[node + t*total_nodes]
     half_k = k // 2
-    # 使用一维数组，布局为: dp[t * total_nodes + v]
-    dp = [0] * (total_nodes * (half_k + 1))
+    dp_size = total_nodes * (half_k + 1)
+    dp = [-1] * dp_size
 
-    # 初始化 t = 0 时的花费为 0，已在创建时完成
-    # 对每一个步数 t，计算 dp
+    # Base case: distance 0 is 0 for all nodes.
+    for i in range(total_nodes):
+        dp[i] = 0
+
+    # Fill DP for t = 1..half_k
     for t in range(1, half_k + 1):
         base_prev = (t - 1) * total_nodes
         base_cur = t * total_nodes
-        for v in range(total_nodes):
-            best = math.inf
-            for to, w in adj[v]:
-                cand = dp[base_prev + to] + w
-                if cand < best:
-                    best = cand
-            dp[base_cur + v] = best
+        for i in range(total_nodes):
+            best = None
+            for v, w in adj[i]:
+                val = dp[v + base_prev] + w
+                if best is None or val < best:
+                    best = val
+            dp[i + base_cur] = best
 
-    # 结果：从每个点出发走 k 步回到起点（往返）的最小花费
-    # 等于走半程的最小花费乘以 2
-    result = []
+    # Output results as in original: minimal cycle of length k from each cell.
     base_final = half_k * total_nodes
-    for i in range(rows):
-        row_ans = []
-        for j in range(cols):
-            node = encode(i, j, rows, cols)
-            val = dp[base_final + node]
-            row_ans.append(val * 2)
-        result.append(row_ans)
-
-    return result
-
-
-# 示例：运行 main(3) 并打印结果
+    lines = []
+    for i in range(n_rows):
+        row_vals = []
+        for j in range(n_cols):
+            node = encode(i, j, n_rows, n_cols)
+            val = dp[node + base_final] * 2
+            row_vals.append(str(val))
+        lines.append(' '.join(row_vals))
+    # print('\n'.join(lines))
+    pass
 if __name__ == "__main__":
-    ans = main(3)
-    for row in ans:
-        print(" ".join(map(str, row)))
+    # Example deterministic call
+    main(5)

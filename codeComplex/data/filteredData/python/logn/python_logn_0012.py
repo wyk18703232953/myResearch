@@ -1,26 +1,15 @@
-import random
+def main(n):
+    # 对于时间复杂度实验，将 n 映射为 r 的值，l 固定为 0
+    # 原程序输入结构：单行两个整数 l, r
+    # 这里构造：l = 0, r = n
+    l, r = 0, n
 
-def main(n: int):
-    # 生成测试数据：随机生成 0 <= l <= r < 2^n
-    if n <= 0:
-        return
-
-    max_val = (1 << n) - 1
-    l = random.randint(0, max_val)
-    r = random.randint(l, max_val)
-
-    x = n - 1
+    x = 64
     while x >= 0 and (l & (1 << x)) == (r & (1 << x)):
         x -= 1
+    result = (1 << (x + 1)) - 1
 
-    if x < 0:
-        ans = 0
-    else:
-        ans = (1 << (x + 1)) - 1
-
-    print(ans)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n = 64 的规模
-    main(64)
+    main(10)

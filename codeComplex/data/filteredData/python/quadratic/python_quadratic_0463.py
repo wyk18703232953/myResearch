@@ -1,8 +1,7 @@
-import random
-
 def main(n):
-    # 生成测试数据：长度为 n 的正整数数组 a，元素范围 1..n
-    a = [random.randint(1, n) for _ in range(n)]
+    # Generate deterministic input of size n
+    # a is a list of integers; choose a[i] = (i % n) + 1 to avoid zeros in modulo
+    a = [(i % n) + 1 for i in range(n)]
 
     s = [0] * n
     m = n
@@ -16,10 +15,7 @@ def main(n):
                 elif any(a[j] > x and s[j] == 'B' for j in r):
                     s[i] = 'A'
                     m -= 1
-
-    print(''.join(s))
-
-
+    # print(''.join(s))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，根据需要修改 n
     main(10)

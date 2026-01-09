@@ -1,16 +1,18 @@
-import random
+def main(n):
+    # 原程序输入结构：两个整数 n_input, k_input
+    # 将实验规模参数 n 作为原程序的 n_input
+    n_input = max(1, n)
+    # 构造确定性的 k_input，与 n_input 线性相关
+    k_input = 3 * n_input + 5
 
-def main(n: int):
-    # 根据规模 n 生成测试数据，这里令 k 在 [1, 3*n] 区间内随机
-    k = random.randint(1, 3 * n)
+    q = 2 * n_input + 1
+    p = k_input // n_input
+    if k_input % n_input:
+        result = p + 1
 
-    q = 2 * n + 1
-    p = k // n
-    if k % n:
-        print(p + 1)
     else:
-        print(p)
-
+        result = p
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模可自行修改
     main(10)

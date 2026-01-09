@@ -10,6 +10,7 @@ def main(n):
                 grid[1][1 + i] = '#'
             if 1 + i < n:
                 grid[2][1 + i] = '#'
+
     else:
         m = n // 2
         if k > n - 2:
@@ -20,6 +21,7 @@ def main(n):
                     grid[2][m + i] = '#'
                 if m - i >= 0:
                     grid[2][m - i] = '#'
+
         else:
             if 0 <= m < n:
                 grid[1][m] = '#'
@@ -30,11 +32,11 @@ def main(n):
                     if m + i < n:
                         grid[1][m + i] = '#'
 
-    print('YES')
+    # print('YES')
+    pass
     for row in grid:
-        print(''.join(row))
-
-
+        # print(''.join(row))
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改或在外部调用 main(n)
     main(10)

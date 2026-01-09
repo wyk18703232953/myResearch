@@ -1,34 +1,29 @@
-import random
-
 def main(n):
     arr = []
     d = {}
 
-    # 根据 n 生成测试数据
-    # 生成形如 "(a+b)/c" 的字符串，并按原程序逻辑解析
-    for _ in range(n):
-        a = random.randint(1, 20)
-        b = random.randint(1, 20)
-        # 避免除零
-        c = random.randint(1, 20)
+    # Generate n deterministic expressions of the form "(a+b)/c"
+    # Here a, b, c are derived deterministically from i
+    for i in range(1, n + 1):
+        a = i
+        b = i + 1
+        c = (i % 5) + 1  # c in [1..5], never zero
         s = f"({a}+{b})/{c}"
 
-        # 原始解析逻辑
-        a_, b_, c_ = tuple(map(int, s.replace("(", "")
-                                     .replace(")", "")
-                                     .replace("/", ".")
-                                     .replace("+", ".")
-                                     .split(".")))
-        x = (a_ + b_) / c_
+        a_parsed, b_parsed, c_parsed = tuple(
+            map(
+                int,
+                s.replace("(", "").replace(")", "").replace("/", ".").replace("+", ".").split("."),
+            )
+        )
+        x = (a_parsed + b_parsed) / c_parsed
         arr.append(x)
         if x not in d:
             d[x] = 0
         d[x] += 1
 
-    # 输出结果
     for i in arr:
-        print(d[i], end=" ")
-
+        # print(d[i], end=" ")
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
     main(10)

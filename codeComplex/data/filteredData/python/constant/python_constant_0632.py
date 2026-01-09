@@ -9,11 +9,13 @@ def white(x1, y1, x2, y2):
 
     if color(x1, y1) != color(x2, y2):
         return (x2 - x1 + 1) * (y2 - y1 + 1) // 2
+
     else:
         if color(x1, y1) == color(x1, y2) == color(x2, y1) == 'white':
             return ((x2 - x1 + 1) * (y2 - y1 + 1) + 1) // 2
         elif color(x1, y1) == color(x1, y2) == color(x2, y1) == 'black':
             return ((x2 - x1 + 1) * (y2 - y1 + 1) - 1) // 2
+
         else:
             return (x2 - x1 + 1) * (y2 - y1 + 1) // 2
 
@@ -65,9 +67,8 @@ def main(n):
     _b2 = black(xl, yl, xr, yr)
     w3, b3 = w2 - _b2, b2 + _b2
 
-    print(w3, b3)
-
-
+    # print(w3, b3)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 8 作为规模跑一次
     main(8)

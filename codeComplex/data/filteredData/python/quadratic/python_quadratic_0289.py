@@ -1,8 +1,10 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据：随机长度为 n、元素范围 [0, n-1] 的列表
-    l = [random.randint(0, n - 1) for _ in range(n)]
+def main(n):
+    # 生成长度为 n 的列表，元素在 0..(n//2) 之间重复出现
+    if n <= 1:
+        # print(0)
+        pass
+        return
+    l = [(i * 2) % (max(1, n // 2)) for i in range(n)]
     ans = 0
     while len(l) > 0:
         a = l[0]
@@ -10,12 +12,7 @@ def main(n: int) -> int:
         if a in l:
             ans += l.index(a)
             l.remove(a)
-        else:
-            # 原代码在找不到 a 时会抛异常，这里选择跳过保持运行
-            pass
-    return ans
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：自行设定规模测试
-    result = main(10)
-    print(result)
+    main(10)

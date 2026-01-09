@@ -16,6 +16,7 @@ def bs(n, k):
             return k - md + 1
         elif s > n:
             st = md + 1
+
         else:
             en = md
     return k - st + 2
@@ -25,11 +26,13 @@ def solve(n, k):
         return 0
     elif n <= k:
         return 1
+
     else:
         n -= 1
         k -= 1
         if sm(k) < n:
             return -1
+
         else:
             return bs(n, k)
 
@@ -40,8 +43,8 @@ def main(n):
     """
     k = n
     result = solve(n, k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

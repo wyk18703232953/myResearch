@@ -1,12 +1,10 @@
-from random import randint
-
-
 def dfs(l, r, dp, a_a):
     if l == r:
         return a_a[l]
     if l + 1 == r:
         if a_a[l] == a_a[r]:
             return a_a[l] + 1
+
         else:
             return -1
 
@@ -34,6 +32,7 @@ def array_shrinking(n, a_a):
             if r != -1:
                 if i > 0:
                     dp2[j] = min(dp2[i - 1] + 1, dp2[j])
+
                 else:
                     dp2[j] = min(1, dp2[j])
 
@@ -41,12 +40,9 @@ def array_shrinking(n, a_a):
 
 
 def main(n):
-    # 根据 n 生成测试数据：长度为 n 的随机数组，元素在 [1, n] 范围内
-    a_a = [randint(1, n) for _ in range(n)]
+    a_a = [i % 5 for i in range(n)]
     res = array_shrinking(n, a_a)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：可修改 n 测试不同规模
-    main(5)
+    main(10)

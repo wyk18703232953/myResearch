@@ -14,6 +14,7 @@ def main(n: int):
                 result += 9
                 number = 20
                 number1 = 10
+
             else:
                 break
         elif number == 20:
@@ -21,14 +22,17 @@ def main(n: int):
                 result += 180
                 number += 10
                 number1 = 100
+
             else:
                 break
+
         else:
             if result + 9 * number * 10 ** count < k:
                 result += 9 * number * 10 ** count
                 number += 10
                 count += 1
                 number1 *= 10
+
             else:
                 break
 
@@ -39,6 +43,7 @@ def main(n: int):
         if result + number * 10 ** count < k:
             result += number * 10 ** count
             number1 += 100 * 10 ** (count - 1)
+
         else:
             count -= 1
 
@@ -49,14 +54,17 @@ def main(n: int):
         if result + number < k:
             result += number
             number1 += 10
+
         else:
             break
 
     # 第四段 while
     while True:
         if result + len(str(number1)) >= k:
-            print(str(number1)[k - result - 1])
+            # print(str(number1)[k - result - 1])
+            pass
             break
+
         else:
             number1 += 1
             result += len(str(number1))

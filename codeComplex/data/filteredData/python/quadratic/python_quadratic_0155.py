@@ -120,7 +120,8 @@ def power_set(L):
 
 
 def fastPlrintNextLines(a):
-    print('\n'.join(map(str, a)))
+    # print('\n'.join(map(str, a)))
+    pass
 
 
 def sortByFirstAndSecond(A):
@@ -158,17 +159,20 @@ def solve(n, k, p):
                     groups[h] = groups[h - 1]
                 newar[i] = groups[color]
                 continue
+
             else:
                 for h in range(j + 1, color + 1):
                     groups[h] = j + 1
                 newar[i] = groups[color]
                 continue
+
         else:
             for h in range(j + 1, color + 1):
                 groups[h] = j + 1
             newar[i] = groups[color]
             continue
-    print(*newar)
+    # print(*newar)
+    pass
 
 
 def main(n):

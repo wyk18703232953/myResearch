@@ -3,6 +3,7 @@ def modularExponentiation(x, n, M):
         return 1
     elif n % 2 == 0:
         return modularExponentiation((x * x) % M, n // 2, M)
+
     else:
         return (x % M * modularExponentiation((x * x) % M, (n - 1) // 2, M) % M) % M
 
@@ -21,10 +22,12 @@ def main(n):
 
     if n == 0:
         return 0
+
     else:
         return (a % c - b % c + c) % c
 
 
 if __name__ == "__main__":
     # 示例：调用 main(10)
-    print(main(10))
+    # print(main(10))
+    pass

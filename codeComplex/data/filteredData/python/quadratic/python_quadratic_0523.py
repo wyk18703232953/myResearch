@@ -1,59 +1,45 @@
-#!/usr/bin/env python
-
-import random
-
-
-def check(m, v, x, y):
-    # 如果 x,y 为中心的 3x3 内除了中心以外全部为 True，则标记这些为可覆盖
-    for i in (-1, 0, 1):
-        for j in (-1, 0, 1):
-            if (i, j) == (0, 0):
-                continue
-            if not m[x + i][y + j]:
-                return
-
-    for i in (-1, 0, 1):
-        for j in (-1, 0, 1):
-            if (i, j) != (0, 0):
-                v[x + i][y + j] = True
-
-
 def main(n):
-    """
-    n: 规模参数，用来生成一个 n x n 的测试矩阵。
-       '#' 和 '.' 随机生成，其中 '#' 表示 True，'.' 表示 False。
-    函数打印 "YES" 或 "NO"。
-    """
-    if n <= 0:
-        print("NO")
-        return
+    # Define matrix size based on n
+    # For time complexity scaling, use n x n grid
+    rows = n
+    cols = n
 
-    # 随机生成 n x n 的字符矩阵，'#' 概率可以调整
-    m = n  # 使用方阵，列数 = 行数 = n
-    mat = []
-    v = []
-    for _ in range(n):
-        row = [random.random() < 0.4 for _ in range(m)]  # 40% 概率为 '#'
-        mat.append(row)
-        v.append([False] * m)
+    # Deterministic generation of mat: pattern based on indices
+    # We'll create a checker-like pattern of '#' and '.' so both True/False paths are hit
+    # mat[i][j] is '#' iff (i + j) % 2 == 0
+    mat = [[((i + j) % 2 == 0) for j in range(cols)] for i in range(rows)]
+    v = [[False] * cols for _ in range(rows)]
 
-    # 核心逻辑：与原题一致
-    for x in range(1, n - 1):
-        for y in range(1, m - 1):
-            check(mat, v, x, y)
+    def check(mmat, vv, x, y):
+        for di in (-1, 0, 1):
+            for dj in (-1, 0, 1):
+                if (di, dj) == (0, 0):
+                    continue
+                if not mmat[x + di][y + dj]:
+                    return
+        for di in (-1, 0, 1):
+            for dj in (-1, 0, 1):
+                if (di, dj) != (0, 0):
+                    vv[x + di][y + dj] = True
+
+    if rows >= 3 and cols >= 3:
+        for x in range(1, rows - 1):
+            for y in range(1, cols - 1):
+                check(mat, v, x, y)
 
     flag = True
-    for i in range(n):
-        for j in range(m):
+    for i in range(rows):
+        for j in range(cols):
             if mat[i][j] and (not v[i][j]):
                 flag = False
 
     if flag:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # Example deterministic call; adjust n to scale input size
+    main(10)

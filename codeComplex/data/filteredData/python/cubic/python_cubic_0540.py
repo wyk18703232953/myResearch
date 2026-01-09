@@ -1,6 +1,3 @@
-import random
-import string
-
 def fs(a, b):
     try:
         for i in range(a + 1, len(b)):
@@ -11,22 +8,22 @@ def fs(a, b):
                 ans += "".join(k)
                 return ans
         return False
-    except Exception:
+    except:
         return False
 
-
-def solve(a, b):
+def original_logic(a, b):
     na = len(a)
     nb = len(b)
-
     if na < nb:
         return "".join(sorted(list(a), reverse=True))
+
     else:
         if a == b:
             return a
+
         else:
             l = sorted(list(a), reverse=True)
-            l2 = l.copy()  # 保持原逻辑，即使未使用
+            l2 = l.copy()
             ans1 = ""
             flag = 0
             ans = []
@@ -49,40 +46,38 @@ def solve(a, b):
             ans1 += "".join(l)
             if int(ans1) <= int(b):
                 return ans1
+
             else:
                 candidates = sorted([int(x) for x in ans], reverse=True)
-                for val in candidates:
-                    if val <= int(b):
-                        return str(val)
-                # 若逻辑上没有候选满足条件，原程序会不输出，此处返回最小值或空串
-                return ""
+                for v in candidates:
+                    if v <= int(b):
+                        return str(v)
+    return ""
 
+def generate_inputs(n):
+    # a 和 b 为同位数数字串，长度由 n 控制，且整型值稳定可比
+    # 使用简单算术构造，确保无前导零
+    # a: 由 (i % 10) 生成
+    # b: 由 ((i + 3) % 10) 生成，并保证 int(a) <= int(b) 大致有可能成立
+    length = max(1, n)
+    a_digits = [(i % 10) for i in range(1, length + 1)]
+    b_digits = [((i + 3) % 10) for i in range(1, length + 1)]
 
-def generate_test_data(n):
-    # 根据 n 生成两个数字字符串 a, b，长度与 n 相关
-    # 让 a, b 长度适中，以便测试各种分支
-    len_a = max(1, n // 2)
-    len_b = max(1, n - len_a)
+    # 避免首位为 0
+    if a_digits[0] == 0:
+        a_digits[0] = 1
+    if b_digits[0] == 0:
+        b_digits[0] = 1
 
-    # 生成不以 0 开头的随机数字串
-    def rand_num_str(length):
-        if length == 1:
-            return str(random.randint(0, 9))
-        first = str(random.randint(1, 9))
-        rest = "".join(random.choice(string.digits) for _ in range(length - 1))
-        return first + rest
-
-    a = rand_num_str(len_a)
-    b = rand_num_str(len_b)
+    a = "".join(str(d) for d in a_digits)
+    b = "".join(str(d) for d in b_digits)
     return a, b
 
-
 def main(n):
-    a, b = generate_test_data(n)
-    result = solve(a, b)
-    print(result)
-
-
+    a, b = generate_inputs(n)
+    result = original_logic(a, b)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：可以在此处修改 n 测试不同规模
+    # 示例调用，可根据需要修改 n 的大小
     main(5)

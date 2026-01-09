@@ -43,4 +43,5 @@ if __name__ == "__main__":
     # 示例：调用 main(n) 并打印结果
     # 这里使用 n = 15 作为测试规模，你可以自行修改
     test_n = 15
-    print(main(test_n))
+    # print(main(test_n))
+    pass

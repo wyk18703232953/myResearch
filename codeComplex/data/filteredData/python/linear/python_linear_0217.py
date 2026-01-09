@@ -1,24 +1,16 @@
-import random
-
-
 def main(n):
-    # 生成测试数据
-    # 随机生成 a, b
-    a = random.randint(-10, 10)
-    b = random.randint(-10, 10)
+    # n 表示点的数量
+    # 构造确定性的 a, b
+    a = n % 10 + 1
+    b = (n // 10) % 10 + 1
 
-    # 随机生成 n 组 (x, vx, vy)
-    # 可按需要调整范围
-    points = []
-    for _ in range(n):
-        x = random.randint(-10**4, 10**4)
-        vx = random.randint(-10**4, 10**4)
-        vy = random.randint(-10**4, 10**4)
-        points.append((x, vx, vy))
-
-    # 原逻辑
     dc = {}
-    for x, vx, vy in points:
+    for i in range(n):
+        # 确定性生成 x, vx, vy
+        x = i
+        vx = (i % 7) - 3      # 在 [-3,3] 内
+        vy = (i % 11) - 5     # 在 [-5,5] 内
+
         nx = x + vx
         ny = a * x + b + vy
         dd = a * nx - ny + b
@@ -37,10 +29,7 @@ def main(n):
             pp += cc
         tt += pp * (pp + 1) // 2
         tot += tt * 2
-
-    print(tot)
-
-
+    # print(tot)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

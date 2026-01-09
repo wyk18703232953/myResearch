@@ -1,18 +1,16 @@
 from math import ceil
-import random
 
-def main(n: int):
-    # 根据规模 n 生成测试数据，这里示例：
-    # k 在 [1, max(1, n)] 范围内随机生成
-    k = random.randint(1, max(1, n))
+def main(n):
+    # 映射：原程序中有两个输入 n 和 k
+    # 这里将实验规模参数作为原始的 n
+    # 并构造一个与 n 相关的、确定性的 k
+    k = max(1, n // 2 + 1)
 
     cou = 0
     cou += ceil(n * 2 / k)
     cou += ceil(n * 5 / k)
     cou += ceil(n * 8 / k)
-    print(cou)
-
-
+    # print(cou)
+    pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n 的值
     main(10)

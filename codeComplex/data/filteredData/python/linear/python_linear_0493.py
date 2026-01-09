@@ -1,25 +1,23 @@
-import random
-from collections import deque
-
 def get_new_edges(graph):
     n = len(graph)
     far_vertex = []
     pi = [None] * n
     visit = [False] * n
-    queue = deque()
-    queue.append((0, 0))  # (vertex, depth)
-
-    while queue:
-        current, d = queue.popleft()
-        if visit[current]:
-            continue
+    queue = [[0, 0]]
+    i = 0
+    while True:
+        if i >= len(queue):
+            break
+        current, d = queue[i]
+        i += 1
         visit[current] = True
         for v in graph[current]:
             if not visit[v]:
+                u = [v, d + 1]
                 pi[v] = current
-                queue.append((v, d + 1))
+                queue.append(u)
                 if d + 1 > 2:
-                    far_vertex.append([v, d + 1])
+                    far_vertex.append(u)
 
     far_vertex.sort(key=lambda x: -x[1])
 
@@ -34,39 +32,33 @@ def get_new_edges(graph):
         vertex, depth = far_vertex[i]
         father = pi[vertex]
         count += 1
-        if father is not None and pos[father] is not None:
+        if pos[father]:
             far_vertex[pos[father]] = None
-        for u in (graph[father] if father is not None else []):
-            if pos[u] is not None:
+        for u in graph[father]:
+            if pos[u]:
                 far_vertex[pos[u]] = None
 
     return count
 
 
-def generate_tree(n, seed=0):
-    """生成一个包含 n 个节点的随机树（无向连通无环图）"""
-    random.seed(seed)
-    graph = [[] for _ in range(n)]
-    # 逐个节点连接到前面任一节点，保证连通且无环
-    for v in range(1, n):
-        u = random.randint(0, v - 1)
-        graph[u].append(v)
-        graph[v].append(u)
-    return graph
-
-
 def main(n):
-    """
-    n: 图的顶点数（规模）
-    功能：生成一个规模为 n 的随机树，调用 get_new_edges，并打印结果。
-    """
-    if n <= 0:
+    if n < 2:
+        graph = [[] for _ in range(max(n, 1))]
+        result = get_new_edges(graph)
+        # print(result)
+        pass
         return
-    graph = generate_tree(n)
-    ans = get_new_edges(graph)
-    print(ans)
 
+    # Deterministic tree generation with n vertices (0 to n-1)
+    # Parent of i (i >= 1) is i // 2
+    graph = [[] for _ in range(n)]
+    for i in range(1, n):
+        p = i // 2
+        graph[p].append(i)
+        graph[i].append(p)
 
+    result = get_new_edges(graph)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

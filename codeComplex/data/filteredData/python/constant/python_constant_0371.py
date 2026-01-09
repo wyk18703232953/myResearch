@@ -4,9 +4,12 @@ def main(n):
     原逻辑：
         a, b, c, n = map(int, input().split())
         if a + b - c > n - 1 or min(a, b) < c:
-            print(-1)
+            # print(-1)
+            pass
+
         else:
-            print(n - (a + b - c))
+            # print(n - (a + b - c))
+            pass
     这里我们用给定的 n 生成 a, b, c。
     """
 
@@ -17,6 +20,7 @@ def main(n):
     if n <= 2:
         # 对很小的 n 做特殊处理，构造一个小用例
         a, b, c = 1, 1, 0
+
     else:
         c = n // 3
         a = c + 1
@@ -30,11 +34,12 @@ def main(n):
 
     # 应用原始逻辑
     if a + b - c > n - 1 or min(a, b) < c:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(n - (a + b - c))
-
-
+        # print(n - (a + b - c))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，规模自选
     main(10)

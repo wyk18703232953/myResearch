@@ -1,13 +1,15 @@
-import random
+def main(n):
+    # Interpret n as the total length of three arrays; split as evenly as possible
+    if n < 0:
+        n = 0
+    R = n // 3
+    G = (n - R) // 2
+    B = n - R - G
 
-def main(n: int):
-    # 规模 n：生成每种颜色的数量
-    R = G = B = n
-
-    # 生成测试数据（这里使用 1 到 1000 的随机整数）
-    Rs = [random.randint(1, 1000) for _ in range(R)]
-    Gs = [random.randint(1, 1000) for _ in range(G)]
-    Bs = [random.randint(1, 1000) for _ in range(B)]
+    # Deterministic data generation using simple arithmetic patterns
+    Rs = [i * 2 + 1 for i in range(R)]
+    Gs = [i * 3 + 2 for i in range(G)]
+    Bs = [i * 5 + 3 for i in range(B)]
 
     Rs.sort(reverse=True)
     Gs.sort(reverse=True)
@@ -15,7 +17,6 @@ def main(n: int):
 
     dp = [[[0] * (B + 1) for _ in range(G + 1)] for _ in range(R + 1)]
     ans = 0
-
     for i in range(R + 1):
         for j in range(G + 1):
             for k in range(B + 1):
@@ -33,12 +34,9 @@ def main(n: int):
                     if v > t:
                         t = v
                 dp[i][j][k] = t
-                if t > ans:
+                if ans < t:
                     ans = t
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 3
-    main(3)
+    main(10)

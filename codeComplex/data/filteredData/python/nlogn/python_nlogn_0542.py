@@ -30,7 +30,8 @@ def main(n):
         if int(str(i) + str(i)) % k == 0:
             ans -= 1
 
-    print(ans)
+    # print(ans)
+    pass
 
 
 # 示例调用

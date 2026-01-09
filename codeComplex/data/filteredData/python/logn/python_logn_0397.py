@@ -9,15 +9,15 @@ def main(n: int):
         elif remain == 3:
             res.extend([mult, mult, mult * 3])
             remain = 0
+
         else:
             half = remain // 2
             extra = remain - half
             res.extend([mult] * extra)
             remain = half
             mult = mult * 2
-    print(*res)
-
-
+    # print(*res)
+    pass
 if __name__ == "__main__":
     # 示例：根据需要修改 n 的值进行测试
     n = 10

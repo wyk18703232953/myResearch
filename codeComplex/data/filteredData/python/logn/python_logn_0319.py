@@ -6,12 +6,12 @@ def main(n):
 
     if n > 0:
         ans = pow(2, k + 1, mod) * n - pow(2, k, mod) + 1
+
     else:
         ans = 0
 
-    print(ans % mod)
-
-
+    # print(ans % mod)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，可按需修改或在外部调用 main(n)
     main(10)

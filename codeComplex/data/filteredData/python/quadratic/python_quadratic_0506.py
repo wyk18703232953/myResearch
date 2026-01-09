@@ -1,17 +1,27 @@
-import random
-
 def main(n):
-    # 为了保持原逻辑，构造一个 n 行 m 列的字符网格，元素为 '#' 或 '.'
-    # 这里令 m = n，生成一个 n x n 的随机网格
+    # 映射规则：n 作为矩阵规模，n x n
     m = n
-    u = []
-    u1 = []
-    for _ in range(n):
-        row = [random.choice(['#', '.']) for _ in range(m)]
-        u.append(row)
-        u1.append(['.'] * m)
+    if n < 3:
+        # 构造一个全 '.' 的矩阵，保持逻辑完整
+        u = [['.'] * m for _ in range(n)]
 
-    # 原有逻辑：在 u 中寻找特定形状的 '#' 图案，并在 u1 中“画”出该图案
+    else:
+        # 构造一个确定性的 n x n 字符矩阵
+        # 通过 (i + j) % 5 决定字符：其中部分位置为 '#'
+        u = []
+        for i in range(n):
+            row = []
+            for j in range(m):
+                # 周期性分布 '#'，确保有一定概率出现匹配形状
+                if (i + j) % 5 in (0, 1):
+                    row.append('#')
+
+                else:
+                    row.append('.')
+            u.append(row)
+
+    u1 = [['.'] * m for _ in range(n)]
+
     for i in range(n - 2):
         for j in range(m - 2):
             ok = True
@@ -20,10 +30,13 @@ def main(n):
                     ok = False
                     break
             if ok:
-                if (u[i + 2][j + 1] != '#' or
-                    u[i + 2][j + 2] != '#' or
-                    u[i + 1][j + 2] != '#'):
+                if (
+                    u[i + 2][j + 1] != '#'
+                    or u[i + 2][j + 2] != '#'
+                    or u[i + 1][j + 2] != '#'
+                ):
                     ok = False
+
                 else:
                     for k in range(3):
                         u1[i][j + k] = '#'
@@ -32,7 +45,6 @@ def main(n):
                     u1[i + 2][j + 2] = '#'
                     u1[i + 1][j + 2] = '#'
 
-    # 比较 u 与 u1 是否完全一致
     ok = True
     for i in range(n):
         for j in range(m):
@@ -43,11 +55,12 @@ def main(n):
             break
 
     if ok:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模为 5
-    main(5)
+    # 示例调用：可以根据需要修改 n 的大小做规模实验
+    main(10)

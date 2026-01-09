@@ -10,11 +10,11 @@ def main(n: int):
         ans += [m, m, m * 3]
     elif n == 2:
         ans += [m, m * 2]
+
     else:
         ans += [m]
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 测试不同规模
     main(10)

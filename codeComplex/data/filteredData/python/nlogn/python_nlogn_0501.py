@@ -19,7 +19,8 @@ def main(n):
     # 以下为原程序逻辑，仅去掉 input 并封装为函数
 
     if sm > m:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     cnt = 0
@@ -32,9 +33,8 @@ def main(n):
         cnt += 1
         i += 1
 
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     # 示例：规模为 5
     main(5)

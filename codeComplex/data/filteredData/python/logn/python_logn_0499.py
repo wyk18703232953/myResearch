@@ -25,9 +25,8 @@ def main(n: int):
     for i in range(1, t + 1):
         k = i  # 根据规模生成的第 i 个 k
         ans = solve(k)
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：当规模为 10 时运行 main(10)
     main(10)

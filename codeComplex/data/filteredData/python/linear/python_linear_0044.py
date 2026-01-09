@@ -1,17 +1,14 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 和 k，数组 a
-    # 这里设置 k 在 [1, min(n, 20)] 内，避免过大导致几乎无有效段
+    # Deterministic data generation
+    # Interpret n as array length; choose k as a small function of n
     if n <= 0:
+        # print(-1, -1)
+        pass
         return
+    k = max(1, min(10, n // 3 + 1))
+    a = [(i * 2 + 3) % (k + 3) + 1 for i in range(n)]
 
-    k = random.randint(1, min(n, 20))
-    # 为了提升出现不同元素的概率，取值范围稍大
-    max_val = max(2 * k, 10)
-    a = [random.randint(1, max_val) for _ in range(n)]
-
-    # 原逻辑开始
+    # Original algorithm
     q = {0}
     e = 0
     l = []
@@ -22,9 +19,8 @@ def main(n):
         if e == k:
             e = 0
             q = {0}
-            l.append(i)
-
-    w = 10**5
+            l += [i]
+    w = 10 ** 5
     t = 0
     for i in l:
         e = 0
@@ -38,13 +34,12 @@ def main(n):
                     w = j + 1
                     t = i + 1
                 break
-
     if len(set(a)) >= k:
-        print(w, t)
+        # print(w, t)
+        pass
+
     else:
-        print(-1, -1)
-
-
+        # print(-1, -1)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(100)
-    main(100)
+    main(1000)

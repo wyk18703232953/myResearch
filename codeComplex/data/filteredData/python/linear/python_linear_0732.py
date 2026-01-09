@@ -1,18 +1,18 @@
-import random
-
 def main(n):
-    # 随机生成 1 <= k < n 的测试数据
+    # 将原程序的 n 视为字符串长度规模
+    # 构造一个确定性的 k，保持 1 <= k < n，且不会等于 n
     if n <= 1:
-        print("")  # 原逻辑对 n<=1 不太适用，这里输出空串
+        # print("")
+        pass
         return
 
-    k = random.randint(1, n - 1)
+    k = n // 2
+    if k >= n:
+        k = n - 1
 
     d = (n - k) // 2 + 1
     x = ['1' if (i + 1) % d == 0 else '0' for i in range(n)]
-    print(''.join(x))
-
-
+    # print(''.join(x))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

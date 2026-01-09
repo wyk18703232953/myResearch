@@ -1,24 +1,28 @@
-import sys, collections, math, itertools, random, bisect
+import sys, collections, math, itertools, bisect
 INF = sys.maxsize
 mod = 1000000007
 
 def main(n):
-    # 根据规模 n 生成测试数据 (l, r)
-    # 这里选择生成一个较简单的区间 [l, r]，满足 r - l 与 n 相关
-    # 你可以根据需求修改生成策略
+    if n <= 0:
+        return
+
+    # 将 n 映射为区间长度
+    length = max(1, n)
     l = 1
-    r = l + max(0, n - 1)  # 保证 r >= l，区间长度约为 n
+    r = l + length - 1
 
     if r - l < 2:
-        print(-1)
+        # print(-1)
+        pass
     elif l % 2 == 0:
-        print(l, l + 1, l + 2)
+        # print(l, l + 1, l + 2)
+        pass
     elif r - l > 2:
-        print(l + 1, l + 2, l + 3)
+        # print(l + 1, l + 2, l + 3)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

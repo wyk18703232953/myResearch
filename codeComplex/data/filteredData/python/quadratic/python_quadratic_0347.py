@@ -1,19 +1,18 @@
-import random
-import string
+def main(n):
+    if n <= 0:
+        # print(-1)
+        pass
+        return
 
-def main(n: int):
-    # 生成测试数据：两个长度为 n 的小写字母串
-    # 保证 second 是 first 经过若干相邻交换后得到的版本（这样通常有解）
-    first = [random.choice(string.ascii_lowercase) for _ in range(n)]
-    second = first[:]  # 从 first 拷贝
-    # 随机执行若干次相邻交换来生成 second
-    for _ in range(n):  # 做 n 次随机相邻交换
-        if n <= 1:
-            break
-        i = random.randint(0, n - 2)
-        second[i], second[i + 1] = second[i + 1], second[i + 1] = second[i + 1], second[i]
+    # Deterministic generation of first and second strings of length n
+    # first: repeating pattern 'a','b','c',...
+    first = [chr(ord('a') + (i % 26)) for i in range(n)]
+    # second: right-rotated version of first
+    second = first[-1:] + first[:-1] if n > 1 else first[:]
 
-    # 下面是原逻辑（移除 input，对 first 和 second 使用上面生成的测试数据）
+    first = list(first)
+    second = list(second)
+
     swap = []
     can = True
 
@@ -29,17 +28,21 @@ def main(n: int):
                 for j in range(cont, i, -1):
                     first[j], first[j - 1] = first[j - 1], first[j]
                     swap.append(j)
+
             else:
                 can = False
                 break
 
     if can:
-        print(len(swap))
-        print(*swap, end=' ')
+        # print(len(swap))
+        pass
+
+        if swap:
+            # print(*swap, end=' ')
+            pass
+
     else:
-        print(-1)
-
-
-# 示例：直接运行时可以调用 main(5) 做一次简单测试
+        # print(-1)
+        pass
 if __name__ == "__main__":
-    main(5)
+    main(10)

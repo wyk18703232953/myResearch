@@ -1,26 +1,17 @@
-import random
-
 def main(n):
-    # 1. 根据规模 n 生成 R, G, B
-    # 尝试让 R+G+B ≈ n，且都 >= 1
-    if n < 3:
-        n = 3
-    # 简单分配：R= n//3, G= (n+1)//3, B= n - R - G
-    R = n // 3
-    G = (n + 1) // 3
-    B = n - R - G
-    if R == 0: R = 1
-    if G == 0: G = 1
-    if B == 0: B = 1
+    # Map n to sizes of R, G, B such that total DP states scale as O(n^3)
+    # Here we choose R = G = B = n
+    R = n
+    G = n
+    B = n
 
-    # 2. 生成三组长度分别为 R, G, B 的随机正整数，并排序
-    # 数值范围可按需要调整
-    A = sorted(random.randint(1, 1000) for _ in range(R))
-    C = sorted(random.randint(1, 1000) for _ in range(G))
-    D = sorted(random.randint(1, 1000) for _ in range(B))
-    L = [A, C, D]
+    # Deterministic generation of three color lists
+    # Sorted non-decreasing as in original program
+    L0 = [i * 2 + 1 for i in range(R)]
+    L1 = [i * 3 + 2 for i in range(G)]
+    L2 = [i * 5 + 3 for i in range(B)]
+    L = [L0, L1, L2]
 
-    # 3. 原算法逻辑
     DP = [0] * ((R + 1) * (G + 1) * (B + 1))
 
     def idx(r, g, b):
@@ -34,17 +25,20 @@ def main(n):
                     if g:
                         best = L[0][r - 1] * L[1][g - 1] + DP[idx(r - 1, g - 1, b)]
                     if b:
-                        best = max(best,
-                                   L[0][r - 1] * L[2][b - 1] + DP[idx(r - 1, g, b - 1)])
+                        v = L[0][r - 1] * L[2][b - 1] + DP[idx(r - 1, g, b - 1)]
+                        if v > best:
+                            best = v
                 if g and b:
-                    best = max(best,
-                               L[1][g - 1] * L[2][b - 1] + DP[idx(r, g - 1, b - 1)])
+                    v = L[1][g - 1] * L[2][b - 1] + DP[idx(r, g - 1, b - 1)]
+                    if v > best:
+                        best = v
                 DP[idx(r, g, b)] = best
 
-    # 4. 输出结果（可根据需要返回）
-    print(max(DP))
+    result = max(DP)
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：用 n = 9 运行一次
-    main(9)
+    main(10)

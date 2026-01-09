@@ -1,25 +1,18 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：n 行，每行 1~5 个随机整数
-    data = []
-    for _ in range(n):
-        k = random.randint(1, 5)              # 每行的整数个数
-        row = [random.randint(-100, 100) for _ in range(k)]
-        data.append(row)
-
-    # 原逻辑开始
+def main(n):
+    # 确定性数据生成：n 行，每行长度为 3，元素为 i, i+1, i+2
     l = []
-    for row in data:
-        l.append(sum(row))
+    for i in range(n):
+        c = [i, i + 1, i + 2]
+        l.append(sum(c))
 
     m = l[0]
     l.sort(reverse=True)
     for i in range(len(l)):
         if m == l[i]:
-            print(i + 1)
+            # print(i + 1)
+            pass
             break
 
+
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

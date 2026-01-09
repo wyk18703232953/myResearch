@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 
 import copy
-import random
-import string
 
 
 def rotate90(n, f):
@@ -21,25 +19,27 @@ def eq(n, f, g):
                 return False
     return True
 
+def generate_matrix(n, offset):
+    # 生成一个 n x n 的字符矩阵，使用确定性规则
+    # 字符从 'A' ~ 'Z' 循环
+    return [[chr(ord('A') + ((i * n + j + offset) % 26)) for j in range(n)] for i in range(n)]
 
 def main(n):
-    # 生成一个 n×n 的随机矩阵 f 和由 f 经过随机变换得到的 g
+    # n 作为矩阵的规模：n x n
     if n <= 0:
         return
 
-    # 使用简单字符集，保证可见性
-    chars = string.ascii_uppercase[:5]  # A-E
+    # 生成原矩阵 f
+    f = generate_matrix(n, 0)
 
-    # 随机生成原矩阵 f
-    f = [[random.choice(chars) for _ in range(n)] for _ in range(n)]
+    # 生成目标矩阵 g：对 f 做一组确定的变换
+    # 为了保证可扩展性，这里用确定性的规则选择变换：
+    # doflipv, dofliph, nrot 由 n 决定
+    doflipv = (n // 2) % 2       # 0 或 1
+    dofliph = (n // 3) % 2       # 0 或 1
+    nrot = n % 4                 # 0~3
 
-    # 复制出 g 并施加随机变换（在原逻辑允许的变换空间内）
     g = copy.deepcopy(f)
-
-    doflipv = random.randint(0, 1)
-    dofliph = random.randint(0, 1)
-    nrot = random.randint(0, 3)
-
     if dofliph == 1:
         g = fliphor(n, g)
     if doflipv == 1:
@@ -47,7 +47,7 @@ def main(n):
     for _ in range(nrot):
         g = rotate90(n, g)
 
-    # 按原程序逻辑判断是否可以通过一系列变换从 f 得到 g
+    # 保持原有的核心判定逻辑
     for doflipv_try in range(2):
         for dofliph_try in range(2):
             for nrot_try in range(4):
@@ -59,11 +59,12 @@ def main(n):
                 for _ in range(nrot_try):
                     h = rotate90(n, h)
                 if eq(n, h, g):
-                    print("Yes")
+                    # print("Yes")
+                    pass
                     return
-    print("No")
 
-
+    # print("No")
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n=4 运行一次
-    main(4)
+    # 示例调用，可根据需要调整 n 规模
+    main(5)

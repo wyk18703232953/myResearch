@@ -1,5 +1,4 @@
 import bisect
-import random
 
 def get_prime(n):
     res = []
@@ -26,10 +25,8 @@ def get_mask(num):
             dv.append(p)
         if num < p * p:
             break
-
     for x in dv:
         num *= x
-
     return num
 
 def get_left(n, k, lst):
@@ -43,9 +40,10 @@ def get_left(n, k, lst):
         last_in[group] = i
         if len(s) <= k + 1:
             res.append(s[::-1])
+
         else:
             m = len(s)
-            res.append(s[m-1:m-k-2:-1])
+            res.append(s[m - 1:m - k - 2:-1])
     return res
 
 def get_dp(n, k, lst):
@@ -58,6 +56,7 @@ def get_dp(n, k, lst):
             for g in range(j + 1):
                 if g >= len(arr):
                     row[j] = 1
+
                 else:
                     index = arr[g] - 1
                     jindex = j - g
@@ -69,31 +68,21 @@ def f(n, k, lst):
     dp = get_dp(n, k, lst)
     return dp[n - 1][k]
 
+def generate_instance(n):
+    if n <= 0:
+        return 0, 0, []
+    k = n // 3
+    lst = [i * i % 1000003 for i in range(1, n + 1)]
+    return n, k, lst
+
 def main(n):
-    """
-    n: 规模参数，用于生成测试数据。
-       这里设定：
-       - 测试组数 T = 1
-       - 每组长度 len(lst) = n
-       - k = min(20, n-1)（保证 k < n 且不过大）
-       - 每个元素在 [1, 10^6] 之间随机生成
-    """
-    if n < 2:
-        return  # 规模太小，不做测试
-
-    T = 1
-    results = []
-    for _ in range(T):
-        size = n
-        k = min(20, size - 1)
-        lst = [random.randint(1, 10**6) for _ in range(size)]
-        ans = f(size, k, lst)
-        results.append((size, k, ans))
-
-    # 输出结果，可根据需要调整格式
-    for size, k, ans in results:
-        print(size, k, ans)
-
+    n, k, lst = generate_instance(n)
+    if n == 0:
+        # print(0)
+        pass
+        return
+    ans = f(n, k, lst)
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：以 n = 100 作为规模运行
-    main(100)
+    main(1000)

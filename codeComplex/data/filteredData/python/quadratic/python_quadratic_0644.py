@@ -1,19 +1,20 @@
-import random
-
-def main(n: int) -> int:
-    # 生成测试数据：n 个 [1, 10*n] 之间的随机整数
-    l = [random.randint(1, 10 * n) for _ in range(n)]
+def main(n):
+    # Generate deterministic input list of size n
+    # Example pattern: l[i] = (i + 1) * ((i % 5) + 1)
+    l = [(i + 1) * ((i % 5) + 1) for i in range(n)]
 
     l.sort()
     v = [False for _ in range(n)]
     ans = 0
     i = 0
     while i < n:
-        if not v[i]:
+        if v[i] is False:
             ans += 1
             for j in range(i + 1, n):
                 if l[j] % l[i] == 0:
                     v[j] = True
         i += 1
-    print(ans)
-    return ans
+    # print(ans)
+    pass
+if __name__ == "__main__":
+    main(10)

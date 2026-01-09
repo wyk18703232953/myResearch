@@ -29,9 +29,8 @@ def main(n):
         if n != 0:
             s = str(x)[i]
             n -= 1
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     # 示例：规模 n 的测试，可按需修改 n
     test_n = 100

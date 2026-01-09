@@ -1,29 +1,19 @@
 import math
-import random
 
-def lucky(x: int) -> bool:
-    s = set(str(x))
-    return s.issubset({"4", "7"}) and len(s) > 0
+def lucky(x):
+    return (list(set(list(str(x)))) in [["4"], ["7"], ["4", "7"], ["7", "4"]])
 
-def main(n: int):
-    # 根据规模 n 生成一个测试数 a
-    # 这里简单设定：在 [1, 10^n] 范围内随机生成
-    if n <= 0:
-        a = 1
-    else:
-        upper = 10 ** n
-        a = random.randint(1, upper)
-
-    is_lucky_divisible = False
-    limit = math.isqrt(a)
-    for i in range(1, limit + 1):
+def main(n):
+    # 将 n 映射为待测整数 a 的规模，这里直接使用 n
+    a = max(1, n)
+    true = False
+    for i in range(1, math.ceil(math.sqrt(a)) + 1):
         if a % i == 0:
             if lucky(i) or lucky(a // i):
-                is_lucky_divisible = True
+                true = True
                 break
-
-    print("YES" if is_lucky_divisible else "NO")
-
+    # print("YES" if true else "NO")
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(3)，可根据需要修改 n
-    main(3)
+    # 示例调用，可根据需要修改 n 进行实验
+    main(100)

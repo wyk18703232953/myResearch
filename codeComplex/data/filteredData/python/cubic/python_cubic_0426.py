@@ -15,7 +15,8 @@ def main(n):
     if k & 1:
         # k 为奇数时，无解，输出全 -1
         res = '\n'.join(' '.join(['-1'] * m) for _ in range(n))
-        print(res)
+        # print(res)
+        pass
         return
 
     d = [0] * (n * m)
@@ -39,7 +40,8 @@ def main(n):
     # 输出结果
     for i in range(n):
         row = d[i * m:i * m + m]
-        print(' '.join(str(2 * x) for x in row))
+        # print(' '.join(str(2 * x) for x in row))
+        pass
 
 
 # 示例调用（实际使用时按需调用 main）

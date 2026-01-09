@@ -3,7 +3,8 @@ def main(n):
     k = int(n)
 
     if k < 10:
-        print(k)
+        # print(k)
+        pass
         return
 
     c = 0
@@ -17,12 +18,15 @@ def main(n):
 
         if current_n + 1 <= 10 ** (c + 1):
             if int(current_n) == current_n:  # 整数
-                print(int(current_n % 10))
+                # print(int(current_n % 10))
+                pass
                 return
+
             else:
                 # 非整数时，原逻辑取 (c+1) 位数字中的某一位
                 idx = round((current_n - int(current_n)) * (c + 1)) - 1
-                print(str(int(current_n) + 1)[idx])
+                # print(str(int(current_n) + 1)[idx])
+                pass
                 return
 
 

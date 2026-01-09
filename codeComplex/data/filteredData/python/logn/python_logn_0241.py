@@ -14,10 +14,12 @@ def bsearch(low, high, s):
         if mid - digit_sum(mid) >= s:
             ans = mid
             high = mid - 1
+
         else:
             low = mid + 1
     if ans == -1:
         return 0
+
     else:
         return h - ans + 1
 
@@ -30,9 +32,8 @@ def main(n):
 
     cnt = 0
     cnt += bsearch(1, n, s)
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n
     main(10**12)

@@ -1,19 +1,8 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # 数组 a 的长度为 n，元素为 0~n 之间的随机整数
-    a = [random.randint(0, n) for _ in range(n)]
+    # n: length of array a
+    # Deterministic construction of a and queries
+    a = [(i * 2 + 3) % (n + 7) for i in range(n)]
 
-    # 生成若干查询，这里设为 n 次查询
-    q = n
-    queries = []
-    for _ in range(q):
-        l = random.randint(1, n)
-        r = random.randint(l, n)
-        queries.append((l, r))
-
-    # 原逻辑开始
     cnt = 0
     for i in range(n):
         for j in range(i + 1, n):
@@ -21,12 +10,25 @@ def main(n):
                 cnt += 1
     even = cnt % 2 == 0
 
-    for l, r in queries:
+    # Define number of queries as n for scalability
+    q = n
+    for i in range(q):
+        # Deterministic query generation:
+        # l and r are 1-based, ensuring 1 <= l <= r <= n
+        l = (i % n) + 1
+        r = n - (i % n)
+        if l > r:
+            l, r = r, l
         length = r - l + 1
         pairs = length * (length - 1) // 2
         if pairs % 2 == 1:
             even = not even
         if even:
-            print('even')
+            # print('even')
+            pass
+
         else:
-            print('odd')
+            # print('odd')
+            pass
+if __name__ == "__main__":
+    main(5)

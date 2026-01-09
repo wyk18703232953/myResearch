@@ -12,11 +12,11 @@ def main(n: int):
         m = (r + l) // 2
         if m * (m + 1) // 2 - (a - m) > b:
             r = m
+
         else:
             l = m
-    print(a - l)
-
-
+    # print(a - l)
+    pass
 if __name__ == "__main__":
     # 示例调用
     main(10)

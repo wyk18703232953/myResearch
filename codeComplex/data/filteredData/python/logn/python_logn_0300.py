@@ -13,8 +13,8 @@ def main(n):
     x = n
     k = n
     ans = solve(x, k)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可自行修改 n 测试
     main(10)

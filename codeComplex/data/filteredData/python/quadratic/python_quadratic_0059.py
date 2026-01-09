@@ -1,15 +1,3 @@
-import os
-import sys
-from io import BytesIO, IOBase
-import math
-from queue import Queue
-import collections
-import itertools
-import bisect
-import heapq
-import random
-
-
 def binary(n):
     return bin(n).replace("0b", "")
 
@@ -24,6 +12,9 @@ def pow2(n):
         n //= 2
         p += 1
     return p
+
+
+import math
 
 
 def primeFactors(n):
@@ -57,7 +48,8 @@ def primeFactorsCount(n):
 def isPrime(n):
     if n == 1:
         return False
-    root = int(n ** 0.5) + 1
+    root = int(n ** 0.5)
+    root += 1
     for i in range(2, root):
         if n % i == 0:
             return False
@@ -84,6 +76,7 @@ def countcon(s, i):
     for i in range(i, len(s)):
         if s[i] == ch:
             c += 1
+
         else:
             break
     return c
@@ -91,14 +84,14 @@ def countcon(s, i):
 
 def lis(arr):
     n = len(arr)
-    dp = [1] * n
+    lis_arr = [1] * n
     for i in range(1, n):
         for j in range(0, i):
-            if arr[i] > arr[j] and dp[i] < dp[j] + 1:
-                dp[i] = dp[j] + 1
+            if arr[i] > arr[j] and lis_arr[i] < lis_arr[j] + 1:
+                lis_arr[i] = lis_arr[j] + 1
     maximum = 0
     for i in range(n):
-        maximum = max(maximum, dp[i])
+        maximum = max(maximum, lis_arr[i])
     return maximum
 
 
@@ -109,8 +102,8 @@ def isSubSequence(str1, str2):
     i = 0
     while j < m and i < n:
         if str1[j] == str2[i]:
-            j += 1
-        i += 1
+            j = j + 1
+        i = i + 1
     return j == m
 
 
@@ -132,10 +125,10 @@ def p2(n):
 
 def seive(n):
     primes = [True] * (n + 1)
-    primes[0] = primes[1] = False
+    primes[1] = primes[0] = False
     i = 2
     while i * i <= n:
-        if primes[i]:
+        if primes[i] is True:
             for j in range(i * i, n + 1, i):
                 primes[j] = False
         i += 1
@@ -147,8 +140,7 @@ def seive(n):
 
 
 def ncr(n, r, p):
-    num = 1
-    den = 1
+    num = den = 1
     for i in range(r):
         num = (num * (n - i)) % p
         den = (den * (i + 1)) % p
@@ -178,40 +170,27 @@ def sod(n):
 
 
 def main(n):
-    # 生成规模为 n 的测试数据
-    if n <= 0:
-        return
-
-    # 数组长度 n，元素取值 1..1e9
-    l = [random.randint(1, 10**9) for _ in range(n)]
-
-    # 预先计算初始逆序对个数
+    size = max(1, n)
+    l = [(i * 3 + 1) % (size + 7) for i in range(size)]
     inv = 0
-    for i in range(1, n):
+    for i in range(1, size):
         for j in range(0, i):
             if l[j] > l[i]:
                 inv += 1
-
-    # 设查询次数 q 与 n 同规模
-    q = n
-
-    # 随机生成 q 次查询
-    queries = []
-    for _ in range(q):
-        f = random.randint(1, n)
-        r = random.randint(f, n)
-        queries.append((f, r))
-
-    # 模拟原代码的查询逻辑并输出
-    for f, r in queries:
+    q = max(1, n // 2)
+    results = []
+    for t in range(q):
+        f = t + 1
+        r = f + (t % size)
         p = (r - f + 1) // 2
         inv += p % 2
         if inv % 2:
-            print("odd")
+            results.append("odd")
+
         else:
-            print("even")
-
-
+            results.append("even")
+    for res in results:
+        # print(res)
+        pass
 if __name__ == "__main__":
-    # 示例：运行 main(5) 进行简单测试
-    main(5)
+    main(10)

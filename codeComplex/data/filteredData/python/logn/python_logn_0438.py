@@ -5,6 +5,7 @@ def f_pow(a, n):
         return 1
     if n % 2 == 0:
         return f_pow(a * a, n // 2)
+
     else:
         return a * f_pow(a, n - 1)
 
@@ -60,11 +61,12 @@ def main(n):
         K = i - 1          # K 从 0,1,2,...,n-1
         a = ans(N, K)
         if a == -1:
-            print("NO")
+            # print("NO")
+            pass
+
         else:
-            print("YES {}".format(a))
-
-
+            # print("YES {}".format(a))
+            pass
 if __name__ == "__main__":
     # 示例：以 n=5 运行主函数
     main(5)

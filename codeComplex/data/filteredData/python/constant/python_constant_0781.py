@@ -14,11 +14,12 @@ def main(n):
     # 对每个测试值进行判断并输出结果
     for val in test_values:
         if val in k:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
-
-
+            # print('NO')
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，可根据需要修改规模
     main(10)

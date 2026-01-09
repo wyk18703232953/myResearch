@@ -1,24 +1,16 @@
-import random
-
 def main(n):
-    # 随机生成测试数据 a, b, c, n_param
-    # 保证 n_param 与规模 n 同数量级，避免溢出
-    n_param = max(1, n)
+    # Deterministically generate a, b, c based on n
+    a = n + 3
+    b = 2 * n + 1
+    c = n // 2
 
-    # 生成非负整数 a, b, c，范围可根据规模调整
-    # 这里设置在 [0, 2*n_param] 之间
-    a = random.randint(0, 2 * n_param)
-    b = random.randint(0, 2 * n_param)
-    c = random.randint(0, 2 * n_param)
-
-    # 原逻辑
     if c > a or c > b:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        val = n_param - ((a - c) + (b - c)) - c
-        print(val if 0 < val <= n_param else -1)
-
-
+        val = n - ((a - c) + (b - c)) - c
+        # print(val if val <= n and val > 0 else -1)
+        pass
 if __name__ == "__main__":
-    # 示例：按某个规模调用 main
     main(10)

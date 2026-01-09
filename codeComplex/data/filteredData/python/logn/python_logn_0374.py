@@ -16,9 +16,8 @@ def main(n):
     if x == 0:
         res = 0
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：可以在此处修改测试规模 n
     main(5)

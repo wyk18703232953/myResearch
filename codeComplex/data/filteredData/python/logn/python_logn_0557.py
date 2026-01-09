@@ -1,29 +1,20 @@
-import bisect
-import random
-
-
 def main(n):
-    # n 作为“规模”，这里用来生成一个不超过 n 的随机 k
-    # 若希望固定 k，可直接把 k 赋为某个常数
-    if n <= 0:
-        return
+    import bisect
 
-    # 构造与原程序相同的表 b, a
-    b = [0]
+    b = []
+    a = []
+    b.append(0)
+
     for i in range(1, 15):
         b.append(9 * i * (10 ** (i - 1)))
 
-    a = [b[0]]
+    a.append(b[0])
     for i in range(1, 15):
         a.append(a[i - 1] + b[i])
 
-    # 生成测试数据：k ∈ [1, min(n, a[-1])]
-    max_k = min(n, a[-1])
-    if max_k < 1:
-        return
-    k = random.randint(1, max_k)
+    # 映射：原程序中 k 是单个整数输入，这里用 n 作为 k
+    k = n
 
-    # 以下为原逻辑，仅将除法改为整除，避免浮点问题
     th = bisect.bisect_left(a, k)
     th -= 1
     k = k - a[th]
@@ -36,9 +27,8 @@ def main(n):
     s = ""
     s += temp[now - 1] + str(end) + str(end + 1)
 
-    print(s[rem])
-
-
+    # print(s[0 + rem])
+    pass
 if __name__ == "__main__":
-    # 示例：用 n = 10^12 作为规模
-    main(10 ** 12)
+    # 示例调用：可根据需要修改 n 的值进行规模实验
+    main(1000000)

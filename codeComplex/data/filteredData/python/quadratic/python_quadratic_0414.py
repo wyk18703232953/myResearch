@@ -1,24 +1,18 @@
-import random
-import string
+def main(n):
+    # Deterministically generate k and s based on n
+    # k >= 1, vary with n
+    k = max(1, n // 3 + 1)
+    # Build a deterministic string s of length n using cyclic letters
+    alphabet = "abcd"
+    s = "".join(alphabet[i % len(alphabet)] for i in range(n))
 
-def main(n: int):
-    # 生成测试数据：
-    # 1) 随机选择 k 的范围，这里设为 1~n
-    # 2) 生成长度为 n 的随机小写字符串 s
-    if n <= 0:
-        return
-
-    k = random.randint(1, max(1, n))
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-
-    # 原逻辑
     for i in range(1, n):
         if s[:n - i] == s[i:]:
-            print(s + s[n - i:] * (k - 1))
+            result = s + s[n - i:] * (k - 1)
+            # print(result)
+            pass
             return
-    print(s * k)
-
-
+    # print(s * k)
+    pass
 if __name__ == "__main__":
-    # 示例：可在此处手动调用 main 进行本地测试
-    main(5)
+    main(10)

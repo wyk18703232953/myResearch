@@ -19,4 +19,5 @@ if __name__ == "__main__":
     # 示例：生成一个规模 n 的测试，并打印结果
     # 这里简单地用一个固定或可修改的 n 作为测试
     test_n = 1000  # 可根据需要修改测试规模
-    print(main(test_n))
+    # print(main(test_n))
+    pass

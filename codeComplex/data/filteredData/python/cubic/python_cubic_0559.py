@@ -1,26 +1,16 @@
-import random
-import string
+def main(n):
+    # Deterministic data generation based on n
+    # Generate string a as digits cycling 0-9, length n
+    a = [str(i % 10) for i in range(n)]
+    # Generate string b as digits cycling 9-0, same length as a
+    b = ''.join(str(9 - (i % 10)) for i in range(n))
 
-
-def main(n: int):
-    # 1. 生成测试数据
-    # a: 长度为 n 的数字字符列表
-    # b: 长度为 n 的数字字符串
-    digits = string.digits
-    a = [random.choice(digits) for _ in range(n)]
-    b = ''.join(random.choice(digits) for _ in range(n))
-
-    # 打印测试数据（如不需要可注释掉）
-    # print("a_src:", ''.join(a))
-    # print("b_src:", b)
-
-    # 2. 原逻辑开始
+    a = list(a)
     out = []
     mx = '/'
     a.sort()
     a.reverse()
     x = len(a)
-
     if x == len(b):
         for i in range(x):
             q = 0
@@ -33,13 +23,17 @@ def main(n: int):
                 elif a[j] < b[i]:
                     out.append(a[j])
                     a.pop(a.index(a[j]))
-                    print(''.join(out), end='')
-                    print(''.join(a))
+                    # print(''.join(out), end='')
+                    pass
+                    # print(''.join(a))
+                    pass
                     return
             if q == 0:
                 break
         if q == 1:
-            print(''.join(out))
+            # print(''.join(out))
+            pass
+
         else:
             y = len(out)
             for i in range(y - 1, -1, -1):
@@ -53,22 +47,25 @@ def main(n: int):
                     a.pop(a.index(mx))
                     a.sort()
                     a.reverse()
-                    print(''.join(out), end='')
-                    print(''.join(a))
+                    # print(''.join(out), end='')
+                    pass
+                    # print(''.join(a))
+                    pass
                     return
+
                 else:
                     a.append(out[len(out) - 1])
                     out.pop()
                     a.sort()
                     a.reverse()
-
             a.pop(a.index(mx))
-            print(mx, end='')
-            print(''.join(a))
+            # print(mx, end='')
+            pass
+            # print(''.join(a))
+            pass
+
     else:
-        print(''.join(a))
-
-
+        # print(''.join(a))
+        pass
 if __name__ == "__main__":
-    # 示例：n = 8，对应原代码注释中的示例长度
-    main(8)
+    main(20)

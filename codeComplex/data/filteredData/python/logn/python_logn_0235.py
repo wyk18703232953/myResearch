@@ -4,7 +4,8 @@ def main(n):
     s = n // 2
 
     if s >= n:
-        print("0")
+        # print("0")
+        pass
         return
 
     for i in range(s, n + 2):
@@ -13,7 +14,8 @@ def main(n):
             cur += int(j)
         if i - cur >= s:
             break
-    print(n - i + 1)
+    # print(n - i + 1)
+    pass
 
 
 # 示例调用（可根据需要修改或删除）

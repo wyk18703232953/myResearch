@@ -1,22 +1,22 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 约定：
-    #   1 <= m, k, l <= n
-    #   并且适当生成一部分一定无解的情况用于测试
-    m = random.randint(1, max(1, n))
-    k = random.randint(0, n)     # 允许为 0
-    l = random.randint(0, n)     # 允许为 0
+    # 映射规则：
+    # 原程序需要 n, m, k, l 四个整数
+    # 这里将调用参数 n 作为原始的 n
+    # 其余 m, k, l 由 n 确定性构造
+    orig_n = n
+    m = max(1, n // 3)        # 保证 m >= 1
+    k = n // 2
+    l = n // 4
 
-    # 原逻辑
     k += l
     x = (k + m - 1) // m
-    if m * x > n:
-        print(-1)
-    else:
-        print(x)
+    if m * x > orig_n:
+        # print(-1)
+        pass
 
+    else:
+        # print(x)
+        pass
 if __name__ == "__main__":
-    # 示例：使用 n = 10 作为规模参数调用
+    # 示例调用，可按需修改 n 的大小进行时间复杂度实验
     main(10)

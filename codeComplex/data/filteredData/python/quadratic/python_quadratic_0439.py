@@ -1,52 +1,42 @@
-import sys
-import math
-import bisect
-from random import randint
+import sys, math, bisect
 from collections import deque, defaultdict, Counter
-import heapq
-import string
+import heapq, string
 
 inf = float('inf')
 mod = 998244353
 
-"========================================"
-
-
 def lcm(a, b):
     return int((a / math.gcd(a, b)) * b)
-
 
 def gcd(a, b):
     return int(math.gcd(a, b))
 
-
 def tobinary(n):
     return bin(n)[2:]
-
 
 def binarySearch(a, x):
     i = bisect.bisect_left(a, x)
     if i != len(a) and a[i] == x:
         return i
+
     else:
         return -1
-
 
 def lowerBound(a, x):
     i = bisect.bisect_left(a, x)
     if i:
-        return i - 1
+        return (i - 1)
+
     else:
         return -1
-
 
 def upperBound(a, x):
     i = bisect.bisect_right(a, x)
     if i != len(a) + 1 and a[i - 1] == x:
-        return i - 1
+        return (i - 1)
+
     else:
         return -1
-
 
 def primesInRange(n):
     ans = []
@@ -62,7 +52,6 @@ def primesInRange(n):
             ans.append(p)
     return ans
 
-
 def primeFactors(n):
     factors = []
     while n % 2 == 0:
@@ -76,38 +65,40 @@ def primeFactors(n):
         factors.append(n)
     return factors
 
-
 def isPrime(n, k=5):
     if n < 2:
         return True
-    for _ in range(k):
-        a = randint(1, n - 1)
+    # deterministic replacement for randint-based logic
+    # use fixed bases modulo n (wrapped) for reproducibility
+    for i in range(k):
+        a = (i + 1) % (n - 1) + 1
         if pow(a, n - 1, n) != 1:
             return False
     return True
 
-
-"========================================="
-
-
 def main(n):
-    # 生成长度为 n 的随机数字串，字符为 '0'~'9'
-    s = [randint(0, 9) for _ in range(n)]
+    # Deterministic generation of input:
+    # Original program:
+    # n = int(input())
+    # s = input() (string of digits length n)
+    # Here: length of s is n, digits pattern is (i % 10)
+    length = n
+    s_str = ''.join(str(i % 10) for i in range(length))
 
-    for target_sum in range(0, (9 * n) + 1):
+    s = [int(i) for i in s_str]
+    for i in range(0, (9 * length) + 1):
         count = 0
-        cur_sum = 0
-        for digit in s:
-            cur_sum += digit
-            if cur_sum == target_sum:
+        curr_sum = 0
+        for j in s:
+            curr_sum += j
+            if curr_sum == i:
                 count += 1
-                cur_sum = 0
-        if count > 1 and cur_sum == 0:
-            print('YES')
+                curr_sum = 0
+        if count > 1 and curr_sum == 0:
+            # print('YES')
+            pass
             return
-    print('NO')
-
-
+    # print('NO')
+    pass
 if __name__ == "__main__":
-    # 示例：可以根据需要修改这里的 n 来做简单测试
-    main(5)
+    main(10)

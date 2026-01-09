@@ -1,21 +1,16 @@
-import random
-
 def main(n):
-    # 随机生成 m, a, b，满足题意：m > 0
-    if n <= 0:
-        print(0)
-        return
+    # Deterministically generate m, a, b based on n
+    m = n + 1 if n > 0 else 1
+    a = n % 10 + 1
+    b = (n // 2) % 10 + 1
 
-    m = random.randint(1, max(1, n * 2))
-    a = random.randint(1, 10**6)
-    b = random.randint(1, 10**6)
-
-    # 原逻辑
     z = (n % m) * b
     x = ((n // m + 1) * m - n) * a
     y = min(z, x)
-    print(y if y > 0 else 0)
+    result = y if y > 0 else 0
+    # print(result)
+    pass
+    return result
 
 if __name__ == "__main__":
-    # 示例：调用 main，规模可自行调整
-    main(100)
+    main(10)

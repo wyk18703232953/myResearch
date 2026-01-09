@@ -1,10 +1,3 @@
-from collections import defaultdict, deque, Counter
-from heapq import heappush, heappop
-import math
-import bisect
-import random
-
-
 def isPrime(x):
     for i in range(2, x):
         if i * i > x:
@@ -23,6 +16,7 @@ def ncr(n, r, p):
 
 
 def primeFactors(n):
+    import math
     l = []
     while n % 2 == 0:
         l.append(2)
@@ -44,7 +38,7 @@ def power(x, y, p):
     while y > 0:
         if (y & 1) == 1:
             res = (res * x) % p
-        y >>= 1
+        y = y >> 1
         x = (x * x) % p
     return res
 
@@ -81,13 +75,12 @@ def solve(final, n):
     for i in range(n):
         k.append(sum(final[i]))
     a = max(k) - min(k)
-
     a = a * a
+
     k = []
     for i in range(n):
         k.append(sum(fifi[i]))
     b = max(k) - min(k)
-
     b = b * b
 
     return a + b
@@ -100,23 +93,19 @@ def inte(a, b, c, d):
 
 
 def main(n):
-    # 生成测试数据：n 个区间 [l_i, r_i]
-    # 保证 l_i <= r_i，范围在 [0, 1e6]
-    MAXV = 10**6
+    # deterministically generate n intervals [a_i, b_i]
+    # ensure a_i <= b_i and values are scalable with n
     l = []
-    for _ in range(n):
-        x = random.randint(0, MAXV)
-        y = random.randint(0, MAXV)
-        if x > y:
-            x, y = y, x
-        l.append([x, y])
+    for i in range(n):
+        a = i
+        b = i + (i % 5) + 5  # small width but overlapping structure
+        l.append([a, b])
 
     f = []
     ff = []
     a = 0
-    b = 10_000_000_000_000
+    b = 10000000000000
     f.append([a, b])
-
     for i in range(n):
         x = inte(a, b, l[i][0], l[i][1])
         a = x[0]
@@ -124,15 +113,14 @@ def main(n):
         f.append([a, b])
 
     a = 0
-    b = 10_000_000_000_000
+    b = 10000000000000
     ff = [[] for _ in range(n)]
     for i in reversed(range(n)):
         x = inte(a, b, l[i][0], l[i][1])
         a = x[0]
         b = x[1]
         ff[i] = [a, b]
-
-    ff.append([0, 100_000_000_000_000])
+    ff.append([0, 100000000000000])
 
     ans = 0
     for i in range(n):
@@ -142,9 +130,7 @@ def main(n):
         if y[1] >= y[0]:
             ans = max(ans, y[1] - y[0])
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 5 的测试
-    main(5)
+    main(10)

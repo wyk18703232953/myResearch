@@ -1,13 +1,9 @@
-import random
+def main(n):
+    INF = 10000
 
-INF = 10000
-
-
-def main(n: int):
-    # 生成规模为 n 的测试数据：aa 为长度为 n 的正整数序列
-    # 可根据需要调整数据范围
-    random.seed(0)
-    aa = [random.randint(1, 5) for _ in range(n)]
+    # 确定性生成输入数据：长度为 n 的整数数组 aa
+    # 示例构造：aa[i] = (i % 5) + 1，保证均为正数，且有一定重复结构
+    aa = [(i % 5) + 1 for i in range(n)]
 
     dp = [[0] * (n + 1) for _ in range(n)]
 
@@ -30,13 +26,8 @@ def main(n: int):
         for j in range(i + 1, n + 1):
             if calc_dp(i, j) > 0:
                 dp2[j] = min(dp2[j], dp2[i] + 1)
-
-    # 输出结果（以及可选的测试数据）
-    print(dp2[n])
-    # 如需查看测试数据，可取消下一行注释
-    # print("aa =", aa)
-
-
+    # print(dp2[n])
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # 示例：使用 n = 10 作为输入规模，可按需修改或在外部多次调用 main(n)
+    main(10)

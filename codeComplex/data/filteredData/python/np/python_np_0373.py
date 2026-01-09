@@ -56,9 +56,8 @@ def main(n):
             if dp[ni] > dp[i] + cost:
                 dp[ni] = dp[i] + cost
 
-    print(dp[-1])
-
-
+    # print(dp[-1])
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，可根据需要修改 n
     main(10)

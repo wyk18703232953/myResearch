@@ -1,5 +1,4 @@
 from collections import defaultdict
-import random
 
 def num(s):
     l, r = 0, 0
@@ -25,35 +24,26 @@ def f(mp, cnt):
             mp[l] -= 1
     return ans
 
-def generate_test_data(n, seed=0):
-    """
-    生成 n 个仅含 '(' 和 ')' 的随机字符串。
-    长度在 [1, 2*n] 范围内（可根据需要调整）。
-    """
-    random.seed(seed)
-    strings = []
-    for _ in range(n):
-        length = random.randint(1, max(2, 2 * n))
-        s = ''.join(random.choice("()") for _ in range(length))
-        strings.append(s)
-    return strings
-
 def main(n):
-    """
-    n 为规模：生成 n 个测试括号串并计算结果。
-    返回与原程序相同的最终整数输出。
-    """
-    test_strings = generate_test_data(n)
-
     cnt = []
     mp = defaultdict(int)
-    for s in test_strings:
+    # 生成 n 个括号字符串，长度随 n 线性增长
+    # 第 i 个字符串长度为 (i % 5 + 1) * max(1, n // 5)
+    for i in range(n):
+        length = (i % 5 + 1) * max(1, n // 5)
+        # 构造确定性模式：前半部分为 '('，后半部分为 ')'
+        half = length // 2
+        s = "(" * half + ")" * (length - half)
+        # 对部分字符串施加确定性扰动，使得有多种 (l, r) 组合
+        if i % 3 == 1 and length > 2:
+            s = ")" + s[1:]
+        if i % 4 == 2 and length > 3:
+            s = s[:-2] + "()"
         l = num(s)
         cnt.append(l)
         mp[l] += 1
-
-    return f(mp, cnt)
-
+    result = f(mp, cnt)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：运行 main(5) 查看结果
-    print(main(5))
+    main(1000)

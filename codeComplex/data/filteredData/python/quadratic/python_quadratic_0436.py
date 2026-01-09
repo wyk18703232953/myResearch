@@ -1,23 +1,20 @@
-import random
-from math import sqrt
+def main(n):
+    from math import sqrt
 
-def main(n: int):
-    # 1. 生成测试数据：长度为 n 的 0/1 列表（模拟原代码的数字串）
-    #   这里用等概率生成 0 和 1，你可以按需要调整分布
-    l = [random.randint(0, 1) for _ in range(n)]
+    # 生成长度为 n 的数字列表 l（每个元素为 0~9 的整数）
+    # 完全确定性：l[i] = (i * 7 + 3) % 10
+    l = [(i * 7 + 3) % 10 for i in range(n)]
 
-    # 2. 保留原 solve 的核心逻辑，只是去掉 input，改用生成的 l
     divisors = []
     total = sum(l)
-
     for j in range(2, int(sqrt(total)) + 1):
         if total % j == 0:
             divisors.extend([j, total // j])
 
     if total == 0:
-        print("YES")
+        # print("YES")
+        pass
         return
-
     if total != 1:
         divisors.append(1)
 
@@ -32,14 +29,12 @@ def main(n: int):
             elif summ == search:
                 summ = 0
             index += 1
-
         if summ == 0 and index == n:
-            print("YES")
+            # print("YES")
+            pass
             return
-
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可自行修改 n
+    # 示例：使用 n = 10 作为输入规模
     main(10)

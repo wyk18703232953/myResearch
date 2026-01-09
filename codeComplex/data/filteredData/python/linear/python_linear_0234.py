@@ -16,15 +16,15 @@ def main(n: int):
     for ch in x:
         if ch == 'x':
             c += 1
+
         else:
             ans += max(0, c - 2)
             c = 0
     ans += max(0, c - 2)
 
     # 输出结果
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

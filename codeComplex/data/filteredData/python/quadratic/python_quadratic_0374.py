@@ -32,9 +32,8 @@ def main(n, k=None):
                 ans = norm(ans + dp2[i] * dp2[j])
 
     ans = norm(ans * 2)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：自动生成规模为 5 的测试数据
     main(5)

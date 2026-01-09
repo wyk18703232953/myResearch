@@ -1,22 +1,19 @@
-import random
-
-
 def aburrimin(x, y, n, m, costder, costaba, dp):
     dists = []
     vals = []
-    if x != 0:  # left
+    if x != 0:  # izq
         dis = costder[y][x - 1]
         dists.append(dis)
         vals.append(dis + dp[y][x - 1])
-    if y != 0:  # up
+    if y != 0:  # arri
         dis = costaba[y - 1][x]
         dists.append(dis)
         vals.append(dis + dp[y - 1][x])
-    if y < n - 1:  # down
+    if y < n - 1:  # aba
         dis = costaba[y][x]
         dists.append(dis)
         vals.append(dis + dp[y + 1][x])
-    if x < m - 1:  # right
+    if x < m - 1:  # der
         dis = costder[y][x]
         dists.append(dis)
         vals.append(dis + dp[y][x + 1])
@@ -25,15 +22,24 @@ def aburrimin(x, y, n, m, costder, costaba, dp):
     return min(mindis + dp[y][x], min(vals))
 
 
-def solvecaso(n, m, k, costder, costaba):
-    if k % 2:
-        for _ in range(n):
-            print(" ".join("-1" for _ in range(m)))
-        return
+def main(n):
+    if n < 2:
+        n = 2
+    # Map n to grid size and k:
+    # Use n as both rows and columns, and k proportional to n
+    rows = n
+    cols = n
+    k = 2 * n  # ensure even, and scalable with n
 
+    # Deterministic generation of costder and costaba
+    # costder: rows x cols
+    costder = [[(i * cols + j) % 7 + 1 for j in range(cols)] for i in range(rows)]
+    # costaba: (rows-1) x cols
+    costaba = [[((i + 1) * cols + j * 2) % 9 + 1 for j in range(cols)] for i in range(rows - 1)]
+
+    # The original logic assumes k is even; here k is constructed as even
     k //= 2
 
-    # double costs
     for ren in range(len(costder)):
         for col in range(len(costder[ren])):
             costder[ren][col] *= 2
@@ -41,35 +47,21 @@ def solvecaso(n, m, k, costder, costaba):
         for col in range(len(costaba[ren])):
             costaba[ren][col] *= 2
 
-    dp = [[0 for _ in range(m)] for _ in range(n)]
-    dptemp = [[0 for _ in range(m)] for _ in range(n)]
+    dp = [[0 for _ in range(cols)] for _ in range(rows)]
+    dptemp = [[0 for _ in range(cols)] for _ in range(rows)]
 
     for _ in range(k):
-        for y in range(n):
-            for x in range(m):
-                dptemp[y][x] = aburrimin(x, y, n, m, costder, costaba, dp)
+        for y in range(rows):
+            for x in range(cols):
+                dptemp[y][x] = aburrimin(x, y, rows, cols, costder, costaba, dp)
         dp, dptemp = dptemp, dp
 
     for ren in dp:
-        print(" ".join(str(num) for num in ren))
-
-
-def main(n):
-    """
-    n: 规模参数，用来生成测试数据。
-       这里设定为一个 n×n 的网格，并令 k = 2*n 作为示例。
-    """
-    m = n
-    k = 2 * n  # 可以根据需要调整 k 的生成方式
-
-    # 生成测试数据：边权为 1~10 的随机整数
-    random.seed(0)
-    costder = [[random.randint(1, 10) for _ in range(m - 1)] for _ in range(n)]
-    costaba = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
-
-    solvecaso(n, m, k, costder, costaba)
-
-
+        for num in ren:
+            # print(num, end=' ')
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
-    # 示例：以 n=4 运行
-    main(4)
+    # Example scalable call; adjust n to change input size
+    main(5)

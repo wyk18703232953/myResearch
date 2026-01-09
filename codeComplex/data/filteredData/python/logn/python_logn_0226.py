@@ -15,10 +15,11 @@ def main(n):
         delta = mid - dsum(mid)
         if delta >= s:
             r = mid - 1
+
         else:
             l = mid + 1
-    print(n - l + 1)
-
+    # print(n - l + 1)
+    pass
 if __name__ == "__main__":
     # 示例：可更改为任意规模
     main(10**6)

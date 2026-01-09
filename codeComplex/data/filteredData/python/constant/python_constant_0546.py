@@ -1,16 +1,12 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成测试数据：
-    # 令 s 为 [1, n^2] 的随机整数，且保证 n >= 1
-    if n <= 0:
-        raise ValueError("n must be positive")
-    s = random.randint(1, n * n)
-
-    # 原逻辑：输出 (s + n - 1) // n
-    result = (s + n - 1) // n
-    print(result)
-
-# 示例：直接运行本文件时，给一个默认规模
+def main(n):
+    # 原程序输入结构：两个整数 n, s
+    # 这里将输入规模参数 n 映射为：
+    #   n_input = n
+    #   s_input = n * (n + 1) // 2  （确定性构造，随 n 增长）
+    n_input = n if n > 0 else 1
+    s_input = n_input * (n_input + 1) // 2
+    result = (s_input + n_input - 1) // n_input
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

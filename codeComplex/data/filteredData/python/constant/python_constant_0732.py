@@ -13,9 +13,8 @@ def main(n):
     k = str(k)
 
     # 原程序为 print(...)，这里保持同样行为
-    print(k[len(k) - p - 1])
-
-
+    # print(k[len(k) - p - 1])
+    pass
 if __name__ == "__main__":
     # 示例：根据需要修改 n 的值进行测试
     test_n = 1000

@@ -1,18 +1,12 @@
-import random
+def main(n):
+    nr = n
+    ng = n
+    nb = n
 
-def main(n: int):
-    # 生成规模：三种颜色数量之和约为 n
-    # 这里简单设定为尽量平均分配
-    nr = n // 3
-    ng = (n - nr) // 2
-    nb = n - nr - ng
+    r = sorted([(i * 2 + 1) % (3 * n + 1) for i in range(nr)])
+    g = sorted([(i * 3 + 2) % (3 * n + 1) for i in range(ng)])
+    b = sorted([(i * 5 + 3) % (3 * n + 1) for i in range(nb)])
 
-    # 生成测试数据：值域可以自行调整
-    r = sorted(random.randint(1, 1000) for _ in range(nr))
-    g = sorted(random.randint(1, 1000) for _ in range(ng))
-    b = sorted(random.randint(1, 1000) for _ in range(nb))
-
-    # DP 逻辑与原程序一致
     dp = [[[0 for _ in range(nb + 1)] for _ in range(ng + 1)] for _ in range(nr + 1)]
     for i in range(nr + 1):
         for j in range(ng + 1):
@@ -26,9 +20,7 @@ def main(n: int):
                     val = max(val, g[j - 1] * b[k - 1] + dp[i][j - 1][k - 1])
                 dp[i][j][k] = val
 
-    print(dp[nr][ng][nb])
-
-
+    # print(dp[nr][ng][nb])
+    pass
 if __name__ == "__main__":
-    # 示例：n = 9
-    main(9)
+    main(5)

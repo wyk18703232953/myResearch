@@ -49,4 +49,5 @@ def main(n: int) -> int:
 
 # 示例：直接运行文件时，给一个默认规模
 if __name__ == "__main__":
-    print(main(5))
+    # print(main(5))
+    pass

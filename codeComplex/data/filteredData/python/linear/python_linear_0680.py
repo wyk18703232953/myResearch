@@ -1,15 +1,9 @@
-import random
+def main(n):
+    # Generate deterministic input array b of length n
+    if n <= 0:
+        return
+    b = [i * 2 + 1 for i in range(n)]
 
-def main(n: int):
-    # 1. 生成测试数据 b，长度为 n
-    #   这里示例：b 为 1..n 的前缀和，保证非负且递增，便于调试
-    b = []
-    curr = 0
-    for i in range(1, n + 1):
-        curr += i
-        b.append(curr)
-
-    # 2. 按照原始逻辑计算 a1, a2 并输出
     a1 = [0]
     a2 = [b[0]]
 
@@ -21,9 +15,7 @@ def main(n: int):
         a1.append(new_a)
         a2.append(new_a2)
 
-    print(*(a1 + a2[::-1]))
-
-
+    # print(*(a1 + a2[::-1]))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

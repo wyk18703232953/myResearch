@@ -1,30 +1,42 @@
-import random
-
 def main(n):
-    # 随机构造一个 n 行 m 列的矩阵，其中有若干个连续的 'B' 组成矩形
-    m = n  # 这里简单设为正方形，可按需调整为其它策略
+    # Interpret n as both the number of rows and columns
+    rows = n
+    cols = n
 
-    # 初始化为全 'W'
-    grid = [['W' for _ in range(m)] for _ in range(n)]
+    # Deterministically generate a rows x cols grid of '.' with a centered 'B' block.
+    # Make the 'B' block size depend on n, but always valid.
+    # Let block size k = max(1, n // 3).
+    k = max(1, n // 3)
+    # Center of the matrix (1-based indices)
+    center_row = (rows + 1) // 2
+    center_col = (cols + 1) // 2
+    # Top-left corner of the block (1-based)
+    top_row = max(1, center_row - (k - 1) // 2)
+    left_col = max(1, center_col - (k - 1) // 2)
+    # Bottom-right corner (1-based)
+    bottom_row = min(rows, top_row + k - 1)
+    right_col = min(cols, left_col + k - 1)
 
-    # 随机生成一个非空的 'B' 矩形
-    top = random.randint(0, n - 1)
-    bottom = random.randint(top, n - 1)
-    left = random.randint(0, m - 1)
-    right = random.randint(left, m - 1)
-
-    for i in range(top, bottom + 1):
-        for j in range(left, right + 1):
-            grid[i][j] = 'B'
-
-    # 原始逻辑：在网格中找到所有 'B' 的最小外接矩形中心
     x1 = -1
     x2 = -1
     y1 = -1
     y2 = -1
-    for i in range(n):
-        s = ''.join(grid[i])
-        for j in range(m):
+
+    for i in range(rows):
+        # Build each row string deterministically
+        row_chars = []
+        for j in range(cols):
+            # Convert to 1-based for comparison
+            r = i + 1
+            c = j + 1
+            if top_row <= r <= bottom_row and left_col <= c <= right_col:
+                row_chars.append('B')
+
+            else:
+                row_chars.append('.')
+        s = ''.join(row_chars)
+
+        for j in range(cols):
             if s[j] == 'B':
                 if x1 == -1:
                     x1 = j + 1
@@ -33,10 +45,7 @@ def main(n):
                     y1 = i + 1
                 y2 = i + 1
 
-    # 输出中心坐标（使用 1-based 下标）
-    print((y1 + y2) // 2, (x1 + x2) // 2)
-
-
+    # print((y1 + y2) // 2, (x1 + x2) // 2)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，可根据需要更改 n
-    main(5)
+    main(10)

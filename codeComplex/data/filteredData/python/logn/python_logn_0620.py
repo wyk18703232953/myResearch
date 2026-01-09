@@ -29,9 +29,8 @@ def main(n: int):
     k = n * (n + 1) // 4
 
     ans = solve(n, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可以修改这里的 n 来测试不同规模
     main(10)

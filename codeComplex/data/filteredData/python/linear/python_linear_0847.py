@@ -1,11 +1,13 @@
-import random
+def main(n):
+    # Deterministically generate input array of size n
+    # Example pattern: arr[i] = (i * 3 + 7) % (n + 5)
+    arr = [(i * 3 + 7) % (n + 5) for i in range(n)] if n > 0 else []
 
-def main(n: int):
-    # 1. 根据 n 生成测试数据
-    # 这里生成 n 个范围在 [-10^9, 10^9] 的随机整数
-    arr = [random.randint(-10**9, 10**9) for _ in range(n)]
+    if n == 0:
+        # print("NO")
+        pass
+        return
 
-    # 2. 原始逻辑开始
     maxval = max(arr)
     maxindex = -1
     for i in range(n):
@@ -19,6 +21,7 @@ def main(n: int):
         if temp <= arr[i]:
             flag = 1
             break
+
         else:
             temp = arr[i]
 
@@ -27,15 +30,16 @@ def main(n: int):
         if arr[i] >= temp:
             flag = 1
             break
+
         else:
             temp = arr[i]
 
     if flag == 0:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 进行测试
     main(10)

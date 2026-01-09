@@ -18,12 +18,12 @@ def main(n):
         if possible(n - mid, mid):
             lo = mid + 1
             ans = mid
+
         else:
             hi = mid - 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例运行：可根据需要调整 n
     main(10)

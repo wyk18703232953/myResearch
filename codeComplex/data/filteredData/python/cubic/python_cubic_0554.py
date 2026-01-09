@@ -1,6 +1,7 @@
 def search(current, digits, target, idx, bulk):
     if len(current) == len(target) and int(current) <= int(target):
-        print(current)
+        # print(current)
+        pass
         raise SystemExit
 
     possibilities = [char for char in digits if bulk or (char <= target[idx] and char in digits)]
@@ -34,7 +35,8 @@ def main(n):
     target = "".join(target_digits)
 
     if len(digits) < len(target):
-        print(''.join(digits))
+        # print(''.join(digits))
+        pass
         return
 
     entries = [char for char in digits if char <= target[0]]

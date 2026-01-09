@@ -34,7 +34,8 @@ def main(n):
 
         if n_local >= 35:
             # 原逻辑：直接 YES n-1
-            print("YES", n_local - 1)
+            # print("YES", n_local - 1)
+            pass
             return
 
         # 构造 val 数组
@@ -53,13 +54,15 @@ def main(n):
             rem = rem + (t - 3) * (val[n_local - 1])
             rem = int(rem)
             if rem + s >= k_local and s <= k_local:
-                print("YES", n_local - 1)
+                # print("YES", n_local - 1)
+                pass
                 n_local = -2   # 用作标记，表示已经找到
                 break
             n_local = n_local - 1
 
         if n_local != -2:
-            print("NO")
+            # print("NO")
+            pass
 
     # 依次处理每一组测试数据
     for n_i, k_i in test_cases:

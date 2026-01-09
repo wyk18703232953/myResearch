@@ -8,18 +8,21 @@ def main(n):
 
     if n - sum(int(d) for d in str(n)) < s:
         ans = 0
+
     else:
         start, end = 1, n
         mid = (start + end) // 2
         while mid != end and mid != start:
             if check(mid):
                 end = mid
+
             else:
                 start = mid
             mid = (start + end) // 2
         ans = n - end + 1
 
-    print(ans)
+    # print(ans)
+    pass
 
 
 # 示例：调用 main(100) 运行

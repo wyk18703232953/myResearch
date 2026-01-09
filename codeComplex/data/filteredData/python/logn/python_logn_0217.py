@@ -53,4 +53,5 @@ if __name__ == "__main__":
     # 示例：运行 main(5) 并打印结果
     ans_list = main(5)
     for v in ans_list:
-        print(v)
+        # print(v)
+        pass

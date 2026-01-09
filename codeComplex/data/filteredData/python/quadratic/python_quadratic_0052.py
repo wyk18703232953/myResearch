@@ -35,11 +35,12 @@ def main(n):
     for l, r in queries:
         x = (x + (r - l + 1) // 2) % 2
         if x:
-            print("odd")
+            # print("odd")
+            pass
+
         else:
-            print("even")
-
-
+            # print("even")
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可按需要修改或在外部调用 main(n)
     main(5)

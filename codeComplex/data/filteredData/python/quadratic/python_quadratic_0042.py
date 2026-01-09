@@ -23,6 +23,7 @@ def main(n: int):
             curr_sum %= mod
             if v[i] == 'f':
                 dp[i][l] = dp[i + 1][l + 1]
+
             else:
                 dp[i][l] = curr_sum
 
@@ -32,4 +33,5 @@ def main(n: int):
 
 if __name__ == "__main__":
     # 示例：调用 main(5) 或其他规模
-    print(main(5))
+    # print(main(5))
+    pass

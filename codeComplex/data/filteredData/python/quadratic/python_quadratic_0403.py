@@ -10,13 +10,16 @@ def main(n):
     k = n
 
     if n == 1:
-        print(t * k)
+        # print(t * k)
+        pass
+
     else:
         i = len(t) - 1
         while i > 0 and t[-i:] != t[:i]:
             i -= 1
         t2 = t[i:]
-        print(t + t2 * (k - 1))
+        # print(t + t2 * (k - 1))
+        pass
 
 
 # 示例调用

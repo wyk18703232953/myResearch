@@ -1,20 +1,16 @@
-import random
-
 def main(n):
-    # 生成测试数据：m 为随机的标记个数，这里设为 [n, 2n] 范围
-    m = random.randint(n, 2 * n)
-
-    # 随机生成 m 个在 [1, n] 之间的整数，模拟原来的输入 c
-    c = [str(random.randint(1, n)) for _ in range(m)]
-
-    # 以下为原始逻辑的封装
+    # 映射：原程序中 n, m 分别为元素种类数和元素总数
+    # 这里设定 m = n * 2，构造一个长度为 m 的列表 c
+    # c 中的值在 1..n 之间循环出现，保证可重复且确定性
+    m = n * 2
+    c = [str((i % n) + 1) for i in range(m)]
     col = [0] * n
-    for value in c:
-        col[int(value) - 1] += 1
-
-    print(min(col))
-
+    for i in range(len(c)):
+        col[int(c[i]) - 1] += 1
+    result = min(col)
+    return result
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)，实际使用时按需修改 n
-    main(5)
+    # 示例调用
+    # print(main(10))
+    pass

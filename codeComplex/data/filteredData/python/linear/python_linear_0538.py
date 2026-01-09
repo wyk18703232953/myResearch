@@ -1,35 +1,42 @@
-import sys
-import random
+def main(n):
+    import sys
 
-def main(n: int):
-    # 生成规模为 n 的测试数据：整数列表 za
-    # 这里示例生成范围在 [-10^6, 10^6] 的随机整数
-    random.seed(0)
-    za = [random.randint(-10**6, 10**6) for _ in range(n)]
+    # 确定性生成输入
+    # N 为输入规模
+    N = max(1, n)
 
-    # 以下是原逻辑，移除了 input()：
-    N = n
+    # 生成长度为 N 的整数数组 za
+    # 设计为含有正数、负数和零（除非 N 太小）
+    za = []
+    for i in range(N):
+        # 生成有正有负有零的整数序列
+        # 分布范围随 N 线性增长，保持可规模化
+        val = (i * 2 - N)  # 从约 -N 到 N 的线性序列
+        za.append(val)
 
+    # 原算法逻辑开始
     if N == 1:
-        print(za[0])
+        # print(za[0])
+        pass
         return
 
     t1 = max(za)
     t2 = min(za)
     if t2 >= 0:
-        print(sum(za) - 2 * t2)
+        # print(sum(za) - 2 * t2)
+        pass
         return
     if t1 <= 0:
-        print(2 * t1 - sum(za))
+        # print(2 * t1 - sum(za))
+        pass
         return
 
     res = 0
     for x in za:
         res += abs(x)
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模可自行修改
-    main(5)
+    # 示例：以 n = 10 作为输入规模运行
+    main(10)

@@ -9,6 +9,7 @@ def main(n):
             for i in range(n):
                 steps.append((j, i))
                 steps.append((m - j - 1, n - i - 1))
+
     else:
         steps = []
         for j in range(m // 2):
@@ -26,9 +27,8 @@ def main(n):
             r -= 1
 
     for x, y in steps:
-        print(y + 1, x + 1)
-
-
+        # print(y + 1, x + 1)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

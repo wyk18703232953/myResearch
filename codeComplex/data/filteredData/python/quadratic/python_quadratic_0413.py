@@ -19,9 +19,8 @@ def main(n):
 
     ss = s[l:]
     fs = s + (ss * (kk - 1))
-    print(fs)
-
-
+    # print(fs)
+    pass
 if __name__ == "__main__":
     # 示例调用：n 可按需要修改
     main(5)

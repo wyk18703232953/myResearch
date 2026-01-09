@@ -1,58 +1,50 @@
 from collections import deque
-import random
 
+def main(n):
+    # 映射规则（可调）：给定规模 n，构造 (N, D, K)
+    # N 随 n 增长，D 为直径目标，K 为最大度数
+    # 保证 1 <= D < N 且 K >= 1
+    N = max(2, n)          # 至少 2 个节点
+    D = max(1, n // 3)     # 直径目标随 n 缩放
+    if D >= N:
+        D = N - 1
+    K = max(1, (n % 5) + 1)  # 最大度数在 [1, 5] 之间变化
 
-def solve(n, d, k):
-    if n == 1 or n <= d:
+    # 原程序逻辑开始
+    if N == 1 or N <= D:
         ans = "NO"
-        edges = []
-    elif k == 1:
-        ans = "YES" if n == 2 and d == 1 else "NO"
-        edges = [(1, 2)] if ans == "YES" else []
+        e = []
+    elif K == 1:
+        ans = "YES" if N == 2 and D == 1 else "NO"
+        e = [(1, 2)] if ans == "YES" else []
+
     else:
-        edges = [(i + 1, i + 2) for i in range(d)]
+        e = [(i + 1, i + 2) for i in range(D)]
         q = deque()
-        l, r = 1, d + 1
-        if k > 2:
-            for i in range(2, d + 1):
-                # item: (node, depth_from_root, remaining_radius)
+        l, r = 1, D + 1
+        if K > 2:
+            for i in range(2, D + 1):
                 q.append((i, 2, min(i - l, r - i)))
         ans = "YES"
-        for i in range(d + 2, n + 1):
+        for i in range(D + 2, N + 1):
             if not q:
                 ans = "NO"
                 break
             j, k0, d0 = q.popleft()
-            edges.append((j, i))
-            if k0 + 1 < k:
+            e.append((j, i))
+            if k0 + 1 < K:
                 q.append((j, k0 + 1, d0))
             if d0 - 1 > 0:
                 q.append((i, 1, d0 - 1))
-    return ans, edges
 
+    # 输出用于时间复杂度实验
+    # print(ans)
+    pass
 
-def gen_test_data(n):
-    # 简单根据 n 构造一组 (n, d, k) 以触发不同分支
-    if n <= 2:
-        # 小规模时，随便选一个合法 d,k 范围
-        d = 1 if n == 2 else 0
-        k = 1
-    else:
-        # 随机在合理范围内生成 d,k
-        d = random.randint(1, max(1, n - 1))
-        k = random.randint(1, max(1, n // 2))
-    return n, d, k
-
-
-def main(n):
-    n, d, k = gen_test_data(n)
-    ans, edges = solve(n, d, k)
-    print(ans)
     if ans == "YES":
-        for u, v in edges:
-            print(u, v)
-
-
+        for u, v in e:
+            # print(u, v)
+            pass
 if __name__ == "__main__":
-    # 示例：可以在这里手动调用 main 进行简单测试
+    # 示例调用：可根据需要修改 n 的大小做规模实验
     main(10)

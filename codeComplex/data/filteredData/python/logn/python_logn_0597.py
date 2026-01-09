@@ -15,11 +15,13 @@ def main(n):
 
         if candies - eat <= k:
             l = m
+
         else:
             r = m
 
     ans = n - l
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

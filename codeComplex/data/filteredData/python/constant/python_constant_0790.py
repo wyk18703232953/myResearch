@@ -1,32 +1,23 @@
-#   Author: yumtam (modified)
-#   Converted to parameterized main(n) without input()
-
-import random
-
-def is_square(x: int) -> bool:
+def is_square(x):
     sq = int(x**0.5)
     return sq * sq == x
 
-def main(n: int):
-    """
-    n: number of test cases to generate and run.
-    For each test case, we randomly generate an integer value for n (problem's n),
-    and apply the original logic, printing YES/NO.
-    """
-    # You can adjust range of generated test data as needed
-    MIN_VAL, MAX_VAL = 1, 10**9
 
-    for _ in range(n):
-        # generate test data for original "n"
-        val = random.randint(MIN_VAL, MAX_VAL)
+def main(n):
+    # 生成 n 组测试数据：第 i 组数据为 i+1
+    test_cases = [i + 1 for i in range(n)]
 
+    results = []
+    for val in test_cases:
         if ((val % 2 == 0 and is_square(val // 2))
                 or (val % 4 == 0 and is_square(val // 4))):
-            print("YES")
+            results.append("YES")
+
         else:
-            print("NO")
+            results.append("NO")
 
-
+    for r in results:
+        # print(r)
+        pass
 if __name__ == "__main__":
-    # Example: run with 5 generated test cases
-    main(5)
+    main(10)

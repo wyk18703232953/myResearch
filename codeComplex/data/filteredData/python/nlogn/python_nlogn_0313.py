@@ -28,11 +28,12 @@ def main(n):
         c += i + 1 - bi.sum(x)
 
     if c % 2 == n % 2:
-        print("Petr")
+        # print("Petr")
+        pass
+
     else:
-        print("Um_nik")
-
-
+        # print("Um_nik")
+        pass
 if __name__ == "__main__":
     # 示例：可修改 n 测试
     main(5)

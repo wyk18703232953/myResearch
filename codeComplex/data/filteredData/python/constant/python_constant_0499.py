@@ -16,28 +16,39 @@ def main(n):
         remaining = k - mx
 
         if remaining < 0:
-            print(-1)
+            # print(-1)
+            pass
         elif m == 0 and nn == 0:
             if k == 1:
-                print(-1)
+                # print(-1)
+                pass
             elif k % 2:
-                print(k - 1)
+                # print(k - 1)
+                pass
+
             else:
-                print(k)
+                # print(k)
+                pass
         elif abs(m - nn) % 2 == 0:
             if remaining % 2 == 0:
-                print(k)
+                # print(k)
+                pass
+
             else:
-                print(k - 2)
+                # print(k - 2)
+                pass
+
         else:
             if remaining == 0:
-                print(k - 1)
+                # print(k - 1)
+                pass
             elif remaining % 2 == 0:
-                print(k - 1)
+                # print(k - 1)
+                pass
+
             else:
-                print(k - 1)
-
-
+                # print(k - 1)
+                pass
 if __name__ == "__main__":
     # 示例运行：规模 n = 5
     main(5)

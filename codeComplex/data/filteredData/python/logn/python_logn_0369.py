@@ -20,14 +20,16 @@ def main(n):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         ans = power(2, k, MOD)
         ans = ans * ((2 * x) - 1)
         ans = ans + 1
         ans = ans % MOD
-        print(ans)
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -1,25 +1,21 @@
-import random
-
 def score(l):
     return sum(x * (x % 2 == 0) for x in l)
 
+
 def main(n):
-    # 生成规模为 n 的测试数据，这里生成 0~100 的随机整数
-    ns = [random.randint(0, 100) for _ in range(n)]
+    # n 控制 ns 的规模与数值大小
+    # 构造长度固定为 14 的列表，元素与 n 相关且确定
+    ns = [(i * n + i * i) % (2 * n + 1) for i in range(14)]
 
     res = 0
-    for i in range(n):
+    for i in range(14):
         l = list(ns)
-        base = l[i] // n
-        rem = l[i] % n
-        for j in range(n - 1):
-            idx = (i + 1 + j) % n
-            l[idx] += base + (1 if (j + 1) <= rem else 0)
-        l[i] = base
+        for j in range(13):
+            l[(i + 1 + j) % 14] += l[i] // 14 + (1 if (j + 1) <= l[i] % 14 else 0)
+        l[i] = l[i] // 14
         res = max(res, score(l))
 
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例调用：n 对应原程序中的 14
-    main(14)
+    main(10)

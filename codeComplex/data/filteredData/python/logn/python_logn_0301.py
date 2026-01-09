@@ -14,14 +14,14 @@ def main(n: int):
 
     if x == 0:
         result = 0
+
     else:
         x %= modulo
         result = pow(2, k, modulo) * (2 * x - 1) + 1
         result %= modulo
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 可以在这里指定 n 进行简单测试
     main(10)

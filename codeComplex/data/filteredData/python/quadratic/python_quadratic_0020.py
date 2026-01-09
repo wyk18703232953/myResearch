@@ -5,15 +5,16 @@ import fractions
 import heapq
 import itertools
 import math
-import random
 import sys
 from collections import deque, defaultdict
 from functools import lru_cache, reduce
 from heapq import heappush, heappop, heapify, _heappop_max, _heapify_max
 
+
 def _heappush_max(heap, item):
     heap.append(item)
     heapq._siftdown_max(heap, 0, len(heap) - 1)
+
 
 from math import gcd as Gcd
 
@@ -25,6 +26,7 @@ def Extended_Euclid(n, m):
         n, m = m, n % m
     if n >= 0:
         x, y = 1, 0
+
     else:
         x, y = -1, 0
     for i in range(len(stack) - 1, -1, -1):
@@ -43,6 +45,7 @@ class MOD:
         a %= self.mod
         if n >= 0:
             return pow(a, n, self.mod)
+
         else:
             assert math.gcd(a, self.mod) == 1
             x = Extended_Euclid(a, self.mod)[0]
@@ -82,6 +85,7 @@ class MOD:
         cnt = self.cnt[N] - self.cnt[N - K] - self.cnt[K]
         if divisible_count:
             return retu, cnt
+
         else:
             retu *= pow(self.p, cnt, self.mod)
             retu %= self.mod
@@ -98,26 +102,36 @@ def Bell_Numbers(N, mod, prime=False):
             bell_numbers[i] = sum(bell_numbers[j] * MD.Comb(i - 1, j) for j in range(i)) % mod
         for i in range(mod, N + 1):
             bell_numbers[i] = (bell_numbers[i - mod + 1] + bell_numbers[i - mod]) % mod
+
     else:
-        MD.Build_Fact(N - 1)
+        if N >= 1:
+            MD.Build_Fact(N - 1)
         for i in range(1, N + 1):
             bell_numbers[i] = sum(bell_numbers[j] * MD.Comb(i - 1, j) for j in range(i)) % mod
     return bell_numbers
 
 
 def main(n):
-    # 生成测试数据：随机设置 N（字符串个数）和每个字符串长度 M = n
-    if n <= 0:
-        return 0
+    # Map n to M (string length) and N (number of strings)
+    # Choose N and M both proportional to n for scalability.
     M = n
-    # 为了不过大，N 取 1..n 之间（至少为 1）
-    N = max(1, n // 2)
-    alphabet = "abc"
-    rnd = random.Random(0)
+    if M < 1:
+        M = 1
+    N = n
+    if N < 1:
+        N = 1
+
+    # Deterministic generation of S: N strings, each of length M.
+    # Characters are chosen deterministically using simple arithmetic on indices.
+    alphabet = "abcde"
+    L = len(alphabet)
     S = []
-    for _ in range(N):
-        s = "".join(rnd.choice(alphabet) for _ in range(M))
-        S.append(s)
+    for j in range(N):
+        s_chars = []
+        for i in range(M):
+            idx = (i + 2 * j) % L
+            s_chars.append(alphabet[idx])
+        S.append("".join(s_chars))
 
     dct = defaultdict(int)
     for i in range(M):
@@ -132,10 +146,7 @@ def main(n):
     for c in dct.values():
         ans *= bell[c]
         ans %= mod
-    print(ans)
-    return ans
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n
     main(5)

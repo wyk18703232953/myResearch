@@ -1,17 +1,23 @@
-import random
+def main(n):
+    # 原程序输入结构：
+    # 第一行：n
+    # 第二行：x y
+    # 这里将 n 作为棋盘大小；x, y 作为棋盘上的坐标
+    # 为了可规模化并保持确定性，生成 x, y 与 n 相关：
+    # 让 x, y 在 [1, n] 内循环变化
+    if n <= 0:
+        return
 
-def main(n: int):
-    # 生成测试数据：x, y 在 [1, n] 范围内
-    x = random.randint(1, n)
-    y = random.randint(1, n)
+    # 生成一个确定性的 (x, y)
+    x = (n // 2) % n + 1
+    y = (n // 3) % n + 1
 
-    # 原始逻辑
     if n - x + n - y >= x - 1 + y - 1:
-        print("White")
+        # print("White")
+        pass
+
     else:
-        print("Black")
-
-
+        # print("Black")
+        pass
 if __name__ == "__main__":
-    # 示例：可自行修改 n 来测试不同规模
-    main(8)
+    main(10)

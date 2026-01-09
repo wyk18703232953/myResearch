@@ -1,20 +1,17 @@
 def main(n):
-    # 生成测试数据：随机选择一个合理的 s（1 <= s <= n 或稍小）
-    # 这里简单设为 n // 2，若需随机可改用 random
-    s = max(1, n // 2)
-
+    # 将 n 作为原程序中的 n
+    s = n // 2  # 规模相关的确定性生成：保证 n > s 在多数情况下成立
     if n <= s:
-        print(0)
+        # print(0)
+        pass
         return
-
     for i in range(s, n + 2):
-        digit_sum = sum(int(d) for d in str(i))
-        if i - digit_sum >= s:
+        l = 0
+        for j in str(i):
+            l += int(j)
+        if i - l >= s:
             break
-
-    print(max(n - i + 1, 0))
-
-
+    # print(max(n - i + 1, 0))
+    pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n
-    main(100000)
+    main(10)

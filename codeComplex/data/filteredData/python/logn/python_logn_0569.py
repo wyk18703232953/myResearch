@@ -11,7 +11,9 @@ def main(n):
         i += 1
 
     if k in x:
-        print(9)
+        # print(9)
+        pass
+
     else:
         for t in range(len(x)):
             if k < x[t]:
@@ -19,15 +21,17 @@ def main(n):
         e = k - x[t - 1]
         if t == 1:
             q = str(e)
+
         else:
             q = str(10**(t - 1) + e // t - 1)
         if e % t == 0:
-            print(q[-1])
+            # print(q[-1])
+            pass
+
         else:
             q = str(int(q) + 1)
-            print(q[e % t - 1])
-
-
+            # print(q[e % t - 1])
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(100)
     main(100)

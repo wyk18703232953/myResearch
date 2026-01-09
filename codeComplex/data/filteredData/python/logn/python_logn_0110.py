@@ -13,6 +13,7 @@ def main(n: int):
     elif n == 1:
         # 简单边界例子
         l, r = 0, 1
+
     else:
         r = (1 << n) - 1
         l = 1 << (n - 1)
@@ -20,6 +21,7 @@ def main(n: int):
     # 原逻辑开始
     if l == r:
         ans = 0
+
     else:
         a = bin(l)[2:]
         b = bin(r)[2:]
@@ -29,6 +31,7 @@ def main(n: int):
             ans = 0
             for i in range(y):
                 ans += (2 ** i)
+
         else:
             for i in range(x):
                 if a[i] != b[i]:
@@ -39,9 +42,8 @@ def main(n: int):
             for i in range(l2):
                 ans += (2 ** i)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可以修改这里的 n 来测试不同规模
     main(5)

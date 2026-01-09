@@ -1,14 +1,10 @@
-import random
+def main(n):
+    # Generate two deterministic binary strings of length n
+    # Pattern: alternate '0' and '1' with different phases for two rows
+    row1 = [('0' if i % 2 == 0 else '1') for i in range(n)]
+    row2 = [('1' if i % 3 == 0 else '0') for i in range(n)]
+    b = [row1, row2]
 
-def main(n: int) -> None:
-    # 1. 生成规模为 n 的测试数据：两行由 '0' / '1' 组成的字符串
-    # 可按需要调整生成策略，这里采用随机生成
-    b = []
-    for _ in range(2):
-        row = [random.choice(['0', '1']) for _ in range(n)]
-        b.append(row)
-
-    # 2. 原逻辑
     ans = 0
     a = []
     for i in range(n):
@@ -18,7 +14,6 @@ def main(n: int) -> None:
         if b[1][i] == '0':
             ai += 1
         a.append(ai)
-
     prv = 0
     for i in range(n):
         if a[i] == 0:
@@ -27,6 +22,7 @@ def main(n: int) -> None:
             if prv == 2:
                 ans += 1
                 prv = 0
+
             else:
                 prv = 1
         elif a[i] == 2:
@@ -36,12 +32,10 @@ def main(n: int) -> None:
             elif prv == 1:
                 ans += 1
                 prv = 0
+
             else:
                 prv = 2
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

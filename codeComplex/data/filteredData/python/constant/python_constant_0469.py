@@ -1,41 +1,63 @@
-import random
-
 def x(a, b):
     if a > b:
         return 1
+
     else:
         return 0
 
 def main(n):
-    # 这里的 n 作为规模参数，可用于控制数据范围
-    # 生成三对坐标 (a1, a2), (b1, b2), (c1, c2)
-    # 坐标值范围根据 n 调整，这里设为 [0, n]
-    a1, a2 = random.randint(0, n), random.randint(0, n)
-    b1, b2 = random.randint(0, n), random.randint(0, n)
-    c1, c2 = random.randint(0, n), random.randint(0, n)
+    # 确定性生成输入数据，n 作为规模参数
+    # 原代码结构：
+    # n (未实际使用)
+    # a1 a2
+    # b1 b2
+    # c1 c2
+
+    # 保证有意义的规模
+    if n < 1:
+        n = 1
+
+    # 生成 a1, a2, b1, b2, c1, c2
+    # 使用简单算术，完全确定
+    a1 = n
+    a2 = n // 2 + 1
+    b1 = n // 3 + 2
+    b2 = n // 4 + 3
+    c1 = n // 5 + 4
+    c2 = n // 6 + 5
 
     if (a1 - a2) == (b1 - b2):
-        print("NO")
+        # print("NO")
+        pass
     elif (a1 + a2) == (b1 + b2):
-        print("NO")
+        # print("NO")
+        pass
     elif a1 == b1:
-        print("NO")
+        # print("NO")
+        pass
     elif a2 == b2:
-        print("NO")
+        # print("NO")
+        pass
     elif (a1 - a2) == (c1 - c2):
-        print("NO")
+        # print("NO")
+        pass
     elif (a1 + a2) == (c1 + c2):
-        print("NO")
+        # print("NO")
+        pass
     elif a1 == c1:
-        print("NO")
+        # print("NO")
+        pass
     elif a2 == c2:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
         if (x(a1, b1) == x(a1, c1)) and (x(a2, b2) == x(a2, c2)):
-            print("YES")
-        else:
-            print("NO")
+            # print("YES")
+            pass
 
+        else:
+            # print("NO")
+            pass
 if __name__ == "__main__":
-    # 示例：规模参数为 10
     main(10)

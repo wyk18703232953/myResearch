@@ -1,4 +1,4 @@
-from heapq import *
+from heapq import heappush, heappop
 
 MSIZE = 1 << 8
 
@@ -16,11 +16,6 @@ xVal = GetVal('00001111')
 yVal = GetVal('00110011')
 zVal = GetVal('01010101')
 
-# 0 - |
-# 1 - &
-# 2 - !
-# 3 - ()
-
 def Dijkstra():
     depth = [['Z' * 585 for _ in range(4)] for _ in range(MSIZE)]
     depth[xVal][3] = 'x'
@@ -28,21 +23,20 @@ def Dijkstra():
     depth[zVal][3] = 'z'
 
     pq = []
+
     def push(kek):
         heappush(pq, kek)
+
     def pop():
         return heappop(pq)
 
     push([1, xVal, 3])
     push([1, yVal, 3])
     push([1, zVal, 3])
-
-    while pq:
+    while len(pq) > 0:
         l, i, j = pop()
         if len(depth[i][j]) < l:
             continue
-
-        # OR
         for x in range(MSIZE):
             for y in range(4):
                 nxt1 = depth[i][j] + '|' + depth[x][y]
@@ -55,8 +49,6 @@ def Dijkstra():
                 elif len(depth[val][0]) > len(nxt):
                     depth[val][0] = nxt
                     push([len(nxt), val, 0])
-
-        # AND
         if j > 0:
             for x in range(MSIZE):
                 for y in range(1, 4):
@@ -70,8 +62,6 @@ def Dijkstra():
                     elif len(depth[val][1]) > len(nxt):
                         depth[val][1] = nxt
                         push([len(nxt), val, 1])
-
-        # NOT
         if j > 2:
             val = GetNot(i)
             nxt = '!' + depth[i][j]
@@ -81,8 +71,6 @@ def Dijkstra():
             elif len(depth[val][2]) > len(nxt):
                 depth[val][2] = nxt
                 push([len(nxt), val, 2])
-
-        # parentheses
         nxt = '(' + depth[i][j] + ')'
         val = i
         if len(depth[val][3]) == len(nxt) and depth[val][3] > nxt:
@@ -91,7 +79,6 @@ def Dijkstra():
         elif len(depth[val][3]) > len(nxt):
             depth[val][3] = nxt
             push([len(nxt), val, 3])
-
     answer = []
     for i in range(MSIZE):
         ans = 'Z' * 585
@@ -103,24 +90,23 @@ def Dijkstra():
         answer.append(ans)
     return answer
 
-kek = Dijkstra()
-
 def main(n):
-    # 生成 n 条随机测试数据（8 位二进制字符串），并输出对应的最优表达式
-    # 为了可复现性，这里使用简单的线性同余伪随机数，而不依赖 random 模块
-    a = 1103515245
-    c = 12345
-    m = 1 << 31
-    seed = n + 1
-
-    def rnd():
-        nonlocal seed
-        seed = (a * seed + c) % m
-        return seed
-
-    for _ in range(n):
-        # 生成一个 0..255 的伪随机数
-        val = rnd() & 0xFF
-        # 转成 8 位二进制字符串（低位在前，保持与 GetVal 一致）
-        bits = ''.join('1' if (val >> i) & 1 else '0' for i in range(8))
-        print(kek[GetVal(bits)])
+    kek = Dijkstra()
+    q = n
+    total_len = 0
+    results = []
+    for i in range(q):
+        pattern = ''.join('1' if (i >> bit) & 1 else '0' for bit in range(8))
+        val = GetVal(pattern)
+        expr = kek[val]
+        total_len += len(expr)
+        results.append(expr)
+    # print(q)
+    pass
+    for expr in results:
+        # print(expr)
+        pass
+    # print(total_len)
+    pass
+if __name__ == "__main__":
+    main(10)

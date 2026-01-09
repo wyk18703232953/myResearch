@@ -1,5 +1,3 @@
-import random
-
 def candy_eaten(n, k):
     choco = 1
     last = 1
@@ -11,18 +9,23 @@ def candy_eaten(n, k):
             choco -= temp
             eat += temp
             i -= temp
+
         else:
             last += 1
             choco += last
             i -= 1
     return eat
 
-def main(n):
-    # 生成测试数据：固定 n，随机生成 k（1 <= k <= 2n，保证有一定变化）
-    k = random.randint(1, max(1, 2 * n))
-    result = candy_eaten(n, k)
-    print(result)
 
-if __name__ == '__main__':
-    # 示例：可修改这里的 n 用于本地测试
+def main(n):
+    # 将 n 作为问题规模：构造 (N, K)
+    # 例如 N = n，K 为与 n 相关的确定性函数
+    N = n
+    if N < 1:
+        N = 1
+    K = max(1, N // 2)
+    result = candy_eaten(N, K)
+    # print(result)
+    pass
+if __name__ == "__main__":
     main(10)

@@ -69,15 +69,17 @@ def main(n):
     a %= 2
 
     if n % 2 == 0 and a % 2 == 0:
-        print("Petr")
+        # print("Petr")
+        pass
     if n % 2 == 0 and a % 2 == 1:
-        print("Um_nik")
+        # print("Um_nik")
+        pass
     if n % 2 == 1 and a % 2 == 0:
-        print("Um_nik")
+        # print("Um_nik")
+        pass
     if n % 2 == 1 and a % 2 == 1:
-        print("Petr")
-
-
+        # print("Petr")
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

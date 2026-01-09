@@ -5,12 +5,12 @@ def main(n: int):
 
     if n < 30:
         result = m % (2 ** n)
+
     else:
         result = m
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用
     for n in range(1, 35):

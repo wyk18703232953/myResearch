@@ -34,6 +34,7 @@ def main(n):
     for x, y in queries:
         if x == 1:
             total1 = arr[y - 1]
+
         else:
             total1 = arr[y - 1] - arr[x - 2]
 

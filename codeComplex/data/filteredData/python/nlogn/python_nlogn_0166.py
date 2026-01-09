@@ -17,9 +17,8 @@ def main(n):
             edge = L[i][0]
             ans += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用主函数，规模为 10
     main(10)

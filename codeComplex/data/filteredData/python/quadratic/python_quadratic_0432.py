@@ -60,7 +60,10 @@ def main(n: int):
     ticket = "".join(digits)
 
     # 打印输入数据
-    print(n)
-    print(ticket)
+    # print(n)
+    pass
+    # print(ticket)
+    pass
     # 打印结果
-    print(solve_ticket(ticket))
+    # print(solve_ticket(ticket))
+    pass

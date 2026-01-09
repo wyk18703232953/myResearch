@@ -7,9 +7,8 @@ def main(n: int):
         x += 1
         y *= 10
     a = 10 ** (x - 1) + n // x
-    print(str(a)[n % x])
-
-
+    # print(str(a)[n % x])
+    pass
 if __name__ == "__main__":
     # 示例：根据规模 n 生成测试数据
     # 你可以在这里修改要测试的 n 值

@@ -16,13 +16,13 @@ def main(n: int):
             m -= cur
             a[r] = i
             r -= 1
+
         else:
             a[l] = i
             l += 1
 
-    print(*a)
-
-
+    # print(*a)
+    pass
 if __name__ == "__main__":
     # 示例运行，可修改 n 测试不同规模
     main(5)

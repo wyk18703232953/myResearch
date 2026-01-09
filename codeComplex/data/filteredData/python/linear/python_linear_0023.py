@@ -1,16 +1,17 @@
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据：随机整数列表
-    # 使用随机数范围较大以避免过多重复，但结果只看奇偶性
-    arr = [random.randint(-10**9, 10**9) for _ in range(n)]
-
-    # 对每个数取模 2，得到 0/1 列表（偶数为0，奇数为1）
-    l = [x % 2 for x in arr]
-
-    # 如果恰好有一个奇数，则输出该元素的位置(1-based)，否则抛出异常与原逻辑一致
-    print(l.index(sum(l) == 1) + 1)
-
+    # Generate deterministic data: a list of n integers
+    # Pattern: i % 3 to produce varied parity
+    l = [i % 3 for i in range(n)]
+    # Original logic: take numbers mod 2
+    l_mod2 = [x % 2 for x in l]
+    # Find index (1-based) where exactly one element is odd (if exists)
+    has_single_odd = (sum(l_mod2) == 1)
+    try:
+        result = l_mod2.index(has_single_odd) + 1
+    except ValueError:
+        # If condition not satisfied, mimic behavior by returning 0
+        result = 0
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

@@ -1,17 +1,19 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成测试数据 (x, y)
-    # 保证 1 <= x, y <= n
-    x = random.randint(1, n)
-    y = random.randint(1, n)
+def main(n):
+    # 确定性生成输入数据
+    # 将 x, y 映射到棋盘内的某个位置
+    if n <= 0:
+        return
+    x = n // 2 + 1 if n >= 2 else 1
+    y = n // 3 + 1 if n >= 3 else 1
+    x = min(x, n)
+    y = min(y, n)
 
     if max(x - 1, y - 1) > max(n - x, n - y):
-        print("Black")
+        # print("Black")
+        pass
+
     else:
-        print("White")
-
-
+        # print("White")
+        pass
 if __name__ == "__main__":
-    # 示例：可修改这里测试不同规模
     main(8)

@@ -1,35 +1,31 @@
-import random
-
 def main(n):
-    # 生成测试数据：长度为 n 的数组 a，元素为正整数，至少保证存在一个 >1 的元素（若可能）
+    # Deterministic generation of input array a of length n
+    # Ensure both 1s and values >1 exist for meaningful behavior
     if n <= 0:
-        print("NO")
         return
 
-    a = [1] * n
-    if n >= 1:
-        # 随机选一些位置改为 >1
-        for i in range(n):
-            if random.random() < 0.3:  # 30% 概率设为 >1
-                a[i] = random.randint(2, 5)
+    a = []
+    for i in range(n):
+        # Construct values deterministically:
+        # mix of 1 and values >1 based on index
+        if i % 3 == 0:
+            a.append(1)
 
-        # 确保不是全 1（如果希望更覆盖原逻辑）
-        if all(x == 1 for x in a) and n > 1:
-            pos = random.randrange(n)
-            a[pos] = random.randint(2, 5)
+        else:
+            # values from 2 to 5 deterministically
+            a.append(2 + (i % 4))
 
-    # 原逻辑开始
     os = 0
     oss = []
     nos = 0
     nos_0 = -1
     nos_1 = -1
     sumnos = 0
-
     for i in range(n):
         if a[i] == 1:
             os += 1
             oss.append(i + 1)
+
         else:
             sumnos += a[i]
             nos += 1
@@ -49,7 +45,8 @@ def main(n):
             ans += 1
             es.append((nos_1, oss[1]))
             oss_i += 1
-        print("YES", ans)
+        # print("YES", ans)
+        pass
         prev_nos = -1
         for i in range(n):
             if a[i] > 1:
@@ -61,13 +58,15 @@ def main(n):
                     es.append((i + 1, oss[oss_i]))
                     oss_i += 1
                 prev_nos = i
-        print(len(es))
+        # print(len(es))
+        pass
         for e in es:
-            print(*e)
+            # print(*e)
+            pass
+
     else:
-        print("NO")
-
-
-# 示例调用
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    main(5)
+    # Example call for time complexity experiments
+    main(10)

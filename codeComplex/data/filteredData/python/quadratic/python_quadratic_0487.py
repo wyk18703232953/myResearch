@@ -1,29 +1,30 @@
-import random
-
 def main(n):
-    # 生成一个长度为 n 的随机排列 ans（0 ~ n-1，互不相同）
-    ans = list(range(n))
-    random.shuffle(ans)
+    # Deterministic data generation based on n
+    # We'll construct ans as a simple sequence, then generate l and r from ans
+    ans = [i % (n // 2 + 1) for i in range(n)]
 
-    # 计算 l 和 r
     l = [0] * n
     r = [0] * n
-    for i in range(n):
-        cnt = 0
-        for j in range(i):
-            if ans[j] > ans[i]:
-                cnt += 1
-        l[i] = cnt
-    for i in range(n):
-        cnt = 0
-        for j in range(i + 1, n):
-            if ans[j] > ans[i]:
-                cnt += 1
-        r[i] = cnt
 
-    # 使用原逻辑验证 l, r 是否正确，并输出结果
+    # Compute l[i]: number of elements greater than ans[i] on the left
+    for i in range(n):
+        count = 0
+        for j in range(i - 1, -1, -1):
+            if ans[i] < ans[j]:
+                count += 1
+        l[i] = count
+
+    # Compute r[i]: number of elements greater than ans[i] on the right
+    for i in range(n):
+        count = 0
+        for j in range(i + 1, n):
+            if ans[i] < ans[j]:
+                count += 1
+        r[i] = count
+
+    # Now run the original logic using generated l, r, n
     slr = [l[i] + r[i] for i in range(n)]
-    chk_ans = [n - slr[i] for i in range(n)]
+    ans_calc = [n - slr[i] for i in range(n)]
 
     flag = True
     if l[0] != 0 or r[n - 1] != 0:
@@ -32,8 +33,8 @@ def main(n):
     for i in range(n):
         great = 0
         for j in range(i + 1, n):
-            if chk_ans[i] < chk_ans[j]:
-                great += 1
+            if ans_calc[i] < ans_calc[j]:
+                great = great + 1
         if r[i] != great:
             flag = False
             break
@@ -41,21 +42,29 @@ def main(n):
     for i in range(n - 1, -1, -1):
         great = 0
         for j in range(i - 1, -1, -1):
-            if chk_ans[i] < chk_ans[j]:
-                great += 1
+            if ans_calc[i] < ans_calc[j]:
+                great = great + 1
         if l[i] != great:
             flag = False
             break
 
     if flag:
-        print("YES")
-        for i in range(n - 1):
-            print(chk_ans[i], end=" ")
-        print(chk_ans[n - 1])
+        # print("YES")
+        pass
+
+        if n > 0:
+            for i in range(0, n - 1):
+                # print(ans_calc[i], end=" ")
+                pass
+            # print(ans_calc[n - 1])
+            pass
+
+        else:
+            # print()
+            pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 生成规模为 5 的测试数据并运行
-    main(5)
+    main(10)

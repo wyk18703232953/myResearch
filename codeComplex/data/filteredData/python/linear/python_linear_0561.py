@@ -1,21 +1,22 @@
-import random
-
 def main(n):
-    # 生成测试数据：k 和长度为 n 的数组 a
-    # 这里生成 k ∈ [1, 20]，a[i] ∈ [0, 2^k - 1]
+    # Deterministic generation of k and the array based on n
+    # Map n to:
+    #   - length of array = n
+    #   - k chosen as a small function of n but bounded to keep (1 << k) reasonable
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
-    k = random.randint(1, 20)
-    upper = (1 << k) - 1
-    a = [random.randint(0, upper) for _ in range(n)]
+    k = (n % 20) + 1  # k in [1, 20]
+    max_val = (1 << k) - 1
 
-    d = dict()
-    d[0] = 1
+    # Generate a deterministic array of length n with values in [0, max_val]
+    arr = [((i * 17 + 23) ^ (i // 3)) & max_val for i in range(n)]
+
+    d = {0: 1}
     x = 0
-
-    for val in a:
+    for val in arr:
         x ^= val
         v = min(x, (1 << k) - x - 1)
         if v not in d:
@@ -28,9 +29,7 @@ def main(n):
         c2 = v - c1
         ans += c1 * (c1 - 1) // 2 + c2 * (c2 - 1) // 2
 
-    print(n * (n - 1) // 2 + n - ans)
-
-
+    # print(n * (n - 1) // 2 + n - ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

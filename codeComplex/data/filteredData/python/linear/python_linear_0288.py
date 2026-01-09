@@ -1,13 +1,19 @@
 from collections import defaultdict
-import random
 
 def main(n):
-    # 生成规模为 n 的测试数据：n 个只含 '(' 和 ')' 的随机括号串
-    # 这里长度随机在 [1, 2*n] 之间，可按需要调整
+    # Generate n deterministic parentheses strings
+    # Pattern: for i in range(1, n+1), create a sequence of length i
+    # using '(' if (j // 2) % 2 == 0 else ')', which is deterministic.
     s = []
-    for _ in range(n):
-        length = random.randint(1, 2 * n)
-        s.append(''.join(random.choice('()') for _ in range(length)))
+    for i in range(1, n + 1):
+        chars = []
+        for j in range(i):
+            if (j // 2) % 2 == 0:
+                chars.append('(')
+
+            else:
+                chars.append(')')
+        s.append(''.join(chars))
 
     one = defaultdict(lambda: 0)
     two = defaultdict(lambda: 0)
@@ -30,9 +36,7 @@ def main(n):
     for el in one.keys():
         ans += one[el] * two[-el]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

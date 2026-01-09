@@ -1,19 +1,20 @@
 from heapq import heappush, heappop
-import random
 
+def main(n):
+    # n: size of input, here used as the length of the array aa
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的数组 aa，元素为 1~5 的随机整数
-    random.seed(0)
-    aa = [random.randint(1, 5) for _ in range(n)]
+    # Deterministic generation of aa based on n
+    aa = [(i * 3 + 1) % 5 for i in range(n)]
 
-    # 原逻辑开始
     inf = 10 ** 9
     dp1 = [[-1] * (n + 1) for _ in range(n)]
     to = [[i + 1] for i in range(n)]
     for i in range(n):
         dp1[i][i + 1] = aa[i]
-
     for w in range(2, n + 1):
         for l in range(n - w + 1):
             r = l + w
@@ -21,15 +22,14 @@ def main(n: int):
                 if dp1[l][m] != -1 and dp1[l][m] == dp1[m][r]:
                     dp1[l][r] = dp1[l][m] + 1
                     to[l].append(r)
-
     hp = []
     heappush(hp, (0, 0))
     dist = [-1] * (n + 1)
-    ans = None
     while hp:
         d, i = heappop(hp)
         if i == n:
-            ans = d
+            # print(d)
+            pass
             break
         if dist[i] != -1:
             continue
@@ -39,10 +39,5 @@ def main(n: int):
                 continue
             heappush(hp, (d + 1, j))
 
-    # 输出结果（不输出测试数据，只输出答案）
-    print(ans)
-
-
-# 示例调用
 if __name__ == "__main__":
     main(10)

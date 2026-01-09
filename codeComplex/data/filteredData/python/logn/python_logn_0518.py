@@ -15,9 +15,8 @@ def main(n: int):
     res = n_rel // period % 10
     if lvl == i:
         res += 1
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：根据规模 n 自动生成测试数据，这里直接用 n 本身作为输入
     # 可以根据需要改为其他生成方式

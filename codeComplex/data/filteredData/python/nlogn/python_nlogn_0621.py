@@ -4,9 +4,8 @@ def main(n: int):
     for i in range(2, n + 1):
         for j in range(2 * i, n + 1, i):
             ans += 4 * (j // i)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 根据规模 n 生成测试数据：这里直接使用 n 作为规模参数
     # 可根据需要修改测试用的 n 值

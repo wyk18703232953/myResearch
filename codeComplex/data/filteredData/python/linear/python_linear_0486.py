@@ -1,5 +1,3 @@
-import random
-
 def intersec(arr):
     a = sorted(arr, key=lambda s: s[0], reverse=True)
     b = sorted(arr, key=lambda s: s[1])
@@ -7,6 +5,7 @@ def intersec(arr):
     x, y = 0, 0
     if a[0] == b[0]:
         return max(b[1][1] - a[1][0], 0)
+
     else:
         x = b[0][1] - a[1][0]
         y = b[1][1] - a[0][0]
@@ -14,15 +13,17 @@ def intersec(arr):
 
 
 def main(n):
-    # 生成 n 个区间，[l, r] 且 l <= r
+    # 生成 n 个区间，保证至少有 2 个区间用于算法逻辑
+    if n < 2:
+        n = 2
     blanck = []
-    for _ in range(n):
-        l = random.randint(0, 100)
-        r = random.randint(l, l + 100)
+    for i in range(n):
+        # 确定性构造区间 [l, r]，保证 l <= r
+        l = i
+        r = i + (i % 5) + 1
         blanck.append([l, r])
-    print(intersec(blanck))
-
-
+    result = intersec(blanck)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 5
-    main(5)
+    main(10)

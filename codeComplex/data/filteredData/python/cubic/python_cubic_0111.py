@@ -1,13 +1,11 @@
 from collections import defaultdict
-import random
 
 def main(n):
-    # 根据规模 n 生成测试数据：这里生成 [-10,10] 之间的随机整数
-    random.seed(0)
-    a = [random.randint(-10, 10) for _ in range(n)]
+    # Deterministically generate input of size n
+    # a[i] = (i % 10) - 5 yields values in range [-5, 4]
+    a = [(i % 10) - 5 for i in range(n)]
 
     rec = defaultdict(list)
-    # 枚举所有子数组，并按“子数组和”分类
     for j in range(n):
         s = 0
         for k in range(j, n):
@@ -15,25 +13,22 @@ def main(n):
             rec[s].append((j, k))
 
     ans = []
-    # 对每种子数组和，选择最多的不相交子数组
     for key in rec.keys():
         tmp = []
         rec[key] = sorted(rec[key], key=lambda x: x[1])
         pre = -1
-        for l, r in rec[key]:
-            if pre >= l:
+        for x, y in rec[key]:
+            if pre >= x:
                 continue
-            tmp.append((l + 1, r + 1))
-            pre = r
+            tmp.append((x + 1, y + 1))
+            pre = y
         if len(tmp) > len(ans):
             ans = tmp
 
-    # 输出结果
-    print(len(ans))
-    for l, r in ans:
-        print(l, r)
-
-
+    # print(len(ans))
+    pass
+    for x, y in ans:
+        # print(x, y)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

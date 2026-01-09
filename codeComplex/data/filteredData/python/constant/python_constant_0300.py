@@ -25,9 +25,8 @@ def main(n):
     t = k * (pages_needed // s + (pages_needed % s != 0))
     ans = t // p + (t % p != 0)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：以 10 作为规模调用
     main(10)

@@ -1,31 +1,35 @@
-import random
-import string
+def main(n):
+    # 生成确定性输入：两个字符串 s1 和 s2
+    # s1 长度为 n，s2 长度为 max(1, n//2)
+    if n <= 0:
+        s1 = "a"
+        s2 = "b"
 
+    else:
+        # s1: 从 'a' 开始循环到 'z'
+        s1 = "".join(chr(ord('a') + (i % 26)) for i in range(n))
+        # s2: 从 'm' 开始循环到 'z' 再从 'a' 开始
+        m = max(1, n // 2)
+        s2 = "".join(chr(ord('m') + (i % 26)) if ord('m') + (i % 26) <= ord('z')
+                     else chr(ord('a') + (ord('m') + (i % 26) - ord('z') - 1))
+                     for i in range(m))
 
-def main(n: int):
-    # 生成测试数据：
-    # s1 为长度 n 的随机小写字符串
-    # s2 为长度至少 1 的随机小写字符串，这里固定长度为 n（最少保证1）
-    n = max(1, n)
-    s1 = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-    s2 = ''.join(random.choice(string.ascii_lowercase) for _ in range(max(1, n)))
+    s1_str = s1
+    s2_str = s2
 
-    # 原逻辑开始
-    res = s1[0]
+    res = s1_str[0]
     flag = 0
-    for i in range(1, len(s1)):
-        if s1[i] >= s2[0]:
-            res += s2[0]
+    for i in range(1, len(s1_str)):
+        if s1_str[i] >= s2_str[0]:
+            res += s2_str[0]
             flag = 1
             break
+
         else:
-            res += s1[i]
+            res += s1_str[i]
     if flag == 0:
-        res += s2[0]
-
-    print(res)
-
-
+        res += s2_str[0]
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 可根据需要修改默认 n
-    main(5)
+    main(10)

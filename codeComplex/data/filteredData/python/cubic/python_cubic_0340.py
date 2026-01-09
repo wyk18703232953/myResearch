@@ -19,13 +19,15 @@ def main(n: int):
         for ll in range(l + 1, i):
             if A[ll] * 2 <= A[i]:
                 l = ll
+
             else:
                 break
         for j in range(1, l + 2):
             dp[i][j] = (dp[l][j - 1] + (dp[i][j - 1] * (l - j + 2)) % mod) % mod
         for j in range(i):
             dp[i][j] = (dp[i - 1][j] + dp[i][j]) % mod
-    print(dp[-1][-1])
+    # print(dp[-1][-1])
+    pass
 
 
 # 示例：需要时可直接调用 main(n)

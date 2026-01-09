@@ -1,47 +1,41 @@
-from collections import defaultdict
-import random
+def main(n):
+    from collections import defaultdict
 
-def main(n: int) -> int:
-    # 1. 生成规模为 n 的测试数据 X
-    # 这里示例：X 为长度 n 的随机小整数序列
-    # 如需特定分布，可在此修改
-    random.seed(0)
-    X = [random.randint(0, 3) for _ in range(n)]
+    # 输入规模映射：
+    # n 作为 N（序列长度），同时生成一个确定性的整数序列 X
+    # X[i] = (i * 2 + 3) % (n + 7) 保证不同 n 下数据随规模变化且完全确定
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-    # 2. 原逻辑实现
+    N = n
+    X = [(i * 2 + 3) % (n + 7) for i in range(N)]
+
     dp = defaultdict(lambda: -1)
     M = 1000
 
-    # 初始化 dp，对于长度为 1 的区间
-    for i in range(n):
+    for i in range(N):
         dp[i + M] = X[i]
 
-    # 枚举区间长度 i
-    for i in range(2, n + 1):
-        # 枚举区间起点 j
-        for j in range(n - i + 1):
-            # 枚举切分点 k
+    for i in range(2, N + 1):
+        for j in range(N - i + 1):
             for k in range(1, i):
-                u = dp[j + M * k]
-                v = dp[j + k + M * (i - k)]
+                u, v = dp[j + M * k], dp[j + k + M * (i - k)]
                 if u == -1 or v == -1 or u != v:
                     continue
                 dp[j + M * i] = u + 1
                 break
 
-    dp2 = [0] * (n + 1)
-    for i in range(n):
+    dp2 = [0] * (N + 1)
+    for i in range(N):
         dp2[i + 1] = dp2[i] + 1
         for j in range(i + 1):
             if dp[j + (i + 1 - j) * M] == -1:
                 continue
             dp2[i + 1] = min(dp2[i + 1], dp2[j] + 1)
-
-    # 输出与原程序一致（返回最终答案）
-    print(dp2[-1])
-    return dp2[-1]
-
-
+    # print(dp2[-1])
+    pass
 if __name__ == "__main__":
-    # 示例运行：规模 n = 10
+    # 示例调用：可修改 n 以进行不同规模的时间复杂度实验
     main(10)

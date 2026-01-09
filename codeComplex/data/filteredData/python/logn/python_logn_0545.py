@@ -15,9 +15,8 @@ def main(n: int):
     ans = 10 ** (number_digits - 1) + v
     ans = str(ans)
     fans = ans[s - 1]
-    print(fans)
-
-
+    # print(fans)
+    pass
 if __name__ == "__main__":
     # 示例：可以在此处修改 n 来做简单测试
     main(15)

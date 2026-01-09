@@ -25,8 +25,8 @@ def main(n):
     x = n
     k = n
     result = calc(x, k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -1,20 +1,26 @@
-import random
-
 def main(n):
-    # 生成测试数据：长度为 n 的数字串 a、b
-    # 数字允许重复，每个字符是 '0'~'9'
-    a = [random.randint(0, 9) for _ in range(n)]
-    b = [random.randint(0, 9) for _ in range(n)]
+    # Generate two digit-strings of length n deterministically
+    # Map original input structure: each line is a string of digits, read as list(map(int, input().rstrip()))
+    # Here we construct them from n using simple arithmetic patterns.
+    s1 = "".join(str((i * 7 + 3) % 10) for i in range(n))
+    s2 = "".join(str((i * 5 + 1) % 10) for i in range(n))
 
-    # 将原逻辑中的 list(map(int, input().rstrip())) 替换为上面的 a, b
+    a = list(map(int, s1))
+    b = list(map(int, s2))
     ans, la, lb = [], len(a), len(b)
+
     if la != lb:
-        print(*sorted(a, reverse=True), sep="")
+        # print(*sorted(a, reverse=True), sep="")
+        pass
+
     else:
-        for i in range(lb):
+        i = 0
+        while i < lb:
             if b[i] in a:
                 ans.append(b[i])
                 a.remove(b[i])
+                i += 1
+
             else:
                 while i > -1:
                     ma = -1
@@ -31,9 +37,8 @@ def main(n):
                 while a:
                     ans.append(a.pop())
                 break
-        print(*ans, sep="")
-
-
+        # print(*ans, sep="")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 进行一次测试
+    # Example deterministic call; adjust n for different input scales
     main(10)

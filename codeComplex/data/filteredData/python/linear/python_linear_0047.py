@@ -34,20 +34,26 @@ def main(n):
     for i in range(n):
         if a - lst[i] in temp:
             unionSet(i, temp[a - lst[i]])
+
         else:
             unionSet(i, n)
         if b - lst[i] in temp:
             unionSet(i, temp[b - lst[i]])
+
         else:
             unionSet(i, n + 1)
 
     if findSet(n) == findSet(n + 1):
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
         tmp = findSet(n + 1)
         ans = [0 if findSet(i) == tmp else 1 for i in range(n)]
-        print(*ans)
+        # print(*ans)
+        pass
 
 
 # 示例调用

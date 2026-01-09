@@ -23,6 +23,7 @@ def main(n):
     # 让 b 稍微大一些：对 a 的第一个数字 +1 (若是 '9' 则变 '8'，然后首位补 '1')
     if a and a[0] != '9':
         b = str(int(a[0]) + 1) + a[1:]
+
     else:
         # 避免首位'9'进位复杂，简单构造一个比 a 更长的串
         b = '1' + a
@@ -36,6 +37,7 @@ def main(n):
 
     if len(a) < len(b):
         check(d.copy(), max(d), '', b, maxi_ref)
+
     else:
         for i in b:
             if i in d and d[i] > 0:
@@ -46,6 +48,7 @@ def main(n):
                 check(d.copy(), i, num, b, maxi_ref)
                 num += i
                 d[i] -= 1
+
             else:
                 for j in range(int(i) - 1, -1, -1):
                     if str(j) in d and d[str(j)] > 0:
@@ -53,9 +56,8 @@ def main(n):
                         break
                 break
 
-    print(maxi_ref[0])
-
-
+    # print(maxi_ref[0])
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，你可以在外部修改 n 测试不同规模
     main(5)

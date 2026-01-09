@@ -3,9 +3,8 @@ def main(n: int):
     summ = 1
     for i in range(1, n):
         summ += i * 4
-    print(summ)
-
-
+    # print(summ)
+    pass
 if __name__ == "__main__":
     # 示例：可自行修改测试规模
     main(10)

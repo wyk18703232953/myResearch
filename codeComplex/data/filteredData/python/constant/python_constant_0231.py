@@ -1,19 +1,18 @@
-import random
+def main(n):
+    # 根据 n 构造确定性输入数据
+    # 映射规则：
+    # a, b, x, y, z 都是 n 的简单确定性函数
+    a = n
+    b = 2 * n
+    x = n // 2
+    y = n // 3
+    z = n // 4
 
-def main(n: int):
-    # 根据规模 n 生成测试数据，这里示例为：
-    # a, b 在 [0, n] 范围内
-    # x, y, z 在 [0, n] 范围内
-    a = random.randint(0, n)
-    b = random.randint(0, n)
-    x = random.randint(0, n)
-    y = random.randint(0, n)
-    z = random.randint(0, n)
-
-    # 原逻辑：print(max(0,2*x+y-a)+max(0,y+3*z-b))
     result = max(0, 2 * x + y - a) + max(0, y + 3 * z - b)
-    print(result)
+    return result
 
 if __name__ == "__main__":
-    # 示例：用 n = 10 运行
-    main(10)
+    # 示例调用
+    for n in range(1, 11):
+        # print(n, main(n))
+        pass

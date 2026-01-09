@@ -31,9 +31,8 @@ def main(n: int):
         dp.append(curr)
 
     ans = sum(dp[-1]) % MOD
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的默认测试规模
     main(5)

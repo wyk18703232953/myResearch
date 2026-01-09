@@ -1,10 +1,7 @@
 def main(n):
-    # 1. 根据规模 n 生成测试数据
-    # 原程序固定使用 14 个坑位，这里保持逻辑不变，仅根据 n 控制数据范围
-    # 例如：每个 a[i] 在 [0, n] 之间
-    import random
-    random.seed(0)
-    a = [random.randint(0, n) for _ in range(14)]
+    # Generate a deterministic input list 'a' of length 14 based on n
+    # Values grow roughly with n to let complexity scale with input magnitude
+    a = [((i + 1) * (n + 1)) % 1000 for i in range(14)]
 
     mr = 0
     for t in range(14):
@@ -18,17 +15,15 @@ def main(n):
                 b[(k + i) % 14] += 1
                 m -= 1
                 i += 1
+
             else:
                 q = m // 14
                 for c in range(14):
                     b[c] += q
                 m -= 14 * q
-        p = sum(x for x in b if x % 2 == 0)
+        p = sum([x for x in b if x % 2 == 0])
         mr = max(p, mr)
-
-    print(mr)
-
-
+    # print(mr)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n = 100 作为规模
-    main(100)
+    main(10)

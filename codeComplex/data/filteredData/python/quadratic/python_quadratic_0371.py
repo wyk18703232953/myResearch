@@ -1,32 +1,37 @@
-import random
-
 def main(n):
-    # 生成一个 n 行 n 列的随机网格，字符为 '.' 或 '*'
-    # 你可以按需要修改生成策略
-    m = n
-    # 至少保证有一些 '*'
+    # Map n to grid size: use n x n grid
+    rows = n
+    cols = n
+    # Deterministic grid generation:
+    # Put '*' where (i + j) is even, '.' otherwise
     grid = []
-    for _ in range(n):
-        row_chars = []
-        for _ in range(m):
-            # 随机生成星号或点，星号概率可调
-            row_chars.append('*' if random.random() < 0.4 else '.')
-        grid.append(''.join(row_chars))
+    for i in range(rows):
+        row_str = []
+        for j in range(cols):
+            if (i + j) % 2 == 0:
+                row_str.append('*')
 
-    # 原始逻辑开始
-    row = [[[] for _ in range(m)] for _ in range(n)]
-    col = [[[] for _ in range(m)] for _ in range(n)]
-    visr, out, all_cnt = [[-1 for _ in range(m)] for _ in range(n)], [], 0
-    visc = [[-1 for _ in range(m)] for _ in range(n)]
+            else:
+                row_str.append('.')
+        grid.append(''.join(row_str))
 
-    # 预处理每行连续 '*' 区间
-    for i in range(n):
+    m = cols
+    row = [[[] for _ in range(m)] for _ in range(rows)]
+    col = [[[] for _ in range(m)] for _ in range(rows)]
+    visr = [[-1 for _ in range(m)] for _ in range(rows)]
+    visc = [[-1 for _ in range(m)] for _ in range(rows)]
+    out = []
+    all_cnt = 0
+
+    # Process rows
+    for i in range(rows):
         be, en = -1, -1
         for j in range(m):
             if grid[i][j] == '*':
                 en += 1
                 if be == -1:
                     be = en = j
+
             else:
                 if be != -1:
                     for k in range(be, en + 1):
@@ -37,14 +42,15 @@ def main(n):
             for k in range(be, en + 1):
                 row[i][k] = [be, en]
 
-    # 预处理每列连续 '*' 区间
+    # Process columns
     for i in range(m):
         be, en = -1, -1
-        for j in range(n):
+        for j in range(rows):
             if grid[j][i] == '*':
                 en += 1
                 if be == -1:
                     be = en = j
+
             else:
                 if be != -1:
                     for k in range(be, en + 1):
@@ -55,8 +61,8 @@ def main(n):
             for k in range(be, en + 1):
                 col[k][i] = [be, en]
 
-    # 枚举中心，记录能形成的“十字”
-    for i in range(n):
+    # Compute crosses
+    for i in range(rows):
         for j in range(m):
             if grid[i][j] == '*':
                 all_cnt += 1
@@ -64,6 +70,7 @@ def main(n):
                 ver = min(col[i][j][1] - i, i - col[i][j][0])
                 if hor <= ver:
                     ver = hor
+
                 else:
                     hor = ver
 
@@ -72,31 +79,33 @@ def main(n):
                     visr[i][j - ver] = j + ver
                     visc[i - hor][j] = i + hor
 
+    # Verification
     dis = set()
-    # 按行覆盖
-    for i in range(n):
-        j, ma = 0, -1
+    for i in range(rows):
+        j = 0
+        ma = -1
         while j < m:
             ma = max(ma, visr[i][j])
             if ma >= j:
                 dis.add((i, j))
             j += 1
 
-    # 按列覆盖
     for i in range(m):
-        j, ma = 0, -1
-        while j < n:
+        j = 0
+        ma = -1
+        while j < rows:
             ma = max(ma, visc[j][i])
             if ma >= j:
                 dis.add((j, i))
             j += 1
 
     if len(dis) != all_cnt:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print('%d\n%s' % (len(out), '\n'.join(out)))
-
-
+        # print('%d\n%s' % (len(out), '\n'.join(out)))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    # Example call for complexity experiments
+    main(10)

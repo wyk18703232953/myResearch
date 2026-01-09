@@ -1,32 +1,18 @@
-import random
+def main(n):
+    # Deterministically generate input strings a_str and b_str of length n
+    # Digits are in [0..9] using modular arithmetic
+    a_str = ''.join(str((i * 3 + 1) % 10) for i in range(n))
+    b_str = ''.join(str((i * 7 + 2) % 10) for i in range(n))
 
-def main(n: int) -> None:
-    """
-    n: 规模，表示生成的数字的位数
-    程序逻辑基于原始代码：
-    - a: 由随机数字组成的长度为 n 的列表
-    - b: 由随机数字组成的长度为 n 的列表
-    """
-
-    # 生成测试数据：位数为 n 的两个“数字”（用数字列表表示）
-    # 为避免前导 0 导致位数变短，首位保证非 0
-    if n <= 0:
-        return
-
-    def gen_digits(length: int):
-        if length == 1:
-            return [random.randint(0, 9)]
-        first = random.randint(1, 9)
-        rest = [random.randint(0, 9) for _ in range(length - 1)]
-        return [first] + rest
-
-    a = sorted(gen_digits(n))
-    b = gen_digits(n)
+    # Core logic from original program
+    a = sorted(map(int, a_str))
+    b = list(map(int, b_str))
     bn = int(''.join(map(str, b)))
     res = int(''.join(map(str, sorted(a))))
-
     if len(b) != len(a):
-        print(''.join(map(str, sorted(a, reverse=True))))
+        # print(''.join(map(str, sorted(a, reverse=True))))
+        pass
+
     else:
         for i in range(len(a)):
             for j in range(i + 1, len(a)):
@@ -37,9 +23,7 @@ def main(n: int) -> None:
             for j in range(i + 1, len(a)):
                 if a[j] == b[i]:
                     a[i], a[j] = a[j], a[i]
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 进行一次运行
-    main(5)
+    main(10)

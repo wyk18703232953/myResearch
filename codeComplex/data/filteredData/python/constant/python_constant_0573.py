@@ -7,11 +7,12 @@ def main(n: int):
     white = abs(a - 1) + abs(b - 1)
     black = abs(n - a) + abs(n - b)
     if white <= black:
-        print("White")
+        # print("White")
+        pass
+
     else:
-        print("Black")
-
-
+        # print("Black")
+        pass
 if __name__ == "__main__":
     # 示例调用：你可以根据需要修改 n
     main(8)

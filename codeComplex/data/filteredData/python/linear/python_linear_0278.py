@@ -1,25 +1,20 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # n 为给定规模
-    # m 在 [1, 2n] 区间内随机生成，避免 m=0
-    # a, b 在 [1, 100] 区间内随机生成
-    if n <= 0:
-        return
+    # 解释原始输入结构：n, m, a, b 为四个整数
+    # 在实验中，将参数 n 作为原程序中的第一个参数 n 的规模含义
+    # 其余 m, a, b 由 n 确定性生成
 
-    m = random.randint(1, 2 * n)
-    a = random.randint(1, 100)
-    b = random.randint(1, 100)
+    original_n = n
+    m = n + 1 if n > 0 else 1
+    a = (n % 5) + 1
+    b = (n % 7) + 1
 
-    # 原逻辑
-    if n % m == 0:
-        print(0)
+    if original_n % m == 0:
+        # print(0)
+        pass
+
     else:
-        k = n % m
-        print(min(k * b, (m - k) * a)
-
-
+        k = original_n % m
+        # print(min(k * b, (m - k) * a))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10) 进行一次运行
     main(10)

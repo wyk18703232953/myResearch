@@ -9,9 +9,8 @@ def main(n: int):
     i = 1
     while t[:-i] != t[i:]:
         i += 1
-    print(t[:i] * k + t[i:])
-
-
+    # print(t[:i] * k + t[i:])
+    pass
 if __name__ == "__main__":
     # 示例：当作脚本运行时，给一个默认 n 测试
     main(10)

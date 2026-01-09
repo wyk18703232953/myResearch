@@ -1,16 +1,13 @@
-import random
+def main(n):
+    # Deterministically generate input data E of size n
+    # Here we generate a sequence with repeating pattern using modulo
+    E = [i % (max(1, n // 3)) for i in range(n)]
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的整数列表，元素范围 [1, n]
-    E = [random.randint(1, n) for _ in range(n)]
-
-    # 原逻辑：统计每个元素出现次数，并按原顺序输出其出现次数
-    D = {}
+    D = dict()
     for e in E:
         D[e] = D.get(e, 0) + 1
     for e in E:
-        print(D[e])
-
+        # print(D[e])
+        pass
 if __name__ == "__main__":
-    # 示例：可在此处指定规模 n 进行测试
     main(10)

@@ -1,11 +1,10 @@
 import math
-import random
 
 def getx(n):
     return math.floor(math.sqrt(n))
 
-def getans(n, x, data):
-    l1 = data[:]  # 使用生成的测试数据
+def getans(n, x):
+    l1 = [i for i in range(n, 0, -1)]
     l2 = []
     i = 0
     while i < n:
@@ -14,14 +13,14 @@ def getans(n, x, data):
     return l2
 
 def main(n):
-    # 生成规模为 n 的测试数据，这里用 1..n 的排列作为示例
-    data = list(range(1, n + 1))
-    random.shuffle(data)
-
+    if n <= 0:
+        return []
     a = getx(n)
-    ans = getans(n, a, data)
+    ans = getans(n, a)
     ans1 = [str(i) for i in ans]
-    print(' '.join(ans1))
+    # print(' '.join(ans1))
+    pass
+    return ans
 
-# 示例：调用 main(10)
-# main(10)
+if __name__ == "__main__":
+    main(10)

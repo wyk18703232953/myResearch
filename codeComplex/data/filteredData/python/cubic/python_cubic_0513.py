@@ -1,6 +1,5 @@
 import sys
 from math import inf
-import random
 
 
 def explorer(n, m, k, R, C):
@@ -35,35 +34,34 @@ def llstr(ll):
 
 
 def main(n):
-    """
-    n: 规模参数，用于生成测试数据。
-       这里设定：
-       - 网格大小为 n x n
-       - 步数 k 为 2*n（偶数）
-       - R, C 的权值为 1..10 的随机整数
-    """
-    m = n
-    k = 2 * n  # 保证为偶数
+    # Define grid and step scales deterministically from n
+    rows = max(1, n)
+    cols = max(1, n)
+    k = max(1, 2 * n)
 
-    # 生成测试数据：R 为 n x (m-1)，C 为 (n-1) x m
-    if m > 1:
-        R = [[random.randint(1, 10) for _ in range(m - 1)] for _ in range(n)]
+    # Generate deterministic edge costs:
+    # R: rows x (cols-1), C: (rows-1) x cols
+    if cols > 1:
+        R = [[(i + j + 1) % 9 + 1 for j in range(cols - 1)] for i in range(rows)]
+
     else:
-        R = [[0] * 0 for _ in range(n)]
+        R = [[] for _ in range(rows)]
 
-    if n > 1:
-        C = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
+    if rows > 1:
+        C = [[(i * cols + j + 1) % 9 + 1 for j in range(cols)] for i in range(rows - 1)]
+
     else:
-        C = [[0] * m for _ in range(0)]
+        C = []
 
-    G = explorer(n, m, k, R, C)
+    G = explorer(rows, cols, k, R, C)
     if G:
-        print(llstr(G))
+        # print(llstr(G))
+        pass
+
     else:
-        s = ' '.join('-1' for _ in range(m))
-        print('\n'.join(s for _ in range(n)))
-
-
-if __name__ == '__main__':
-    # 示例：可以改成任意正整数规模
-    main(4)
+        s = ' '.join('-1' for _ in range(cols))
+        # print('\n'.join(s for _ in range(rows)))
+        pass
+if __name__ == "__main__":
+    # Example deterministic call; adjust n as needed for experiments
+    main(5)

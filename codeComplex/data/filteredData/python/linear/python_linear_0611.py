@@ -1,16 +1,14 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：1..n 的随机排列
-    ai = list(range(1, n + 1))
-    bi = list(range(1, n + 1))
-    random.shuffle(ai)
-    random.shuffle(bi)
+def main(n):
+    # Deterministically generate input data based on n
+    # ai: 1..n repeated/cycled
+    ai = [(i % n) + 1 for i in range(n)]
+    # bi: reverse of 1..n, cycled to length n
+    base_b = list(range(n, 0, -1))
+    bi = [base_b[i % n] for i in range(n)]
 
     ai2 = [0] * (n + 1)
     n2 = 0
-    res = []
-
+    output = []
     for i in range(n):
         num = 0
         if ai2[bi[i]] != 1:
@@ -20,10 +18,8 @@ def main(n: int):
                     num = j + 1 - n2
                     n2 = j + 1
                     break
-        res.append(str(num))
-    print(" ".join(res))
-
-
+        output.append(str(num))
+    # print(" ".join(output))
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

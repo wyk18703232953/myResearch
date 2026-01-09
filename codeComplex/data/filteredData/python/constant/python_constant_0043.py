@@ -21,11 +21,12 @@ def main(n: int):
             break
 
     if f:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：根据 n 的规模进行测试，这里给一个示例 n
     # 实际使用时，可在外部调用 main(任意整数 n)

@@ -1,51 +1,60 @@
-from collections import Counter
-import random
-
-def makedict(var):
-    return dict(Counter(var))
-
 def main(n):
-    # 生成测试数据：长度为 n 的 indices 和 cost
-    # indices 为 1..(2n) 之间的随机数，保证有一定随机性
-    # cost 为 1..100 之间的随机正整数
-    if n <= 0:
-        print(-1)
-        return
+    from collections import Counter
+    import math
+    from fractions import Fraction
 
-    indices = [random.randint(1, 2 * n) for _ in range(n)]
-    cost = [random.randint(1, 100) for _ in range(n)]
+    def makedict(var):
+        return dict(Counter(var))
 
-    ans = float('inf')
-    mint = []
+    # 构造确定性的输入数据
+    # n: 问题规模，同时作为数组长度
+    size = max(1, n)
 
-    for i in range(n):
+    # indices 构造：保证有一定的上升关系，但不是严格单调
+    # 例如：indices[i] = (i * 2) % (size // 2 + 1) + i // 3
+    indices = [(i * 2) % (size // 2 + 1) + i // 3 for i in range(size)]
+
+    # cost 构造：简单线性递增再取模，保证正数
+    # 例如：cost[i] = (i * 3 + 5) % (2 * size + 1) + 1
+    cost = [(i * 3 + 5) % (2 * size + 1) + 1 for i in range(size)]
+
+    # 原核心算法逻辑
+    testcases = 1
+    for _ in range(testcases):
         ans = float('inf')
-        total = cost[i]
-        flag = 0
-        for j in range(i):
-            if indices[i] > indices[j]:
-                ans = min(ans, cost[j])
-                flag = 1
-        if flag != 0:
-            total += ans
+        mint = []
+        for i in range(size):
             ans = float('inf')
+            total = cost[i]
             flag = 0
-            for k in range(i + 1, n):
-                if indices[k] > indices[i]:
-                    ans = min(ans, cost[k])
+            for j in range(i):
+                if indices[i] > indices[j]:
+                    ans = min(ans, cost[j])
                     flag = 1
             if flag != 0:
                 total += ans
-                mint.append(total)
+                ans = float('inf')
+                flag = 0
+                for k in range(i + 1, size):
+                    if indices[k] > indices[i]:
+                        ans = min(ans, cost[k])
+                        flag = 1
+                if flag != 0:
+                    total += ans
+                    mint.append(total)
+
+                else:
+                    continue
+
             else:
                 continue
+        if len(mint) > 0:
+            # print(min(mint))
+            pass
+
         else:
-            continue
-
-    if len(mint) > 0:
-        print(min(mint))
-    else:
-        print(-1)
-
-# 示例调用
-# main(5)
+            # print(-1)
+            pass
+if __name__ == "__main__":
+    # 示例调用，可根据需要修改 n 以做时间复杂度实验
+    main(10)

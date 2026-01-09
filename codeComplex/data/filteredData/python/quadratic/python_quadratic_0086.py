@@ -1,5 +1,3 @@
-import random
-
 def detect_cycle(n, edges):
     visited = [False] * n
     stack = []
@@ -21,25 +19,27 @@ def dfs_visit(v, edges, visited, stack, color):
         elif color[u] == 1:
             stack.append(u)
             return True
+
     color[v] = 2
     stack.pop(stack.index(v))
     return False
 
-def generate_test_data(n):
-    # 生成一个有向图：每个点随机连若干条边
-    edges = [[] for _ in range(n)]
-    # 边数上限设为 n*(n-1)，但实际生成较少，避免过密
-    max_edges = min(n * (n - 1), 3 * n)
-    m = random.randint(n, max_edges) if n > 1 else 0
-    all_pairs = [(u, v) for u in range(n) for v in range(n) if u != v]
-    random.shuffle(all_pairs)
-    for i in range(min(m, len(all_pairs))):
-        u, v = all_pairs[i]
-        edges[u].append(v)
-    return edges
-
 def main(n):
-    edges = generate_test_data(n)
+    # 构造一个确定性的有向图：
+    # 顶点数 = n
+    # 边数约为 n（每个点指向 (i+1) mod n，形成一个大环）
+    # 当 n >= 2 时，图中一定有环
+    if n <= 0:
+        # print("YES")
+        pass
+        return
+
+    m = n  # 边数
+    edges = [[] for _ in range(n)]
+    for i in range(m):
+        u = i % n
+        v = (i + 1) % n
+        edges[u].append(v)
 
     inCycle = detect_cycle(n, edges)
     if inCycle:
@@ -51,13 +51,13 @@ def main(n):
             if detect_cycle(n, edges) is None:
                 possible = True
                 break
+
             else:
                 edges[inCycle[v]].append(inCycle[v + 1])
+
     else:
         possible = True
-
-    print('YES' if possible else 'NO')
-
-if __name__ == '__main__':
-    # 示例：规模 n=10，可按需修改
+    # print('YES' if possible else 'NO')
+    pass
+if __name__ == "__main__":
     main(10)

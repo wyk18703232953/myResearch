@@ -25,11 +25,12 @@ def main(n):
             c += 1
 
     if c >= k:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：可以修改此处来测试不同规模 n
     main(1000)

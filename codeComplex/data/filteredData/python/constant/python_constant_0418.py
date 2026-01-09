@@ -1,13 +1,25 @@
-import random
+def main(n):
+    # Deterministically generate 8 coordinates for first set and 8 for second set from n
+    # Scale coordinates so that ranges grow with n
+    # First quadrilateral-like set
+    x1 = 0
+    y1 = 0
+    x2 = n
+    y2 = 0
+    x3 = n
+    y3 = n
+    x4 = 0
+    y4 = n
 
-def main(n: int):
-    # 生成规模为 n 的测试数据（这里的 n 不直接用于原逻辑，
-    # 仅用来控制坐标的随机范围 [-n, n]）
-    coords1 = [random.randint(-n, n) for _ in range(8)]
-    coords2 = [random.randint(-n, n) for _ in range(8)]
-
-    x1, y1, x2, y2, x3, y3, x4, y4 = coords1
-    x11, y11, x22, y22, x33, y33, x44, y44 = coords2
+    # Second "diamond" or rotated square-like set, shifted and scaled from n
+    x11 = n // 2
+    y11 = n // 2
+    x22 = n + n // 2
+    y22 = n // 2
+    x33 = n + n // 2
+    y33 = n + n // 2
+    x44 = n // 2
+    y44 = n + n // 2
 
     min_x1 = min(x1, x2, x3, x4)
     min_y1 = min(y1, y2, y3, y4)
@@ -23,14 +35,21 @@ def main(n: int):
     b = (max_y11 + min_y11) / 2
     d2 = (max_x11 - min_x11) / 2
 
+    found = False
     for x in range(min_x1, max_x1 + 1):
         for y in range(min_y1, max_y1 + 1):
             if abs(x - a) + abs(y - b) <= d2:
-                print("yes")
-                return
-    print("no")
+                found = True
+                break
+        if found:
+            break
 
+    if found:
+        # print("yes")
+        pass
 
+    else:
+        # print("no")
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
-    main(10)
+    main(1000)

@@ -1,15 +1,18 @@
 import math
-import random
 
-def main(n: int):
-    # 生成测试数据：r 为 1 到 100 之间的随机整数
-    r = random.randint(1, 100)
+def main(n):
+    # 映射含义：
+    #   n: 正多边形边数
+    #   r: 固定为 n 的线性函数，保证随规模变化
+    # 生成确定性数据
+    sides = max(3, n)  # 至少为 3，避免无效几何
+    r = float(sides * 2)  # 确定性的半径，随 n 线性增长
 
-    angle = math.pi / n
+    angle = math.pi / sides
     s = math.sin(angle)
-    print('%.8f' % (r * s / (1 - s)))
-
-
+    result = r * s / (1 - s)
+    # print('%.8f' % result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(6)，实际使用时可按需修改 n
-    main(6)
+    # 示例调用：可以根据需要修改 n
+    main(10)

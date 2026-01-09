@@ -1,11 +1,8 @@
 import sys
-import random
-
 
 class Graph:
-    def __init__(self):
-        self.verticies = {}
-        self.nodesCount = 0
+    verticies = {}
+    nodesCount = 0
 
     class Vertex:
         def __init__(self, label, endPoint=None):
@@ -15,13 +12,14 @@ class Graph:
             self.endPoint = endPoint
 
     class Edge:
+        residual = None
+
         def __init__(self, from_, to_, isResidual, maxCapacity):
             self.from_ = from_
             self.to_ = to_
             self.isResidual = isResidual
             self.capacity = maxCapacity
             self.flow = 0
-            self.residual = None
 
         def augment(self, bootleneck):
             self.flow += bootleneck
@@ -71,6 +69,7 @@ class Graph:
                 if bootleneck:
                     edge.augment(bootleneck)
                     return bootleneck
+
                 else:
                     bootleneck = bootleneck_backup
 
@@ -87,52 +86,44 @@ class Graph:
         return flow
 
 
-def main(n):
-    """
-    n: 规模参数，用于生成测试数据
-       这里设定：n 为 '物品/右侧点' 的数量
-       左侧点数量 m 与 n 相同（可按需修改）
-    """
-    random.seed(0)
-
-    g = Graph()
-
-    # 设定 m 与 n 相关，这里简单设为 m = n
+def generate_data(n):
+    if n < 2:
+        n = 2
     m = n
+    vv = [i + 1 for i in range(n)]
+    edges = []
+    for i in range(1, m + 1):
+        a = (i % n) + 1 if n > 1 else 1
+        b = ((i * 2) % n) + 1 if n > 1 else 1
+        c = i
+        edges.append((a, b, c))
+    return n, m, vv, edges
 
-    # 生成右侧点的容量 vv，正整数
-    # 节点索引：0 为源点，1..m 为左侧点，m+1 .. m+n 为右侧点，m+n+1 为汇点
-    vv = [random.randint(1, 10) for _ in range(n)]
 
-    # 建点：总点数 = n + m + 2 (含源点 0 和汇点 n+m+1)
-    for i in range(n + m + 2):
+def main(n):
+    g = Graph()
+    n_nodes, m, vv, edges = generate_data(n)
+
+    for i in range(n_nodes + m + 2):
         g.addVertex(i)
 
-    # 右侧点连接到汇点，容量为 vv
     for i, v in enumerate(vv):
-        g.addEdge(m + i + 1, n + m + 1, v)
+        g.addEdge(m + i + 1, n_nodes + m + 1, v)
 
     s = 0
 
-    # 生成左侧点及其边：
-    # 对于每个 i in [1..m]:
-    #   随机选两个右侧点 a, b，随机容量 c
     for i in range(1, m + 1):
-        a = random.randint(1, n)
-        b = random.randint(1, n)
-        c = random.randint(1, 10)
+        a, b, c = edges[i - 1]
         s += c
-
-        # 源点到左侧点
         g.addEdge(0, i, c)
-        # 左侧点到两个右侧点
         g.addEdge(i, a + m, c)
         g.addEdge(i, b + m, c)
 
-    ans = s - g.maxFlow(0, n + m + 1)
-    print(ans)
+    result = s - g.maxFlow(0, n_nodes + m + 1)
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

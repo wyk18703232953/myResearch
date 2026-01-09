@@ -6,15 +6,18 @@ def path(x1, y1, x2, y2, hor):
         if y2 > y1:
             for i in range(y2 - y1):
                 out.append((x2, y1 + i))
+
         else:
             for i in range(y1 - y2):
                 out.append((x2, y1 - i))
+
     else:
         for i in range(x2 - x1):
             out.append((x2 - i, y2))
         if y2 > y1:
             for i in range(y2 - y1):
                 out.append((x1, y2 - i))
+
         else:
             for i in range(y1 - y2):
                 out.append((x1, y2 + i))
@@ -44,26 +47,33 @@ def main(n):
             g2 = path(c, b, e, f, True)
         elif f < d:
             g2 = path(c, f, e, f, True)
+
         else:
             g2 = path(c, d, e, f, True)
+
     else:
         if f < d:
             g2 = path(c, d, e, f, True)
         elif f < b:
             g2 = path(c, f, e, f, True)
+
         else:
             g2 = path(c, b, e, f, True)
 
-    print(len(g1) + len(g2) + 3)
-    print(a, b)
-    print(c, d)
-    print(e, f)
+    # print(len(g1) + len(g2) + 3)
+    pass
+    # print(a, b)
+    pass
+    # print(c, d)
+    pass
+    # print(e, f)
+    pass
     for x, y in g1:
-        print(x, y)
+        # print(x, y)
+        pass
     for x, y in g2:
-        print(x, y)
-
-
+        # print(x, y)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

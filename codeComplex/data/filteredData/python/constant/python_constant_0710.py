@@ -5,13 +5,13 @@ def main(n: int):
 
     if n <= v + 1:
         result = n - 1
+
     else:
         b = n - v
         result = v - 1 + ((b * (b + 1)) // 2)
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

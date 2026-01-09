@@ -18,14 +18,15 @@ def main(n):
 
     if x == 0:
         ans = 0
+
     else:
         a = fast_power(2, k)
         b = (2 * x - 1) % MOD
         c = (a * b) % MOD + 1
         ans = c % MOD
 
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n
     main(10)

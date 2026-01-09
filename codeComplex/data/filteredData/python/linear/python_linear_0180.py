@@ -1,12 +1,14 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # k 在 1..n 之间
-    k = random.randint(1, n)
-    # arr1 和 arr2 的元素范围可按需调整
-    arr1 = [random.randint(-10, 10) for _ in range(n)]
-    arr2 = [random.randint(0, 1) for _ in range(n)]
+    # n 表示数组长度，k 为窗口大小，这里设为 n//2（至少为 1）
+    if n <= 0:
+        return
+    k = max(1, n // 2)
+
+    # 确定性生成 arr1 和 arr2
+    # arr1: 1, 2, 3, ..., n
+    arr1 = [i + 1 for i in range(n)]
+    # arr2: 0 和 1 的确定性模式，例如 i % 3 == 0 时为 0，否则为 1
+    arr2 = [0 if i % 3 == 0 else 1 for i in range(n)]
 
     ans = 0
     new_arr = [0] * n
@@ -14,6 +16,7 @@ def main(n):
     for i in range(n):
         if arr2[i] == 0:
             new_arr[i] = arr1[i]
+
         else:
             ans += arr1[i]
 
@@ -24,12 +27,11 @@ def main(n):
     for i in range(k, n):
         total -= new_arr[j]
         total += new_arr[i]
-        mx = max(mx, total)
+        if total > mx:
+            mx = total
         j += 1
 
-    print(mx + ans)
-
-
+    # print(mx + ans)
+    pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n
     main(10)

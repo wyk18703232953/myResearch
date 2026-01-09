@@ -1,43 +1,55 @@
-import random
-import sys
-
 def main(n):
-    # 规模参数：n
-    # 原程序需要 n, m, k，这里根据 n 生成：
-    m = n                 # 例如设为正方形网格
-    k = 2 * n             # 例如设为偶数步，保证可走回（可自行调整）
+    # Map n to grid size and step parameter deterministically
+    # Here: n controls both dimensions and k
+    # n >= 2 to make vertical edges meaningful; ensure at least 2x2
+    if n < 2:
+        n = 2
+    rows = n
+    cols = n
+    # Choose k proportional to n, at least 2
+    k = 2 * (n // 2)
+    if k == 0:
+        k = 2
 
-    # 生成测试数据：边权均为 1~10 的随机整数
-    hor = [[random.randint(1, 10) for _ in range(m - 1)] for _ in range(n)]
-    ver = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
+    # Deterministic construction of hor and ver cost grids
+    # hor: rows x (cols-1)
+    hor = [
+        [(i + j + 1) for j in range(cols - 1)]
+        for i in range(rows)
+    ]
+    # ver: (rows-1) x cols
+    ver = [
+        [(i * 2 + j + 1) for j in range(cols)]
+        for i in range(rows - 1)
+    ]
 
-    # dp 逻辑与原程序一致
+    # Core algorithm (unchanged logic)
     if k % 2:
-        for _ in range(n):
-            print(*([-1] * m))
+        for _ in range(rows):
+            # print(*([-1] * cols))
+            pass
         return
 
-    half_k = k // 2
-    dp = [[[0] * m for _ in range(n)] for _ in range(half_k + 1)]
+    k = k // 2
+    dp = [[[0] * cols for _ in range(rows)] for _ in range(k + 1)]
 
-    for x in range(1, half_k + 1):
-        for y in range(n):
-            for z in range(m):
+    for x in range(1, k + 1):
+        for y in range(rows):
+            for z in range(cols):
                 hold = float('inf')
                 if y != 0:
                     hold = min(hold, dp[x - 1][y - 1][z] + ver[y - 1][z])
-                if y != n - 1:
+                if y != rows - 1:
                     hold = min(hold, dp[x - 1][y + 1][z] + ver[y][z])
                 if z != 0:
                     hold = min(hold, dp[x - 1][y][z - 1] + hor[y][z - 1])
-                if z != m - 1:
+                if z != cols - 1:
                     hold = min(hold, dp[x - 1][y][z + 1] + hor[y][z])
                 dp[x][y][z] = hold
 
-    for row in dp[half_k]:
-        print(*map(lambda i: i * 2, row))
-
-
+    for row in dp[k]:
+        # print(*map(lambda i: i * 2, row))
+        pass
 if __name__ == "__main__":
-    # 示例：可以修改这里的 n 进行测试
-    main(5)
+    # Example fixed-size run for complexity experiments
+    main(10)

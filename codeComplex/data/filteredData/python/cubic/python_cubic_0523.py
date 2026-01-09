@@ -1,8 +1,4 @@
-import math
-import random
-
-
-def ncr(n, r, p):  # using fermat's little theorem
+def ncr(n, r, p):
     num = den = 1
     for i in range(r):
         num = (num * (n - i)) % p
@@ -11,11 +7,11 @@ def ncr(n, r, p):  # using fermat's little theorem
 
 
 def primeFactors(n):
+    import math
     l = []
     while n % 2 == 0:
         l.append(2)
         n = n / 2
-
     for i in range(3, int(math.sqrt(n)) + 1, 2):
         while n % i == 0:
             l.append(int(i))
@@ -33,7 +29,7 @@ def power(x, y, p):
     while y > 0:
         if (y & 1) == 1:
             res = (res * x) % p
-        y = y >> 1  # y = y/2
+        y = y >> 1
         x = (x * x) % p
     return res
 
@@ -51,7 +47,7 @@ def divideCeil(n, x):
     return n // x + 1
 
 
-def solve(a: str, b: str) -> str:
+def solve(a, b):
     ans = [a]
     a_list = list(a)
     b1 = b[:]
@@ -66,11 +62,11 @@ def solve(a: str, b: str) -> str:
     for chota in range(len(b_list)):
         arr1 = arr[:]
         temp = b_list[:chota]
-
         for h in range(chota):
             if arr1[int(b_list[h])] <= 0:
                 f = 1
                 break
+
             else:
                 arr1[int(b_list[h])] -= 1
         if f == 1:
@@ -97,32 +93,31 @@ def solve(a: str, b: str) -> str:
     return m
 
 
-def generate_test_data(n: int):
-    # Generate a number string a of length n, and b of same length or n+1
-    # Digits from 0-9 with first digit non-zero for both
-    if n <= 0:
+def generate_input(n):
+    # n controls the length of a and b
+    if n < 1:
         n = 1
-    length_a = n
-    length_b = n if random.random() < 0.5 else n + 1
-
-    def gen_num(len_):
-        digits = [str(random.randint(0, 9)) for _ in range(len_)]
-        if digits[0] == '0':
-            digits[0] = str(random.randint(1, 9))
-        return ''.join(digits)
-
-    a = gen_num(length_a)
-    # For b, ensure it's not trivially smaller: allow arbitrary same/longer length
-    b = gen_num(length_b)
+    # construct a as digits cycling 0-9 in increasing order
+    a_digits = [str(i % 10) for i in range(n)]
+    a = ''.join(a_digits)
+    # construct b as a "slightly larger" permutation-like upper bound
+    # ensure same length as a
+    b_digits = []
+    for i in range(n):
+        d = (i * 7 + 3) % 10
+        b_digits.append(str(d))
+    b = ''.join(b_digits)
+    # if b is smaller than a, bump b by sorting digits descending
+    if b < a:
+        bd = sorted(b_digits, reverse=True)
+        b = ''.join(bd)
     return a, b
 
 
-def main(n: int):
-    a, b = generate_test_data(n)
+def main(n):
+    a, b = generate_input(n)
     result = solve(a, b)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # Example run with n = 10; change as needed
     main(10)

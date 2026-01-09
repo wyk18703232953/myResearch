@@ -1,16 +1,8 @@
-import random
-import string
-
-def main(n: int):
-    # 根据 n 生成一个长度为 n 的随机字符串，作为原来 input() 的数据
-    # 这里使用小写字母和数字生成
-    chars = string.ascii_lowercase + string.digits
-    generated_input = ''.join(random.choice(chars) for _ in range(max(n, 0)))
-    
-    # 保持原程序的输出行为：print(0, 0, input())
-    print(0, 0, generated_input)
-
-
+def main(n):
+    # n is unused in the original logic; we just need a deterministic input string.
+    # Use n to generate a simple deterministic string so complexity can scale.
+    s = "".join(chr(ord('a') + (i % 26)) for i in range(max(1, n)))
+    # print(0, 0, s)
+    pass
 if __name__ == "__main__":
-    # 示例：可修改这里的 n 来做简单测试
-    main(10)
+    main(5)

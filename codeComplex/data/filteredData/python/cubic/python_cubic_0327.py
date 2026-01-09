@@ -34,9 +34,8 @@ def main(n):
 
     dp = [[[-1] * (B + 1) for _ in range(G + 1)] for _ in range(R + 1)]
     result = cal(0, 0, 0, R, G, B, rl, gl, bl, dp)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 3 运行
     main(3)

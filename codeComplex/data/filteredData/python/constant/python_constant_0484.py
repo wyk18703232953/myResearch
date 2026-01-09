@@ -1,21 +1,15 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 保证 n >= 1，k 为正整数
-    if n <= 0:
-        raise ValueError("n must be a positive integer")
+    # 原程序输入结构：两个整数 n, k
+    # 这里将规模参数 n 作为原程序中的 n
+    # 并构造确定性的 k，用于可规模化实验
+    original_n = n
+    k = n * n + n  # 确定性构造 k
 
-    # 示例：令 k 在 [1, n*10] 范围内随机
-    k = random.randint(1, n * 10)
-
-    # 原逻辑：计算向上取整的 k / n
-    ans = k // n
-    if k % n:
+    ans = k // original_n
+    if k % original_n:
         ans += 1
 
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

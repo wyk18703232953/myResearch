@@ -1,111 +1,99 @@
-import random
-
 def main(n):
-    # 生成规模参数
-    # n: 行数
-    m = n                # 列数，简单设为 n
-    # k 必须为偶数才有意义，这里设为不大于 2n 的最大偶数
-    k = max(2, (2 * n) if (2 * n) % 2 == 0 else (2 * n - 1))
+    # Interpret n as grid size: n x n, with fixed even k
+    if n <= 1:
+        return
+    m = n
+    k = 10  # fixed even number of steps for experiment, can be adjusted
 
-    # 生成测试数据：y_axis 为 n x m，x_axis 为 (n-1) x m
-    # 边权设为 1~10 之间的随机正整数
-    rand = random.randint
-    y_axis = [[rand(1, 10) for _ in range(m)] for _ in range(n)]
-    if n > 1:
-        x_axis = [[rand(1, 10) for _ in range(m)] for _ in range(n - 1)]
-    else:
-        # 当 n == 1 时，原代码仍用到 x_axis[i][j] 和 x_axis[i-1][j]，
-        # 这里用一行来兼容索引，值同样随机生成
-        x_axis = [[rand(1, 10) for _ in range(m)]]
+    # Deterministic construction of y_axis and x_axis
+    # y_axis: n rows, m-1 edges per row (horizontal edges)
+    # x_axis: n-1 rows, m edges per row (vertical edges)
+    y_axis = [[(i + j) % 7 + 1 for j in range(m - 1)] for i in range(n)]
+    x_axis = [[(i * 2 + j * 3) % 9 + 1 for j in range(m)] for i in range(n - 1)]
 
-    # 原始算法逻辑
     if k % 2 == 1:
         for _ in range(n):
-            print(" ".join(["-1"] * m))
+            # print(" ".join(["-1"] * m))
+            pass
         return
-
     inf = 10 ** 9
-    # dp[x][y][z] : 从 (x,y) 走 z 步（z 总为偶数），回到原点的最小代价
     dp = [[[inf for _ in range(k + 1)] for _ in range(m)] for _ in range(n)]
 
-    # 初始化 z = 2 时的最优值
+    # Initialize for z = 2
     for i in range(n):
         for j in range(m):
-            # 垂直方向
+            # vertical moves
             if i > 0:
                 if i < n - 1:
-                    dp[i][j][2] = min(dp[i][j][2],
-                                      2 * x_axis[i][j],
-                                      2 * x_axis[i - 1][j])
+                    v1 = 2 * x_axis[i][j] if i < n - 1 else inf
+                    v2 = 2 * x_axis[i - 1][j]
+                    dp[i][j][2] = min(dp[i][j][2], v1, v2)
+
                 else:
-                    dp[i][j][2] = min(dp[i][j][2],
-                                      2 * x_axis[i - 1][j])
+                    dp[i][j][2] = min(dp[i][j][2], 2 * x_axis[i - 1][j])
+
             else:
-                dp[i][j][2] = min(dp[i][j][2],
-                                  2 * x_axis[i][j])
-            # 水平方向
+                if n > 1:
+                    dp[i][j][2] = min(dp[i][j][2], 2 * x_axis[i][j])
+            # horizontal moves
             if j > 0:
                 if j < m - 1:
-                    dp[i][j][2] = min(dp[i][j][2],
-                                      2 * y_axis[i][j],
-                                      2 * y_axis[i][j - 1])
-                else:
-                    dp[i][j][2] = min(dp[i][j][2],
-                                      2 * y_axis[i][j - 1])
-            else:
-                dp[i][j][2] = min(dp[i][j][2],
-                                  2 * y_axis[i][j])
+                    h1 = 2 * y_axis[i][j] if j < m - 1 else inf
+                    h2 = 2 * y_axis[i][j - 1]
+                    dp[i][j][2] = min(dp[i][j][2], h1, h2)
 
-    # 递推 z = 4..k, step=2
+                else:
+                    dp[i][j][2] = min(dp[i][j][2], 2 * y_axis[i][j - 1])
+
+            else:
+                if m > 1:
+                    dp[i][j][2] = min(dp[i][j][2], 2 * y_axis[i][j])
+
+    # DP transitions for larger even z
     for z in range(4, k + 1, 2):
         for i in range(n):
             for j in range(m):
-                # 上下方向
+                # vertical transitions
                 if i > 0:
                     if i < n - 1:
-                        dp[i][j][z] = min(
-                            dp[i][j][z],
-                            dp[i - 1][j][z - 2] + 2 * x_axis[i - 1][j],
-                            dp[i + 1][j][z - 2] + 2 * x_axis[i][j],
-                        )
-                    else:
-                        dp[i][j][z] = min(
-                            dp[i][j][z],
-                            dp[i - 1][j][z - 2] + 2 * x_axis[i - 1][j],
-                        )
-                else:
-                    dp[i][j][z] = min(
-                        dp[i][j][z],
-                        dp[i + 1][j][z - 2] + 2 * x_axis[i][j],
-                    )
+                        up_cost = dp[i - 1][j][z - 2] + 2 * x_axis[i - 1][j]
+                        down_cost = dp[i + 1][j][z - 2] + 2 * x_axis[i][j]
+                        dp[i][j][z] = min(dp[i][j][z], up_cost, down_cost)
 
-                # 左右方向
+                    else:
+                        up_cost = dp[i - 1][j][z - 2] + 2 * x_axis[i - 1][j]
+                        dp[i][j][z] = min(dp[i][j][z], up_cost)
+
+                else:
+                    if n > 1:
+                        down_cost = dp[i + 1][j][z - 2] + 2 * x_axis[i][j]
+                        dp[i][j][z] = min(dp[i][j][z], down_cost)
+                # horizontal transitions
                 if j > 0:
                     if j < m - 1:
-                        dp[i][j][z] = min(
-                            dp[i][j][z],
-                            dp[i][j - 1][z - 2] + 2 * y_axis[i][j - 1],
-                            dp[i][j + 1][z - 2] + 2 * y_axis[i][j],
-                        )
-                    else:
-                        dp[i][j][z] = min(
-                            dp[i][j][z],
-                            dp[i][j - 1][z - 2] + 2 * y_axis[i][j - 1],
-                        )
-                else:
-                    dp[i][j][z] = min(
-                        dp[i][j][z],
-                        dp[i][j + 1][z - 2] + 2 * y_axis[i][j],
-                    )
+                        left_cost = dp[i][j - 1][z - 2] + 2 * y_axis[i][j - 1]
+                        right_cost = dp[i][j + 1][z - 2] + 2 * y_axis[i][j]
+                        dp[i][j][z] = min(dp[i][j][z], left_cost, right_cost)
 
-    # 输出结果矩阵：每个格子走 k 步回到原点的最小代价（或 -1）
+                    else:
+                        left_cost = dp[i][j - 1][z - 2] + 2 * y_axis[i][j - 1]
+                        dp[i][j][z] = min(dp[i][j][z], left_cost)
+
+                else:
+                    if m > 1:
+                        right_cost = dp[i][j + 1][z - 2] + 2 * y_axis[i][j]
+                        dp[i][j][z] = min(dp[i][j][z], right_cost)
+
+    # Output result for full k
     for i in range(n):
         row = []
         for j in range(m):
-            row.append(str(-1 if dp[i][j][k] == inf else dp[i][j][k]))
-        print(" ".join(row))
+            if dp[i][j][k] == inf:
+                row.append("-1")
 
-
+            else:
+                row.append(str(dp[i][j][k]))
+        # print(" ".join(row))
+        pass
 if __name__ == "__main__":
-    # 示例：可以在此处修改 n 进行测试
-    main(3)
+    main(5)

@@ -2,10 +2,12 @@ def getBW(x1, y1, x2, y2):
     if (x2 - x1) % 2 == 1 or (y2 - y1) % 2 == 1:
         return [(y2 + 1 - y1) * (x2 + 1 - x1) // 2,
                 (y2 + 1 - y1) * (x2 + 1 - x1) // 2]
+
     else:
         if (x1 % 2 == 0 and y1 % 2 == 0) or (x1 % 2 == 1 and y1 % 2 == 1):
             return [(y2 + 1 - y1) * (x2 + 1 - x1) // 2,
                     1 + (y2 + 1 - y1) * (x2 + 1 - x1) // 2]
+
         else:
             return [1 + (y2 + 1 - y1) * (x2 + 1 - x1) // 2,
                     (y2 + 1 - y1) * (x2 + 1 - x1) // 2]
@@ -45,9 +47,8 @@ def main(n):
     B = BW[0] - BW1[0] + BW2[1] + BWO[0]
     W = BW[1] + BW1[0] - BW2[1] - BWO[0]
 
-    print(W, B)
-
-
+    # print(W, B)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 8 作为测试规模
     main(8)

@@ -1,28 +1,27 @@
-import random
+def main(n):
+    # 解释 n 的映射：
+    # n -> (n, m, k, l) 通过确定性方式构造
+    # 为保证可规模化，将 m, k, l 定义为 n 的简单函数
+    # 同时避免除以 0 的情况
 
-def main(n: int):
-    # 生成测试数据：
-    # n: 给定规模
-    # m: 1 到 n 之间的随机整数
-    # k, l: 0 到 n 之间的随机整数
-    if n <= 0:
-        raise ValueError("n 必须为正整数")
+    # n 作为原程序的 n
+    original_n = max(1, n)
 
-    m = random.randint(1, n)
-    k = random.randint(0, n)
-    l = random.randint(0, n)
+    # m 控制“每次增加量”，与 n 线性相关但不为 0
+    m = max(1, n // 3 + 1)
 
-    # 原始逻辑
+    # k 和 l 作为目标值，随 n 线性增长
+    k = n * 2 + 3
+    l = n // 2 + 5
+
     cnt = (k + l + m - 1) // m
-    if cnt * m > n:
+    if cnt * m > original_n:
         result = -1
+
     else:
         result = cnt
 
-    # 输出结果（如需返回结果可改为 return result）
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

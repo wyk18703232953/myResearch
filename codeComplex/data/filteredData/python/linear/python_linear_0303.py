@@ -12,9 +12,8 @@ def main(n):
         if turns < ans:
             ans = turns
             p = i
-    print(p + 1)
-
-
+    # print(p + 1)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

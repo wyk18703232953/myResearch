@@ -1,12 +1,8 @@
-import random
-
-def main(n: int):
-    # 根据 n 生成测试数据，这里简单设为测试值为 n 本身
-    test_n = n
-
-    if test_n >= 2:
-        print(25)
-
+def main(n):
+    # 核心逻辑保持不变
+    if n >= 2:
+        # print(25)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，实际使用时可根据需要修改 n
+    # 示例调用，可根据需要修改 n 的值进行规模实验
     main(10)

@@ -14,6 +14,7 @@ def main(n):
             for j in range(start, start + len_B):
                 row[j] = 'B'
             s[i] = "".join(row)
+
         else:
             s[i] = "." * m
 
@@ -25,9 +26,11 @@ def main(n):
                 for k in range(j + 1, m):
                     if s[i][k] == 'B':
                         cnt += 1
+
                     else:
                         break
-                print(i + 1 + cnt // 2, j + 1 + cnt // 2)
+                # print(i + 1 + cnt // 2, j + 1 + cnt // 2)
+                pass
                 return  # 代替 exit(0)
 
 

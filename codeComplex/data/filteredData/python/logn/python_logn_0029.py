@@ -6,7 +6,8 @@ def main(n: int):
     b = 2 * n + 1  # 确保 b > a 且不同
 
     if a == b:
-        print(0)
+        # print(0)
+        pass
         return
 
     e1 = bin(a)[2:]
@@ -20,13 +21,13 @@ def main(n: int):
     for i in range(len(e2)):
         if b - a >= 2 ** i:
             ans[i] = "1"
+
         else:
             if int(e1[i]) ^ int(e2[i]) == 1:
                 ans[i] = "1"
 
-    print(int("".join(ans[::-1]), 2))
-
-
+    # print(int("".join(ans[::-1]), 2))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 自行设定
     main(10)

@@ -1,38 +1,34 @@
-import random
-
 def main(n):
-    # 随机生成参数 n, m, k，使得 1 <= m <= n
-    N = n
-    M = random.randint(1, N)
-    K = random.randint(1, max(1, N // 10))
+    # Deterministic data generation based on n
+    # Map n to parameters of the original problem:
+    # n -> original n (max value)
+    # m -> number of elements in p (here set equal to n)
+    # k -> page size (choose a small constant or function of n)
+    orig_n = n
+    m = n
+    k = max(1, n // 5 + 1)
 
-    # 生成严格递增的 p 数组，长度为 M，元素范围在 [1, N]
-    # 简单方式：从 1..N 中选 M 个不同的数并排序
-    p = sorted(random.sample(range(1, N + 1), M))
+    # Generate a non-trivial, sorted list p of length m with values in [1, orig_n]
+    # Use a deterministic arithmetic pattern
+    p = [((i * 3) % orig_n) + 1 for i in range(1, m + 1)]
+    p.sort()
 
-    # 原逻辑开始
     i = 0
     ct = 0
     ops = 0
     while i < len(p):
         nm = p[i] - ct
-        if nm % K == 0:
+        if nm % k == 0:
             mnm = nm
+
         else:
-            mnm = (nm // K) * K + K
+            mnm = (nm // k) * k + k
         si = i
-        while p[i] - ct <= mnm:
+        while i < len(p) and p[i] - ct <= mnm:
             i += 1
-            if i >= len(p):
-                break
         ct += i - si
         ops += 1
-        if i >= len(p):
-            break
-
-    print(ops)
-
-
+    # print(ops)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n 可在此处调整
-    main(10**5)
+    main(10)

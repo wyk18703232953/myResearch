@@ -1,40 +1,41 @@
-from collections import defaultdict
-import random
-
 def main(n):
-    # 生成测试数据
-    # a, b 任选，这里让 a 随机为 0 或非 0，以覆盖两种分支
-    a = random.choice([0, 1])
-    b = random.randint(-10, 10)
+    from collections import defaultdict
+
+    # Deterministically construct parameters and data based on n
+    # Interpret n as number of points
+    # Make a and b simple deterministic functions of n
+    a = n % 5  # a can be zero or non-zero depending on n
+    b = (n // 5) % 7  # not used in logic but kept for structural parity
 
     XV = []
-    for _ in range(n):
-        x = random.randint(-10**6, 10**6)
-        vx = random.randint(-10**3, 10**3)
-        vy = random.randint(-10**3, 10**3)
+    # Generate n triples (x, vx, vy) deterministically
+    for i in range(n):
+        x = i
+        vx = (i * 2 + 1) % (max(1, n))
+        vy = (i * 3 + 2) % (max(1, n))
         XV.append((x, vx, vy))
 
     if a != 0:
         ans = 0
-        d = defaultdict(int)
-        dvx = defaultdict(int)
+        d = defaultdict(lambda: 0)
+        dvx = defaultdict(lambda: 0)
         for x, vx, vy in XV:
             k = -a * vx + vy
             ans += max(0, d[k] - dvx[(k, vx)])
             d[k] += 1
             dvx[(k, vx)] += 1
-        print(ans * 2)
+        # print(ans * 2)
+        pass
+
     else:
         ans = 0
-        d = defaultdict(lambda: defaultdict(int))
-        ds = defaultdict(int)
+        d = defaultdict(lambda: defaultdict(lambda: 0))
+        ds = defaultdict(lambda: 0)
         for x, vx, vy in XV:
             ans += max(0, ds[vy] - d[vy][vx])
             d[vy][vx] += 1
             ds[vy] += 1
-        print(ans * 2)
-
-
+        # print(ans * 2)
+        pass
 if __name__ == "__main__":
-    # 示例：规模为 10
     main(10)

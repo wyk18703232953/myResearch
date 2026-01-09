@@ -5,7 +5,8 @@ def main(n: int):
     # 若需要批量测试，可在外层循环调用 main 对不同 n 进行测试
     ran = list(range(2, 1 + n // 2))
     xx = [d * (n // d - 1) for d in ran]
-    print(sum(xx) * 4)
+    # print(sum(xx) * 4)
+    pass
 
 
 # 示例调用（根据需要自行修改或在其他模块中调用）

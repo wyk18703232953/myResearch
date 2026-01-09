@@ -1,8 +1,8 @@
-import random
-
-def main(n: int):
-    # 生成长度为 n 的随机仅含 '0','1','2' 的字符串
-    s = ''.join(random.choice('012') for _ in range(n))
+def main(n):
+    # Generate a deterministic binary string with '0', '1', '2'
+    # Pattern: cycle through '0','1','2' using i % 3
+    chars = ['0', '1', '2']
+    s = ''.join(chars[i % 3] for i in range(n))
 
     one = s.count('1')
     zero = 0
@@ -13,19 +13,18 @@ def main(n: int):
             break
         if s[i] == '0':
             zero += 1
-
     d = ""
     if ind == -1:
-        print("0" * zero + "1" * one)
-        return
-
+        result = "0" * zero + "1" * one
+        return result
     d = d + "0" * zero + "1" * one
     for i in s[ind:]:
         if i != '1':
             d += i
-    print(d)
+    return d
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)
-    main(10)
+    # Example call for testing / timing
+    # print(main(10))
+    pass

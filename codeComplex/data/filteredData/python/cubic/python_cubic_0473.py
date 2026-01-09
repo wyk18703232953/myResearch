@@ -1,52 +1,40 @@
 def main(n):
-    import random
+    # Interpret n as grid size and step parameter:
+    # use n x n grid, k = 2 * n (always even to avoid trivial -1 case)
+    rows = n
+    cols = n
+    k = 2 * n
 
-    # 生成测试数据
-    # 随机生成 m, k
-    m = n  # 这里令 m = n，也可以按需求修改
-    # 保证 k 为偶数，以避免整张为 -1 的特例；如需测试该特例，可改成随机奇偶
-    k = random.randint(2, 10)
-    if k % 2 == 1:
-        k += 1
+    # Deterministic generation of H (horizontal weights) and V (vertical weights)
+    # H: rows x (cols-1)
+    H = [[(i * cols + j) % 9 + 1 for j in range(cols - 1)] for i in range(rows)]
+    # V: (rows-1) x cols
+    V = [[((i + 1) * cols + j + 3) % 9 + 1 for j in range(cols)] for i in range(rows - 1)]
 
-    # H: n 行, 每行 m-1 个数
-    # V: n-1 行, 每行 m 个数
-    # 边权使用 1~9 的随机正整数
-    H = [[random.randint(1, 9) for _ in range(m - 1)] for _ in range(n)]
-    V = [[random.randint(1, 9) for _ in range(m)] for _ in range(n - 1)]
-
-    # 若 k 为奇数，按照原逻辑输出全 -1
     if k & 1:
-        ans = [['-1'] * m for _ in range(n)]
-        return ans
+        # print('\n'.join(' '.join(['-1'] * cols) for _ in range(rows)))
+        pass
+        return
 
-    # DP 部分，和原始代码逻辑一致（只是去掉了输入和打印）
-    d = [0] * (n * m)
+    d = [0] * (rows * cols)
     for _ in range(k // 2):
-        nd = [0] * (n * m)
-        for x in range(n):
-            for y in range(m):
-                v = x * m + y
+        nd = [0] * (rows * cols)
+        for x in range(rows):
+            for y in range(cols):
+                v = x * cols + y
                 w = []
                 if x:
-                    w.append(d[v - m] + V[x - 1][y])
+                    w.append(d[v - cols] + V[x - 1][y])
                 if y:
                     w.append(d[v - 1] + H[x][y - 1])
-                if x < n - 1:
-                    w.append(d[v + m] + V[x][y])
-                if y < m - 1:
+                if x < rows - 1:
+                    w.append(d[v + cols] + V[x][y])
+                if y < cols - 1:
                     w.append(d[v + 1] + H[x][y])
                 nd[v] = min(w)
         d = nd
 
-    # 生成结果矩阵（每个值乘以 2），与原代码输出形式一致
-    result = [[str(2 * d[i * m + j]) for j in range(m)] for i in range(n)]
-    return result
-
-
-# 示例调用与打印（在线评测时可去掉以下示例）
+    # print('\n'.join(' '.join(str(2 * x) for x in d[i * cols:i * cols + cols]) for i in range(rows)))
+    pass
 if __name__ == "__main__":
-    n = 4
-    res = main(n)
-    for row in res:
-        print(' '.join(row))
+    main(5)

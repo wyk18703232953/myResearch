@@ -12,7 +12,8 @@ def main(n: int) -> None:
                 if not test[i] and a[i] % a[j] == 0:
                     test[i] = True
             counter += 1
-    print(counter)
+    # print(counter)
+    pass
 
 
 # 示例：需要时可以手动调用

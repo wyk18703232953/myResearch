@@ -5,13 +5,13 @@ def main(n):
     t = 0
     for i in s:
         if n % i == 0:
-            print("YES")
+            # print("YES")
+            pass
             t = 1
             break
     if t == 0:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例自动生成测试数据：用一个固定的 n 调用 main
     # 这里选择一个与原题风格类似的数作为测试，例如 47

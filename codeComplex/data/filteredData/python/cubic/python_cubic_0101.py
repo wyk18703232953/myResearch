@@ -111,5 +111,6 @@ def main(n):
     k = min(10, max(1, n // 2))
 
     ans = (check(r, k) + solve(r, k) - solve(l, k) + MOD) % MOD
-    print(ans)
+    # print(ans)
+    pass
     return ans

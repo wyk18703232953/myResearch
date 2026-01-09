@@ -19,6 +19,7 @@ def rotate(matrix, degree):
     elif degree > 0:
         # rotate 90 degrees clockwise once, then recurse
         return rotate(list(zip(*matrix[::-1])), degree - 90)
+
     else:
         # rotate 90 degrees counterclockwise once, then recurse
         return rotate(list(zip(*matrix))[::-1], degree + 90)
@@ -66,6 +67,7 @@ def generate_board(n, pattern_type):
             for j in range(n):
                 if (i + j) % 2 == 0:
                     board[i][j] = 'X'
+
     else:
         # 稀疏 X：每行前半部分
         for i in range(n):
@@ -90,6 +92,9 @@ def main(n):
     l2 = len(s)
 
     if l1 == l2:
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
+        # print("No")
+        pass

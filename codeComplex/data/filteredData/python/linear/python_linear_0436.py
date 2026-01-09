@@ -7,9 +7,8 @@ def main(n):
         for j in range(i, min(i + m, n)):
             a.append(min(i + m, n) - j + i)
 
-    print(' '.join(str(_) for _ in a))
-
-
+    # print(' '.join(str(_) for _ in a))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模为 100
     main(100)

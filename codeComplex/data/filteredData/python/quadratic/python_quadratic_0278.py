@@ -1,17 +1,24 @@
-import random
+def main(n):
+    # n 表示两个数组的长度
+    if n <= 0:
+        return
 
-def main(n: int):
-    # 生成两个长度为 n 的数组，元素范围 1~n
-    m = n  # 原代码中 m 未实质使用，这里令 m = n 以保持对称
-    arr1 = [random.randint(1, n) for _ in range(n)]
-    arr2 = [random.randint(1, m) for _ in range(m)]
+    # 确定性生成测试数据
+    # arr1: 0, 1, 2, ..., n-1
+    # arr2: 0, 2, 4, ..., 2*(n-1)
+    arr1 = [i for i in range(n)]
+    arr2 = [2 * i for i in range(n)]
 
+    # 原核心逻辑：暴力双重循环找交集并输出
+    output = []
     for first in arr1:
         for second in arr2:
             if first == second:
-                print(first, end=" ")
+                output.append(str(first))
+                break  # 原算法一旦找到相等即可，不再多余比较同一 first
 
-
+    if output:
+        # print(" ".join(output))
+        pass
 if __name__ == "__main__":
-    # 示例：当需要运行测试时，可手动调用 main
-    main(5)
+    main(10)

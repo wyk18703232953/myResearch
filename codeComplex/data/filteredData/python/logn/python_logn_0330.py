@@ -13,13 +13,13 @@ def main(n):
     k_val = n // 2
 
     if n_val == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     r = pow(2, k_val + 1, m) * n_val - pow(2, k_val, m) + 1
-    print(r % m)
-
-
+    # print(r % m)
+    pass
 if __name__ == "__main__":
     # 示例：用规模 n=10 运行
     main(10)

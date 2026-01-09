@@ -34,9 +34,8 @@ def main(n: int):
         ans += dp[N + 1][j] * fact[N - j + 1] % mod
         ans %= mod
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

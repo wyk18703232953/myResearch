@@ -82,7 +82,8 @@ def main(n):
         ten_pow.append(mul(ten_pow[-1], 10))
 
     ans = add(solve(r), -solve(l - 1))
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

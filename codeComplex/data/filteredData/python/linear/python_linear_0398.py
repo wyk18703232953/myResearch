@@ -1,13 +1,12 @@
-import random
-
-MOD = 998244353
-
-def main(n: int):
-    # 1. 生成规模为 n 的测试数据 a
-    # 根据需要可调整数据范围
-    a = [random.randint(0, 10**9) for _ in range(n)]
-
-    # 2. 原逻辑
+def main(n):
+    MOD = 998244353
+    # 生成确定性输入数组 a，长度为 n
+    # 元素构造：a[i] = (i * 3 + 1) % MOD
+    a = [(i * 3 + 1) % MOD for i in range(n)]
+    if n == 0:
+        # print(0)
+        pass
+        return
     s = a[0] % MOD
     y = a[0]
     for x in a[1:]:
@@ -15,10 +14,7 @@ def main(n: int):
         y = y * 2 + x
         s %= MOD
         y %= MOD
-
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
-    # 示例：可修改此处测试不同规模
-    main(5)
+    main(10)

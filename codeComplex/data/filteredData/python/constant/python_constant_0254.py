@@ -1,21 +1,18 @@
-import math
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 规模 n 用作第一行的 n
-    # 第二行的 m 随机设置为 [1, 2^(n+2)] 范围内的整数，保证有足够大规模测试
-    m = random.randint(1, 2 ** (n + 2))
+    import math
 
-    # 原逻辑
-    if n <= math.log2(m):
-        result = m % (2 ** n)
+    # 在原程序中有两行输入：n 和 m
+    # 这里将 n 映射为原程序的第一个整数 n0，第二个整数 m0 为一个随 n 规模增长的确定性值
+    n0 = n
+    m0 = n * n + 1  # 确定性构造，使输入规模随 n 增长
+
+    if n0 <= math.log2(m0):
+        result = m0 % (2 ** n0)
+
     else:
-        result = m
+        result = m0
 
-    print(result)
-
-
-if __name__ == '__main__':
-    # 示例：可以在此处修改固定的 n 来测试
+    # print(result)
+    pass
+if __name__ == "__main__":
     main(10)

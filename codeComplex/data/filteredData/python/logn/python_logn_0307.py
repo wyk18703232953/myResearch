@@ -13,6 +13,7 @@ def main(n):
             p2 = x * 2
             p = (p1 + p2) // 2
             res = (p * pow(2, k, m) + 1) % m
+
         else:
             res = x * 2
 
@@ -20,9 +21,8 @@ def main(n):
 
     # 输出每组测试数据对应的结果
     for x, k, res in results:
-        print(x, k, res)
-
-
+        # print(x, k, res)
+        pass
 if __name__ == "__main__":
     # 示例调用：生成 5 组 (x, k) 测试数据并计算结果
     main(5)

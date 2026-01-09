@@ -1,17 +1,23 @@
-import math
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 随机生成 d，再生成长度为 n 的数组 p
-    # 可以根据需要调整数据规模和范围
-    d = random.randint(1, 10)
-    p = [random.randint(0, 100) for _ in range(n)]
+    # 映射含义：
+    # n -> 原程序中列表 p 的长度
+    # 为保持和原始程序一致，还需要一个 d（常数或随 n 确定性变化）
+    #
+    # 这里选择 d = max(1, n // 10) 作为确定性构造
 
-    # 原逻辑开始
+    if n <= 0:
+        return 0
+
+    d = max(1, n // 10)
+
+    # 构造长度为 n 的数组 p，完全确定性
+    # 例如：p[i] = (i * 3) // 2
+    p = [(i * 3) // 2 for i in range(n)]
+
     q = []
     for i in range(len(p) - 1):
         q.append(abs(p[i + 1] - p[i]))
+
     count = 0
     for k in q:
         if k == 2 * d:
@@ -20,18 +26,11 @@ def main(n):
             count += 2
 
     result = count + 2
+    # print(result)
+    pass
+    return result
 
-    # 输出或返回结果，这里返回以便在其他程序中复用
-    return {
-        "d": d,
-        "p": p,
-        "result": result
-    }
 
-# 示例：直接运行本文件时进行一次调用
 if __name__ == "__main__":
-    n = 10  # 示例规模，可自行修改
-    output = main(n)
-    print("d:", output["d"])
-    print("p:", output["p"])
-    print("result:", output["result"])
+    # 示例调用：可按需修改 n 以做不同规模实验
+    main(1000)

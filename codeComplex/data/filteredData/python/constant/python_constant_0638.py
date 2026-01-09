@@ -1,11 +1,10 @@
-import random
-
 def get_colors(x1, y1, x2, y2):
     w = x2 - x1 + 1
     h = y2 - y1 + 1
     if w % 2 == 0 or h % 2 == 0:
         black = w * h // 2
         white = w * h // 2
+
     else:
         oddx = w // 2
         if x1 % 2 == 1 and x2 % 2 == 1:
@@ -23,7 +22,6 @@ def get_colors(x1, y1, x2, y2):
         black = w * h - white
     return white, black
 
-
 def get_intersection(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
     if ax1 > bx2:
         return None, None, None, None
@@ -35,48 +33,47 @@ def get_intersection(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
         return None, None, None, None
     return max(ax1, bx1), max(ay1, by1), min(ax2, bx2), min(ay2, by2)
 
-
 def main(n):
-    # n: 规模参数，用作最大棋盘尺寸
-    random.seed(0)
-    t = 5  # 生成 5 组测试数据
-
-    for _ in range(t):
-        # 棋盘大小：1..n
-        rows = random.randint(1, n)
-        cols = random.randint(1, n)
+    # n 控制测试用例数量和棋盘规模、矩形规模
+    t = n
+    results = []
+    for i in range(t):
+        # 棋盘大小随 n 和用例编号变化，保证确定性和可规模化
+        rows = n + i + 1
+        cols = n + 2 * i + 2
 
         white, black = get_colors(1, 1, cols, rows)
 
-        # 生成白色覆盖矩形 (wx1, wy1, wx2, wy2)
-        wx1 = random.randint(1, cols)
-        wx2 = random.randint(wx1, cols)
-        wy1 = random.randint(1, rows)
-        wy2 = random.randint(wy1, rows)
+        # 构造第一个矩形 (白色涂色矩形)
+        wx1 = 1 + (i % max(1, cols // 3))
+        wy1 = 1 + (i % max(1, rows // 3))
+        wx2 = min(cols, wx1 + max(1, cols // 2))
+        wy2 = min(rows, wy1 + max(1, rows // 2))
 
         w, b = get_colors(wx1, wy1, wx2, wy2)
         white += b
         black -= b
 
-        # 生成黑色覆盖矩形 (bx1, by1, bx2, by2)
-        bx1 = random.randint(1, cols)
-        bx2 = random.randint(bx1, cols)
-        by1 = random.randint(1, rows)
-        by2 = random.randint(by1, rows)
+        # 构造第二个矩形 (黑色涂色矩形)
+        bx1 = 1 + ((i * 2) % max(1, cols // 3))
+        by1 = 1 + ((i * 2) % max(1, rows // 3))
+        bx2 = min(cols, bx1 + max(1, cols // 2))
+        by2 = min(rows, by1 + max(1, rows // 2))
 
         ix1, iy1, ix2, iy2 = get_intersection(wx1, wy1, wx2, wy2, bx1, by1, bx2, by2)
         if ix1 is not None:
-            w, b = get_colors(ix1, iy1, ix2, iy2)
-            white -= b
-            black += b
+            w_int, b_int = get_colors(ix1, iy1, ix2, iy2)
+            white -= b_int
+            black += b_int
 
-        w, b = get_colors(bx1, by1, bx2, by2)
-        white -= w
-        black += w
+        w_b, b_b = get_colors(bx1, by1, bx2, by2)
+        white -= w_b
+        black += w_b
 
-        print(white, black)
+        results.append((white, black))
 
-
+    for w, b in results:
+        # print(w, b)
+        pass
 if __name__ == "__main__":
-    # 示例：以 n=10 运行
     main(10)

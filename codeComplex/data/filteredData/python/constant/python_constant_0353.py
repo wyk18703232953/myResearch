@@ -1,32 +1,31 @@
-import random
-
 def main(n):
-    # 所有颜色与宝石映射
-    color_to_gem = {
-        'purple': 'Power',
-        'green': 'Time',
-        'blue': 'Space',
-        'orange': 'Soul',
-        'red': 'Reality',
-        'yellow': 'Mind'
-    }
-    all_colors = list(color_to_gem.keys())
-    
-    # 生成测试数据：随机选择 n 个颜色（允许重复）
-    test_colors = [random.choice(all_colors) for _ in range(n)]
-    
-    # 原逻辑
     s = ['Power', 'Time', 'Space', 'Soul', 'Reality', 'Mind']
-    for color in test_colors:
-        gem = color_to_gem[color]
-        if gem in s:
-            s.remove(gem)
-    
-    print(len(s))
-    for gem in s:
-        print(gem)
-
-
+    colors = ['purple', 'green', 'blue', 'orange', 'red', 'yellow']
+    # 依次从 colors 中取前 min(n, 6) 个颜色作为输入规模
+    for idx in range(min(n, len(colors))):
+        i = colors[idx]
+        if i == 'purple':
+            if 'Power' in s:
+                s.remove('Power')
+        elif i == 'green':
+            if 'Time' in s:
+                s.remove('Time')
+        elif i == 'blue':
+            if 'Space' in s:
+                s.remove('Space')
+        elif i == 'orange':
+            if 'Soul' in s:
+                s.remove('Soul')
+        elif i == 'red':
+            if 'Reality' in s:
+                s.remove('Reality')
+        elif i == 'yellow':
+            if 'Mind' in s:
+                s.remove('Mind')
+    # print(len(s))
+    pass
+    for stone in s:
+        # print(stone)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自行修改
-    main(3)
+    main(4)

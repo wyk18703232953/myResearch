@@ -14,6 +14,7 @@ def main(n):
         return 0
     elif k == 0:
         return (x * 2) % M
+
     else:
         top_sum = (pow(2, k, M) * ((2 * x - 1) % M)) % M + 1
         return top_sum % M
@@ -22,4 +23,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：手动指定规模 n 进行测试
     n = 10
-    print(main(n))
+    # print(main(n))
+    pass

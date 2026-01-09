@@ -18,10 +18,10 @@ def main(n: int):
         b += [5, 4]
         cur_n -= 8
 
-    print(*a + [5], sep="")
-    print(*b + [5], sep="")
-
-
+    # print(*a + [5], sep="")
+    pass
+    # print(*b + [5], sep="")
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可根据需求调整
     main(20)

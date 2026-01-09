@@ -20,14 +20,14 @@ def main(n):
     # 若 n < 2，则退化为 L=0, R=n
     if n < 2:
         L, R = 0, max(1, n)
+
     else:
         # 简单策略：取 L = n // 3, R = n
         L, R = n // 3, n
 
     result = maxXORInRange(L, R)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可在此修改 n 的值进行测试
     main(10)

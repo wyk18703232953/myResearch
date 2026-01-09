@@ -30,9 +30,8 @@ def main(n):
                                       dp[i - 1][j][k - 1] + B[k - 1] * R[i - 1])
 
     # 按原代码逻辑输出结果
-    print(dp[r][g][b])
-
-
+    # print(dp[r][g][b])
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(3)
     main(3)

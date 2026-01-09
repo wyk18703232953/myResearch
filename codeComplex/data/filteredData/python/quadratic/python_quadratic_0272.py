@@ -1,21 +1,18 @@
-import random
+def main(n):
+    # 映射：n 为数组长度
+    m = n
 
-def main(n: int):
-    # 随机生成测试数据：a、b 两个长度为 n 的整数数组
-    # 元素范围可自行调整，这里设为 1~2n
-    m = n  # 若需要不同规模，可自行修改为与 n 不同的值
-    a = [random.randint(1, 2 * n) for _ in range(n)]
-    b = [random.randint(1, 2 * n) for _ in range(m)]
+    # 确定性构造数组 a 和 b
+    # a: [0, 1, 2, ..., n-1]
+    a = list(range(n))
+    # b: 每个元素为 (i * 2) % n，保证确定性且有交集
+    b = [(i * 2) % n for i in range(m)]
 
     r = []
     for i in a:
         if i in b:
             r.append(i)
-
-    # 按原逻辑输出结果
-    print(' '.join(map(str, r)))
-
-
+    # print(' '.join(map(str, r)))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

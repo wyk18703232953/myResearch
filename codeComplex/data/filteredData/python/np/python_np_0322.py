@@ -48,9 +48,8 @@ def main(n):
                 newdp[a][b] = 0
 
     ans = sum(dp[k]) % mod
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可自行修改 n 的值
     main(5)

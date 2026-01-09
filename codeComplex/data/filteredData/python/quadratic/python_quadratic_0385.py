@@ -1,29 +1,39 @@
-import random
+def main(n):
+    # Interpret n as number of rows; fix m deterministically as n
+    m = n
 
-def main(n: int):
-    # 随机生成 m，保证 m >= 1
-    m = random.randint(1, max(1, n))
+    # Deterministically generate grid with exactly one row containing 'B's
+    # Place a block of consecutive 'B's in row k = n//2 (if exists) and center it
+    grid = []
+    b_row = n // 2 if n > 0 else 0
+    b_len = max(1, m // 3) if m > 0 else 0
+    if b_len > m:
+        b_len = m
 
-    # 随机选择哪一行放置 'B'（1-based）
-    row_with_B = random.randint(1, n)
+    if m > 0 and b_len > 0:
+        start = (m - b_len) // 2
+
+    else:
+        start = 0
 
     for i in range(n):
-        if i + 1 == row_with_B:
-            # 随机生成该行的 'B' 段长度（至少 1）
-            b_len = random.randint(1, m)
-            # 随机生成该行左侧 '.' 的数量，使得整行长度为 m
-            left_dot_max = m - b_len
-            left_dot = random.randint(0, left_dot_max)
-            right_dot = m - b_len - left_dot
-            mt = '.' * left_dot + 'B' * b_len + '.' * right_dot
-        else:
-            # 其他行无 'B'
-            mt = ''.join(random.choice('.B') if False else '.' for _ in range(m))
+        if i == b_row and m > 0 and b_len > 0:
+            row = ['W'] * m
+            for j in range(start, start + b_len):
+                row[j] = 'B'
+            grid.append(''.join(row))
 
+        else:
+            grid.append('W' * m)
+
+    # Core logic from original program
+    for i in range(n):
+        mt = grid[i]
         if mt.count('B') != 0:
-            print(mt.count('B') // 2 + i + 1, mt.count('B') // 2 + mt.index('B') + 1)
+            # print(mt.count('B') // 2 + i + 1, mt.count('B') // 2 + mt.index('B') + 1)
+            pass
             break
 
+
 if __name__ == "__main__":
-    # 示例：可在此处手动调用 main 进行测试
-    main(5)
+    main(10)

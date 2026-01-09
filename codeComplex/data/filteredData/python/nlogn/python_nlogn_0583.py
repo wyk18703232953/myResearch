@@ -12,6 +12,7 @@ def main(n):
             if c >= (n - 1) and n > 2:
                 if s == 0:
                     s = j
+
                 else:
                     t = j
 
@@ -25,7 +26,8 @@ def main(n):
 
     # 输出，与原程序一致：元素间空格，末尾有空格
     for x in res:
-        print(x, end=" ")
+        # print(x, end=" ")
+        pass
 
 # 示例调用
 if __name__ == "__main__":

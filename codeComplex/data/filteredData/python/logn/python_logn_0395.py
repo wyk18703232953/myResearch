@@ -1,14 +1,12 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据：
-    # 原逻辑中只用到了 n 和 k，这里我们让 k 在一个相对于 n 较大的范围内随机生成
-    # 例如：k 在 [0, n * 10^12] 范围内取一个整数
-    max_height = 10**12
-    k = random.randint(0, n * max_height)
+    # 在原程序中，n 是输入的第一个整数，k 是第二个整数
+    # 这里将实验规模参数 n 直接映射为原程序中的 n
+    original_n = max(1, n)  # 保证 n 至少为 1，避免无意义的 0 情况
+    # 为了使规模随 n 增长，这里令 k 为 n 的平方
+    k = original_n * original_n
 
     def area(height):
-        return n * height
+        return original_n * height
 
     def bin_search(low, high):
         if high == low:
@@ -22,11 +20,8 @@ def main(n):
             return bin_search(low, midd)
         return bin_search(midd, high)
 
-    # 二分搜索上界可以按原代码给的一个足够大的值
     result = bin_search(0, 10**18)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可按需修改
     main(10)

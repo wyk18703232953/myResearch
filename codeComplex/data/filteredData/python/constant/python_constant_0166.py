@@ -16,17 +16,18 @@ def main(n: int):
         for b in range(a + 1, r + 1):
             for c in range(b + 1, r + 1):
                 if (gcd(a, b) == 1) and (gcd(b, c) == 1) and (gcd(a, c) != 1):
-                    print(a, b, c)
+                    # print(a, b, c)
+                    pass
                     f = 1
                     break
             if f == 1:
                 break
         if f == 1:
             break
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # 示例：规模 n = 20
     main(20)

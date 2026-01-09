@@ -5,9 +5,8 @@ def main(n):
     m = (1 << (n + 1)) - 1
 
     # 原逻辑：输出 m % 2**n
-    print(m % (1 << n))
-
-
+    # print(m % (1 << n))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

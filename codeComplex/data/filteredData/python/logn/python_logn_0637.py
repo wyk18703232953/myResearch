@@ -10,14 +10,17 @@ def main(n):
             summ = summ + 1
             candies = candies + summ
             if candies == i:
-                print(i)
+                # print(i)
+                pass
                 break
+
     else:
         for i in range(n - 1, -1, -1):
             summ = summ + 1
             candies = candies + summ
             if candies - i == k:
-                print(i)
+                # print(i)
+                pass
                 break
 
 

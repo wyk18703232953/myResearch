@@ -16,7 +16,8 @@ def main(n):
         if size > 100:
             # 原代码只开了 100 个桶，如果长度超过 100 就无法放入
             # 为保持原语义，直接判定为 NO
-            print("NO")
+            # print("NO")
+            pass
             return
         string[size - 1].append(val)
 
@@ -36,7 +37,8 @@ def main(n):
             poss = False
 
     if not poss:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # 检查按长度递增时，前一个长度组的代表串是否是后一个长度组代表串的子串
@@ -51,6 +53,7 @@ def main(n):
             if sub_string in main_str:
                 # 找到一个后续长度组满足条件，就跳到下一长度 i
                 break
+
             else:
                 poss = False
                 break
@@ -58,16 +61,18 @@ def main(n):
             break
 
     if not poss:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
+        # print("YES")
+        pass
         for i in range(100):
             if len(string[i]) == 0:
                 continue
             for j in range(len(string[i])):
-                print(string[i][j])
-
-
+                # print(string[i][j])
+                pass
 if __name__ == "__main__":
     # 示例运行：n=5
     main(5)

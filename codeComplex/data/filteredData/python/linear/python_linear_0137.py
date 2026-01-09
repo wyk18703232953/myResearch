@@ -34,6 +34,7 @@ def build_dp(limit=1100):
         o = bin(i).count("1")
         if o == 1:
             dp[i] = 2
+
         else:
             dp[i] = dp[o] + 1
     return dp
@@ -86,4 +87,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：规模 n = 10
-    print(main(10))
+    # print(main(10))
+    pass

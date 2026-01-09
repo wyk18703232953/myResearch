@@ -1,7 +1,3 @@
-import sys
-import random
-
-
 def solve(n, m, grid):
     for i, row in enumerate(grid):
         for j, cell in enumerate(row):
@@ -12,41 +8,33 @@ def solve(n, m, grid):
                 if must:
                     return 'NO'
                 continue
-            for di, dj in [
-                (0, 1), (0, 2),
-                (1, 0), (1, 2),
-                (2, 0), (2, 1), (2, 2)
-            ]:
+            for di, dj in [(0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1), (2, 2)]:
                 if grid[i + di][j + dj] == 0:
                     if must:
                         return 'NO'
                     break
+
             else:
-                for di, dj in [
-                    (0, 1), (0, 2),
-                    (1, 0), (1, 2),
-                    (2, 0), (2, 1), (2, 2)
-                ]:
+                for di, dj in [(0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1), (2, 2)]:
                     grid[i + di][j + dj] = 2
                 grid[i][j] = 2
     return 'YES'
 
 
-def generate_grid(n, m):
-    # 0 -> '.', 1 -> '#'
-    return [[random.randint(0, 1) for _ in range(m)] for _ in range(n)]
-
-
 def main(n):
-    # 这里根据 n 构造一个 n 行 n 列的网格
-    m = n
-    grid = generate_grid(n, m)
-    result = solve(n, m, grid)
+    # 将 n 映射为网格规模：n x n
+    rows = n
+    cols = n
 
-    # 按原程序风格，仅输出最终结果
-    print(result)
+    # 确定性生成网格：
+    # 使用模式：根据 (i + j) 的奇偶生成 '.' 或 '#'
+    # '.' -> 0, '#' -> 1，和原程序一致
+    grid = [[('.#'.index('#') if (i + j) % 3 == 0 else '.#'.index('.'))
+             for j in range(cols)]
+            for i in range(rows)]
 
-
+    res = solve(rows, cols, grid)
+    # print(res)
+    pass
 if __name__ == "__main__":
-    # 示例：可修改为需要的规模
-    main(5)
+    main(10)

@@ -1,16 +1,24 @@
-import random
+def main(n):
+    # 映射：原程序中有两个输入 n, m
+    # 这里将 n 作为“输入规模”，用于生成确定性的 (n_val, m_val)
+    #
+    # 生成规则（完全确定性）：
+    #   n_val = n
+    #   m_val = n^2 + 3n + 7
+    n_val = n
+    m_val = n * n + 3 * n + 7
 
-def main(n: int):
-    # 生成测试数据：根据规模 n 生成 m
-    # 这里简单设置 m 为 0 到 10^9 之间的随机整数
-    m = random.randint(0, 10**9)
+    if n_val < 27:
+        # 按原逻辑计算 m % 2**n
+        result = m_val % (2 ** n_val)
 
-    if n < 27:
-        print(m % (2 ** n))
     else:
-        print(m)
+        result = m_val
+
+    return result
 
 
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可根据需要修改
-    main(10)
+    # 示例调用：可按需修改 n 的值进行实验
+    # print(main(10))
+    pass

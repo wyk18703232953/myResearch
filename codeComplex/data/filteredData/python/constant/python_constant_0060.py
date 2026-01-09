@@ -19,7 +19,8 @@ def twopinter(li, i, x):
     # but indexing li[i] requires i < len(li), so we fix it.
     while i < len(li) and (len(li) - z - 1) >= 0 and i <= (len(li) - 1 - z):
         if li[i] + li[len(li) - 1 - z] == x:
-            print(li[i], li[len(li) - 1 - z])
+            # print(li[i], li[len(li) - 1 - z])
+            pass
             return li[i] + li[len(li) - 1 - z]
         elif li[i] + li[len(li) - 1 - z] < x:
             i += 1
@@ -35,11 +36,14 @@ def threepointer(li, n):
         x = n - s
         tp_sum = twopinter(li, st, x)
         if s + tp_sum == n:
-            print(s)
-            print("Done")
+            # print(s)
+            pass
+            # print("Done")
+            pass
             return True
         elif s + tp_sum < n:
             st += 1
+
         else:
             return False
     return False
@@ -48,15 +52,16 @@ def threepointer(li, n):
 def main(n):
     # 根据 n 生成测试数据：使用 n 作为上限生成 Fibonacci 数列
     li = fibonacci(n)
-    print(li)
+    # print(li)
+    pass
 
     if not threepointer(li, n):
-        print("I'm too stupid to solve this problem")
+        # print("I'm too stupid to solve this problem")
+        pass
 
     # 保留原程序最后一行逻辑
-    print(0, 0, n)
-
-
+    # print(0, 0, n)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时按需要修改 n
     main(10)

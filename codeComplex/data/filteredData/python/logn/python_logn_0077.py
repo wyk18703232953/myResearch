@@ -1,21 +1,22 @@
-from math import log2, floor
-import random
+from math import *
 
 def main(n):
-    # 根据规模 n 生成测试数据：
-    # 这里生成两个 0 到 2^n-1 之间的随机整数 l, r
-    max_val = (1 << n) - 1
-    l = random.randint(0, max_val)
-    r = random.randint(0, max_val)
-
-    # 保留原始逻辑
+    # 确定性生成一对 (l, r)，使得输入规模与 n 相关
+    # 令 l 与 r 为相近的大整数，以触发 l^r 的位运算逻辑
+    l = n * n + 1
+    r = l + n  # r > l，且差为 n
     if l != r:
-        ans = (2 << floor(log2(l ^ r))) - 1
+        x = l ^ r
+        if x == 0:
+            result = 0
+
+        else:
+            k = floor(log2(x))
+            result = (2 << k) - 1
+
     else:
-        ans = 0
-
-    print(ans)
-
+        result = 0
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)，可根据需要修改
     main(10)

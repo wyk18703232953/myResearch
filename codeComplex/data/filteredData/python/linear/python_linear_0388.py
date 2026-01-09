@@ -1,30 +1,39 @@
-import random
+import time
+from copy import deepcopy
+import itertools
+from bisect import bisect_left
+from bisect import bisect_right
+import math
+from collections import deque
+from collections import Counter
+
 
 def main(n):
-    # 生成测试数据：
-    # 将 m 设为与 n 同数量级，这里简单设为 n（至少为 1）
-    m = max(1, n)
+    # 映射：n 为原程序中的 n，m 也取为 n，使输入规模随 n 线性增长
+    orig_n = n
+    m = n
 
-    # X 和 D 的取值范围可按需要调整
-    # 这里示例：X 在 [-10^3, 10^3]，D 在 [-10^3, 10^3]
-    X = [random.randint(-10**3, 10**3) for _ in range(m)]
-    D = [random.randint(-10**3, 10**3) for _ in range(m)]
+    # 确定性生成 X, D
+    # X: 1, 2, ..., m
+    # D: 对称的正负模式
+    X = [i + 1 for i in range(m)]
+    D = [((i % 4) - 1) * ((-1) ** i) for i in range(m)]
 
-    summ = n * sum(X)
+    summ = orig_n * sum(X)
 
     for i in range(m):
         d = D[i]
         if d < 0:
-            if n % 2 == 1:
-                summ += d * (n // 2) * (n // 2 + 1)
+            if orig_n % 2 == 1:
+                summ += d * (orig_n // 2) * (orig_n // 2 + 1)
+
             else:
-                summ += d * (n // 2) * (n // 2)
+                summ += d * (orig_n // 2) * (orig_n // 2)
+
         else:
-            summ += d * (n - 1) * n // 2
+            summ += d * (orig_n - 1) * orig_n // 2
 
-    print(summ / n)
-
-
+    # print(summ / orig_n)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可在此修改
     main(10)

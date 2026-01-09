@@ -23,9 +23,8 @@ def main(n):
     b_set = set(b)  # 加速查找
     for x in a:
         if x in b_set:
-            print(x, end=' ')
-
-
+            # print(x, end=' ')
+            pass
 if __name__ == "__main__":
     # 示例调用，可按需要修改或在外部调用 main(n)
     main(10)

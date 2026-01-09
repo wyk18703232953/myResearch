@@ -1,21 +1,20 @@
-import random
-
 def main(n):
-    # 1. 根据规模 n 生成 ri, gi, bi（这里简单设为都等于 n）
+    # Interpret n as the size of each color set
     ri = gi = bi = n
 
-    # 2. 生成测试数据：ri, gi, bi 个正整数
-    #   为了便于测试，使用 1~100 的随机整数
-    rr = sorted(random.randint(1, 100) for _ in range(ri))
-    gr = sorted(random.randint(1, 100) for _ in range(gi))
-    br = sorted(random.randint(1, 100) for _ in range(bi))
+    # Deterministically generate sorted lists rr, gr, br of length n
+    # Use simple arithmetic so the data is fully determined by n
+    rr = list(range(1, ri + 1))
+    gr = list(range(2, 2 * gi + 2, 2))[:gi]
+    br = [(i * 3) for i in range(1, bi + 1)]
 
-    # 3. 初始化 DP 数组
-    dp = [[[-1] * (bi + 1) for _ in range(gi + 1)] for _ in range(ri + 1)]
+    rr.sort()
+    gr.sort()
+    br.sort()
 
-    # 4. 原逻辑封装为内部函数
+    dp = [[[-1] * (bi + 1) for _ in range(gi + 1)] for __ in range(ri + 1)]
+
     def area(r, g, b):
-        # 使用偏移量 +1 防止索引为 -1
         if dp[r + 1][g + 1][b + 1] != -1:
             return dp[r + 1][g + 1][b + 1]
         ans = 0
@@ -28,11 +27,11 @@ def main(n):
         dp[r + 1][g + 1][b + 1] = ans
         return ans
 
-    # 5. 返回结果（也可以选择 print）
     result = area(ri - 1, gi - 1, bi - 1)
-    print(result)
+    # print(result)
+    pass
     return result
 
+
 if __name__ == "__main__":
-    # 示例：规模 n = 5
     main(5)

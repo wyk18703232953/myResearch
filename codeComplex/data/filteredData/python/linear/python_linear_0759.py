@@ -1,8 +1,7 @@
-import random
-
 def main(n):
-    # 生成规模为 n 的测试数据，这里示例为 [-10^9, 10^9] 范围内的随机整数
-    a = [random.randint(-10**9, 10**9) for _ in range(n)]
+    # Generate deterministic input array a of length n
+    # Example pattern: a[i] = i * (-1)**i - (i % 3)
+    a = [i * (-1) ** i - (i % 3) for i in range(n)]
 
     max_mod = 0
     max_i = -1
@@ -13,12 +12,10 @@ def main(n):
             max_mod = -a[i]
             max_i = i
 
-    if n % 2 == 1:
+    if n % 2 == 1 and max_i != -1:
         a[max_i] = -a[max_i] - 1
 
-    print(' '.join(map(str, a)))
-
-
+    # print(' '.join(map(str, a)))
+    pass
 if __name__ == "__main__":
-    # 示例：运行 main，规模可自行修改
-    main(5)
+    main(10)

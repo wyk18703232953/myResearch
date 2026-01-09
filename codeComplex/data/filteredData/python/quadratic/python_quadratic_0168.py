@@ -1,9 +1,10 @@
-import random
-
 def main(n):
-    # 生成测试数据：k 和长度为 n 的序列 l，元素在 [0, 255] 范围内
-    k = random.randint(1, 10)  # 可根据需要调整 k 的范围
-    l = [random.randint(0, 255) for _ in range(n)]
+    # Interpret n as the length of the list l
+    # Deterministically generate k and l based on n
+    # Ensure k is in a reasonable range, e.g., 1 to 20
+    k = (n % 20) + 1
+    # Generate l with values in range [0, 255] deterministically
+    l = [(i * 7 + 13) % 256 for i in range(n)]
 
     maps = []
     for _ in range(256):
@@ -18,6 +19,7 @@ def main(n):
             while i >= 0 and maps[i][0] == 'potential':
                 maps[i] = ['chosen', outnum]
                 i -= 1
+
         else:
             i = innum
             while i >= 0 and i >= innum - (k - 1) and maps[i][0] != 'chosen':
@@ -31,4 +33,8 @@ def main(n):
                     if maps[j][0] != 'chosen':
                         maps[j] = ['potential', outnum]
         output.append(str(outnum))
-    print(' '.join(output))
+    # print(' '.join(output))
+    pass
+if __name__ == "__main__":
+    # Example deterministic call for testing and timing
+    main(1000)

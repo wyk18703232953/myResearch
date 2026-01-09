@@ -14,9 +14,8 @@ def main(n: int):
     # 如果需要生成更复杂的测试数据，可在此基于 n 构造。
     # 当前原始代码只依赖单个整数 n，因此直接使用传入的 n。
     result = n // 2 + 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：自行指定 n 运行测试
     # 可修改这里的值进行简单测试

@@ -11,6 +11,7 @@ def main(n: int):
         ans = 0
     elif len(n1) < len(n2):
         ans = int(len(n2) * '1', 2)
+
     else:
         index = 0
         for i in range(len(n1)):
@@ -19,9 +20,8 @@ def main(n: int):
                 break
         ans = int((len(n1) - index) * '1', 2)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可修改为任意规模 n
     main(10)

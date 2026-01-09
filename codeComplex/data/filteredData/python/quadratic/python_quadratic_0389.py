@@ -1,22 +1,25 @@
-import random
-
 def main(n):
-    # 随机生成一个 n x n 的矩阵，里面有一个或多个连续的 'B' 组成的矩形
+    # 映射规模：n -> n x n 的矩阵
+    # 构造一个确定性的 n x n 矩阵，包含一段连续的 'B' 区域
     m = n
-    # 初始化为全 'W'
-    li = [['W' for _ in range(m)] for _ in range(n)]
+    li = []
+    for i in range(n):
+        row = []
+        for j in range(m):
+            # 简单确定性规则：在中间的一个子矩形中放 'B'，其他为 'W'
+            # 子矩形大小与 n 线性相关
+            top = n // 4
+            bottom = n - 1 - n // 4
+            left = m // 4
+            right = m - 1 - m // 4
+            if top <= i <= bottom and left <= j <= right:
+                row.append('B')
 
-    # 随机生成一个非空的矩形区域 [top, bottom] x [left, right] 填充 'B'
-    top = random.randint(0, n - 1)
-    bottom = random.randint(top, n - 1)
-    left = random.randint(0, m - 1)
-    right = random.randint(left, m - 1)
+            else:
+                row.append('W')
+        li.append(row)
 
-    for i in range(top, bottom + 1):
-        for j in range(left, right + 1):
-            li[i][j] = 'B'
-
-    # 以下逻辑与原程序一致，只是去掉了 input()
+    # 以下为原始算法逻辑（不依赖输入）
     for j in range(m):
         flag = False
         for i in range(n):
@@ -59,8 +62,8 @@ def main(n):
 
     avg1 = (position1 + position2) // 2 + 1
     avg2 = (position3 + position4) // 2 + 1
-    print(avg1, avg2)
-
+    # print(avg1, avg2)
+    pass
 if __name__ == "__main__":
-    # 示例：以 n=5 运行
-    main(5)
+    # 示例调用，可根据需要修改 n
+    main(10)

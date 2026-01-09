@@ -1,9 +1,24 @@
 import math
-import random
+from collections import deque, defaultdict, OrderedDict, Counter
+from fractions import Fraction
+from decimal import Decimal
+from heapq import heappush, heappop, heapify, _heapify_max, _heappop_max, nsmallest, nlargest
 
-INF = 10**30
+INF = 99999999999999999999999999999999
 
-def solve_once(n, s, c):
+def main(n):
+    # n: input size (length of arrays s and c)
+    if n <= 0:
+        # print(-1)
+        pass
+        return
+
+    # Deterministic data generation
+    # s: some varying sequence
+    # c: cost sequence
+    s = [(i * 3 + 1) % (n + 7) for i in range(n)]
+    c = [(i * 5 + 2) % (n + 11) + 1 for i in range(n)]
+
     ans = INF
     for i in range(n):
         mid = s[i]
@@ -11,26 +26,23 @@ def solve_once(n, s, c):
         mrl = INF
         for j in range(i - 1, -1, -1):
             if s[j] < mid:
-                mcl = min(mcl, c[j])
+                if c[j] < mcl:
+                    mcl = c[j]
         for j in range(i + 1, n):
             if s[j] > mid:
-                mrl = min(mrl, c[j])
-        ans = min(ans, c[i] + mcl + mrl)
-    return -1 if ans == INF else ans
+                if c[j] < mrl:
+                    mrl = c[j]
+        cur = c[i] + mcl + mrl
+        if cur < ans:
+            ans = cur
 
-def generate_test_data(n):
-    # 生成 n 个随机整数作为 s，范围 1..1e6
-    s = [random.randint(1, 10**6) for _ in range(n)]
-    # 生成 n 个随机成本，范围 1..1e6
-    c = [random.randint(1, 10**6) for _ in range(n)]
-    return s, c
+    if ans == INF:
+        # print(-1)
+        pass
 
-def main(n):
-    # 根据 n 生成一组测试数据并运行原逻辑
-    s, c = generate_test_data(n)
-    ans = solve_once(n, s, c)
-    print(ans)
-
+    else:
+        # print(ans)
+        pass
 if __name__ == "__main__":
-    # 示例：可在此处手动指定规模测试
-    main(5)
+    # Example deterministic call for timing/experiments
+    main(1000)

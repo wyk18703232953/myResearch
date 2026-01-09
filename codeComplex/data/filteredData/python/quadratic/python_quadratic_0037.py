@@ -35,9 +35,8 @@ def main(n):
         dp = cur
         cur_indent = 0
 
-    print(sum(dp) % mod)
-
-
+    # print(sum(dp) % mod)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以修改 n 观察结果
     main(5)

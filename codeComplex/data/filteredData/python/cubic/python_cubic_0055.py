@@ -1,9 +1,12 @@
-import random
-import string
+def main(n):
+    # 确定性生成字符串 s，长度为 n
+    # 使用重复的模式来保证有重复子串，便于保留原算法行为
+    if n <= 0:
+        s = ""
 
-def main(n: int):
-    # 根据规模 n 生成测试字符串：从小写字母中随机生成长度为 n 的字符串
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+    else:
+        base = "abcdefghijklmnopqrstuvwxyz"
+        s = "".join(base[i % len(base)] for i in range(n))
 
     sLen, ans = len(s), 0
 
@@ -20,9 +23,7 @@ def main(n: int):
                     ans = subLen
                 till2 += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
-    main(10)
+    main(1000)

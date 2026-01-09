@@ -12,9 +12,9 @@ def get_prime(n):
 
 
 prime = get_prime(3162)
-
-
 cache = {}
+
+
 def get_mask(num):
     key = num
     if key in cache:
@@ -24,20 +24,18 @@ def get_mask(num):
         c = 0
         while num % p == 0:
             c += 1
-            num //= p
+            num = num // p
         if c % 2 == 1:
             dv.append(p)
         if num < p * p:
             break
-
     for x in dv:
         num *= x
-
     cache[key] = num
     return num
 
 
-def solve_one(N, K, A):
+def run_single_case(N, K, A):
     dp = [N] * (K + 1)
     dp[0] = 1
     used = [{} for _ in range(K + 1)]
@@ -49,7 +47,7 @@ def solve_one(N, K, A):
             if a in used[j]:
                 if j < K and dp[j + 1] > dp[j]:
                     dp[j + 1] = dp[j]
-                    used[j + 1] = dict(used[j])
+                    used[j + 1] = used[j].copy()
                 dp[j] += 1
                 used[j] = {}
             used[j][a] = 1
@@ -57,29 +55,16 @@ def solve_one(N, K, A):
 
 
 def main(n):
-    """
-    n: 规模参数，用于生成测试数据。
-       这里简单设定：
-       - 测试组数 T = 1
-       - N = n
-       - K = max(1, n // 10)
-       - A 为长度 N 的数组，元素为 1..10^6 的简单构造数据
-    """
-    import random
-
-    random.seed(0)
-
-    T = 1
-    N = max(1, n)
-    K = max(1, n // 10)
-    # 生成测试数组：从 1 到 10^6 随机取数
-    A = [random.randint(1, 10**6) for _ in range(N)]
-
-    # 按原逻辑，仅一组测试
-    ans = solve_one(N, K, A)
-    print(ans)
-
-
+    T = max(1, n // 5)
+    results = []
+    for t in range(T):
+        N = max(1, n)
+        K = max(0, n // 10)
+        A = [i * (i % 7 + 1) + (t + 1) for i in range(1, N + 1)]
+        res = run_single_case(N, K, A)
+        results.append(res)
+    for r in results:
+        # print(r)
+        pass
 if __name__ == "__main__":
-    # 示例：以 n = 100 运行
-    main(100)
+    main(1000)

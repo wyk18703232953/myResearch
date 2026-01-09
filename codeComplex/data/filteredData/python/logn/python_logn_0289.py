@@ -5,8 +5,10 @@ def fast_pow(n: int) -> int:
         if n % 2 == 0:
             x = fast_pow(n // 2) % MOD
             return (x * x) % MOD
+
         else:
             return (fast_pow(n - 1) * 2) % MOD
+
     else:
         return 1
 
@@ -24,11 +26,13 @@ def main(n: int):
     k_data = n         # 原程序中的 k
 
     if n_data == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         result = (fast_pow(k_data) * (2 * n_data - 1) + 1) % MOD
-        print(result)
-
+        # print(result)
+        pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值进行测试
     main(10)

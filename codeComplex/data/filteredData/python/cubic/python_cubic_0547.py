@@ -1,38 +1,24 @@
-import random
+def main(n):
+    # Deterministic data generation for a and b based on n
+    # a_str: ascending digits cycling 1-9, length n
+    a = [str((i % 9) + 1) for i in range(n)]
+    # b_str: descending digits cycling 9-1, length n
+    b = [str(9 - (i % 9)) for i in range(n)]
 
-def listtostring(li: list) -> str:
-    return ''.join(li)
-
-def main(n: int):
-    # 生成长度为 n 的数字串 a 和 b，保证 a <= b 位数相同
-    # 用 0-9 中的数字随机生成
-    a_digits = [str(random.randint(0, 9)) for _ in range(n)]
-    b_digits = [str(random.randint(0, 9)) for _ in range(n)]
-
-    # 确保 a <= b（按整数比较）
-    a_val = int(listtostring(a_digits))
-    b_val = int(listtostring(b_digits))
-    if a_val > b_val:
-        a_digits, b_digits = b_digits, a_digits
-
-    a = a_digits
-    b = b_digits
-    n = len(a)
-
+    n_local = len(a)
     a.sort()
 
-    for i in range(0, n):
-        for j in range(0, n):
+    def listtostring(li: list):
+        return ''.join(li)
+
+    for i in range(0, n_local):
+        for j in range(0, n_local):
             t = a.copy()
             t[i], t[j] = t[j], t[i]
-            t_val = int(listtostring(t))
-            a_val = int(listtostring(a))
-            b_val = int(listtostring(b))
-            if a_val <= t_val <= b_val:
+            if (int(listtostring(t)) >= int(listtostring(a))) and (int(listtostring(t)) <= int(listtostring(b))):
                 a[i], a[j] = a[j], a[i]
 
-    print(listtostring(a))
-
+    # print(listtostring(a))
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n=5
     main(5)

@@ -12,6 +12,7 @@ def modulus(a, b, m):
 
     if b % 2 == 0:
         return int(((result % m) * (result % m)) % m)
+
     else:
         return int(((result % m) * (result % m) * (a % m)) % m)
 
@@ -35,14 +36,17 @@ def main(n):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
     elif k != 0:
         ans = (modulus(2, k + 1, MOD) * (x % MOD)) % MOD
         ans = (ans - modulus(2, k, MOD) % MOD + 1 + MOD) % MOD
-        print(int(ans))
-    else:
-        print(int((x % MOD) * 2 % MOD))
+        # print(int(ans))
+        pass
 
+    else:
+        # print(int((x % MOD) * 2 % MOD))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

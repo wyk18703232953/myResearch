@@ -10,7 +10,8 @@ try:
     import numpy  # noqa: F401
 
     def dprint(*args, **kwargs):
-        print(*args, file=sys.stderr)
+        # print(*args, file=sys.stderr)
+        pass
     dprint('debug mode')
 except Exception:  # pragma: no cover
     def dprint(*args, **kwargs):
@@ -65,6 +66,7 @@ def solve_case(N, K):
 
     if ok:
         return f"YES {idx}"
+
     else:
         return "NO"
 
@@ -90,6 +92,7 @@ def generate_test_data(n):
             K = 0
         elif i % 3 == 1:
             K = min(upper, i)  # 较小的 K
+
         else:
             K = min(upper, upper // 2 + i)  # 中等偏大的 K
         cases.append((N, K))
@@ -105,9 +108,8 @@ def main(n):
 
     for N, K in cases:
         res = solve_case(N, K)
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例：可以在这里手动指定规模进行快速运行
     main(10)

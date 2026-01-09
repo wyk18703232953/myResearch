@@ -1,44 +1,40 @@
-import random
-
 def main(n):
-    # n 为规模，这里将三类物品数量都设为 n
-    n0 = n1 = n2 = n
+    # Interpret n as the base size for three arrays
+    # Original code reads 3 sizes in n[0], n[1], n[2]
+    # Here we deterministically derive them from n
+    n0 = n
+    n1 = max(1, n // 2)
+    n2 = max(1, (n * 3) // 4)
     sizes = [n0, n1, n2]
 
-    # 生成测试数据：三组长度为 n 的随机正整数
-    # 可根据需要调整取值范围
     a = []
-    for i in range(3):
-        arr = [random.randint(1, 1000) for _ in range(sizes[i])]
+    # Deterministic generation of three arrays with given sizes
+    for idx, sz in enumerate(sizes):
+        # Example deterministic pattern: arithmetic function of index and position
+        arr = [(i * (idx + 1) + idx * idx) % (10 * (idx + 1) + 7) + i for i in range(sz)]
         arr.sort(reverse=True)
         a.append(arr)
 
     dp = [[[0 for _ in range(n2 + 1)] for _ in range(n1 + 1)] for _ in range(n0 + 1)]
     ans = 0
-
     for i in range(n0 + 1):
         for j in range(n1 + 1):
             for k in range(n2 + 1):
                 if i < n0 and j < n1:
-                    dp[i + 1][j + 1][k] = max(
-                        dp[i + 1][j + 1][k],
-                        dp[i][j][k] + a[0][i] * a[1][j]
-                    )
+                    val = dp[i][j][k] + a[0][i] * a[1][j]
+                    if val > dp[i + 1][j + 1][k]:
+                        dp[i + 1][j + 1][k] = val
                 if i < n0 and k < n2:
-                    dp[i + 1][j][k + 1] = max(
-                        dp[i + 1][j][k + 1],
-                        dp[i][j][k] + a[0][i] * a[2][k]
-                    )
+                    val = dp[i][j][k] + a[0][i] * a[2][k]
+                    if val > dp[i + 1][j][k + 1]:
+                        dp[i + 1][j][k + 1] = val
                 if j < n1 and k < n2:
-                    dp[i][j + 1][k + 1] = max(
-                        dp[i][j + 1][k + 1],
-                        dp[i][j][k] + a[1][j] * a[2][k]
-                    )
-                ans = max(ans, dp[i][j][k])
-
-    print(ans)
-
-
+                    val = dp[i][j][k] + a[1][j] * a[2][k]
+                    if val > dp[i][j + 1][k + 1]:
+                        dp[i][j + 1][k + 1] = val
+                if dp[i][j][k] > ans:
+                    ans = dp[i][j][k]
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 50，可根据需要修改
-    main(50)
+    main(10)

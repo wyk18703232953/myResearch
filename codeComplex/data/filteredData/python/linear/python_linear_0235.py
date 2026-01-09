@@ -1,33 +1,30 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成长度为 n 的随机仅含 'x' 和 'o' 的字符串
-    chars = ['x', 'o']
-    s = ''.join(random.choice(chars) for _ in range(n))
+def main(n):
+    # Generate a deterministic string of length n over 'x' and 'y'
+    # Pattern: positions where i % 3 == 0 or 1 are 'x', others are 'y'
+    string = ''.join('x' if i % 3 in (0, 1) else 'y' for i in range(n))
 
     i = 0
     j = 0
     total = 0
 
-    while j < len(s):
-        has_x = False
+    while j < len(string):
+        flag = False
         count = 0
-        # 统计从 i 开始连续的 'x' 段
-        while j < len(s) and s[i] == 'x' and s[j] == 'x':
+        while j < len(string) and string[i] == 'x' and string[j] == 'x':
             count += 1
-            has_x = True
+            flag = True
             j += 1
 
         if count >= 3:
             total += (count - 3) + 1
-        if has_x:
+        if flag:
             i = j
+
         else:
             i += 1
             j += 1
 
-    print(total)
-
+    # print(total)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 20
-    main(20)
+    main(1000)

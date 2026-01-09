@@ -5,7 +5,8 @@ def main(n):
     k = n
 
     if x == 0:
-        print('0')
+        # print('0')
+        pass
         return
 
     mod = 1000000007
@@ -15,6 +16,7 @@ def main(n):
             return int(a ** b) % mod
         elif b % 2 == 0:
             return int(pow_mod(a, b // 2) ** 2) % mod
+
         else:
             return pow_mod(a, b - 1) * a % mod
 
@@ -26,9 +28,8 @@ def main(n):
     answer = s * 2 // leafs
     answer %= mod
 
-    print(answer)
-
-
+    # print(answer)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

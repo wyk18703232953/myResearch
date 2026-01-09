@@ -1,29 +1,23 @@
-import random
+def main(n):
+    # Interpret n as the length of the sequence
+    length = max(1, n)
 
-def main(n: int):
-    # 生成测试数据：
-    # l：长度为 n 的正整数数组
-    # t：长度为 n 的字符串，由 'G', 'W', 'L' 组成
-    # 可按需要修改数据分布
-    random.seed(0)
-    l = [random.randint(1, 10) for _ in range(n)]
-    choices = ['G', 'W', 'L']
-    t_str = ''.join(random.choice(choices) for _ in range(n))
+    # Deterministically generate l and t based on n
+    # l: positive integers (after *2 in original code)
+    # t: pattern of 0,1,2 cycling
+    l = [2 * (i % 7 + 1) for i in range(length)]
+    t = [i % 3 for i in range(length)]
 
-    # 将原始逻辑中的输入替换为上述生成的数据
-    # l: 原程序中乘 2 的数组
-    l = [x * 2 for x in l]
-    t = [ "GWL".index(ch) for ch in t_str ]
-
-    mins = [0 for _ in range(n + 1)]
-    for i in range(n - 1, -1, -1):
+    mins = [0 for _ in range(length + 1)]
+    for i in range(length - 1, -1, -1):
         if t[i] != 2:
             mins[i] = max(mins[i + 1] - l[i], 0)
+
         else:
             mins[i] = mins[i + 1] + l[i]
 
     curs = ans = st = 0
-    for i in range(n):
+    for i in range(length):
         if t[i] == 0:
             curs += l[i]
             ans += l[i] * 5
@@ -44,13 +38,9 @@ def main(n: int):
             curs -= l[i]
             ans += l[i]
     if curs > 0:
-        ans -= (curs // 2) * 2
+        ans -= curs // 2 * 2
 
-    result = ans // 2
-    print(result)
-    return result
-
-
+    # print(ans // 2)
+    pass
 if __name__ == "__main__":
-    # 示例调用
     main(10)

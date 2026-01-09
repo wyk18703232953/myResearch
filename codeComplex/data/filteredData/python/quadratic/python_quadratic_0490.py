@@ -1,15 +1,6 @@
-import random
-
-
 def main(n):
-    # 生成测试数据：随机生成满足非负约束的 l, r
-    # 这里简单生成 [0, n-1] 范围内的整数作为示例
-    l = [random.randint(0, n - 1) for _ in range(n)]
-    r = [random.randint(0, n - 1) for _ in range(n)]
-
-    def update(l, r, i, res):
+    def update(l, r, i, res, n):
         j = 0
-        # 左侧更新 r
         while j < i:
             if res[j] is None:
                 r[j] -= 1
@@ -17,7 +8,6 @@ def main(n):
                     return False
             j += 1
         j += 1
-        # 右侧更新 l
         while j < n:
             if res[j] is None:
                 l[j] -= 1
@@ -26,7 +16,12 @@ def main(n):
             j += 1
         return True
 
-    ilist = {1}
+    # Deterministic data generation based on n
+    # Example: l[i] and r[i] are simple arithmetic functions of i and n
+    l = [i % 3 for i in range(n)]
+    r = [(n - 1 - i) % 3 for i in range(n)]
+
+    ilist = {1} if n > 1 else {0}
     res = [None] * n
     cur = n
 
@@ -37,11 +32,10 @@ def main(n):
                 res[i] = cur
                 ilist.add(i)
         for i in ilist:
-            check = update(l, r, i, res)
+            check = update(l, r, i, res, n)
             if not check:
                 return False
         cur -= 1
-
     if not ilist:
         return False
     for i in range(n):
@@ -50,13 +44,16 @@ def main(n):
     return res
 
 
-if __name__ == '__main__':
-    # 举例：调用 main(5) 运行一次
-    n = 5
+if __name__ == "__main__":
+    n = 10
     res = main(n)
     if not res:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
         for x in res:
-            print(x, end=' ')
+            # print(x, end=' ')
+            pass

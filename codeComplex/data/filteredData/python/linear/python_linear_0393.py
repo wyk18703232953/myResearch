@@ -1,6 +1,5 @@
 import functools
 import time
-import random
 
 def timer(func):
     @functools.wraps(func)
@@ -8,7 +7,8 @@ def timer(func):
         stime = time.perf_counter()
         res = func(*args, **kwargs)
         elapsed = time.perf_counter() - stime
-        print(f"{func.__name__} in {elapsed:.4f} secs")
+        # print(f"{func.__name__} in {elapsed:.4f} secs")
+        pass
         return res
     return wrapper
 
@@ -19,7 +19,7 @@ class solver:
 
     def __call__(self, n, a):
         MOD = 998244353
-        N = 1000007
+        N = max(1000007, n + 5)
         pow2 = [0] * N        
 
         pow2[0] = 1
@@ -32,15 +32,16 @@ class solver:
             res += (pow2[n - 1 - i] * tmp) % MOD
             res %= MOD
         res += a[n - 1]
-        res %= MOD
-        print(res)
+        res %= MOD            
+        # print(res)
+        pass
 
 def main(n):
-    # 生成长度为 n 的测试数据 a，这里使用 [1, 2, ..., n]
-    # 如需不同策略，可改为随机：random.randint(0, MOD-1) 等
-    a = [i + 1 for i in range(n)]
-    solver()(n, a)
+    if n <= 0:
+        return
+    a = [(i * 3 + 1) % 100000 for i in range(n)]
+    s = solver()
+    s(n, a)
 
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

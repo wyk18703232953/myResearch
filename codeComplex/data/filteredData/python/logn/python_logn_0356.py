@@ -6,10 +6,12 @@ def main(n: int):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return
     if k == 0:
-        print(2 * x % mod)
+        # print(2 * x % mod)
+        pass
         return
 
     ans = pow(2, k + 1, mod)
@@ -21,9 +23,8 @@ def main(n: int):
     ans += mod
     ans %= mod
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

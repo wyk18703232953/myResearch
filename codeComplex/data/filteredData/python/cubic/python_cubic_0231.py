@@ -1,20 +1,18 @@
-from random import randint
-
-mod = 10**9 + 7
-
-
 def main(n):
-    # 根据规模 n 生成测试数据：
-    # 这里简单设定：n, m, l 都与 n 相关，可按需要修改生成策略
-    # 保证至少为 1
-    n_a = max(1, n)
-    n_b = max(1, n)
-    n_c = max(1, n)
+    mod = 10**9 + 7
 
-    # 元素值范围可根据需要调整
-    a = [randint(1, 10**3) for _ in range(n_a)]
-    b = [randint(1, 10**3) for _ in range(n_b)]
-    c = [randint(1, 10**3) for _ in range(n_c)]
+    # Map n to sizes of the three arrays
+    # Simple deterministic rule: split n into three parts
+    if n <= 0:
+        return 0
+    n_a = n
+    n_b = max(1, n // 2)
+    n_c = max(1, n // 3)
+
+    # Deterministic data generation
+    a = [(i * 2 + 1) % mod for i in range(n_a)]
+    b = [(i * 3 + 2) % mod for i in range(n_b)]
+    c = [(i * 5 + 3) % mod for i in range(n_c)]
 
     d = {}
 
@@ -22,7 +20,7 @@ def main(n):
         val = i * 40401 + j * 201 + k
         if val in d:
             return d[val]
-
+        ret = 0
         if i < n_a and j < n_b and k < n_c:
             ret = max(
                 a[i] * b[j] + go(i + 1, j + 1, k),
@@ -35,9 +33,6 @@ def main(n):
             ret = b[j] * c[k] + go(i, j + 1, k + 1)
         elif k < n_c and i < n_a:
             ret = c[k] * a[i] + go(i + 1, j, k + 1)
-        else:
-            ret = 0
-
         d[val] = ret
         return ret
 
@@ -45,10 +40,11 @@ def main(n):
     b.sort(reverse=True)
     c.sort(reverse=True)
 
-    # 返回结果而不是直接打印，调用方可自行处理
     return go(0, 0, 0)
 
 
-# 示例调用：
-# res = main(5)
-# print(res)
+if __name__ == "__main__":
+    # Example call for deterministic experiment
+    result = main(10)
+    # print(result)
+    pass

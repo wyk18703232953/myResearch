@@ -22,6 +22,7 @@ def main(n):
     for i in range(n):
         if i < half:
             a[i] = (i % n) + 1
+
         else:
             a[i] = -1
 
@@ -52,11 +53,13 @@ def main(n):
     for i in range(n):
         if a[i] == -1:
             total += 1
+
         else:
             sur[a[i]] = 0
 
     if total == 0:
-        print(anss % MOD)
+        # print(anss % MOD)
+        pass
         return
 
     for i in range(1, n + 1):
@@ -67,12 +70,14 @@ def main(n):
     for i in range(n):
         if a[i] != -1:
             ansa += sur[a[i]] * (total - dead) + (sur[n] - sur[a[i]]) * dead
+
         else:
             dead += 1
 
     ans = (ansa * 4 + anss * 4 * total + total * total * (total - 1)) % MOD
     ans = ans * power(4 * total, MOD - 2) % MOD
-    print(ans)
+    # print(ans)
+    pass
 
 # 示例调用
 if __name__ == "__main__":

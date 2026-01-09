@@ -1,15 +1,11 @@
-import random
-
 def main(n):
-    # 生成测试数据 E：从 1~n 中随机取 n 个整数
-    E = [random.randint(1, n) for _ in range(n)]
-    
+    # n 表示输入规模，即序列长度
+    E = [(i * 7 + 3) % (n // 2 + 1) for i in range(n)]
     D = {}
     for e in E:
         D[e] = D.get(e, 0) + 1
     for e in E:
-        print(D[e])
-
+        # print(D[e])
+        pass
 if __name__ == "__main__":
-    # 可在此处调整规模 n
     main(10)

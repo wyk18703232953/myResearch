@@ -1,21 +1,25 @@
-import random
-
 def main(n):
-    """
-    n: 问题规模，用于生成测试数据。
-    这里约定：
-    - m = n
-    - k = max(1, n // 10) 作为每页容量
-    - 特殊位置 P 为 1..m 的一个随机排列的前 n 个元素再打乱
-    """
-    # 生成参数
+    # Interpret n as:
+    # number of elements m = n
+    # page size k = max(1, n // 10) for scaling
+    # maximum value range for elements roughly ~ n * 2
     m = n
+    if m <= 0:
+        # print(0)
+        pass
+        return
+
     k = max(1, n // 10)
 
-    # 生成测试数据 P：从 1..m 中随机选取 n 个不同的数
-    P = random.sample(range(1, m + 1), n)
+    # Deterministic generation of P:
+    # P[i] are distinct and within [1, 2*m]
+    # Use arithmetic pattern to avoid randomness
+    P = [((i * 3) % (2 * m)) + 1 for i in range(m)]
+    P = sorted(set(P))  # ensure distinct and sorted ascending
+    # Adjust m in case duplicates removed by set
+    m = len(P)
 
-    # ------- 原逻辑开始（移除 input()，逻辑封装在 main 中） -------
+    P = P[:]  # list
     P.reverse()
 
     ops = 0
@@ -23,8 +27,9 @@ def main(n):
     while P:
         nxt = P[-1]
         togo = nxt - i
-        skip = togo // k * k
-        i += skip
+        if togo > 0:
+            skip = togo // k * k
+            i += skip
 
         space = k
         while space:
@@ -38,9 +43,8 @@ def main(n):
             ops += 1
             space = special
 
-    print(ops)
-
-
+    # print(ops)
+    pass
 if __name__ == "__main__":
-    # 示例：以 n = 100 运行
-    main(100)
+    # Example call for scaling experiment
+    main(10000)

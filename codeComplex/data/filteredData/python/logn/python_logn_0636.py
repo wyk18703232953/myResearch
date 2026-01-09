@@ -11,13 +11,15 @@ def main(n):
 
     candies = 1
     if actions == 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     for i in range(1, actions):
         candies = candies + i + 1
         if candies >= end_total_candies + (actions - i - 2):
-            print(candies - end_total_candies)
+            # print(candies - end_total_candies)
+            pass
             return
 
 

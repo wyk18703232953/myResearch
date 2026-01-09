@@ -7,10 +7,10 @@ def main(n: int):
     # 根据 n 构造输出
     line1 = '4' * n
     line2 = '5' * n + '6'
-    print(line1)
-    print(line2)
-
-
+    # print(line1)
+    pass
+    # print(line2)
+    pass
 if __name__ == "__main__":
     # 示例：当 n=1131 时，与原程序行为等价
     main(1131)

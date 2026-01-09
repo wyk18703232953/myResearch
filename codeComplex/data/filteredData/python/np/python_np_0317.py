@@ -8,6 +8,7 @@ def main(n: int) -> int:
         return 0
     elif k == 1 or k == 2 * n:
         return 2
+
     else:
         same = [0] * (k + 1)
         same[1] = 2
@@ -28,4 +29,5 @@ def main(n: int) -> int:
 
 if __name__ == "__main__":
     # 示例：调用 main(10) 并打印结果
-    print(main(10))
+    # print(main(10))
+    pass

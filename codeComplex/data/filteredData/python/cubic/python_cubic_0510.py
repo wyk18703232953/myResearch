@@ -1,55 +1,73 @@
-import random
-
 def main(n):
-    # 这里将 n 作为行数，列数 m 可与 n 相同或自定义规则
-    m = n
+    # Map n to problem parameters
+    # Ensure at least 1x1 grid and even k
+    if n <= 0:
+        n = 1
+    rows = max(1, n)
+    cols = max(1, n)
+    k = 2 * max(1, n // 2)  # ensure k is even and roughly scales with n
 
-    # 随机选择偶数步数 k（原算法要求 k 为偶数才有意义）
-    # 可根据规模调整上限，这里设为 2*n 但至少为 2
-    k = max(2, 2 * random.randint(1, max(1, n)))
+    # Deterministic construction of h and v
+    # h: rows x cols horizontal edge weights (except last column unused per row)
+    h = []
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            # simple deterministic weight based on indices
+            row.append((i + 1) * (j + 1))
+        h.append(row)
 
-    # 生成测试数据：
-    # h: n 行，每行 m-1 个权值（横向边）
-    # v: n-1 行，每行 m 个权值（纵向边）
-    # 为了避免过大数，取 1~9 的正整数
-    h = [[random.randint(1, 9) for _ in range(m - 1)] for _ in range(n)]
-    v = [[random.randint(1, 9) for _ in range(m)] for _ in range(n - 1)]
+    # v: (rows - 1) x cols vertical edge weights
+    v = []
+    for i in range(rows - 1):
+        row = []
+        for j in range(cols):
+            row.append((i + j + 2))
+        v.append(row)
 
-    # 如果 k 为奇数，按原代码逻辑输出 -1
+    # If k is odd (should not happen due to construction), print -1
     if k % 2:
-        for _ in range(n):
-            print(" ".join("-1" for _ in range(m)))
+        for i in range(rows):
+            line = " ".join(str(-1) for _ in range(cols))
+            # print(line)
+            pass
         return
 
-    half = k // 2
-    INF = float('inf')
-
-    # dp[x][i][j] 表示从 (i,j) 出发走 x 步的最小代价
-    dp = [[[INF] * m for _ in range(n)] for _ in range(half + 1)]
-    for i in range(n):
-        for j in range(m):
+    # DP initialization
+    steps = k // 2
+    dp = [[[float('inf')] * cols for _ in range(rows)] for _ in range(steps + 1)]
+    for i in range(rows):
+        for j in range(cols):
             dp[0][i][j] = 0
 
-    for x in range(1, half + 1):
-        for i in range(n):
-            for j in range(m):
+    # DP transitions
+    for x in range(1, steps + 1):
+        for i in range(rows):
+            for j in range(cols):
                 best = dp[x][i][j]
                 if i != 0:
-                    best = min(best, dp[x - 1][i - 1][j] + v[i - 1][j])
-                if i != n - 1:
-                    best = min(best, dp[x - 1][i + 1][j] + v[i][j])
+                    cost = dp[x - 1][i - 1][j] + v[i - 1][j]
+                    if cost < best:
+                        best = cost
+                if i != rows - 1:
+                    cost = dp[x - 1][i + 1][j] + v[i][j]
+                    if cost < best:
+                        best = cost
                 if j != 0:
-                    best = min(best, dp[x - 1][i][j - 1] + h[i][j - 1])
-                if j != m - 1:
-                    best = min(best, dp[x - 1][i][j + 1] + h[i][j])
+                    cost = dp[x - 1][i][j - 1] + h[i][j - 1]
+                    if cost < best:
+                        best = cost
+                if j != cols - 1:
+                    cost = dp[x - 1][i][j + 1] + h[i][j]
+                    if cost < best:
+                        best = cost
                 dp[x][i][j] = best
 
-    # 输出结果：2 * dp[half][i][j]
-    for i in range(n):
-        row = [str(2 * dp[half][i][j]) for j in range(m)]
-        print(" ".join(row))
-
-
+    # Output result
+    for i in range(rows):
+        line = " ".join(str(2 * dp[steps][i][j]) for j in range(cols))
+        # print(line)
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模 n = 4
-    main(4)
+    # Example deterministic run for n = 5
+    main(5)

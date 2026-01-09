@@ -1,19 +1,27 @@
-import random
+def main(n):
+    if n <= 0:
+        # print("")
+        pass
+        return
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的正整数数组
-    # 这里简单生成 1~n 范围内的随机整数，保证至少为 1
-    random.seed(0)
-    arr = [random.randint(1, n) for _ in range(n)]
+    # 确定性构造输入数组：略有起伏的整数序列
+    # 示例：arr[i] = (i * 3) % (n // 2 + 1) + i // 3
+    base = max(1, n // 2 + 1)
+    arr = [(i * 3) % base + i // 3 for i in range(n)]
 
-    memo = [-1 for _ in range(n + 1)]
+    memo = [-1 for _ in range(n)]
 
-    def can_win(idx: int) -> bool:
+    def can_win(idx):
         if memo[idx] != -1:
             return memo[idx]
-
         res = False
+
         delta = arr[idx]
+
+        # 防止 delta 为 0 导致死循环，保持逻辑完整性
+        if delta == 0:
+            memo[idx] = False
+            return False
 
         # 向右跳
         nidx = idx + delta
@@ -35,9 +43,7 @@ def main(n: int):
         return res
 
     ans = ['A' if can_win(i) else 'B' for i in range(n)]
-    print(''.join(ans))
-
-
+    # print(''.join(ans))
+    pass
 if __name__ == "__main__":
-    # 示例调用，可按需修改 n
     main(10)

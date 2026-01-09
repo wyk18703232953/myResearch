@@ -9,6 +9,7 @@ def main(n: int):
         for d in range(2, int(x ** 0.5) + 1):
             if x % d == 0:
                 break
+
         else:
             p.append(x)
 
@@ -18,16 +19,18 @@ def main(n: int):
         for d in range(2, int(s ** 0.5) + 1):
             if s % d == 0:
                 break
+
         else:
             if s <= a:
                 c += 1
 
     if c >= k:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：规模 n = 50
     main(50)

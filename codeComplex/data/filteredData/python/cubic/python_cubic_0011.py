@@ -1,11 +1,8 @@
-import random
-import string
-
-def main(n: int):
-    # 1. 生成长度为 n 的随机小写字符串作为测试数据
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-
-    # 2. 原始逻辑：寻找最长的重复子串长度
+def main(n):
+    # Generate a deterministic string of length n over a small alphabet
+    # Example pattern: repeating "abc"
+    base = "abc"
+    s = "".join(base[i % len(base)] for i in range(n))
     n = len(s)
     m = n - 1
     while m > 0:
@@ -25,10 +22,8 @@ def main(n: int):
         if find:
             break
         m -= 1
-
-    # 输出结果
-    print(m)
-
-# 示例调用（提交到评测或集成时可去掉或按需修改）
+    # print(m)
+    pass
 if __name__ == "__main__":
-    main(10)
+    # Example deterministic call; adjust n as needed for experiments
+    main(1000)

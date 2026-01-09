@@ -1,14 +1,19 @@
-import random
+def main(n):
+    # n 表示每一行字符串的长度
+    if n < 2:
+        # 原算法在 len(line_1) - 1 上循环，长度 < 2 则循环不执行
+        # print(0)
+        pass
+        return
 
-def main(n: int):
-    # 生成两行长度为 n 的测试数据，只包含 '.' 和 'X'
-    # 这里假设原题中除 'X' 外是可放置位置，用 '.' 表示
-    line_1 = [random.choice(['.', 'X']) for _ in range(n)]
-    line_2 = [random.choice(['.', 'X']) for _ in range(n)]
+    # 确定性生成两行字符串：
+    # line_1: 周期为 3，模式 'O', 'X', 'O'
+    # line_2: 周期为 4，模式 'X', 'O', 'O', 'X'
+    s1 = ''.join('X' if i % 3 == 1 else 'O' for i in range(n))
+    s2 = ''.join('O' if i % 4 in (1, 2) else 'X' for i in range(n))
 
-    # 为了与原代码逻辑一致，转换为字符串再转回列表（可省略，此处保留风格）
-    line_1 = [c for c in ''.join(line_1)]
-    line_2 = [c for c in ''.join(line_2)]
+    line_1 = [c for c in s1]
+    line_2 = [c for c in s2]
 
     no = 0
     for i in range(len(line_1) - 1):
@@ -37,9 +42,8 @@ def main(n: int):
             line_1[i + 1] = 'X'
             line_2[i + 1] = 'X'
 
-    print(no)
-
-
+    # print(no)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10
+    # 示例调用，可根据需要调整 n 的大小进行时间复杂度实验
     main(10)

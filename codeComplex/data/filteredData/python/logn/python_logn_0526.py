@@ -26,9 +26,8 @@ def main(n: int):
     这里的测试数据：取所有从 1 到 n 的位置，依次输出该位置上的数字。
     """
     for i in range(1, n + 1):
-        print(get_sequence_number(i))
-
-
+        # print(get_sequence_number(i))
+        pass
 if __name__ == "__main__":
     # 示例：当 n = 20 时，输出序列前 20 个位置上的数字
     main(20)

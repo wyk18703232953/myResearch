@@ -1,29 +1,27 @@
-import random
-import string
-
-def main(n: int):
-    # 1. 生成测试数据：两个小写字母字符串 s1, s2，长度由 n 控制
-    #    这里约定：s1 长度为 n，s2 长度为 1（保持原逻辑语义清晰）
+def main(n):
+    # Generate deterministic s1 and s2 based on n
+    # s1 length = n, s2 length = 1 (since original code only uses s2[0])
     if n <= 0:
-        return ""
+        s1 = ""
+        s2 = "a"
 
-    # 生成 s1：长度为 n 的随机小写字母串
-    s1 = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-    # 生成 s2：长度为 1 的随机小写字母串
-    s2 = random.choice(string.ascii_lowercase)
+    else:
+        # s1 is a sequence of lowercase letters based on i % 26
+        s1 = "".join(chr(ord('a') + (i % 26)) for i in range(n))
+        # s2[0] is a single character determined by n
+        s2 = chr(ord('a') + (n % 26))
 
-    # 2. 原始逻辑
-    ans = s1[0]
-    for i in range(1, len(s1)):
-        if s1[i] < s2[0]:
-            ans += s1[i]
-        else:
-            break
+    ans = ""
+    if s1 and s2:
+        ans = s1[0]
+        for i in range(1, len(s1)):
+            if s1[i] < s2[0]:
+                ans += s1[i]
 
-    result = ans + s2[0]
-    print(result)
-    return result
-
+            else:
+                break
+        ans = ans + s2[0]
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例运行：可根据需要调整 n
     main(10)

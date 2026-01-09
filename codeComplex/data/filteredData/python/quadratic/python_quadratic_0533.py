@@ -1,20 +1,26 @@
-import random
-
 def main(n):
-    # n: total number of points (taxis + passengers)
-    # 随机生成 m（出租车数量），保证 1 <= m < n
-    m = random.randint(1, n - 1)
+    # Interpret n as total number of positions (n+m in original code)
+    # Ensure at least 2 positions to have both taxis and passengers
+    total = max(2, n)
 
-    # 随机生成不重复的位置并排序
-    xs = sorted(random.sample(range(1, 10 * n + 1), n))
+    # Deterministically split into n (passengers) and m (taxis)
+    # Let about half be taxis, half passengers, with at least 1 taxi and 1 passenger
+    m = max(1, total // 2)
+    n_passengers = total - m
+    if n_passengers == 0:
+        n_passengers = 1
+        m = total - 1
 
-    # 随机生成类型：1 表示出租车，0 表示乘客，且数量分别为 m 和 n-m
-    ts = [1] * m + [0] * (n - m)
-    random.shuffle(ts)
+    # Generate positions xs deterministically: 0, 1, 2, ..., total-1
+    xs = [i for i in range(total)]
 
-    # 原逻辑开始
-    taxi_idx = sorted([xs[idx] for idx in range(n) if ts[idx] == 1])
-    passenger_idx = sorted([xs[idx] for idx in range(n) if ts[idx] == 0])
+    # Generate ts deterministically:
+    # First n_passengers as passengers (0), next m as taxis (1)
+    ts = [0] * n_passengers + [1] * m
+
+    # Core logic from original program
+    taxi_idx = sorted([xs[idx] for idx in range(total) if ts[idx] == 1])
+    passenger_idx = sorted([xs[idx] for idx in range(total) if ts[idx] == 0])
 
     a_is = [0] * len(taxi_idx)
     t_idx = 0
@@ -26,12 +32,14 @@ def main(n):
 
         if t_idx == len(taxi_idx) - 1:
             a_is[t_idx] += 1
+
         else:
             while t_idx < len(taxi_idx) - 1:
                 d1 = abs(passenger_idx[p_idx] - taxi_idx[t_idx])
                 d2 = abs(passenger_idx[p_idx] - taxi_idx[t_idx + 1])
                 if d1 > d2:
                     t_idx += 1
+
                 else:
                     break
 
@@ -39,9 +47,8 @@ def main(n):
 
         p_idx += 1
 
-    print(' '.join(str(x) for x in a_is))
-
-
+    # print(' '.join(str(x) for x in a_is))
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10
+    # Example deterministic call for testing / timing
     main(10)

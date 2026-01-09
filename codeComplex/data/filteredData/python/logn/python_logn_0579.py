@@ -35,15 +35,15 @@ def main(n):
     ans = 0
     if rm == 0:
         ans = num % 10
+
     else:
         for _ in range(n_digit - rm + 1):
             j = num % 10
             num //= 10
             ans = j
 
-    print(int(ans))
-
-
+    # print(int(ans))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(3) 作为测试
     main(3)

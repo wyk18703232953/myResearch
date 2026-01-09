@@ -17,12 +17,14 @@ def less_sum(s, m):
     for i in range(n):
         if s[i] > m:
             b += 1
+
         else:
             a += 1
         x = a - b
 
         if s[i] > m:
             last -= count[x + 1]
+
         else:
             last += count[x]
 
@@ -42,9 +44,8 @@ def main(n):
     m = (n + 1) // 2
 
     # 输出与原程序等价的结果
-    print(less_sum(s, m) - less_sum(s, m - 1))
-
-
+    # print(less_sum(s, m) - less_sum(s, m - 1))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可自行修改或在外部导入调用
     main(5)

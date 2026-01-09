@@ -1,76 +1,69 @@
-from collections import deque
-import random
+import math
+import bisect
+from collections import Counter, deque
 
 INF = 250005
 
-def solve_instance(n, m, lesson, days_strs):
-    # 转换 days_strs 为 days 列表（每行存放开课的节次下标，从 1 开始）
-    days = [[] for _ in range(n)]
-    for i in range(n):
-        s = days_strs[i]
-        for j in range(m):
+def generate_input(n):
+    # Map n -> (rows, columns, lesson)
+    # Ensure at least 1 row and 1 column
+    rows = max(1, n)
+    cols = max(1, (n % 10) + 1)
+    lesson = max(1, n // 2)
+
+    # Generate a deterministic binary matrix as list of strings
+    # s[i][j] = '1' if (i * cols + j) % 3 == 0 else '0'
+    lines = []
+    for i in range(rows):
+        row_chars = []
+        for j in range(cols):
+            if (i * cols + j) % 3 == 0:
+                row_chars.append('1')
+
+            else:
+                row_chars.append('0')
+        lines.append("".join(row_chars))
+
+    return rows, cols, lesson, lines
+
+def main(n):
+    n_rows, m_cols, lesson, lines = generate_input(n)
+
+    dp = [[INF for _ in range(lesson + 2)] for _ in range(n_rows + 1)]
+    days = [[] for _ in range(n_rows)]
+
+    for i in range(n_rows):
+        s = lines[i]
+        for j in range(m_cols):
             if s[j] == "1":
                 days[i].append(j + 1)
 
-    # m_cost[i][j]: 第 i 天选 j 节课时，最小的连续区间长度代价
-    m_cost = [[INF for _ in range(lesson + 2)] for _ in range(n + 1)]
-    for i in range(n):
+    m = [[INF for _ in range(lesson + 2)] for _ in range(n_rows + 1)]
+    for i in range(n_rows):
         for j in range(lesson + 1):
             if j <= len(days[i]):
                 if j == len(days[i]):
-                    m_cost[i][j] = 0
+                    m[i][j] = 0
+                    continue
+
                 else:
-                    best = INF
                     for k in range(0, j + 1):
-                        left = days[i][0 + k]
-                        right = days[i][-1 * max(1, 1 + (j - k))]
-                        best = min(best, right - left + 1)
-                    m_cost[i][j] = best
+                        var = days[i][0 + k]
+                        var1 = days[i][-1 * max(1, 1 + (j - k))]
+                        m[i][j] = min(m[i][j], var1 - var + 1)
 
-    # dp[i][j]: 前 i+1 天（0..i），总共选 j 节课时的最小代价
-    dp = [[INF for _ in range(lesson + 2)] for _ in range(n + 1)]
+    for i in range(lesson + 1):
+        dp[0][i] = m[0][i]
 
-    for j in range(lesson + 1):
-        dp[0][j] = m_cost[0][j]
-
-    for i in range(1, n):
+    for i in range(1, n_rows):
         for j in range(lesson + 1):
-            best = INF
             for k in range(j + 1):
-                best = min(best, dp[i - 1][j - k] + m_cost[i][k])
-            dp[i][j] = best
+                dp[i][j] = min(dp[i][j], dp[i - 1][j - k] + m[i][k])
 
-    return min(dp[n - 1][:lesson + 1])
+    result = min(dp[n_rows - 1])
+    # print(result)
+    pass
+    return result
 
-
-def main(n):
-    # 规模 n 为天数，其他参数根据 n 构造
-    # 这里给出一种简单的生成策略，可根据需要调整：
-    #
-    # m: 每天的最大节次数
-    # lesson: 希望总共选择的节次数上限
-    #
-    # 生成 days_strs：长度为 n，每个是长度为 m 的 0/1 串
-
-    random.seed(0)
-
-    # 设置 m 与 lesson 与 n 同阶
-    m = max(1, n * 2)           # 比如 m = 2n
-    lesson = min(m, max(1, n))  # lesson 不超过 m
-
-    days_strs = []
-    for _ in range(n):
-        # 每天随机生成一个 0/1 串，1 的个数随机
-        num_ones = random.randint(0, m)
-        positions = random.sample(range(m), num_ones)
-        s_list = ['0'] * m
-        for pos in positions:
-            s_list[pos] = '1'
-        days_strs.append(''.join(s_list))
-
-    ans = solve_instance(n, m, lesson, days_strs)
-    print(ans)
-
-
-# 示例调用：
-# main(5)
+if __name__ == "__main__":
+    main(10)

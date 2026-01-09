@@ -12,7 +12,9 @@ def main(n):
     for n_val, k_val in test_cases:
         n_i, k_i = n_val, k_val
         if (n_i == 2 and k_i == 3) or (n_i <= 30 and k_i > (4 ** n_i - 1) // 3):
-            print('NO')
+            # print('NO')
+            pass
+
         else:
             cn = n_i - 1
             ck = k_i - 1
@@ -21,9 +23,8 @@ def main(n):
                 ck -= 4 * l - 1
                 cn -= 1
                 l *= 2
-            print('YES', cn)
-
-
+            # print('YES', cn)
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可根据需要修改
     main(5)

@@ -1,28 +1,20 @@
-from collections import defaultdict
-import random
-import math
-
-INF = float("inf")
-
-# Helpers (kept for structure similarity, though not all are used)
-def mus(d=0):
-    return defaultdict(defaultdict(d))
-
 def ms(x, y, d=0):
     return [[d] * y for _ in range(x)]
+
 
 def ar(x, d=0):
     return [d] * x
 
-# Globals (max n will be determined from test generation)
-MAXN = 500  # can be adjusted if needed
-dp = ms(MAXN + 1, MAXN + 1)
-dp2 = ar(MAXN + 1, INF)
+
+INF = float("inf")
+
+# Globals - will be (re)initialized in main for each n
+dp = ms(501, 501)
+dp2 = ar(501, INF)
 arr = []
 
 
 def calc_dp(l, r):
-    # interval [l, r), 0-based
     assert l < r
 
     if l + 1 == r:
@@ -43,54 +35,42 @@ def calc_dp(l, r):
     return dp[l][r]
 
 
-def solve(a, n):
-    global arr, dp, dp2
-    arr = a
-
-    # reset dp and dp2 for current n
-    for i in range(n + 1):
-        dp2[i] = INF
-        for j in range(n + 1):
-            dp[i][j] = 0
-
+def solve(arr_local, n_local):
+    global arr, dp2
+    arr = arr_local
+    # dp is already global and assumed initialized to 0 outside relevant range
     dp2[0] = 0
 
-    for i in range(n):
-        for j in range(i + 1, n + 1):
+    for i in range(n_local):
+        for j in range(i + 1, n_local + 1):
             v = calc_dp(i, j)
             if v > 0:
                 dp2[j] = min(dp2[j], dp2[i] + 1)
 
-    ans = dp2[n]
+    ans = dp2[n_local]
     return ans
 
 
-def generate_test_data(n):
-    # 生成规模为 n 的数组 arr
-    # 可根据需求调整生成策略，这里使用随机正整数（1..3）以便产生可合并结构
-    random.seed(0)
-    return [random.randint(1, 3) for _ in range(n)]
-
-
 def main(n):
-    """
-    n: 问题规模（数组长度）
-    返回：solve 的结果
-    """
-    global MAXN, dp, dp2
+    global dp, dp2, arr
 
-    if n > MAXN:
-        # 扩容全局 dp、dp2
-        MAXN = n
-        dp = ms(MAXN + 1, MAXN + 1)
-        dp2 = ar(MAXN + 1, INF)
+    # Cap n to the maximum supported by the preallocated dp/dp2 size
+    max_n = 500
+    if n > max_n:
+        n = max_n
+    if n < 1:
+        n = 1
 
-    arr = generate_test_data(n)
+    # Deterministic data generation: arr is a list of length n
+    # Example pattern: arr[i] = (i % 5) + 1
+    arr = [(i % 5) + 1 for i in range(n)]
+
+    # Reinitialize dp and dp2 for a clean run
+    dp = ms(501, 501, 0)
+    dp2 = ar(501, INF)
+
     result = solve(arr, n)
-    print(result)
-    return result
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：运行 main(10)
     main(10)

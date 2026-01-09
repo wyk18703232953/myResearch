@@ -1,5 +1,4 @@
 from collections import namedtuple
-import random
 
 Point = namedtuple("Point", "x y")
 Square = namedtuple("Square", "left right top bottom")
@@ -12,21 +11,21 @@ def in_sqr(sqr, pt):
 
 def in_tri(tri, pt):
     return (
-        tri.left.x <= pt.x <= tri.top.x
-        and tri.left.y <= pt.y <= tri.top.y
-        and pt.y - tri.left.y <= pt.x - tri.left.x
+        tri.left.x <= pt.x <= tri.top.x and
+        tri.left.y <= pt.y <= tri.top.y and
+        pt.y - tri.left.y <= pt.x - tri.left.x
     )
 
 
 def solve_sqr_tri(sqr, tri):
     return (
-        in_sqr(sqr, tri.left)
-        or in_sqr(sqr, tri.top)
-        or in_sqr(sqr, Point(tri.top.x, tri.left.y))
-        or in_tri(tri, Point(sqr.left, sqr.top))
-        or in_tri(tri, Point(sqr.right, sqr.top))
-        or in_tri(tri, Point(sqr.right, sqr.bottom))
-        or in_tri(tri, Point(sqr.left, sqr.bottom))
+        in_sqr(sqr, tri.left) or
+        in_sqr(sqr, tri.top) or
+        in_sqr(sqr, Point(tri.top.x, tri.left.y)) or
+        in_tri(tri, Point(sqr.left, sqr.top)) or
+        in_tri(tri, Point(sqr.right, sqr.top)) or
+        in_tri(tri, Point(sqr.right, sqr.bottom)) or
+        in_tri(tri, Point(sqr.left, sqr.bottom))
     )
 
 
@@ -65,47 +64,16 @@ def solve_sqr_sqr45(sqr_pts, sqr45):
     return False
 
 
-def gen_axis_aligned_square(center_x, center_y, half_side):
-    return [
-        Point(center_x - half_side, center_y - half_side),
-        Point(center_x + half_side, center_y - half_side),
-        Point(center_x + half_side, center_y + half_side),
-        Point(center_x - half_side, center_y + half_side),
-    ]
-
-
-def gen_rotated_square(center_x, center_y, half_diag):
-    # square rotated 45 degrees: 4 points on diagonals
-    pts = [
-        Point(center_x - half_diag, center_y),
-        Point(center_x, center_y + half_diag),
-        Point(center_x + half_diag, center_y),
-        Point(center_x, center_y - half_diag),
-    ]
-    # shuffle order a bit to avoid any accidental assumptions
-    random.shuffle(pts)
-    return pts
-
-
-def main(n):
-    random.seed(n)
-
-    # use n as a scale; ensure positive sizes
+def generate_points_from_n(n):
     base = max(1, n)
-    cx = base * 2
-    cy = base * 3
+    a_coords = [base + i for i in range(8)]
+    b_coords = [base * 2 + i for i in range(8)]
+    a_pts = [Point(a_coords[i], a_coords[i + 1]) for i in range(0, 8, 2)]
+    b_pts = [Point(b_coords[i], b_coords[i + 1]) for i in range(0, 8, 2)]
+    return a_pts, b_pts
 
-    # axis-aligned square (a)
-    half_side = max(1, base // 2)
-    a = gen_axis_aligned_square(cx, cy, half_side)
 
-    # rotated square (b), around nearby center
-    cx2 = cx + base // 3
-    cy2 = cy + base // 4
-    half_diag = max(1, base // 2)
-    b = gen_rotated_square(cx2, cy2, half_diag)
-
-    # original post-processing on b to form bb
+def build_bb(b):
     bc = Point(sum(p.x for p in b) // 4, sum(p.y for p in b) // 4)
     bb = [None] * 4
     for p in b:
@@ -117,13 +85,17 @@ def main(n):
             bb[2] = p
         elif p.y < bc.y:
             bb[3] = p
+
         else:
-            raise AssertionError("Unexpected point location")
-
-    res = solve_sqr_sqr45(a, bb)
-    print(["NO", "YES"][res])
+            assert False
+    return bb
 
 
+def main(n):
+    a, b = generate_points_from_n(n)
+    bb = build_bb(b)
+    result = solve_sqr_sqr45(a, bb)
+    # print(["NO", "YES"][result])
+    pass
 if __name__ == "__main__":
-    # example run with n = 10
     main(10)

@@ -1,21 +1,30 @@
-import random
-
-p = 10**9 + 7
-
 def main(n):
-    # 生成 n 组测试数据 (l, r)，保证 0 <= l <= r
-    tests = []
-    for _ in range(n):
-        # 控制数值规模在 0 ~ 2^61 之间，覆盖原程序位运算范围
-        x = random.randint(0, 2**61 - 1)
-        y = random.randint(0, 2**61 - 1)
-        l, r = (x, y) if x <= y else (y, x)
-        tests.append((l, r))
+    global l, r, inv, fact
+    p = 10**9 + 7
+    max_n = 300001
+    inv = [0] * max_n
+    fact = [0] * max_n
 
-    def solve(l, r):
+    def ncr_util():
+        inv[0] = inv[1] = 1
+        fact[0] = fact[1] = 1
+        for i in range(2, max_n):
+            inv[i] = (inv[i % p] * (p - p // i)) % p
+        for i in range(1, max_n):
+            inv[i] = (inv[i - 1] * inv[i]) % p
+            fact[i] = (fact[i - 1] * i) % p
+
+    ncr_util()
+
+    # Deterministic generation of l, r from n
+    # Ensure l <= r and values are in a reasonable range
+    l = n
+    r = 2 * n + (n // 2)
+
+    def solve():
         ans, a, b = 0, 0, 0
         mul = 2**60
-        for _ in range(61):
+        for i in range(60, -1, -1):
             ch1, ch2 = 0, 0
             if a + mul <= l:
                 a += mul
@@ -35,11 +44,11 @@ def main(n):
             mul //= 2
         return ans
 
-    # 执行所有测试并输出
-    for l, r in tests:
-        print(l, r, solve(l, r))
+    return solve()
 
 
 if __name__ == "__main__":
-    # 示例：生成并求解 n=5 组数据
-    main(5)
+    # Example deterministic call for time complexity experiments
+    result = main(10**5)
+    # print(result)
+    pass

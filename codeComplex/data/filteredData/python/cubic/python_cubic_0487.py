@@ -1,78 +1,88 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 行 n 列，k 为偶数步长
-    m = n
-    # 让 k 与 n 同级，保证是偶数，且至少为 2
-    k = max(2, (2 * ((n + 1) // 2)))
-
-    # 生成随机边权，范围可自行调整
-    # 横向边：n 行，每行 m-1 个
-    horizontal = [
-        [random.randint(1, 10) for _ in range(m - 1)]
-        for _ in range(n)
-    ]
-    # 纵向边：n-1 行，每行 m 个
-    vertical = [
-        [random.randint(1, 10) for _ in range(m)]
-        for _ in range(n - 1)
-    ]
-
-    if k % 2 == 1:
-        for _ in range(n):
-            print(" ".join(["-1"] * m))
-        return
+    # Map n to grid dimensions and k (path length parameter)
+    # Here we choose:
+    #   rows = n
+    #   cols = max(1, n)
+    #   k = 2 * max(1, n // 2)  (ensure k is even and >= 2)
+    rows = n
+    cols = max(1, n)
+    k = 2 * max(1, n // 2)
 
     kk = k
-    # maps[i][j][d] : 从 (i,j) 出发，方向 d 的边权
-    # d = 0: 右, 1: 左, 2: 下, 3: 上
-    maps = [[[0 for _ in range(4)] for _ in range(m)] for _ in range(n)]
-
-    # 初始化 DP
+    # Initialize maps: [rows][cols][4]
+    maps = [[[0 for _ in range(4)] for _ in range(cols)] for _ in range(rows)]
+    # dp: [rows][cols][k//2 + 1]
     INF = 10**18
-    dp = [[[INF for _ in range(k // 2 + 1)] for _ in range(m)] for _ in range(n)]
-    for i in range(n):
-        for j in range(m):
+    dp = [[[INF for _ in range(k // 2 + 1)] for _ in range(cols)] for _ in range(rows)]
+    for i in range(rows):
+        for j in range(cols):
             dp[i][j][0] = 0
 
-    # 填充横向边
-    for i in range(n):
-        s = horizontal[i]
-        for j in range(m - 1):
-            maps[i][j][0] = s[j]       # 右
-            maps[i][j + 1][1] = s[j]   # 左
+    # Deterministic generation of horizontal edge weights
+    # For each row i, for each edge (j -> j+1), assign a weight
+    # weight = 1 + (i + j) % 7
+    for i in range(rows):
+        for j in range(cols - 1):
+            w = 1 + (i + j) % 7
+            maps[i][j][0] = w       # right
+            maps[i][j + 1][1] = w   # left
 
-    # 填充纵向边
-    for i in range(n - 1):
-        s = vertical[i]
-        for j in range(m):
-            maps[i][j][2] = s[j]       # 下
-            maps[i + 1][j][3] = s[j]   # 上
+    # Deterministic generation of vertical edge weights
+    # For each column j, for each edge (i -> i+1), assign a weight
+    # weight = 1 + (i * 3 + j) % 9
+    for i in range(rows - 1):
+        for j in range(cols):
+            w = 1 + (i * 3 + j) % 9
+            maps[i][j][2] = w       # down
+            maps[i + 1][j][3] = w   # up
 
-    # 动态规划
+    # If k is odd, original program prints -1 grid
+    if k % 2 == 1:
+        for i in range(rows):
+            for j in range(cols):
+                # print(-1, end=" ")
+                pass
+            # print()
+            pass
+        return
+
+    # DP transitions
     for step in range(1, kk // 2 + 1):
-        for i in range(n):
-            for j in range(m):
+        for i in range(rows):
+            for j in range(cols):
                 cur = dp[i][j][step - 1]
                 if cur == INF:
                     continue
-                if j < m - 1:
-                    dp[i][j + 1][step] = min(dp[i][j + 1][step], cur + maps[i][j][0])
-                if i < n - 1:
-                    dp[i + 1][j][step] = min(dp[i + 1][j][step], cur + maps[i][j][2])
+                if j < cols - 1:
+                    val = cur + maps[i][j][0]
+                    if val < dp[i][j + 1][step]:
+                        dp[i][j + 1][step] = val
+                if i < rows - 1:
+                    val = cur + maps[i][j][2]
+                    if val < dp[i + 1][j][step]:
+                        dp[i + 1][j][step] = val
                 if i > 0:
-                    dp[i - 1][j][step] = min(dp[i - 1][j][step], cur + maps[i][j][3])
+                    val = cur + maps[i][j][3]
+                    if val < dp[i - 1][j][step]:
+                        dp[i - 1][j][step] = val
                 if j > 0:
-                    dp[i][j - 1][step] = min(dp[i][j - 1][step], cur + maps[i][j][1])
+                    val = cur + maps[i][j][1]
+                    if val < dp[i][j - 1][step]:
+                        dp[i][j - 1][step] = val
 
-    final_step = kk // 2
-    for i in range(n):
-        row = []
-        for j in range(m):
-            row.append(str(dp[i][j][final_step] * 2))
-        print(" ".join(row))
+    # Output
+    for i in range(rows):
+        for j in range(cols):
+            ans = dp[i][j][kk // 2]
+            if ans >= INF:
+                # print(-1, end=" ")
+                pass
 
-
+            else:
+                # print(ans * 2, end=" ")
+                pass
+        # print()
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(4)
-    main(4)
+    # Example deterministic call; adjust n as needed for experiments
+    main(5)

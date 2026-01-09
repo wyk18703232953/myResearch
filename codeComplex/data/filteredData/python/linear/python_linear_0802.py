@@ -1,20 +1,17 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # n: 测试规模，这里用作 m 的大小，同时设置 k 和 pi 的范围
+    # 映射 n 为原程序的 n, m, k 和数组 pi 的规模
+    # 这里令：
+    #   m = n
+    #   k = max(1, n // 10)  保证 k 不为 0 且随规模变化
+    #   n_val = n * 10       原始意义上的 n（足够大，能覆盖所有 pi）
     m = n
-    if m <= 0:
-        print(0)
-        return
+    k = max(1, n // 10)
+    n_val = n * 10
 
-    # 随机生成 k，避免为 0
-    k = random.randint(1, max(1, n))
+    # 构造确定性的 pi：长度为 m，值在 [1, n_val] 内递增
+    # pi[i] = (i+1)*2，且不超过 n_val
+    pi = [min((i + 1) * 2, n_val) for i in range(m)]
 
-    # 生成一个递增的 pi 序列，元素值在 [1, 2*n] 范围内
-    pi = sorted(random.sample(range(1, 2 * n + 1), m))
-
-    # 原逻辑开始
     num = 1
     ans = 0
     i = 0
@@ -28,9 +25,12 @@ def main(n):
             i += 1
         num += (i - temp2)
         ans += 1
-    print(ans)
+
+    return ans
 
 
 if __name__ == "__main__":
-    # 示例：调用 main，n 为规模
-    main(10)
+    # 示例：调用 main，规模可按需修改
+    result = main(1000)
+    # print(result)
+    pass

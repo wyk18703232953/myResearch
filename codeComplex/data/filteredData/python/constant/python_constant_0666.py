@@ -7,6 +7,7 @@ def mock_query(c, d):
         return 1
     elif res < 0:
         return -1
+
     else:
         return 0
 
@@ -32,6 +33,7 @@ def solve(max_bit):
         elif (last_ans, ans) == (-1, 1):
             b += bit
             last_ans = query2(a, b)
+
         else:
             last_ans = ans
             ans = query2(a + bit, b)
@@ -67,4 +69,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：n = 30，对应原代码从 bit 29 到 0
     a, b = main(30)
-    print('!', a, b)
+    # print('!', a, b)
+    pass

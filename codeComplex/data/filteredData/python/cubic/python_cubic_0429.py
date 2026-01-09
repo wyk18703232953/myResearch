@@ -1,59 +1,62 @@
-# URDL
-DR = [1, 0, -1, 0]
-DC = [0, 1, 0, -1]
-
-INF = 10 ** 9
-
-
-def solve(n, m, k, w):
-    if k % 2 == 1:
-        return [[-1] * m for _ in range(n)]
-    k //= 2
-    best = [[[0] * m for _ in range(n)] for _ in range(k + 1)]
-    for steps in range(1, k + 1):
-        for r in range(n):
-            for c in range(m):
-                cur = INF
-                for d in range(4):
-                    r2, c2 = r + DR[d], c + DC[d]
-                    if 0 <= r2 < n and 0 <= c2 < m:
-                        val = 2 * w[d][r][c] + best[steps - 1][r2][c2]
-                        if val < cur:
-                            cur = val
-                best[steps][r][c] = cur
-    return best[k]
-
-
 def main(n):
-    # 生成规模为 n 的测试数据
-    # 这里将 m 设置为 n，k 设置为 2 * n，可按需求调整
+    # Interpret n as grid size: n x n grid, and set k proportional to n
+    global DR, DC, w, k, m
+    DR = [1, 0, -1, 0]
+    DC = [0, 1, 0, -1]
+
+    # Grid dimensions
     m = n
+    # Number of steps parameter (even to avoid trivial -1 case)
     k = 2 * n
 
-    # 初始化权重数组 w[4][n][m]
+    # Deterministic weight generation:
+    # Horizontal edges: n rows, m-1 edges per row
+    # We'll create an (n x m) grid for ease, unused edges can stay 0
     w = [[[0] * m for _ in range(n)] for _ in range(4)]
 
-    # 生成水平边权（左右），方向 1: 右，3: 左
-    import random
-    max_w = 10  # 最大权值，可按需调整
+    # Fill "right" and "left" related weights (direction 1 and 3 in original code)
+    # Original: w[1][r][c] = w[3][r][c + 1] = e
+    # We generate e deterministically from (r, c)
     for r in range(n):
         for c in range(m - 1):
-            e = random.randint(1, max_w)
-            w[1][r][c] = e          # 向右
-            w[3][r][c + 1] = e      # 向左
+            e = (r + 1) * (c + 2)  # simple deterministic function
+            w[1][r][c] = e
+            w[3][r][c + 1] = e
 
-    # 生成垂直边权（上下），方向 0: 下，2: 上
+    # Fill "down" and "up" related weights (direction 0 and 2 in original code)
+    # Original: w[0][r][c] = w[2][r + 1][c] = e
     for r in range(n - 1):
         for c in range(m):
-            e = random.randint(1, max_w)
-            w[0][r][c] = e          # 向下
-            w[2][r + 1][c] = e      # 向上
+            e = (r + 2) * (c + 1)  # another deterministic function
+            w[0][r][c] = e
+            w[2][r + 1][c] = e
 
-    res = solve(n, m, k, w)
+    INF = 10 ** 9
+
+    def solve():
+        global k
+        global w
+        if k % 2 == 1:
+            return [[-1] * m for _ in range(n)]
+        half_k = k // 2
+        best = [[[0] * m for _ in range(n)] for _ in range(half_k + 1)]
+        for steps in range(1, half_k + 1):
+            for r in range(n):
+                for c in range(m):
+                    cur_best = INF
+                    for d in range(4):
+                        r2, c2 = r + DR[d], c + DC[d]
+                        if 0 <= r2 < n and 0 <= c2 < m:
+                            val = 2 * w[d][r][c] + best[steps - 1][r2][c2]
+                            if val < cur_best:
+                                cur_best = val
+                    best[steps][r][c] = cur_best
+        return best[half_k]
+
+    res = solve()
     for row in res:
-        print(*row)
-
-
+        # print(*row)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(4) 生成 4x4 的测试数据并求解
-    main(4)
+    # Example call for time-complexity experiments
+    main(10)

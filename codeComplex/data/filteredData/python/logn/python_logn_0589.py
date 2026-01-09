@@ -1,17 +1,15 @@
-import math
-from collections import OrderedDict
-import random
-
 def main(n):
-    # 生成测试数据：从 0 到 n 中随机选取 k
-    k = random.randint(0, n)
-
-    # 原逻辑：给定 n, k，找到满足条件的 i 并输出 n-i
-    for i in range(1, n + 1):
-        if (i * (i + 1)) // 2 - n + i == k:
-            print(n - i)
+    # 对于原程序：n, k = minput()
+    # 这里将输入规模参数 n 作为原来的第一个输入
+    # 第二个输入 k 可确定性构造为 n // 2
+    total_n = n
+    k = n // 2
+    # 核心算法逻辑保持不变
+    for i in range(1, total_n + 1):
+        if (i * (i + 1)) / 2 - total_n + i == k:
+            # print(total_n - i)
+            pass
             break
 
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

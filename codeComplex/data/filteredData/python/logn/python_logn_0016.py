@@ -11,7 +11,8 @@ def main(n: int):
 
     # 以下为原逻辑的封装
     if l == r:
-        print(0)
+        # print(0)
+        pass
         return
 
     binr, binl = list(bin(r)[2:]), list(bin(l)[2:])
@@ -25,9 +26,8 @@ def main(n: int):
 
     x = '1' * len(binl)
     result = int(x, 2)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可按需修改 n 的值
     main(5)

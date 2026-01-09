@@ -13,15 +13,16 @@ def main(n: int):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         val1 = pow(2, k + 1, mod) * x
         val2 = pow(2, k, mod) - 1
         val1 -= val2
         val1 %= mod
-        print(val1)
-
-
+        # print(val1)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

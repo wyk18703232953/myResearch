@@ -1,7 +1,3 @@
-from collections import defaultdict
-import random
-
-
 def gcd(a, b):
     if b == 0:
         return a
@@ -13,50 +9,58 @@ def lcm(a, b):
 
 
 def main(n):
-    # 生成规模为 n 的测试数据：n 个区间 [l, r]
-    # 保证所有区间合法且至少有 1 个区间
-    if n <= 0:
-        n = 1
-
-    lst = []
-    for _ in range(n):
-        # 生成随机区间，范围可调整
-        l = random.randint(0, 1000)
-        r = random.randint(l, l + random.randint(0, 1000))
-        lst.append([l, r])
+    # n is the number of intervals
+    # Deterministically generate n intervals [l, r] with l <= r
+    # Example pattern: l = i, r = i + (i % 5) + 1 ensures r >= l+1
+    from collections import defaultdict
 
     d = defaultdict(int)
     ll = defaultdict(list)
     rr = defaultdict(list)
     llst = []
     rlst = []
+    lst = []
 
-    for l, r in lst:
+    for i in range(n):
+        l = i
+        r = i + (i % 5) + 1
+        if l > r:
+            l, r = r, l
+        lst.append([l, r])
         llst.append(l)
         rlst.append(r)
         ll[l].append(r)
         rr[r].append(l)
+
+    if n == 0:
+        # print(0)
+        pass
+        return
 
     left = max(llst)
     right = min(rlst)
     lleft = min(ll[left])
     lright = max(rr[right])
 
+    # First removal: remove [left, lleft]
     lst.remove([left, lleft])
-    pl = max(i[0] for i in lst)
-    pr = min(i[1] for i in lst)
-    mx = max(0, pr - pl)
+    if lst:
+        pl = max(i[0] for i in lst)
+        pr = min(i[1] for i in lst)
+        mx = max(0, pr - pl)
 
+    else:
+        mx = 0
     lst.append([left, lleft])
+
+    # Second removal: remove [lright, right]
     lst.remove([lright, right])
-    pl = max(i[0] for i in lst)
-    pr = min(i[1] for i in lst)
+    if lst:
+        pl = max(i[0] for i in lst)
+        pr = min(i[1] for i in lst)
+        mx = max(mx, max(0, pr - pl))
 
-    ans = max(mx, max(0, pr - pl))
-    print(ans)
-    return ans
-
-
+    # print(mx)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 生成 5 个区间并运行逻辑
-    main(5)
+    main(10)

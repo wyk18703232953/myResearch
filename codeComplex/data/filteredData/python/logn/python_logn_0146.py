@@ -17,6 +17,7 @@ def solve(n: Decimal, k: Decimal) -> int:
         return 1
     elif sum2(Decimal(2), k) < n:
         return -1
+
     else:
         c = 2 * n + k - k * k
         discriminant = (Decimal(9) - Decimal(4) * c).sqrt()
@@ -32,13 +33,13 @@ def main(n: int):
     n_dec = Decimal(n)
     if n <= 2:
         k_dec = Decimal(2)
+
     else:
         k_dec = Decimal(max(2, n // 2))
 
     ans = solve(n_dec, k_dec)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可修改
     main(10)

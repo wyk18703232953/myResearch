@@ -5,7 +5,9 @@ def main(n: int):
     a = [9]
     i = 1
     if k < 10:
-        print(k)
+        # print(k)
+        pass
+
     else:
         while k > a[-1]:
             a.append((10 ** (i + 1) - 10 ** i) * (i + 1) + a[i - 1])
@@ -18,12 +20,13 @@ def main(n: int):
 
         if rem == 0:
             number = (10 ** (cat - 1) - 1) + step
-            print(str(number)[-1])
+            # print(str(number)[-1])
+            pass
+
         else:
             number = 10 ** (cat - 1) + step
-            print(str(number)[rem - 1])
-
-
+            # print(str(number)[rem - 1])
+            pass
 if __name__ == "__main__":
     # 示例：可在此修改 n 以进行不同规模的测试
     main(1000)

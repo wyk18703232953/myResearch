@@ -17,16 +17,17 @@ def main(n):
     mG = min(G)
 
     if mB > mG:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     if mB == mG:
-        print(sum(B) * M + sum(G) - mB * M)
+        # print(sum(B) * M + sum(G) - mB * M)
+        pass
         return
 
-    print(sum(B) * M + sum(G) - mB * M + mB - m2B)
-
-
+    # print(sum(B) * M + sum(G) - mB * M + mB - m2B)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

@@ -14,10 +14,11 @@ def main(n):
             c += x * mult
             mult *= -1
         for x in way:
-            print(1, x)
+            # print(1, x)
+            pass
         for x in way[::-1]:
-            print(2, x)
-
+            # print(2, x)
+            pass
     elif n == 1:
         c = 1
         way = []
@@ -27,8 +28,8 @@ def main(n):
             c += x * mult
             mult *= -1
         for x in way:
-            print(1, x)
-
+            # print(1, x)
+            pass
     elif m == 2:
         c = 1
         way = []
@@ -38,10 +39,11 @@ def main(n):
             c += x * mult
             mult *= -1
         for x in way:
-            print(x, 1)
+            # print(x, 1)
+            pass
         for x in way[:-1:-1]:
-            print(x, 2)
-
+            # print(x, 2)
+            pass
     elif m == 1:
         c = 1
         way = []
@@ -51,7 +53,8 @@ def main(n):
             c += x * mult
             mult *= -1
         for x in way:
-            print(x, 1)
+            # print(x, 1)
+            pass
 
     else:
         for x in range(n // 2):

@@ -1,17 +1,13 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成测试数据，这里让 a, b 的数量级随 n 增长
-    # 例如 a, b 在 [1, 10^n] 范围内随机生成
-    upper = 10 ** max(1, n)  # 防止 n=0 时为 10^0=1
-    a = random.randint(1, upper)
-    b = random.randint(1, upper)
-
-    # 原逻辑：计算向上取整的 b / a
+def main(n):
+    # 解释输入结构：
+    # 原程序：a, b = map(int, input().split())
+    # 为了可规模化，将 n 映射为：
+    # a = n + 1  (避免 a 为 0)
+    # b = n * (n + 1)
+    a = n + 1
+    b = n * (n + 1)
     result = (b + a - 1) // a
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例调用：可根据需要修改 n
-    main(2)
+    main(10)

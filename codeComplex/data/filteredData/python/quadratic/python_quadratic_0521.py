@@ -76,9 +76,8 @@ def main(n):
     # n 为规模，这里用 n 生成 n x n 测试网格，然后跑原逻辑
     ip = generate_test_data(n)
     result = check_grid(ip)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：可改为任意正整数规模
     main(7)

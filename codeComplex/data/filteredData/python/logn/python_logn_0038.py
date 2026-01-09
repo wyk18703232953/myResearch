@@ -1,6 +1,7 @@
 def bin_custom(a):
     if a <= 1:
         return a
+
     else:
         return 10 * bin_custom(a // 2) + a % 2
 
@@ -22,6 +23,7 @@ def maxi(a, b):
         y = a ^ (a + 2)
         z = (a + 1) ^ (a + 2)
         return max(max(x, y), z)
+
     else:
         x = str(bin_custom(a ^ b))
         y = '1' * len(x)
@@ -33,8 +35,8 @@ def main(n):
     a0 = n
     a1 = 2 * n
     result = maxi(a0, a1)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

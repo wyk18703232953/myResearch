@@ -1,16 +1,18 @@
-import itertools
-import random
+def main(n):
+    import itertools
 
-def main(n: int) -> int:
-    # 生成测试数据：4 个 n×n 的 0/1 字符串网格，中间以空行分隔的输入结构在这里不再需要
+    # Deterministic generation of 4 n×n boards as lists of strings
     a = []
-    for _ in range(4):
-        grid = []
-        for _ in range(n):
-            # 每行一个长度为 n 的 '0'/'1' 字符串
-            row = ''.join(random.choice('01') for _ in range(n))
-            grid.append(row)
-        a.append(grid)
+    for i in range(4):
+        board = []
+        for r in range(n):
+            row_chars = []
+            for c in range(n):
+                # Simple deterministic pattern depending on board index, row, and column
+                val = (i + r + 2 * c) % 2
+                row_chars.append(str(val))
+            board.append("".join(row_chars))
+        a.append(board)
 
     best = 4 * n * n
     for p in itertools.permutations(a):
@@ -19,16 +21,11 @@ def main(n: int) -> int:
             for i in range(4):
                 for r in range(n):
                     for c in range(n):
-                        expected = str((s + (i // 2 + r) + (i % 2 + c)) % 2)
-                        if p[i][r][c] != expected:
+                        if p[i][r][c] != str((s + (i // 2 + r) + (i % 2 + c)) % 2):
                             count += 1
             if count < best:
                 best = count
-
-    # 为了兼容原程序的行为，这里既返回结果，又打印结果
-    print(best)
-    return best
-
+    # print(best)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(3)，实际使用时可按需要修改 n
-    main(3)
+    main(5)

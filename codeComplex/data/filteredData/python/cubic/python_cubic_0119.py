@@ -1,6 +1,3 @@
-import random
-import string
-
 def solve2(s, t, left, right):
     n = len(s)
     m = len(t)
@@ -20,7 +17,7 @@ def solve2(s, t, left, right):
                     nuxt[j] = max(nuxt[j], k + 1)
     return nuxt[-1] == right
 
-def single_case(s, t):
+def run_case(s, t):
     m = len(t)
     for i in range(m + 1):
         if solve2(s, t, i, m - i):
@@ -28,25 +25,17 @@ def single_case(s, t):
     return "NO"
 
 def main(n):
-    # 生成 n 组测试数据
-    # 每组中：
-    #   |s| 在 [1, n] 内
-    #   |t| 在 [1, min(n, |s|)] 内
-    # 字符从小写字母中随机生成
-    random.seed(0)
-
+    t = max(1, n)
     results = []
-    for _ in range(n):
-        len_s = random.randint(1, n)
-        len_t = random.randint(1, len_s)
-        s = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_s))
-        t = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_t))
-        results.append(single_case(s, t))
-
-    # 输出所有结果（每组一行）
+    for i in range(1, t + 1):
+        len_s = max(1, i)
+        len_t = max(1, i // 2 + 1)
+        s = "".join(chr(ord('a') + (j % 26)) for j in range(len_s))
+        t_str = "".join(chr(ord('a') + ((j * 3 + 1) % 26)) for j in range(len_t))
+        res = run_case(s, t_str)
+        results.append(res)
     for r in results:
-        print(r)
-
+        # print(r)
+        pass
 if __name__ == "__main__":
-    # 示例：运行规模 n=5
-    main(5)
+    main(10)

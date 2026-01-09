@@ -1,25 +1,21 @@
-import math
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 设定 numTimePut 为 1 到 n 之间的随机整数
-    numTimePut = random.randint(1, n)
-    # 再随机选择一个 numEat，使得 (numEat + numTimePut) 不超过 n
-    max_numEat = max(0, n - numTimePut)
-    numEat = random.randint(0, max_numEat)
-    # 按照原注释关系构造 k：
-    # (numEat + numTimePut) = n0
-    # ((numTimePut*(numTimePut+1))//2) - numEat = k
-    n0 = numEat + numTimePut
-    k = (numTimePut * (numTimePut + 1)) // 2 - numEat
+    # 生成确定性的测试数据：
+    # 将输入规模 n 映射为 (n, k) 形式，其中 k 也与 n 确定性相关
+    # 这里设定：
+    #   原程序期望输入: 两个整数 n, k
+    #   新程序: 使用传入的 n 作为第一个参数，
+    #           使用 k = n // 2 作为第二个参数
+    orig_n = n
+    k = n // 2
 
-    # 现在用原公式中的 n = n0, k 进行计算
-    n_val = n0
-    k_val = k
-    result = int(n_val - (math.sqrt(8 * (n_val + k_val) + 9) - 3) / 2)
-    print(result)
+    # 原始核心逻辑
+    # numEat = n - ((sqrt(8*(n+k)+9) - 3) / 2)
+    res = int(orig_n - ((8 * (orig_n + k) + 9) ** (1 / 2) - 3) / 2)
+    # print(res)
+    pass
+    return res
+
 
 if __name__ == "__main__":
-    # 示例：以 n = 10 为规模运行
+    # 示例：调用 main(10)，可按需修改 n 的大小做复杂度实验
     main(10)

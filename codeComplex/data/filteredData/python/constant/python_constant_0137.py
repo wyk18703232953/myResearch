@@ -1,14 +1,13 @@
-import math
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 这里假设生成两个 1 ~ n 之间的正整数 a, b
-    a = random.randint(1, n)
-    b = random.randint(1, n)
+    # 映射 n 为输入规模，这里使用线性关系构造 a, b
+    # 保证 b 不为 0 且变化随 n 增长
+    a = n * n + 3 * n + 7
+    b = n + 1
 
     if a % b == 0:
-        print(int(a / b))
+        # print(int(a / b))
+        pass
+
     else:
         c = 0
         while b:
@@ -16,8 +15,7 @@ def main(n):
             temp = a
             a = b
             b = temp % b
-        print(c)
-
+        # print(c)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，n 为规模参数，可自行修改
-    main(1000)
+    main(10)

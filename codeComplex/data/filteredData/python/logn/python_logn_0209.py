@@ -14,9 +14,8 @@ def main(n: int):
     while digs(x - 1) >= s:
         x -= 1
     result = max(n - x + 1, 0)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：使用某个规模 n 运行
     main(1000)

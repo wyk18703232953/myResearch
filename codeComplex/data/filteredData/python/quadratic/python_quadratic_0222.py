@@ -1,12 +1,10 @@
-import random
-
-
-def main(n: int):
-    # 生成测试数据
-    # a: 严格递增序列，更容易出现合法三元组
-    a = sorted(random.sample(range(1, 10 * n + 1), n))
-    # b: 随机权重
-    b = [random.randint(1, 100) for _ in range(n)]
+def main(n):
+    # Generate deterministic test data based on n
+    # Interpret n as the length of arrays a and b
+    # a: strictly increasing sequence 1..n
+    a = [i + 1 for i in range(n)]
+    # b: some deterministic pattern, e.g., i % 7 + 1
+    b = [i % 7 + 1 for i in range(n)]
 
     PI = float('inf')
     ans = PI
@@ -20,12 +18,12 @@ def main(n: int):
                 dp[i][3] = min(dp[i][3], dp[j][2] + b[i])
                 ans = min(ans, dp[i][3])
 
-    print("n:", n)
-    print("a:", a)
-    print("b:", b)
-    print("answer:", ans if ans != PI else -1)
+    result = ans if ans != PI else -1
+    # print(result)
+    pass
+    return result
 
 
 if __name__ == "__main__":
-    # 可根据需要修改规模
-    main(10)
+    # Example call for time complexity experiment
+    main(1000)

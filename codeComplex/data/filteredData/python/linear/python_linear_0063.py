@@ -1,18 +1,17 @@
-import random
-import string
-
-def main(n: int):
-    # 生成测试数据：长度为 n 的字符串 s 和 t
-    # 这里随机生成小写字母串，也可按需修改生成方式
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-    t = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+def main(n):
+    # Generate deterministic strings s and t of length n over 'a'..'z'
+    # Pattern ensures a mix of equal and different positions.
+    letters = [chr(ord('a') + i) for i in range(26)]
+    s_list = [letters[i % 26] for i in range(n)]
+    t_list = [letters[(i * 7 + 3) % 26] for i in range(n)]
+    s = "".join(s_list)
+    t = "".join(t_list)
 
     pair2ind = {}
     letters_s = [0] * 26
     letters_t = [0] * 26
     non_common = set()
     cnt = 0
-
     for i in range(n):
         if s[i] != t[i]:
             pair2ind[(s[i], t[i])] = i + 1
@@ -26,22 +25,27 @@ def main(n: int):
         if letters_s[i] != 0 and letters_t[i] != 0:
             sim = letters_s[i]
             break
+
     else:
-        print(cnt)
-        print(-1, -1)
+        # print(cnt)
+        pass
+        # print(-1, -1)
+        pass
         return
 
     for i in range(n):
         if s[i] != t[i]:
             if (t[i], s[i]) in pair2ind:
-                print(cnt - 2)
-                print(pair2ind[(s[i], t[i])], pair2ind[(t[i], s[i])])
+                # print(cnt - 2)
+                pass
+                # print(pair2ind[(s[i], t[i])], pair2ind[(t[i], s[i])])
+                pass
                 return
 
     non_common.remove(sim)
-    print(cnt - 1)
-    print(sim, letters_t[ord(s[sim - 1]) - ord('a')])
-
+    # print(cnt - 1)
+    pass
+    # print(sim, letters_t[ord(s[sim-1]) - ord('a')])
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自行调整
     main(10)

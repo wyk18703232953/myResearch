@@ -1,11 +1,10 @@
-import random
-
 def solve(n, k, p):
-    group = 256 * [None]
+    group = [None] * 256
     r = p[:]
     for i, pi in enumerate(p):
         if group[pi] is not None:
             r[i] = group[pi][0]
+
         else:
             lo = pi
             while lo >= 0 and pi - lo < k and group[lo] is None:
@@ -13,10 +12,12 @@ def solve(n, k, p):
             if lo < 0 or pi - lo == k:
                 lo += 1
                 hi = pi + 1
-            else:  # group[lo] is not None
+
+            else:
                 if pi - group[lo][0] < k:
                     lo = group[lo][0]
                     hi = pi + 1
+
                 else:
                     lo += 1
                     hi = pi + 1
@@ -24,17 +25,20 @@ def solve(n, k, p):
             for j in range(lo, hi):
                 group[j] = lohi
             r[i] = group[pi][0]
-    print(" ".join(map(str, r)))
+    # print(" ".join(map(str, r)))
+    pass
 
 
 def main(n):
-    # 根据 n 生成测试数据
-    # 约束：p[i] 需要在 [0, 255] 区间内，否则原算法中的 group 数组会越界
-    k = random.randint(1, 256)     # 生成 1~256 的随机 k
-    p = [random.randint(0, 255) for _ in range(n)]
+    # 输入规模含义：
+    # n 为数组 p 的长度，k 固定设为 10（可按需调整）
+    k = 10
+    # 生成确定性的测试数据，p 中元素范围在 [0, 255] 内
+    # 使用简单算术构造，确保可控且可规模化
+    p = [(i * 37 + 13) % 256 for i in range(n)]
     solve(n, k, p)
 
 
 if __name__ == "__main__":
-    # 示例：调用 main(10) 生成规模为 10 的测试数据并运行
-    main(10)
+    # 示例：使用 n = 100 作为测试规模
+    main(100)

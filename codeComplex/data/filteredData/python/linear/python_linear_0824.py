@@ -10,7 +10,8 @@ def main(n):
     for puts in range(10**9):
         candy = puts * (puts + 1) // 2
         if candy - (n - puts) == k:
-            print(n - puts)
+            # print(n - puts)
+            pass
             return
 
     # 若未找到（理论上原题应总能找到），这里不输出或可输出特定标记

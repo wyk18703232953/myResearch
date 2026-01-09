@@ -1,69 +1,67 @@
-import random
-
-def main(n: int):
-    """
-    n: 测试规模，这里理解为生成 n 组 3 张牌进行测试。
-       每组 3 张牌按原逻辑各自独立处理。
-    """
-    # 花色列表：m=万, p=饼, s=索（原代码中“else”分支用作第三种花色）
+def main(n):
+    # n controls how many different 3-tile hands we test; we cycle deterministically over a fixed tile universe
+    # Tile format in original problem: digit(1-9) + suit('m','p','s')
+    digits = [str((i % 9) + 1) for i in range(9)]
     suits = ['m', 'p', 's']
+    universe = [d + s for d in digits for s in suits]  # 27 distinct tiles
 
-    for _ in range(n):
-        # 生成一组测试数据：3 张麻将牌
-        # 牌的格式与原程序一致，例如 "3m", "7p", "9s"
-        m = []
-        for _ in range(3):
-            num = random.randint(1, 9)
-            suit = random.choice(suits)
-            m.append(f"{num}{suit}")
+    results = []
+    for k in range(max(1, n)):
+        # Generate a deterministic 3-tile hand from k
+        t1 = universe[k % 27]
+        t2 = universe[(k // 3) % 27]
+        t3 = universe[(k // 9) % 27]
+        m = [t1, t2, t3]
 
-        # 以下为原逻辑改写（无 input，直接用 m 列表）
         tiles = [[0 for _ in range(9)] for _ in range(3)]
-        for i in range(len(m)):
-            g = int(m[i][0]) - 1  # 牌面 1-9 转为索引 0-8
-            h = m[i][1]           # 花色
+        for x in m:
+            g = int(x[0]) - 1
+            h = x[1]
             if h == "m":
                 tiles[0][g] += 1
             elif h == "p":
                 tiles[1][g] += 1
+
             else:
                 tiles[2][g] += 1
 
-        # 输出生成的测试数据（若只想要结果，可注释下一行）
-        # print("Input:", *m)
-
         if m[0] == m[1] and m[1] == m[2]:
-            print(0)
+            res = 0
         elif m[0] == m[1]:
-            print(1)
+            res = 1
         elif m[0] == m[2]:
-            print(1)
+            res = 1
         elif m[1] == m[2]:
-            print(1)
+            res = 1
+
         else:
-            flag = False
+            found = False
             for i in range(3):
                 for j in range(9):
                     if tiles[i][j] != 0:
                         if j != 8 and tiles[i][j + 1] != 0:
                             if j != 7 and tiles[i][j + 2] != 0:
-                                print(0)
-                                flag = True
+                                res = 0
+                                found = True
                                 break
+
                             else:
-                                print(1)
-                                flag = True
+                                res = 1
+                                found = True
                                 break
                         elif j != 7 and j != 8 and tiles[i][j + 2] != 0:
-                            print(1)
-                            flag = True
+                            res = 1
+                            found = True
                             break
-                if flag:
+                if found:
                     break
-            if not flag:
-                print(2)
+            if not found:
+                res = 2
+        results.append(res)
 
-
+    # To keep comparable output size, aggregate results deterministically
+    # Print the sum and last value so runtime isn't optimized away
+    # print(sum(results), results[-1])
+    pass
 if __name__ == "__main__":
-    # 示例：运行 5 组测试
-    main(5)
+    main(1000)

@@ -23,16 +23,22 @@ def main(n):
 
     if variance == 0:
         if difference == 0:
-            print(1.0)
+            # print(1.0)
+            pass
+
         else:
-            print(0.0)
+            # print(0.0)
+            pass
     elif difference > variance or difference % 2 != variance % 2:
-        print(0.0)
+        # print(0.0)
+        pass
+
     else:
         difference += variance
         difference //= 2
         c = factorial(variance) / (factorial(difference) * factorial(variance - difference))
-        print(c / (2 ** variance))
+        # print(c / (2 ** variance))
+        pass
 
 
 # 示例调用

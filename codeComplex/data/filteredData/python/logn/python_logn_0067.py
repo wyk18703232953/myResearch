@@ -1,11 +1,9 @@
-import random
-
 def main(n):
-    # 生成测试数据：根据规模 n 生成一个范围 [0, 2^n - 1] 内的随机区间 [l, r]
-    if n <= 0:
-        return
-    l = random.randint(0, (1 << n) - 1)
-    r = random.randint(l, (1 << n) - 1)
+    # 解释输入规模：n 控制 [l, r] 区间大小
+    # 这里构造确定性的 l, r：
+    # 令 l = n，r = 2n（且 r >= l）
+    l = n
+    r = 2 * n
 
     p = l
     lp = -1
@@ -35,8 +33,11 @@ def main(n):
         ans |= 1 << s
         s -= 1
 
-    print(ans)
+    return ans
+
 
 if __name__ == "__main__":
-    # 示例：规模为 10
-    main(10)
+    # 示例：调用 main(10) 并打印结果
+    result = main(10)
+    # print(result)
+    pass

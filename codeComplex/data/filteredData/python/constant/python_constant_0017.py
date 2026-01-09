@@ -13,6 +13,7 @@ def travelTime(distance, speed, a, v):
 
     if t_max >= t_all:
         return t_all
+
     else:
         return t_max + (distance - dist(speed, t_max, a)) / v
 
@@ -31,21 +32,22 @@ def main(n):
     # 2) Core logic from original program
     if v <= w:
         ans = travelTime(l, 0.0, a, v)
+
     else:
         tw = w / a          # time to reach speed w from 0
         dw = dist(0.0, tw, a)
 
         if dw >= d:
             ans = travelTime(l, 0.0, a, v)
+
         else:
             # accelerate to w, then:
             # - symmetric accelerate/decelerate part within [0, d]
             # - then travel remaining l - d at speed up to v starting from w
             ans = tw + 2.0 * travelTime((d - dw) / 2.0, w, a, v) + travelTime(l - d, w, a, v)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # example run with some n; in real use, caller should invoke main(n) directly
     main(10)

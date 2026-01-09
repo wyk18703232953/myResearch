@@ -1,20 +1,23 @@
-import random
+def main(n):
+    # 解释：原程序读取两个整数 n, m，并输出 ceil(m / n)
+    # 在这里我们将输入规模参数命名为 size，用于生成确定性的 n, m
+    size = max(1, n)
 
-def main(n: int):
-    # 根据规模 n 生成测试数据
-    # 这里假设 n 为题目中的 n，m 随规模生成
-    if n <= 0:
-        raise ValueError("n must be positive")
-    m = random.randint(1, n * 10)
+    # 生成确定性输入：
+    # 让原程序的 n = size
+    # 让原程序的 m = size^2 + size
+    div = size
+    m = size * size + size
 
-    # 原逻辑：输出 ceil(m / n)
-    if m % n != 0:
-        result = m // n + 1
+    if m % div != 0:
+        result = m // div + 1
+
     else:
-        result = m // n
+        result = m // div
 
-    print(result)
+    return result
+
 
 if __name__ == "__main__":
-    # 示例：调用 main，规模可自行调整
-    main(5)
+    # print(main(10))
+    pass

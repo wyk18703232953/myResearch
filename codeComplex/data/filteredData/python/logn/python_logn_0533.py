@@ -43,11 +43,12 @@ def main(n: int):
     n2 = n - (n1 * nn)         # 在当前（或下一个）数字内的第几位
 
     if n2 == 0:
-        print(str(r1)[-1])
+        # print(str(r1)[-1])
+        pass
+
     else:
-        print(str(r1 + 1)[n2 - 1])
-
-
+        # print(str(r1 + 1)[n2 - 1])
+        pass
 if __name__ == "__main__":
     # 示例：根据规模 n 自动生成测试调用
     # 可以根据需要修改下面的测试用例

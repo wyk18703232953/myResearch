@@ -1,20 +1,16 @@
-import random
-import string
-
 def palin(s):
     if s[::-1] != s or len(s) == 0:
         return len(s)
+
     else:
         return palin(s[1:])
 
 def main(n):
-    # 根据规模 n 生成长度为 n 的随机字符串
-    # 字符集可根据需要调整
-    chars = string.ascii_lowercase
-    s = ''.join(random.choice(chars) for _ in range(n))
-    # 输出结果
-    print(palin(s))
-
+    # 生成一个确定性的字符串，长度为 n
+    # 字符构造方式为周期性 'a' 到 'z'
+    s = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
+    result = palin(s)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

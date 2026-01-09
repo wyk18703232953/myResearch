@@ -35,9 +35,8 @@ def main(n):
     if n > 1:
         # 交换首尾作为轻微扰动
         seq[0], seq[-1] = seq[-1], seq[0]
-    print(solve(seq))
-
-
+    # print(solve(seq))
+    pass
 if __name__ == "__main__":
     # 示例：n = 10
     main(10)

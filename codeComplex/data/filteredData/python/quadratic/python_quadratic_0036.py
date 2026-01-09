@@ -5,6 +5,7 @@ def main(n):
     for i in range(n):
         if i < n // 2:
             arr.append('f')
+
         else:
             arr.append('s')
 
@@ -59,4 +60,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：调用 main(5)，真实使用时可按需调整 n
     result = main(5)
-    print(result)
+    # print(result)
+    pass

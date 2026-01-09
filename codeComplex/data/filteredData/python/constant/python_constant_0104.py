@@ -1,38 +1,29 @@
-import random
-
 def main(n):
-    """
-    n: 规模，即生成 n 组测试数据 (a, b)，并按原逻辑输出结果
-    """
+    # n 表示测试用例数量
     c = []
-    for _ in range(n):
-        # 生成测试数据：避免 0，防止除零错误
-        # 可根据需要调整范围
-        a = random.randint(1, 10**4)
-        b = random.randint(1, 10**4)
+    for i in range(n):
+        # 为第 i 个测试用例构造确定性 (a, b)
+        # 保证 a, b > 0，且随 n、i 变化但完全可预测
+        a = (i + 2) * 3
+        b = (i + 3) * 5
 
-        a_curr = a
-        b_curr = b
         z4 = 0
-
-        while a_curr != 0 and b_curr != 0:
+        while a != 0 and b != 0:
             z1 = z3 = 0
-            if a_curr <= b_curr:
-                z = b_curr / a_curr
+            if a <= b:
+                z = (b / a)
                 z1 = int(z)
-                b_curr = b_curr - (z1 * a_curr)
-            if b_curr <= a_curr and b_curr != 0:
-                z2 = a_curr / b_curr
+                b = b - (z1 * a)
+            if b <= a and b != 0:
+                z2 = a / b
                 z3 = int(z2)
-                a_curr = a_curr - (z3 * b_curr)
+                a = a - (z3 * b)
             z4 = z4 + z1 + z3
-
         c.append(z4)
 
     for val in c:
-        print(val)
-
-
+        # print(val)
+        pass
 if __name__ == "__main__":
-    # 示例：规模为 5
+    # 示例：以 n=5 作为输入规模运行一次
     main(5)

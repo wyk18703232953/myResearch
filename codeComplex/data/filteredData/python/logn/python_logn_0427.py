@@ -3,25 +3,30 @@
 
 def solve(n, k, v):
     if n >= 50:
-        print("YES " + str(n - 1))
+        # print("YES " + str(n - 1))
+        pass
         return
     critical = 1
     excess = 0
     while n > 0:
         if excess >= k:
-            print("YES " + str(n))
+            # print("YES " + str(n))
+            pass
             return
         if critical > k:
-            print("NO")
+            # print("NO")
+            pass
             return
         k -= critical
         n -= 1
         excess += (critical * 2 - 1) * v[n]
         critical = (critical * 2 + 1)
     if excess >= k:
-        print("YES " + str(n))
+        # print("YES " + str(n))
+        pass
         return
-    print("NO")
+    # print("NO")
+    pass
 
 
 def main(n):

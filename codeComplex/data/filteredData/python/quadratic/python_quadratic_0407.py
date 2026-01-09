@@ -1,6 +1,3 @@
-import random
-import string
-
 def prefix_func(s):
     slen, k = len(s), 0
     p = [0] * slen
@@ -14,17 +11,18 @@ def prefix_func(s):
     return p
 
 def main(n):
-    # 生成测试数据：
-    # n 表示字符串长度，k 设为一个与 n 有关的重复次数
-    k = max(1, n // 3)  # 保证 k >= 1
-    # 生成一个随机字符串，字母大小写或数字均可
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-
+    # 输入规模解释：
+    # n: 字符串长度，同时令 k = n 作为重复次数规模
+    if n <= 0:
+        return ""
+    k = n
+    # 生成一个确定性的字符串，周期性使用 'a'..'z'
+    s = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
     l = prefix_func(s)[-1]
     result = s + s[l:] * (k - 1)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":
-    # 示例：规模 n = 10，可根据需要修改或在外部调用 main(n)
     main(10)

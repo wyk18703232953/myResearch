@@ -1,5 +1,4 @@
 from collections import deque
-import random
 
 def bfs(s, n, G):
     q = deque()
@@ -32,24 +31,23 @@ def bfs(s, n, G):
     return ans
 
 def generate_tree(n):
-    """
-    生成一个随机树：
-    对于每个节点 i (2..n)，随机连接到 [1..i-1] 中的一个节点。
-    """
+    # Deterministic tree: for i in 2..n, connect i with i//2
     G = [[] for _ in range(n + 1)]
     for i in range(2, n + 1):
-        parent = random.randint(1, i - 1)
-        G[parent].append(i)
-        G[i].append(parent)
+        u = i
+        v = i // 2
+        G[u].append(v)
+        G[v].append(u)
     return G
 
 def main(n):
-    # 生成规模为 n 的测试数据（树）
+    if n < 1:
+        return 0
     G = generate_tree(n)
-    # 以 1 为根运行 bfs 逻辑
     ans = bfs(1, n, G)
-    print(ans)
+    # print(ans)
+    pass
+    return ans
 
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
     main(10)

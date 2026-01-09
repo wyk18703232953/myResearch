@@ -27,7 +27,8 @@ def main(n: int):
     # ---------------- 生成测试数据 ----------------
     # 为了让不同数据都能覆盖逻辑，生成可重复的 cds 和 fn
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = min(5, n)
@@ -65,9 +66,8 @@ def main(n: int):
     for key, v in Counter(fn).items():
         res += dp[v][dic[key]]
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：用 n=10 运行
     main(10)

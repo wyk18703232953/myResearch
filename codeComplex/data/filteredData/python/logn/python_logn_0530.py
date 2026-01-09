@@ -23,7 +23,8 @@ def main(n):
     digit_index = k % num_len
     x = str(target_num)[digit_index]
 
-    print(x)
+    # print(x)
+    pass
     return x
 
 

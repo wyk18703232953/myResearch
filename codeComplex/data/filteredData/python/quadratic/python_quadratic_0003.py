@@ -1,13 +1,13 @@
 import math as m
-import random
 
 def main(n):
-    # 生成测试数据：n 个圆盘，半径 r，x 坐标升序
+    if n <= 0:
+        return
     r = 1
-    step = 2 * r  # 让圆盘大致首尾相接
-    x = [i * step for i in range(n)]
-
+    nDiscs = n
+    x = [i * 2 for i in range(nDiscs)]
     y = []
+
     for i in range(len(x)):
         tempY = [r]
         for j in range(i):
@@ -17,10 +17,10 @@ def main(n):
                 tempY.append(y[j] + addY)
         y.append(max(tempY))
 
-    for yi in y:
-        print(yi, end=' ')
-    print()
-
+    for i in range(len(y)):
+        # print(y[i], end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 5
-    main(5)
+    main(10)

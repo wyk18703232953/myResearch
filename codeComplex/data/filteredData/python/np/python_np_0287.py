@@ -24,9 +24,8 @@ def main(n):
             x[j] -= xi
         ans = (ans + xi * (pow2[c] - 1)) % mod
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

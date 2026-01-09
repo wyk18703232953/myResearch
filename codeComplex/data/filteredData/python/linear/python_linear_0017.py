@@ -28,7 +28,8 @@ def main(n):
     """
     if n < 2:
         # 没有质数，直接输出 NO
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # 根据 n 生成 k（可按需求更改）
@@ -47,11 +48,12 @@ def main(n):
             res += 1
 
     if res >= k:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：可修改为任意规模 n 进行测试
     main(100)

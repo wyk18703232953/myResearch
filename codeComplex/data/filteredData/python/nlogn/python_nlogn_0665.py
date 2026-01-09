@@ -20,6 +20,7 @@ def main(n):
     for i in range(1, n + 1):
         if i <= half:
             a.append(-1)
+
         else:
             # 保证在 [1, n] 范围内
             a.append(i - half)
@@ -56,6 +57,7 @@ def main(n):
     for i in range(1, n + 1):
         if a[i] == -1:
             neg.append(neg[i - 1] + 1)
+
         else:
             neg.append(neg[i - 1])
 
@@ -81,7 +83,8 @@ def main(n):
             ans = (ans + (m - neg[i]) * less * fs) % base
 
     ans = (ans + m * (m - 1) * inverse(4)) % base
-    print(ans)
+    # print(ans)
+    pass
 
 # 示例调用
 # main(10)

@@ -36,8 +36,8 @@ def main(n: int):
     k_data = Decimal(max(2, n // 2))
 
     ans = solve(n_data, k_data)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

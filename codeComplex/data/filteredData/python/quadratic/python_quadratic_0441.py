@@ -1,30 +1,24 @@
-import random
-
-def main(n: int) -> None:
-    # 生成长度为 n 的由数字字符组成的测试串 a
-    # 保证至少有一个非零数字，避免 sum 恒为 0 的无意义情况
+def main(n):
+    # n 表示数字串长度
     if n <= 0:
-        print("YES")  # 与原逻辑保持兼容：空串时 sum == 0 -> YES
+        # print("NO")
+        pass
         return
 
-    digits = [str(random.randint(0, 9)) for _ in range(n)]
-    if all(d == '0' for d in digits):
-        digits[random.randrange(n)] = str(random.randint(1, 9))
-    a = "".join(digits)
+    # 确定性生成长度为 n 的数字串 a
+    # 使用简单周期模式 1..9 重复
+    digits = [(i % 9) + 1 for i in range(n)]
+    a = "".join(str(d) for d in digits)
 
-    # 以下为原逻辑
-    total = 0
+    total_sum = 0
     for x in a:
-        total += int(x)
-
+        total_sum += int(x)
     ans = "NO"
-    if total == 0:
+    if total_sum == 0:
         ans = "YES"
-
     s = 1
-    while s * s <= total and ans == "NO":
-        if total % s == 0:
-            # 尝试块和为 s
+    while s * s <= total_sum and ans == "NO":
+        if total_sum % s == 0:
             t = 0
             flag = 0
             for x in a:
@@ -37,30 +31,26 @@ def main(n: int) -> None:
                         t = int(x)
                         if t == s:
                             flag = 1
-            if t == s and t != total:
+            if t == s and t != total_sum:
                 ans = "YES"
-
-            # 尝试块和为 total // s
             t = 0
             flag = 0
-            block = total // s
+            part = total_sum // s
             for x in a:
                 t += int(x)
-                if t == block:
+                if t == part:
                     flag = 1
-                if t > block:
+                if t > part:
                     if flag == 1:
                         flag = 0
                         t = int(x)
-                        if t == block:
+                        if t == part:
                             flag = 1
-            if t == block and t != total:
+            if t == part and t != total_sum:
                 ans = "YES"
         s += 1
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
+    # 示例：输入规模为 10
     main(10)

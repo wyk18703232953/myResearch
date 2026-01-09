@@ -1,11 +1,7 @@
-import random
-
 def main(n):
-    # 生成测试数据：长度为 n 的正整数数组 a
-    # 这里生成 1~n 之间的随机数，可按需要自行修改生成规则
-    random.seed(0)
-    a = [random.randint(1, n) for _ in range(n)]
-
+    # Deterministic generation of input array a of length n
+    # Ensure no zero to avoid division by zero in i % x and range step x
+    a = [(i % n) + 1 for i in range(n)]
     s = [0] * n
     m = n
     while m:
@@ -15,12 +11,12 @@ def main(n):
                 if all(a[j] <= x or s[j] == 'A' for j in r):
                     s[i] = 'B'
                     m -= 1
-                if s[i] == 0 and any(a[j] > x and s[j] == 'B' for j in r):
-                    s[i] = 'A'
-                    m -= 1
-    print(''.join(s))
-
-
+                if s[i] == 0:
+                    r = range(i % x, n, x)
+                    if any(a[j] > x and s[j] == 'B' for j in r):
+                        s[i] = 'A'
+                        m -= 1
+    # print(''.join(s))
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

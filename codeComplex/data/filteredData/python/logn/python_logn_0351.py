@@ -47,4 +47,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例：调用 main(10) 并打印结果
-    print(main(10))
+    # print(main(10))
+    pass

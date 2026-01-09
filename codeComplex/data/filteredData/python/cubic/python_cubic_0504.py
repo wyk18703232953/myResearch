@@ -11,7 +11,8 @@ def main(n):
     # 如果 K 为奇数，按题意全部输出 -1（这里保证 K 为偶数，一般不会触发）
     if K & 1:
         for _ in r:
-            print(*([-1] * M))
+            # print(*([-1] * M))
+            pass
         return
 
     # 生成测试网格数据：
@@ -38,9 +39,8 @@ def main(n):
         X = Y
 
     for x in X:
-        print(*x)
-
-
+        # print(*x)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(3)
     main(3)

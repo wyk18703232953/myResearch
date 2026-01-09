@@ -1,14 +1,14 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # n 为数组长度，q 为查询次数
-    # 这里设定 q = n，且 ai 为 1..n 的随机排列
+    # Interpret n as both array size and number of queries
+    # Generate deterministic test data
+    # ai: a permutation-like sequence with some structure
+    ai = [(i * 3 + 1) % (n + 7) for i in range(n)]
+    if len(set(ai)) < n:
+        # ensure there is a clear maximum distinct from others, at the last position
+        max_val = max(ai) + 1
+        ai[-1] = max_val
     q = n
-    ai = list(range(1, n + 1))
-    random.shuffle(ai)
 
-    # 原始逻辑开始
     ar = []
     ar3 = []
     num = 1
@@ -24,29 +24,44 @@ def main(n):
             if ai[i] > num2:
                 ar += [num2]
                 num2 = ai[i]
+
             else:
                 ar += [ai[i]]
-
     ar2 = []
     for i in range(num, n):
         ar2 += [ai[i]]
     for i in range(len(ar)):
         ar2 += [ar[i]]
-
     num_pairs = len(ar3)
 
-    # 构造 q 个查询 m（例如 1..q）
-    queries = list(range(1, q + 1))
+    # Deterministically generate q queries
+    # Use pattern that spans small and large m relative to num_pairs
+    queries = []
+    if num_pairs == 0:
+        # if no pairs, all queries go to the "else" branch
+        queries = [i + 1 for i in range(q)]
 
-    # 输出对应的答案
+    else:
+        for i in range(q):
+            if i % 3 == 0:
+                # within range of num_pairs, if possible
+                m = (i % num_pairs) + 1
+
+            else:
+                # beyond num_pairs
+                m = num_pairs + 1 + (i % (n if n > 1 else 1))
+            queries.append(m)
+
+    # Run the original query logic
     for m in queries:
         if m <= num_pairs:
-            print(ar3[m - 1][0], ar3[m - 1][1])
+            # print(ar3[m - 1][0], ar3[m - 1][1])
+            pass
+
         else:
-            m_adj = m - num_pairs - 1
-            print(nummm, ar2[m_adj % (n - 1)])
-
-
+            m -= num_pairs
+            m -= 1
+            # print(nummm, ar2[m % (n - 1)])
+            pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

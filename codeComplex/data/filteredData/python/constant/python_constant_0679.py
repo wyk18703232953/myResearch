@@ -1,43 +1,37 @@
-import random
+def main(n):
+    # Deterministically generate hidden numbers a0 and b0 from n
+    # so that the behavior is completely deterministic and scalable.
+    # We limit to 30 bits as in the original code.
+    a0 = (n * 1234567) & ((1 << 30) - 1)
+    b0 = (n * 8901234 + 7) & ((1 << 30) - 1)
 
-def main(n: int):
-    # 生成两个 n 位非负整数 a_true, b_true 作为测试数据
-    # 范围控制在 [0, 2^n - 1]
-    max_val = (1 << n) - 1
-    a_true = random.randint(0, max_val)
-    b_true = random.randint(0, max_val)
-
-    # 定义“交互裁判”：给定 (x, y) 返回符号比较结果
-    # 原交互中返回 '1' / '0' / '-1'，这里做一个合理假设：
-    # - 返回 '1'  : if (a_true ^ x) > (b_true ^ y)
-    # - 返回 '0'  : if (a_true ^ x) < (b_true ^ y)
-    # - 返回 '-1' : if (a_true ^ x) == (b_true ^ y)
-    def judge(x, y):
-        v1 = a_true ^ x
-        v2 = b_true ^ y
-        if v1 > v2:
+    # Oracle function: replicates the interactive judge behavior
+    # Returns:
+    #   '1'  if (a ^ a0) > (b ^ b0)
+    #   '-1' if (a ^ a0) < (b ^ b0)
+    #   '0'  if equal (though original logic never expects '0')
+    def oracle(a, b):
+        va = a ^ a0
+        vb = b ^ b0
+        if va > vb:
             return '1'
-        elif v1 < v2:
-            return '0'
-        else:
+        elif va < vb:
             return '-1'
 
-    # 以下是将原始交互式程序改写为调用 judge 的形式
-    # 原代码：
-    # print("? 0 0"); res = input()
-    res = judge(0, 0)
+        else:
+            return '0'
+
+    # Simulate the original interactive logic
+    res = oracle(0, 0)
     a = 0
     b = 0
-    # 原程序从 29 降到 0，这里使用 n-1 降到 0
-    for i in range(n - 1, -1, -1):
-        # print("?", (a^(1<<i)), b); res1 = input()
-        res1 = judge(a ^ (1 << i), b)
-        # print("?", a, (b^(1<<i))); res2 = input()
-        res2 = judge(a, b ^ (1 << i))
-
+    for i in range(29, -1, -1):
+        res1 = oracle(a ^ (1 << i), b)
+        res2 = oracle(a, b ^ (1 << i))
         if res1 == res2:
             if res == '1':
                 a ^= (1 << i)
+
             else:
                 b ^= (1 << i)
             res = res1
@@ -45,12 +39,13 @@ def main(n: int):
             a ^= (1 << i)
             b ^= (1 << i)
 
-    # 输出推测得到的 a, b 以及真实的 a_true, b_true 以便验证
-    print("guessed:", a, b)
-    print("actual: ", a_true, b_true)
-    print("correct:", a == a_true and b == b_true)
+    # For experiment consistency, return both the reconstructed (a, b)
+    # and the true hidden (a0, b0)
+    return a, b, a0, b0
 
 
 if __name__ == "__main__":
-    # 示例：n=30 时与原程序等价（原程序固定 0..29 共 30 位）
-    main(30)
+    # Example deterministic call for experimentation
+    result = main(10)
+    # print(result)
+    pass

@@ -11,6 +11,7 @@ def fun(n, ptr1, a):
         a[ptr1] = 1
         ptr1 += 1
         a[ptr1] = 3
+
     else:
         itera = n - n // 2
 
@@ -29,10 +30,10 @@ def main(n):
     a = [0] * n
     fun(n, 0, a)
     for v in a:
-        print(v, end=" ")
-    print()
-
-
+        # print(v, end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     # 示例：可自行修改 n 进行测试
     main(10)

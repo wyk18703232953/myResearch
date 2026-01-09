@@ -15,6 +15,7 @@ def main(n):
     for i in range(n):
         if n // 3 <= i < 2 * n // 3:
             list2.append('?')
+
         else:
             list2.append(list1[i])
 
@@ -27,19 +28,25 @@ def main(n):
     def giveFactorial(n, x):
         if x == 0 or x == n or x > n or n == 0:
             return 1
+
         else:
             return giveFactorial(n - 1, x - 1) + giveFactorial(n - 1, x)
 
     a = giveFactorial(wths, plus1 - plus2)
 
     if plus1 == plus2 and wths == 0:
-        print(1)
+        # print(1)
+        pass
     elif wths == 0:
-        print(0)
+        # print(0)
+        pass
     elif plus1 - plus2 > wths or minus1 - minus2 > wths:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print((0.5 ** (plus1 - plus2 + minus1 - minus2)) * a)
+        # print((0.5 ** (plus1 - plus2 + minus1 - minus2)) * a)
+        pass
 
 
 # 示例：运行规模为 10

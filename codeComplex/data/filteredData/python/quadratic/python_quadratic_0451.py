@@ -1,17 +1,14 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：1..n 的一个随机排列
-    L = list(range(1, n + 1))
-    random.shuffle(L)
+def main(n):
+    # 生成确定性输入：长度为 n 的排列 L（1..n 的简单循环移位）
+    if n <= 0:
+        return
+    L = [(i % n) + 1 for i in range(n)]
 
     ans = [''] * n
     revL = [0] * n
     ans[-1] = 'B'
-
     for i in range(n):
         revL[L[i] - 1] = i + 1
-
     for i in range(n - 2, -1, -1):
         t = revL[i] - 1
         counter = 'B'
@@ -29,11 +26,8 @@ def main(n: int):
                     counter = 'A'
                     break
         ans[i] = counter
-
     for i in range(n):
-        print(ans[L[i] - 1], sep='', end='')
-
-
+        # print(ans[L[i] - 1], sep='', end='')
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

@@ -16,21 +16,27 @@ def main(n: int):
         mid = (i + j) // 2
         if mid - case(mid) < s:
             i = mid
+
         else:
             j = mid
 
     if i - case(i) >= s:
-        print(n - i + 1)
+        # print(n - i + 1)
+        pass
+
     else:
         if j == n:
             if j - case(j) >= s:
-                print(1)
+                # print(1)
+                pass
+
             else:
-                print(0)
+                # print(0)
+                pass
+
         else:
-            print(n - j + 1)
-
-
+            # print(n - j + 1)
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(1000000)
     main(1000000)

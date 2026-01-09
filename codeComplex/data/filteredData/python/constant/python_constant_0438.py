@@ -15,14 +15,14 @@ def main(n):
     x = ((n_val - 5) // 4 + ((n_val - 5) % 4 != 0))
     if n_val <= 5:
         a, b = '5', '5'
+
     else:
         a = '5' * (x + 1)
         b = '4' * x + '5'
 
     # 输出结果
-    print(a, b)
-
-
+    # print(a, b)
+    pass
 if __name__ == '__main__':
     # 示例：调用 main(10) 进行测试
     main(10)

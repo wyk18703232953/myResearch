@@ -1,41 +1,39 @@
-import math
-import random
-
-def solve_single(n, k):
-    limit = -1
-    if n <= 60:
-        limit = 0
-        pow4 = 1
-        for _ in range(n):
-            limit += pow4
-            pow4 *= 4
-    if (limit < k and limit != -1) or (n == 2 and k == 3):
-        return 'NO'
-    else:
-        div = 1
-        k -= 1
-        size = 1
-        while div < n and k >= 4 * size - 1:
-            k -= 4 * size - 1
-            size *= 2
-            div += 1
-        return 'YES ' + str(n - div)
-
 def main(n):
-    # n 作为规模参数，用来生成测试数据：
-    # 生成 t 个测试用例，t 与 n 同数量级
-    t = max(1, n)  # 至少一个测试
-    results = []
-    for _ in range(t):
-        # 生成每个测试的 n_i, k_i
-        # 让 n_i 在 [1, n] 范围，k_i 在 [1, 4^min(n_i,10)] 范围内，避免过大整数
-        ni = random.randint(1, n)
-        max_pow_exp = min(ni, 10)
-        max_k = (4 ** max_pow_exp - 1) // 3  # 1 + 4 + 4^2 + ... + 4^(exp-1)
-        ki = random.randint(1, max_k if max_k > 0 else 1)
-        results.append(solve_single(ni, ki))
-    print("\n".join(results))
+    import math
 
+    # Deterministic generation of test cases based on n
+    # We create n test cases (t = n)
+    # For each i in [1..n]:
+    #   n_i  ranges between 1 and 100 (or higher if desired), here capped deterministically
+    #   k_i  is constructed from n_i in a deterministic manner
+    t = n
+    res = []
+    for i in range(1, t + 1):
+        ni = (i % 100) + 1  # ni in [1, 100]
+        ki = (i * i) % (4 * ni + 10) + 1  # ki in [1, 4*ni+10], deterministic
+
+        limit = -1
+        if ni <= 60:
+            limit = 0
+            pow4 = 1
+            for _ in range(ni):
+                limit += pow4
+                pow4 *= 4
+        if (limit < ki and limit != -1) or (ni == 2 and ki == 3):
+            res.append('NO')
+
+        else:
+            div = 1
+            ki -= 1
+            size = 1
+            while div < ni and ki >= 4 * size - 1:
+                ki -= 4 * size - 1
+                size *= 2
+                div += 1
+            res.append('YES ' + str(ni - div))
+
+    # print('\n'.join(res))
+    pass
 if __name__ == "__main__":
-    # 示例：以 n = 10 运行
+    # Example: run with input scale n = 10
     main(10)

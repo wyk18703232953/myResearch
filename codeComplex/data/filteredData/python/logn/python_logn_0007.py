@@ -8,9 +8,8 @@ def main(n: int):
 
     # 原逻辑：计算 (1<<(a^b).bit_length())-1
     result = (1 << (a ^ b).bit_length()) - 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模自行设定
     main(5)

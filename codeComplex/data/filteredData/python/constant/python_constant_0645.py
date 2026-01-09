@@ -1,61 +1,66 @@
-import random
-
 def COMMON(WHITE, BLACK):
     x1, y1, x2, y2 = WHITE
     x3, y3, x4, y4 = BLACK
     return (max(x1, x3), max(y1, y3), min(x2, x4), min(y2, y4))
 
+
 def BtoW(WHITE):
     x1, y1, x2, y2 = WHITE
-    area = (x2 - x1 + 1) * (y2 - y1 + 1)
     if (x1 + y1) % 2 == 0:
-        return area // 2
+        return (x2 - x1 + 1) * (y2 - y1 + 1) // 2
+
     else:
-        return area - area // 2
+        return (x2 - x1 + 1) * (y2 - y1 + 1) - (x2 - x1 + 1) * (y2 - y1 + 1) // 2
+
 
 def WtoB(BLACK):
     x1, y1, x2, y2 = BLACK
-    area = (x2 - x1 + 1) * (y2 - y1 + 1)
     if (x1 + y1) % 2 == 1:
-        return area // 2
+        return (x2 - x1 + 1) * (y2 - y1 + 1) // 2
+
     else:
-        return area - area // 2
+        return (x2 - x1 + 1) * (y2 - y1 + 1) - (x2 - x1 + 1) * (y2 - y1 + 1) // 2
+
+
+def generate_testcase(i, base_n):
+    # n, m grow with i and base_n to scale the problem size deterministically
+    n = base_n + i
+    m = base_n + 2 * i
+
+    # Construct WHITE and BLACK rectangles deterministically
+    # Coordinates are 1-based and within grid [1..n] x [1..m]
+    x1 = 1 + (i % max(1, n // 3))
+    y1 = 1 + (i % max(1, m // 3))
+    x2 = min(n, x1 + (i % max(1, n // 2)))
+    y2 = min(m, y1 + (i % max(1, m // 2)))
+    WHITE = [x1, y1, x2, y2]
+
+    x3 = 1 + ((2 * i + 1) % max(1, n // 2))
+    y3 = 1 + ((2 * i + 1) % max(1, m // 2))
+    x4 = min(n, x3 + ((3 * i + 1) % max(1, n // 2)))
+    y4 = min(m, y3 + ((3 * i + 1) % max(1, m // 2)))
+    BLACK = [x3, y3, x4, y4]
+
+    return [n, m], WHITE, BLACK
+
 
 def main(n):
-    """
-    n: 规模，用作棋盘最大边长和测试用例数量的上界。
-       实际生成 testcase = max(1, n // 3) 组测试。
-    """
-    random.seed(0)
-    testcase = max(1, n // 3)
-    tests = []
+    # n controls both number of testcases and board sizes
+    testcase = max(1, n)
+    base_n = max(2, n)
 
-    for _ in range(testcase):
-        # 棋盘尺寸 1..n
-        rows = random.randint(1, max(1, n))
-        cols = random.randint(1, max(1, n))
+    T = []
+    for i in range(testcase):
+        nm, WHITE, BLACK = generate_testcase(i, base_n)
+        T.extend([nm, WHITE, BLACK])
 
-        def rand_rect(max_x, max_y):
-            x1 = random.randint(1, max_x)
-            x2 = random.randint(x1, max_x)
-            y1 = random.randint(1, max_y)
-            y2 = random.randint(y1, max_y)
-            return [x1, y1, x2, y2]
+    for test in range(testcase):
+        n_val, m_val = T[test * 3]
+        WHITE = T[test * 3 + 1]
+        BLACK = T[test * 3 + 2]
 
-        WHITE = rand_rect(rows, cols)
-        BLACK = rand_rect(rows, cols)
-        tests.extend([[rows, cols], WHITE, BLACK])
-
-    # 逻辑与原程序一致
-    idx = 0
-    for _ in range(testcase):
-        n_board, m_board = tests[idx]
-        WHITE = tests[idx + 1]
-        BLACK = tests[idx + 2]
-        idx += 3
-
-        ANSB = n_board * m_board // 2
-        ANSW = n_board * m_board - ANSB
+        ANSB = n_val * m_val // 2
+        ANSW = n_val * m_val - ANSB
 
         WHITE2 = COMMON(WHITE, BLACK)
 
@@ -72,8 +77,7 @@ def main(n):
         ANSB += m
         ANSW -= m
 
-        print(ANSW, ANSB)
-
+        # print(ANSW, ANSB)
+        pass
 if __name__ == "__main__":
-    # 示例：n=10
     main(10)

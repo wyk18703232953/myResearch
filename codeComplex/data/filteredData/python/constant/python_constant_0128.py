@@ -1,36 +1,21 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成一个测试整数（位数不超过 n）
-    # 约定：当 n <= 0 时，使用一个固定示例
-    if n <= 0:
-        test_value = "-123"
+    # 生成输入：单个整数，规模由 n 决定
+    # 这里构造一个既可能为正、也可能为负、也可能为小数位有限的整数
+    x = n * (-1) ** (n % 3)  # 在正负之间变化，并保证确定性
+    s = str(x)
+
+    # 原始逻辑开始
+    if int(s) > 0:
+        result = s
+    elif -9 <= int(s) <= 0:
+        result = "0"
+
     else:
-        # 位数在 1 到 n 之间
-        length = random.randint(1, n)
-        # 决定正负号
-        sign = random.choice([-1, 1])
-        # 第一位不能为 0（如果长度 > 1）
-        first_digit = random.randint(1, 9)
-        digits = [str(first_digit)]
-        # 后续位可以为 0-9
-        for _ in range(length - 1):
-            digits.append(str(random.randint(0, 9)))
-        test_value = str(sign * int("".join(digits)))
+        a = (-int(s)) // 10
+        b = ((-int(s)) // 100) * 10 + int(s[-1])
+        result = str(max(-a, -b))
 
-    # 以下是原逻辑的改写（用 test_value 代替 input()）
-    s = test_value  # 原来的 n 是字符串，这里用 s 表示
-    x = int(s)
-
-    if x > 0:
-        print(s)
-    elif -9 <= x <= 0:
-        print(0)
-    else:
-        a = (-x) // 10
-        b = ((-x) // 100) * 10 + int(s[-1])
-        print(max(-a, -b))
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模设为 5
-    main(5)
+    main(1000)

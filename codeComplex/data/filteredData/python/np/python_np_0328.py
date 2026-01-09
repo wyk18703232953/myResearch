@@ -35,9 +35,8 @@ def main(n: int):
                         mem[i][val][k2] = add(mem[i - 1][j][k1], mem[i][val][k2])
 
     ans = sum(mem[-1][k]) % mod
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 5 作为测试规模
     main(5)

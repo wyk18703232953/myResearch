@@ -63,6 +63,7 @@ def main(n):
 
         if (a < b and c < d) or (a > b and c > d):
             l = mid + 1
+
         else:
             r = mid
 
@@ -75,4 +76,5 @@ if __name__ == "__main__":
     # 随便测几个 n
     for n in [4, 6, 8, 12, 16]:
         ans = main(n)
-        print(f"n={n}, answer={ans}")
+        # print(f"n={n}, answer={ans}")
+        pass

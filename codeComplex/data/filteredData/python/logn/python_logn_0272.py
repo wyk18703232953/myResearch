@@ -8,6 +8,7 @@ def fastexp(base, exp):
     t = fastexp(base, exp // 2)
     if exp % 2 == 0:
         return (t % mod * t % mod) % mod
+
     else:
         return (t % mod * t % mod * base % mod) % mod
 
@@ -18,7 +19,8 @@ def main(n):
     k = n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     t = fastexp(2, k) % mod
@@ -26,8 +28,8 @@ def main(n):
     while before < 0:
         before += mod
     before = before % mod
-    print(before)
-
+    # print(before)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行
     main(10)

@@ -1,23 +1,18 @@
 import math
-import random
 
-def main(n):
-    # 生成测试数据：
-    # people: 1 ~ n
-    # planes_each: 1 ~ n
-    # per: 1 ~ n
-    # sheets: 1 ~ n
-    people = random.randint(1, n)
-    planes_each = random.randint(1, n)
-    per = random.randint(1, n)
-    sheets = random.randint(1, n)
-
+def solve(people, planes_each, per, sheets):
     sheets_per_person = math.ceil(planes_each / per)
     needed = sheets_per_person * people
     packs = math.ceil(needed / sheets)
-    print(packs)
+    # print(packs)
+    pass
 
+def main(n):
+    people = n
+    planes_each = n + 1
+    per = (n % 5) + 1
+    sheets = (n % 7) + 1
+    solve(people, planes_each, per, sheets)
 
 if __name__ == "__main__":
-    # 示例调用，规模可调
-    main(100)
+    main(10)

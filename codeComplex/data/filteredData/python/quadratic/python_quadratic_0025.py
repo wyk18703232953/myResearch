@@ -45,14 +45,14 @@ def main(n: int) -> None:
     """
     if n <= 0:
         # 对于非正 n，视为空数字串，这里直接输出 0
-        print(0)
+        # print(0)
+        pass
         return
 
     num_str = "1" * n
     ans = solve(num_str)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：将这里的 n 改成需要的规模后直接运行
     main(5)

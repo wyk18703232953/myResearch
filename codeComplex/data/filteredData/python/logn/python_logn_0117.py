@@ -1,4 +1,6 @@
-import random
+import math
+import string
+from functools import reduce
 
 def solve(L, R):
     if L == R:
@@ -13,23 +15,16 @@ def solve(L, R):
     return pow(2, r) - 1
 
 def main(n):
-    """
-    n 作为规模参数，用于生成测试数据。
-    这里设定：
-      - 生成一组 (L, R)
-      - 0 <= L <= R < 2^n
-    """
-    if n <= 0:
-        n = 1
-    max_val = (1 << n) - 1
-
-    # 生成随机 L, R，保证 L <= R
-    L = random.randint(0, max_val)
-    R = random.randint(L, max_val)
-
+    if n < 2:
+        n = 2
+    # Deterministically generate L and R based on n
+    # Ensure 0 <= L <= R and R grows with n
+    L = n // 3
+    R = n
+    if L > R:
+        L, R = R, L
     ans = solve(L, R)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 可以在这里修改 n 进行本地测试
     main(10)

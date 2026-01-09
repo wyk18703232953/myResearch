@@ -1,44 +1,62 @@
-from collections import deque
-from random import randint
+def main(n):
+    from collections import deque
 
-dx = [0, 0, 1, -1]
-dy = [1, -1, 0, 0]
+    mod = 1000000007
+    INF = float('inf')
 
-def solve(n, m, k, l):
+    # Deterministically map n to (rows, cols, number of starting points)
+    # Ensure all are at least 1
+    rows = max(1, n)
+    cols = max(1, (n * 2) // 3 + 1)
+    k = max(1, n // 3)
+
+    # Generate k distinct starting positions within the grid deterministically
+    # Using simple arithmetic; positions are 1-based as in the original code
+    starts = []
+    used = set()
+    i = 0
+    while len(starts) < k:
+        r = (i * 2) % rows + 1
+        c = (i * 3) % cols + 1
+        if (r, c) not in used:
+            used.add((r, c))
+            starts.append((r, c))
+        i += 1
+
+    # Flatten starts to mimic original `l` list of length 2*k
+    l = []
+    for r, c in starts:
+        l.append(r)
+        l.append(c)
+
+    dx = [0, 0, 1, -1]
+    dy = [1, -1, 0, 0]
+
+    n_rows, m_cols = rows, cols
     q = deque()
-    v = [[0] * (m + 1) for _ in range(n + 1)]
-    for i in range(0, 2 * k - 1, 2):
-        x, y = l[i], l[i + 1]
-        if 1 <= x <= n and 1 <= y <= m:
-            q.append((x, y))
-            v[x][y] = 1
+    v = [[0] * (m_cols + 1) for _ in range(n_rows + 1)]
 
-    a = b = -1
+    for i in range(0, 2 * k - 1, 2):
+        a0, b0 = l[i], l[i + 1]
+        q.append((a0, b0))
+        v[a0][b0] = 1
+
+    a = b = 1  # fallback initialization
     while q:
         a, b = q.popleft()
         for i in range(4):
             A, B = a + dx[i], b + dy[i]
-            if 1 <= A <= n and 1 <= B <= m and not v[A][B]:
-                q.append((A, B))
-                v[A][B] = 1
+            if 1 <= A <= n_rows and 1 <= B <= m_cols:
+                if not v[A][B]:
+                    q.append((A, B))
+                    v[A][B] = 1
+
+    # Return last visited cell instead of printing, for experiment use
     return a, b
 
-def main(n):
-    # 规模 n: 生成一个 n x n 的网格，k 个随机起点
-    m = n
-    # 至少 1 个起点，至多 n，避免过多
-    k = max(1, min(n, 3))
-    l = []
-    used = set()
-    while len(used) < k:
-        x = randint(1, n)
-        y = randint(1, m)
-        if (x, y) not in used:
-            used.add((x, y))
-            l.extend([x, y])
-    a, b = solve(n, m, k, l)
-    print(a, b)
 
 if __name__ == "__main__":
-    # 示例: 规模为 5
-    main(5)
+    # Example deterministic call; adjust n as needed for experiments
+    result = main(10)
+    # print(result[0], result[1])
+    pass

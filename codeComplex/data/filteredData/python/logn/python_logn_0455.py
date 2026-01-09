@@ -17,6 +17,7 @@ def main(n):
         # 原逻辑开始
         if (ni == 2 and ki == 3) or (ni <= 30 and ki > (4 ** ni - 1) // 3):
             results.append("NO")
+
         else:
             cn = ni - 1
             ck = ki - 1
@@ -28,9 +29,8 @@ def main(n):
             results.append(f"YES {cn}")
 
     # 输出所有结果
-    print("\n".join(results))
-
-
+    # print("\n".join(results))
+    pass
 if __name__ == "__main__":
     # 示例：运行规模 n = 5
     main(5)

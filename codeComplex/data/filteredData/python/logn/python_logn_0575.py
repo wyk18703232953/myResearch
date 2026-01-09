@@ -6,9 +6,8 @@ def main(n):
     while n > x * y:
         n, x, y = n - x * y, x + 1, y * 10
     a = str(10 ** (x - 1) + n // x)[n % x]
-    print(a)
-
-
+    # print(a)
+    pass
 if __name__ == "__main__":
     # 示例测试：根据规模 n 生成一个测试
     # 可以自行修改下面的 n_test 验证不同规模

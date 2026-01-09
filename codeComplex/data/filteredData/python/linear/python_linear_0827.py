@@ -1,39 +1,35 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # q：测试组数，限制总长度大致为 n
-    # 每组随机长度，和一个 k（1 <= k <= 当前串长）
-    q = max(1, n // 5)  # 比如总共差不多 n 个字符量级
-    test_cases = []
-    remaining = n
-    for _ in range(q):
-        if remaining <= 0:
-            break
-        # 当前字符串长度在 [1, remaining] 中随机
-        cur_n = random.randint(1, max(1, remaining))
-        remaining -= cur_n
-        # k 在 [1, cur_n]
-        k = random.randint(1, cur_n)
-        # 生成长度为 cur_n 的只含 R,G,B 的字符串
-        S = ''.join(random.choice('RGB') for _ in range(cur_n))
-        test_cases.append((cur_n, k, S))
-    # 如果因为 remaining <= 0 导致没有生成任何用例，补一个最小用例
-    if not test_cases:
-        cur_n = max(1, n)
-        k = random.randint(1, cur_n)
-        S = ''.join(random.choice('RGB') for _ in range(cur_n))
-        test_cases.append((cur_n, k, S))
+    # n 表示每个测试用例的字符串长度
+    # 构造确定性的多测试用例结构：
+    #  - q = n（测试用例数量）
+    #  - 每个测试用例：
+    #       length = n
+    #       k = n//2 + (t % (n//2 + 1))  （1 <= k <= n）
+    #       S 为长度为 n 的 RGB 序列，周期性构造
+    if n <= 0:
+        return
 
-    # 按原逻辑处理并打印答案
-    for (n_i, k_i, S_str) in test_cases:
-        S = list(S_str)
+    q = n
+    results = []
 
-        for i in range(n_i):
+    for t in range(q):
+        length = n
+        base_k = n // 2
+        k = base_k + (t % (n - base_k if n - base_k > 0 else 1))
+        if k > n:
+            k = n
+
+        # 构造确定性的字符串 S，长度为 n，周期 RGB
+        chars = ['R', 'G', 'B']
+        S = [chars[i % 3] for i in range(length)]
+
+        # 原算法逻辑开始
+        for i in range(length):
             if S[i] == "R":
                 S[i] = 0
             elif S[i] == "G":
                 S[i] = 1
+
             else:
                 S[i] = 2
 
@@ -41,23 +37,26 @@ def main(n):
 
         for mod in range(3):
             SUM = 0
-            for i in range(k_i):
+            for i in range(k):
                 if S[i] % 3 != (mod + i) % 3:
                     SUM += 1
 
-            ANS = min(ANS, SUM)
+            if SUM < ANS:
+                ANS = SUM
 
-            for i in range(k_i, n_i):
-                if S[i - k_i] != (mod + (i - k_i)) % 3:
+            for i in range(k, length):
+                if S[i - k] != (mod + (i - k)) % 3:
                     SUM -= 1
                 if S[i] != (mod + i) % 3:
                     SUM += 1
+                if SUM < ANS:
+                    ANS = SUM
 
-                ANS = min(ANS, SUM)
+        results.append(ANS)
 
-        print(ANS)
-
-
+    # 为了时间复杂度实验，仅输出最后一个测试用例的结果，避免大量 IO 干扰
+    if results:
+        # print(results[-1])
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 50
-    main(50)
+    main(10)

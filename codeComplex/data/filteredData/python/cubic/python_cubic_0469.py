@@ -1,56 +1,60 @@
-import random
 import math
 from collections import defaultdict as dd
 
 mod = 1000000007
 
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 这里设置：
-    #   m 与 n 相同，形成 n x n 网格
-    #   k 与 2*n 相同，保证为偶数且能体现一定路径长度
+    # Interpret n as grid size: n x n, and k = 2 * n (even and scales with n)
+    if n <= 0:
+        return
     m = n
-    k = 2 * n  # 可根据需要调整生成规则，只要保证为偶数即可
+    k = 2 * n
 
-    # 生成权重矩阵：
-    # h: 水平方向边权，大小 n x (m-1)
-    # v: 垂直方向边权，大小 (n-1) x m
-    # 边权随机生成为 1~9 的整数
-    h = [[random.randint(1, 9) for _ in range(m - 1)] for _ in range(n)]
-    v = [[random.randint(1, 9) for _ in range(m)] for _ in range(n - 1)]
+    # Generate deterministic horizontal and vertical edge weights
+    # h: n rows, m-1 columns
+    h = []
+    for i in range(n):
+        row = [(i * m + j) % 9 + 1 for j in range(m - 1)]
+        h.append(row)
+    # v: n-1 rows, m columns
+    v = []
+    for i in range(n - 1):
+        row = [((i + 1) * m + j * 2) % 9 + 1 for j in range(m)]
+        v.append(row)
 
-    # 三维 DP 数组: dp[i][j][l] 表示从 (i,j) 出发走 l 步的最小代价(一边)
-    dp = [[[0 for _ in range(k // 2 + 1)] for _ in range(m)] for _ in range(n)]
+    # Initialize dp array: dp[i][j][l] = minimal cost from (i,j) in exactly l steps
+    max_l = k // 2
+    dp = [[[0 for _ in range(max_l + 1)] for _ in range(m)] for _ in range(n)]
 
-    def sol(n, m, k):
-        for l in range(1, k // 2 + 1):
-            for i in range(n):
-                for j in range(m):
-                    dp[i][j][l] = float("inf")
-                    if j - 1 >= 0:
-                        dp[i][j][l] = min(dp[i][j][l], dp[i][j - 1][l - 1] + h[i][j - 1])
-                    if i - 1 >= 0:
-                        dp[i][j][l] = min(dp[i][j][l], dp[i - 1][j][l - 1] + v[i - 1][j])
-                    if j + 1 < m:
-                        dp[i][j][l] = min(dp[i][j][l], dp[i][j + 1][l - 1] + h[i][j])
-                    if i + 1 < n:
-                        dp[i][j][l] = min(dp[i][j][l], dp[i + 1][j][l - 1] + v[i][j])
-        return dp
-
-    if k % 2:
+    for l in range(1, max_l + 1):
         for i in range(n):
             for j in range(m):
-                print(-1, end=" ")
-            print()
-    else:
-        ans = sol(n, m, k)
-        for i in range(n):
-            for j in range(m):
-                # 原题要求往返路径总步数为 k，因此乘 2
-                print(2 * ans[i][j][k // 2], end=" ")
-            print()
+                best = float("inf")
+                if j - 1 >= 0:
+                    cost = dp[i][j - 1][l - 1] + h[i][j - 1]
+                    if cost < best:
+                        best = cost
+                if i - 1 >= 0:
+                    cost = dp[i - 1][j][l - 1] + v[i - 1][j]
+                    if cost < best:
+                        best = cost
+                if j + 1 < m:
+                    cost = dp[i][j + 1][l - 1] + h[i][j]
+                    if cost < best:
+                        best = cost
+                if i + 1 < n:
+                    cost = dp[i + 1][j][l - 1] + v[i][j]
+                    if cost < best:
+                        best = cost
+                dp[i][j][l] = best
 
-
-# 示例调用（提交到评测系统时可删除或注释）
+    # Print result matrix: minimal cost to return in exactly k steps = 2 * dp[i][j][k//2]
+    for i in range(n):
+        row_vals = []
+        for j in range(m):
+            row_vals.append(str(2 * dp[i][j][max_l]))
+        # print(" ".join(row_vals))
+        pass
 if __name__ == "__main__":
-    main(3)
+    # Example deterministic call for experimentation
+    main(5)

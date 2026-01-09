@@ -1,25 +1,32 @@
-import random
+def main(n):
+    # Deterministically generate a and b from n
+    # a is a number whose digits are 0..9 repeated to reach length n+1 (avoid leading zero)
+    # b is a descending number using digits 9..0 repeated to reach same length
+    length = max(1, n + 1)
 
-def main(n: int):
-    # 生成测试数据：随机生成 a、b，规模由 n 控制
-    # 让 a 为 n 位数（首位不为 0），b 为 n 位数（可能比 a 大或小）
-    if n <= 0:
-        return
+    # generate digits for a (avoid leading zero)
+    digits_a = [((i % 9) + 1) for i in range(length)]
+    a = 0
+    for d in digits_a:
+        a = a * 10 + d
 
-    # 生成 n 位数的 a
-    a_digits = [random.randint(1, 9)] + [random.randint(0, 9) for _ in range(n - 1)]
-    a = int("".join(map(str, a_digits)))
+    # generate digits for b (allow 0 inside, but first digit non-zero)
+    digits_b = []
+    for i in range(length):
+        if i == 0:
+            digits_b.append(9)
 
-    # 生成 n 位数的 b
-    b_digits = [random.randint(1, 9)] + [random.randint(0, 9) for _ in range(n - 1)]
-    b = int("".join(map(str, b_digits)))
+        else:
+            digits_b.append(9 - (i % 10))
+    b = 0
+    for d in digits_b:
+        b = b * 10 + d
 
-    # 原逻辑开始
     x = [0] * 10
-    ta = a
-    while ta:
-        x[ta % 10] += 1
-        ta //= 10
+    temp_a = a
+    while temp_a:
+        x[temp_a % 10] += 1
+        temp_a = temp_a // 10
 
     ans = 0
     for i in range(9, -1, -1):
@@ -27,43 +34,42 @@ def main(n: int):
             ans = ans * 10 + i
 
     if ans <= b:
-        print(ans)
-        return
+        # print(ans)
+        pass
 
-    ans = 0
-    for ch in str(b):
-        c = int(ch)
-        while c >= 0 and not x[c]:
-            c -= 1
-        if c < 0:
-            # 回退
-            while True:
-                x[ans % 10] += 1
-                d = ans % 10
-                ans //= 10
-                flag = 0
-                for bb in range(d - 1, -1, -1):
-                    if x[bb]:
-                        ans = ans * 10 + bb
-                        x[bb] -= 1
-                        flag = 1
+    else:
+        ans = 0
+        b_str = str(b)
+        for ch in b_str:
+            c = int(ch)
+            while c >= 0 and not x[c]:
+                c -= 1
+            if c < 0:
+                while True:
+                    x[ans % 10] += 1
+                    d = ans % 10
+                    ans = ans // 10
+                    flag = 0
+                    for bb in range(d - 1, -1, -1):
+                        if x[bb]:
+                            ans = ans * 10 + bb
+                            x[bb] -= 1
+                            flag = 1
+                            break
+                    if flag:
                         break
-                if flag:
-                    break
-            break
-        else:
-            x[c] -= 1
-            ans = ans * 10 + c
-            if c < int(ch):
                 break
 
-    for j in range(9, -1, -1):
-        for _ in range(x[j]):
-            ans = ans * 10 + j
+            else:
+                x[c] -= 1
+                ans = ans * 10 + c
+                if c < int(ch):
+                    break
 
-    print(ans)
-
-
+        for j in range(9, -1, -1):
+            for _ in range(x[j]):
+                ans = ans * 10 + j
+        # print(ans)
+        pass
 if __name__ == "__main__":
-    # 示例：规模为 5
-    main(5)
+    main(10)

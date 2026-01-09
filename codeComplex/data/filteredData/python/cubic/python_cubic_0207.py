@@ -1,15 +1,15 @@
-import random
-
 def main(n):
-    # 规模 n 用来控制 R, G, B 的大小，这里简单设为都等于 n
-    R = G = B = n
+    # Map n to sizes of R, G, B in a simple deterministic way
+    # Ensure they are at least 1
+    R = max(1, n)
+    G = max(1, n // 2 if n >= 2 else 1)
+    B = max(1, n // 3 if n >= 3 else 1)
 
-    # 生成测试数据：随机正整数（可以按需调整范围）
-    r = [random.randint(1, 1000) for _ in range(R)]
-    g = [random.randint(1, 1000) for _ in range(G)]
-    b = [random.randint(1, 1000) for _ in range(B)]
+    # Deterministic generation of r, g, b
+    r = [(i * 2 + 1) for i in range(R)]
+    g = [(i * 3 + 2) for i in range(G)]
+    b = [(i * 5 + 3) for i in range(B)]
 
-    # 原逻辑
     r.sort(reverse=True)
     g.sort(reverse=True)
     b.sort(reverse=True)
@@ -29,10 +29,8 @@ def main(n):
         dp[nr][ng][nb] = res
         return res
 
-    ans = calc(0, 0, 0)
-    print(ans)
-    return ans
-
+    result = calc(0, 0, 0)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：n=3
-    main(3)
+    main(5)

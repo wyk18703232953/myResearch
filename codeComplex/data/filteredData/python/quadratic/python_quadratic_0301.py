@@ -1,24 +1,27 @@
-import random
+def main(n):
+    # 生成确定性输入：长度为 n 的整数列表
+    # 构造方式：重复模式 [0,1,2,3,4]，保证存在重复元素，避免 index 出错
+    if n <= 1:
+        xs = [0, 0]  # 保证至少一个可匹配对
 
-def main(n: int) -> int:
-    # 生成测试数据：长度为 2 * n 的数组，每个数字恰好出现两次
-    # 保证原算法中的 xs.index(xs[0], 1) 总能在后面找到匹配
-    xs = list(range(1, n + 1)) * 2
-    random.shuffle(xs)
+    else:
+        xs = [i % 5 for i in range(n)]
+        # 确保首元素在后面至少再出现一次
+        if xs.count(xs[0]) == 1:
+            xs[0] = xs[-1]
 
     res = 0
-
-    # 原逻辑：反复取 xs[0]，在后面找到相同元素位置 j
-    # 计算 j - 1 累加后，删除这一对元素
-    while xs:
+    while len(xs) > 1:
+        # 寻找和首元素相同的下一个元素位置
         j = xs.index(xs[0], 1)
         res += j - 1
-        xs = xs[1:j] + xs[j + 1:]
+        xs = xs[1:j] + xs[j+1:]
 
-    # 这里返回结果，方便测试使用
     return res
 
 
 if __name__ == "__main__":
-    # 示例：运行时默认测试 n=5，可根据需要修改
-    print(main(5))
+    # 示例调用
+    for n in [2, 5, 10, 20]:
+        # print(n, main(n))
+        pass

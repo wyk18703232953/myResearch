@@ -25,9 +25,8 @@ def main(n: int):
     for tc in range(1, tcs + 1):
         k = tc  # 简单按序生成测试数据
         ans = solve(k)
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：当 n = 10 时，生成并求解 10 个测试用例
     main(10)

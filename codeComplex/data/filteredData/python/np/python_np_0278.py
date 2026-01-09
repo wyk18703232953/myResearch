@@ -37,6 +37,7 @@ def main(n):
                 m2 = u - 2 ** num
                 if pow2(m1) == (num + 1):
                     u = m1
+
                 else:
                     u = m2
 
@@ -44,9 +45,8 @@ def main(n):
 
     # 输出结果
     for val in results:
-        print(val)
-
-
+        # print(val)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

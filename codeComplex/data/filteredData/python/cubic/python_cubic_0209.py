@@ -1,14 +1,42 @@
-import random
-
 def main(n):
-    # 生成规模：让三个数组长度都等于 n
-    r = g = b = n
+    # Interpret n as the total size split among three arrays R, G, B
+    # Ensure at least size 1 for each when n >= 3
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-    # 生成测试数据（1 到 100 的随机整数）
-    R = [random.randint(1, 100) for _ in range(r)]
-    G = [random.randint(1, 100) for _ in range(g)]
-    B = [random.randint(1, 100) for _ in range(b)]
+    # Simple deterministic split of n into r, g, b
+    r = n // 3
+    g = (n - r) // 2
+    b = n - r - g
 
+    if r == 0:
+        r = 1
+    if g == 0 and n >= 2:
+        g = 1
+    if b == 0 and n >= 3:
+        b = 1
+
+    # Re-adjust if sum exceeds n, which can only happen for very small n
+    total = r + g + b
+    while total > n and b > 1:
+        b -= 1
+        total -= 1
+    while total > n and g > 1:
+        g -= 1
+        total -= 1
+    while total > n and r > 1:
+        r -= 1
+        total -= 1
+
+    # Deterministic generation of arrays
+    # Use descending patterns so that after sorting(reverse=True) they remain the same
+    R = [r * 2 - i for i in range(r)]
+    G = [g * 3 - i for i in range(g)]
+    B = [b * 5 - i for i in range(b)]
+
+    # Core algorithm logic (unchanged except using generated R,G,B)
     R.sort(reverse=True)
     G.sort(reverse=True)
     B.sort(reverse=True)
@@ -40,9 +68,8 @@ def main(n):
 
                 dp[i][j][k] = max(case1, case2, case3, case4, case5, case6)
 
-    print(dp[0][0][0])
-
-
+    # print(dp[0][0][0])
+    pass
 if __name__ == "__main__":
-    # 示例：n = 3
-    main(3)
+    # Example: run with a specific input scale n
+    main(10)

@@ -1,19 +1,20 @@
-import random
+def main(n):
+    # 原程序输入结构：a b c n
+    # 这里将输入规模参数映射为原程序中的 n_input
+    n_input = n
 
-def main(n: int):
-    # 随机生成符合题意范围的 a, b, c
-    # 可根据需要调整范围（例如 0~n 或更大）
-    a = random.randint(0, n)
-    b = random.randint(0, n)
-    c = random.randint(0, max(a, b))  # 保证 c 不会太离谱，也可能制造非法情况
+    # 确定性生成 a, b, c
+    a = n_input // 2
+    b = n_input // 3 + 1
+    c = min(a, b) // 2
 
     t = a + b - c
-    if a >= n or b >= n or c > a or c > b or t >= n:
-        print(-1)
+    if a >= n_input or b >= n_input or c > a or c > b or t >= n_input:
+        # print(-1)
+        pass
+
     else:
-        print(n - t)
-
-
+        # print(n_input - t)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，指定规模 n
     main(10)

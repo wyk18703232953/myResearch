@@ -66,11 +66,13 @@ def main(n):
     """
     if n <= 0:
         # trivial case: nothing to do
-        print(0)
+        # print(0)
+        pass
         return
 
     if n == 1:
         n_str = '1'
+
     else:
         # binary string of length n with two ones at ends as a sample
         n_str = '1' + '0' * (n - 2) + '1'
@@ -79,8 +81,8 @@ def main(n):
     k = min(3, n)
 
     ans = solve(n_str, k)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example: call main with some scale, e.g., n = 10
     main(10)

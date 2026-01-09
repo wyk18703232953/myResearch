@@ -23,6 +23,7 @@ def main(n):
     # 处理最后一个数
     if w % d == 0:
         p.append(str(w))
+
     else:
         g = w // d
         r = d * g

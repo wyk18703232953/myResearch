@@ -1,13 +1,68 @@
+from io import BytesIO, IOBase
+import sys
 import math
-import random
+import os
+from collections import defaultdict
+from math import ceil
+from bisect import bisect_left, bisect_left
 
 
-def solve_instance(n, m, k, horizontal, vertical):
-    # Original solve() logic, but parameterized instead of using input()
+BUFSIZE = 8192
+
+
+class FastIO(IOBase):
+    newlines = 0
+
+    def __init__(self, file):
+        self._fd = file.fileno()
+        self.buffer = BytesIO()
+        self.writable = "x" in file.mode or "r" not in file.mode
+        self.write = self.buffer.write if self.writable else None
+
+    def read(self):
+        while True:
+            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+            if not b:
+                break
+            ptr = self.buffer.tell()
+            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+        self.newlines = 0
+        return self.buffer.read()
+
+    def readline(self):
+        while self.newlines == 0:
+            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+            self.newlines = b.count(b"\n") + (not b)
+            ptr = self.buffer.tell()
+            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+        self.newlines -= 1
+        return self.buffer.readline()
+
+    def flush(self):
+        if self.writable:
+            os.write(self._fd, self.buffer.getvalue())
+            self.buffer.truncate(0), self.buffer.seek(0)
+
+
+class IOWrapper(IOBase):
+    def __init__(self, file):
+        self.buffer = FastIO(file)
+        self.flush = self.buffer.flush
+        self.writable = self.buffer.writable
+        self.write = lambda s: self.buffer.write(s.encode("ascii"))
+        self.read = lambda: self.buffer.read().decode("ascii")
+        self.readline = lambda: self.buffer.readline().decode("ascii")
+
+
+sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
+
+
+def solve(n, m, k, horizontal, vertical):
     if k % 2 or max(n, m) == 1:
-        # Return a matrix of -1s
-        return [[-1] * m for _ in range(n)]
-
+        for _ in range(n):
+            # print(*[-1] * m)
+            pass
+        return
     dp = [[[0] * (k // 2 + 1) for _ in range(m)] for _ in range(n)]
     for length in range(1, k // 2 + 1):
         for i in range(n):
@@ -17,43 +72,31 @@ def solve_instance(n, m, k, horizontal, vertical):
                 top_path = math.inf if i == 0 else vertical[i - 1][j] + dp[i - 1][j][length - 1]
                 bottom_path = math.inf if i == n - 1 else vertical[i][j] + dp[i + 1][j][length - 1]
                 dp[i][j][length] = min(left_path, right_path, top_path, bottom_path)
-
-    res = []
     for i in range(n):
-        row = []
         for j in range(m):
-            row.append(dp[i][j][k // 2] * 2)
-        res.append(row)
-    return res
+            # print(dp[i][j][k // 2] * 2, end=" ")
+            pass
+        # print()
+        pass
 
 
 def main(n):
-    """
-    n: problem scale parameter.
-       We will generate:
-         - grid dimensions: n x n
-         - k as an even number related to n
-         - random weights for edges.
-    """
-    # You can adjust how m and k depend on n.
-    # Here we choose a square grid n x n and k = 2 * min(n, n) (any even number is fine).
-    m = n
-    # Ensure k is even and not too small; choose something proportional to grid size
-    k = 2 * max(1, n)
+    # Interpret n as grid size; keep k small and even relative to n for scalability.
+    if n < 2:
+        rows = 1
+        cols = 1
+        k = 2
 
-    # Generate test data
-    # horizontal[i][j] : cost between (i,j) and (i,j+1), shape n x (m-1)
-    horizontal = [[random.randint(1, 10) for _ in range(m - 1)] for _ in range(n)]
-    # vertical[i][j]   : cost between (i,j) and (i+1,j), shape (n-1) x m
-    vertical = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
-
-    ans = solve_instance(n, m, k, horizontal, vertical)
-
-    # Output in the same format as original: n lines, each with m integers
-    for i in range(n):
-        print(*ans[i])
+    else:
+        rows = n
+        cols = n
+        # path length parameter, even, grows slowly with n
+        k = 2 * (1 + n // 5)
+    # Construct deterministic weights using simple arithmetic on indices
+    horizontal = [[(i + j) % 7 + 1 for j in range(cols - 1)] for i in range(rows)]
+    vertical = [[(i * 2 + j) % 9 + 1 for j in range(cols)] for i in range(rows - 1)]
+    solve(rows, cols, k, horizontal, vertical)
 
 
 if __name__ == "__main__":
-    # Example: run with n = 4
-    main(4)
+    main(5)

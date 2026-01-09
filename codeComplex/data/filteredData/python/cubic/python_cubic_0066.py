@@ -20,8 +20,8 @@ def main(n):
                 continue
             if cnt(s, s[i:j + 1]) >= 2:
                 ln = max(ln, j - i + 1)
-    print(ln)
-
+    # print(ln)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(20)，可按需修改 n
     main(20)

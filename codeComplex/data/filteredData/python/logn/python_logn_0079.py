@@ -1,5 +1,3 @@
-import random
-
 def maxXORInRange(L, R):
     LXR = L ^ R
     msbPos = 0
@@ -13,14 +11,12 @@ def maxXORInRange(L, R):
         msbPos -= 1
     return maxXOR
 
-def main(n):
-    # 根据规模 n 生成测试数据：
-    # 让 L, R 落在 [0, 2^n - 1]，并保证 L <= R
-    upper = (1 << n) - 1
-    L = random.randint(0, upper)
-    R = random.randint(L, upper)
-    print(maxXORInRange(L, R))
 
+def main(n):
+    L = n
+    R = 2 * n + 3
+    result = maxXORInRange(L, R)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：n = 10，可根据需要修改
     main(10)

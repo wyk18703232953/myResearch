@@ -4,18 +4,22 @@ def main(n):
     k = (n + 1) // 2
 
     if k - n >= n:
-        print(0)
+        # print(0)
+        pass
         return
 
     if k <= n:
         if k % 2:
-            print(k // 2)
+            # print(k // 2)
+            pass
+
         else:
-            print(k // 2 - 1)
+            # print(k // 2 - 1)
+            pass
+
     else:
-        print(n - k // 2)
-
-
+        # print(n - k // 2)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

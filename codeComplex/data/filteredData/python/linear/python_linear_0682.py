@@ -1,26 +1,25 @@
-import random
-
 def main(n):
-    # 生成规模为 2n 的测试数据（原程序中实际使用的 n 是输入的一半）
-    # 这里生成 2n 个 0~100 之间的随机整数
-    a = [random.randint(0, 100) for _ in range(2 * n)]
+    # In the original code, the first input is an integer whose half (integer division) is used as n
+    # The second input is a list of 2*n integers.
+    # Here, we deterministically generate a list 'a' of length 2*n.
+    size = 2 * n
+    a = [(i % 7) + (i // 3) for i in range(size)]
 
-    # 以下是原逻辑，将原始的 n=int(input())//2 替换为使用参数 n
-    b = [0] * n
+    n_half = n
+    b = [0] * n_half
     a.reverse()
     for i in a:
         b.append(i)
     mem = b[-1]
     c = 0
-    for i in range(n - 1):
+    for i in range(n_half - 1):
         if b[-2 - i] - c > mem:
             c = b[-2 - i] - mem
         b[-2 - i] -= c
         b[1 + i] += c
         mem = b[-2 - i]
     for i in b:
-        print(i, end=' ')
-
-# 示例调用
+        # print(i, end=' ')
+        pass
 if __name__ == "__main__":
     main(5)

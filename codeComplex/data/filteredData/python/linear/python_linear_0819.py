@@ -13,9 +13,8 @@ def main(n):
         c += 1
 
     # 输出结果
-    print(n - c)
-
-
+    # print(n - c)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 可按需要调整
     main(10)

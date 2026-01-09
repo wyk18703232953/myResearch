@@ -5,9 +5,8 @@ def main(n: int):
 
     # 原逻辑：给定 n, s，输出 (s + n - 1) // n
     result = (s + n - 1) // n
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时可按需修改 n
     main(10)

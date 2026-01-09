@@ -4,10 +4,12 @@ def main(n):
     edges = []
     if n == 1:
         # 原逻辑中 n>=2 才有意义，这里 n=1 时直接返回
-        print("No")
+        # print("No")
+        pass
         return
     elif n == 2:
         edges.append((1, 2))
+
     else:
         # 生成一棵“星形”树：1 与 2..n 相连
         # 这样 1 的度最大，且叶子最多，便于测试逻辑
@@ -19,9 +21,12 @@ def main(n):
     if n == 2:
         # 原程序在读完 n 和一条边后就直接输出固定答案
         # 这里按原逻辑输出
-        print("Yes")
-        print(1)
-        print("1 2")
+        # print("Yes")
+        pass
+        # print(1)
+        pass
+        # print("1 2")
+        pass
         return
 
     for u, v in edges:
@@ -31,15 +36,18 @@ def main(n):
     ix = deg.index(max(deg))
 
     if deg[ix] < 3 or deg.count(1) + deg.count(2) == n - 1:
-        print("Yes")
-        print(deg.count(1))
+        # print("Yes")
+        pass
+        # print(deg.count(1))
+        pass
         for i in range(n):
             if deg[i] == 1:
-                print(i + 1, ix + 1)
+                # print(i + 1, ix + 1)
+                pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

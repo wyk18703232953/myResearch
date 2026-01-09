@@ -1,45 +1,26 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：一个长度为 n 的数组 a[1..n]，满足 sum(a) 为偶数且 >= 2(n-1)
-    # 原程序的 a[0] 没用，这里保持同样结构，a[1..n] 有意义
-    if n <= 0:
-        return
-
-    # 简单生成：先给每个点 1~3 度，再微调以满足 sum 条件
+def main(n):
+    # Deterministic data generation: degree list a[1..n]
+    # Example: ensure sum(a) >= 2*(n-1) is not enforced; we just mimic original behavior.
+    # Pattern: a[i] cycles through [0,1,2,3] for variety.
     a = [0]
-    degs = [random.randint(1, 3) for _ in range(n)]
-    s = sum(degs)
-    need = 2 * (n - 1)
-
-    # 若总度太小，往上加
-    while s < need:
-        i = random.randrange(n)
-        degs[i] += 1
-        s += 1
-
-    # 若总度与 2(n-1) 奇偶性不同，调一调
-    if s % 2 != need % 2:
-        i = random.randrange(n)
-        degs[i] += 1
-        s += 1
-
-    # 现在 s >= need 且同奇偶，但原算法不保证可行性，这里只是生成“类似”的随机数据
-    a.extend(degs)
-
-    # 以下为原逻辑（去掉 input，直接使用 a 和 n）
-    edge = []
-    last, total_sum, ans = 0, 0, 0
-
+    total_sum = 0
     for i in range(1, n + 1):
-        total_sum += a[i]
+        val = i % 4  # 0,1,2,3 pattern
+        a.append(val)
+        total_sum += val
 
+    edge = []
+    last = 0
+    ans = 0
+
+    # Find last position with a[i] == 1
     for i in range(1, n + 1):
         if a[i] == 1:
             last = i
     if last != 0:
         a[last] = 0
 
+    # Connect nodes with degree > 1
     for i in range(1, n + 1):
         if a[i] > 1:
             if last:
@@ -47,6 +28,7 @@ def main(n: int):
                 ans += 1
             last = i
 
+    # Connect remaining degree-1 nodes to last
     for i in range(1, n + 1):
         if a[i] == 1 and last:
             edge.append([last, i])
@@ -54,6 +36,7 @@ def main(n: int):
             a[i] = 0
             ans += 1
 
+    # Try to connect remaining degree-1 nodes using nodes with degree > 2
     for i in range(1, n + 1):
         for j in range(1, n + 1):
             if a[j] == 1 and a[i] > 2:
@@ -62,14 +45,17 @@ def main(n: int):
                 a[j] -= 1
 
     if len(edge) != n - 1:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES", ans)
-        print(len(edge))
+        # print("YES", ans)
+        pass
+        # print(len(edge))
+        pass
         for u, v in edge:
-            print(u, v)
-
-
+            # print(u, v)
+            pass
 if __name__ == "__main__":
-    # 示例：n=5 时运行一次
-    main(5)
+    # Example deterministic call; adjust n for scaling experiments
+    main(10)

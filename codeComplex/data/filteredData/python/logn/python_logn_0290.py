@@ -10,17 +10,19 @@ def main(n: int):
     k = n // 2
 
     if not x:
-        print(0)
+        # print(0)
+        pass
     elif not k:
-        print((x * 2) % mo)
+        # print((x * 2) % mo)
+        pass
+
     else:
         ans = x * pow(2, k + 1, mo) + 1 - pow(2, k, mo)
         ans %= mo
         ans += mo
         ans %= mo
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 的值进行测试
     main(10)

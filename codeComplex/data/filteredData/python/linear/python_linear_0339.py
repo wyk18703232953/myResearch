@@ -1,33 +1,38 @@
-import math
-import random
-
 def main(n):
-    # 生成测试数据：
-    # 1. 生成 d：取 1 到 10 之间的整数
-    d = random.randint(1, 10)
-    # 2. 生成 n 个递增的点位置 pos
-    #    为了避免过大数值，使用累加随机步长构造递增序列
+    import math
+
+    # Deterministic data generation
+    # Interpret n as the number of points; set d as a simple function of n
+    if n <= 0:
+        return 0
+
+    d = n // 3 + 1  # ensure d >= 1
+
+    # Generate strictly increasing positions with controlled gaps
+    # Gaps follow a simple deterministic pattern depending on d
     pos = []
-    current = random.randint(-50, 50)
-    pos.append(current)
-    for _ in range(1, n):
-        step = random.randint(1, 20)  # 确保递增
-        current += step
+    current = 0
+    for i in range(n):
+        gap = (i % (2 * d + 1)) + 1
+        current += gap
         pos.append(current)
 
-    # 原逻辑
     count = 2
     for i in range(1, n):
         if math.fabs(pos[i] - pos[i - 1]) > 2 * d:
             count += 2
         elif math.fabs(pos[i] - pos[i - 1]) == 2 * d:
             count += 1
+
         else:
             continue
 
-    # 输出结果（可根据需要一起输出测试数据用于验证）
-    print(count)
+    # For timing experiments, return the result instead of printing
+    return count
+
 
 if __name__ == "__main__":
-    # 举例执行 main，规模可修改
-    main(5)
+    # Example deterministic call for benchmarking
+    result = main(10)
+    # print(result)
+    pass

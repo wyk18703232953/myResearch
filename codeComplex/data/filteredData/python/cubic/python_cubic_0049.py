@@ -32,6 +32,7 @@ def divs(n, start=2):
         if (n % i == 0):
             if (n / i == i):
                 r.append(i)
+
             else:
                 r.extend([i, n // i])
     return r
@@ -68,7 +69,8 @@ def main(n: int):
     然后对其执行原始逻辑。
     """
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 生成测试数据：周期性的字母串，例如 n=10 -> "abcdefghij"
@@ -84,13 +86,13 @@ def main(n: int):
             sub = s[j: j + i]
             if sub in d:
                 d[sub] += 1
+
             else:
                 d[sub] = 1
         if max(d.values()) > 1:
             max_ = i
-    print(max_)
-
-
+    # print(max_)
+    pass
 if __name__ == "__main__":
     # 示例：可以修改这里的 n 来测试不同规模
     main(20)

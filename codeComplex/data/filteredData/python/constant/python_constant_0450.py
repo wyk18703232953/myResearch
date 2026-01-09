@@ -1,20 +1,17 @@
-import random
+def main(n):
+    # In the original code, two integers n, m are read, but only n is used.
+    # For scalability, we map the input scale parameter n to the original n,
+    # and choose a deterministic m based on n (though unused by the logic).
+    original_n = n
+    m = n + 1  # deterministic, unused in logic
 
-def main(n: int):
-    # 根据 n 生成测试数据，这里生成 m，保证 m >= 1
-    # 原题逻辑对 m 实际没有约束使用，这里随便生成一个与 n 同数量级的 m
-    m = random.randint(1, max(1, 10 * n))
+    # Core algorithm from original program
+    out1 = (original_n - 1) * '4' + '5'
+    out2 = original_n * '5'
 
-    # 原逻辑：读入 n, m 后输出两行
-    # 第一行：(n-1) 个字符 '4' 后接一个 '5'
-    if n <= 0:
-        return  # 规模为非正时，无输出
-    print('4' * (n - 1) + '5')
-
-    # 第二行：n 个字符 '5'
-    print('5' * n)
-
-
+    # print(out1)
+    pass
+    # print(out2)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
     main(5)

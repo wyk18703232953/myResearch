@@ -1,74 +1,75 @@
-import random
-
-# 交互器：根据隐藏的 A、B 返回比较结果
-# 返回值：
-#   1  如果 (A ^ x) > (B ^ y)
-#  -1  如果 (A ^ x) < (B ^ y)
-#   0  如果 (A ^ x) == (B ^ y)
-def judge(x, y, A, B):
-    ax = A ^ x
-    by = B ^ y
-    if ax > by:
-        return 1
-    elif ax < by:
-        return -1
-    else:
-        return 0
-
 def main(n):
-    # 1. 生成隐藏数据 A、B（n 位非负整数）
-    max_val = (1 << n) - 1
-    A = random.randint(0, max_val)
-    B = random.randint(0, max_val)
+    # For this refactoring, we remove interactive input and simulate answers deterministically.
+    # We treat n as the number of bits for x and y (up to 30 in original code).
+    # For determinism, define hidden x and y based on n.
+    # Example deterministic construction:
+    #   x = integer composed of alternating bits starting from LSB, masked to n bits
+    #   y = bitwise complement of x within n bits
+    # This guarantees a fixed, reproducible pair (x, y) for each n.
+    n_bits = max(1, min(30, n))  # original code uses 30 bits
+    mask = (1 << n_bits) - 1
+    # Deterministic hidden numbers
+    x = 0
+    for i in range(n_bits):
+        if i % 2 == 0:
+            x |= (1 << i)
+    x &= mask
+    y = (~x) & mask
 
-    # 2. 模拟原交互过程，通过 judge 查询
-    # 初次查询：x=0,y=0
-    t = judge(0, 0, A, B)
+    def query(c, d):
+        # Simulate the interactive oracle:
+        # compare (x ^ c) and (y ^ d)
+        val1 = x ^ c
+        val2 = y ^ d
+        if val1 < val2:
+            return -1
+        elif val1 > val2:
+            return 1
 
-    # s 用来存放每一位的符号关系，大小开到 n+1（下标 0..n）
-    s = [0] * (n + 1)
+        else:
+            return 0
+
+    # The original algorithm works with 30 bits; we adapt to n_bits
+    s = [0] * (n_bits + 1)
+
+    # Initial query corresponds to c = 0, d = 0
+    t = query(0, 0)
     if t == 1:
-        s[n] = 1
+        s[n_bits] = 1
+
     else:
-        s[n] = -1
+        s[n_bits] = -1
 
     a = 0
     b = 0
-
-    # 从最高位 n-1 到 1（保持与原逻辑相同，从高位到低位）
-    for i in range(n, 0, -1):
-        if i == 0:
-            break
-        bit = 1 << (i - 1)
-
-        # ans1: (a+bit, b)
-        ans1 = judge(a + bit, b, A, B)
-        # ans2: (a, b+bit)
-        ans2 = judge(a, b + bit, A, B)
-
+    for i in range(n_bits, 0, -1):
+        c = (1 << (i - 1)) + a
+        d = b
+        ans1 = query(c, d)
+        c = a
+        d = (1 << (i - 1)) + b
+        ans2 = query(c, d)
         if ans1 == -1 and ans2 == 1:
-            a += bit
-            b += bit
+            a += 1 << (i - 1)
+            b += 1 << (i - 1)
             s[i - 1] = s[i]
         elif ans1 == 1 and ans2 == -1:
-            # a, b 不变
+            a += 0 << (i - 1)
+            b += 0 << (i - 1)
             s[i - 1] = s[i]
+
         else:
             s[i - 1] = ans1
             if s[i] == 1:
-                a += bit
+                a += 1 << (i - 1)
+                b += 0 << (i - 1)
+
             else:
-                b += bit
+                a += 0 << (i - 1)
+                b += 1 << (i - 1)
 
-    # 3. 输出结果对比（恢复出的 a,b 和真实 A,B）
-    print("n =", n)
-    print("Hidden A =", A)
-    print("Hidden B =", B)
-    print("Recovered a =", a)
-    print("Recovered b =", b)
-    print("Correct:", (a == A and b == B))
-
-
+    # Output the reconstructed values and the hidden ones for verification
+    # print(a, b, x, y)
+    pass
 if __name__ == "__main__":
-    # 示例：按原代码规模 30 位测试
     main(30)

@@ -1,46 +1,82 @@
-import random
-
 def main(n):
-    # 生成两个不超过 n 的非负整数 a 和 b 作为测试数据
-    # 为了涵盖完整 30 位范围，n 至少建议为 (1 << 30) - 1
-    max_val = min(n, (1 << 30) - 1)
-    a = random.randint(0, max_val)
-    b = random.randint(0, max_val)
+    # n is ignored; the logic is fixed-size (bitwise search up to 2**29)
+    # We simulate the interactive judge deterministically.
+    # The hidden numbers a and b are generated deterministically from n.
+    # Core idea: reuse the same querying pattern, but through a local judge.
 
-    # 交互函数的模拟：返回 a^b 与传入 x,y 的比较结果（字符串 '0' 或 '1'）
-    target = a ^ b
+    # Deterministically generate hidden a, b from n
+    # Example: spread bits of n into a and b
+    a_hidden = 0
+    b_hidden = 0
+    for i in range(30):
+        if (n >> (2 * i)) & 1:
+            a_hidden |= (1 << i)
+        if (n >> (2 * i + 1)) & 1:
+            b_hidden |= (1 << i)
 
-    def query(x, y):
-        return '1' if (target ^ x) > (target ^ y) else '0'
+    def judge(x, y):
+        # Simulate original interactive answer:
+        # compare (a^x) and (b^y):
+        # if (a^x) > (b^y) => '1'
+        # if (a^x) < (b^y) => '-1'
+        # else '0'
+        ax = a_hidden ^ x
+        by = b_hidden ^ y
+        if ax > by:
+            return '1'
+        elif ax < by:
+            return '-1'
 
-    # 原逻辑的主过程，但用 query() 替代输入输出交互
-    ans00 = query(0, 0)
+        else:
+            return '0'
+
+    # Simulated interactive I/O
+    pending_query = None  # store last query parameters (x, y)
+
+    def print_query(x, y):
+        nonlocal pending_query
+        pending_query = (x, y)
+
+    def input_answer():
+        nonlocal pending_query
+        x, y = pending_query
+        ans = judge(x, y)
+        pending_query = None
+        return ans
+
+    # Original algorithm with replaced I/O
+    print_query(0, 0)
+    ans00 = input_answer()
     xr = 0
-    ra = 0
-    rb = 0
+    a = 0
+    b = 0
     cb = 2 ** 29
     while cb:
-        ans11 = query(xr + cb, cb)
-        ans10 = query(xr, cb)
+        print_query(xr + cb, cb)
+        ans11 = input_answer()
+        print_query(xr, cb)
         if ans11 == ans00:
-            ans01 = ans10
+            ans01 = input_answer()
             if ans01 == '1':
-                ra += cb
-                rb += cb
+                a += cb
+                b += cb
+
         else:
-            ans00 = ans10
+            ans00 = input_answer()
             if ans11 == '1':
-                rb += cb
+                b += cb
+
             else:
-                ra += cb
+                a += cb
             xr += cb
         cb //= 2
-
-    # 输出：原始测试数据和通过算法恢复的结果
-    print("original a b:", a, b)
-    print("recovered a b:", ra, rb)
+    # Output reconstructed a, b (the algorithm's result)
+    # print("!", a, b)
+    pass
+    # Return them as well for programmatic use
+    return a, b, a_hidden, b_hidden
 
 
 if __name__ == "__main__":
-    # 示例：n 取 2^30-1
-    main((1 << 30) - 1)
+    # Example deterministic call with n as input scale
+    main(123456789)

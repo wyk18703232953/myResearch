@@ -1,52 +1,55 @@
-import random
+import math
+import bisect
+from collections import *
+
 
 def main(n):
-    # 生成规模参数
-    # 为了保持原逻辑完整，这里除了 n 以外，还需要生成 m 和 k1
-    # 你可以根据需要修改 m、k1 的生成规则
-    m = n  # 示例：令 m = n
-    # k1 需要在 [1, 20] 范围内，否则 dp 中不会被正确填充
-    k1 = random.randint(1, 20)
+    # Interpret n as grid size; keep k1 fixed to preserve DP structure
+    if n <= 0:
+        return
+    k1 = 20  # any even value in [1,20]; keeps transitions meaningful
 
-    # 生成测试数据：
-    # arr: n x m
-    # brr: (n - 1) x m
-    # 为保证非负且简单，使用小整数
-    arr = [[random.randint(1, 10) for _ in range(m)] for _ in range(n)]
-    if n > 1:
-        brr = [[random.randint(1, 10) for _ in range(m)] for _ in range(n - 1)]
-    else:
-        # 当 n == 1 时，brr 实际不会被使用（没有上下移动），但需要占位
-        brr = []
+    # Define grid dimensions based on n
+    rows = n
+    cols = n
 
-    # DP 初始化
-    dp = [[[0 for _ in range(21)] for _ in range(m)] for _ in range(n)]
+    # Deterministic generation of arr (rows x (cols-1)) and brr ((rows-1) x cols)
+    # Original code assumes:
+    #   arr: n x m, used as horizontal edges: arr[i][j] is between (i,j) and (i,j+1)
+    #   brr: (n-1) x m, used as vertical edges: brr[i][j] is between (i,j) and (i+1,j)
+    # Here we keep the same roles but generate values deterministically.
+    m = cols
+
+    arr = [[(i + j + 1) for j in range(m)] for i in range(rows)]
+    brr = [[(i * m + j + 1) for j in range(m)] for i in range(rows - 1)]
+
+    # DP initialization: dp[rows][cols][21]
+    dp = [[[0 for _ in range(21)] for _ in range(m)] for _ in range(rows)]
 
     for k in range(1, 21):
-        for i in range(n):
+        for i in range(rows):
             for j in range(m):
-                if k % 2 == 1:
+                if k % 2:
                     dp[i][j][k] = -1
+
                 else:
-                    val = 10 ** 9
+                    best = 10 ** 9
                     if i > 0:
-                        val = min(val, dp[i - 1][j][k - 2] + brr[i - 1][j] * 2)
-                    if i < n - 1:
-                        val = min(val, dp[i + 1][j][k - 2] + brr[i][j] * 2)
+                        best = min(best, dp[i - 1][j][k - 2] + brr[i - 1][j] * 2)
+                    if i < rows - 1:
+                        best = min(best, dp[i + 1][j][k - 2] + brr[i][j] * 2)
                     if j > 0:
-                        val = min(val, dp[i][j - 1][k - 2] + arr[i][j - 1] * 2)
+                        best = min(best, dp[i][j - 1][k - 2] + arr[i][j - 1] * 2)
                     if j < m - 1:
-                        val = min(val, dp[i][j + 1][k - 2] + arr[i][j] * 2)
-                    dp[i][j][k] = val
+                        best = min(best, dp[i][j + 1][k - 2] + arr[i][j] * 2)
+                    dp[i][j][k] = best
 
-    # 输出结果（与原程序一致）
-    for i in range(n):
-        row = []
+    for i in range(rows):
+        row_vals = []
         for j in range(m):
-            row.append(str(dp[i][j][k1]))
-        print(" ".join(row))
-
-
+            row_vals.append(str(dp[i][j][k1]))
+        # print(" ".join(row_vals))
+        pass
 if __name__ == "__main__":
-    # 示例调用：可以在此处修改 n 以测试
-    main(4)
+    # Example: run with grid size n = 5
+    main(5)

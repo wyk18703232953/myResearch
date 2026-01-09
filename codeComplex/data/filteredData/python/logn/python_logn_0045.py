@@ -29,6 +29,7 @@ def main(n: int):
     # 生成 l, r，使得 0 <= l <= r < 2^n（n 不超过 60 时较安全）
     if n <= 0:
         l, r = 0, 0
+
     else:
         # 控制 n 防止移位过大
         m = min(n, 60)
@@ -36,8 +37,8 @@ def main(n: int):
         l = (1 << (m - 1)) if m >= 1 else 0
         r = (1 << m) - 1
     ans = solve(l, r)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模设为 10，可按需修改
     main(10)

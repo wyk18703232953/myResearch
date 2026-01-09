@@ -1,89 +1,82 @@
-import random
-
-def solve_one(n, k, a):
-    rgb = [0] * n
-    gbr = [0] * n
-    brg = [0] * n
-
-    # 计算三种模式下每个位置的改动代价
-    for i in range(n):
-        c = a[i]
-        r_pos = i % 3
-
-        # 模式 RGBRGB...
-        if r_pos == 0:
-            if c != "R":
-                rgb[i] += 1
-        elif r_pos == 1:
-            if c != "G":
-                rgb[i] += 1
-        else:
-            if c != "B":
-                rgb[i] += 1
-
-        # 模式 GBRGBR...
-        if r_pos == 0:
-            if c != "G":
-                gbr[i] += 1
-        elif r_pos == 1:
-            if c != "B":
-                gbr[i] += 1
-        else:
-            if c != "R":
-                gbr[i] += 1
-
-        # 模式 BRGBRG...
-        if r_pos == 0:
-            if c != "B":
-                brg[i] += 1
-        elif r_pos == 1:
-            if c != "R":
-                brg[i] += 1
-        else:
-            if c != "G":
-                brg[i] += 1
-
-    # 前缀和
-    for i in range(1, n):
-        rgb[i] += rgb[i - 1]
-        gbr[i] += gbr[i - 1]
-        brg[i] += brg[i - 1]
-
-    ans = 10**18
-    # 在长度为 k 的所有子串中取最小代价
-    for i in range(k - 1, n):
-        if i - k == -1:
-            cur = min(rgb[i], gbr[i], brg[i])
-        else:
-            cur = min(
-                rgb[i] - rgb[i - k],
-                gbr[i] - gbr[i - k],
-                brg[i] - brg[i - k],
-            )
-        if cur < ans:
-            ans = cur
-    return ans
-
-
 def main(n):
-    """
-    n: 规模参数，表示字符串长度。
-    自动生成测试数据：
-      - k 在 [1, n] 中随机选择
-      - 字符串 a 为长度 n 的随机 'R','G','B' 序列
-    输出：单个整数答案
-    """
+    # Interpret n as the length of the string and the window size k.
+    # To mimic multiple test cases, we can use two test cases with related sizes.
+    # First test case: use k = n // 2 (at least 1)
+    # Second test case: use k = max(1, n // 3)
     if n <= 0:
         return
 
-    k = random.randint(1, n)
-    colors = ['R', 'G', 'B']
-    a = ''.join(random.choice(colors) for _ in range(n))
+    def generate_string(length):
+        # Deterministically generate a string of 'R', 'G', 'B' with pattern
+        chars = ['R', 'G', 'B']
+        return ''.join(chars[i % 3] if (i // 3) % 2 == 0 else chars[(2 - i) % 3] for i in range(length))
 
-    ans = solve_one(n, k, a)
-    print(ans)
+    def solve_case(n, k, a):
+        rgb = [0] * n
+        gbr = [0] * n
+        brg = [0] * n
+
+        for i in range(n):
+            if i % 3 == 0:
+                if a[i] != "R":
+                    rgb[i] += 1
+            if i % 3 == 1:
+                if a[i] != "G":
+                    rgb[i] += 1
+            if i % 3 == 2:
+                if a[i] != "B":
+                    rgb[i] += 1
+
+        for i in range(n):
+            if i % 3 == 0:
+                if a[i] != "G":
+                    gbr[i] += 1
+            if i % 3 == 1:
+                if a[i] != "B":
+                    gbr[i] += 1
+            if i % 3 == 2:
+                if a[i] != "R":
+                    gbr[i] += 1
+
+        for i in range(n):
+            if i % 3 == 0:
+                if a[i] != "B":
+                    brg[i] += 1
+            if i % 3 == 1:
+                if a[i] != "R":
+                    brg[i] += 1
+            if i % 3 == 2:
+                if a[i] != "G":
+                    brg[i] += 1
+
+        for i in range(1, n):
+            rgb[i] += rgb[i - 1]
+            brg[i] += brg[i - 1]
+            gbr[i] += gbr[i - 1]
+
+        ans = 999999999
+        for i in range(k - 1, n):
+            if i - k == -1:
+                ans = min(ans, rgb[i], gbr[i], brg[i])
+
+            else:
+                ans = min(ans,
+                          rgb[i] - rgb[i - k],
+                          gbr[i] - gbr[i - k],
+                          brg[i] - brg[i - k])
+        # print(ans)
+        pass
+
+    # First test case
+    k1 = max(1, n // 2)
+    a1 = generate_string(n)
+    solve_case(n, k1, a1)
+
+    # Second test case
+    k2 = max(1, n // 3)
+    a2 = generate_string(n)
+    solve_case(n, k2, a2)
 
 
 if __name__ == "__main__":
-    # 示例：可根据需要修改 n 进行测试
-    main(5)
+    main(10)

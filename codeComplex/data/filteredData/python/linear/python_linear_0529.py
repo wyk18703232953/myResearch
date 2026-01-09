@@ -1,23 +1,19 @@
-import random
-import string
+def main(n):
+    # 映射：n -> k, 字符串长度 = n, 使用前 k 个大写字母周期构造字符串
+    k = max(1, min(26, n if isinstance(n, int) and n > 0 else 1))
+    length = n if isinstance(n, int) and n > 0 else k
 
-def main(n: int):
-    # 生成测试参数 k，范围 [1, 26]，且不大于 n
-    if n <= 0:
-        print(0)
-        return
-    k = random.randint(1, min(26, n))
+    # 构造确定性字符串 s：按前 k 个大写字母循环
+    s = ''.join(chr(ord('A') + (i % k)) for i in range(length))
 
-    # 生成长度为 n 的随机大写字母串 s
-    s = ''.join(random.choice(string.ascii_uppercase) for _ in range(n))
-
-    # 原逻辑
     m = 10 ** 10
     for i in range(k):
         c = chr(ord('A') + i)
         m = min(m, s.count(c))
-    print(m * k)
+    result = m * k
+    return result
+
 
 if __name__ == "__main__":
-    # 示例：可自行修改 n 以测试不同规模
-    main(100)
+    # print(main(10))
+    pass

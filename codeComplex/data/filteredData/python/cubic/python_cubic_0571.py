@@ -1,16 +1,13 @@
-import random
-
 def main(n):
-    # 1. 生成测试数据
-    # 生成一个长度为 n 的数字串（允许前导零）
-    digits = [str(random.randint(0, 9)) for _ in range(n)]
-    # 生成一个足够大的上界 b，保证存在可行解
-    # 把 digits 排序成最大数字，再加上一些余量
-    max_num = int(''.join(sorted(digits, reverse=True)))
-    b = max_num + random.randint(0, 10**max(1, n//2))
+    # 确定性生成输入
+    # a 为由数字字符组成的列表，长度为 n，按简单模式生成
+    digits = [str((i * 7 + 3) % 10) for i in range(n)]
+    a = digits
+    # b 为一个与 n 相关的整数上界，保证随 n 单调增加
+    # 使用一个确定性的线性构造
+    b = int("9" * n) if n > 0 else 0
 
-    # 2. 原始逻辑（去掉 input），对生成的测试数据运行
-    a = digits[:]  # 使用生成的 digits 作为输入
+    # 原算法逻辑
     a = sorted(a, reverse=True)
     ans = ''
     while len(a) > 0:
@@ -20,13 +17,7 @@ def main(n):
                 ans += a[i]
                 a = a[:i] + a[i + 1:]
                 break
-
-    # 输出测试数据和结果，便于验证
-    print("digits:", ''.join(digits))
-    print("b:", b)
-    print("answer:", ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 5
     main(5)

@@ -1,34 +1,26 @@
-import math
-import random
-
 def main(n):
-    # n 作为规模，这里生成一个 n x n 的棋盘
+    # Interpret n as both dimensions of the grid (a = b = n)
     a = n
     b = n
 
-    # 生成测试数据：随机在棋盘上放一些 'B'
-    # 确保至少有一个 'B'
+    # Deterministically generate a grid of 'B' and 'W'
+    # Pattern: center a square block of 'B's whose size scales with n
+    # Ensure at least one 'B' exists
+    size = max(1, n // 3)
+    start = (n - size) // 2
+    end = start + size
+
     grid = []
-    has_B = False
     for i in range(a):
         row = []
         for j in range(b):
-            # 概率放置 'B'
-            if random.random() < 0.3:
+            if start <= i < end and start <= j < end:
                 row.append('B')
-                has_B = True
+
             else:
-                row.append('.')
+                row.append('W')
         grid.append(''.join(row))
 
-    if not has_B:
-        # 如果随机没有生成 'B'，则强制在中心放一个
-        mid = a // 2
-        row = list(grid[mid])
-        row[b // 2] = 'B'
-        grid[mid] = ''.join(row)
-
-    # 原始逻辑开始
     c = []
     e = []
     for i in range(a):
@@ -38,15 +30,18 @@ def main(n):
                 c = c + [i]
                 e = e + [j]
 
+    if not c:  # fallback in case n is 0
+        # print(1, 1)
+        pass
+        return
+
     p = min(c)
     p1 = min(e)
-    plus = (max(c) - min(c)) // 2
+    p2 = max(c)
+    plus = (p2 - p) // 2
     p3 = p + plus + 1
     p4 = p1 + plus + 1
-
-    print(p3, p4)
-
-
+    # print(p3, p4)
+    pass
 if __name__ == "__main__":
-    # 可以在这里简单测试，比如 n = 5
     main(5)

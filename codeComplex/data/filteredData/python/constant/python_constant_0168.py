@@ -1,14 +1,13 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据：生成两个 1~n 的随机整数 x, y，保证 x <= y
-    x = random.randint(1, n)
-    y = random.randint(1, n)
-    if x > y:
-        x, y = y, x
+    # 将 n 映射为 (x, y)，保证 y > x
+    # 这里选择：x = 1，y = n + 2，使得规模随 n 线性增长
+    x = 1
+    y = n + 2
 
     if abs(x - y) < 2:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         k = []
         for i in range(x, y + 1):
@@ -19,11 +18,12 @@ def main(n):
                     k.append(i + 2)
                     break
         if len(k) == 3:
-            print(" ".join(str(t) for t in k))
+            # print(" ".join(str(t) for t in k))
+            pass
+
         else:
-            print(-1)
-
-
+            # print(-1)
+            pass
 if __name__ == "__main__":
-    # 示例：规模 n = 100
-    main(100)
+    # 示例调用：可以根据需要修改 n 的值做规模实验
+    main(10)

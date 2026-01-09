@@ -1,10 +1,18 @@
-import random
+def main(n):
+    # Generate deterministic input data based on n
+    # Original program expects:
+    # n: integer
+    # a: list of n integers
+    # Here we choose a simple deterministic sequence
+    # to ensure behavior is scalable and repeatable.
+    if n <= 0:
+        # print("")
+        pass
+        return
 
-def main(n: int) -> None:
-    # 生成测试数据：长度为 n 的正整数数组 a
-    # 这里生成 1..n 范围内的随机整数，可按需要调整
-    random.seed(0)
-    a = [random.randint(1, max(1, n)) for _ in range(n)]
+    # Deterministic array a of length n
+    # Example: a[i] = i % 7 + 1 (all positive, avoid zero for modulo operations)
+    a = [(i % 7) + 1 for i in range(n)]
 
     s = [0] * n
     m = n
@@ -15,12 +23,13 @@ def main(n: int) -> None:
                 if all(a[j] <= x or s[j] == 'A' for j in r):
                     s[i] = 'B'
                     m -= 1
-                if s[i] == 0 and any(a[j] > x and s[j] == 'B' for j in r):
+                if any(a[j] > x and s[j] == 'B' for j in r):
                     s[i] = 'A'
                     m -= 1
-    print(''.join(s))
-
-
+                if m == 0:
+                    break
+    # print(''.join(s))
+    pass
 if __name__ == "__main__":
-    # 示例调用：n 可按需修改或在外部调用 main(n)
+    # Example call for experimental purposes
     main(10)

@@ -1,10 +1,11 @@
-import random
-import string
-
-def main(n: int):
-    # 1. 生成规模为 n 的测试数据：随机小写字符串
-    #    可根据需要修改字符集
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+def main(n):
+    # Deterministically generate a string of length n
+    # Pattern: repeating lowercase letters 'a' to 'z'
+    if n <= 0:
+        # print(0)
+        pass
+        return
+    s = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
 
     sLen, ans = len(s), 0
 
@@ -21,9 +22,7 @@ def main(n: int):
                     ans = subLen
                 till2 += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：规模为 10 的测试
-    main(10)
+    main(100)

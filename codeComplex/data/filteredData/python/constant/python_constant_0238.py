@@ -9,11 +9,12 @@ def main(n):
             break
 
     if value:
-        print(m)
+        # print(m)
+        pass
+
     else:
-        print(m % pow(2, n))
-
-
+        # print(m % pow(2, n))
+        pass
 if __name__ == "__main__":
     # 可以在此处指定想要测试的 n
     main(5)

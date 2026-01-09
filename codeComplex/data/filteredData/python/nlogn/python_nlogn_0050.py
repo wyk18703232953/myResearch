@@ -8,14 +8,14 @@ def main(n: int):
     A.sort()
     if A[-1] == 1:
         A[-1] = 2
+
     else:
         A[-1] = 1
         A.sort()
 
     # 3. 输出结果
-    print(*A)
-
-
+    # print(*A)
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需要修改 n
     main(5)

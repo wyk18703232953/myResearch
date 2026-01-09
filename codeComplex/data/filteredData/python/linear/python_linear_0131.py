@@ -1,21 +1,18 @@
-import random
 import math
+from functools import cmp_to_key
 
 mod = 1000000007
-f = []  # factorial cache
-
+f = []
 
 def fact(n, m):
-    """Precompute factorials modulo m up to n."""
     global f
-    f = [1] * (n + 1)
+    f = [1 for _ in range(n + 1)]
+    f[0] = 1
     for i in range(1, n + 1):
         f[i] = (f[i - 1] * i) % m
 
-
 def fast_mod_exp(a, b, m):
     res = 1
-    a %= m
     while b > 0:
         if b & 1:
             res = (res * a) % m
@@ -23,11 +20,8 @@ def fast_mod_exp(a, b, m):
         b >>= 1
     return res
 
-
 def inverseMod(n, m):
-    # m is prime in this problem, use Fermat's little theorem
     return fast_mod_exp(n, m - 2, m)
-
 
 def ncr(n, r, m):
     if n < 0 or r < 0 or r > n:
@@ -36,9 +30,7 @@ def ncr(n, r, m):
         return 1
     return ((f[n] * inverseMod(f[n - r], m)) % m * inverseMod(f[r], m)) % m
 
-
 def getCount(n):
-    """Count set bits in n."""
     count = 0
     while n > 0:
         if n & 1 == 1:
@@ -46,73 +38,109 @@ def getCount(n):
         n >>= 1
     return count
 
-
 def solve_C(s, k):
-    """Core logic of original C() using given binary string s and integer k."""
     if k == 0:
         return 1
-
-    # dp[x] = number of times we need to apply popcount to x to get 1
-    limit = 1010
-    dp = [0] * limit
-    for i in range(limit):
+    dp = [0 for _ in range(1010)]
+    for i in range(1010):
         if i == 0 or i == 1:
             continue
         dp[i] = dp[getCount(i)] + 1
-
-    fact(limit, mod)
+    fact(1010, mod)
 
     ans = 0
     count = 0
-    n_len = len(s)
-
-    # Count numbers < s with required property
-    for i in range(n_len):
+    for i in range(len(s)):
         if s[i] == '0':
             continue
-        for j in range(max(count, 1), limit):
+        for j in range(max(count, 1), 1010):
             if dp[j] == k - 1:
-                ans = (ans + ncr(n_len - i - 1, j - count, mod)) % mod
+                ans = (ans + ncr(len(s) - i - 1, j - count, mod)) % mod
                 if i == 0 and k == 1:
                     ans = (ans + mod - 1) % mod
         count += 1
-
-    # Count s itself if it satisfies property
-    count = s.count('1')
+    count = 0
+    for i in range(len(s)):
+        if s[i] == '1':
+            count += 1
     if dp[count] == k - 1:
         ans = (ans + 1) % mod
-
     return ans
 
+def solve_D(n, m, k, w):
+    mn = [[0 for _ in range(k + 1)] for _ in range(n + 1)]
+    for i in range(1, n + 1):
+        for j in range(k + 1):
+            c = 0
+            st, en = -1, -1
+            for x in range(m):
+                if w[i - 1][x] == '1':
+                    if c == j and st == -1:
+                        st = x
+                    if c < j:
+                        c += 1
+                    if c == j:
+                        en = x
+            mn[i][j] = en - st + 1 if st != -1 and en != -1 else 0
+            st, en = -1, -1
+            c = 0
+            for x in range(m - 1, -1, -1):
+                if w[i - 1][x] == '1':
+                    if c == j and st == -1:
+                        st = x
+                    if c < j:
+                        c += 1
+                    if c == j:
+                        en = x
+            if st != -1 and en != -1 >= 0:
+                mn[i][j] = min(mn[i][j], st - en + 1)
 
-def generate_test_data(n):
-    """
-    根据规模 n 生成测试数据：
-    - 生成一个长度为 L 的二进制串 s，L 在 [1, n] 范围内。
-    - 生成一个整数 k，1 <= k <= min(20, L)。
-    """
-    if n <= 0:
-        n = 1
-    L = random.randint(1, n)
-    # 保证首位为 '1'，避免前导零
-    if L == 1:
-        s = '1'
-    else:
-        s = '1' + ''.join(random.choice('01') for _ in range(L - 1))
-    k = random.randint(1, min(20, L))
-    return s, k
-
+    dp = [[9999999999999999 for _ in range(k + 1)] for _ in range(n + 1)]
+    for i in range(k + 1):
+        dp[0][i] = 0
+    for i in range(1, n + 1):
+        for j in range(k + 1):
+            for x in range(k + 1):
+                if j - x >= 0:
+                    dp[i][j] = min(dp[i][j], dp[i - 1][j - x] + mn[i][x])
+    return dp[n][k]
 
 def main(n):
-    """
-    n 为规模参数，用于生成测试数据，然后调用原逻辑。
-    返回值为原程序 C() 的输出结果。
-    """
-    s, k = generate_test_data(n)
-    return solve_C(s, k)
+    # Problem C input generation:
+    # s: binary string of length n (alternating 1 and 0)
+    # k: derived from n deterministically
+    if n <= 0:
+        s = "1"
 
+    else:
+        s = "".join('1' if i % 2 == 0 else '0' for i in range(n))
+    k = max(1, (n % 10) + 1)
 
+    ans_C = solve_C(s, k)
+
+    # Problem D input generation:
+    # n_rows, m_cols, k_ones based on n
+    n_rows = max(1, n // 3)
+    m_cols = max(1, (n // 2) or 1)
+    k_ones = min(m_cols, max(0, n_rows // 2))
+
+    w = []
+    for i in range(n_rows):
+        row = []
+        for j in range(m_cols):
+            # deterministic pattern: '1' if (i+j) divides (n_rows + m_cols) else '0'
+            if (i + j + 1) % ((n_rows + m_cols) or 1) == 0:
+                row.append('1')
+
+            else:
+                row.append('0')
+        w.append(row)
+
+    ans_D = solve_D(n_rows, m_cols, k_ones, w)
+
+    # print(ans_C)
+    pass
+    # print(ans_D)
+    pass
 if __name__ == "__main__":
-    # 示例：使用规模 10 运行一次
-    result = main(10)
-    print(result)
+    main(1000)

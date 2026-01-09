@@ -18,4 +18,5 @@ def main(n: int) -> int:
 if __name__ == "__main__":
     # 示例：自行指定 n 来测试
     n = 10
-    print(main(n))
+    # print(main(n))
+    pass

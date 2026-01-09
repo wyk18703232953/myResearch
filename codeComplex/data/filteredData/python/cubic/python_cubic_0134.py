@@ -1,6 +1,3 @@
-import random
-import string
-
 class NextStringIndex:
     def __init__(self, string):
         self.INF = 10 ** 9
@@ -18,11 +15,13 @@ class NextStringIndex:
 
     def make_next(self):
         dp = [[self.INF] * self.kind for _ in range(self.len_s + 1)]
-        # 预处理每个位置之后每个字符的下一次出现位置
-        for i in range(self.len_s - 1, -1, -1):
+        s = self.string
+        len_s = self.len_s
+        for i in range(len_s - 1, -1, -1):
             for j, char in enumerate(self.alph):
-                if self.string[i] == char:
+                if s[i] == char:
                     dp[i][j] = i + 1
+
                 else:
                     dp[i][j] = dp[i + 1][j]
         return dp
@@ -48,27 +47,25 @@ def solve(t1, t2, len_s, s_next):
     return dp[-1][-1] < INF
 
 
-def generate_test_case(n):
-    # n 为规模，用来控制字符串大致长度
-    # 这里简单设定：
-    #   |s| ~ n
-    #   |t| ~ n
-    len_s = n
-    len_t = n
-
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_s))
-    t = ''.join(random.choice(string.ascii_lowercase) for _ in range(len_t))
-    return s, t
-
-
 def main(n):
-    # 使用 n 控制测试数据组数和每组的字符串规模
-    # 例如：生成 n 组测试，每组字符串长度约为 n
+    # n controls the scale: we create n test cases.
+    # For each test case k (1-based):
+    # - base pattern length grows with k
+    # - t length grows with k
+    # Both are deterministic functions of k and n.
+    q = max(1, n)
+
     results = []
-    for _ in range(n):
-        s, t = generate_test_case(n)
-        len_s = len(s)
-        len_t = len(t)
+    alph = "abcdefghijklmnopqrstuvwxyz"
+    alph_len = len(alph)
+
+    for k in range(1, q + 1):
+        # Deterministic construction of s and t based on k and n
+        len_s = max(1, (k * 3) % (n + 5) + k)
+        len_t = max(1, (k * 5) % (n + 7) + (n % (k + 5)) + 1)
+
+        s = "".join(alph[(i + k) % alph_len] for i in range(len_s))
+        t = "".join(alph[(i * 2 + n + k) % alph_len] for i in range(len_t))
 
         s_next = NextStringIndex(s)
 
@@ -77,13 +74,11 @@ def main(n):
             if solve(t[0:i], t[i:], len_s, s_next):
                 flag = True
                 break
+
         results.append("YES" if flag else "NO")
 
-    # 输出所有结果
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(3) 生成 3 组规模为 3 的随机测试数据并运行
-    main(3)
+    main(10)

@@ -1,3 +1,7 @@
+import os
+import sys
+from io import BytesIO, IOBase
+
 def solve(s, t):
     if len(t) == 1:
         if s.count(t[0]):
@@ -18,27 +22,21 @@ def solve(s, t):
                 return 'YES'
     return 'NO'
 
+def generate_test_case(idx, length):
+    s = ''.join(chr(ord('a') + (idx + i) % 26) for i in range(length))
+    t = ''.join(chr(ord('a') + (idx * 3 + i * 2) % 26) for i in range(max(1, length // 2)))
+    return s, t
 
 def main(n):
-    """
-    n: 生成的测试用例数量
-    生成 n 组 (s, t)，调用 solve 并打印结果。
-    测试数据策略：
-      - 字符集 'abc'
-      - s 和 t 的长度在 [1, n+1] 内变化
-    """
-    import random
-    random.seed(0)
-
-    alphabet = "abc"
-    for _ in range(n):
-        len_s = random.randint(1, n + 1)
-        len_t = random.randint(1, n + 1)
-        s = "".join(random.choice(alphabet) for _ in range(len_s))
-        t = "".join(random.choice(alphabet) for _ in range(len_t))
-        print(s, t, solve(s, t))
-
-
+    if n <= 0:
+        return
+    num_tests = n
+    base_len = max(1, n // 3)
+    for i in range(num_tests):
+        length = base_len + i % (base_len + 1)
+        s, t = generate_test_case(i, length)
+        res = solve(s, t)
+        # print(res)
+        pass
 if __name__ == "__main__":
-    # 示例：生成 5 组测试
-    main(5)
+    main(10)

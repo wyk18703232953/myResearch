@@ -5,7 +5,9 @@ def main(n: int):
     r = 2 * n + 1
 
     if l == r:
-        print(0)
+        # print(0)
+        pass
+
     else:
         rs = ""
         rr = r
@@ -30,9 +32,8 @@ def main(n: int):
                 break
 
         ans = 2 ** (pos + 1) - 1
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == '__main__':
     # 示例：调用 main(10)，可按需修改或在外部调用 main
     main(10)

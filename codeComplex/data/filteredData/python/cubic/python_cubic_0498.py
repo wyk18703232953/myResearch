@@ -1,34 +1,26 @@
-import random
-
 def main(n):
-    # 规模参数 n 控制 N、M、K，这里做一个简单映射：
-    # N = M = max(1, n)，K 为偶数步长，至少为 2
+    # Interpret n as both grid dimensions and K
     N = max(1, n)
     M = max(1, n)
-    K = 2 * max(1, n // 2)  # 保证为偶数
+    K = 2 * max(1, n)  # ensure K is even and scales with n
 
-    # 若 K 为奇数，按原逻辑输出 -1（但本构造中 K 一定是偶数）
+    # Deterministically generate edge weights
+    colEdges = []
+    for i in range(N):
+        row = [1 + (i + j) % 9 for j in range(M - 1)]
+        colEdges.append(row)
+
+    rowEdges = []
+    for i in range(N - 1):
+        row = [1 + (i * 3 + j * 2) % 9 for j in range(M)]
+        rowEdges.append(row)
+
     if K % 2:
         for _ in range(N):
-            print(" ".join(["-1"] * M))
+            # print((" -1" * M).strip())
+            pass
         return
 
-    # 随机生成边权，范围可自行调整
-    # colEdges: N 行，每行 M-1 条边权（左右相邻）
-    colEdges = []
-    for _ in range(N):
-        # M-1 条水平边，对于 M=1 时为空列表
-        edges = [random.randint(1, 10) for _ in range(max(0, M - 1))]
-        colEdges.append(edges)
-
-    # rowEdges: N-1 行，每行 M 条边权（上下相邻）
-    rowEdges = []
-    for _ in range(max(0, N - 1)):
-        edges = [random.randint(1, 10) for _ in range(M)]
-        rowEdges.append(edges)
-
-    # 原逻辑：dp[k][i][j] 表示走 k*2 步的一半（即 k 次迭代，每次加 2 步）？
-    # 这里保持原实现不改动，只是用生成的数据
     dp = [[[0 for _ in range(M)] for _ in range(N)] for _ in range(2)]
     p = [[[(i, j) for j in range(M)] for i in range(N)] for _ in range(2)]
     prev = 0
@@ -41,26 +33,29 @@ def main(n):
 
                 if j:
                     nxt = (dp[prev][i][j - 1] + colEdges[i][j - 1], p[prev][i][j - 1])
-                    cand = min(cand, nxt)
+                    if nxt < cand:
+                        cand = nxt
                 if j < M - 1:
                     nxt = (dp[prev][i][j + 1] + colEdges[i][j], p[prev][i][j + 1])
-                    cand = min(cand, nxt)
+                    if nxt < cand:
+                        cand = nxt
                 if i:
                     nxt = (dp[prev][i - 1][j] + rowEdges[i - 1][j], p[prev][i - 1][j])
-                    cand = min(cand, nxt)
+                    if nxt < cand:
+                        cand = nxt
                 if i < N - 1:
                     nxt = (dp[prev][i + 1][j] + rowEdges[i][j], p[prev][i + 1][j])
-                    cand = min(cand, nxt)
+                    if nxt < cand:
+                        cand = nxt
 
                 dp[cur][i][j], p[cur][i][j] = cand
         prev = cur
 
     for i in range(N):
+        row_out = []
         for j in range(M):
-            print(dp[prev][i][j] * 2, end=" ")
-        print()
-
-
+            row_out.append(str(dp[prev][i][j] * 2))
+        # print(" ".join(row_out))
+        pass
 if __name__ == "__main__":
-    # 示例：用 n=5 运行
     main(5)

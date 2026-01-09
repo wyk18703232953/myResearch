@@ -1,14 +1,19 @@
-import random
+import itertools
+import bisect
+import math
+from collections import *
+import os
+import sys
+from io import BytesIO, IOBase
 
-def main(n: int):
-    # 生成测试数据：长度为 n 的由 '0' 和 '1' 组成的两行
-    a = [random.choice(['0', '1']) for _ in range(n)]
-    b = [random.choice(['0', '1']) for _ in range(n)]
 
-    # 为了和原代码行为一致，需要对 a, b 进行可变修改，因此复制一份局部变量
-    a = a[:]  # list of chars
-    b = b[:]
+def main(n):
+    # 生成两个长度为 n 的只含 '0' 和 '1' 的字符列表
+    a = [str((i * 37 + 3) % 2) for i in range(n)]
+    b = [str((i * 91 + 7) % 2) for i in range(n)]
 
+    a = list(a)
+    b = list(b)
     ans = 0
     for i in range(n):
         if a[i] == "0":
@@ -23,11 +28,10 @@ def main(n: int):
                 a[i] = b[i + 1] = a[i + 1] = "X"
             elif i + 1 < n and a[i] == b[i] == a[i + 1]:
                 a[i] = b[i] = a[i + 1] = "X"
+
             else:
                 ans -= 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：可在此处修改 n 进行简单测试
     main(10)

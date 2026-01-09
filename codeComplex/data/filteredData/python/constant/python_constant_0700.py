@@ -1,20 +1,18 @@
-import random
+def main(n):
+    # 将 n 作为原程序中的第一个输入，第二个输入 k 由 n 确定性生成
+    # 这里设定 k = n // 2，保证 0 <= k <= n
+    if n <= 0:
+        return  # 对非正规模不做任何输出
+    k = n // 2
 
-def main(n: int):
-    # 根据规模 n 生成一组 (n, k) 测试数据
-    # 假设 k 在 [0, n] 范围内随机生成
-    k = random.randint(0, n) if n > 0 else 0
-
-    # 原逻辑
     if k >= n - 1:
         result = n - 1
+
     else:
         result = k + ((n - k) * (n - k + 1)) // 2 - 1
 
-    # 按原程序行为，仅打印结果
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模可根据需要修改
+    # 示例调用，可按需修改 n 进行规模实验
     main(10)

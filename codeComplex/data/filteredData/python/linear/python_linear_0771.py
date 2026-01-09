@@ -1,32 +1,35 @@
 def main(n):
-    # 生成测试数据
-    # 这里把原程序中的 m 设为 n，k 设为一个与 n 相关的值（例如 3 或 n//3+1）
-    import random
-
+    # 映射规则：
+    # n -> n（规模参数）
+    # 构造：
+    #   m = n（元素个数）
+    #   k = max(1, n // 3)
+    #   n_val = n
+    #   p 为长度为 m 的严格递增序列
     m = n
-    k = max(1, n // 3)  # 保证 k >= 1
-    # 生成递增的 p 数组，模拟原题中常见的“位置”或“编号”场景
-    p = []
-    cur = 0
-    for _ in range(m):
-        cur += random.randint(1, 3)  # 相邻差值为 1~3，保持有序
-        p.append(cur)
+    if m <= 0:
+        # print(0)
+        pass
+        return
+    k = max(1, n // 3)
+    n_val = n
+    # 确定性构造递增序列 p
+    # p[i] = i + 1 + (i // 2)，保证严格递增且可控
+    p = [i + 1 + (i // 2) for i in range(m)]
 
-    # 原始逻辑
     i = 0
     c = 0
     d = 0
     while i < m:
-        c += 1
+        c = c + 1
         d2 = d
         x = k * ((p[i] - d2 - 1) // k) + k
-        while i < m and p[i] - d2 <= x:
-            i += 1
-            d += 1
-
-    print(c)
-
-
+        while p[i] - d2 <= x:
+            i = i + 1
+            d = d + 1
+            if i == m:
+                break
+    # print(c)
+    pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
     main(10)

@@ -12,9 +12,8 @@ def main(n: int):
         x += 1
     a = 10 ** (x - 1)
     a += n // x
-    print(str(a)[n % x])
-
-
+    # print(str(a)[n % x])
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(15)，表示查询第 15 个数字
     main(15)

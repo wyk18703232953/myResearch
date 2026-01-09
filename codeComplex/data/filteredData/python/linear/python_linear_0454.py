@@ -1,26 +1,27 @@
-import random
+def main(n):
+    # Interpret n as the length of the parentheses string
+    # Generate a deterministic input: balanced parentheses of length n (if n is odd, last char is ')')
+    s = []
+    for i in range(n):
+        if i < n // 2:
+            s.append('(')
 
-def main(n: int):
-    # 生成测试数据：随机生成合法括号序列 line，长度为 n（保证 n 为偶数）
-    if n % 2 == 1:
-        raise ValueError("n must be even to form a valid parentheses sequence.")
+        else:
+            s.append(')')
+    line = ''.join(s)
 
-    # 简单生成一个合法括号串：n//2 个 '(' 后接 n//2 个 ')'
-    # 若需更随机，可进行合法洗牌，这里保持简单且合法
-    line = "(" * (n // 2) + ")" * (n // 2)
-
-    # 生成 k：为不超过 n 的偶数，且 <= 当前括号对总数*2
-    # 这里简单设定 k 为 n，本意是选取一整个合法串
-    # 若想模拟原题中更一般情况，可随机生成一个不超过 n 的偶数
-    k = n
-    # 若要随机偶数 k，可使用如下：
-    # k = random.randrange(2, n + 1, 2)
+    # Define k deterministically as the largest even number <= n
+    k = n if n % 2 == 0 else n - 1
 
     if n == k:
-        print(line)
+        # print(line)
+        pass
+
     else:
         ans = []
-        arr = list(line)
+        arr = []
+        for ch in line:
+            arr.append(ch)
 
         for i in range(n):
             if len(ans) == k // 2:
@@ -36,9 +37,9 @@ def main(n: int):
 
         ans.sort()
         for i in ans:
-            print(arr[i], end="")
-
-
+            # print(arr[i], end="")
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
-    # 示例：以 n = 10 运行
     main(10)

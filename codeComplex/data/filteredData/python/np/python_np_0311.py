@@ -20,9 +20,8 @@ def main(n):
             dp[i][j + 2][1] = (dp[i][j + 2][1] + a1) % mod
 
     ans = sum(dp[n - 1][k - 1]) * 2 % mod
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的默认值
     main(5)

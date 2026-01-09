@@ -1,23 +1,28 @@
-import random
+def main(n):
+    # Deterministically generate input list c of length n
+    # Example pattern: c is made of repeated pairs [0,1,2,...,k-1,0,1,2,...]
+    # ensuring enough duplicates for the algorithm to work similarly
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int) -> None:
-    # 生成测试数据：长度为 2n 的数组，每个数字出现两次，顺序打乱
-    c = []
-    for i in range(n):
-        c.extend([i, i])
-    random.shuffle(c)
+    # generate list with many duplicates
+    base = max(1, n // 4)
+    c = [(i % base) for i in range(n)]
 
     ans = 0
-    # 模拟原逻辑：每次取出第一个元素，在剩余列表中找到与之相同的元素并移除
-    for _ in range(n):
-        f = c.pop(0)
-        g = c.index(f)
-        c.pop(g)
+    # simulate original behavior; need a working copy since we pop
+    c_work = c[:]
+    # original loop uses range(n) but c is shrinking; stop when less than 2 left
+    steps = min(n, len(c_work) // 2)
+    for _ in range(steps):
+        f = c_work.pop(0)
+        g = c_work.index(f)
+        c_work.pop(g)
         ans += g
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 可以在此修改 n 的大小进行本地测试
-    main(5)
+    main(10)

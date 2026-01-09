@@ -1,15 +1,22 @@
-import random
-import string
+def main(n):
+    # 映射 n 为字符串长度和 k 值
+    length = max(1, n)
+    k = max(1, n // 2)
 
-def tonny(ch):
-    return ord(ch) - 96
+    # 确定性生成长度为 length 的小写字母字符串
+    # 使用循环 'a' 到 'z'
+    s = ''.join(chr(97 + (i % 26)) for i in range(length))
 
-def solve(n, k, s):
+    def tonny(i):
+        return ord(i) - 96
+
     a = sorted(s)
     a = list(map(tonny, a))
     a = sorted(list(set(a)))
     if not a:
-        return -1
+        # print(-1)
+        pass
+        return
     ans = [a.pop(0)]
     k -= 1
     for j in a:
@@ -19,18 +26,11 @@ def solve(n, k, s):
         if k == 0:
             break
     if k != 0:
-        return -1
+        # print(-1)
+        pass
+
     else:
-        return sum(ans)
-
-def main(n):
-    # 随机生成 k（1 到 n 之间）
-    k = random.randint(1, n)
-    # 生成长度为 n 的随机小写字母串
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-    result = solve(n, k, s)
-    print(result)
-
+        # print(sum(ans))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

@@ -1,24 +1,31 @@
-from collections import deque
-import random
-
 def main(n):
-    # 1. 根据规模 n 生成测试数据
-    # 这里设定：网格大小 n x n，起点个数 k = max(1, n // 5)
-    # 起点随机生成，且不重复
+    # Interpret n as the grid size: n x n grid
+    # m will also be n to keep structure similar to original
+    from collections import deque
+
+    # Ensure minimum meaningful size
+    if n < 1:
+        n = 1
     m = n
-    k = max(1, n // 5)
 
-    # 所有合法格子 (1..n, 1..m)
-    all_cells = [(i, j) for i in range(1, n + 1) for j in range(1, m + 1)]
-    random.shuffle(all_cells)
-    starts = all_cells[:k]  # k 个起点
-
-    # 2. 原逻辑：从多个起点进行 BFS，找到最后被访问到的格子
+    # Directions (same as original)
     dx = [1, -1, 0, 0]
     dy = [0, 0, -1, 1]
-    q = deque()
 
-    # v 为 (n+2) x (m+2) 的边界填充矩阵，1 表示未访问，0 表示已访问或边界
+    # Define number of starting points k deterministically
+    # Use up to n starting points but at least 1
+    k = max(1, n // 2)
+
+    # Generate deterministic starting coordinates a of length 2*k
+    # Coordinates are in range [1, n]
+    a = []
+    for i in range(k):
+        x = (i % n) + 1
+        y = ((i * 2) % n) + 1
+        a.append(x)
+        a.append(y)
+
+    # Initialize grid v with border of zeros and inside ones
     v = [[1] * (m + 2) for _ in range(n + 2)]
     for i in range(m + 2):
         v[0][i] = 0
@@ -27,27 +34,37 @@ def main(n):
         v[i][0] = 0
         v[i][-1] = 0
 
-    # 将起点加入队列并标记
-    for (sx, sy) in starts:
-        q.append((sx, sy))
-        v[sx][sy] = 0
+    # Initialize queue with starting points and mark them as 0
+    q = deque()
+    for i in range(0, 2 * k, 2):
+        x0, y0 = a[i], a[i + 1]
+        # Clip coordinates to valid inner region in case n is very small
+        if 1 <= x0 <= n and 1 <= y0 <= m and v[x0][y0]:
+            q.append((x0, y0))
+            v[x0][y0] = 0
 
-    last_x, last_y = -1, -1
-    while q:
+    # If all starting points were out of range (should not happen with our generation),
+    # we add a default one
+    if not q:
+        q.append((1, 1))
+        v[1][1] = 0
+
+    # BFS as in original code
+    while True:
         x, y = q.popleft()
-        last_x, last_y = x, y
         for i in range(4):
             xx, yy = x + dx[i], y + dy[i]
             if v[xx][yy]:
-                v[xx][yy] = 0
                 q.append((xx, yy))
+                v[xx][yy] = 0
+        if not q:
+            # Original program wrote x, y to output.txt
+            # For experiment purposes, just print to stdout
+            # print(x, y)
+            pass
+            break
 
-    # 3. 返回/打印结果：最后访问到的格子坐标
-    # 为便于使用，这里返回结果；也可改成 print(last_x, last_y)
-    return last_x, last_y
 
-
-# 简单示例：当作为脚本直接运行时，给一个默认规模测试
 if __name__ == "__main__":
-    res = main(10)
-    print(res[0], res[1])
+    # Example deterministic call; adjust n as needed for experiments
+    main(10)

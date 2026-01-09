@@ -12,7 +12,8 @@ def main(n: int):
     r = 2 * n + 3
 
     if l == r:
-        print(0)
+        # print(0)
+        pass
         return
 
     x = 1
@@ -24,13 +25,13 @@ def main(n: int):
     while x <= l or x > r:
         if x <= l:
             x += k
+
         else:
             x -= k
         k = k >> 1
 
-    print(x ^ (x - 1))
-
-
+    # print(x ^ (x - 1))
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 进行测试
     main(10)

@@ -11,7 +11,9 @@ def main(n):
     # 处理测试数据
     for n_val, k in test_cases:
         if n_val > 31:
-            print('YES ' + str(n_val - 1))
+            # print('YES ' + str(n_val - 1))
+            pass
+
         else:
             rez = -1
             for i in range(1, n_val + 1):
@@ -20,9 +22,8 @@ def main(n):
                 if y <= k <= x:
                     rez = n_val - i
                     break
-            print('YES ' + str(rez) if rez != -1 else 'NO')
-
-
+            # print('YES ' + str(rez) if rez != -1 else 'NO')
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(5)，可根据需要修改规模
     main(5)

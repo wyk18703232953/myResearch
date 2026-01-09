@@ -51,11 +51,12 @@ def main(n):
             count += 1
 
     if count >= k:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，规模可自行调整
     main(100)

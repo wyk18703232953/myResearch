@@ -1,28 +1,27 @@
-import random
+def main(n):
+    # 映射含义：
+    # 原程序有 4 个整数输入：n, m, a, b
+    # 这里将参数 n 作为“输入规模”，用来确定 m, a, b 的大小范围
+    # 原始 n 的值用 n_self 表示
+    n_self = n
 
-def main(n: int):
-    # 依据规模 n 自动生成测试数据
-    # n 表示第一个参数 n 的规模上界，其余参数与之同量级
-    if n <= 0:
-        return  # 或者根据需要处理无效规模
+    # 为避免除零，m 至少为 1
+    # 让 m 随规模线性增长，但不超过 n_self 且至少为 1
+    m = max(1, n_self // 2 + 1)
 
-    # 生成 n, m, a, b
-    N = random.randint(1, n)          # 原代码中的 n
-    M = random.randint(1, max(1, n))  # 原代码中的 m，确保不为 0
-    A = random.randint(1, max(1, n))  # 原代码中的 a
-    B = random.randint(1, max(1, n))  # 原代码中的 b
+    # 构造 a, b 与规模相关，且为正整数
+    a = n_self + 3
+    b = max(1, n_self // 3 + 2)
 
-    # 原逻辑
-    if N % M != 0:
-        mn = N // M * M
-        mx = N // M * M + M
-        result = min(((N - mn) * B), ((mx - N) * A))
+    if n_self % m != 0:
+        mn = n_self // m * m
+        mx = n_self // m * m + m
+        result = min(((n_self - mn) * b), ((mx - n_self) * a))
+
     else:
         result = 0
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：以 100 作为规模调用
-    main(100)
+    main(10)

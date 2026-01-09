@@ -48,4 +48,5 @@ def main(n):
 if __name__ == "__main__":
     # 可修改 n 进行不同规模测试
     result = main(10)
-    print(result)
+    # print(result)
+    pass

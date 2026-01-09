@@ -18,14 +18,14 @@ def main(n):
 
     if x == 0:
         res = 0
+
     else:
         res = pow_mod(2, k + 1, MOD) * x % MOD
         res = (res - pow_mod(2, k, MOD)) % MOD
         res = (res + 1) % MOD
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -55,6 +55,7 @@ def solve_case(n, k, arr):
                 l = left[i][t]
                 if l > 0:
                     dp[i][j] = min(dp[l - 1][j - t] + 1, dp[i][j])
+
                 else:
                     dp[i][j] = 1
 
@@ -78,4 +79,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：调用 main(100)
     result = main(100)
-    print(result)
+    # print(result)
+    pass

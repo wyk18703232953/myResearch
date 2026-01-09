@@ -1,14 +1,10 @@
-import random
-
-def main(n: int):
-    # 生成长度为 n 的由 0/1 组成的测试数据字符串
-    # 保持和原程序逻辑一致：原来是 list(input()) -> 每个字符再转 int
-    a = [random.randint(0, 1) for _ in range(n)]
-
+def main(n):
+    # 生成确定性输入：长度为 n 的数字字符串列表
+    # 使用 i % 10 构造，保证每个字符都是 '0' 到 '9'
+    a = [int(str(i % 10)) for i in range(n)]
     smm = 0
     for i in range(n):
         smm += a[i]
-
     ans = "NO"
     sm = smm
     for div in range(2, n + 1):
@@ -25,9 +21,7 @@ def main(n: int):
             if f == div:
                 ans = "YES"
                 break
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)
-    main(5)
+    main(10)

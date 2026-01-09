@@ -13,11 +13,12 @@ def main(n):
 
     # n 作为规模，这里直接使用 n 作为查询键，相当于测试数据就是 n 本身
     if n in ans:
-        print(dct[n])
+        # print(dct[n])
+        pass
+
     else:
-        print(0)
-
-
+        # print(0)
+        pass
 if __name__ == "__main__":
     # 示例：可以在这里指定一个规模 n 来运行
     main(7)

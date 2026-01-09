@@ -17,6 +17,7 @@ def main(n):
         # 对于 n_i >= 32 时，f[n_i] 实际不会用到，k 随便给一个较大值
         if ni < 32:
             ki = f[ni] // 2 + 1  # 中等大小的 k
+
         else:
             ki = 10**18
         queries.append((ni, ki))
@@ -24,11 +25,13 @@ def main(n):
     # 按原逻辑处理 queries
     for n_val, k in queries:
         if n_val >= 32:
-            print("YES %d" % (n_val - 1))
+            # print("YES %d" % (n_val - 1))
+            pass
             continue
 
         if f[n_val] < k:
-            print("NO")
+            # print("NO")
+            pass
             continue
 
         k -= 1
@@ -49,11 +52,12 @@ def main(n):
             total += extra * f[size]
 
         if ans:
-            print("YES %d" % size)
+            # print("YES %d" % size)
+            pass
+
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

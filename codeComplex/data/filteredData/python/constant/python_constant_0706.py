@@ -5,12 +5,12 @@ def main(n):
 
     if v >= (n - 1):
         result = n - 1
+
     else:
         result = n - 1 + ((n - 1 - v) * (n - v) // 2)
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，使用某个规模 n
     main(10)

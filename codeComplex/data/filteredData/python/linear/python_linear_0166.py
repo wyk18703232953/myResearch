@@ -16,17 +16,21 @@ def main(n):
     """
     # 原逻辑：若 n < 6 输出 -1，否则输出若干边
     if n < 6:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         for i in range(2, n - 2 + 1):
-            print(1, i)
-        print(2, n - 1)
-        print(2, n)
+            # print(1, i)
+            pass
+        # print(2, n - 1)
+        pass
+        # print(2, n)
+        pass
 
     for i in range(1, n):
-        print(i, i + 1)
-
-
+        # print(i, i + 1)
+        pass
 if __name__ == "__main__":
     # 示例：根据需要自行修改这里的 n，用于本地测试
     test_n = 10

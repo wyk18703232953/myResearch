@@ -9,7 +9,8 @@ def main(n: int):
     k = n * n
 
     if x == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     x = 2 * x - 1
@@ -23,9 +24,8 @@ def main(n: int):
         y = pot(r, k // 2)
         return y * y % mod
 
-    print((pot(2, k) * x + 1) % mod)
-
-
+    # print((pot(2, k) * x + 1) % mod)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -16,31 +16,34 @@ def main(n):
     while n_side ** 2 < n1:
         n_side += 1
     if n_side ** 2 > n1:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     l = sorted([[max(a, b), min(a, b), 'A'],
                 [max(c, d), min(c, d), 'B'],
                 [max(e, f), min(e, f), 'C']])
     if l[2][0] != n_side:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     v = str(n_side) + '\n' + (l[2][2] * n_side + '\n') * l[2][1]
     if l[0][0] == n_side and l[1][0] == n_side:
         for i in range(2):
             v += (l[i][2] * n_side + '\n') * l[i][1]
+
     else:
         s = n_side - l[2][1]
         if s not in l[0] or s not in l[1]:
-            print(-1)
+            # print(-1)
+            pass
             return
         x = l[0][1] if s == l[0][0] else l[0][0]
         y = l[1][1] if s == l[1][0] else l[1][0]
         v += (l[0][2] * x + l[1][2] * y + '\n') * s
-    print(v)
-
-
+    # print(v)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

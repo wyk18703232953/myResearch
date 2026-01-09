@@ -1,12 +1,18 @@
 import string
-import random
 
+def main(n):
+    # Ensure n is at least 1 to avoid empty strings
+    if n <= 0:
+        n = 1
 
-def main(n: int):
-    # 生成测试数据：保证长度为 n 的小写字符串 s, t
-    # 为了保证有一定差异性，随机生成
-    s = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
-    t = ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+    # Deterministically generate s and t based on n
+    # s: repeating 'a'..'z'
+    # t: shifted version of s by 1 position in the alphabet
+    letters = string.ascii_lowercase
+    len_alpha = len(letters)
+
+    s = ''.join(letters[i % len_alpha] for i in range(n))
+    t = ''.join(letters[(i + 1) % len_alpha] for i in range(n))
 
     x, i, j = 0, -1, -1
     sc_dict = {c: set() for c in string.ascii_lowercase}
@@ -31,6 +37,7 @@ def main(n: int):
         i = sti_dict[c + c2] + 1
         j = tsi_dict[c + c2] + 1
         break
+
     else:
         for c in string.ascii_lowercase:
             if not sc_dict[c] or not tc_dict[c]:
@@ -40,10 +47,9 @@ def main(n: int):
             j = tsi_dict[c + tc_dict[c].pop()] + 1
             break
 
-    print(x)
-    print(i, j)
-
-
+    # print(x)
+    pass
+    # print(i, j)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

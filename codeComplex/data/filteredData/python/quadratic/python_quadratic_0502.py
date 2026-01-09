@@ -53,11 +53,12 @@ def main(n):
 
     # 判断并输出
     if sig == cur:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例调用：可以修改这里的规模 n 来测试
     main(9)

@@ -10,9 +10,8 @@ def main(n):
     if K % N != 0:
         r += 1
 
-    print(r)
-
-
+    # print(r)
+    pass
 if __name__ == "__main__":
     # 示例：可以修改这里的 n 以测试不同规模
     main(10)

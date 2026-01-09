@@ -10,9 +10,8 @@ def main(n: int):
             else (test_n - 3) * (test_n if test_n % 3 else test_n - 2)
         )
     )
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模为 10
     main(10)

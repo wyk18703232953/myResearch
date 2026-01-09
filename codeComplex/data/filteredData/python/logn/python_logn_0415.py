@@ -20,7 +20,8 @@ def main(n):
     # 模拟原逻辑
     for ni, k in tests:
         if ni >= 34:
-            print("YES " + str(ni - 1))
+            # print("YES " + str(ni - 1))
+            pass
             continue
 
         sek = 0
@@ -32,7 +33,8 @@ def main(n):
         while sek < ni:
             cnt = cnt + (1 << (sek + 1)) - 1
             if cnt > k:
-                print("NO")
+                # print("NO")
+                pass
                 sudah = True
                 break
 
@@ -43,14 +45,14 @@ def main(n):
             sek += 1
             nyak = nyak + sisa * lst[ni - sek]
             if (nyak + cnt) >= k:
-                print("YES " + str(ni - sek))
+                # print("YES " + str(ni - sek))
+                pass
                 sudah = True
                 break
 
         if not sudah:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     # 示例调用：规模 n=5
     main(5)

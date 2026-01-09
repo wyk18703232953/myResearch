@@ -20,7 +20,8 @@ def main(n):
         results.append(solve(x, k))
     # 统一输出，按行打印
     for ans in results:
-        print(ans)
+        # print(ans)
+        pass
 
 def int_range(a, b):
     """兼容大范围简单整数迭代的辅助函数：生成 [a, b)"""

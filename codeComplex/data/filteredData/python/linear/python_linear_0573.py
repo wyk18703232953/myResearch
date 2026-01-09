@@ -1,8 +1,11 @@
 def main(n: int):
     if n == 1:
-        print("1")
+        # print("1")
+        pass
     elif n == 2:
-        print("1 2")
+        # print("1 2")
+        pass
+
     else:
         base = 1
         gap = 2
@@ -19,7 +22,8 @@ def main(n: int):
                 cur = base
             nxt = max(nxt, cur)
         ans.append(str(nxt))
-        print(" ".join(ans))
+        # print(" ".join(ans))
+        pass
 
 
 # 生成测试数据并调用

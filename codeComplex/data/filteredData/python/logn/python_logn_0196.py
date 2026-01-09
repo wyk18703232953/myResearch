@@ -16,12 +16,12 @@ def main(n):
             m //= 10
         if x - cs >= s:
             r = x
+
         else:
             l = x
 
-    print(n - l)
-
-
+    # print(n - l)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，n 可以按需求调整
     main(10**6)

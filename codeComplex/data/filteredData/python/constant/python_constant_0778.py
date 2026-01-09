@@ -31,9 +31,8 @@ def main(n):
     # 模拟原程序输出
     for val in tests:
         ans = "YES" if val in ok else "NO"
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：运行规模为 10 的测试
     main(10)

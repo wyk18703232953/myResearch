@@ -16,15 +16,15 @@ def main(n):
     while mid * (mid + 1) // 2 - candies != k:
         if k > mid * (mid + 1) // 2 - candies:
             leftside = mid + 1
+
         else:
             rightside = mid
 
         mid = (leftside + rightside) // 2
         candies = n - mid
 
-    print(candies)
-
-
+    # print(candies)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main，规模 n 可按需修改
     main(100)

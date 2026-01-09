@@ -1,51 +1,43 @@
-import random
+def main(n):
+    # n: number of vertices in a tree
+    if n < 1:
+        # print("No")
+        pass
+        return
 
-def main(n: int):
-    # 1. 构造一棵 n 个节点的随机树（1..n）
+    # Deterministic tree construction:
+    # Build a simple path 1-2-3-...-n
     graph = [set() for _ in range(n + 2)]
-    parents = [0] * (n + 1)
-    for v in range(2, n + 1):
-        p = random.randint(1, v - 1)
-        graph[p].add(v)
-        graph[v].add(p)
-        parents[v] = p
+    for i in range(1, n):
+        x = i
+        y = i + 1
+        graph[x].add(y)
+        graph[y].add(x)
 
-    # 2. 随机生成一个 BFS 合法序列（可以保证答案为 Yes）
-    #    简单做法：从 1 开始，打乱每一层子节点顺序
-    bfs_order = []
-    q = [1]
-    bfs_order.append(1)
-    head = 0
-    while head < len(q):
-        v = q[head]
-        head += 1
-        children = [u for u in graph[v] if u != parents[v]]
-        random.shuffle(children)
-        for u in children:
-            bfs_order.append(u)
-            q.append(u)
-
-    # 3. 根据 bfs_order 模拟原程序逻辑进行判断
-    graph_check = [set(nei) for nei in graph]  # 拷贝一份用于检测
-    a_iter = iter(bfs_order)
+    # Deterministic sequence a:
+    # Original logic expects a BFS-like traversal starting from 1.
+    # For a path 1-2-...-n, the only valid sequence is 1,2,3,...,n.
+    a_list = list(range(1, n + 1))
+    a = iter(a_list)
 
     try:
-        assert next(a_iter) == 1  # 序列必须以 1 开头
+        assert next(a) == 1
         q = [1]
         for v in q:
-            gv = graph_check[v]
+            gv = graph[v]
             gv1 = tuple(gv)
-            for _ in gv1:
-                u = next(a_iter)
+            for tr2 in gv1:
+                u = next(a)
                 assert u in gv
                 gv.remove(u)
-                graph_check[u].remove(v)
+                graph[u].remove(v)
                 q.append(u)
-        print("Yes")
+        # print("Yes")
+        pass
     except (AssertionError, StopIteration):
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # Example call for scalability/time experiments
+    # Adjust n as needed
     main(10)

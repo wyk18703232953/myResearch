@@ -1,36 +1,20 @@
-import random
-
 def main(n):
-    """
-    n: 规模参数，用来控制测试数据范围。
-    程序会自动生成 n, m, k, l 四个参数，其中：
-      1 <= m <= max(1, n)
-      0 <= k, l <= n
-    然后执行原逻辑并打印结果。
-    """
-    if n <= 0:
-        # 对于非正规模，给出一个固定用例
-        N = 10
-        m = 3
-        k = 2
-        l = 5
-    else:
-        # 生成测试数据
-        N = n
-        m = random.randint(1, max(1, n))
-        k = random.randint(0, N)
-        l = random.randint(0, N)
+    # 原程序需要四个整数 n, m, k, l
+    # 将参数 n 作为原始 n 的规模，其余三个值按确定性方式生成
+    orig_n = n
+    m = max(1, n // 3)
+    k = n // 4
+    l = n // 5
 
-    # 原逻辑开始
     d = (l + k) // m
     if (l + k) % m:
         d += 1
-    if m * d > N or N - k < l:
-        print(-1)
+    if m * d > orig_n or orig_n - k < l:
+        # print(-1)
+        pass
+
     else:
-        print(d)
-
-
+        # print(d)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模设置为 100
-    main(100)
+    main(1000)

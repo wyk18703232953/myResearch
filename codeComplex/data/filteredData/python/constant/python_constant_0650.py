@@ -44,15 +44,18 @@ def main(n: int):
     for n_i, k in tests:
         if n_i >= 32:
             # 原逻辑：直接 YES n-1
-            print("YES %d" % (n_i - 1))
+            # print("YES %d" % (n_i - 1))
+            pass
             continue
 
         if n_i < 0:
-            print("NO")
+            # print("NO")
+            pass
             continue
 
         if f[n_i] < k:
-            print("NO")
+            # print("NO")
+            pass
             continue
 
         k -= 1
@@ -73,9 +76,12 @@ def main(n: int):
             total += extra * f[size]
 
         if ans:
-            print("YES %d" % size)
+            # print("YES %d" % size)
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
 
 
 # 示例运行

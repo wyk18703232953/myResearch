@@ -1,19 +1,23 @@
-import random
-
 def main(n):
-    # 这里将 n 用作三个数组的规模上界，并生成随机长度与数据
-    # 你也可以按需改写为固定长度 a=b=c=n
-    a = random.randint(1, n)
-    b = random.randint(1, n)
-    c = random.randint(1, n)
+    # Map n to sizes of the three arrays.
+    # For scalability and symmetry, split n approximately into three parts.
+    a = n // 3
+    b = (n + 1) // 3
+    c = n - a - b
+    if a == 0:
+        a = 1
+    if b == 0:
+        b = 1
+    if c == 0:
+        c = 1
 
-    global rs, gs, bs, dp
+    # Deterministically generate arrays rs, gs, bs based on n and indices
+    # Ensure positive integers and some variation
+    rs = sorted([(i + 1) * 2 for i in range(a)])
+    gs = sorted([(j + 1) * 3 for j in range(b)])
+    bs = sorted([(k + 1) * 5 for k in range(c)])
 
-    # 生成测试数据：值域可根据需要调整
-    rs = sorted(random.randint(1, 1000) for _ in range(a))
-    gs = sorted(random.randint(1, 1000) for _ in range(b))
-    bs = sorted(random.randint(1, 1000) for _ in range(c))
-
+    # Initialize dp table
     dp = [[[-1 for _ in range(c + 1)] for _ in range(b + 1)] for _ in range(a + 1)]
 
     def solve(i, j, k):
@@ -32,9 +36,8 @@ def main(n):
         return ans
 
     result = solve(a - 1, b - 1, c - 1)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：使用 n=5 作为规模参数
-    main(5)
+    # Example deterministic call; adjust n for different input scales
+    main(9)

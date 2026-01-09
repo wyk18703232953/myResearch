@@ -7,6 +7,7 @@ def main(n):
         # 选一个适中的 k，保证覆盖各种情况
         if ni <= 20:
             ki = (1 << ni) - 1  # 2^ni - 1
+
         else:
             ki = (1 << 20) - 1  # 固定一个较大值，避免数值过大
         tests.append((ni, ki))
@@ -21,7 +22,8 @@ def main(n):
         n_local = n_case  # 保留原始 n
 
         if n_local > 31:
-            print("YES", n_local - 1)
+            # print("YES", n_local - 1)
+            pass
             continue
 
         a = [0]
@@ -29,11 +31,13 @@ def main(n):
             a.append(a[i - 1] * 4 + 1)
 
         if a[n_local] < k:
-            print("NO")
+            # print("NO")
+            pass
             continue
 
         if n_local == 2 and k == 3:
-            print("NO")
+            # print("NO")
+            pass
             continue
 
         p = 0
@@ -43,9 +47,8 @@ def main(n):
             p += q_val - 1
             q_val *= 2
             n_work -= 1
-        print("YES", n_work)
-
-
+        # print("YES", n_work)
+        pass
 if __name__ == "__main__":
     # 示例运行：可以修改这里的 n 规模
     main(10)

@@ -1,6 +1,57 @@
-from math import log2, ceil
-from collections import deque, Counter as CC, defaultdict as dd
-import random
+import os
+from io import BytesIO, IOBase
+
+
+BUFSIZE = 8192
+
+
+class FastIO(IOBase):
+    newlines = 0
+
+    def __init__(self, file):
+        self._fd = file.fileno()
+        self.buffer = BytesIO()
+        self.writable = "x" in file.mode or "r" not in file.mode
+        self.write = self.buffer.write if self.writable else None
+
+    def read(self):
+        while True:
+            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+            if not b:
+                break
+            ptr = self.buffer.tell()
+            self.buffer.seek(0, 2)
+            self.buffer.write(b)
+            self.buffer.seek(ptr)
+        self.newlines = 0
+        return self.buffer.read()
+
+    def readline(self):
+        while self.newlines == 0:
+            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+            self.newlines = b.count(b"\n") + (not b)
+            ptr = self.buffer.tell()
+            self.buffer.seek(0, 2)
+            self.buffer.write(b)
+            self.buffer.seek(ptr)
+        self.newlines -= 1
+        return self.buffer.readline()
+
+    def flush(self):
+        if self.writable:
+            os.write(self._fd, self.buffer.getvalue())
+            self.buffer.truncate(0)
+            self.buffer.seek(0)
+
+
+class IOWrapper(IOBase):
+    def __init__(self, file):
+        self.buffer = FastIO(file)
+        self.flush = self.buffer.flush
+        self.writable = self.buffer.writable
+        self.write = lambda s: self.buffer.write(s.encode("ascii"))
+        self.read = lambda: self.buffer.read().decode("ascii")
+        self.readline = lambda: self.buffer.readline().decode("ascii")
 
 
 class union_find:
@@ -17,6 +68,7 @@ class union_find:
             self.rank[j] += 1
         elif self.rank[i] > self.rank[j]:
             self.parent[j] = i
+
         else:
             self.parent[i] = j
 
@@ -27,12 +79,19 @@ class union_find:
         return self.parent[temp]
 
 
-def solve(p, q, r, a, b, c):
+def main(n):
+    # 映射规模 n 到 p, q, r 和数组长度
+    p = max(0, n // 3)
+    q = max(0, n // 3)
+    r = max(0, n - p - q)
+    # 生成确定性数据
+    a = [(i + 1) for i in range(p)]
+    b = [(i + 2) for i in range(q)]
+    c = [(i + 3) for i in range(r)]
     a.sort()
     b.sort()
     c.sort()
     l = [a, b, c]
-
     dp = [[[0 for _ in range(r + 1)] for _ in range(q + 1)] for _ in range(p + 1)]
     for i in range(p + 1):
         for j in range(q + 1):
@@ -42,7 +101,7 @@ def solve(p, q, r, a, b, c):
                     s[u] += 1
                     try:
                         tmp = dp[s[0]][s[1]][s[2]]
-                    except IndexError:
+                    except Exception:
                         s[u] -= 1
                         continue
                     tmp2 = 1
@@ -57,23 +116,13 @@ def solve(p, q, r, a, b, c):
                     s[u] -= 1
                     if flag:
                         dp[i][j][k] = max(dp[i][j][k], tmp)
-    return dp[p][q][r]
-
-
-def main(n):
-    # 使用 n 作为规模参数，生成 p, q, r 以及数组长度
-    # 这里简单设定：p = q = r = min(3, n)，数组长度分别为 p, q, r
-    p = q = r = min(3, n)
-
-    # 生成测试数据：随机正整数，范围 1..n
-    a = [random.randint(1, n) for _ in range(p)]
-    b = [random.randint(1, n) for _ in range(q)]
-    c = [random.randint(1, n) for _ in range(r)]
-
-    ans = solve(p, q, r, a, b, c)
-    print(ans)
+    # 使用原有 FastIO 的输出路径
+    out = IOWrapper(sys.stdout)
+    out.write(str(dp[p][q][r]) + "\n")
+    out.flush()
 
 
 if __name__ == "__main__":
-    # 示例：可修改 n 测试
-    main(5)
+    import sys
+    # 示例调用：可以根据需要修改 n
+    main(10)

@@ -1,15 +1,12 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # k 取 1~10 之间的随机整数
-    k = random.randint(1, 10)
-    # 生成递增的坐标数组 l，保证相邻差值 >= 1
-    l = [0]
-    for _ in range(1, n):
-        l.append(l[-1] + random.randint(1, 10))
+    # Deterministically generate k and l based on n
+    # k must be non-zero; choose a simple deterministic function
+    k = (n % 5) + 1  # k in [1,5]
 
-    # 原始逻辑
+    # Generate a sorted list l of length n with deterministic gaps
+    # l[i] = i * k * 2 ensures gaps are multiples of k*2
+    l = [i * k * 2 for i in range(n)]
+
     o = 2
     for i in range(n):
         if i + 1 == n:
@@ -21,9 +18,7 @@ def main(n):
         elif d > 2:
             o += 2
 
-    print(o)
-
-
+    # print(o)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模设为 5
-    main(5)
+    main(10)

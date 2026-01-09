@@ -12,9 +12,8 @@ def main(n):
     p = (x - k) % c
     k_val = (10 ** c) - int((x - k) / c) - 1
     s = str(k_val)
-    print(s[len(s) - p - 1])
-
-
+    # print(s[len(s) - p - 1])
+    pass
 if __name__ == "__main__":
     # 可以在此处修改 n 作为规模参数进行测试
     main(1000)

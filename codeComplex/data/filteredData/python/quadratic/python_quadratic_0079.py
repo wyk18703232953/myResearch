@@ -42,4 +42,5 @@ def main(n):
     # 若 n > 256，则循环利用所有 8 位模式
     for i in range(n):
         val = i % fam
-        print(ans[val])
+        # print(ans[val])
+        pass

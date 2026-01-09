@@ -1,25 +1,17 @@
-import random
-
-def main(n: int):
-    # 根据规模 n 生成测试数据：
-    # 为了演示，这里设定：
-    # l1 在 [0, 2^n - 1] 范围内
-    # l2 在 [0, 2^n - 1] 范围内
-    # 并保证至少含 1 个 bit（n >= 1）
-    if n < 1:
-        raise ValueError("n must be >= 1")
-
-    l1 = random.randint(0, (1 << n) - 1)
-    l2 = random.randint(0, (1 << n) - 1)
+def main(n):
+    # 原程序输入结构：一行两个整数 l1, l2
+    # 将 n 映射为 (l1, l2)，保证确定性和可规模化
+    # 例如：l1 = n，l2 = 2*n + 1
+    l1 = n
+    l2 = 2 * n + 1
 
     x = l1 ^ l2
     y = 1
     while y <= x:
-        y *= 2
+        y = y * 2
 
-    print(y - 1)
-
-
+    # print(y - 1)
+    pass
 if __name__ == "__main__":
-    # 示例：可修改 n 测试不同规模
+    # 示例调用，可根据需要修改 n 的值做时间复杂度实验
     main(10)

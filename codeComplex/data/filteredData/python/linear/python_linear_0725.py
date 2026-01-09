@@ -31,6 +31,7 @@ def main(n):
 
     if n % 2 == 0:
         k = n
+
     else:
         k = n - 1  # 保证 n-k 为偶数且 >= 0
 
@@ -50,7 +51,8 @@ def main(n):
 
     # 原程序是直接打印，这里返回字符串结果方便外部使用
     output = ''.join(str(x) for x in ans)
-    print(output)
+    # print(output)
+    pass
     return output
 
 

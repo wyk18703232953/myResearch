@@ -31,14 +31,14 @@ def main(n):
         s += n * x
         if d < 0:
             s += sm(n // 2) * d + sm(n // 2 - (n + 1) % 2) * d
+
         else:
             s += sm(n - 1) * d
 
     # 保持与原代码相同的浮点输出行为
     result = s / n
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

@@ -24,4 +24,5 @@ if __name__ == "__main__":
     # 示例运行，可根据需要修改 n
     n_example = 10
     result = main(n_example)
-    print(result)
+    # print(result)
+    pass

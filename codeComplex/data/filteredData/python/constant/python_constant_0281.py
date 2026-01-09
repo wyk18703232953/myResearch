@@ -3,9 +3,8 @@ def main(n: int):
     x = n
     # 原逻辑：print((int(input()))//2+1)
     result = x // 2 + 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：可自行修改用于测试
     main(10)

@@ -1,24 +1,27 @@
-import random
+import math
+from heapq import *
 
-def main(n: int):
-    # 生成测试数据：
-    # cost[1..n]: 1 到 10^9 之间的随机权值
-    # arr[1..n]: 随机生成的置换（每个点出度为 1，且为一个排列）
-    #
-    # 原程序结构：
-    # n
-    # cost[1..n]
-    # arr[1..n]
-    #
-    # 这里直接在内存中构造 cost 和 arr 数组
+gcd = math.gcd
+sqrt = math.sqrt
+ceil = math.ceil
 
-    # 1. 生成 cost 数组（下标从 1 开始）
-    cost = [0] + [random.randint(1, 10**9) for _ in range(n)]
+def ind(ch):
+    return ord(ch) - ord("a")
 
-    # 2. 生成 arr 作为一个随机排列（1..n 的排列）
-    arr = [0] + random.sample(range(1, n + 1), n)
+def generate_cost_and_perm(n):
+    b = [0]
+    cost = b + [(i * 3 + 7) % (2 * n + 5) + 1 for i in range(1, n + 1)]
+    arr = b + [0] * n
+    for i in range(1, n):
+        arr[i] = i + 1
+    arr[n] = 1
+    return cost, arr
 
-    # 3. 逻辑与原 main() 一致
+def main(n):
+    cost, arr = generate_cost_and_perm(n)
+    b = [0]
+    cost = cost
+    arr = arr
     nv = [-1] * (n + 1)
     colors = []
     c = 0
@@ -33,7 +36,6 @@ def main(n: int):
         if nv[dest] == c:
             colors.append(dest)
         c += 1
-
     s = 0
     for i in colors:
         mi = cost[i]
@@ -42,11 +44,7 @@ def main(n: int):
             mi = min(mi, cost[nxt])
             nxt = arr[nxt]
         s += mi
-
-    # 输出与原程序相同的结果：所有环上的最小 cost 之和
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模可按需调整
     main(10)

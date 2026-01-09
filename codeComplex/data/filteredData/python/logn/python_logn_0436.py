@@ -25,26 +25,32 @@ def main(n: int):
             ki = max(1, limit // 2)          # 中间值
         elif i % 3 == 2:
             ki = limit + 1                   # > calc(ni)
+
         else:
             ki = max(1, limit - i % 5)       # 接近上界
         tests.append((ni, ki))
 
     for n_val, k in tests:
         if n_val > 35:
-            print("YES " + str(n_val - 1))
+            # print("YES " + str(n_val - 1))
+            pass
         elif 1 + calc(n_val - 1) >= k:
-            print("YES " + str(n_val - 1))
+            # print("YES " + str(n_val - 1))
+            pass
         elif calc(n_val) < k:
-            print("NO")
+            # print("NO")
+            pass
+
         else:
             for i in range(1, n_val + 1):
                 if b[i] <= k <= calc(n_val) - (2 ** (i + 1) - 1) * calc(n_val - i):
-                    print("YES " + str(n_val - i))
+                    # print("YES " + str(n_val - i))
+                    pass
                     break
+
             else:
-                print("NO")
-
-
+                # print("NO")
+                pass
 if __name__ == "__main__":
     # 示例：运行规模为 10 的测试
     main(10)

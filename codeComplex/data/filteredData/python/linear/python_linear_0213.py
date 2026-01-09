@@ -1,20 +1,22 @@
-import random
-
 def main(n):
-    # 生成测试数据：A, C 以及 n 行 (z, x, y)
-    # 可按需要修改生成规则
-    A = random.randint(1, 10)
-    C = random.randint(1, 10)
+    # Deterministically generate A, C based on n
+    A = n + 1
+    C = 2 * n + 3
 
     def Ro(x, y):
         return A * x - y + C
 
+    # Generate n triples (z, x, y) deterministically
+    # Pattern: spread values so that there are repeated Ro(x+z, z*A+y) and x
+    triples = []
+    for i in range(n):
+        z = i % (max(1, n // 3))
+        x = (i // 2) % (max(1, n // 4) + 1)
+        y = (i * 3 + 1) % (max(1, n // 5) + 2)
+        triples.append((z, x, y))
+
     huh = []
-    for _ in range(n):
-        # 生成 z, x, y，范围可调整
-        z = random.randint(-10, 10)
-        x = random.randint(-10, 10)
-        y = random.randint(-10, 10)
+    for z, x, y in triples:
         huh.append((Ro(x + z, z * A + y), x))
 
     huh = sorted(huh)
@@ -25,7 +27,6 @@ def main(n):
     g = []
 
     huh.append((-9999999999999, -999999999999999))
-
     for huhh in huh:
         if huhh[0] != prev[0]:
             g.append(c1)
@@ -43,9 +44,7 @@ def main(n):
             prev = (huhh[0], huhh[1])
         c1 += 1
 
-    print(anss)
-
-
+    # print(anss)
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模 n = 10
-    main(10)
+    main(1000)

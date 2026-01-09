@@ -17,12 +17,12 @@ def main(n):
 
         if 2 * o1 * o1 == cur or 4 * o2 * o2 == cur:
             out.append('YES')
+
         else:
             out.append('NO')
 
-    print('\n'.join(out))
-
-
+    # print('\n'.join(out))
+    pass
 if __name__ == "__main__":
     # 示例：当规模为 10 时，处理测试数据 1..10
     main(10)

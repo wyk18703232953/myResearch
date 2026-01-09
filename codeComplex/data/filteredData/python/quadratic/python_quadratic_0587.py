@@ -1,23 +1,18 @@
-import random
-
 def main(n):
-    """
-    n: 规模，用来生成测试数据的字符串长度
-    程序内部会构造一组 (T, n, k, s) 测试数据并打印对应答案。
-    """
+    # Interpret n as:
+    # T: number of test cases = n
+    # For test case t (0-based): length of string nt = t + 1 + n, window size kt = (t % (nt)) + 1
+    # Generate deterministic strings of 'R', 'G', 'B'
+    T = n
+    results = []
 
-    # 生成测试数据
-    T = 1                            # 测试组数，可按需调整
-    k = max(1, n // 2)               # 窗口大小，示例设为 n//2，至少为 1
-    chars = ['R', 'G', 'B']
-    s = ''.join(random.choice(chars) for _ in range(n))
+    for t in range(T):
+        length = t + 1 + n
+        k = (t % length) + 1
+        # Generate s deterministically: cycle through 'R', 'G', 'B'
+        chars = ['R', 'G', 'B']
+        s = ''.join(chars[i % 3] for i in range(length))
 
-    print("T =", T)
-    print("n =", n, "k =", k)
-    print("s =", s)
-
-    # 以下为原逻辑封装
-    for _ in range(T):
         rq1 = ''
         rq2 = ''
         rq3 = ''
@@ -36,7 +31,7 @@ def main(n):
                 rq2 = rq2 + 'R'
                 rq3 = rq3 + 'G'
 
-        ans = 10**18
+        ans = 1000000000000000000
 
         for i in range(0, len(s) - k + 1):
             a1 = 0
@@ -53,9 +48,12 @@ def main(n):
 
             ans = min(ans, min(a1, a2, a3))
 
-        print("answer =", ans)
+        results.append(ans)
 
-
+    # Combine outputs similar to original multiple print calls
+    for res in results:
+        # print(res)
+        pass
 if __name__ == "__main__":
-    # 示例调用，可按需修改 n
-    main(10)
+    # Example deterministic call; adjust n to scale input size
+    main(5)

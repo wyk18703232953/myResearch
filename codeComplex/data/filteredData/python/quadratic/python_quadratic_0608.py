@@ -31,9 +31,8 @@ def main(n: int):
             if i % m == j:
                 mx = max(mx, dd[idx_curr] - dp[idx_curr])
 
-    print(mx)
-
-
+    # print(mx)
+    pass
 if __name__ == "__main__":
     # 示例调用：n=10
     main(10)

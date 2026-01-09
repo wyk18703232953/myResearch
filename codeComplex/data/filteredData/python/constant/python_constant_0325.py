@@ -26,9 +26,8 @@ def main(n):
     for i in range(14):
         cur = f(a, i)
         ans = max(ans, cur)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时按需修改 n
     main(10)

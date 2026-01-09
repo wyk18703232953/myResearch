@@ -4,19 +4,25 @@ def possible(arr):
     a, b, c, d, e, f = arr
     if a == c == e and b + d + f == a:
         one = "A" * b + "B" * d + "C" * f
-        print(a)
+        # print(a)
+        pass
         for _ in range(a):
-            print(one)
+            # print(one)
+            pass
         return True
 
     if b == d == f and a + c + e == d:
-        print(b)
+        # print(b)
+        pass
         for _ in range(a):
-            print("A" * b)
+            # print("A" * b)
+            pass
         for _ in range(c):
-            print("B" * b)
+            # print("B" * b)
+            pass
         for _ in range(e):
-            print("C" * b)
+            # print("C" * b)
+            pass
         return True
 
     ns = [(a, b, "A"), (c, d, "B"), (e, f, "C")]
@@ -29,7 +35,8 @@ def possible(arr):
     e, f, t3 = z
 
     if c + e == a and d == f and d + b == a:
-        print(a)
+        # print(a)
+        pass
         mat = [["." for _ in range(a)] for _ in range(a)]
         for i in range(a):
             for j in range(b):
@@ -41,7 +48,8 @@ def possible(arr):
             for j in range(b, a):
                 mat[i][j] = t3
         for i in range(a):
-            print("".join(mat[i]))
+            # print("".join(mat[i]))
+            pass
         return True
 
     fs.sort(reverse=True)
@@ -51,7 +59,8 @@ def possible(arr):
     f, e, t3 = z
 
     if d + f == b and c == e and c + a == b:
-        print(b)
+        # print(b)
+        pass
         mat = [["." for _ in range(b)] for _ in range(b)]
         for i in range(a):
             for j in range(b):
@@ -63,7 +72,8 @@ def possible(arr):
             for j in range(d, b):
                 mat[i][j] = t3
         for i in range(b):
-            print("".join(mat[i]))
+            # print("".join(mat[i]))
+            pass
         return True
 
     return False
@@ -93,9 +103,8 @@ def main(n):
             ok = True
             break
     if not ok:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # 示例：用 n = 3 运行一次
     main(3)

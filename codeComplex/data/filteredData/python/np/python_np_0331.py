@@ -33,9 +33,8 @@ def main(n):
     # 根据规模 n 生成测试数据，这里令 k 与 n 相同
     k = n
     result = solve(n, k)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

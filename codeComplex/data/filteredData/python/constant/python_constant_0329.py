@@ -1,10 +1,12 @@
-import random
-
 def main(n):
-    # 生成测试数据：长度固定为 14 的数组 a
-    # 这里按题意保持 14 个坑位，只用 n 控制数值规模
-    random.seed(0)
-    a = [random.randint(0, n) for _ in range(14)]
+    # Interpret n as the length of the input list, capped at 14 since the algorithm uses 14 positions
+    length = 14 if n >= 14 else max(1, n)
+
+    # Deterministically generate the input array 'a' of size 14 as in the original logic
+    # Fill first `length` elements with a simple pattern, rest with zeros
+    a = [0] * 14
+    for i in range(length):
+        a[i] = (i * 3 + 5) % 100 + 1  # simple deterministic positive integers
 
     ans = 0
     for i in range(len(a)):
@@ -23,9 +25,11 @@ def main(n):
                 ans_now += j
         ans = max(ans_now, ans)
 
-    print(ans)
+    return ans
 
 
 if __name__ == "__main__":
-    # 示例：调用 main，n 控制生成数据的数值规模
-    main(100)
+    # Example deterministic call for scaling experiment
+    result = main(20)
+    # print(result)
+    pass

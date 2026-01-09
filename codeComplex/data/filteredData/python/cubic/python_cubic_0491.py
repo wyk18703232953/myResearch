@@ -1,48 +1,45 @@
-import random
+def roll(i, j, n, m, hor, ver, grid):
+    ways = []
+    if j:
+        ways.append(2 * hor[i][j - 1] + grid[i][j - 1])
+    if m - 1 - j:
+        ways.append(2 * hor[i][j] + grid[i][j + 1])
+    if i:
+        ways.append(2 * ver[i - 1][j] + grid[i - 1][j])
+    if n - 1 - i:
+        ways.append(2 * ver[i][j] + grid[i + 1][j])
+    return min(ways)
+
 
 def main(n):
-    # 这里将规模参数 n 用作行数，列数 m 与 n 相同，也可按需调整
-    m = n
-    # 为了可重复性，可以固定随机种子
-    random.seed(0)
+    # Interpret n as the grid size parameter.
+    # We map:
+    #   rows = n
+    #   cols = n
+    #   k   = n  (number of steps in original problem)
+    rows = n
+    cols = n
+    k = n
 
-    # 生成测试数据：
-    # k：偶数（若为奇数，原逻辑直接输出 -1）
-    # 这里令 k 在 [2, 2*n] 内的偶数
-    if n > 0:
-        k = random.randrange(1, n + 1) * 2
-    else:
-        k = 2
+    # Deterministic generation of hor and ver matrices
+    # hor: rows x cols
+    hor = [[(i * cols + j) % 7 + 1 for j in range(cols)] for i in range(rows)]
+    # ver: (rows-1) x cols
+    ver = [[((i + 1) * cols + j) % 9 + 1 for j in range(cols)] for i in range(rows - 1)]
 
-    # hor: n 行，每行 m-1 个非负整数
-    hor = [[random.randint(1, 9) for _ in range(m - 1)] for _ in range(n)]
-    # ver: n-1 行，每行 m 个非负整数
-    ver = [[random.randint(1, 9) for _ in range(m)] for _ in range(n - 1)]
+    grid = [[0] * cols for _ in range(rows)]
 
-    def roll(i, j):
-        ways = []
-        if j:
-            ways.append(2 * hor[i][j - 1] + grid[i][j - 1])
-        if m - 1 - j:
-            ways.append(2 * hor[i][j] + grid[i][j + 1])
-        if i:
-            ways.append(2 * ver[i - 1][j] + grid[i - 1][j])
-        if n - 1 - i:
-            ways.append(2 * ver[i][j] + grid[i + 1][j])
-        return min(ways)
-
-    grid = [[0] * m for _ in range(n)]
     if k % 2:
-        for _ in range(n):
-            print(" ".join(["-1"] * m))
+        result = [["-1"] * cols for _ in range(rows)]
+
     else:
         for _ in range(k // 2):
-            new_grid = [[roll(i, j) for j in range(m)] for i in range(n)]
-            grid = new_grid[:]
-        for i in range(n):
-            print(" ".join(map(str, grid[i])))
+            new_grid = [[roll(i, j, rows, cols, hor, ver, grid) for j in range(cols)] for i in range(rows)]
+            grid = new_grid
+        result = [[str(grid[i][j]) for j in range(cols)] for i in range(rows)]
 
-
+    for i in range(rows):
+        # print(" ".join(result[i]))
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(4)
-    main(4)
+    main(5)

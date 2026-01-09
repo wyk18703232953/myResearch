@@ -1,21 +1,18 @@
-import random
-
 def main(n):
-    # 根据规模 n 生成测试数据 (a, b, c, n)
-    # 这里将 a, b, c, n 控制在 1 到 n 的范围内
-    a = random.randint(1, n)
-    b = random.randint(1, n)
-    c = random.randint(1, n)
-    total_n = random.randint(1, n)
+    # 解释输入结构：
+    # 原程序：a, b, c, n = P()   （一次读取 4 个整数）
+    # 现将 n 映射为原程序的第四个输入参数 n_input
+    # 并用确定性方式生成 a, b, c
+    a = n + 1
+    b = 2 * n + 3
+    c = n
 
     if a < c or b < c:
         r = -1
+
     else:
-        r = total_n - (a + b - c)
-
-    print(-1 if r <= 0 else r)
-
-
-if __name__ == '__main__':
-    # 示例：使用规模 10 运行
+        r = n - (a + b - c)
+    # print(-1 if r <= 0 else r)
+    pass
+if __name__ == "__main__":
     main(10)

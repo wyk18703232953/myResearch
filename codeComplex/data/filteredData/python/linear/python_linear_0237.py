@@ -1,37 +1,41 @@
-import random
-import string
+def main(n):
+    ALPHABET = [chr(i) for i in range(65, 65+26)] + [chr(i) for i in range(97, 97+26)]
 
-ALPHABET = [chr(i) for i in range(65, 65 + 26)] + [chr(i) for i in range(97, 97 + 26)]
+    def generate_string(length):
+        chars = []
+        for i in range(length):
+            chars.append(ALPHABET[i % len(ALPHABET)])
+        return chars
 
+    # Interpret n as the length of each string
+    L = max(1, n)
 
-def optimal_score(LIST, n):
-    d = {char: 0 for char in ALPHABET}
-    for v in LIST:
-        d[v] += 1
-    max_freq = max(d.values())
-    L = len(LIST)
-    res = 0
-    for freq in d.values():
-        if L - freq >= n:
-            res = max(res, freq + n)
-        else:
-            if not (L - freq < n and n == 1):
-                res = L
+    black = generate_string(L)
+    white = generate_string(L + 1 if L > 1 else 1)
+    katie = generate_string(L + 2 if L > 2 else L)
+
+    def optimal_score(LIST):
+        d = {char: 0 for char in ALPHABET}
+        for v in LIST:
+            d[v] += 1
+        max_freq = max(d.values())
+        Llen = len(LIST)
+        res = 0
+        for freq in d.values():
+            if Llen - freq >= n:
+                res = max(res, freq + n)
+
             else:
-                res = max(res, L - 1)
-    return res
+                if not (Llen - freq < n and n == 1):
+                    res = Llen
 
+                else:
+                    res = max(res, Llen - 1)
+        return res
 
-def main(n: int):
-    # 根据 n 生成测试数据：三个长度为 n 的随机字符串
-    chars = ALPHABET
-    black = [random.choice(chars) for _ in range(n)]
-    white = [random.choice(chars) for _ in range(n)]
-    katie = [random.choice(chars) for _ in range(n)]
-
-    score_black = optimal_score(black, n)
-    score_white = optimal_score(white, n)
-    score_katie = optimal_score(katie, n)
+    score_black = optimal_score(black)
+    score_white = optimal_score(white)
+    score_katie = optimal_score(katie)
 
     M = max(score_black, score_katie, score_white)
     MAXCNT = 0
@@ -49,11 +53,11 @@ def main(n: int):
         MAXCNT += 1
 
     if MAXCNT == 1:
-        print(winner)
+        # print(winner)
+        pass
+
     else:
-        print("Draw")
-
-
+        # print("Draw")
+        pass
 if __name__ == "__main__":
-    # 示例：规模 n = 10
     main(10)

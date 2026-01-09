@@ -1,22 +1,18 @@
-import random
-
-def main(n: int):
-    # 生成规模为 n 的测试数据，这里理解为：
-    # 在平面上随机生成 3 个点 (ax, ay), (bx, by), (cx, cy)
-    # n 用来控制坐标的范围 [-n, n]
-    ax = random.randint(-n, n)
-    ay = random.randint(-n, n)
-    bx = random.randint(-n, n)
-    by = random.randint(-n, n)
-    cx = random.randint(-n, n)
-    cy = random.randint(-n, n)
+def main(n):
+    # Deterministically generate points based on n
+    ax = n
+    ay = n * 2
+    bx = n // 2
+    by = n * 3
+    cx = n * 2
+    cy = n // 3 if n != 0 else 0
 
     if (ax - bx) * (ax - cx) > 0 and (ay - by) * (ay - cy) > 0:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模参数可自行调整
     main(10)

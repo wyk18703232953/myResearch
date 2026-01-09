@@ -1,9 +1,7 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 个非负整数
-    # 这里生成 0 到 n 之间的随机整数，可按需修改分布
-    a = [random.randint(0, n) for _ in range(n)]
+    # Deterministically generate input array a of length n
+    # Example: a[i] = (i * 2) % (n + 3)
+    a = [(i * 2) % (n + 3) for i in range(n)]
 
     b = []
     maxi = 0
@@ -12,11 +10,12 @@ def main(n):
         b.append(maxi)
 
     c = []
-    count = b[-1]
+    count = b[-1] if n > 0 else 0
     for i in range(n - 1, -1, -1):
         if count - 1 >= b[i]:
             count -= 1
             c.append(count)
+
         else:
             c.append(count)
     c = c[::-1]
@@ -25,9 +24,7 @@ def main(n):
     for i in range(n):
         ans += (c[i] - a[i] - 1)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

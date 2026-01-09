@@ -12,13 +12,16 @@ def list3d(a, b, c, d):
     return [[[d] * c for _ in range(b)] for _ in range(a)]
 
 def Y(c):
-    print(["NO", "YES"][c])
+    # print(["NO", "YES"][c])
+    pass
 
 def y(c):
-    print(["no", "yes"][c])
+    # print(["no", "yes"][c])
+    pass
 
 def Yy(c):
-    print(["No", "Yes"][c])
+    # print(["No", "Yes"][c])
+    pass
 
 
 def main(n):
@@ -45,6 +48,7 @@ def main(n):
         for ch in b:
             if ch == '1':
                 s.append('a')
+
             else:
                 s.append('_')
         s = ''.join(s)
@@ -97,9 +101,11 @@ def main(n):
             cnt += 1
         if cnt != N:
             Y(0)
+
         else:
             Y(1)
-            print(*top_order)
+            # print(*top_order)
+            pass
 
     # 构造 mark
     mark = {}
@@ -122,6 +128,7 @@ def main(n):
             for l in range(k):
                 if mask[l] == '1':
                     ss[l] = s[l]
+
                 else:
                     ss[l] = '_'
             ss = "".join(ss)

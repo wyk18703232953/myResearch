@@ -1,20 +1,21 @@
-from math import fabs
-import random
-
-
-def main(n: int):
-    # 生成测试数据：长度为 n 的整数序列，每个元素在 1~5 之间
+def main(n):
+    # Deterministically generate input of size n
+    # Original program:
+    # n: integer
+    # nots: list of n integers
+    # Here we construct nots with simple deterministic pattern using n
     if n <= 0:
-        return
-    nots = [random.randint(1, 5) for _ in range(n)]
+        n = 1
+    nots = [(i % 7) - 3 for i in range(n)]
 
-    mp = [0]        # 原代码里的变量名 map，与内置重名，这里改名为 mp
+    from math import fabs
+
     ampl = 0
     possible = True
     zer = False
     f_s = True
+    mp = [0]
 
-    # 构建 mp
     for i in range(len(nots) - 1):
         if nots[i] == nots[i + 1]:
             if ampl != 0:
@@ -24,21 +25,25 @@ def main(n: int):
             mp.append(0)
             zer = True
             ampl = 0
+
         else:
             if nots[i] < nots[i + 1]:
-                if ampl < 0 and f_s is not True:
+                if ampl < 0 and f_s != True:
                     mp.append(ampl)
                     if ampl == -5:
                         possible = False
                     ampl = 1
+
                 else:
                     ampl += 1
+
             else:
-                if ampl > 0 and f_s is not True:
+                if ampl > 0 and f_s != True:
                     mp.append(ampl)
                     if ampl == 5:
                         possible = False
                     ampl = -1
+
                 else:
                     ampl += -1
         f_s = False
@@ -54,7 +59,6 @@ def main(n: int):
     if possible:
         if zer:
             l = len(mp)
-            # 第一步：处理 4/-4 邻接 0 的情况
             for i in range(1, l - 1):
                 if mp[i] == 0:
                     if mp[i - 1] == 4:
@@ -66,7 +70,6 @@ def main(n: int):
                     if mp[i + 1] == -4:
                         mp[i] = 1
 
-            # 第二步：根据两侧符号给 0 赋值
             for i in range(1, l - 1):
                 if mp[i] == 0:
                     if mp[i - 1] >= 0 and mp[i + 1] >= 0:
@@ -78,7 +81,6 @@ def main(n: int):
                     if mp[i - 1] <= 0 and mp[i + 1] <= 0:
                         mp[i] = 1
 
-            # 第三步：合并为 fin
             fin = []
             ampl = mp[1]
             for i in range(1, l - 1):
@@ -92,11 +94,8 @@ def main(n: int):
             fin.append(ampl)
 
             if possible:
-                fin[-1] = int(
-                    fabs(fin[-1]) / fin[-1] * (fabs(fin[-1]) + 1)
-                )
+                fin[-1] = int(fabs(fin[-1]) / fin[-1] * (fabs(fin[-1]) + 1))
                 appl = []
-                # 第四步：生成 appl
                 for i in range(len(fin)):
                     if fin[i] > 0:
                         for j in range(1, fin[i] + 1):
@@ -104,12 +103,11 @@ def main(n: int):
                     if fin[i] < 0:
                         for j in range(5, 5 + fin[i], -1):
                             appl.append(j)
+
         else:
             appl = []
             try:
-                mp[-2] = int(
-                    fabs(mp[-2]) / mp[-2] * (fabs(mp[-2]) + 1)
-                )
+                mp[-2] = int(fabs(mp[-2]) / mp[-2] * (fabs(mp[-2]) + 1))
             except ZeroDivisionError:
                 appl = [1]
             for i in range(len(mp)):
@@ -122,13 +120,18 @@ def main(n: int):
 
         if possible:
             for finger in appl:
-                print(finger, end=" ")
+                # print(finger, end=' ')
+                pass
+            # print()
+            pass
+
         else:
-            print(-1)
+            # print(-1)
+            pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
-    # 示例：n=10
-    main(10)
+    # Example deterministic call for complexity experiments
+    main(1000)

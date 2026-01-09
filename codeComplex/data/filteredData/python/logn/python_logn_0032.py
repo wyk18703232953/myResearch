@@ -5,12 +5,14 @@ def main(n: int):
     if n <= 1:
         # 对于非常小的 n，给一个固定例子
         a, b = 1, 2
+
     else:
         a = (1 << n) - 2
         b = (1 << n) - 1
 
     if a == b:
-        print(0)
+        # print(0)
+        pass
         return
 
     aa = ""
@@ -38,9 +40,8 @@ def main(n: int):
 
     ln = len(aa)
     r = 2 ** (ln - idx) - 1
-    print(r)
-
-
+    # print(r)
+    pass
 if __name__ == "__main__":
     # 示例：规模 n = 5
     main(5)

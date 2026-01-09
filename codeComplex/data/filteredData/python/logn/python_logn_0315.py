@@ -14,10 +14,12 @@ def main(n):
     mult = pow(2, k, MOD)
     if x:
         ans = (y * mult + 1) % MOD
+
     else:
         ans = 0
     return ans
 
 if __name__ == "__main__":
     # 示例：调用 main(10)
-    print(main(10))
+    # print(main(10))
+    pass

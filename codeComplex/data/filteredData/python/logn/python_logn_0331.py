@@ -15,8 +15,8 @@ def generate_test_data(n):
 def main(n):
     f1, f2 = generate_test_data(n)
     ans = solve(f1, f2)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：手动指定 n 来运行
     main(10)

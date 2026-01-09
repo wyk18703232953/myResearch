@@ -1,19 +1,29 @@
 from collections import deque
-import random
 
 def main(n):
-    # 生成测试数据
-    # n 为序列长度，构造 1..n 的随机排列，保证元素互不相同
-    a = deque(random.sample(range(1, 10 * n + 1), n))
+    # 映射规则：
+    # n >= 2
+    # 数组长度: N = n
+    # 查询数量: Q = n
+    if n < 2:
+        n = 2
 
-    # 生成查询次数 q，并随机生成 q 个查询
-    q = max(1, n * 2)  # 可按需调整规模关系
-    queries = [random.randint(1, 10 ** 9) for _ in range(q)]
+    N = n
+    Q = n
 
-    # 原逻辑开始
+    # 确定性构造数组 a:
+    # 让最大值在中间附近，并确保唯一最大值
+    # a[i] = (i * 2 + 1) % (2 * N) + 1，最后一个元素替换为 2*N+1 作为唯一最大值
+    base = [(i * 2 + 1) % (2 * N) + 1 for i in range(N)]
+    base[-1] = 2 * N + 1
+    a = deque(base)
+
+    # 确定性构造查询序列:
+    # 1..Q，覆盖小于等于 m、大于 m 的各种情况
+    queries = list(range(1, Q + 1))
+
     b = []
     m = a.index(max(a))
-
     for _ in range(m):
         a0, a1 = a.popleft(), a.popleft()
         b.append([a0, a1])
@@ -22,15 +32,18 @@ def main(n):
         a.appendleft(a0)
         a.append(a1)
 
-    # 输出结果
+    outputs = []
     for c in queries:
         if c <= m:
-            print(f"{b[c-1][0]} {b[c-1][1]}")
-        else:
-            c -= m + 1
-            c %= n - 1
-            print(f"{a[0]} {a[c+1]}")
+            outputs.append(f"{b[c-1][0]} {b[c-1][1]}")
 
+        else:
+            c_adj = c - (m + 1)
+            c_adj %= (N - 1)
+            outputs.append(f"{a[0]} {a[c_adj + 1]}")
+
+    for line in outputs:
+        # print(line)
+        pass
 if __name__ == "__main__":
-    # 可以在此处指定 n 的大小进行测试
-    main(5)
+    main(10)

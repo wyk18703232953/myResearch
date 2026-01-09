@@ -9,11 +9,11 @@ def main(n):
     for l in range(n, 0, -1):
         for i in range(n - l + 1):
             if a[i:i + l] in a[i + 1:]:
-                print(l)
+                # print(l)
+                pass
                 return
-    print(0)
-
-
+    # print(0)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

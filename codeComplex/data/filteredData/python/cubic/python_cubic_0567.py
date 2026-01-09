@@ -1,34 +1,30 @@
-import random
+def main(n):
+    # Deterministic generation of inputs based on n
+    # Generate string a of digits '0'..'9' repeated deterministically
+    a = [str((i * 7 + 3) % 10) for i in range(n)]
+    # Generate upper bound b as a deterministic large integer depending on n
+    # Ensure b has at least n digits to avoid trivial failures
+    b_digits = [(i * 5 + 1) % 10 for i in range(max(1, n))]
+    b_str = "".join(str(d) for d in b_digits).lstrip("0") or "0"
+    b = int(b_str) + 10 ** max(1, n // 2)
 
-def main(n: int):
-    # 1. 生成测试数据
-    # 生成一个长度为 n 的数字串 a，由字符 '0'-'9' 随机组成
-    # 生成一个整数 b，范围为 [0, 10^n - 1]
-    digits = [str(random.randint(0, 9)) for _ in range(n)]
-    a = digits[:]  # 列表形式
-    # 构造 b：随机一个 n 位以内的整数
-    if n <= 18:  # 避免太大的数，int 也可以承受更大，但这里做个保险
-        b = random.randint(0, 10**n - 1)
-    else:
-        # 对于非常大的 n，用前 18 位限定范围
-        b = random.randint(0, 10**18 - 1)
-
-    # 2. 原始逻辑
+    # Core algorithm from original code
     a.sort()
     a = a[::-1]
     prefix = ""
     while len(a) > 0:
         for i in range(len(a)):
-            num = prefix + a[i] + "".join(sorted(a[:i] + a[i+1:]))
+            num = prefix + a[i] + "".join(sorted(a[:i] + a[i + 1:]))
             if int(num) <= b:
                 prefix += a[i]
-                a = a[:i] + a[i+1:]
+                a = a[:i] + a[i + 1:]
                 break
 
-    # 输出结果
-    print(prefix)
+        else:
+            # If no digit can be appended without exceeding b, stop
+            break
 
-
+    # print(prefix)
+    pass
 if __name__ == "__main__":
-    # 示例调用：n 为生成的数字串长度
-    main(5)
+    main(10)

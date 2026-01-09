@@ -16,12 +16,12 @@ def main(n):
         mid = (r + l) // 2
         if mid - f(mid) >= s:
             r = mid
+
         else:
             l = mid
 
-    print(max(n - r + 1, 0))
-
-
+    # print(max(n - r + 1, 0))
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10**6)

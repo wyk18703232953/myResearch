@@ -22,12 +22,14 @@ def bootstrap(f, stack=[]):
     def wrappedfunc(*args, **kwargs):
         if stack:
             return f(*args, **kwargs)
+
         else:
             to = f(*args, **kwargs)
             while True:
                 if isinstance(to, GeneratorType):
                     stack.append(to)
                     to = next(to)
+
                 else:
                     stack.pop()
                     if not stack:
@@ -44,6 +46,7 @@ def fact(x, mod=0):
     if mod:
         while x >= len(farr):
             farr.append(farr[-1] * len(farr) % mod)
+
     else:
         while x >= len(farr):
             farr.append(farr[-1] * len(farr))
@@ -172,6 +175,7 @@ class UFS:
             self.parent[pv] = pu
             if self.ranks[pv] == self.ranks[pu]:
                 self.ranks[pu] += 1
+
         else:
             self.parent[pu] = pv
 
@@ -198,6 +202,7 @@ class UF:
             self.size[pu] += self.size[pv]
             if self.ranks[pv] == self.ranks[pu]:
                 self.ranks[pu] += 1
+
         else:
             self.parent[pu] = pv
             self.edge[pv] += self.edge[pu] + 1
@@ -256,6 +261,7 @@ def lis(nums):
         i = bisect_left(res, k)
         if i == len(res):
             res.append(k)
+
         else:
             res[i] = k
     return len(res)

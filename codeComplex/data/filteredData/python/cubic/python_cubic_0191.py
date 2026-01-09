@@ -1,16 +1,15 @@
-import random
+def main(n):
+    if n <= 0:
+        return 0
 
-def main(n: int) -> int:
-    # 生成测试数据：b 为长度为 n、元素在 1..3023 之间的随机序列
-    max_v = 3023
-    b = [random.randint(1, max_v) for _ in range(n)]
+    # Deterministically generate b of length n with values in [1, 3023]
+    b = [(i % 3023) + 1 for i in range(n)]
 
     e = [[-1] * (n + 1) for _ in range(3024)]
     d = [[] for _ in range(n)]
     for i, v in enumerate(b):
         e[v][i] = i
         d[i].append(i)
-
     for v in range(1, 3024):
         for i in range(n):
             j = e[v][i]
@@ -21,14 +20,13 @@ def main(n: int) -> int:
 
     a = [i for i in range(1, n + 1)]
     for s in range(n):
-        for pos in d[s]:
-            a[pos] = min(a[pos], a[s - 1] + 1 if s > 0 else 1)
-
-    # 原程序打印 a[n-1]，这里返回方便调用
+        for ee in d[s]:
+            a[ee] = min(a[ee], a[s - 1] + 1 if s > 0 else 1)
     return a[n - 1]
 
 
 if __name__ == "__main__":
-    # 示例：规模为 10
-    result = main(10)
-    print(result)
+    # Example deterministic calls for experimentation
+    for size in [1, 5, 10, 50, 100]:
+        # print(size, main(size))
+        pass

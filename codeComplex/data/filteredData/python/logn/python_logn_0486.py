@@ -14,17 +14,19 @@ def main(n: int):
         p = p + 9 * (10 ** m) * (m + 1)
 
     if m == 0:
-        print(k)
+        # print(k)
+        pass
         return
 
     ans = int("9" * m) + (k - l) // (m + 1)
     if (k - l) % (m + 1) == 0:
-        print(str(ans)[-1])
+        # print(str(ans)[-1])
+        pass
+
     else:
         ans = ans + 1
-        print(str(ans)[((k - l) % (m + 1)) - 1])
-
-
+        # print(str(ans)[((k - l) % (m + 1)) - 1])
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(15)
     main(15)

@@ -33,9 +33,8 @@ def main(n: int):
     assert len(cand) == n
 
     for x, y in cand:
-        print(x, y)
-
-
+        # print(x, y)
+        pass
 if __name__ == "__main__":
     # 示例：生成规模为 10 的测试数据
     main(10)

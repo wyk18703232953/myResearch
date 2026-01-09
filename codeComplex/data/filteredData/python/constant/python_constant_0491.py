@@ -1,15 +1,10 @@
-import random
-
 def main(n):
-    # 生成测试数据：n 为规模，这里令 k 在 [1, n^2] 范围内随机
-    if n <= 0:
-        raise ValueError("n must be positive")
-    k = random.randint(1, n * n)
-
-    # 原逻辑：给定 n, k 输出 (k + n - 1) // n
+    # 在原程序中，输入为两个整数 n 和 k
+    # 这里将 n 视为第一个整数，第二个整数 k 由 n 确定性生成
+    # 例如设定 k = n * n
+    k = n * n
     result = (k + n - 1) // n
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

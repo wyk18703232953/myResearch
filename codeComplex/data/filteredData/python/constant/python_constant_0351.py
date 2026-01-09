@@ -1,7 +1,4 @@
-import random
-
-def main(n: int):
-    # 原始字典
+def main(n):
     d = {
         "purple": "Power",
         "green": "Time",
@@ -11,21 +8,18 @@ def main(n: int):
         "yellow": "Mind",
     }
 
-    # 生成测试数据：从已有颜色中随机删除 n 个（不超过字典长度）
-    n = min(n, len(d))
-    colors = list(d.keys())
-    remove_keys = random.sample(colors, n)
+    colors = ["purple", "green", "blue", "orange", "red", "yellow"]
+    i = n % (len(colors) + 1)
 
-    # 模拟原逻辑：依次 pop 掉生成的测试颜色
-    for key in remove_keys:
-        d.pop(key, None)
+    for x in range(i):
+        color_to_pop = colors[x]
+        if color_to_pop in d:
+            d.pop(color_to_pop)
 
-    # 输出结果（与原程序行为一致）
-    print(len(d))
+    # print(len(d))
+    pass
     for v in d.values():
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
-    # 示例：可根据需要调整 n
     main(3)

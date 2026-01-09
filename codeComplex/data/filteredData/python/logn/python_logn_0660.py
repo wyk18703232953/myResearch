@@ -10,6 +10,7 @@ def search(x, n):
             return n - middle
         elif value > x:
             right = middle - 1
+
         else:
             left = middle + 1
     return -1
@@ -22,8 +23,8 @@ def main(n):
     x = fn(middle0) - (n - middle0)  # 根据原公式反推得到对应的 x
 
     result = search(x, n)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：可以根据需要调整 n 的规模
     main(10)

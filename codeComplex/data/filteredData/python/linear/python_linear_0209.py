@@ -1,35 +1,37 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # 设定等待时间 s 在 0~30 分钟范围内
-    s = random.randint(0, 30)
+    # 映射含义：
+    # n: 代表原程序中的 n（事件数量）
+    # s: 固定为 n，用于使规模随 n 增大而增大
+    s = n
 
-    # 生成 n 个随机到达时间，保证有序且在一天内（0~1439 分钟）
-    times = sorted(random.sample(range(0, 24 * 60), n))
-
-    # 原代码逻辑开始
+    # 构造确定性的时间序列 l（原来从输入读取）
+    # 使用等差递增，间隔选择为 s+1，使得差值分布合理
     l = [0]
-    for t in times:
-        # t 已经是分钟数，这里模拟原始的 q,w 输入形式
-        q, w = divmod(t, 60)
+    for i in range(n):
+        # 模拟 q,w 输入，构造分钟数 q 和秒数 w
+        # 将 i 映射到一个确定性时间点：i*(s+1) 分钟
+        # 作为 q，w 固定为 0
+        q = i * (s + 1)
+        w = 0
         q = q * 60 + w
         l.append(q)
 
+    # 保持原始逻辑
     if l[1] - l[0] > s:
-        print(0, 0)
+        # print(0, 0)
+        pass
         return
 
     for i in range(n):
         if l[i + 1] - l[i] > 2 * s + 1:
             l[i] += s + 1
-            print(l[i] // 60, l[i] % 60)
+            # print(l[i] // 60, l[i] % 60)
+            pass
             return
 
     l[-1] += s + 1
-    print(l[-1] // 60, l[-1] % 60)
-
-
+    # print(l[-1] // 60, l[-1] % 60)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，规模 n 可自行调整
-    main(5)
+    # 示例规模调用，可根据需要修改 n 的大小进行实验
+    main(10)

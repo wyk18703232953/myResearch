@@ -1,10 +1,3 @@
-from collections import defaultdict, deque, Counter
-from heapq import heappush, heappop
-import math
-import bisect
-import random
-
-
 def isPrime(x):
     for i in range(2, x):
         if i * i > x:
@@ -26,11 +19,11 @@ def primeFactors(n):
     l = []
     while n % 2 == 0:
         l.append(2)
-        n = n // 2
-    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        n = n / 2
+    for i in range(3, int(__import__("math").sqrt(n)) + 1, 2):
         while n % i == 0:
             l.append(int(i))
-            n = n // i
+            n = n / i
     if n > 2:
         l.append(n)
     return list(set(l))
@@ -74,28 +67,29 @@ def ceil(n, x):
     return n // x + 1
 
 
-def main(n):
-    """
-    n: 规模参数。这里复用为原题中的 n，
-       并基于 n 随机生成 a, b, c：
-       0 <= c <= min(a, b) <= n
-    """
-    if n < 0:
-        raise ValueError("n must be non-negative")
+def generate_abcN(n):
+    if n < 4:
+        n = 4
+    a = n
+    b = n + 1
+    c = n - 1
+    N = 2 * n
+    return a, b, c, N
 
-    # 生成测试数据
-    a = random.randint(0, n)
-    b = random.randint(0, n)
-    c = random.randint(0, min(a, b))  # 保证 c <= a 且 c <= b
 
+def core(a, b, c, n):
     d = a + b - c
-
     if d > n - 1 or c > a or c > b:
-        print(-1)
+        return -1
+
     else:
-        print(n - d)
+        return n - d
 
 
+def main(n):
+    a, b, c, big_n = generate_abcN(n)
+    ans = core(a, b, c, big_n)
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：可以在此处调用 main，传入某个规模 n
     main(10)

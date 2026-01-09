@@ -8,11 +8,12 @@ def main(n: int):
                 p = bool(set(str(i)))
                 break
     if p:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：可自行修改 n 用于测试
     main(100)

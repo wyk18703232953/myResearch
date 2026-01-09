@@ -1,6 +1,7 @@
 def solve_one(n, k):
     if n >= 32:
         return "YES " + str(n - 1)
+
     else:
         ans = -1
         for i in range(1, n + 1):
@@ -14,6 +15,7 @@ def solve_one(n, k):
                 break
         if ans != -1:
             return "YES " + str(ans)
+
         else:
             return "NO"
 
@@ -34,9 +36,8 @@ def main(n):
         ni = i + 1           # n_i 从 1,2,...,n
         ki = i               # 对应的 k_i 从 0,1,...,n-1
         res = solve_one(ni, ki)
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10) 进行本地测试
     main(10)

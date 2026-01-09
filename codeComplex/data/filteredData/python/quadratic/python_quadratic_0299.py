@@ -19,4 +19,5 @@ def main(n: int) -> int:
 if __name__ == "__main__":
     # 示例：调用 main(5)，实际使用时按需调用 main(n)
     result = main(5)
-    print(result)
+    # print(result)
+    pass

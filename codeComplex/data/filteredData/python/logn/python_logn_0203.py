@@ -34,6 +34,7 @@ def main(n):
             m = (c1 + c2 + 1) // 2
             if ok(m):
                 c2 = m
+
             else:
                 c1 = m
         ans_inner = check(m)
@@ -45,7 +46,8 @@ def main(n):
 
     # ---------- 调用并返回结果 ----------
     ans = binary_search(0, n + 1)
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

@@ -33,11 +33,11 @@ def main(n):
     obtained_names = list(obtained.keys())
     missing = [name for name in all_names if name not in obtained_names]
 
-    print(len(missing))
+    # print(len(missing))
+    pass
     for name in missing:
-        print(name)
-
-
+        # print(name)
+        pass
 if __name__ == "__main__":
     # 示例：规模为 3，可自行修改
     main(3)

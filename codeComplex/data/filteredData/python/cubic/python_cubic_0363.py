@@ -53,4 +53,5 @@ if __name__ == "__main__":
     # 根据规模 n 生成测试：这里简单示例使用 n = 10
     n_test = 10
     ans = main(n_test)
-    print(ans)
+    # print(ans)
+    pass

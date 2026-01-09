@@ -10,7 +10,8 @@ def main(n: int):
     # 原程序中 k 最大为 2*n，因此这里取 k = 2*n（也可以按需修改策略）
     k = 2 * n
     if n == 0:
-        print(0)
+        # print(0)
+        pass
         return
     if k > 2000:
         # 原程序的数组第三维大小为 2001（下标 0..2000），保证不越界
@@ -37,9 +38,8 @@ def main(n: int):
             dp[1][i][j] = (2 * v0_prev + v1 + v1_prev2) % pri
 
     y = (dp[0][n][k] + dp[1][n][k]) % pri
-    print(y)
-
-
+    # print(y)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5) 作为测试，可按需要修改
     main(5)

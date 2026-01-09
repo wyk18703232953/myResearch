@@ -8,12 +8,12 @@ def main(n: int):
 
     if x == 0:
         result = 0
+
     else:
         result = ((2 * x - 1) * pow(2, k, MOD) + 1) % MOD
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

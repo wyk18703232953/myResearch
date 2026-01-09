@@ -1,20 +1,23 @@
-import random
+def main(n):
+    MAXN = 202
 
-MAXN = 202
+    # Map n to sizes of R, G, B such that they are all <= 200 and scale with n
+    # Use a simple deterministic partition of n into three parts
+    R = min(MAXN - 2, max(1, n // 3))
+    G = min(MAXN - 2, max(1, (n - R) // 2))
+    B = min(MAXN - 2, max(1, n - R - G))
+    # Ensure at least 1 in each, adjust if needed
+    if B <= 0:
+        B = 1
+        if G > 1:
+            G -= 1
+        elif R > 1:
+            R -= 1
 
-def main(n: int):
-    """
-    n 为规模参数，这里将 R, G, B 都设为 n，且需满足 n <= 201（因为 MAXN=202，需要有 0..n 索引）。
-    同时生成长度为 R,G,B 的测试数据，值范围在 1..1000 内。
-    """
-    # 限制规模，避免越界和爆内存
-    n = max(1, min(n, MAXN - 1))
-    R = G = B = n
-
-    # 生成测试数据
-    r = [random.randint(1, 1000) for _ in range(R)]
-    g = [random.randint(1, 1000) for _ in range(G)]
-    b = [random.randint(1, 1000) for _ in range(B)]
+    # Deterministic generation of r, g, b arrays
+    r = [(i + 1) for i in range(R)]
+    g = [(i + 2) for i in range(G)]
+    b = [(i + 3) for i in range(B)]
 
     r.sort()
     g.sort()
@@ -25,9 +28,11 @@ def main(n: int):
     for i in range(1, R + 1):
         for j in range(1, G + 1):
             dp[i][j][0] = r[i - 1] * g[j - 1] + dp[i - 1][j - 1][0]
+
     for i in range(1, R + 1):
         for k in range(1, B + 1):
             dp[i][0][k] = r[i - 1] * b[k - 1] + dp[i - 1][0][k - 1]
+
     for j in range(1, G + 1):
         for k in range(1, B + 1):
             dp[0][j][k] = g[j - 1] * b[k - 1] + dp[0][j - 1][k - 1]
@@ -41,9 +46,8 @@ def main(n: int):
                     g[j - 1] * b[k - 1] + dp[i][j - 1][k - 1],
                 )
 
-    print(dp[R][G][B])
-
-
+    # print(dp[R][G][B])
+    pass
 if __name__ == "__main__":
-    # 示例：使用规模 n=10 运行
-    main(10)
+    # Example call; change n to scale input size
+    main(30)

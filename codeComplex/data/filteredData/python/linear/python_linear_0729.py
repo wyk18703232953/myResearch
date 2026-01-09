@@ -7,9 +7,12 @@ def main(n):
     i = 1
     while True:
         if i % chuj_twojej_starej == 0:
-            print(0, end="")
+            # print(0, end="")
+            pass
+
         else:
-            print(1, end="")
+            # print(1, end="")
+            pass
         if i == n:
             break
         i += 1

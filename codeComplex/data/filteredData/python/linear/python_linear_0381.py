@@ -1,6 +1,5 @@
 import functools
 import time
-import random
 
 def timer(func):
     @functools.wraps(func)
@@ -8,46 +7,51 @@ def timer(func):
         stime = time.perf_counter()
         res = func(*args, **kwargs)
         elapsed = time.perf_counter() - stime
-        print(f"{func.__name__} in {elapsed:.4f} secs")
+        # print(f"{func.__name__} in {elapsed:.4f} secs")
+        pass
         return res
     return wrapper
 
-class Solver:
-    def __init__(self):
-        pass
+class solver:
+    # @timer
+    def __init__(self, n, m, pairs):
+        self.n = n
+        self.m = m
+        self.pairs = pairs
 
-    def solve(self, n, m, pairs):
+    def __call__(self):
+        n = self.n
+        m = self.m
         y = 0
-        for x, d in pairs:
+        for i in range(m):
+            x, d = self.pairs[i]
             if d >= 0:
                 y += d * (n - 1) * n // 2
+
             else:
                 if n % 2 != 0:
                     l = (n - 1) // 2
                     y += d * l * (l + 1)
+
                 else:
                     l = n // 2
                     y += d * (l * (l + 1) - l)
             y += x * n
         y /= n
-        print(f"{y:.9f}")
+        # print(f'{y:.9f}')
+        pass
 
-@timer
 def main(n):
-    # 根据规模 n 生成测试数据
-    # 这里令 m 与 n 同级，可按需调整生成规则
-    m = max(1, n)  # 至少一组数据
-    # 生成 m 对 (x, d)
-    # x: [-10^6, 10^6], d: [-10^6, 10^6]
-    pairs = []
-    for _ in range(m):
-        x = random.randint(-10**6, 10**6)
-        d = random.randint(-10**6, 10**6)
-        pairs.append((x, d))
-
-    solver = Solver()
-    solver.solve(n, m, pairs)
+    # 输入规模含义：
+    # n 为原问题中的 n，同时设 m = n
+    # 构造 m 组 (x, d)
+    # 确定性构造：x = i, d = i - n//2 （i 从 1 到 m）
+    if n <= 0:
+        return
+    m = n
+    pairs = [(i, i - n // 2) for i in range(1, m + 1)]
+    s = solver(n, m, pairs)
+    s()
 
 if __name__ == "__main__":
-    # 示例：调用 main(1000)
-    main(1000)
+    main(10)

@@ -11,22 +11,26 @@ def main(n):
         ki = case_idx + 1
 
         if ni > 32:
-            print("YES", ni - 1)
+            # print("YES", ni - 1)
+            pass
+
         else:
             max_splits = (4 ** ni - 1) // 3
             if ki > max_splits or (ni, ki) == (2, 3):
-                print("NO")
+                # print("NO")
+                pass
+
             else:
                 done = False
                 for i in range(ni):
                     if ki < 2 ** (i + 2) - i - 3:
-                        print("YES", ni - i)
+                        # print("YES", ni - i)
+                        pass
                         done = True
                         break
                 if not done:
-                    print("YES", 0)
-
-
+                    # print("YES", 0)
+                    pass
 if __name__ == "__main__":
     # 示例运行：可根据需要修改 n 的大小
     main(10)

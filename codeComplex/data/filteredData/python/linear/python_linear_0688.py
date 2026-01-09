@@ -21,13 +21,17 @@ def main(n):
     x[0] = 1
 
     if s + 1 < 2 * n:
-        print("No")
+        # print("No")
+        pass
         return
     if s > sm:
-        print("No")
+        # print("No")
+        pass
         return
+
     else:
-        print("Yes")
+        # print("Yes")
+        pass
 
     l = 0
     r = n
@@ -35,6 +39,7 @@ def main(n):
         mid = (r + l) // 2
         if clc(mid, n) > s:
             l = mid
+
         else:
             r = mid
 
@@ -61,6 +66,7 @@ def main(n):
             s -= mx - x[ip]
             x[ip] = mx
             dp[mx] = ip
+
         else:
             y[ip] = dp[s + x[ip] - 1]
             s = 0
@@ -68,5 +74,6 @@ def main(n):
 
     i = 2
     while i < n + 1:
-        print(y[i])
+        # print(y[i])
+        pass
         i += 1

@@ -1,16 +1,20 @@
-import random
+def main(n):
+    # Interpret n as base size for r, g, b
+    # Keep them balanced so the 3D DP doesn't explode too fast
+    if n <= 0:
+        # print(0)
+        pass
+        return
 
-def main(n: int):
-    # 这里用 n 控制 r, g, b 的规模（可按需调整生成规则）
-    # 示例：让 r, g, b 在 1..n 之间随机
-    r = random.randint(1, n)
-    g = random.randint(1, n)
-    b = random.randint(1, n)
+    # Example mapping; still deterministic and scalable
+    r = n
+    g = max(1, n // 2)
+    b = max(1, (n + 1) // 2)
 
-    # 生成测试数据：随机整数 1..1000
-    ar = sorted([random.randint(1, 1000) for _ in range(r)], reverse=True)
-    ag = sorted([random.randint(1, 1000) for _ in range(g)], reverse=True)
-    ab = sorted([random.randint(1, 1000) for _ in range(b)], reverse=True)
+    # Deterministic generation of arrays, then sort in reverse as original
+    ar = sorted([i * 2 + 1 for i in range(r)], reverse=True)
+    ag = sorted([i * 3 + 2 for i in range(g)], reverse=True)
+    ab = sorted([i * 5 + 3 for i in range(b)], reverse=True)
 
     mem = [[[0 for _ in range(b + 1)] for _ in range(g + 1)] for _ in range(r + 1)]
     ans = 0
@@ -18,29 +22,25 @@ def main(n: int):
     for r1 in range(r + 1):
         for g1 in range(g + 1):
             for b1 in range(b + 1):
+                cur = mem[r1][g1][b1]
                 if r1 < r:
                     if g1 < g:
-                        mem[r1 + 1][g1 + 1][b1] = max(
-                            mem[r1 + 1][g1 + 1][b1],
-                            ar[r1] * ag[g1] + mem[r1][g1][b1]
-                        )
+                        val = ar[r1] * ag[g1] + cur
+                        if val > mem[r1 + 1][g1 + 1][b1]:
+                            mem[r1 + 1][g1 + 1][b1] = val
                     if b1 < b:
-                        mem[r1 + 1][g1][b1 + 1] = max(
-                            mem[r1 + 1][g1][b1 + 1],
-                            ar[r1] * ab[b1] + mem[r1][g1][b1]
-                        )
-
+                        val = ar[r1] * ab[b1] + cur
+                        if val > mem[r1 + 1][g1][b1 + 1]:
+                            mem[r1 + 1][g1][b1 + 1] = val
                 if g1 < g and b1 < b:
-                    mem[r1][g1 + 1][b1 + 1] = max(
-                        mem[r1][g1 + 1][b1 + 1],
-                        ag[g1] * ab[b1] + mem[r1][g1][b1]
-                    )
+                    val = ag[g1] * ab[b1] + cur
+                    if val > mem[r1][g1 + 1][b1 + 1]:
+                        mem[r1][g1 + 1][b1 + 1] = val
+                if cur > ans:
+                    ans = cur
 
-                ans = max(ans, mem[r1][g1][b1])
-
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，n 可按需修改
-    main(5)
+    # Example deterministic call; adjust n for scaling experiments
+    main(10)

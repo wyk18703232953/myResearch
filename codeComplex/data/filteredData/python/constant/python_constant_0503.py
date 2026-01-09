@@ -1,50 +1,52 @@
-import random
-
-def solve_case(n, m, k):
-    if k == 0:
-        if n == 0 and m == 0:
-            return 0
-        else:
-            return -1
-    elif k == 1:
-        if max(abs(n), abs(m)) != 1:
-            return -1
-        elif abs(n) == abs(m) == 1:
-            return 1
-        else:
-            return 0
-    else:
-        if max(abs(n), abs(m)) > k:
-            return -1
-        elif abs(n) == abs(m):
-            if (k - abs(n)) % 2 == 0:
-                return k
-            else:
-                return k - 2
-        elif (max(abs(n), abs(m)) - min(abs(n), abs(m))) % 2 == 0:
-            if (k - max(abs(n), abs(m))) % 2 == 0:
-                return k
-            else:
-                return k - 2
-        else:
-            return k - 1
-
 def main(n):
-    # n: 规模，用作测试用例数量 q
+    # n: number of test cases (q)
     q = n
-    random.seed(0)
+    results = []
 
-    tests = []
-    for _ in range(q):
-        # 生成测试数据：n, m 在 [-n, n] 范围内，k 在 [0, 2n] 范围内
-        nn = random.randint(-n, n)
-        mm = random.randint(-n, n)
-        kk = random.randint(0, 2 * max(1, n))
-        tests.append((nn, mm, kk))
+    for i in range(q):
+        # Deterministic generation of (n, m, k) for each test case
+        ni = i - n // 2
+        mi = (n - i) - n // 2
+        ki = (i % (n + 2)) + 1 if n > 0 else 1
 
-    for nn, mm, kk in tests:
-        print(solve_case(nn, mm, kk))
+        n_val, m_val, k = ni, mi, ki
 
+        if k == 0:
+            if n_val == 0 and m_val == 0:
+                results.append(0)
+
+            else:
+                results.append(-1)
+        elif k == 1:
+            if max(abs(n_val), abs(m_val)) != 1:
+                results.append(-1)
+            elif abs(n_val) == abs(m_val) == 1:
+                results.append(1)
+
+            else:
+                results.append(0)
+
+        else:
+            if max(abs(n_val), abs(m_val)) > k:
+                results.append(-1)
+            elif abs(n_val) == abs(m_val):
+                if (k - abs(n_val)) % 2 == 0:
+                    results.append(k)
+
+                else:
+                    results.append(k - 2)
+            elif (max(abs(n_val), abs(m_val)) - min(abs(n_val), abs(m_val))) % 2 == 0:
+                if (k - max(abs(n_val), abs(m_val))) % 2 == 0:
+                    results.append(k)
+
+                else:
+                    results.append(k - 2)
+
+            else:
+                results.append(k - 1)
+
+    for ans in results:
+        # print(ans)
+        pass
 if __name__ == "__main__":
-    # 示例：规模 5
-    main(5)
+    main(10)

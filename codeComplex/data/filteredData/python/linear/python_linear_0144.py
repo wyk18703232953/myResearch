@@ -1,29 +1,24 @@
-import random
-
-def main(n: int):
-    # 生成测试数据 a：长度为 n 的整数数组
-    # 这里示例生成 0~10 之间的随机整数
-    a = [random.randint(0, 10) for _ in range(n)]
+def main(n):
+    # Deterministically generate input data of size n
+    # Original program expects:
+    # n: integer
+    # a: list of n integers
+    a = [i % 7 for i in range(n)]  # deterministic pattern
 
     khat = [0] * n
     ted = 0
     khat[0] = 1
 
-    # 正向遍历
-    for i in range(1, n):
+    for i in range(1, len(khat)):
         khat[i] = max(khat[i - 1], a[i] + 1)
 
-    # 反向遍历
-    for i in range(n - 2, -1, -1):
+    for i in range(len(khat) - 2, -1, -1):
         if khat[i] < khat[i + 1] - 1:
             khat[i] = khat[i + 1] - 1
-        ted += khat[i] - (a[i] + 1)
+        ted = ted + (khat[i] - (a[i] + 1))
 
-    ted += khat[n - 1] - (a[n - 1] + 1)
-
-    print(ted)
-
-
+    ted = ted + (khat[n - 1] - (a[n - 1] + 1))
+    # print(ted)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
     main(10)

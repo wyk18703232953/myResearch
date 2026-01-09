@@ -5,6 +5,7 @@ def func(n, i):
         return (str(1 * i) + ' ') + (str(1 * i) + ' ') + (str(3 * i))
     if n % 2 == 0:
         odd = n // 2
+
     else:
         odd = n // 2 + 1
     q = 1 * i
@@ -15,6 +16,7 @@ def main(n: int):
     # 使用 n 作为规模生成测试数据，这里直接用 n 作为原程序中的输入
     if n == 3:
         s = '1 1 3'
+
     else:
         s = ''
         z = 1
@@ -25,10 +27,12 @@ def main(n: int):
                 break
             if n % 2 == 0:
                 odd = n // 2
+
             else:
                 odd = n // 2 + 1
             n = n - odd
-    print(s)
+    # print(s)
+    pass
 
 # 示例：调用 main(10)
 if __name__ == "__main__":

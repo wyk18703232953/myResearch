@@ -11,15 +11,16 @@ def main(n: int):
     b = n // 2
 
     if b >= a - 1:
-        print(a - 1)
+        # print(a - 1)
+        pass
+
     else:
         summ = b
         k = a - b
         for i in range(2, k + 1):
             summ += i
-        print(summ)
-
-
+        # print(summ)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

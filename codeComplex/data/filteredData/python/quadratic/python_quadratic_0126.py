@@ -1,10 +1,9 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：m 为若干倍 n，元素范围为 [1, n]
-    # 这里简单设 m = 3 * n，可按需要自行调整
-    m = 3 * n
-    li = [random.randint(1, n) for _ in range(m)]
+def main(n):
+    # n: number of "types"
+    # We will generate m = n * 3 events deterministically
+    m = n * 3
+    # Generate li as a repeating pattern 1..n, truncated to length m
+    li = [i % n + 1 for i in range(m)]
 
     dic = {}
     c = 0
@@ -18,9 +17,7 @@ def main(n: int):
         dic[i] = dic[i] + 1
     if 0 not in dic.values():
         c = c + 1
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
-    # 示例运行
-    main(5)
+    main(10)

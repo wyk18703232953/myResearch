@@ -1,32 +1,32 @@
-import random
-
 def main(n):
-    # 生成测试数据：
-    # n: 行数
-    # m: 列数，取一个与 n 同数量级的值
-    # k: 可删除的最多人数（1 的个数），不超过总 1 数
-    m = max(1, n)  # 简单设定 m = n（至少为 1）
+    # Interpret n as both number of rows and columns for scalability.
+    # Also set k (number of deletions allowed) proportional to n, but bounded.
+    rows = n
+    cols = n
+    # Let k be up to min(n, total columns), but at least 0
+    k = n // 2
+    if k > cols:
+        k = cols
 
-    # 随机生成 0/1 矩阵（a 为字符串列表）
+    # Deterministic generation of the matrix 'a' of '0'/'1' strings
+    # Pattern: cell (i,j) is '1' if (i + j) is divisible by 3, else '0'
     a = []
-    total_ones = 0
-    for _ in range(n):
-        row_bits = []
-        for _ in range(m):
-            bit = random.randint(0, 1)
-            row_bits.append(str(bit))
-            total_ones += bit
-        a.append("".join(row_bits))
+    for i in range(rows):
+        row_chars = []
+        for j in range(cols):
+            if (i + j) % 3 == 0:
+                row_chars.append('1')
 
-    # k 不超过总 1 数，且不超过 m
-    k = min(total_ones, m)
+            else:
+                row_chars.append('0')
+        a.append(''.join(row_chars))
 
-    # 原逻辑开始
-    mem = [[float('inf') if i else 0 for _ in range(k + 1)] for i in range(n + 1)]
+    # Core algorithm logic preserved
+    mem = [[float('inf') if i else 0 for _ in range(k + 1)] for i in range(rows + 1)]
 
-    for i in range(n):
+    for i in range(rows):
         ixs = []
-        for j in range(m):
+        for j in range(cols):
             if a[i][j] == '1':
                 ixs.append(j)
 
@@ -41,8 +41,12 @@ def main(n):
             for j1 in range(k + 1 - j):
                 mem[i + 1][j1 + j] = min(mem[i + 1][j1 + j], mem[i][j1] + tem)
 
-    print(mem[n][k])
+    # For timing experiments, we can print or return the result
+    # print(mem[rows][k])
+    pass
+    return mem[rows][k]
 
-# 示例运行
+
 if __name__ == "__main__":
-    main(5)
+    # Example call for complexity experiments
+    main(200)

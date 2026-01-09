@@ -18,9 +18,8 @@ def main(n):
         if abs(x - right) >= d:
             s.add(x)
 
-    print(len(s))
-
-
+    # print(len(s))
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(5)
     main(5)

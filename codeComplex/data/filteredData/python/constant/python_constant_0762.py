@@ -4,9 +4,8 @@ def main(n):
 
     d = int((9 + 8 * (n + k)) ** 0.5)
     x = (d - 3) // 2
-    print(n - x)
-
-
+    # print(n - x)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

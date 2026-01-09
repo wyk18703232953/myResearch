@@ -1,19 +1,29 @@
-import random
-
-def main(n: int):
-    # 生成规模为 n 的测试数据：1 <= lister[i] <= n
+def main(n):
+    # Generate deterministic input:
+    # a: length of lister
+    # lister: a list of positive integers
+    # Here we let a = n and construct lister[i] in a simple deterministic way
     a = n
-    lister = [random.randint(1, n) for _ in range(a)]
+    if a <= 0:
+        # print("")
+        pass
+        return
 
-    ans = dict()
+    # Ensure lister[i] is within a reasonable range and positive
+    # Example construction: lister[i] = (i % (a // 2 + 1)) + 1
+    base = a // 2 + 1
+    lister = [(i % base) + 1 for i in range(a)]
 
-    def findans(idx: int) -> bool:
+    ans = {}
+
+    def findans(idx):
         if idx in ans:
             return ans[idx]
         mod = idx % lister[idx]
         ok = True
         if idx + lister[idx] >= a and idx - lister[idx] < 0:
             ok = False
+
         else:
             for i in range(mod, a, lister[idx]):
                 if i != idx and lister[i] > lister[idx]:
@@ -27,14 +37,14 @@ def main(n: int):
 
     level = []
     for i in range(a):
-        if ans[i]:
+        if ans[i] is True:
             level.append('A')
+
         else:
             level.append('B')
 
-    print(''.join(level))
-
-
+    # print(''.join(level))
+    pass
 if __name__ == "__main__":
-    # 示例：运行规模为 10 的测试
+    # Example deterministic call for complexity experiments
     main(10)

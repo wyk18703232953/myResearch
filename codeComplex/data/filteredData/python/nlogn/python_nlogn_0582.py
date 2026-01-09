@@ -12,11 +12,13 @@ def main(n):
 
     if 2 ** (p - 2) + 2 ** (p - 1) <= n:
         ans.append(2 ** (p - 1) + 2 ** (p - 2))
+
     else:
         ans.append(2 ** (p - 1))
 
     s = " ".join(str(x) for x in ans)
-    print(s)
+    # print(s)
+    pass
 
 
 # 示例：根据需要调用 main(n)

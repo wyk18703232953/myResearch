@@ -46,6 +46,7 @@ def main(n):
             d *= 2
             if n < 60:
                 buff += sq * (4 ** ans - 1) // 3
+
             else:
                 buff = 10 ** 19
 
@@ -54,14 +55,14 @@ def main(n):
 
         if buff < k:
             return "NO"
+
         else:
             return "YES " + str(max(ans, 0))
 
     # 执行所有测试用例并输出
     for n_i, k_i in queries:
-        print(process_case(n_i, k_i))
-
-
+        # print(process_case(n_i, k_i))
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(3) 近似对应原始示例中 3 组测试
     main(3)

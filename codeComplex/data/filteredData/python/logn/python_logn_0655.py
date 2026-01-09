@@ -24,6 +24,7 @@ def main(n):
         mid = (low + high) // 2
         if possible(mid):
             high = mid - 1
+
         else:
             low = mid + 1
 
@@ -35,4 +36,5 @@ def main(n):
 if __name__ == "__main__":
     # You can change the argument below to test different scales
     result = main(10)
-    print(result)
+    # print(result)
+    pass

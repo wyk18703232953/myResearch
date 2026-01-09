@@ -38,6 +38,7 @@ def f():
         o = bin(i).count("1")
         if o == 1:
             dp[i] = 2
+
         else:
             dp[i] += dp[o] + 1
     return dp
@@ -52,6 +53,7 @@ def bit(s, k):
     for i in range(ll):
         if s[i] == "0":
             continue
+
         else:
             for j in range(max(ones, 1), 1000):
                 if dp[j] == k:
@@ -72,13 +74,14 @@ def main(n):
     if n <= 0:
         s = "0"
         k = 0
+
     else:
         s = "1" * n
         k = n % 20
 
     result = bit(s, k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：n 可以在外部修改或由测试框架传入 main(n)
     main(10)

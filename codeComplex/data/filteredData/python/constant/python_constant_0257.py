@@ -1,29 +1,33 @@
-import random
+def main(n):
+    # Interpret n as the upper bound for all parameters
+    # Generate deterministic parameters based on n
+    if n < 4:
+        n_use = 4
 
-def main(n: int):
-    # 生成测试数据：
-    # n: 给定规模
-    # pos: [1, n]
-    # l, r: 1 <= l <= r <= n
-    pos = random.randint(1, n)
-    l = random.randint(1, n)
-    r = random.randint(l, n)
+    else:
+        n_use = n
+
+    pos = n_use // 2
+    l = max(1, pos - (n_use // 4))
+    r = min(n_use, pos + (n_use // 4))
+    if l >= r:
+        r = min(n_use, l + 1)
 
     result = abs(pos - l) + r - l + 2
     if l == 1:
-        if abs(pos - r) + 1 < result:
-            result = abs(pos - r) + 1
-    if r == n:
-        if abs(pos - l) + 1 < result:
-            result = abs(pos - l) + 1
-    if l == 1 and r == n:
+        temp = abs(pos - r) + 1
+        if temp < result:
+            result = temp
+    if r == n_use:
+        temp = abs(pos - l) + 1
+        if temp < result:
+            result = temp
+    if l == 1 and r == n_use:
         result = 0
-    if abs(pos - r) + r - l + 2 < result:
-        result = abs(pos - r) + r - l + 2
-
-    print(result)
-
-
+    temp = abs(pos - r) + r - l + 2
+    if temp < result:
+        result = temp
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main，n 可按需修改
     main(10)

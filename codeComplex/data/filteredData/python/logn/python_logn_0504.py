@@ -19,12 +19,13 @@ def main(n: int):
 
     if remainder == 0:
         final = str(final)
-        print(final[-1])
+        # print(final[-1])
+        pass
+
     else:
         final = str(final + 1)
-        print(final[remainder - 1])
-
-
+        # print(final[remainder - 1])
+        pass
 if __name__ == "__main__":
     # 示例：调用 main(1000)
     main(1000)

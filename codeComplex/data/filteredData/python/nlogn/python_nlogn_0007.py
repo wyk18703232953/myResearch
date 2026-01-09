@@ -12,6 +12,7 @@ def calcular_posibles_posiciones(i1, i2, t):
         return 2
     elif espacio_sobrante == 0:
         return 1
+
     else:
         return 0
 
@@ -37,9 +38,8 @@ def main(n):
     for i in range(n - 1):
         posibilidades += calcular_posibles_posiciones(intervalos[i], intervalos[i + 1], t)
 
-    print(posibilidades)
-
-
+    # print(posibilidades)
+    pass
 if __name__ == "__main__":
     # 示例：规模 n = 5
     main(5)

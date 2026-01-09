@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-import random
-
 def win1(n, k, a, l, r):
     if n == k or r[k + 1] == n or l[n - k] == 1:
         return True
@@ -17,36 +14,38 @@ def win2(n, k, a, l, r):
             return False
     return True
 
-def main(n):
-    # 生成规模为 n 的测试数据
-    # k 在 [1, n] 范围内随机选取
-    k = random.randint(1, n)
-    # a 为 1~9 的随机数字串，长度为 n（1-based 存放在 a[1..n]）
-    a = [0]
-    for _ in range(n):
-        a.append(random.randint(0, 9))
-
-    l = [0 for _ in range(n + 1)]
-    r = [0 for _ in range(n + 1)]
-
+def run_logic(n, k, a):
+    l = [0] * (n + 1)
+    r = [0] * (n + 1)
     l[1], r[n] = 1, n
     for i in range(2, n + 1):
         if a[i - 1] == a[i]:
             l[i] = l[i - 1]
+
         else:
             l[i] = i
         if a[n - i + 1] == a[n - i + 2]:
             r[n - i + 1] = r[n - i + 2]
+
         else:
             r[n - i + 1] = n - i + 1
-
     if win1(n, k, a, l, r):
-        print("tokitsukaze")
+        return "tokitsukaze"
     elif win2(n, k, a, l, r):
-        print("quailty")
-    else:
-        print("once again")
+        return "quailty"
 
+    else:
+        return "once again"
+
+def main(n):
+    if n < 2:
+        n = 2
+    k = n // 2
+    a = [0]
+    for i in range(1, n + 1):
+        a.append((i // 2) % 2)
+    result = run_logic(n, k, a)
+    # print(result)
+    pass
 if __name__ == "__main__":
-    # 示例调用，可根据需要修改 n 的取值
     main(10)

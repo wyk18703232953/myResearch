@@ -9,8 +9,8 @@ def main(n):
     # 这里简单设定 k = n，用于示例；可按需要修改生成策略
     k = n
     result = find(n, k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)，实际使用时按需修改 n
     main(10)

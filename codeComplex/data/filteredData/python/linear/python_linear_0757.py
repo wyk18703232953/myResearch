@@ -1,32 +1,35 @@
-import random
+def main(n):
+    # 数据生成：原题结构为：
+    # 第一行：n
+    # 第二行：n 个整数
+    # 这里用确定性的方式生成长度为 n 的整数序列
+    # 例如：a[i] = i - n//2，确保有正有负有零
+    a = [i - n // 2 for i in range(n)]
 
-def main(n: int):
-    # 生成测试数据：n 个整数，范围可自行调整
-    # 这里设为 [-10^9, 10^9]
-    arr = [random.randint(-10**9, 10**9) for _ in range(n)]
-
-    a = []
-    for i in arr:
+    # 原程序逻辑开始
+    transformed = []
+    for i in a:
         if abs(-i - 1) > abs(i):
-            a.append(-i - 1)
+            transformed.append(-i - 1)
+
         else:
-            a.append(i)
+            transformed.append(i)
 
     c = 0
-    for i in a:
-        if i < 0:
+    for x in transformed:
+        if x < 0:
             c += 1
 
     if c % 2:
         me = 0
-        for i in range(len(a)):
-            if a[i] < a[me]:
+        for i in range(len(transformed)):
+            if transformed[i] < transformed[me]:
                 me = i
-        a[me] = -a[me] - 1
+        transformed[me] = -transformed[me] - 1
 
-    print(*a)
-
-
+    # 输出与原程序一致：空格分隔的一行
+    # print(*transformed)
+    pass
 if __name__ == "__main__":
-    # 示例调用，n 可按需修改
-    main(5)
+    # 示例调用，可根据需要调整 n 以做时间复杂度实验
+    main(10)

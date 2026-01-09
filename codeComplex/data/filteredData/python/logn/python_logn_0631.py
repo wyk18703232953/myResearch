@@ -21,9 +21,8 @@ def main(n):
             left = mid + 1
 
     if ans is not None:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例：调用 main，并可在此处调整规模 n
     main(10)

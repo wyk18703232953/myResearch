@@ -15,7 +15,8 @@ def main(n):
     all_primes = resheto(limit)
     for i in range(2, n):
         if i not in all_primes and (n - i) not in all_primes:
-            print(i, n - i)
+            # print(i, n - i)
+            pass
             break
 
 

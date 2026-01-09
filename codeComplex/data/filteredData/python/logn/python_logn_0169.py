@@ -1,38 +1,32 @@
-import random
-
 def main(n):
-    # 随机生成一个可行的 k，使得一定存在解
-    # 条件：1 + k*(k-1)//2 >= n
-    # 简单做法：从较小范围内随机取 k，直到满足条件
-    if n == 1:
-        # 原逻辑：n == 1 时答案恒为 0
-        print(0)
-        return
+    # 将 n 映射为原程序中的 (n, k)
+    # 保证 1 + (k*(k-1))//2 >= n，以避免输出 -1 或提前退出
+    # 设 k = n，将原输入规模映射为 k 的大小，原始 n 固定为可由该 k 达到的最大值
+    k = max(2, n)
+    orig_n = 1 + (k * (k - 1)) // 2
 
-    # 生成满足 1 + k*(k-1)//2 >= n 的 k
-    # 为了控制规模，这里限制 k 不超过 2n
-    while True:
-        k = random.randint(1, max(1, 2 * n))
-        if 1 + (k * (k - 1)) // 2 >= n:
-            break
-
-    # 以下为原逻辑去掉 input() 后的实现
     ini, fin = 1, k - 1
 
-    if 1 + (k * (k - 1)) // 2 < n:
-        print(-1)
+    if orig_n == 1:
+        # print("0")
+        pass
+        return
+
+    if 1 + (k * (k - 1)) // 2 < orig_n:
+        # print("-1")
+        pass
         return
 
     while ini < fin:
         mid = (ini + fin) // 2
         s = 1 + (k - 1) * mid - (mid * (mid - 1)) // 2
-        if s >= n:
+        if s >= orig_n:
             fin = mid
+
         else:
             ini = mid + 1
 
-    print(ini)
-
-# 示例：直接调用 main(n) 测试
+    # print(ini)
+    pass
 if __name__ == "__main__":
     main(10)

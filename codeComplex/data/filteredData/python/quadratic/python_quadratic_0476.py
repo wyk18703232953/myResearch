@@ -1,26 +1,9 @@
-import random
+def main(n):
+    # Deterministically generate l and r based on n
+    # Input structure: two integer lists of length n
+    l = [i % 3 for i in range(n)]
+    r = [(n - 1 - i) % 3 for i in range(n)]
 
-def main(n: int):
-    # 生成测试数据 l, r（每个位置左/右侧比它大的元素个数）
-    # 简单做法：先随机生成一个排列，再根据该排列反推 l, r
-    perm = list(range(1, n + 1))
-    random.shuffle(perm)
-
-    l = [0] * n
-    r = [0] * n
-    for i in range(n):
-        cl = 0
-        cr = 0
-        for j in range(i):
-            if perm[j] > perm[i]:
-                cl += 1
-        for j in range(i + 1, n):
-            if perm[j] > perm[i]:
-                cr += 1
-        l[i] = cl
-        r[i] = cr
-
-    # 原始逻辑开始（去掉 input，直接使用生成的 l, r）
     flag = True
     ans = [n for _ in range(n)]
     check_l = [0 for _ in range(n)]
@@ -46,14 +29,17 @@ def main(n: int):
         ans[i] -= mini
 
     if flag:
-        print("YES")
-        for v in ans:
-            print(v, end=' ')
-        print()
+        # print("YES")
+        pass
+        for x in ans:
+            # print(x, end=' ')
+            pass
+        # print()
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
-    # 示例调用：规模为 5
-    main(5)
+    # Example deterministic call for time-complexity experiments
+    main(10)

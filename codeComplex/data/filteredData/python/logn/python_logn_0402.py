@@ -1,34 +1,34 @@
-from math import sin, tan, cos
-import random
+def main(n):
+    # 根据原程序的输入结构：n, m, k, l 为四个整数
+    # 将 n 作为第一个参数，其余三个参数由 n 确定性生成
+    # 规模含义：n 为原始的 n，m、k、l 随 n 线性变化
+    if n <= 0:
+        # print(-1)
+        pass
+        return
 
+    # 确定性生成 m, k, l
+    m = max(1, n // 3 + 1)
+    k = n // 2
+    l = n // 4 + 1
 
-def solve(n, m, k, l):
     lb, rb = 0, n // m + 1
     while rb - lb > 1:
         mid = (lb + rb) >> 1
+
         if mid * m - k >= l:
             rb = mid
+
         else:
             lb = mid
 
-    return rb if lb != n // m else -1
+    if lb != n // m:
+        # print(rb)
+        pass
 
-
-def main(n):
-    # 根据规模 n 生成测试数据：
-    # 令 m 在 [1, n] 范围内，k 在 [0, n]，l 在 [0, n]
-    if n <= 0:
-        return -1
-
-    random.seed(0)
-    m = random.randint(1, max(1, n))
-    k = random.randint(0, n)
-    l = random.randint(0, n)
-
-    ans = solve(n, m, k, l)
-    print(ans)
-
-
+    else:
+        # print(-1)
+        pass
 if __name__ == "__main__":
-    # 示例：使用 n=100 作为规模
-    main(100)
+    # 示例调用：可根据需要修改 n 的大小做时间复杂度实验
+    main(10_000)

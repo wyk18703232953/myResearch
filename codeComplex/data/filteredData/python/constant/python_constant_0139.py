@@ -1,21 +1,13 @@
-import random
-
-def main(n: int):
-    # 生成测试数据：n 为较大的数，m 为 1..n 之间的随机数
-    # 确保 m != 0
-    if n <= 1:
-        n_val, m_val = 1, 1
-    else:
-        n_val = n
-        m_val = random.randint(1, n)
-
+def main(n):
+    # 映射：输入规模 n -> 原程序中的 n, m
+    # 这里令原始 n = n，m = n//2 + 1（保证 m > 0，且随规模变化）
+    orig_n = n
+    orig_m = n // 2 + 1
     a = 0
-    while m_val:
-        a += n_val // m_val
-        n_val, m_val = m_val, n_val % m_val
-    print(a)
-
-
+    while orig_m:
+        a += orig_n // orig_m
+        orig_n, orig_m = orig_m, orig_n % orig_m
+    # print(a)
+    pass
 if __name__ == "__main__":
-    # 示例：调用 main(100)
-    main(100)
+    main(10)

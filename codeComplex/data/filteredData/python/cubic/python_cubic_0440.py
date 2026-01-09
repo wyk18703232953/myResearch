@@ -1,41 +1,58 @@
-from math import inf
-import random
+import math
 
 mod = 10**9 + 7
 mod2 = 998244353
+inf = math.inf
 
-def l1d(n, val=0): 
+def l1d(n, val=0):
     return [val for _ in range(n)]
 
-def l2d(n, m, val=0): 
+def l2d(n, m, val=0):
     return [l1d(m, val) for _ in range(n)]
 
 def main(n):
-    """
-    n 用来控制规模：
-    - 网格大小: n x n
-    - 步数 k: 取 2*n（保证为偶数，且规模与 n 同级）
-    - 边权随机生成 [1, 10]
-    """
-    # 生成测试数据
-    rows = n
-    cols = n
-    k = 2 * n  # 偶数步数
+    # Map n to grid size and k (path length / 2)
+    # Choose n as total scale; let rows = cols ≈ sqrt(n), k ≈ sqrt(n)
+    if n < 4:
+        n = 4
+    side = int(n**0.5)
+    if side < 2:
+        side = 2
+    rows = side
+    cols = side
+    k = side * 2  # even k to avoid immediate -1 case, scales with n
 
-    # 水平边权: rows x (cols-1)
-    hor = [[random.randint(1, 10) for _ in range(cols - 1)] for _ in range(rows)]
-    # 垂直边权: (rows-1) x cols
-    ver = [[random.randint(1, 10) for _ in range(cols)] for _ in range(rows - 1)]
+    # Deterministic generation of hor and ver edge weights
+    # hor: rows x (cols-1)
+    # ver: (rows-1) x cols
+    hor = []
+    for i in range(rows):
+        row = []
+        for j in range(cols - 1):
+            # simple deterministic function of (i, j)
+            val = (i + 1) * (j + 2)
+            row.append(val)
+        hor.append(row)
 
-    # 原逻辑开始
-    if k % 2:
+    ver = []
+    for i in range(rows - 1):
+        row = []
+        for j in range(cols):
+            # simple deterministic function of (i, j)
+            val = (i + 2) * (j + 1)
+            row.append(val)
+        ver.append(row)
+
+    if k % 2 == 1:
         ml = l2d(rows, cols, -1)
         for row in ml:
-            print(*row)
+            # print(*row)
+            pass
         return
 
     k //= 2
     dp = [l2d(rows, cols) for _ in range(k + 1)]
+
     for f in range(1, k + 1):
         for i in range(rows):
             for j in range(cols):
@@ -51,9 +68,7 @@ def main(n):
                 dp[f][i][j] = a
 
     for row in dp[-1]:
-        print(*row)
-
-
+        # print(*row)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5) 生成 5x5 网格的测试并输出结果
-    main(5)
+    main(1000)

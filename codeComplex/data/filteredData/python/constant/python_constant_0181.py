@@ -1,25 +1,22 @@
-import random
-
-def main(n: int):
-    # 根据 n 生成测试数据，这里约定：
-    # 1. 生成区间长度不超过 n
-    # 2. l 从 1 到 n，r 从 l 到 min(l + n - 1, 2 * n) 之间
-    if n <= 0:
-        return
-
-    l = random.randint(1, n)
-    r = random.randint(l, min(l + n - 1, 2 * n))
+def main(n):
+    # 映射：用 n 生成 l 和 r，保证可规模化且确定性
+    # 令区间长度为 n+2，起点随 n 变化
+    l = n
+    r = l + n + 1
 
     if l == r or l + 1 == r:
-        print(-1)
+        # print(-1)
+        pass
     elif l % 2 == 0:
-        print(l, l + 1, l + 2)
+        # print(l, l + 1, l + 2)
+        pass
     elif l % 2 != 0 and r - l + 1 > 3:
-        print(l + 1, l + 2, l + 3)
+        # print(l + 1, l + 2, l + 3)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(10)
+    # 示例：可修改 n 进行不同规模实验
     main(10)

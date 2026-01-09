@@ -36,20 +36,24 @@ def main(n):
             if j == 'U':
                 if lv == l:
                     pass
+
                 else:
                     if y % 2:
                         a = (2 * a + x) // 2
+
                     else:
                         a = (2 * a - x) // 2
             elif j == 'L':
                 if lv == 1:
                     pass
+
                 else:
                     z = 2 * (y - 1)
                     a = quarter + z * half
             else:  # 'R'
                 if lv == 1:
                     pass
+
                 else:
                     z = 2 * (y - 1)
                     a = quarter + (z + 1) * half
@@ -57,9 +61,8 @@ def main(n):
 
     # 输出结果
     for ans in results:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例调用，可自行修改 n
     main(10)

@@ -1,29 +1,21 @@
-import random
-
 def main(n):
-    # 生成测试数据
-    # A, B, C, T 的取值范围可以根据需要调整
-    A = random.randint(1, 10)
-    B = random.randint(1, 10)
-    C = random.randint(1, 10)
-    T = random.randint(1, 100)
+    # 确定性生成输入数据
+    A = n
+    B = n % 5 + 1
+    C = (n % 7) + 2
+    T = 2 * n + 10
+    t = [(i * 3 + 1) % (T + 5) for i in range(n)]
 
-    # 生成 n 个 t_i，保证 0 <= t_i <= T
-    t = [random.randint(0, T) for _ in range(n)]
-
-    # 原逻辑
     if B > C:
-        result = n * A
+        # print(n * A)
+        pass
+
     else:
-        t.sort()
         c = 0
+        t.sort()
         for i in t:
             c += (T - i) * (C - B) + A
-        result = c
-
-    print(result)
-
-
+        # print(c)
+        pass
 if __name__ == "__main__":
-    # 示例：调用 main(5)，规模为 5
-    main(5)
+    main(10)

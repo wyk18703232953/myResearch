@@ -16,14 +16,14 @@ def main(n):
     collected = set(colors[:n])
 
     # 输出缺少的宝石数量
-    print(6 - n)
+    # print(6 - n)
+    pass
 
     # 输出缺少的宝石名称
     for key, value in d.items():
         if key not in collected:
-            print(value)
-
-
+            # print(value)
+            pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值进行测试
     main(3)

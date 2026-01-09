@@ -14,7 +14,8 @@ def main(n: int):
             break
 
     if cif == 1:
-        print(k)
+        # print(k)
+        pass
         return
 
     c = k - nc[cif - 1]
@@ -22,6 +23,7 @@ def main(n: int):
     if c % cif == 0:
         nnr = c // cif
         ncif = cif
+
     else:
         nnr = 1 + c // cif
         ncif = c % cif
@@ -32,9 +34,8 @@ def main(n: int):
         number //= 10
         cif -= 1
 
-    print(number % 10)
-
-
+    # print(number % 10)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(15)，可根据需要修改 n 的值
     main(15)
