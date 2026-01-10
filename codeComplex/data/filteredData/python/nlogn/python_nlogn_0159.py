@@ -1,0 +1,57 @@
+def main(n):
+    # Original input: w, h, n
+    # Map experimental n to meaningful dimensions:
+    #   w = n, h = n, number of cuts = n
+    w = n
+    h = n
+
+    # Deterministically generate operations:
+    # Pattern: alternate between 'V' and 'H', with positions i+1
+    res, vrt, hor = [], [], []
+    vh = (vrt, hor)
+    for i in range(n):
+        flag = (i % 2 == 0)  # True -> 'V', False -> 'H'
+        x = i + 1            # cut position
+        vh[flag].append(i)
+        res.append([x, flag])
+
+    dim = []
+    for tmp, m in zip(vh, (h, w)):
+        tmp.sort(key=lambda e: res[e][0])
+        u = [None, [0]]
+        dim.append(u)
+        j = 0
+        z = 0
+        for i in tmp:
+            x = res[i][0]
+            if z < x - j:
+                z = x - j
+            j = x
+            v = [u, res[i]]
+            u.append(v)
+            u = v
+            res[i].append(u)
+        v = [u, [m], None]
+        u.append(v)
+        dim.append(v)
+        if z < m - j:
+            z = m - j
+        dim.append(z)
+
+    l, r, wmax, u, d, hmax = dim
+    whmax = [wmax, hmax]
+    for i in range(n - 1, -1, -1):
+        x, flag, link = res[i]
+        u = whmax[flag]
+        res[i] = u * whmax[not flag]
+        link[0][2] = link[2]
+        link[2][0] = link[0]
+        v = link[2][1][0] - link[0][1][0]
+        if u < v:
+            whmax[flag] = v
+
+    print('\n'.join(map(str, res)))
+
+
+if __name__ == "__main__":
+    main(10)

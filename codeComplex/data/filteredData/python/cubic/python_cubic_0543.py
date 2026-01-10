@@ -1,14 +1,13 @@
 def main(n):
-    # Generate deterministic input string and integer b based on n
-    # String s: digits created by repeating the pattern '9876543210'
-    # Length of s is n (or 1 if n = 0, to avoid empty input edge case)
-    length = max(1, n)
-    base_pattern = "9876543210"
-    s = (base_pattern * ((length // len(base_pattern)) + 1))[:length]
-    # b is a deterministic large integer derived from n
-    b = int("9" * ((n % 10) + 1))
+    # Deterministic data generation based on n
+    # a_str is the string that would have been read from input()
+    # b is the integer limit that would have been read from input()
+    # We let length of a_str be n, and construct digits deterministically.
+    a_str = ''.join(str((i * 7) % 10) for i in range(n))
+    b = int(''.join(str((i * 3 + 1) % 10) for i in range(max(1, n))))
 
-    a = ''.join(reversed(sorted(s)))
+    # Original algorithm starts here
+    a = ''.join(reversed(sorted(a_str)))
     r = ''
     while len(a) > 0:
         for i in range(len(a)):
@@ -17,7 +16,9 @@ def main(n):
                 r += a[i]
                 a = a[:i] + a[i + 1:]
                 break
-    # print(r)
-    pass
+
+    print(r)
+
+
 if __name__ == "__main__":
     main(10)
