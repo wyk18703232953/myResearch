@@ -8,50 +8,36 @@ import os
 import sys
 import warnings
 
-# 忽略拟合过程中的 RuntimeWarning (如 log(0), overflow 等)
+# 忽略拟合过程中的 RuntimeWarning
 warnings.filterwarnings("ignore")
 
-# 导入配置文件 (假设你本地有 config.py)
+# 导入配置文件
 import config
-
 
 # ==========================================
 # 1. 定义安全的复杂度模型函数
 # ==========================================
 
 def constant(n, a, b):
-    # O(1)
     return a * np.ones_like(n) + b
 
 def linear(n, a, b):
-    # O(n)
     return a * n + b
 
 def quadratic(n, a, b, c):
-    # O(n^2)
     return a * n**2 + c
 
 def cubic(n, a, b, c, d):
-    # O(n^3)
     return a * n**3 + d
 
 def logarithmic(n, a, b):
-    # O(log n) - 增加安全保护防止 log(0)
     n_safe = np.maximum(n, 1e-10)
     return a * np.log(n_safe) + b
 
 def n_log_n(n, a, b):
-    # O(n log n)
     n_safe = np.maximum(n, 1e-10)
     return a * n * np.log(n_safe) + b
 
-def exponential(n, a, b):
-    # O(2^n) - 增加裁剪防止溢出
-    # 注意：指数增长极快，通常只能拟合非常小的 n
-    val = np.clip(b * n, -100, 100) 
-    return a * np.exp(val)
-
-# 模型字典
 MODELS = {
     "Constant": constant,
     "Linear": linear,
@@ -59,66 +45,119 @@ MODELS = {
     "Cubic": cubic,
     "Logarithmic": logarithmic,
     "N Log N": n_log_n,
-    # "Exponential": exponential, # 指数模型极其不稳定，通常建议在特定需求下开启
 }
 
 # ==========================================
-# 2. 核心处理函数
+# 2. 新增：数据清洗与异常处理函数
+# ==========================================
+
+def clean_data(x_raw, y_raw):
+    """
+    清洗数据：
+    1. 剔除冷启动异常（如果第1个点显著大于第2个点，剔除）
+    2. 基于残差剔除离群点 (Z-Score)
+    """
+    if len(x_raw) < 4:
+        return x_raw, y_raw
+
+    # --- 步骤 1: 冷启动检测 ---
+    # 时间复杂度通常是单调递增的。如果 y[0] > y[1]，说明 n=1000 比 n=1100 还慢，
+    # 这绝对是冷启动导致的异常。
+    mask_cold_start = np.ones(len(x_raw), dtype=bool)
+    if y_raw[0] > y_raw[1]:
+        print(f"   [清洗] 检测到冷启动异常点 (n={x_raw[0]}, t={y_raw[0]:.2f}ms)，已剔除。")
+        mask_cold_start[0] = False
+    
+    x_clean = x_raw[mask_cold_start]
+    y_clean = y_raw[mask_cold_start]
+
+    # --- 步骤 2: 统计学离群点剔除 (Z-Score) ---
+    if len(x_clean) > 5:
+        # 使用通用二次多项式拟合趋势（二次多项式能较好地兼容 Linear 到 Quadratic 的区间）
+        # 这里只是为了找“大概趋势线”来计算残差
+        try:
+            coeffs = np.polyfit(x_clean, y_clean, 2)
+            p = np.poly1d(coeffs)
+            y_pred_trend = p(x_clean)
+            
+            # 计算残差
+            residuals = y_clean - y_pred_trend
+            mean_res = np.mean(residuals)
+            std_res = np.std(residuals)
+            
+            # 如果标准差太小（数据非常完美），就不要剔除了，防止误杀
+            if std_res > 1e-6:
+                # 剔除超过 2.5 倍标准差的点
+                z_scores = np.abs((residuals - mean_res) / std_res)
+                mask_z = z_scores < 2.5
+                
+                # 如果剔除后剩下的点太少，就放弃这一步
+                if np.sum(mask_z) >= 4:
+                    outliers_count = len(x_clean) - np.sum(mask_z)
+                    if outliers_count > 0:
+                        print(f"   [清洗] 基于统计剔除了 {outliers_count} 个离群噪点。")
+                        x_clean = x_clean[mask_z]
+                        y_clean = y_clean[mask_z]
+        except Exception as e:
+            print(f"   [清洗] 统计清洗步骤失败，跳过: {e}")
+
+    return x_clean, y_clean
+
+# ==========================================
+# 3. 核心处理函数
 # ==========================================
 
 def process_code_file(code_path, expected_models, base_dir):
-    """
-    处理单个代码文件：执行代码 -> 收集数据 -> 拟合模型 -> 生成报告
-    """
     if not os.path.exists(code_path):
         print(f"错误：文件 {code_path} 不存在")
         return False
     
-    # --- 准备工作 ---
     file_name = os.path.basename(code_path)
     base_name = os.path.splitext(file_name)[0]
     result_dir = os.path.join(base_dir, f"results_{base_name}")
     os.makedirs(result_dir, exist_ok=True)
     
-    # 读取代码
     with open(code_path, 'r', encoding='utf-8') as f:
         code_content = f.read()
 
     # --- 数据收集阶段 ---
     test_results = []
     
-    # 检查是否有断点续传数据
+    # 检查断点续传
     temp_results_path = os.path.join(result_dir, "temp_results.npz")
     start_n = config.start_n
     
     if os.path.exists(temp_results_path):
         try:
             loaded = np.load(temp_results_path)
-            # 兼容处理：检查是 'results' 还是 'arr_0'
             if 'results' in loaded:
                 test_results = loaded['results'].tolist()
             else:
                 test_results = loaded[loaded.files[0]].tolist()
-                
             if test_results:
                 start_n = int(test_results[-1][0]) + config.step
                 print(f"恢复进度：从 n={start_n} 继续")
-        except Exception as e:
-            print(f"读取临时文件失败，重新开始: {e}")
+        except Exception:
+            pass
 
     print(f"开始测试 {file_name}: n={start_n} -> {config.max_n}")
 
+    # >>> 新增：预热 (Warm-up) <<<
+    # 执行一次空跑，不计入结果，用于让 JIT 编译和缓存生效
+    if len(test_results) == 0: # 只有刚开始跑才需要预热
+        print("   [系统] 正在进行预热 (Warm-up)...")
+        try:
+            warmup_code = f"{code_content}\n\nmain({start_n})"
+            exec(warmup_code, {})
+        except Exception as e:
+            print(f"   [警告] 预热失败: {e}")
+
     try:
-        # 执行测试循环
         for n in range(start_n, config.max_n + 1, config.step):
-            # 构造运行代码
-            # 假设用户代码中定义了 main(n) 或类似入口
             run_code = f"{code_content}\n\nmain({n})"
             
             t0 = time.perf_counter()
             exec_globals = {}
-            
-            # 执行代码
             try:
                 exec(run_code, exec_globals)
             except Exception as e:
@@ -129,61 +168,57 @@ def process_code_file(code_path, expected_models, base_dir):
             run_time_ms = (t1 - t0) * 1000
             test_results.append((n, run_time_ms))
             
-            # 定期保存
             if len(test_results) % 10 == 0:
                 np.savez(temp_results_path, results=test_results)
                 
     except KeyboardInterrupt:
-        print("\n用户中断测试，正在保存已收集数据...")
+        print("\n用户中断测试...")
     finally:
-        # 保存最终原始数据
         final_data_path = os.path.join(result_dir, "time_results.npz")
         np.savez(final_data_path, results=test_results)
-        print(f"数据收集完成，共 {len(test_results)} 个数据点")
 
     # --- 拟合分析阶段 ---
     if len(test_results) < 5:
         print("数据点不足 (<5)，跳过拟合分析")
         return False
 
-    # 准备数据
+    # 准备原始数据
     data_arr = np.array(test_results)
-    x_data = data_arr[:, 0]
-    y_data = data_arr[:, 1]
+    x_raw = data_arr[:, 0]
+    y_raw = data_arr[:, 1]
     
-    # 排序（以防万一）
-    idx = np.argsort(x_data)
-    x_data = x_data[idx]
-    y_data = y_data[idx]
+    # 排序
+    idx = np.argsort(x_raw)
+    x_raw = x_raw[idx]
+    y_raw = y_raw[idx]
+
+    # >>> 调用数据清洗 <<<
+    x_data, y_data = clean_data(x_raw, y_raw)
+
+    # 如果清洗后数据太少，回退到使用原始数据（虽然可能有噪声）
+    if len(x_data) < 4:
+        print("   [警告] 清洗后数据过少，回退使用原始数据。")
+        x_data, y_data = x_raw, y_raw
 
     fit_report = {}
     best_score = -np.inf
     best_model_name = "None"
     
-    print("\n正在拟合模型...")
+    print("正在拟合模型...")
     
-    # 遍历所有模型进行拟合
     for name, func in MODELS.items():
         try:
-            # 1. 拟合
-            # p0 可以根据需要添加，或者让 scipy 自动推断
+            # 使用清洗后的数据进行拟合
             popt, pcov = curve_fit(func, x_data, y_data, maxfev=10000)
-            
-            # 2. 预测
             y_pred = func(x_data, *popt)
-            
-            # 3. 计算指标
-            # R^2
             r2 = r2_score(y_data, y_pred)
             
-            # AIC / BIC 计算
+            # 计算 AIC/BIC
             resid = y_data - y_pred
             ssr = np.sum(resid**2)
-            k = len(popt) # 参数数量
-            n_samples = len(y_data)
-            
-            # 防止 log(0)
             if ssr <= 0: ssr = 1e-10
+            k = len(popt)
+            n_samples = len(y_data)
             
             aic = 2 * k + n_samples * np.log(ssr / n_samples)
             bic = n_samples * np.log(ssr / n_samples) + k * np.log(n_samples)
@@ -192,64 +227,58 @@ def process_code_file(code_path, expected_models, base_dir):
                 "r2": r2,
                 "aic": aic,
                 "bic": bic,
-                "params": popt.tolist(),
-                "y_pred": y_pred # 用于画图，暂存
+                "params": popt.tolist()
             }
             
-            # 使用 R2 作为主要评判标准 (也可以改成 if bic < best_bic)
             if r2 > best_score:
                 best_score = r2
                 best_model_name = name
                 
         except Exception as e:
-            print(f"模型 {name} 拟合失败: {e}")
             fit_report[name] = {"r2": -np.inf, "success": False}
 
     print(f"分析完成。最佳拟合模型: {best_model_name} (R2={best_score:.4f})")
     
     # --- 绘图与报告保存 ---
     
-    # 1. 绘制最佳拟合图
-    plt.figure(figsize=(10, 6))
-    plt.scatter(x_data, y_data, color='black', alpha=0.5, label='Actual Data')
+    plt.figure(figsize=(12, 7)) # 稍微大一点
     
+    # 1. 绘制被剔除的点（灰色叉叉）
+    # 找出原始数据中不在清洗后数据里的点
+    mask_kept = np.isin(x_raw, x_data) & np.isin(y_raw, y_data) 
+    # 注意：这里简单的isin可能在y值完全相同时有误判，但对于浮点时间基本安全
+    
+    if not np.all(mask_kept):
+        x_rejected = x_raw[~mask_kept]
+        y_rejected = y_raw[~mask_kept]
+        plt.scatter(x_rejected, y_rejected, color='gray', marker='x', s=50, alpha=0.5, label='Outliers (Ignored)')
+
+    # 2. 绘制有效数据点（蓝色圆点）
+    plt.scatter(x_data, y_data, color='blue', alpha=0.6, label='Valid Data')
+    
+    # 3. 绘制最佳拟合曲线
     if best_model_name in fit_report:
         best_info = fit_report[best_model_name]
-        # 重新计算平滑曲线用于绘图
-        x_smooth = np.linspace(min(x_data), max(x_data), 500)
+        x_smooth = np.linspace(min(x_raw), max(x_raw), 500) # 画线覆盖全范围
         y_smooth = MODELS[best_model_name](x_smooth, *best_info['params'])
         
         plt.plot(x_smooth, y_smooth, 'r-', linewidth=2, 
-                 label=f'{best_model_name} ($R^2={best_info["r2"]:.3f}$)')
+                 label=f'Best Fit: {best_model_name} ($R^2={best_info["r2"]:.3f}$)')
         
-    plt.title(f"Time Complexity Analysis: {file_name}")
+    plt.title(f"Time Complexity: {file_name}\n(Raw data count: {len(x_raw)}, Cleaned: {len(x_data)})")
     plt.xlabel("Input Size (n)")
     plt.ylabel("Time (ms)")
     plt.legend()
-    plt.grid(True)
+    plt.grid(True, alpha=0.3)
     plt.savefig(os.path.join(result_dir, "best_fit.png"))
     plt.close()
     
-    # 2. 保存详细 JSON 报告
-    # 移除 y_pred 以便序列化
-    json_report = {}
-    for k, v in fit_report.items():
-        if "y_pred" in v:
-            del v["y_pred"]
-        json_report[k] = v
-        
     with open(os.path.join(result_dir, "analysis_report.json"), 'w') as f:
-        json.dump(json_report, f, indent=2)
+        json.dump(fit_report, f, indent=2)
 
-    # 3. 验证是否符合预期
-    # 将模型名称归一化比较 (忽略大小写等差异)
+    # --- 结果判定 ---
     is_success = False
     if best_model_name != "None":
-        # 简单检查：如果最佳模型名称包含在预期列表中（模糊匹配）
-        # 例如：expected=['linear'], best='Linear' -> Pass
-        # 或者 expected=['logn'], best='Logarithmic' -> 需要映射
-        
-        # 建立简单的别名映射
         aliases = {
             'Logarithmic': ['logn', 'logarithmic', 'log'],
             'Linear': ['linear', 'o(n)'],
@@ -258,16 +287,12 @@ def process_code_file(code_path, expected_models, base_dir):
             'N Log N': ['nlogn', 'n_log_n']
         }
         
-        # 检查
         cleaned_best = best_model_name
-        
         for expected in expected_models:
             expected_lower = expected.lower()
-            # 直接匹配
             if expected_lower == cleaned_best.lower():
                 is_success = True
                 break
-            # 别名匹配
             if cleaned_best in aliases:
                 if expected_lower in aliases[cleaned_best]:
                     is_success = True
@@ -276,22 +301,17 @@ def process_code_file(code_path, expected_models, base_dir):
     return is_success
 
 # ==========================================
-# 3. 主程序入口
+# 4. 主程序入口
 # ==========================================
 
 def main():
-    # 全局统计
     global_stats = {
         'total': 0, 'success': 0, 'failed': 0, 
         'failed_files': []
     }
     
-    # 配置要运行的文件夹类型
-    # folder_type = 'linear'  
-    # 可以在这里修改，或者通过命令行参数传入
-    folder_type = 'linear' 
+    folder_type = 'quadratic'  # 可在此处修改
 
-    # 使用字典映射减少重复的if-elif结构
     folder_config = {
         'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
         'linear': (config.linear_folder_path, ['Linear']),
@@ -306,7 +326,6 @@ def main():
         
     folder_path, expected_models = folder_config[folder_type]
 
-    # 获取文件列表
     if not os.path.exists(folder_path):
         print(f"文件夹不存在: {folder_path}")
         return
@@ -317,7 +336,6 @@ def main():
     
     print(f"找到 {total_files} 个文件，开始处理...")
     
-    # 根据folder_type确定基础目录
     base_dir_map = {
         'logn': config.logn_results_base_dir,
         'linear': config.linear_results_base_dir,
@@ -326,11 +344,11 @@ def main():
         'nlogn': config.nlogn_results_base_dir
     }
     base_dir = base_dir_map.get(folder_type, config.linear_results_base_dir)
-                     
+                      
     for i, file_name in enumerate(python_files, 1):
+        full_path = os.path.join(folder_path, file_name)
+        print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
         if(i>=0):
-            full_path = os.path.join(folder_path, file_name)
-            print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
             try:
                 success = process_code_file(full_path, expected_models, base_dir)
                 if success:
@@ -346,7 +364,6 @@ def main():
                 global_stats['failed'] += 1
                 global_stats['failed_files'].append(file_name)
 
-    # 最终统计
     print("\n" + "="*50)
     print("最终统计报告")
     print("="*50)
@@ -354,23 +371,10 @@ def main():
     print(f"成功匹配: {global_stats['success']}")
     print(f"失败/不匹配: {global_stats['failed']}")
     if global_stats['failed_files']:
-        print("\n失败文件列表:")
-        for f in global_stats['failed_files'][:10]: # 只显示前10个
+        print("\n失败文件列表 (Top 10):")
+        for f in global_stats['failed_files'][:10]:
             print(f" - {f}")
-        if len(global_stats['failed_files']) > 10:
-            print(f" ... 等共 {len(global_stats['failed_files'])} 个")
             
-    # 保存统计结果
-    # 使用字典映射减少重复的if-elif结构
-    # base_dir_map = {
-    #     'logn': config.logn_results_base_dir,
-    #     'linear': config.linear_results_base_dir,
-    #     'quadratic': config.quadratic_results_base_dir,
-    #     'cubic': config.cubic_results_base_dir,
-    #     'nlogn': config.nlogn_results_base_dir
-    # }
-    # base_dir = base_dir_map.get(folder_type, config.logn_results_base_dir)  # 默认路径
-    
     stats_path = os.path.join(base_dir, f"stats_{folder_type}.json")
     with open(stats_path, 'w') as f:
         json.dump(global_stats, f, indent=2)

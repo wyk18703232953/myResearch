@@ -2,8 +2,8 @@ import os
 import time
 from openai import OpenAI
 
-SOURCE_DIR = r"d:\MyResearch\codeComplex\data\onlyCode\python"
-OUTPUT_DIR = r"d:\MyResearch\codeComplex\data\filteredData\python"
+SOURCE_DIR = r"/home/wuyankai/myResearch/codeComplex/data/onlyCode/python"
+OUTPUT_DIR = r"/home/wuyankai/myResearch/codeComplex/data/filteredData/python"
 
 def call_large_model(original_code, api_key=None, base_url=None):
     if api_key is None:
@@ -144,8 +144,9 @@ def main():
     
     process_directory(SOURCE_DIR, OUTPUT_DIR, force_regenerate)
     
+    
     print("\n" + "=" * 60)
-    print("所有处理完成!")
+    print("所有处理完成!") 
     print("=" * 60)
 
 if __name__ == "__main__":
