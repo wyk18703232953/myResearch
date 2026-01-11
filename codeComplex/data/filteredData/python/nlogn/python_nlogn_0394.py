@@ -25,8 +25,7 @@ def main(n):
         t = t[max(0, len(t) - k):len(t)]
 
     result = " ".join(str(a[p[i]] + c[i]) for i in range(n))
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -52,6 +52,7 @@ def get_frequency(list_):
     for ele in list_:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -64,6 +65,7 @@ def core_logic(n, k, a):
         totalprofit += l[i]
         if l[i] in dic:
             dic[l[i]] += 1
+
         else:
             dic[l[i]] = 1
     ans = []
@@ -73,15 +75,18 @@ def core_logic(n, k, a):
             count += 1
             if dic[a[i]] == 1:
                 del dic[a[i]]
+
             else:
                 dic[a[i]] -= 1
             if not dic:
                 count -= 1
                 ans.append(count + n - i)
                 break
+
             else:
                 ans.append(count)
             count = 0
+
         else:
             count += 1
     return totalprofit, ans
@@ -92,11 +97,15 @@ def main(n):
     k = max(1, n // 3)
     a = [((i * 7) % (n // 2 + 1) + 1) for i in range(n)]
     totalprofit, ans = core_logic(n, k, a)
-    print(totalprofit)
-    if ans:
-        print(*ans)
-    else:
-        print()
+    # print(totalprofit)
+    pass
 
+    if ans:
+        # print(*ans)
+        pass
+
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

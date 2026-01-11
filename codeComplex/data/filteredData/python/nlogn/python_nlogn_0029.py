@@ -9,12 +9,15 @@ def main(n):
     for i in range(n):
         if i < n // 3:
             sequence.append(1)
+
         else:
             sequence.append(2 + (i - n // 3))
 
     firstOrderStatistics = min(sequence)
     if sequence.count(firstOrderStatistics) == len(sequence):
-        print("NO")
+        # print("NO")
+        pass
+
     else:
         sequence = sorted(sequence)
         secondOrderStatistics = sequence[0]
@@ -22,8 +25,7 @@ def main(n):
             if i > secondOrderStatistics:
                 secondOrderStatistics = i
                 break
-        print(secondOrderStatistics)
-
-
+        # print(secondOrderStatistics)
+        pass
 if __name__ == "__main__":
     main(10)

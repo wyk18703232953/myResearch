@@ -13,16 +13,19 @@ def main(n):
         temp[i] = l - r
     temp.sort(reverse=True)
     if ans <= m:
-        print(0)
+        # print(0)
+        pass
+
     else:
         for i in range(n):
             ans -= temp[i]
             if ans <= m:
-                print(i + 1)
+                # print(i + 1)
+                pass
                 break
+
         else:
-            print(-1)
-
-
+            # print(-1)
+            pass
 if __name__ == "__main__":
     main(10)

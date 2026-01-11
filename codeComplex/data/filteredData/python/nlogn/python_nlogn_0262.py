@@ -17,15 +17,17 @@ def main(n):
         assert prev[0] <= segment[0]
         if prev[0] == segment[0]:
             assert prev[1] <= segment[1]
-            print(prev[2], segment[2])
+            # print(prev[2], segment[2])
+            pass
             break
         elif prev[1] >= segment[1]:
-            print(segment[2], prev[2])
+            # print(segment[2], prev[2])
+            pass
             break
         prev = segment
+
     else:
-        print(-1, -1)
-
-
+        # print(-1, -1)
+        pass
 if __name__ == "__main__":
     main(10)

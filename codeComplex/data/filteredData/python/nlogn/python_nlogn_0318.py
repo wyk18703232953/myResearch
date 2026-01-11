@@ -17,10 +17,11 @@ def main(n):
         parity ^= (len(found) - 1) % 2
 
     if parity == n % 2:
-        print("Petr")
+        # print("Petr")
+        pass
+
     else:
-        print("Um_nik")
-
-
+        # print("Um_nik")
+        pass
 if __name__ == "__main__":
     main(10)

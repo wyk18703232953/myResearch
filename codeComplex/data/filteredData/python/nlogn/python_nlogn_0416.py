@@ -19,8 +19,10 @@ def BS(arr, l, r, x):
             return mid
         elif arr[mid] > x:
             return BS(arr, l, mid - 1, x)
+
         else:
             return BS(arr, mid + 1, r, x)
+
     else:
         return -1
 
@@ -49,13 +51,16 @@ def main(n):
         if p[i][0] == p[i - 1][0]:
             if p[i][1] == "l":
                 o += 1
+
             else:
                 c += 1
+
         else:
             w.append([p[i - 1][0], o, c])
             o, c = 0, 0
             if p[i][1] == "l":
                 o = 1
+
             else:
                 c = 1
     w.append([p[-1][0], o, c])
@@ -72,7 +77,7 @@ def main(n):
     output = []
     for i in range(1, n + 1):
         output.append(str(f[i]))
-    print(" ".join(output))
-
+    # print(" ".join(output))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -78,6 +78,7 @@ def main(n):
         mid = (ok+ng)//2
         if sol(mid):
             ok = mid
+
         else:
             ng = mid
 
@@ -87,11 +88,15 @@ def main(n):
         if c <= ok:
             if tps[a-1] > tps[b-1]:
                 res.append(i+1)
-    print(ok,len(res))
-    if res:
-        print(*res)
-    else:
-        print()
+    # print(ok,len(res))
+    pass
 
+    if res:
+        # print(*res)
+        pass
+
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
     main(200)

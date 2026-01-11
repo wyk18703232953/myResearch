@@ -35,7 +35,9 @@ def main(n):
         length_vals = len(values_with_at_least_two)
 
         if isgraterthan4:
-            print(graterthan4, graterthan4, graterthan4, graterthan4)
+            # print(graterthan4, graterthan4, graterthan4, graterthan4)
+            pass
+
         else:
             # If we don't have at least two distinct values with count >= 2,
             # fall back to a deterministic placeholder based on available data
@@ -45,9 +47,12 @@ def main(n):
                     a = b = values_with_at_least_two[0]
                 elif l:
                     a = b = l[0]
+
                 else:
                     a = b = 1
-                print(a, a, b, b)
+                # print(a, a, b, b)
+                pass
+
             else:
                 m = 10**18
                 mi = [values_with_at_least_two[0], values_with_at_least_two[1]]
@@ -59,9 +64,8 @@ def main(n):
                         m = val
                         mi = [a, b]
                 a, b = mi
-                print(a, a, b, b)
-
-
+                # print(a, a, b, b)
+                pass
 if __name__ == "__main__":
     # Example call; adjust n to scale input size
     main(10)

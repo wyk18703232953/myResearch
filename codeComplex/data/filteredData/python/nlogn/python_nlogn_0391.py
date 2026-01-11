@@ -15,7 +15,9 @@ def main(n):
     d = [0] * len(b)
 
     if k == 0:
-        print(' '.join(map(str, b)))
+        # print(' '.join(map(str, b)))
+        pass
+
     else:
         best = [0] * k
         for pwr, cnt, index in c:
@@ -27,12 +29,12 @@ def main(n):
                         best.insert(i, cnt)
                         best = best[1:]
                         break
+
                 else:
                     best = best[1:] + [cnt]
 
-        print(' '.join(map(str, d)))
-
-
+        # print(' '.join(map(str, d)))
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for experimentation
     main(10)

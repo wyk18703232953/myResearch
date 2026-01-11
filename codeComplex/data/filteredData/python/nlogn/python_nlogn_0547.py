@@ -28,9 +28,9 @@ def main(n):
             winners[c] = "B"
 
     for i in range(n):
-        print(winners[i], end="")
-    print()
-
-
+        # print(winners[i], end="")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

@@ -43,6 +43,7 @@ def main(n):
         if x1 == 1:
             if x2 == val:
                 finalval += 1
+
             else:
                 if len(arr1) > 0 and x2 >= arr1[0]:
                     arr2.append(x2)
@@ -57,14 +58,14 @@ def main(n):
             temp1 = len(arr2) - j
             ans = min(i + temp1, ans)
             i += 1
+
         else:
             temp1 = len(arr2) - j
             ans = min(i + temp1, ans)
             i += 1
 
     ans = min(i, ans)
-    print(ans + finalval)
-
-
+    # print(ans + finalval)
+    pass
 if __name__ == "__main__":
     main(10)

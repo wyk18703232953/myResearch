@@ -26,6 +26,7 @@ def main(n):
             x[idx] = r[i_r]
             t[idx] = 0
             i_r += 1
+
         else:
             x[idx] = d[i_d]
             t[idx] = 1
@@ -51,6 +52,7 @@ def main(n):
         if int(t[i]) == 1:
             d_arr[countd] = int(x[i])
             countd += 1
+
         else:
             r_arr[countr] = int(x[i])
             countr += 1
@@ -67,15 +69,15 @@ def main(n):
             break
         if 2 * r_arr[i] <= (d_arr[current] + d_arr[current + 1]):
             count[current] += 1
+
         else:
             count[current + 1] += 1
 
     s = ""
     for i in range(m):
         s += str(count[i]) + " "
-    print(s[:-1])
-
-
+    # print(s[:-1])
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different input scales
     main(1000)

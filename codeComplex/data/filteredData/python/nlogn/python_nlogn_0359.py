@@ -65,9 +65,11 @@ def core_algorithm(a):
         if found2[0] == found2[1]:
             outputs.append("1")
             outputs.append(str(a[0]))
+
         else:
             outputs.append("2")
             outputs.append(" ".join(map(str, found2)))
+
     else:
         outputs.append("3")
         outputs.append(" ".join(map(str, found)))
@@ -88,8 +90,7 @@ def generate_input_array(n):
 def main(n):
     a = generate_input_array(n)
     result = core_algorithm(a)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

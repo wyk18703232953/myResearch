@@ -19,14 +19,14 @@ def main(n):
         y = j * 3 + 2  # value
         if b in k:
             k[b] = max(k[b], y)
+
         else:
             k[b] = y
 
     s = 0
     for h in k.values():
         s += h
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     main(10)

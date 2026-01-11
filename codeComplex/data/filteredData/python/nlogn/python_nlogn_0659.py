@@ -3,7 +3,8 @@ from heapq import heappush, heappop
 def main(n):
     # n 表示 L 的长度以及字符串 T 的长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成 L：长度为 n，元素为 i % 10 + 1，避免出现 0
@@ -30,14 +31,14 @@ def main(n):
             if need_stamina > quantity:
                 ans += quantity * cost
                 need_stamina -= quantity
+
             else:
                 ans += need_stamina * cost
                 heappush(Q, (cost, quantity - need_stamina))
                 need_stamina = 0
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小进行时间复杂度实验
     main(10)

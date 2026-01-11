@@ -9,8 +9,7 @@ def main(n):
             if a[i] <= a[j] + k:
                 n1 -= 1
             j += 1
-    print(n1)
-
-
+    # print(n1)
+    pass
 if __name__ == "__main__":
     main(10)

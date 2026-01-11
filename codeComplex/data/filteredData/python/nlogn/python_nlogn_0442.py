@@ -5,7 +5,8 @@ def main(n):
     # n: length of array p
     # m: choose a value that is guaranteed to appear in p
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Generate p deterministically
@@ -21,6 +22,7 @@ def main(n):
             x[i + 1] = -1
         elif p[i] > m:
             x[i + 1] = 1
+
         else:
             l = i
     for i in range(1, n + 1):
@@ -33,7 +35,7 @@ def main(n):
         xi = x[i]
         ans += cnt[i % 2][xi - 1]
         ans += cnt[i % 2 ^ 1][xi]
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

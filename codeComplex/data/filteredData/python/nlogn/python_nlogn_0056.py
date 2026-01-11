@@ -14,9 +14,8 @@ def main(n):
         remaining_sum = total_sum - current_sum
         if current_sum > remaining_sum:
             break
-    print(coin)
-
-
+    # print(coin)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的值进行规模实验
     main(10)

@@ -12,8 +12,7 @@ def main(n):
         if border <= v[0]:
             ans += 1
             border = v[1]
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -14,7 +14,8 @@ def main(n):
     A = [(i * 3) // 2 % (n // 2 + 1) + 1 for i in range(n)]
 
     if n == 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     A.sort(reverse=True)
@@ -26,18 +27,19 @@ def main(n):
         if A[i] == A[i - 1]:
             NOW = max(1, NOW - 1)
             ANS += 1
+
         else:
             if A[i] >= NOW - 1:
                 ANS += 1
                 NOW = max(NOW - 1, 1)
+
             else:
                 ANS += max(1, NOW - A[i])
                 NOW = A[i]
         i += 1
 
     ANS += (NOW - 1)
-    print(sum(A) - ANS)
-
-
+    # print(sum(A) - ANS)
+    pass
 if __name__ == "__main__":
     main(10)

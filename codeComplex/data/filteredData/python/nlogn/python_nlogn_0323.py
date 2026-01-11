@@ -6,11 +6,12 @@ def main(n):
     a = [(i % (n // 2 + 1)) + 1 for i in range(n)]
 
     if sum(a[i] == i + 1 for i in range(n)) >= n // 1000:
-        print("Petr")
+        # print("Petr")
+        pass
+
     else:
-        print("Um_nik")
-
-
+        # print("Um_nik")
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10**6 进行时间复杂度实验
     main(10**6)

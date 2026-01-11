@@ -9,6 +9,7 @@ def main(n):
                 return mid + 1
             elif arr[mid] > x:
                 r = mid - 1
+
             else:
                 l = mid + 1
         return r + 1
@@ -37,13 +38,13 @@ def main(n):
         if arrows >= ps[-1]:
             ans.append(N)
             arrows = 0
+
         else:
             res = Binary_Search(ps, arrows, N)
             ans.append(N - res)
 
     for x in ans:
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
     main(10)

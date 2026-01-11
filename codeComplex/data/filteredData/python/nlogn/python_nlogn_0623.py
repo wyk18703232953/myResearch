@@ -11,15 +11,18 @@ def check(prev, parent, curr, level, degrees, neighbors, k):
         result, _ = check([], [curr], neighbor, level - 1, degrees, neighbors, k)
         if result:
             checked.append(neighbor)
+
         else:
             if len(parent) == 0:
                 parent.append(neighbor)
+
             else:
                 return False, []
     if len(checked) > 2 and len(parent) == 0 and level == k:
         return True, []
     elif len(checked) > 2 and len(parent) == 1 and level != k:
         return True, parent
+
     else:
         return False, []
 
@@ -41,7 +44,8 @@ def build_deterministic_tree(n):
 def main(n):
     if n < 2:
         # trivial small case, still deterministic
-        print("No")
+        # print("No")
+        pass
         return
 
     # Choose k as a deterministic function of n
@@ -57,7 +61,8 @@ def main(n):
             curr = i + 1
             break
     if curr == 0 or len(neighbors[curr - 1]) == 0:
-        print("No")
+        # print("No")
+        pass
         return
     curr = neighbors[curr - 1][0]
 
@@ -67,10 +72,12 @@ def main(n):
     while counter <= k:
         result, parent = check(prev, [], curr, counter, degrees, neighbors, k)
         if not result:
-            print("No")
+            # print("No")
+            pass
             return
         if counter == k:
-            print("Yes")
+            # print("Yes")
+            pass
             return
         prev = [curr]
         curr = parent[0]

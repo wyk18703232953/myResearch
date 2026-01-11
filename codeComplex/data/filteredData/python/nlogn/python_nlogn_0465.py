@@ -9,7 +9,8 @@ def max_profit(n, k, l, d):
             p = 0
             d.remove(l[i])
     a.append(n - sum(a))
-    print(*a)
+    # print(*a)
+    pass
 
 
 def main(n):
@@ -19,7 +20,8 @@ def main(n):
     k = max(1, min(n, n // 3 if n >= 3 else 1))
     l = [i % 10 for i in range(n)]
     d = sorted(l, reverse=True)[:k]
-    print(sum(d))
+    # print(sum(d))
+    pass
     max_profit(n, k, l, d)
 
 

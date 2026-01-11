@@ -19,10 +19,11 @@ def main(n):
     t = n * (n - 1) // 2
     r = y - t
     if r % 2 == 0 or f or y == 0 or z >= 2 or p >= 2:
-        print("cslnb")
+        # print("cslnb")
+        pass
+
     else:
-        print("sjfnb")
-
-
+        # print("sjfnb")
+        pass
 if __name__ == "__main__":
     main(10)

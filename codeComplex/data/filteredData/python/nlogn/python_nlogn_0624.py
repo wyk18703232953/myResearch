@@ -15,6 +15,7 @@ def main(n):
     # Deterministic generation of n, k, and the tree
     if n < 3:
         n_eff = 3
+
     else:
         n_eff = n
 
@@ -73,10 +74,11 @@ def main(n):
         flg = False
 
     if flg is False:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
-
-
+        # print('YES')
+        pass
 if __name__ == "__main__":
     main(10)

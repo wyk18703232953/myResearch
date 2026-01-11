@@ -11,7 +11,8 @@ def main(n):
     maxu = -1
     j = 2
     if N < 3:
-        print(-1)
+        # print(-1)
+        pass
         return
     for i in range(N - 2):
         j = max(i + 2, j)
@@ -24,8 +25,7 @@ def main(n):
             value = (E[j] - E[i + 1]) / (E[j] - E[i])
             if value > maxu:
                 maxu = value
-    print(maxu)
-
-
+    # print(maxu)
+    pass
 if __name__ == "__main__":
     main(10)

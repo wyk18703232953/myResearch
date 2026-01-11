@@ -9,13 +9,16 @@ def list3d(a, b, c, d):
     return [[[d] * c for _ in range(b)] for _ in range(a)]
 
 def Y(c):
-    print(["NO", "YES"][c])
+    # print(["NO", "YES"][c])
+    pass
 
 def y(c):
-    print(["no", "yes"][c])
+    # print(["no", "yes"][c])
+    pass
 
 def Yy(c):
-    print(["No", "Yes"][c])
+    # print(["No", "Yes"][c])
+    pass
 
 def core_algorithm(n, U, A):
     Ans = -1
@@ -29,6 +32,7 @@ def core_algorithm(n, U, A):
             a = A[z]
         elif A[z - 1] <= x + U and z - 1 != i + 1:
             a = A[z - 1]
+
         else:
             continue
         if a != A[i]:  # avoid division by zero
@@ -38,13 +42,14 @@ def core_algorithm(n, U, A):
 
 def main(n):
     if n < 3:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     U = n // 2 + 1
     A = [i for i in range(1, n + 1)]
     result = core_algorithm(n, U, A)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -4,19 +4,24 @@ def main(n):
     a = ["s" + "a" * i for i in range(1, n + 1)]
 
     if n == 1:
-        print("YES")
-        print(a[0])
+        # print("YES")
+        pass
+        # print(a[0])
+        pass
+
     else:
         a.sort(key=len)
         for i in range(1, n):
             if a[i - 1] not in a[i]:
-                print("NO")
+                # print("NO")
+                pass
                 break
+
         else:
-            print("YES")
+            # print("YES")
+            pass
             for s in a:
-                print(s)
-
-
+                # print(s)
+                pass
 if __name__ == "__main__":
     main(5)

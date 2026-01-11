@@ -2,7 +2,8 @@ def main(n):
     # Generate deterministic input list 'l' of size n
     # Pattern: l[i] = i % (max(1, n//3)) + 1 to keep values bounded but dependent on n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     base = max(1, n // 3)
@@ -21,6 +22,7 @@ def main(n):
         s.add(i)
         if i in d:
             d[i] += 1
+
         else:
             d[i] = 1
 
@@ -41,8 +43,7 @@ def main(n):
     for i in z:
         ans += d[i]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

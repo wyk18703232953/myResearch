@@ -10,7 +10,8 @@ def main(n):
     margins = [num - i for i, num in enumerate(nums)]
     for m in margins:
         if m < 0:
-            print("cslnb")
+            # print("cslnb")
+            pass
             return
     flag = False
     if len(nums) > 1:
@@ -19,20 +20,23 @@ def main(n):
     for a, b, c in zip(nums, nums[1:], nums[2:]):
         if b == c:
             if a == b or b - a == 1:
-                print("cslnb")
+                # print("cslnb")
+                pass
                 return
             if flag:
-                print("cslnb")
+                # print("cslnb")
+                pass
                 return
             flag = True
 
     margin = sum(margins)
     if margin % 2 == 1:
-        print("sjfnb")
+        # print("sjfnb")
+        pass
+
     else:
-        print("cslnb")
-
-
+        # print("cslnb")
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行一次，用于时间复杂度实验
     main(10)

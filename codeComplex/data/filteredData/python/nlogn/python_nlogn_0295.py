@@ -25,21 +25,23 @@ def main(n):
             if b:
                 v = b.pop()
                 ans.append(v[1])
+
             else:
                 # if b is empty but original code would pop, avoid error by using a placeholder
                 # deterministic behavior: use index 0
                 ans.append(0)
+
         else:
             if a:
                 v = a.pop()
                 ans.append(v[1])
                 b.append(v)
+
             else:
                 # if a is empty but original code would pop, avoid error by using a placeholder
                 ans.append(0)
 
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

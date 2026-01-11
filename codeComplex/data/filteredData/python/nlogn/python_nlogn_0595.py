@@ -10,10 +10,10 @@ def main(n):
             h += 1
     if h < max(a):
         ans += h
+
     else:
         ans += a[-1] - 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

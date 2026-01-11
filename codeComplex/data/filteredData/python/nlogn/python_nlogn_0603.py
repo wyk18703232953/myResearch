@@ -1,7 +1,8 @@
 def main(n):
     # n is the size of the array
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = n  # unused but kept to mirror original structure
@@ -19,8 +20,7 @@ def main(n):
         if a[i + 1] >= a[i]:
             a[i + 1] = a[i] - 1
         ans -= max(a[i] - a[i + 1], 1)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

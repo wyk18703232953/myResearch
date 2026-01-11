@@ -16,12 +16,12 @@ def main(n):
             ans += cnt[b[i] + 1]
         if b[i] in cnt:
             cnt[b[i]] += 1
+
         else:
             cnt[b[i]] = 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(10)

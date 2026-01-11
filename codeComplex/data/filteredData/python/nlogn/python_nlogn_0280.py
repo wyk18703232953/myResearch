@@ -15,13 +15,13 @@ def main(n):
         y = i * 3 + 1
         if x in d:
             d[x] = max(d[x], y)
+
         else:
             d[x] = y
 
     for key in d:
         s += d[key]
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     main(10)

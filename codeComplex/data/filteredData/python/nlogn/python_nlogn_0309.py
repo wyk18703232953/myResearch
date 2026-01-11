@@ -15,21 +15,23 @@ def main(n):
         if alien == eldian:
             row = empty.pop()
             non_empty.append(row)
+
         else:
             if non_empty:
                 row = non_empty.pop()
+
             else:
                 # If no non_empty is available, fall back to empty to keep it total
                 if empty:
                     row = empty.pop()
                     non_empty.append(row)
+
                 else:
                     # Degenerate case, no rows; use a dummy
                     row = (0, 0)
         result.append(row[0] + 1)
 
-    print(' '.join(map(str, result)))
-
-
+    # print(' '.join(map(str, result)))
+    pass
 if __name__ == "__main__":
     main(10)

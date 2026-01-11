@@ -9,9 +9,12 @@ def main(n):
         su += b
         dif.append(a - b)
     if su > m:
-        print(-1)
+        # print(-1)
+        pass
     elif sun == m:
-        print(0)
+        # print(0)
+        pass
+
     else:
         dif.sort()
         j = n - 1
@@ -19,7 +22,7 @@ def main(n):
             sun -= dif[j]
             ans += 1
             j -= 1
-        print(ans)
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     main(10)

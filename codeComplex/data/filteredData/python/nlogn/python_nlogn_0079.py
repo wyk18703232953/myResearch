@@ -17,8 +17,7 @@ def main(n):
         freqs[team] = freqs.get(team, 0) + 1
 
     # 模拟原程序行为：输出第 k-1 个队伍的出现次数
-    print(freqs[teams[k - 1]])
-
-
+    # print(freqs[teams[k - 1]])
+    pass
 if __name__ == "__main__":
     main(10)

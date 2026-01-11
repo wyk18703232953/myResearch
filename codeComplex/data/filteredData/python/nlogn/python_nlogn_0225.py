@@ -31,6 +31,7 @@ def dfs_from(root, a):
                     [(c, depth[c] + 1) for c in a[crt] if c != parent[crt]],
                     key=lambda x: x[1]
                 )
+
             else:
                 child[crt] = -1
                 depth[crt] = 0
@@ -49,10 +50,12 @@ def main(n):
     a = generate_tree(n)
 
     if n == 0:
-        print("")
+        # print("")
+        pass
         return
     if n == 1:
-        print("1")
+        # print("1")
+        pass
         return
 
     leaves = [i for i in range(n) if len(a[i]) == 1]
@@ -93,8 +96,7 @@ def main(n):
     for _ in range(n - min(len(solution), n)):
         solution.append(n)
 
-    print(' '.join(str(s) for s in solution))
-
-
+    # print(' '.join(str(s) for s in solution))
+    pass
 if __name__ == "__main__":
     main(10)

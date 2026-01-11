@@ -6,7 +6,8 @@ def main(n):
     g = [(i % 11) + 1 for i in range(1, m + 1)]
 
     if max(b) > min(g):
-        print(-1)
+        # print(-1)
+        pass
         return
     total = m * sum(b)
     b.sort()
@@ -22,8 +23,7 @@ def main(n):
             count += 1
         while len(g) > 0 and g[-1] == current:
             g.pop()
-    print(total)
-
-
+    # print(total)
+    pass
 if __name__ == "__main__":
     main(10)

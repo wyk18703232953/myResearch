@@ -1,6 +1,7 @@
 def main(n):
     if n < 2:
-        print("Yes")
+        # print("Yes")
+        pass
         return
 
     # Deterministically build a tree: star centered at 1
@@ -33,18 +34,20 @@ def main(n):
             if dp[b[i]] == 1:
                 s.append(b[i])
                 dp[b[i]] = 0
+
             else:
-                print("No")
+                # print("No")
+                pass
                 t = False
                 break
+
         else:
             c += aux
             c1 += 1
             continue
         break
     if t:
-        print("Yes")
-
-
+        # print("Yes")
+        pass
 if __name__ == "__main__":
     main(10)

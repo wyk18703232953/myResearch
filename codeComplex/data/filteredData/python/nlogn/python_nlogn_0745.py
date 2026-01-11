@@ -27,9 +27,12 @@ def main(n):
                 break
 
     if flag == 2:
-        print("cslnb")
+        # print("cslnb")
+        pass
     elif flag == 1 and a[index] == 0:
-        print("cslnb")
+        # print("cslnb")
+        pass
+
     else:
         moves = 0
         for i in range(n):
@@ -37,14 +40,16 @@ def main(n):
                 continue
             elif a[i] < i:
                 continue
+
             else:
                 moves += (a[i] - i)
         if moves % 2 == 0:
-            print("cslnb")
+            # print("cslnb")
+            pass
+
         else:
-            print("sjfnb")
-
-
+            # print("sjfnb")
+            pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for scaling experiments
     main(10)

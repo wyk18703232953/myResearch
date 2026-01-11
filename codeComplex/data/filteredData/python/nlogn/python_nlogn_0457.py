@@ -34,14 +34,15 @@ def main(n):
         if (arr[i], i) in res:
             path.append(cnt + 1)
             cnt = 0
+
         else:
             cnt += 1
     if path:
         path[-1] += n - sum(path)
 
-    print(ans)
-    print(' '.join(map(str, path)))
-
-
+    # print(ans)
+    pass
+    # print(' '.join(map(str, path)))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -18,8 +18,10 @@ def main(n):
             break
 
     if flag:
-        print(3)
-        print(*ans)
+        # print(3)
+        pass
+        # print(*ans)
+        pass
         return
 
     # If no triplet, try to find pair
@@ -33,13 +35,16 @@ def main(n):
             break
 
     if flag:
-        print(2)
-        print(*ans)
+        # print(2)
+        pass
+        # print(*ans)
+        pass
+
     else:
-        print(1)
-        print(arr[0])
-
-
+        # print(1)
+        pass
+        # print(arr[0])
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(1000)

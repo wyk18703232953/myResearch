@@ -18,6 +18,7 @@ def pow2(n):
 def isPrime(n):
     if (n == 1):
         return (False)
+
     else:
         root = int(n ** 0.5)
         root += 1
@@ -82,13 +83,15 @@ def main(n):
     m_orig = m
 
     if n_orig > m_orig:
-        print(0)
+        # print(0)
+        pass
         return
 
     d = {}
     for c in a:
         if c in d:
             d[c] += 1
+
         else:
             d[c] = 1
 
@@ -100,7 +103,8 @@ def main(n):
         for c in temp:
             n1 = n1 - (temp[c] // i)
         if n1 > 0:
-            print(i - 1)
+            # print(i - 1)
+            pass
             return
 
 if __name__ == "__main__":

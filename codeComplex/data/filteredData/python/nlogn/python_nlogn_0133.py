@@ -21,10 +21,11 @@ def main(n):
         k += a[no] - 1
         no += 1
     if k < m:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(no)
-
-
+        # print(no)
+        pass
 if __name__ == "__main__":
     main(10)

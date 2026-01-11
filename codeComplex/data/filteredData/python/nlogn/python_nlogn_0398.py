@@ -32,12 +32,14 @@ def main(n):
                 x += xi
                 y += yi
                 ans[a[i]] = 1
+
             else:
                 x -= xi
                 y -= yi
                 ans[a[i]] = -1
         if x * x + y * y <= 1500000 ** 2:
-            print(*ans)
+            # print(*ans)
+            pass
             break
         iteration += 1
 

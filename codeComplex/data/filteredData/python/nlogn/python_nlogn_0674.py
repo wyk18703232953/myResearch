@@ -17,8 +17,10 @@ def topological_sort(E, D):
 def main(n):
     # Deterministic generation of N, M and edges based on n
     if n <= 0:
-        print(0, 0)
-        print()
+        # print(0, 0)
+        pass
+        # print()
+        pass
         return
 
     N = n
@@ -47,6 +49,7 @@ def main(n):
             Dim2[b] += 1
         if topological_sort(Edge2, Dim2):
             ok = med
+
         else:
             ng = med
 
@@ -70,11 +73,15 @@ def main(n):
             c, m, a, b = Edge[i]
             if Linv[a] > Linv[b]:
                 Ans.append(m)
-    print(ans, len(Ans))
-    if Ans:
-        print(*Ans)
-    else:
-        print()
+    # print(ans, len(Ans))
+    pass
 
+    if Ans:
+        # print(*Ans)
+        pass
+
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

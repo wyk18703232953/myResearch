@@ -20,7 +20,8 @@ def main(n):
     xkeys = list(d.keys())
     xkeys.sort()
     if not xkeys:
-        print(" ".join("0" for _ in range(n)))
+        # print(" ".join("0" for _ in range(n)))
+        pass
         return
 
     r = xkeys[-1]
@@ -36,9 +37,8 @@ def main(n):
     output = []
     for i in range(1, n + 1):
         output.append(str(d1[i]))
-    print(" ".join(output))
-
-
+    # print(" ".join(output))
+    pass
 if __name__ == "__main__":
     # example deterministic call; adjust n as needed for experiments
     main(10)

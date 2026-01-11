@@ -16,7 +16,8 @@ def main(n):
     while sum(x // i for x in a) >= n:
         i += 1
     result = i - 1
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

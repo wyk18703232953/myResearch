@@ -33,6 +33,7 @@ def solve(n, t, tasks):
                 break
         if can_do:
             lo = mid + 1
+
         else:
             hi = mid - 1
     return curr_res, res
@@ -52,13 +53,17 @@ def main(n):
         tasks.append((a_i, t_i, idx))
 
     res, res_array = solve(n, t, tasks)
-    print(res)
-    print(res)
+    # print(res)
+    pass
+    # print(res)
+    pass
+
     if res_array:
-        print(" ".join(map(str, res_array)))
+        # print(" ".join(map(str, res_array)))
+        pass
+
     else:
-        print()
-
-
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

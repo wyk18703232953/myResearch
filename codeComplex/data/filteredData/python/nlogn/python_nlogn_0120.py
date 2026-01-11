@@ -7,11 +7,12 @@ def main(n):
         if arr[i] != li[i]:
             c += 1
         if c > 2:
-            print("NO")
+            # print("NO")
+            pass
             break
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
     main(10)

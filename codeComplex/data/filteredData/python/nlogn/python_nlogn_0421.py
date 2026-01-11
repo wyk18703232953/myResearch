@@ -22,9 +22,11 @@ def main(n):
                 if counter[i] > 1:
                     ans.add(i)
                     break
+
             else:
                 if diff not in counter:
                     continue
+
                 else:
                     ans.add(i)
                     break
@@ -32,7 +34,7 @@ def main(n):
     ans = list(ans)
     for i in ans:
         val += counter[i]
-    print(n - val)
-
+    # print(n - val)
+    pass
 if __name__ == "__main__":
     main(10000)

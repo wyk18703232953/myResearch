@@ -41,9 +41,9 @@ def main(n):
         cur += ad + mn
 
     for i in range(1, n + 1):
-        print(ans[i], end=' ')
-    print()
-
-
+        # print(ans[i], end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

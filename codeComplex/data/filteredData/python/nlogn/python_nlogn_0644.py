@@ -30,6 +30,7 @@ def main(n):
             x1 = 1
             x2 = i * 3 + 1
             y = (i // 2) + 1
+
         else:
             x1 = 0
             x2 = i * 3 + 2
@@ -40,14 +41,17 @@ def main(n):
     h.sort()
     v.sort()
     if not lh:
-        print(0)
+        # print(0)
+        pass
     elif n == 0:
-        print(lh - bl(h, MAX))
+        # print(lh - bl(h, MAX))
+        pass
+
     else:
         mn = n + lh - bl(h, MAX)
         for i in range(n):
             mn = min(mn, lh - bl(h, v[i]) + i)
-        print(mn)
-
+        # print(mn)
+        pass
 if __name__ == "__main__":
     main(10)

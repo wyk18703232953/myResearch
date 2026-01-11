@@ -3,7 +3,8 @@ def main(n):
     # Deterministically generate the list l of length n
     # Example pattern: l[i] = (i * 2) % max(1, n//2)
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     mod_base = max(1, n // 2)
@@ -14,11 +15,11 @@ def main(n):
 
     if len(s) > 1:
         ans = s[1]
+
     else:
         ans = 'NO'
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

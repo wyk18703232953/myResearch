@@ -27,18 +27,20 @@ def main(n):
     ans2 = []
     ans = coins[:]
     if k == 0:
-        print(*ans)
+        # print(*ans)
+        pass
+
     else:
         for i in range(n):
             if len(ans2) < k:
                 ans1 = sum(ans2)
+
             else:
                 ans2 = sorted(ans2)[-k:]
                 ans1 = sum(ans2)
             ans[knight[i][1]] += ans1
             ans2.append(coins[knight[i][1]])
-        print(*ans)
-
-
+        # print(*ans)
+        pass
 if __name__ == "__main__":
     main(10)

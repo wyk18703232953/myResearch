@@ -23,8 +23,7 @@ def main(n):
     output = []
     for i in ll:
         output.append(res[i])
-    print("".join(output))
-
-
+    # print("".join(output))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -15,16 +15,17 @@ def main(n):
     line.sort(reverse=True)
     count = 0
     if k >= m:
-        print(count)
+        # print(count)
+        pass
         return
     for i in range(n):
         k += line[i] - 1
         count += 1
         if k >= m:
-            print(count)
+            # print(count)
+            pass
             return
-    print(-1)
-
-
+    # print(-1)
+    pass
 if __name__ == "__main__":
     main(10)

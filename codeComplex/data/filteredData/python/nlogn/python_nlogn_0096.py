@@ -2,7 +2,8 @@ def main(n):
     # n 表示 complexity 列表的长度
     # 为保证索引 chores[2] 和 chores[2]-1 有效，需 n >= 2
     if n < 2:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造确定性的 chores 列表，规模与原程序含义一致
@@ -16,8 +17,7 @@ def main(n):
     complexity.sort()
     idx = chores[2]
     result = complexity[idx] - complexity[idx - 1]
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

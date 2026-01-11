@@ -92,7 +92,7 @@ def main(n):
         results.append(res)
     # 为了与原程序行为类似，这里打印最后一个结果
     if results:
-        print(results[-1])
-
+        # print(results[-1])
+        pass
 if __name__ == "__main__":
     main(10)

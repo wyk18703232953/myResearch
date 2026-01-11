@@ -7,11 +7,11 @@ def main(n):
 
     if t[-1] == 1:
         t[-1] = 2
+
     else:
         t[-1] = 1
     t.sort()
-    print(*t)
-
-
+    # print(*t)
+    pass
 if __name__ == "__main__":
     main(10)

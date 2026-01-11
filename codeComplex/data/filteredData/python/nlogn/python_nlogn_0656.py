@@ -23,13 +23,15 @@ def main(n):
 
     for i in range(1, n):
         if a[index][1] == 0:
-            print('NO')
+            # print('NO')
+            pass
             return
         if a[i][1] >= 2:
             ans.append([a[i - 1][0], a[i][0]])
             cnt += 1
             a[i - 1][1] -= 1
             a[i][1] -= 1
+
         else:
             if not right_bool:
                 ans.append([a[i - 1][0], a[i][0]])
@@ -37,6 +39,7 @@ def main(n):
                 a[i][1] -= 1
                 cnt += 1
                 right_bool = True
+
             else:
                 ans.append([a[index][0], a[i][0]])
                 a[index][1] -= 1
@@ -47,12 +50,13 @@ def main(n):
                 if a[index][1] == 0:
                     index += 1
 
-    print('YES', cnt)
-    print(n - 1)
+    # print('YES', cnt)
+    pass
+    # print(n - 1)
+    pass
     for i in range(n - 1):
-        print(ans[i][0] + 1, ans[i][1] + 1)
-
-
+        # print(ans[i][0] + 1, ans[i][1] + 1)
+        pass
 if __name__ == "__main__":
     # example deterministic run for time-complexity experiments
     main(10)

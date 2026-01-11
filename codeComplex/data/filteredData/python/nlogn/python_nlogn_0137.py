@@ -14,9 +14,11 @@ def socket(n, m, k, arr):
             count += 1
             e_socket -= 1
             t_socket = curr_socket + e_socket
+
         else:
             if t_socket >= devices:
                 return count
+
             else:
                 curr_socket += arr[i] - 1
                 count += 1
@@ -42,9 +44,8 @@ def main(n):
     arr = [(i % 5) + 1 for i in range(1, n + 1)]
 
     res = socket(n, m, k, arr)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：可以修改这里的 n 来做不同规模的实验
     main(10)

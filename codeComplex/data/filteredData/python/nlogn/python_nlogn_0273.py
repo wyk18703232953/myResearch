@@ -18,7 +18,7 @@ def main(n):
         r = i + (i % 3) + 1
         a.append((l, r, i + 1))
     i, j = solve(a)
-    print(i, j)
-
+    # print(i, j)
+    pass
 if __name__ == "__main__":
     main(10)

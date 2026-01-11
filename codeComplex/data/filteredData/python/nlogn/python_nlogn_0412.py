@@ -28,7 +28,8 @@ def main(n):
     cnt = [0] * (N + 1)  # DO NOT USE cnt[0]
 
     if not LIST:
-        print("")
+        # print("")
+        pass
         return
 
     n_curr = 1
@@ -41,25 +42,27 @@ def main(n):
                 n_curr += 1
                 x = item[0]
                 dir = left
+
             else:
                 cnt[n_curr] += item[0] - x - 1
                 n_curr += 1
                 x = item[0]
                 dir = left
+
         else:
             if dir == left:
                 cnt[n_curr] += item[0] - x + 1
                 n_curr -= 1
                 x = item[0]
                 dir = right
+
             else:
                 cnt[n_curr] += item[0] - x
                 n_curr -= 1
                 x = item[0]
                 dir = right
 
-    print(" ".join(list(map(str, cnt[1:]))))
-
-
+    # print(" ".join(list(map(str, cnt[1:]))))
+    pass
 if __name__ == "__main__":
     main(5)

@@ -2,7 +2,8 @@ def main(n):
     # 生成确定性输入数据：长度为 n 的整数数组
     # 设定数组为 [i % (n // 2 + 1) for i in range(n)]，保证存在重复和可能的次小元素
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     a = [i % (n // 2 + 1) for i in range(n)]
@@ -17,10 +18,11 @@ def main(n):
             ok = True
             break
     if ok:
-        print(ans)
+        # print(ans)
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

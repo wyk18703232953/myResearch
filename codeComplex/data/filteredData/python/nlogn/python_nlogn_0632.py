@@ -18,7 +18,8 @@ def main(n):
 
     # Original logic from here
     if m == 1:
-        print(n)
+        # print(n)
+        pass
         return
 
     p = []
@@ -33,8 +34,7 @@ def main(n):
             i += 1
         a[i] += 1
 
-    print(" ".join(str(ai) for ai in a))
-
-
+    # print(" ".join(str(ai) for ai in a))
+    pass
 if __name__ == "__main__":
     main(10)

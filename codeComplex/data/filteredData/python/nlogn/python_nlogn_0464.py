@@ -9,9 +9,11 @@ def max_profit(n, k, l, d):
             a.append(p)
             p = 0
             d.remove(l[i])
-    print(s + d[0])
+    # print(s + d[0])
+    pass
     a.append(n - sum(i for i in a))
-    print(*a)
+    # print(*a)
+    pass
 
 
 def main(n):

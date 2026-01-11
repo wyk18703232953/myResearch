@@ -2,7 +2,8 @@ from collections import deque
 
 def main(n):
     if n < 2:
-        print("No")
+        # print("No")
+        pass
         return
 
     visited = [False for _ in range(n + 2)]
@@ -52,12 +53,13 @@ def main(n):
             if dp[x] == 1:
                 s.append(x)
                 dp[x] = -1
+
             else:
                 ans = "No"
                 b.clear()
                 break
         s.popleft()
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

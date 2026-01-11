@@ -1,7 +1,8 @@
 def main(n):
     # 映射：n 为数组长度，k 设为 n//3+1，保证 1 <= k <= n
     if n <= 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = n // 3 + 1
@@ -18,10 +19,10 @@ def main(n):
     diff.sort(reverse=True)
     if k - 1 > 0:
         result = p - sum(diff[:k - 1])
+
     else:
         result = p
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

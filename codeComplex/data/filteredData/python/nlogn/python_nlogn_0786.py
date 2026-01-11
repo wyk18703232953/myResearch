@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as the length of array a
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate k and array a of length n
@@ -17,10 +18,10 @@ def main(n):
     d = [a[i + 1] - a[i] for i in range(n - 1)]
     if k >= n:
         ans = 0
+
     else:
         ans = sum(sorted(d)[:n - 1 - (k - 1)])
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

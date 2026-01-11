@@ -29,14 +29,14 @@ def main(n):
     for j in range(i, -1, -1):
         if len(gr[q[j]]) == 0:
             s[q[j]] = 1
+
         else:
             ans = 0
             for c in gr[q[j]]:
                 ans += s[c]
             s[q[j]] = ans
     s.sort()
-    print(' '.join(list(map(str, s))))
-
-
+    # print(' '.join(list(map(str, s))))
+    pass
 if __name__ == "__main__":
     main(10)

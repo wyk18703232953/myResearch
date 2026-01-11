@@ -15,8 +15,7 @@ def main(n):
         arr.sort()
         a = arr[-2]
         result = min(a - 1, n_value - 2)
-        print(result)
-
-
+        # print(result)
+        pass
 if __name__ == "__main__":
     main(10)

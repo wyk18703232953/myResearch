@@ -20,7 +20,8 @@ def main(n):
     G.sort(reverse=True)
 
     if B[0] > G[-1]:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     boy_capacities = [M - 1] * N
@@ -37,15 +38,16 @@ def main(n):
             elif B[current_capable_boy_index] == g:
                 result += g - B[current_capable_boy_index]
                 yet = False
+
             else:
                 current_capable_boy_index += 1
                 if current_capable_boy_index > N - 1:
-                    print(-1)
+                    # print(-1)
+                    pass
                     return
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(10)

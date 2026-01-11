@@ -13,12 +13,14 @@ def main(n):
         if lst2[i] not in lst2[i + 1]:
             c = 0
     if c == 1:
-        print("YES")
+        # print("YES")
+        pass
         for j in lst2:
-            print(j)
+            # print(j)
+            pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(5)

@@ -13,12 +13,14 @@ def main(n):
                 val2 = x[i] + (2 << j)
                 if val2 in s:
                     ans.append(val2)
-                    print(len(ans))
-                    print(*ans)
+                    # print(len(ans))
+                    pass
+                    # print(*ans)
+                    pass
                     return
-    print(len(ans))
-    print(*ans)
-
-
+    # print(len(ans))
+    pass
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

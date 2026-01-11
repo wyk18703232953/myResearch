@@ -18,6 +18,7 @@ def main(n):
     if not keys_list:
         m = 0
         ans_lis = []
+
     else:
         m = 1
         ans_lis = [[keys_list[0], 1]]
@@ -37,8 +38,7 @@ def main(n):
     ans_.append(t)
 
     for i in ans_:
-        print(i)
-
-
+        # print(i)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -4,7 +4,8 @@ def main(n):
     pts = [[i, i % 7] for i in range(n)]
 
     if n <= 4:
-        print('YES')
+        # print('YES')
+        pass
         return
 
     b1 = pts[0][0] - pts[1][0]
@@ -27,7 +28,8 @@ def main(n):
                 flag = False
                 break
     if flag:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     P = p
@@ -52,7 +54,8 @@ def main(n):
                 flag = False
                 break
     if flag:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     p = [P[0], pts[1]]
@@ -76,10 +79,10 @@ def main(n):
                 flag = False
                 break
     if flag:
-        print("YES")
+        # print("YES")
+        pass
         return
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     main(10)

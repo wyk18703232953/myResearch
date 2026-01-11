@@ -32,8 +32,7 @@ def main(n):
             y = 0
         ans += max(x, y)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

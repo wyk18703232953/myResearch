@@ -22,16 +22,17 @@ def main(n):
     for i in range(k, n):
         if l[i][0] == ps and l[i][1] == tp:
             ans += 1
+
         else:
             break
     for i in range(k - 2, -1, -1):
         if l[i][0] == ps and l[i][1] == tp:
             ans += 1
+
         else:
             break
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

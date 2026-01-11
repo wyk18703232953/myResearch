@@ -22,9 +22,8 @@ def main(n):
     if j < max_val:
         res -= max_val - j
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=10 运行一次
     main(10)

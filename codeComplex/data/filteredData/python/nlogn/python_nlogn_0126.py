@@ -20,9 +20,8 @@ def main(n):
         i += 1
     result = i if k >= m else -1
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次可重复的规模化实验
     main(10)

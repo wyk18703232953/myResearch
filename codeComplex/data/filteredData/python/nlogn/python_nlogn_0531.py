@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as both the size of the list v and the value of k (to scale together deterministically)
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = max(1, n)  # ensure k >= 1
@@ -27,8 +28,7 @@ def main(n):
             if need_mod == mod_k and add == num_d:
                 ans -= 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

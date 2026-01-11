@@ -24,8 +24,7 @@ def main(n):
             ans += 2
         elif dis == t:
             ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

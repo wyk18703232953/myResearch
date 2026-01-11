@@ -23,7 +23,7 @@ def main(n):
             dic[i] += 1
             if dic[i] == 4:
                 f = 0
-                out.write(str(i) + " " + str(i) + " " + str(i) + " " + str(i) + "\n")
+                # out.write(str(i) + " " + str(i) + " " + str(i) + " " + str(i) + "\n")
                 break
         if not f:
             t -= 1
@@ -38,9 +38,10 @@ def main(n):
             # 若不足以构成矩形，则退化为使用最大值重复
             if ln == 0:
                 x = 1
+
             else:
                 x = st[0]
-            out.write(str(x) + " " + str(x) + " " + str(x) + " " + str(x) + "\n")
+            # out.write(str(x) + " " + str(x) + " " + str(x) + " " + str(x) + "\n")
             t -= 1
             continue
 
@@ -51,7 +52,7 @@ def main(n):
             if val < mn:
                 a, b, c, d = st[i], st[i], st[i + 1], st[i + 1]
                 mn = val
-        out.write(str(a) + " " + str(b) + " " + str(c) + " " + str(d) + "\n")
+        # out.write(str(a) + " " + str(b) + " " + str(c) + " " + str(d) + "\n")
         t -= 1
 
 if __name__ == "__main__":

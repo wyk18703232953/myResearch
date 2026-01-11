@@ -17,16 +17,17 @@ def main(n):
 
     cost = l[n - 1] - l[0]
     if k == 1:
-        print(cost)
+        # print(cost)
+        pass
+
     else:
         diff = [0 for _ in range(n - 1)]
         for i in range(n - 1):
             diff[i] = l[i + 1] - l[i]
         diff = sorted(diff)
         diff.reverse()
-        print(cost - sum(diff[:k - 1]))
-
-
+        # print(cost - sum(diff[:k - 1]))
+        pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     main(10)

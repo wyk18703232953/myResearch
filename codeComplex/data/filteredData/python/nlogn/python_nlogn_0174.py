@@ -8,7 +8,8 @@ def main(n):
     ab = sorted([[x - w, x + w] for x, w in xw], key=lambda x: (x[1], x[0]))
 
     if not ab:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = ab[0][0]
@@ -18,8 +19,7 @@ def main(n):
             cnt += 1
             k = b
 
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     main(10)

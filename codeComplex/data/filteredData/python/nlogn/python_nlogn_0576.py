@@ -17,8 +17,7 @@ def main(n):
     s = ''
     for i in L:
         s += str(i) + ' '
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     main(10)

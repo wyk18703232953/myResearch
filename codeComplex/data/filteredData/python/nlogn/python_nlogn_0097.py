@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as the size of the list
     if n <= 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate a, b, and lst
@@ -18,8 +19,7 @@ def main(n):
     lst = sorted(lst)
 
     # Core logic from original program
-    print(lst[b] - lst[b - 1])
-
-
+    # print(lst[b] - lst[b - 1])
+    pass
 if __name__ == "__main__":
     main(10)

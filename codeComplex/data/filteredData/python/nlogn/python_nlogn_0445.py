@@ -2,7 +2,8 @@ def main(n):
     # Deterministically generate data based on n
     # n is the length of the array p
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return 0
 
     # Choose m deterministically as n // 2
@@ -18,6 +19,7 @@ def main(n):
             p_values.append(m - 1)
         elif i == m:
             p_values.append(m)
+
         else:
             p_values.append(m + 1)
 
@@ -65,7 +67,8 @@ def main(n):
         c2 = ret1[i2] if 0 <= i2 < MAX_SIZE else 0
         ret += c0 * (c1 + c2)
 
-    print(ret)
+    # print(ret)
+    pass
     return 0
 
 if __name__ == "__main__":

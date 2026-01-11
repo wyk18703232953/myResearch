@@ -15,11 +15,11 @@ def main(n):
             continue
         if b[i] > b[i - 1] + K:
             l = i
+
         else:
             cur += (i - l)
             l = i
-    print(n - cur)
-
-
+    # print(n - cur)
+    pass
 if __name__ == "__main__":
     main(10)

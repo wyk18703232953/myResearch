@@ -15,12 +15,14 @@ def main(n):
             c = 0
             break
     if c == 0:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
         for i in range(n):
-            print(a[i])
-
-
+            # print(a[i])
+            pass
 if __name__ == "__main__":
     main(5)

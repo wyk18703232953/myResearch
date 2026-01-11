@@ -20,20 +20,27 @@ def main(n):
             if len(tmp) > 1:
                 if len(ans) == 0:
                     ans.append(tmp)
+
                 else:
                     if len(tmp) > len(ans[0]):
                         ans[0] = tmp
     if len(ans) == 0:
-        print(1)
-        print(a[0])
+        # print(1)
+        pass
+        # print(a[0])
+        pass
         return
     if len(ans[0]) == 2:
-        print(2)
-        print(ans[0][0], ans[0][1])
+        # print(2)
+        pass
+        # print(ans[0][0], ans[0][1])
+        pass
         return
     if len(ans[0]) == 3:
-        print(3)
-        print(ans[0][0], ans[0][1], ans[0][2])
+        # print(3)
+        pass
+        # print(ans[0][0], ans[0][1], ans[0][2])
+        pass
         return
 
 

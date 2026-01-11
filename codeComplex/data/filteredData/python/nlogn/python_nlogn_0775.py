@@ -23,6 +23,7 @@ def main(n):
         elif j < n and a[j] == b[-1]:
             b.pop()
             j += 1
+
         else:
             ok = 0
             break
@@ -31,4 +32,5 @@ def main(n):
 
 if __name__ == "__main__":
     # Example deterministic call for time complexity experiments
-    print(main(10))
+    # print(main(10))
+    pass

@@ -29,14 +29,15 @@ def main(n):
 
         if spots < m:
             result = -1
+
         else:
             result = supply_filters_needed
+
     else:
         result = 0
 
     # Output to avoid optimization removal in experiments
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

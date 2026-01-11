@@ -14,8 +14,7 @@ def main(n):
         d.append((a, b, i))
     d = sorted(d, key=lambda x: (x[0], -x[1]))
     result = res(d, N)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

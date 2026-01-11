@@ -25,12 +25,12 @@ def main(n):
             k += board[hashed[i]]
         if flag == 1:
             answer[hashed[i]] = 'A'
+
         else:
             answer[hashed[i]] = 'B'
 
     answer.pop(0)
-    print(''.join(answer))
-
-
+    # print(''.join(answer))
+    pass
 if __name__ == "__main__":
     main(10)

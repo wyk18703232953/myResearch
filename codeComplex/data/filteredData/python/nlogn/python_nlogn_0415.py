@@ -24,7 +24,7 @@ def main(n):
         current_sum += arr[key]
 
     # 与原程序一致，从索引 1 开始输出
-    print(*brr[1:])
-
+    # print(*brr[1:])
+    pass
 if __name__ == "__main__":
     main(10)

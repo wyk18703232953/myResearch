@@ -22,13 +22,14 @@ def main(n):
 
     for i in range(len(lis) - 1):
         if lis[i] not in lis[i + 1]:
-            print("NO")
+            # print("NO")
+            pass
             return
 
-    print("YES")
+    # print("YES")
+    pass
     for s in lis:
-        print(s)
-
-
+        # print(s)
+        pass
 if __name__ == "__main__":
     main(5)

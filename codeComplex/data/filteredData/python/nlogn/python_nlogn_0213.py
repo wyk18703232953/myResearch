@@ -1,7 +1,8 @@
 def main(n):
     # n: length of array a
     if n < 2:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministic generation of m and array a
@@ -18,8 +19,7 @@ def main(n):
             num = a[k] - a[i + 1]
             den = a[k] - a[i]
             ans = max(ans, num / den)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

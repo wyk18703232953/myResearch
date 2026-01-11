@@ -28,10 +28,14 @@ def main(n):
         s1 += i[0]
 
     if s2 > m:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         if s1 <= m:
-            print(0)
+            # print(0)
+            pass
+
         else:
             i = n - 1
             count = 0
@@ -39,8 +43,7 @@ def main(n):
                 s1 = s1 - (final[i][0] - final[i][1])
                 count += 1
                 i -= 1
-            print(count)
-
-
+            # print(count)
+            pass
 if __name__ == "__main__":
     main(10)

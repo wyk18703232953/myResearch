@@ -12,7 +12,8 @@ def main(n):
     a = sorted(a)
     res_candidates = [x for x in range(n + 1) if sum(a[n - x:]) + k >= m + x]
     ans = min(res_candidates) if res_candidates else -1
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

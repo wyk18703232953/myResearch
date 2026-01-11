@@ -16,6 +16,7 @@ def main(n):
     if arr:
         m = 1
         ans_lis = [list(arr.keys())[0]]
+
     else:
         m = 0
         ans_lis = []
@@ -35,8 +36,8 @@ def main(n):
     ans_.append(t)
 
     for i in ans_:
-        print(i)
-
+        # print(i)
+        pass
 if __name__ == "__main__":
     # Example call with a chosen input size
     main(1000)

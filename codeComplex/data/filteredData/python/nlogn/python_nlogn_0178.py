@@ -9,7 +9,8 @@ def main(n):
         segments.append((x + w, x - w))  # (end, start)
 
     if not segments:
-        print(0)
+        # print(0)
+        pass
         return
 
     segments.sort()
@@ -21,8 +22,7 @@ def main(n):
             ans += 1
             t = end
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

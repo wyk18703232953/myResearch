@@ -11,7 +11,8 @@ def main(n):
     if n < 3:
         # 原算法中有 range(n-2)，n<3 时无有效循环
         # 保持行为：直接打印 -1
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # 构造确定性递增数组 e：
@@ -29,9 +30,8 @@ def main(n):
             k += 1
         if i < k - 1 and e[k] - e[i] <= u:
             ans = max(ans, (e[k] - e[i + 1]) / (e[k] - e[i]))
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：运行若干规模以便实验
     for size in [3, 10, 100, 1000]:

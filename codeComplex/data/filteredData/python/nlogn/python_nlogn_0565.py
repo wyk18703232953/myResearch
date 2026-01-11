@@ -9,10 +9,10 @@ def main(n):
     elif all(x > 0 for x in a) or all(x < 0 for x in a):
         b.sort()
         ans = sum(b) - 2 * b[0]
+
     else:
         ans = sum(b)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

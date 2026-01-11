@@ -18,9 +18,8 @@ def main(n):
     s = 'Petr'
     if u % 2 > 0:
         s = 'Um_nik'
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 以进行规模实验
     main(10)

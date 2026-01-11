@@ -7,12 +7,12 @@ def main(n):
     l = list(l)
 
     if len(l) <= 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     l.sort()
-    print(l[1])
-
-
+    # print(l[1])
+    pass
 if __name__ == "__main__":
     main(10)

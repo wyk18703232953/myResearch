@@ -9,6 +9,7 @@ def main(n):
             if f(fi, se, x):
                 if len(q) < 2:
                     q.append(x)
+
                 else:
                     if f(q[0], q[1], x):
                         return 1
@@ -16,9 +17,11 @@ def main(n):
 
     if n > 4 and all([g(p[0], p[1], p), g(p[0], p[2], p), g(p[1], p[2], p)]):
         return "NO"
+
     else:
         return "YES"
 
 
 if __name__ == "__main__":
-    print(main(10))
+    # print(main(10))
+    pass

@@ -3,7 +3,8 @@ def main(n):
     # 这里令原 n = n，k = max(1, n // 2)，nums 为长度 n 的确定性递增序列
     orig_n = n
     if orig_n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     k = orig_n // 2
     if k <= 0:
@@ -21,8 +22,7 @@ def main(n):
         take = 0
     if take > len(diff):
         take = len(diff)
-    print(sum(diff[:take]))
-
-
+    # print(sum(diff[:take]))
+    pass
 if __name__ == "__main__":
     main(10)

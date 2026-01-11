@@ -18,7 +18,8 @@ def main(n):
     ptr = len(f) - 1
     while ptr >= 0:
         if m <= k:
-            print(fs)
+            # print(fs)
+            pass
             return
         k -= 1
         k += f[ptr]
@@ -26,11 +27,12 @@ def main(n):
         ptr -= 1
     
     if m <= k:
-        print(fs)
+        # print(fs)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # Example: run with a chosen scale n
     main(1000)

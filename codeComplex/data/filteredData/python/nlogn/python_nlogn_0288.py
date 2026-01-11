@@ -63,6 +63,7 @@ def get_frequency(list_):
     for ele in list_:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -105,11 +106,13 @@ def main(n):
         if b in ans:
             if ans[b] < y:
                 ans[b] = y
+
         else:
             ans[b] = y
 
     result = sum(ans.values())
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

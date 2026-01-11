@@ -20,15 +20,17 @@ def main(n):
     for i in range(len(a1)):
         if k >= m:
             break
+
         else:
             k += a1.pop() - 1
             count += 1
 
     if k >= m:
-        print(count)
+        # print(count)
+        pass
+
     else:
-        print("-1")
-
-
+        # print("-1")
+        pass
 if __name__ == "__main__":
     main(10)

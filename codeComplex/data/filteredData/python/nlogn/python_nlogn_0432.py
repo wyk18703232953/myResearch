@@ -21,8 +21,7 @@ def main(n):
         if ok is False:
             rem += 1
 
-    print(rem)
-
-
+    # print(rem)
+    pass
 if __name__ == "__main__":
     main(10)

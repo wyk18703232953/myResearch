@@ -19,7 +19,8 @@ d8 = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
 def main(n):
     # Scale: n = number of segments; t = n as well (deterministic mapping)
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     t = n
@@ -38,8 +39,7 @@ def main(n):
         x_val = a[i][0] + a[i][1] + t
         y_val = a[i + 1][0]
         ans += (x_val <= y_val) + (x_val < y_val)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

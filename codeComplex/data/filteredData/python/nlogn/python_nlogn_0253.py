@@ -7,6 +7,7 @@ def bin_ser(arr, curr):
         if arr[mid] <= curr:
             ans = mid
             l = mid + 1
+
         else:
             r = mid - 1
     return ans
@@ -45,9 +46,8 @@ def main(n):
 
     # For timing experiments, we simply produce the outputs deterministically
     for v in outputs:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

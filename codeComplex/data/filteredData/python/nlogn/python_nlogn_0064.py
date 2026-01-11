@@ -6,7 +6,8 @@ def sum_list(l):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     cns = [i % 100 + 1 for i in range(1, n + 1)]
     xs, nm, c = 0, 0, 0
@@ -17,7 +18,7 @@ def main(n):
         xs += m
         nm = sum_list(cns)
         c += 1
-    print(c)
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     main(10)

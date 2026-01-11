@@ -13,8 +13,7 @@ def main(n):
         k = a[-2] - 1
         results.append(min(k, p - 2))
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     main(10)

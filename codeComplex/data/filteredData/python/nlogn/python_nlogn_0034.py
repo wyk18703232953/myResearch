@@ -11,10 +11,11 @@ def main(n):
     lst = list(lst)
     lst.remove(min(lst))
     if len(lst) == 0:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print(min(lst))
-
-
+        # print(min(lst))
+        pass
 if __name__ == "__main__":
     main(10)

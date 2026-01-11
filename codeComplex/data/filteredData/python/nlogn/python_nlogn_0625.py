@@ -50,11 +50,12 @@ def main(n):
         step += 1
 
     if ok and step == k and removed == m - 1:
-        print('Yes')
+        # print('Yes')
+        pass
+
     else:
-        print('No')
-
-
+        # print('No')
+        pass
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     main(10)

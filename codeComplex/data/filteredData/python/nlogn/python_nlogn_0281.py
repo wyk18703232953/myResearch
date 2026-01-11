@@ -19,8 +19,7 @@ def main(n):
     s = 0
     for i in d:
         s += d[i]
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     main(10)

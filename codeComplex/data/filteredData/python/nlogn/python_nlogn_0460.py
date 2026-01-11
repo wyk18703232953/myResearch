@@ -28,16 +28,18 @@ def main(n):
             count += 1
             res.append(count)
             count = 0
+
         else:
             count += 1
     if res:
         res[-1] += count
+
     else:
         res.append(count)
 
-    print(ans)
-    print(*res)
-
-
+    # print(ans)
+    pass
+    # print(*res)
+    pass
 if __name__ == "__main__":
     main(10)

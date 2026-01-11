@@ -29,7 +29,8 @@ def Solution(td, n, k):
     ans = [0 for _ in range(n)]
     for v in prefix:
         ans[v[1]] = v[0]
-    print(*ans)
+    # print(*ans)
+    pass
 
 def main(n):
     k = max(1, n // 2)

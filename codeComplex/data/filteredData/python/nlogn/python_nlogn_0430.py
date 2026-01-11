@@ -25,8 +25,7 @@ def main(n):
     # example pattern: a[i] = (i * 3) % (n + 7)
     a = [(i * 3) % (n + 7) for i in range(n)]
     res = solve(a)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

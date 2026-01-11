@@ -22,7 +22,8 @@ def main(n):
     elif len(sset) == 3:
         res = min(res, 2)
     if res == 0:
-        print(res)
+        # print(res)
+        pass
         return
 
     t.sort()
@@ -44,8 +45,7 @@ def main(n):
         return res_inner
 
     res = min([res, f(m), f(p), f(s)])
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(3)

@@ -16,13 +16,13 @@ def main(n):
     ming = min(g)
     if maxb > ming:
         ans = -1
+
     else:
         ans += sum(b) * m
         ans += (sum(g) - ming) - (maxb * (m - 1))
         if ming > maxb:
             ans += ming - maxb2
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

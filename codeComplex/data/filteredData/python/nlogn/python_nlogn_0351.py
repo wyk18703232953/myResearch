@@ -18,8 +18,10 @@ def main(n):
             val_plus = i + (1 << j)
             val_minus = i - (1 << j)
             if val_plus in unique and val_minus in unique:
-                print(3)
-                print(i, val_plus, val_minus)
+                # print(3)
+                pass
+                # print(i, val_plus, val_minus)
+                pass
                 poss = True
                 break
         if poss:
@@ -33,8 +35,10 @@ def main(n):
         for j in range(32):
             val_plus = i + (1 << j)
             if val_plus in unique:
-                print(2)
-                print(i, val_plus)
+                # print(2)
+                pass
+                # print(i, val_plus)
+                pass
                 poss = True
                 break
         if poss:
@@ -44,8 +48,9 @@ def main(n):
         return
 
     # 否则输出单个元素
-    print(1)
-    print(arr[0])
-
+    # print(1)
+    pass
+    # print(arr[0])
+    pass
 if __name__ == "__main__":
     main(10)

@@ -24,10 +24,11 @@ def main(n):
         i += 1
 
     if devices_left > 0:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(extnson_used)
-
-
+        # print(extnson_used)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as number of teams; k is derived deterministically
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically choose k based on n, ensuring 1 <= k <= n
@@ -18,8 +19,7 @@ def main(n):
     for t in teams:
         if t[0] * 100 + t[1] == kth:
             count += 1
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(10)

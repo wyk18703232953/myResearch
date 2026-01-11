@@ -9,12 +9,15 @@ def main(n):
         if i % k == 0:
             if i // k in p:
                 pass
+
             else:
                 p.append(i)
+
         else:
             p.append(i)
     result = len(set(p))
-    print(result)
+    # print(result)
+    pass
     return result
 
 

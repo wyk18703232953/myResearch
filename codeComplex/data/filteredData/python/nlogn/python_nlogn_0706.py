@@ -12,6 +12,7 @@ def main(n):
         if game[i] == game[i + 1]:
             if rep:
                 return 'cslnb'
+
             else:
                 if game[i - 1] == game[i] - 1:
                     return 'cslnb'
@@ -19,6 +20,7 @@ def main(n):
     Goal = ((n * (n - 1)) / 2) % 2
     if (bitSum + Goal) % 2 == 0:
         return 'cslnb'
+
     else:
         return 'sjfnb'
 
@@ -26,4 +28,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call
     result = main(10)
-    print(result)
+    # print(result)
+    pass

@@ -33,23 +33,25 @@ def main(n):
     for i in range(m1):
         if i < n1:
             indx = i  # 与第一组重复
+
         else:
             indx = n1 + (i - n1)  # 新索引
         y = (i * 3) % 7
         if indx in d:
             d[indx][0] += 1
             d[indx][1].append(y)
+
         else:
             d[indx] = [1, [y]]
 
     for i in d:
         if d[i][0] == 1:
             sm += d[i][1][0]
+
         else:
             sm += max(d[i][1])
 
-    print(sm)
-
-
+    # print(sm)
+    pass
 if __name__ == "__main__":
     main(10)

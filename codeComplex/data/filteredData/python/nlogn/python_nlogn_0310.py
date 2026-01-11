@@ -8,6 +8,7 @@ def merge(arr, temp_arr, left, mid, right):
             temp_arr[k] = arr[i]
             k += 1
             i += 1
+
         else:
             temp_arr[k] = arr[j]
             inv_count += (mid - i + 1)
@@ -40,15 +41,18 @@ def mergeSort(arr, n):
 
 def main(n):
     if n <= 0:
-        print("Petr")
+        # print("Petr")
+        pass
         return
     # deterministic array of size n
     a = [((i * 17) ^ (i // 3)) % (n + 7) for i in range(n)]
     r = mergeSort(a, n)
     if r % 2 == (3 * n) % 2:
-        print("Petr")
-    else:
-        print("Um_nik")
+        # print("Petr")
+        pass
 
+    else:
+        # print("Um_nik")
+        pass
 if __name__ == "__main__":
     main(10)

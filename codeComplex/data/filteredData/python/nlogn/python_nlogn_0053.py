@@ -16,8 +16,7 @@ def main(n):
     x = [i % 7 - 3 for i in range(1, n + 1)]
     x.sort(reverse=True)
     result = ballbuster5000(x, 0)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

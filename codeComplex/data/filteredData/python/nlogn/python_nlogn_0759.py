@@ -10,8 +10,7 @@ def main(n):
         a = [(i * 2 + case) for i in range(length)]
         a.sort()
         results.append(str(min(a[-2] - 1, length - 2)))
-    print("\n".join(results))
-
-
+    # print("\n".join(results))
+    pass
 if __name__ == "__main__":
     main(5)

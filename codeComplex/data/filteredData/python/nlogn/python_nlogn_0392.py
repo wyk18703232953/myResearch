@@ -22,14 +22,14 @@ def main(n):
         if power > prev:
             ans[ind] = tmpSum + c[ind]
             tmpSum2 = tmpSum
+
         else:
             ans[ind] = tmpSum2 + c[ind]
         heappush(maxcoins, c[ind])
         tmpSum += c[ind]
         tmpSum -= heappop(maxcoins)
         prev = power
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

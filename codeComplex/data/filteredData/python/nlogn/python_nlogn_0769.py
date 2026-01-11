@@ -9,8 +9,7 @@ def main(n):
         ans = min(l - 1, cur_n - 2)
         results.append(ans)
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     main(10)

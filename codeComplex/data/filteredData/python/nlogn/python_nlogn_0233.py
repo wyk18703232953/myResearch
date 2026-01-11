@@ -134,6 +134,7 @@ def generate_points(n):
             pts.append((1, 1))
         elif i == 2:
             pts.append((2, 2))
+
         else:
             x = i
             y = (i * i + i) // 2
@@ -143,7 +144,7 @@ def generate_points(n):
 def main(n):
     Ps = generate_points(n)
     ans = solve(Ps)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -21,6 +21,7 @@ def main(n):
 
     if b_count == 0 or b_count - len(set(b)) > 1 or a_count - b_count > 1:
         result = 'cslnb'
+
     else:
         result = resh()
 
@@ -29,4 +30,5 @@ def main(n):
 
 if __name__ == "__main__":
     # Example deterministic call
-    print(main(10))
+    # print(main(10))
+    pass

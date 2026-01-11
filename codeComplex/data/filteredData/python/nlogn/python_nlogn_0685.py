@@ -13,16 +13,18 @@ def main(n):
 
     # 原算法逻辑
     if max(b) > min(g):
-        print(-1)
+        # print(-1)
+        pass
         return
 
     b.sort()
     res = sum(g) + sum(b[:-1]) * m
     if b[-1] in g:
-        print(res)
+        # print(res)
+        pass
+
     else:
-        print(res + b[-1] - b[-2])
-
-
+        # print(res + b[-1] - b[-2])
+        pass
 if __name__ == "__main__":
     main(10)

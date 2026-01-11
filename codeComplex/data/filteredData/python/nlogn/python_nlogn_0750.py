@@ -7,7 +7,9 @@ def main(n):
 
     # Core logic from original program
     if n >= 2 and arr[0] == arr[1] == 0:
-        print("cslnb")
+        # print("cslnb")
+        pass
+
     else:
         flag = 0
         for i in range(n - 2):
@@ -15,7 +17,9 @@ def main(n):
                 flag = 1
                 break
         if flag == 1:
-            print("cslnb")
+            # print("cslnb")
+            pass
+
         else:
             flag = 0
             ind = 0
@@ -24,19 +28,23 @@ def main(n):
                     ind = i
                     flag += 1
             if flag == 1 and ind > 0 and arr[ind - 1] == arr[ind] - 1:
-                print("cslnb")
+                # print("cslnb")
+                pass
             elif flag >= 2:
-                print("cslnb")
+                # print("cslnb")
+                pass
+
             else:
                 safe = 0
                 for i in range(n):
                     if arr[i] - i >= 0:
                         safe += arr[i] - i
                 if safe % 2 == 0:
-                    print("cslnb")
+                    # print("cslnb")
+                    pass
+
                 else:
-                    print("sjfnb")
-
-
+                    # print("sjfnb")
+                    pass
 if __name__ == "__main__":
     main(10)

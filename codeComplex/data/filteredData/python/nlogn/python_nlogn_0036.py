@@ -1,10 +1,12 @@
 def replace(arr):
     if arr == [1] * len(arr):
         arr[-1] = 2
-        print(*sorted(arr))
+        # print(*sorted(arr))
+        pass
         return ""
     arr[arr.index(max(arr))] = 1
-    print(*sorted(arr))
+    # print(*sorted(arr))
+    pass
     return ""
 
 def main(n):

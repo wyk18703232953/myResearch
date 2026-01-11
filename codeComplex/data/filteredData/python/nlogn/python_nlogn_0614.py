@@ -27,19 +27,21 @@ def main(n):
         if z < t:
             ans = (ans + t * (a[i][0] - a[i - 1][0]) * y) % mod
             heappush(b, -a[i][0])
+
         else:
             if b:
                 if x < (a[i][0] + b[0]) * y:
                     ans = (ans + t * (a[i][0] - a[i - 1][0]) * y + x) % mod
+
                 else:
                     ans = (ans + t * (a[i][0] - a[i - 1][0]) * y + (a[i][0] + b[0]) * y) % mod
                     heappop(b)
+
             else:
                 ans = (ans + t * (a[i][0] - a[i - 1][0]) * y + x) % mod
         t = z
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -16,11 +16,13 @@ def main(n):
     s1 = [(i + 1) * 2 for i in range(m)]
 
     if not s or not s1:
-        print(0)
+        # print(0)
+        pass
         return
 
     if min(s1) < max(s):
-        print(-1)
+        # print(-1)
+        pass
         return
 
     s.sort()
@@ -34,14 +36,14 @@ def main(n):
         ans += s[-1]
         for i in range(n - 2):
             ans += s[i] * m
+
     else:
         ans += sum(s1)
         for i in range(n - 1):
             ans += s[i] * m
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for scaling experiments
     main(10)

@@ -1,7 +1,8 @@
 def main(n):
     # 映射：n 为数组长度，k 为一个确定性的函数值
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成 k，避免为 0
@@ -23,8 +24,7 @@ def main(n):
                 if x in d:
                     d[x] -= 1
             ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

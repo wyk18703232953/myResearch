@@ -36,9 +36,8 @@ def main(n):
         if not flag:
             ans[index1[i] - 1] = "B"
 
-    print("".join(ans))
-
-
+    # print("".join(ans))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

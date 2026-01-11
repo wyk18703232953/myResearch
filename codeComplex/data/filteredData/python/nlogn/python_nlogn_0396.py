@@ -23,8 +23,7 @@ def main(n):
         res[ind] = cur_res
         if len(most_vyg_odn_yye) > k:
             cur_res -= heapq.heappop(most_vyg_odn_yye)
-    print(*res)
-
-
+    # print(*res)
+    pass
 if __name__ == "__main__":
     main(10)

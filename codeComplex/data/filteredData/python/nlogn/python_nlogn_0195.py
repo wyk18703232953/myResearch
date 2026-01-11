@@ -13,7 +13,8 @@ def main(n):
     r = dc(int)
 
     if n == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     x[l[-1]] += 1
@@ -39,8 +40,7 @@ def main(n):
         e = c - l[i] * d
         s += e
 
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     main(10)

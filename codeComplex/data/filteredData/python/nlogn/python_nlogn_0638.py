@@ -11,6 +11,7 @@ def generate_data(n):
     if n < 2:
         n_v = 1
         n_h = 0
+
     else:
         n_v = n // 2
         n_h = n - n_v
@@ -57,8 +58,8 @@ def main(n):
     while i < hl and hh[i] < 1000000000:
         i += 1
     r = min(r, hl - i + vl)
-    print(r)
-
+    # print(r)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为输入规模进行一次运行
     main(10)

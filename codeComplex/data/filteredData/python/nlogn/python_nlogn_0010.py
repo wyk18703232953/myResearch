@@ -19,8 +19,7 @@ def main(n):
         elif gap > t:
             ans += 2
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

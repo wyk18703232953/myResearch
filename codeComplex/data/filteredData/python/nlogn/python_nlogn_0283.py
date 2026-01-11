@@ -15,14 +15,14 @@ def main(n):
         y = (i * 3) % 7
         if b in d:
             d[b] = max(y, d[b])
+
         else:
             d[b] = y
 
     count = 0
     for key in d:
         count += d[key]
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(10)

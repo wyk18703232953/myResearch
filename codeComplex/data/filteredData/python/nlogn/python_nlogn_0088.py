@@ -12,8 +12,7 @@ def main(n):
         lst.append([p, -t])
 
     tmp = sorted(lst, key=lambda x: (x[0], x[-1]), reverse=True)[k - 1]
-    print(lst.count(tmp))
-
-
+    # print(lst.count(tmp))
+    pass
 if __name__ == "__main__":
     main(10)

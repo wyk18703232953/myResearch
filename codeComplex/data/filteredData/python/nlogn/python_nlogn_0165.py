@@ -13,7 +13,7 @@ def main(n):
         if end <= l:
             ans += 1
             end = r
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

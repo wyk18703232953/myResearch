@@ -17,9 +17,8 @@ def main(n):
             x = p[x]
 
     result = 'Petr' if (n + odd) % 2 == 0 else 'Um_nik'
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：以规模 n = 10 运行
     main(10)

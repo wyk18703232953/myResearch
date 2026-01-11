@@ -3,6 +3,7 @@ def getdict_from_list(n_list):
     for i in n_list:
         if i in d:
             d[i] += 1
+
         else:
             d[i] = 1
     return d
@@ -34,8 +35,8 @@ def main(n):
 
     # 为了保持输出行为，打印所有结果
     for res in results:
-        print(res)
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为输入规模
     main(10)

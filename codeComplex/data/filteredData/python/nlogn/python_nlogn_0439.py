@@ -45,8 +45,7 @@ def main(n):
         return res
 
     result = calc_median(m) - calc_median(m + 1)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(1000)

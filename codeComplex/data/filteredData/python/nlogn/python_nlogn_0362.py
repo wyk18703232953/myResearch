@@ -8,15 +8,16 @@ def main(n):
     for i in arr:
         if not st:
             st.append(i)
+
         else:
             while st:
                 if 0 < abs(st[-1] - i) <= k:
                     st.pop()
+
                 else:
                     break
             st.append(i)
-    print(len(st))
-
-
+    # print(len(st))
+    pass
 if __name__ == "__main__":
     main(10)

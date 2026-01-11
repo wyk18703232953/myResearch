@@ -9,9 +9,11 @@ def main(n):
             continue
         op += 1
     if op == 0 or op == 2:
-        print('YES')
-    else:
-        print('NO')
+        # print('YES')
+        pass
 
+    else:
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

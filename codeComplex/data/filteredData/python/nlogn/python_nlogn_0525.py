@@ -10,6 +10,7 @@ def main(n):
         if len(set(a)) == 1:
             x = a[0]
             results.append(f"{x} {x} {x} {x}")
+
         else:
             a.sort()
             g1 = False
@@ -18,6 +19,7 @@ def main(n):
             for v in a:
                 if v not in d:
                     d[v] = 1
+
                 else:
                     d[v] += 1
                 if d[v] == 4:
@@ -26,6 +28,7 @@ def main(n):
                         mx = v
             if g1:
                 results.append(f"{mx} {mx} {mx} {mx}")
+
             else:
                 res = []
                 for k in d:
@@ -36,9 +39,11 @@ def main(n):
                     # fallback: repeat smallest element when not enough pairs
                     if a:
                         x = a[0]
+
                     else:
                         x = 0
                     results.append(f"{x} {x} {x} {x}")
+
                 else:
                     minj = 0
                     for j in range(m - 1):
@@ -48,8 +53,7 @@ def main(n):
                             minj = j
                     x, y = res[minj], res[minj+1]
                     results.append(f"{x} {x} {y} {y}")
-    print("\n".join(results))
-
-
+    # print("\n".join(results))
+    pass
 if __name__ == "__main__":
     main(5)

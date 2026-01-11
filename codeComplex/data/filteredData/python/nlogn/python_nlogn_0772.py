@@ -7,6 +7,7 @@ def main(n):
         li.sort()
         if size >= 2:
             val = min(li[size - 2] - 1, size - 2)
+
         else:
             val = -1
         results.append(val)
@@ -16,4 +17,5 @@ if __name__ == "__main__":
     # example call
     out = main(5)
     for v in out:
-        print(v)
+        # print(v)
+        pass

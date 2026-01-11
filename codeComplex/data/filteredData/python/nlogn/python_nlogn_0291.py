@@ -20,7 +20,8 @@ def main(n):
         d[b] = max(d.get(b, 0), y)
 
     result = sum(d.values())
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -50,12 +50,13 @@ def main(n):
                     break
                 if a[j] == '':
                     dont = True
+
             else:
                 if not dont:
                     a[i] = 'B'
                     ans += 1
 
-    print(''.join(a[1:]))
-
+    # print(''.join(a[1:]))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -5,6 +5,7 @@ def main(n):
     if n < 2:
         # 至少需要 2 个元素才能分成两组
         n_effective = 2
+
     else:
         n_effective = n
 
@@ -25,11 +26,11 @@ def main(n):
     # 当 b == n_effective 时，Petya 为空，避免索引错误
     if not Petya or not Vasya:
         result = 0
+
     else:
         result = Petya[0] - Vasya[-1]
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

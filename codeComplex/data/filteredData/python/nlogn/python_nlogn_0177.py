@@ -13,7 +13,8 @@ def main(n):
             idx = l[1]
             ans += 1
 
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

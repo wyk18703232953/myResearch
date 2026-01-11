@@ -17,14 +17,17 @@ def main(n):
             line = 'V'
             if w > 1:
                 idx = i % (w - 1) + 1
+
             else:
                 idx = 1
             r[idx] = w
             V[i] = idx
+
         else:
             line = 'H'
             if h > 1:
                 idx = i % (h - 1) + 1
+
             else:
                 idx = 1
             t[idx] = h
@@ -53,6 +56,7 @@ def main(n):
             max_w = max(max_w, r[V[i]] - l[V[i]])
             r[l[V[i]]] = r[V[i]]
             l[r[V[i]]] = l[V[i]]
+
         else:
             max_h = max(max_h, t[H[i]] - b[H[i]])
             b[t[H[i]]] = b[H[i]]
@@ -60,8 +64,7 @@ def main(n):
         res[i - 1] = max_h * max_w
 
     for i in range(n):
-        print(res[i])
-
-
+        # print(res[i])
+        pass
 if __name__ == "__main__":
     main(10)

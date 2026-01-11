@@ -12,6 +12,7 @@ def main(n):
             if x == 0:
                 x = 1
             cuts.append(("V", x))
+
         else:
             x = (i * 5 + 7) % h
             if x == 0:
@@ -58,9 +59,8 @@ def main(n):
         v = link[2][1][0] - link[0][1][0]
         if u < v:
             whmax[flag] = v
-    print('\n'.join(map(str, res)))
-
-
+    # print('\n'.join(map(str, res)))
+    pass
 if __name__ == "__main__":
     # Example call for time-complexity experiments
     main(10)

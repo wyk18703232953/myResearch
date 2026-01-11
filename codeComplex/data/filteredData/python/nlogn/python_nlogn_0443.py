@@ -12,6 +12,7 @@ def main(n):
             val = m
         elif i % 3 == 1:
             val = m + (i % 5) + 1
+
         else:
             val = max(1, m - (i % 5) - 1)
         arr.append(val)
@@ -31,12 +32,12 @@ def main(n):
             has = True
         if has:
             total += d[count] + d[count - 1]
+
         else:
             d[count] += 1
 
-    print(total)
-
-
+    # print(total)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(10)

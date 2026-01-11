@@ -6,11 +6,13 @@ def main(n):
     pap.sort()
     if pap[-1] == 1:
         pap[-1] = 2
+
     else:
         pap = [1] + pap[:-1]
     for i in range(n):
-        print(pap[i], end=" ")
-    print()
-
+        # print(pap[i], end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

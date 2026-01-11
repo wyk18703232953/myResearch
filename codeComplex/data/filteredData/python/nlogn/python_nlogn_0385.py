@@ -42,9 +42,8 @@ def main(n):
             heappush(z, v)
         an[p[i][2]] = s
 
-    print(*an)
-
-
+    # print(*an)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为输入规模
     main(10)

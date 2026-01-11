@@ -26,9 +26,8 @@ def main(n):
 
     ans += cur_count
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 以进行不同规模的时间复杂度实验
     main(10)

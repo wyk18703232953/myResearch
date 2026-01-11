@@ -27,27 +27,32 @@ def main(n):
     turns = sum(A) - N * (N - 1) // 2
 
     if temp > 2 or duplicates > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
         output = 'cslnb'
         if duplicates == 0:
             if turns % 2 == 1:
                 output = 'sjfnb'
+
         else:
             if ind - 1 >= 0:
                 if A[ind - 1] == A[ind] - 1:
                     output = 'cslnb'
+
                 else:
                     if turns % 2 == 1:
                         output = 'sjfnb'
+
             else:
                 if A[ind] == 0:
                     output = 'cslnb'
+
                 else:
                     if turns % 2 == 1:
                         output = 'sjfnb'
-        print(output)
-
-
+        # print(output)
+        pass
 if __name__ == "__main__":
     main(10)

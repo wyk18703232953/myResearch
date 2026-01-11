@@ -11,8 +11,7 @@ def main(n):
         ai = [(case_idx + j) % (2 * size) + 1 for j in range(size)]
 
         ai.sort()
-        print(min(size - 2, ai[-2] - 1))
-
-
+        # print(min(size - 2, ai[-2] - 1))
+        pass
 if __name__ == "__main__":
     main(5)

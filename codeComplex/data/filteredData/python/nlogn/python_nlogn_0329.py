@@ -13,11 +13,13 @@ def main(n):
     a_sorted = sorted(a, key=lambda x: len(x))
     v = all(a_sorted[i] in a_sorted[i + 1] for i in range(n - 1))
     if v:
-        print('YES')
-        print("\n".join(a_sorted))
+        # print('YES')
+        pass
+        # print("\n".join(a_sorted))
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(5)

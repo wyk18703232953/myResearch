@@ -22,13 +22,13 @@ def main(n):
     elif nab[2] >= n:
         # 若 b 越界，则调整为最后一个合法位置
         b_index = n - 1
+
     else:
         b_index = nab[2]
 
     result = h_sorted[b_index] - h_sorted[b_index - 1]
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 的规模
     main(10)

@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as the number of rows; choose k deterministically as n//2 (at least 1)
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     k = max(1, n // 2)
 
@@ -25,12 +26,14 @@ def main(n):
     for i in range(k - 2, -1, -1):
         if l[i][0] == a:
             x = i
+
         else:
             break
 
     for i in range(k, n):
         if l[i][0] == a:
             y = i
+
         else:
             break
 
@@ -41,9 +44,8 @@ def main(n):
         if l[i] == l[d]:
             c += 1
 
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     # Example call; adjust n as needed for experiments
     main(10)

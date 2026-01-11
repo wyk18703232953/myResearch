@@ -22,11 +22,13 @@ def main(n):
     saved.sort(reverse=True)
 
     if space - sum(saved) > m:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     if space <= m:
-        print(0)
+        # print(0)
+        pass
         return
 
     i = 0
@@ -35,7 +37,8 @@ def main(n):
         count += 1
         space -= saved[i]
         if space <= m:
-            print(count)
+            # print(count)
+            pass
             break
         i += 1
 

@@ -82,10 +82,12 @@ def main(n):
         key = (u, v)
         if key in w:
             w[key] = max(w[key], c)
+
         else:
             w[key] = c
         if key in w_tmp:
             w_tmp[key].append(str(edge_index))
+
         else:
             w_tmp[key] = [str(edge_index)]
         kk.append(c)
@@ -98,10 +100,12 @@ def main(n):
         key = (u, v)
         if key in w:
             w[key] = max(w[key], c)
+
         else:
             w[key] = c
         if key in w_tmp:
             w_tmp[key].append(str(edge_index))
+
         else:
             w_tmp[key] = [str(edge_index)]
         kk.append(c)
@@ -110,20 +114,25 @@ def main(n):
     kk.sort()
     l, r = 0, len(kk)
     if not find_loop(g, w, kk[l], n):
-        print(0, 0)
-        print()
+        # print(0, 0)
+        pass
+        # print()
+        pass
         return
     if find_loop(g, w, kk[-1], n):
         kkk = kk[-1]
+
     else:
         while l + 1 != r:
             m_mid = (l + r) // 2
             if find_loop(g, w, kk[m_mid], n):
                 l = m_mid
+
             else:
                 r = m_mid
         if l + 1 < len(kk):
             kkk = kk[l + 1]
+
         else:
             kkk = kk[-1]
 
@@ -134,9 +143,9 @@ def main(n):
         num += len(w_tmp[t])
         s.extend(w_tmp[t])
 
-    print(kkk, num)
-    print(" ".join(s))
-
-
+    # print(kkk, num)
+    pass
+    # print(" ".join(s))
+    pass
 if __name__ == "__main__":
     main(10)

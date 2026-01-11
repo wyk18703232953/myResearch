@@ -27,6 +27,7 @@ def check(x1, y1, x2, y2, xy):
             elif cnt_other == 1:
                 cnt_other = 2
                 a2, b2, c2 = get_line(other_point[0], other_point[1], x, y)
+
             else:
                 if a2 * y + b2 * x + c2 != 0:
                     return False
@@ -35,7 +36,8 @@ def check(x1, y1, x2, y2, xy):
 
 def main(n):
     if n <= 0:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     # 生成确定性的点集 xy，规模为 n
@@ -46,18 +48,22 @@ def main(n):
         xy.append((x, y))
 
     if n <= 3:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     if check(xy[0][0], xy[0][1], xy[1][0], xy[1][1], xy[2:]):
-        print("YES")
+        # print("YES")
+        pass
     elif check(xy[1][0], xy[1][1], xy[2][0], xy[2][1], [xy[0]] + xy[3:]):
-        print("YES")
+        # print("YES")
+        pass
     elif check(xy[0][0], xy[0][1], xy[2][0], xy[2][1], [xy[1]] + xy[3:]):
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

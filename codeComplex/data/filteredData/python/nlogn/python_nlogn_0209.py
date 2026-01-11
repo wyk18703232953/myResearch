@@ -11,8 +11,10 @@ def fun(k, li, t):
             ans += tem[i][1]
         if ans <= t:
             return True
+
         else:
             return False
+
     else:
         return False
 
@@ -39,6 +41,7 @@ def main(n):
         mid = (l + r) // 2
         if fun(mid, li, t):
             l = mid
+
         else:
             r = mid
 
@@ -46,13 +49,15 @@ def main(n):
     for i in range(l, r + 1):
         if fun(i, li, t):
             fin = i
-    print(fin)
-    print(fin)
+    # print(fin)
+    pass
+    # print(fin)
+    pass
     tem = []
     for i in range(actual_n):
         if li[i][0] >= fin:
             tem.append(li[i][2] + 1)
-    print(*tem[:fin])
-
+    # print(*tem[:fin])
+    pass
 if __name__ == "__main__":
     main(10)

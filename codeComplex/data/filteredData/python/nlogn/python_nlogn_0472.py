@@ -18,7 +18,8 @@ def main(n):
     p = sorted(a)
     p = p[-k:]
     s = sum(p)
-    print(s)
+    # print(s)
+    pass
     idx = 0
     i = 0
     count = 0
@@ -32,10 +33,10 @@ def main(n):
             count = 0
         i += 1
     for x in ans:
-        print(x, end=" ")
-    print(n - idx)
-
-
+        # print(x, end=" ")
+        pass
+    # print(n - idx)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次可重复的实验
     main(10)

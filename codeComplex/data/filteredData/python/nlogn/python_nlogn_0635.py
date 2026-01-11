@@ -17,8 +17,10 @@ def main(n):
             # Alternate between infinite (10**9) and finite x2
             if i % 2 == 0:
                 x2 = 10**9
+
             else:
                 x2 = (i + 1) * 3
+
         else:
             x1 = 2
             x2 = (i + 1) * 5
@@ -41,7 +43,8 @@ def main(n):
             r = c
 
     result = r + hr
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

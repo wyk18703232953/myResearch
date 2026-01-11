@@ -19,8 +19,7 @@ def main(n):
     # Ensure we don't slice with negative size when k > n (already handled, but be safe)
     limit = max(0, n - k)
     result = sum(new_arr[:limit])
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

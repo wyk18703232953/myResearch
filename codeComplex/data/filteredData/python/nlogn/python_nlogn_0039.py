@@ -20,7 +20,8 @@ def l2d(n, m, val=0):
 
 def pmat(A):
     for ele in A:
-        print(*ele, end="\n")
+        # print(*ele, end="\n")
+        pass
 
 def main(n):
     if n <= 0:
@@ -46,14 +47,20 @@ def main(n):
 
     if A == [1] * n:
         if n == 1:
-            print(2)
+            # print(2)
+            pass
+
         else:
-            print(*A[:n-1], 2)
+            # print(*A[:n-1], 2)
+            pass
+
     else:
         if n == 1:
-            print(1)
-        else:
-            print(1, *A[:-1])
+            # print(1)
+            pass
 
+        else:
+            # print(1, *A[:-1])
+            pass
 if __name__ == "__main__":
     main(10)

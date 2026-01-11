@@ -17,10 +17,13 @@ def main(n):
         j += an
         x = bisect_right(a, j)
         if x == m:
-            print(m)
+            # print(m)
+            pass
             an = 0
+
         else:
-            print(m - x)
+            # print(m - x)
+            pass
             an = j
 
 

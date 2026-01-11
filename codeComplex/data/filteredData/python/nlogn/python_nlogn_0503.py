@@ -10,6 +10,7 @@ def mergeSort(x):
 			if L[i] > R[j]:
 				x[k] = L[i]
 				i += 1
+
 			else:
 				x[k] = R[j]
 				j += 1
@@ -33,6 +34,7 @@ def core_logic(n, m, pairs):
 	minimum = 0
 	if total <= m:
 		return 0
+
 	else:
 		for val in difference:
 			minimum += 1
@@ -41,6 +43,7 @@ def core_logic(n, m, pairs):
 				break
 		if total > m:
 			return -1
+
 		else:
 			return minimum
 
@@ -61,7 +64,7 @@ def main(n):
 	# Set m to be a deterministic function of total_a
 	m = total_a // 2
 	result = core_logic(n, m, pairs)
-	print(result)
-
+	# print(result)
+	pass
 if __name__ == "__main__":
 	main(10)

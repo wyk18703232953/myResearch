@@ -18,10 +18,10 @@ def main(n):
             output.append(str(mp[w[ptr]]))
             stk.append(mp[w[ptr]])
             ptr += 1
+
         else:
             output.append(str(stk.pop()))
-    print(" ".join(output))
-
-
+    # print(" ".join(output))
+    pass
 if __name__ == "__main__":
     main(5)

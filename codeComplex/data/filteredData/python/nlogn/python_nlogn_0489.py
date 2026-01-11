@@ -15,7 +15,8 @@ def main(n):
     while sum(ci // d for ci in c) >= n:
         d += 1
     result = d - 1
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

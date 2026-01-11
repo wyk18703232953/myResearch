@@ -14,6 +14,7 @@ def main(n):
             x += v[i][0]
             y += v[i][1]
             ans[v[i][2]] = 1
+
         else:
             x -= v[i][0]
             y -= v[i][1]
@@ -21,10 +22,11 @@ def main(n):
 
     # keep the same termination condition logic, but run only once
     if x * x + y * y <= 1500000 ** 2:
-        print(*ans)
+        # print(*ans)
+        pass
+
     else:
-        print(*ans)
-
-
+        # print(*ans)
+        pass
 if __name__ == "__main__":
     main(10)

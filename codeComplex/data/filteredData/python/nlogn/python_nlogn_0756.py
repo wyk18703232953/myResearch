@@ -9,8 +9,7 @@ def main(n):
         n_i = i + 3
         a = [((j * 7 + 3) % (n_i * 3) + 1) for j in range(n_i)]
         a.sort(reverse=True)
-        print(min(n_i - 2, a[1] - 1))
-
-
+        # print(min(n_i - 2, a[1] - 1))
+        pass
 if __name__ == "__main__":
     main(10)

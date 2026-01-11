@@ -13,7 +13,9 @@ def main(n):
     k = (2 * n) // 3
 
     if k >= m:
-        print(0)
+        # print(0)
+        pass
+
     else:
         curr = k
         count = 0
@@ -23,11 +25,12 @@ def main(n):
             if curr >= m:
                 break
         if curr >= m:
-            print(count)
+            # print(count)
+            pass
+
         else:
-            print(-1)
-
-
+            # print(-1)
+            pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

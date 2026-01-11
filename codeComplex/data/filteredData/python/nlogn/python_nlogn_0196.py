@@ -8,7 +8,7 @@ def main(n):
         res += a[i] * i - s - d[a[i] - 1] + d[a[i] + 1]
         s += a[i]
         d[a[i]] += 1
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

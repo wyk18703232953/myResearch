@@ -24,8 +24,7 @@ def main(n):
         arr = [x + (t % 5) for x in arr]
         total_result += solve(cur_n, arr)
 
-    print(total_result)
-
-
+    # print(total_result)
+    pass
 if __name__ == "__main__":
     main(10)

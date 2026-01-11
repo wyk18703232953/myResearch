@@ -18,7 +18,8 @@ def main(n):
     e = d_sorted[c - 1]
     f = d_sorted[c]
     result = f - e
-    print(result)
+    # print(result)
+    pass
     return result
 
 

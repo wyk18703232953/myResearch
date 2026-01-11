@@ -11,6 +11,7 @@ def main(n):
         while s:
             if a - K <= s[-1] < a:
                 s.pop()
+
             else:
                 break
         s.append(a)
@@ -19,4 +20,5 @@ def main(n):
 
 if __name__ == "__main__":
     result = main(1000)
-    print(result)
+    # print(result)
+    pass

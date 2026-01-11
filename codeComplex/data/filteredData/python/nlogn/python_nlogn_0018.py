@@ -7,10 +7,11 @@ def main(n):
     x = list(set(x))
     x.sort()
     if len(x) != 1:
-        print(x[1])
+        # print(x[1])
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

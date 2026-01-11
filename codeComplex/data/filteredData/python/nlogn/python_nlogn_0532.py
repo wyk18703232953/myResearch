@@ -20,8 +20,7 @@ def main(n):
             if need_mod == mod_k and add == num_d:
                 ans -= 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

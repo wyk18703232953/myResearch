@@ -18,9 +18,12 @@ def main(n):
         c.append(lst.count(res[i]))
 
     if m < n:
-        print(0)
+        # print(0)
+        pass
     elif m == n:
-        print(1)
+        # print(1)
+        pass
+
     else:
         m1 = 1
         j = 2
@@ -32,10 +35,12 @@ def main(n):
             if c1 >= n:
                 m1 = j
                 j += 1
+
             else:
                 f = 1
             if f == 1:
-                print(m1)
+                # print(m1)
+                pass
                 break
 
 

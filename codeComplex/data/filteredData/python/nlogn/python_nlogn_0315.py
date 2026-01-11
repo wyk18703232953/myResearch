@@ -15,6 +15,7 @@ def main(n):
             while i >= 0:
                 if arr[i + gap] > arr[i]:
                     break
+
                 else:
                     arr[i + gap], arr[i] = arr[i], arr[i + gap]
                     count += 1
@@ -22,11 +23,12 @@ def main(n):
         gap //= 2
 
     if count % 2 == 3 * n % 2:
-        print("Petr")
+        # print("Petr")
+        pass
+
     else:
-        print("Um_nik")
-
-
+        # print("Um_nik")
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

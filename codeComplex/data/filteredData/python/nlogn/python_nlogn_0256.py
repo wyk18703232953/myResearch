@@ -37,6 +37,7 @@ def main(n):
             continue
         if pre[b] == val:
             lost = b + 1
+
         else:
             lost = b
         if lost == size:
@@ -45,8 +46,7 @@ def main(n):
         ans.append(size - lost)
 
     for x in ans:
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
     main(10)

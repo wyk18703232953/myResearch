@@ -12,6 +12,7 @@ def Sort(x):
         if a[i] < b[j]:
             c.append(a[i])
             i += 1
+
         else:
             c.append(b[j])
             j += 1
@@ -38,10 +39,11 @@ def main(n):
             count += 1
 
     if count / 2 <= 1:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

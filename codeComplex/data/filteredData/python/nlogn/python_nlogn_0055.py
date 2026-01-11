@@ -11,8 +11,7 @@ def main(n):
         count += 1
         total += coins[count - 1]
 
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(10)

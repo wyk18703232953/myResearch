@@ -19,8 +19,7 @@ def main(n):
                 t += 1
             ans += i - 1
     ans -= mx - t
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

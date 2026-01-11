@@ -36,8 +36,7 @@ def main(n):
             for j in range(i + 1, len(x)):
                 if abs(x[i] - x[j]) <= 2:
                     res = min(res, 1)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(9)

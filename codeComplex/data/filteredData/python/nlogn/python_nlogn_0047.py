@@ -7,11 +7,11 @@ def main(n):
     l = sorted(l)
     if l[-1] == 1:
         l[-1] = 2
+
     else:
         l[-1] = 1
     l = sorted(l)
-    print(*l)
-
-
+    # print(*l)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -9,21 +9,25 @@ def main(n):
     mark = 0
     for i in range(len(arr) - 2):
         if arr[i] == arr[i + 1] == arr[i + 2]:
-            print('cslnb')
+            # print('cslnb')
+            pass
             return
         elif arr[i + 1] == arr[i + 2] and arr[i] + 1 == arr[i + 1]:
-            print('cslnb')
+            # print('cslnb')
+            pass
             return
 
     countcopy = 0
     for i in range(len(arr) - 1):
         if arr[i] == arr[i + 1] and arr[i] == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
             return
         if arr[i] == arr[i + 1]:
             countcopy += 1
     if countcopy > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
         return
 
     for i in range(len(arr)):
@@ -32,10 +36,11 @@ def main(n):
             mark += 1
 
     if ans % 2 == 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
-        print('sjfnb')
-
-
+        # print('sjfnb')
+        pass
 if __name__ == "__main__":
     main(10)

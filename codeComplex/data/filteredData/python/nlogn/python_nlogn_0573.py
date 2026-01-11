@@ -34,8 +34,7 @@ def main(n):
         dp[u] = count
 
     res = sorted(dp.values())
-    print(' '.join(map(str, res)))
-
-
+    # print(' '.join(map(str, res)))
+    pass
 if __name__ == "__main__":
     main(10)

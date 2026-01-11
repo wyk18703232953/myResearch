@@ -22,7 +22,8 @@ def main(n):
             ans += 2
 
     result = ans + 2
-    print(result)
+    # print(result)
+    pass
     return result
 
 

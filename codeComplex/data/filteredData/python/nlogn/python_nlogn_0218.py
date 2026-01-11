@@ -2,7 +2,8 @@ def main(n):
     # Interpret n as the length of arr
     # Deterministically generate arr and u
     if n < 2:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Example deterministic construction:
@@ -18,7 +19,8 @@ def main(n):
         if arr[i + 1] - arr[i] <= u:
             flag = 1
     if flag == 0:
-        print("-1")
+        # print("-1")
+        pass
         return
     i = 0
     while i < n - 2:
@@ -38,10 +40,11 @@ def main(n):
             maxi = max(maxi, (arr[j] - arr[i + 1]) / (arr[j] - arr[i]))
         i += 1
     if maxi == 0:
-        print("-1")
+        # print("-1")
+        pass
+
     else:
-        print(maxi)
-
-
+        # print(maxi)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -85,17 +85,22 @@ def main(n):
                 for j in d[key]:
                     anspattern.append(index[tuple([key, j])][-1])
                     index[tuple([key, j])].pop()
-            print(ans)
-            print(len(anspattern))
-            print(*sorted(anspattern))
+            # print(ans)
+            pass
+            # print(len(anspattern))
+            pass
+            # print(*sorted(anspattern))
+            pass
             return
 
         i += 1
 
     # Fallback in case the above return doesn't trigger
-    print(ans)
-    print(0)
-    print()
-
+    # print(ans)
+    pass
+    # print(0)
+    pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

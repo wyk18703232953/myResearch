@@ -67,7 +67,7 @@ def main(n):
     edges = generate_tree_edges(n)
     l = generate_l(n)
     res = check_bfs(n, edges, l)
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

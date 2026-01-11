@@ -7,12 +7,12 @@ def main(n):
     a.sort()
     if a[-1] == 1:
         ans = a[:-1] + [2]
+
     else:
         ans = [1] + a[:-1]
     
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 进行规模化实验
     main(10)

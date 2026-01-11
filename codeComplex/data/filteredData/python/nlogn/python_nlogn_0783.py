@@ -4,7 +4,8 @@ def main(n):
     # 构造确定性的 k 和数组 a
     if n <= 1:
         # 边界情况：长度不足
-        print(0)
+        # print(0)
+        pass
         return
 
     # 将 k 设置为与 n 相关的确定性值，保证 1 <= k <= n
@@ -18,16 +19,16 @@ def main(n):
     a = [i * 2 + (i // 3) for i in range(n)]
 
     if k == 1:
-        print(max(a) - min(a))
+        # print(max(a) - min(a))
+        pass
         return
 
     dif = []
     for i in range(n - 1):
         dif.append(a[i + 1] - a[i])
     dif = sorted(dif)
-    print(sum(dif[:-k + 1]))
-
-
+    # print(sum(dif[:-k + 1]))
+    pass
 if __name__ == "__main__":
     # 示例调用：可修改 n 以进行规模化实验
     main(10)

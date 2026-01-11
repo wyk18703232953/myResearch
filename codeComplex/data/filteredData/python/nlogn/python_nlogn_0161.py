@@ -57,6 +57,7 @@ def main(n):
             mxw = max(mxw, r[V[i]] - l[V[i]])
             r[l[V[i]]] = r[V[i]]
             l[r[V[i]]] = l[V[i]]
+
         else:
             mxh = max(mxh, t[H[i]] - b[H[i]])
             b[t[H[i]]] = b[H[i]]
@@ -65,9 +66,8 @@ def main(n):
         ans[i - 1] = mxh * mxw
 
     for i in range(n):
-        print(ans[i])
-
-
+        # print(ans[i])
+        pass
 if __name__ == "__main__":
     # Example deterministic call for time-complexity experiments
     main(10)

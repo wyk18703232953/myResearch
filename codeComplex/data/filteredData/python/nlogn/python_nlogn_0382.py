@@ -18,7 +18,8 @@ def main(n):
     clst = [(i * 7) % 1000 for i in range(n)]
 
     if k == 0:
-        print(*clst)
+        # print(*clst)
+        pass
         return
 
     pc = sorted(((p, c, i) for i, (p, c) in enumerate(zip(plst, clst))), key=lambda t: (t[0], t[2]))
@@ -30,6 +31,7 @@ def main(n):
     for p, c, i in pc:
         if i > 0 and plst[i] == plst[i - 1]:
             res[i] = res[i - 1]
+
         else:
             res[i] = pq_sum + c
 
@@ -37,16 +39,17 @@ def main(n):
             heappush(pq, c)
             pq_sum += c
             pq_size += 1
+
         else:
             alt = heappop(pq)
             if alt < c:
                 heappush(pq, c)
                 pq_sum += c - alt
+
             else:
                 heappush(pq, alt)
 
-    print(*res)
-
-
+    # print(*res)
+    pass
 if __name__ == "__main__":
     main(10)

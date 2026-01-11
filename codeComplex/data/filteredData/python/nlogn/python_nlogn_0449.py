@@ -14,6 +14,7 @@ def main(n):
         if i == n // 2:
             # Guarantee at least one occurrence of m
             s.append(m)
+
         else:
             # Deterministically distribute values smaller, equal and larger than m
             # Use a simple arithmetic pattern around m
@@ -21,6 +22,7 @@ def main(n):
                 s.append(m - 1 if m - 1 > 0 else m)
             elif i % 3 == 1:
                 s.append(m + 1)
+
             else:
                 s.append(m + (i // 3) % 5)
 
@@ -48,6 +50,7 @@ def main(n):
         key = dp[i]
         if key in d:
             d[key] += 1
+
         else:
             d[key] = 1
 
@@ -67,4 +70,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call for time-complexity experiments
     result = main(10)
-    print(result)
+    # print(result)
+    pass

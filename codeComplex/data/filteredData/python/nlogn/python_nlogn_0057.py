@@ -15,11 +15,11 @@ def main(n):
             c += 1
             x += i
             s_val -= i
+
         else:
             break
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     # 示例：输入规模 n = 10
     main(10)

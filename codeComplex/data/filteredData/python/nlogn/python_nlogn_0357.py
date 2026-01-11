@@ -23,15 +23,18 @@ def solve(arr):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     # 确定性生成 n 个整数，模拟原程序的 n 和后续输入
     arr = set(i for i in range(1, n + 1))
     lst = solve(arr)
-    print(len(lst))
+    # print(len(lst))
+    pass
     for x in lst:
-        print(x, end=' ')
-    print()
-
+        # print(x, end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

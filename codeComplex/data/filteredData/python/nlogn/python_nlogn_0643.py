@@ -14,6 +14,7 @@ def main(n):
         # Make every second segment have x1 == 1
         if i % 2 == 0:
             x1 = 1
+
         else:
             x1 = 2
         x2 = i + 1
@@ -38,9 +39,8 @@ def main(n):
         minicount = min(minicount, k - cur + i)
 
     # For timing experiments, we just print the result
-    print(minicount)
-
-
+    # print(minicount)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

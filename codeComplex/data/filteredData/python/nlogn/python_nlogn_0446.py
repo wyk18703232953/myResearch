@@ -1,7 +1,8 @@
 def main(n):
     # Ensure n is at least 1 to have a valid array and a pivot m
     if n < 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic generation of n and m:
@@ -15,6 +16,7 @@ def main(n):
     # Then forcibly set a[n//2] = m to guarantee presence.
     if m > 0:
         a = [(i % (2 * m + 1)) for i in range(n)]
+
     else:
         a = [0] * n
     a[n // 2] = m
@@ -52,9 +54,8 @@ def main(n):
         if wk1 in right:
             ans += left[i] * right[wk1]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for scaling experiments
     main(10)

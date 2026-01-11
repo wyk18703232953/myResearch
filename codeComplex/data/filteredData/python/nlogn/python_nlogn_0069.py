@@ -12,8 +12,7 @@ def main(n):
     while c <= d / 2 and num < len(arr):
         c += arr[num]
         num += 1
-    print(num)
-
-
+    # print(num)
+    pass
 if __name__ == "__main__":
     main(10)

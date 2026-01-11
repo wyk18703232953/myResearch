@@ -23,9 +23,8 @@ def main(n):
         s = [(i + 1) * (j + 1) for j in range(k)]
 
         s.sort()
-        print(min(k - 2, s[k - 2] - 1))
-
-
+        # print(min(k - 2, s[k - 2] - 1))
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 5 作为输入规模调用
     main(5)

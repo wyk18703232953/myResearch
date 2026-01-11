@@ -10,8 +10,7 @@ def main(n):
         k = max(0, min(ni - 2, l[-2] - 1))
         results.append(k)
     for v in results:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     main(5)

@@ -3,7 +3,8 @@ def main(n):
     # Generate a deterministic non-decreasing sequence of stack heights
     # Example: heights grow roughly linearly with some variation using integer ops
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic data generation
@@ -23,9 +24,8 @@ def main(n):
         cur_stack += 1
     ans += stacks[-1] - cur_h
 
-    print(sum(stacks) - ans)
-
-
+    # print(sum(stacks) - ans)
+    pass
 if __name__ == "__main__":
     # Example call for time complexity experiments
     main(10)

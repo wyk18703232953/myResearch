@@ -25,8 +25,7 @@ def main(n):
             v[k] = 1
             c += (s[k] - e[i]) * y - x
 
-    print(c % (10 ** 9 + 7))
-
-
+    # print(c % (10 ** 9 + 7))
+    pass
 if __name__ == "__main__":
     main(10)

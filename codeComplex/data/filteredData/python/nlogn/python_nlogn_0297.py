@@ -35,12 +35,12 @@ def main(n):
             st.append(sortedli[i])
             outputs.append(str(indexof[sortedli[i]]))
             i += 1
+
         else:
             temp = st.pop()
             outputs.append(str(indexof[temp]))
 
-    print(" ".join(outputs))
-
-
+    # print(" ".join(outputs))
+    pass
 if __name__ == "__main__":
     main(5)

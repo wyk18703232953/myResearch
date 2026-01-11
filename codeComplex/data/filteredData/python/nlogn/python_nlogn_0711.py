@@ -24,12 +24,13 @@ def main(n):
     if tempcounter == 1 and equal != 0:
         for j in range(n):
             if arr[j] == equal - 1:
-                print("cslnb")
+                # print("cslnb")
+                pass
                 stop = 1
 
     if tempcounter == 1 and equal == 0:
-        print("cslnb")
-
+        # print("cslnb")
+        pass
     elif tempcounter < 2 and stop == 0:
         moves = arr[0]
         counter = 0
@@ -39,14 +40,15 @@ def main(n):
 
         if counter == 0:
             if moves % 2 == 0:
-                print("cslnb")
+                # print("cslnb")
+                pass
+
             else:
-                print("sjfnb")
-
+                # print("sjfnb")
+                pass
     elif stop == 0:
-        print("cslnb")
-
-
+        # print("cslnb")
+        pass
 if __name__ == "__main__":
     # Example deterministic calls for time complexity experiments
     for size in [1, 2, 5, 10, 100, 1000]:

@@ -28,14 +28,15 @@ def main(n):
     d.sort()
     d = d[::-1]
     if sum(b) > k:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         while s > k and c < len(d):
             s = s - d[c]
             c = c + 1
-        print(c)
-
-
+        # print(c)
+        pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 的规模
     main(10)

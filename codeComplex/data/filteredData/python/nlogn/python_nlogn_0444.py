@@ -78,7 +78,8 @@ def main(n):
         a[a.index(m)] = a[pos]
     a[pos] = m
     result = core_algorithm(n, m, a)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

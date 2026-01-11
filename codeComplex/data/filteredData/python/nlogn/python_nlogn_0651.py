@@ -19,6 +19,7 @@ def main(n):
         one = 1 if i % 3 != 0 else 2  # some ones, some non-ones
         if i % 10 == 0:
             x = 1000000000
+
         else:
             # Spread x around and inside vv's range
             x = i + (i // 3)
@@ -35,6 +36,7 @@ def main(n):
         if one == 1:
             if x == 1000000000:
                 rr += 1
+
             else:
                 ind = bisect(vv, x)
                 if ind:
@@ -46,7 +48,8 @@ def main(n):
         s += h
         r = min(r, s + i)
     result = r + rr
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

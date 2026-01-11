@@ -32,8 +32,7 @@ def main(n):
         if e >= som:
             e = 0
         x = bi.bisect(p, e)
-        print(num_a - x)
-
-
+        # print(num_a - x)
+        pass
 if __name__ == "__main__":
     main(10)

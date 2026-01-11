@@ -24,11 +24,12 @@ def main(n):
         s.add(a[i])
         count += a[i] - (i - 1)
     if flag == 0 and count % 2 == 1:
-        print("sjfnb")
+        # print("sjfnb")
+        pass
+
     else:
-        print("cslnb")
-
-
+        # print("cslnb")
+        pass
 if __name__ == "__main__":
     # Example call; adjust n as needed for experiments
     main(10)

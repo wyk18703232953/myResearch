@@ -1,6 +1,7 @@
 def main(n):
     if n < 2:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     lst = [(i, (i * 2) % (n + 3)) for i in range(n)]
@@ -32,6 +33,7 @@ def main(n):
                 lst[x + 2][1],
             ):
                 s1.append(x + 2)
+
             else:
                 s2.append(x + 2)
         if len(s2) >= 3:
@@ -64,10 +66,11 @@ def main(n):
                     flag = False
 
     if flag:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

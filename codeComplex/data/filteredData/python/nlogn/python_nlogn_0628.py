@@ -66,7 +66,8 @@ def main(n):
             break
 
     if leaf == -1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     d, parent, _ = bfs(graph, leaf, n, k)
@@ -77,7 +78,8 @@ def main(n):
             break
 
     if farthest_leaf == -1 or len(graph[farthest_leaf]) != 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     center = -1
@@ -86,17 +88,19 @@ def main(n):
         farthest_leaf = center
 
     if center == -1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     _, _, valid = bfs(graph, center, n, k)
 
     if valid:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

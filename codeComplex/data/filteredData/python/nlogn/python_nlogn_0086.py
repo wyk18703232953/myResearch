@@ -26,8 +26,7 @@ def main(n):
         ans = ans + 1
         i = i + 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

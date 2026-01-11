@@ -16,7 +16,8 @@ def main(n):
     count = [0] * (n + 1)
 
     if not count_left and not count_right:
-        print(' '.join(map(str, count[1:])))
+        # print(' '.join(map(str, count[1:])))
+        pass
         return
 
     pts = sorted(set(count_left.keys()) | set(count_right.keys()))
@@ -28,13 +29,13 @@ def main(n):
             c += count_left[pt]
             count[c] += 1
             c -= count_right[pt]
+
         else:
             count[c] += pt - prev
             c -= count_right[pt]
         prev = pt
 
-    print(' '.join(map(str, count[1:])))
-
-
+    # print(' '.join(map(str, count[1:])))
+    pass
 if __name__ == "__main__":
     main(10)

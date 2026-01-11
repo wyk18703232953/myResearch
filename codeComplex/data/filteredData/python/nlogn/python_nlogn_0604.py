@@ -23,6 +23,7 @@ def main(n):
         if arr[i] - arr[i + 1] == 0:
             ans.append(1)
             h = 1
+
         else:
             ans.append(arr[i] - arr[i + 1])
             h = arr[i] - arr[i + 1]
@@ -30,9 +31,8 @@ def main(n):
         top = arr[i] - h
         arr[i + 1] = top
 
-    print(isum - sum(ans))
-
-
+    # print(isum - sum(ans))
+    pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

@@ -12,8 +12,7 @@ def main(n):
         num += 1
         if gain > total / 2:
             break
-    print(num)
-
-
+    # print(num)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -7,7 +7,8 @@ def main(n):
 
     c = sum(a)
     if n == 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     a.sort()
@@ -20,6 +21,7 @@ def main(n):
                 res += 1
                 pocl -= 1
                 res += (a[i] - 1)
+
             else:
                 f = True
                 pocl = a[i]
@@ -31,10 +33,10 @@ def main(n):
                 res += 1
             res += (a[i] - 1)
             pocl -= 1
+
         else:
             res += (a[i] - 1)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

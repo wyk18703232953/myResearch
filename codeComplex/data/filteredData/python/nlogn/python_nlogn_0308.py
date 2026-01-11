@@ -21,6 +21,7 @@ def main(n):
     for i in range(n):
         if i < k:
             cmd_chars.append('0')
+
         else:
             cmd_chars.append('1')
     cmd = ''.join(cmd_chars)
@@ -33,11 +34,11 @@ def main(n):
             x = next(i_iter)[1]
             o.append(x)
             s.append(x)
+
         else:
             o.append(s.pop())
 
-    print(*o)
-
-
+    # print(*o)
+    pass
 if __name__ == "__main__":
     main(10)

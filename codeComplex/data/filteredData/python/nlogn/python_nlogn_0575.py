@@ -14,11 +14,13 @@ class DFS:
             for i in range(k - 1, -1, -1):
                 if len(self.G[i]) == 0:
                     self.leave_tree[i] = 1
+
                 else:
                     for j in self.G[i]:
                         self.leave_tree[i] += self.leave_tree[j]
             self.leave_tree.sort()
             return self.leave_tree
+
         else:
             return [k]
 
@@ -29,6 +31,7 @@ def main(n):
     k = n
     if k == 1:
         parent_list = []
+
     else:
         parent_list = [(i - 1) // 2 for i in range(1, k)]
     dfs = DFS()
@@ -37,4 +40,5 @@ def main(n):
 
 if __name__ == "__main__":
     result = main(10)
-    print(*result)
+    # print(*result)
+    pass

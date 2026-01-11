@@ -17,12 +17,12 @@ def main(n):
             j += 1
         if j == n:
             break
+
         else:
             if l[j] <= l[i] + k:
                 a += (j - i)
         i = j
-    print(n - a)
-
-
+    # print(n - a)
+    pass
 if __name__ == "__main__":
     main(10)

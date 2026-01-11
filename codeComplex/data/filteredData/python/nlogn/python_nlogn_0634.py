@@ -37,9 +37,8 @@ def main(n):
         ans = min(ans, len(rows) - j + rem)
         rem += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

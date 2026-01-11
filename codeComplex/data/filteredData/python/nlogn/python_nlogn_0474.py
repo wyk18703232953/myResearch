@@ -23,8 +23,7 @@ def main(n):
         if pos(sel):
             ans = max(ans, sel)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

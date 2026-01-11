@@ -13,8 +13,7 @@ def main(n):
             break
         i_have += a[i]
         cnt += 1
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     main(10)

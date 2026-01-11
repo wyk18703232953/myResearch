@@ -16,8 +16,7 @@ def main(n):
             - a.get(t + 1, 0) * (t + 1)
         )
         i += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -16,16 +16,19 @@ def main(n):
         if l[i][1] not in l[i + 1][1]:
             ch = 0
             break
+
         else:
             ans.append(l[i][1])
 
     if ch and nn > 0:
         ans.append(l[nn - 1][1])
-        print("YES")
-        print(*[x for x in ans], sep="\n")
+        # print("YES")
+        pass
+        # print(*[x for x in ans], sep="\n")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(5)

@@ -11,11 +11,12 @@ def main(n):
             s = l[i]
         d.add(l[i])
     if e > 1 or l.count(0) > 1 or (s - 1) in d:
-        print(ans[1])
+        # print(ans[1])
+        pass
+
     else:
         l = [l[i] - i for i in range(n)]
-        print(ans[1 - sum(l) % 2])
-
-
+        # print(ans[1 - sum(l) % 2])
+        pass
 if __name__ == "__main__":
     main(10)

@@ -17,6 +17,7 @@ def main(n):
         elif abs(a[slow] - a[fast]) <= k:
             a[slow] = 0
             slow += 1
+
         else:
             slow += 1
             if slow > fast:
@@ -25,8 +26,7 @@ def main(n):
     for i in a:
         if i != 0:
             ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

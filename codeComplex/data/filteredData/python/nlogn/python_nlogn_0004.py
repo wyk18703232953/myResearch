@@ -20,9 +20,8 @@ def main(n):
         elif diff > t:
             res += 2
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 进行规模化实验
     main(10)

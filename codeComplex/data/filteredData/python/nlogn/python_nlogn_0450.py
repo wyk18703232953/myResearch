@@ -1,7 +1,8 @@
 def main(n):
     # n: length of nums
     if n < 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic generation of n, m, nums
@@ -33,6 +34,7 @@ def main(n):
     for i in range(start - 1, -1, -1):
         if nums[i] > m:
             leftm += 1
+
         else:
             leftl += 1
 
@@ -44,12 +46,14 @@ def main(n):
         temp = leftm - leftl
         if temp in left:
             left[temp] += 1
+
         else:
             left[temp] = 1
 
     for i in range(start + 1, n, 1):
         if nums[i] > m:
             rightm += 1
+
         else:
             rightl += 1
 
@@ -61,6 +65,7 @@ def main(n):
         temp = rightm - rightl
         if temp in right:
             right[temp] += 1
+
         else:
             right[temp] = 1
 
@@ -72,8 +77,7 @@ def main(n):
         if poss + 1 in right:
             ans += right[poss + 1] * left[i]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

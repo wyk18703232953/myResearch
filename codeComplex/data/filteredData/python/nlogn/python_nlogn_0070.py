@@ -15,8 +15,7 @@ def main(n):
         c += 1
         if m_sum > (b_sum / 2):
             break
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     main(10)

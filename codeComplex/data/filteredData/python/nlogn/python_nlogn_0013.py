@@ -19,9 +19,8 @@ def main(n):
             ans += 2
         elif gap == t:
             ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

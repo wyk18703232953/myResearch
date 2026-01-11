@@ -26,6 +26,7 @@ def isPrime(n):
         return False
     elif n <= 2:
         return True
+
     else:
         for i in range(2, int(n ** 0.5) + 1):
             if n % i == 0:
@@ -60,10 +61,11 @@ def main(n):
         if len(ans) == 3:
             break
 
-    print(len(ans))
+    # print(len(ans))
+    pass
+
     if ans:
-        print(*ans)
-
-
+        # print(*ans)
+        pass
 if __name__ == "__main__":
     main(10000)

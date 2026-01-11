@@ -3,7 +3,8 @@ def main(n):
     # Deterministically generate array 'arr' of length n
     # Example pattern: arr[i] = (i * 3) % (2 * n + 1)
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     arr = [(i * 3) % (2 * n + 1) for i in range(n)]
@@ -22,6 +23,7 @@ def main(n):
         s1.add(i)
         if i not in d:
             d[i] = 1
+
         else:
             d[i] += 1
 
@@ -42,9 +44,8 @@ def main(n):
     res = 0
     for i in s2:
         res += d[i]
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # Example call; adjust n for different input scales
     main(10)

@@ -11,6 +11,7 @@ def main(n):
     x = -1
     if mx == 1:
         x = 2
+
     else:
         x = 1
 
@@ -23,14 +24,15 @@ def main(n):
     # but we still execute full algorithm on full data.
     limit = 100
     if len(arr) <= limit:
-        print(*arr)
+        # print(*arr)
+        pass
+
     else:
         # Print only first and last few elements to keep output manageable
         head = arr[:limit // 2]
         tail = arr[-limit // 2:]
-        print(*head, '...', *tail)
-
-
+        # print(*head, '...', *tail)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for experiments
     main(10)

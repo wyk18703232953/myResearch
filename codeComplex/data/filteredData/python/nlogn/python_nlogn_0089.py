@@ -6,7 +6,8 @@ def main(n):
 
     if n < 2:
         # 至少需要两个学生才能计算差值
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成 a, b，保证 1 <= a < b < n
@@ -23,9 +24,8 @@ def main(n):
     h = [(i * 3 + 7) % (2 * n + 5) + (i // 2) for i in range(n)]
     h.sort()
 
-    print(h[b] - h[b - 1])
-
-
+    # print(h[b] - h[b - 1])
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要更改 n 的值做规模实验
     main(10)

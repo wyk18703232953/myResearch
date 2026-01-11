@@ -20,11 +20,11 @@ def main(n):
         result = sum(a_sorted) * m + sum(b) - a_sorted[-1] * (m - 1) - a_sorted[-2]
     elif max_a == min_b:
         result = sum(a_sorted) * m + sum(b) - a_sorted[-1] * m
+
     else:
         result = -1
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -17,6 +17,7 @@ def bfs():
             if dp[x] == 1:
                 s.append(x)
                 dp[x] = -1
+
             else:
                 ans = "No"
                 return
@@ -46,7 +47,7 @@ def main(n):
     ans = "Yes"
     visited[1] = True
     bfs()
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

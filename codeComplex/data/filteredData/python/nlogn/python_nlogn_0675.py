@@ -30,6 +30,7 @@ def binary_search(n, edges):
         m = (l + r) // 2
         if judge(m, n, edges):
             r = m - 1
+
         else:
             l = m + 1
 
@@ -38,6 +39,7 @@ def binary_search(n, edges):
 def generate_data(n):
     if n < 2:
         n_nodes = 2
+
     else:
         n_nodes = n
     m_edges = n_nodes * 2
@@ -84,6 +86,7 @@ def main(n):
         if c > k:
             ins[v] += 1
             outs[u].append(v)
+
         else:
             removed.append((u, v))
 
@@ -106,11 +109,15 @@ def main(n):
         if order[v] < order[u]:
             change.append(idx[10**6 * u + v].popleft())
 
-    print(k, len(change))
-    if change:
-        print(*change)
-    else:
-        print()
+    # print(k, len(change))
+    pass
 
+    if change:
+        # print(*change)
+        pass
+
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

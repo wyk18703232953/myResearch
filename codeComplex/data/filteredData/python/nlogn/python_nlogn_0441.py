@@ -10,6 +10,7 @@ def main(n):
             bb[i] = 1
         elif aa[i] < m:
             bb[i] = -1
+
         else:
             bb[i] = 1
 
@@ -20,6 +21,7 @@ def main(n):
     def mergeSortGoodOrder(arr):
         if len(arr) == 1:
             return arr, 0
+
         else:
             a = arr[: len(arr) // 2]
             b = arr[len(arr) // 2 :]
@@ -37,6 +39,7 @@ def main(n):
                     c.append(a[i])
                     i += 1
                     good += len(b) - j
+
                 else:
                     c.append(b[j])
                     j += 1
@@ -62,6 +65,7 @@ def main(n):
             bb[i] = 1
         elif aa[i] < m + 1:
             bb[i] = -1
+
         else:
             bb[i] = 1
 
@@ -75,8 +79,7 @@ def main(n):
     second_count = good - bad_left - bad_right
 
     ans = first_count - second_count
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

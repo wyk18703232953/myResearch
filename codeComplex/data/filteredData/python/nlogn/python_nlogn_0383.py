@@ -27,15 +27,16 @@ def main(n):
                     heapq.heappush(q, C[i])
                     s -= v
                     s += C[i]
+
             else:
                 heapq.heappush(q, C[i])
                 s += C[i]
+
     else:
         for p, i in Q:
             ans[i] = C[i]
 
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

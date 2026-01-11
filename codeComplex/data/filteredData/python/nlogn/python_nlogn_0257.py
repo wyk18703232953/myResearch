@@ -23,12 +23,12 @@ def main(n):
         j = bisect.bisect_right(C, total)
         if j != n + 1:
             ans[i] = n - (j - 1)
+
         else:
             ans[i] = n
             total = 0
 
-    print(*ans, sep="\n")
-
-
+    # print(*ans, sep="\n")
+    pass
 if __name__ == "__main__":
     main(10)

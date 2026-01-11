@@ -22,10 +22,11 @@ def main(n):
         if i == n - 1:
             ans = 0
     if ans == 0 or count % 2 == 0 or count2 > 1:
-        print("cslnb")
+        # print("cslnb")
+        pass
+
     else:
-        print("sjfnb")
-
-
+        # print("sjfnb")
+        pass
 if __name__ == "__main__":
     main(10)

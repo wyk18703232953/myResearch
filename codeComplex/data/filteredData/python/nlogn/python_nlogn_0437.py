@@ -16,11 +16,11 @@ def main(n):
             if c == x and freq[x] == 1:
                 continue
             break
+
         else:
             ans += freq[x]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

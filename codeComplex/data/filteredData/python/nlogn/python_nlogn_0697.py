@@ -11,15 +11,18 @@ def list3d(a, b, c, d):
 
 
 def Y(c):
-    print(["NO", "YES"][c])
+    # print(["NO", "YES"][c])
+    pass
 
 
 def y(c):
-    print(["no", "yes"][c])
+    # print(["no", "yes"][c])
+    pass
 
 
 def Yy(c):
-    print(["No", "Yes"][c])
+    # print(["No", "Yes"][c])
+    pass
 
 
 def solve(n):
@@ -34,12 +37,17 @@ def solve(n):
     A = [(i % base) + (i // 2) for i in range(n)]
 
     if A.count(0) >= 2:
-        print('cslnb')
+        # print('cslnb')
+        pass
     elif n == 1:
         if A[0] % 2:
-            print('sjfnb')
+            # print('sjfnb')
+            pass
+
         else:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
     else:
         g2 = 0
         flag = 1
@@ -54,16 +62,21 @@ def solve(n):
         if g2 >= 2:
             flag = 0
         if not flag:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
             movescount = 0
             A.sort()
             for ii, i in enumerate(A):
                 movescount += i - ii
             if movescount % 2 == 0:
-                print('cslnb')
+                # print('cslnb')
+                pass
+
             else:
-                print('sjfnb')
+                # print('sjfnb')
+                pass
 
 
 def main(n):

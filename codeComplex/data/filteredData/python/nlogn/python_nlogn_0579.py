@@ -33,8 +33,7 @@ def solve(N):
 def main(n):
     N = n
     result = solve(N)
-    print(*result)
-
-
+    # print(*result)
+    pass
 if __name__ == "__main__":
     main(10)

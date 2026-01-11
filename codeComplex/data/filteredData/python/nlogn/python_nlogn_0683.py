@@ -16,7 +16,8 @@ def main(n):
     # First loop
     for i in range(0, m):
         if girls[i] < ma:
-            print(-1)
+            # print(-1)
+            pass
             return
         res += s
         if girls[i] == ma:
@@ -29,14 +30,14 @@ def main(n):
         if usage == m - 1:
             j += 1
         if j >= n:
-            print(-1)
+            # print(-1)
+            pass
             return
         res += max(0, girls[i] - boys[j])
         usage += 1
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for scaling/time experiments
     main(10)

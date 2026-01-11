@@ -20,10 +20,11 @@ def main(n):
         freeSockets += filters[i] - 1
 
     if freeSockets >= d:
-        print(usedFilters)
+        # print(usedFilters)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -49,7 +49,7 @@ def generate_data(n):
 def main(n):
     n_vert, n_horz, vert, horz_all = generate_data(n)
     result = core_algorithm(n_vert, n_horz, vert, horz_all)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

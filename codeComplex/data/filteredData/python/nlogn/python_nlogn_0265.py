@@ -16,13 +16,14 @@ def main(n):
     wahh = max(-1, a[0][2])
     for i in range(1, n):
         if a[i][1] >= hh:
-            print(a[i][2], wahh)
+            # print(a[i][2], wahh)
+            pass
             return
+
         else:
             hh = a[i][1]
             wahh = a[i][2]
-    print(-1, -1)
-
-
+    # print(-1, -1)
+    pass
 if __name__ == "__main__":
     main(10)

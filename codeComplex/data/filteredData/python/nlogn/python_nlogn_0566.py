@@ -21,15 +21,17 @@ def main(n):
 
     for i in range(n):
         if ll[i] != l[i]:
-            print("NO")
+            # print("NO")
+            pass
             break
         if rr[n - 1 - i] != r[i]:
-            print("NO")
+            # print("NO")
+            pass
             break
         if i == n - 1:
-            print("YES")
-            print(' '.join(map(str, candies)))
-
-
+            # print("YES")
+            pass
+            # print(' '.join(map(str, candies)))
+            pass
 if __name__ == "__main__":
     main(10)

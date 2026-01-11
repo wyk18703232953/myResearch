@@ -8,7 +8,7 @@ def main(n):
     for v in a:
         if (v % k != 0) or v // k not in s:
             s.add(v)
-    print(len(s))
-
+    # print(len(s))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -12,15 +12,16 @@ def main(n):
     flag = False
     for i in range(n - 1):
         if sortedAr[i + 1].find(sortedAr[i]) == -1:
-            print('NO')
+            # print('NO')
+            pass
             flag = True
             break
     if not flag:
-        print('YES')
+        # print('YES')
+        pass
         for s in sortedAr:
-            print(s)
-
-
+            # print(s)
+            pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 规模做时间复杂度实验
     main(10)

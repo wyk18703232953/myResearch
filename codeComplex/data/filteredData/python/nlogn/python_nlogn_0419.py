@@ -16,6 +16,7 @@ def main(n):
             rev[now] += b[0] - a[0]
             if b[1] == 1:
                 rev[now] += 1
+
         else:
             now -= 1
             if b[0] != a[0]:
@@ -23,7 +24,7 @@ def main(n):
                 if b[1] == 0:
                     rev[now] -= 1
     for i in range(1, n + 1):
-        print(rev[i], end=" ")
-
+        # print(rev[i], end=" ")
+        pass
 if __name__ == "__main__":
     main(10)

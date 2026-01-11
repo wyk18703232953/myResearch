@@ -17,9 +17,8 @@ def main(n):
 
     tm.sort(key=lambda x: (-x[0], x[1]))
     ans = tm.count(tm[k - 1])
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # example call with a chosen scale
     main(10)

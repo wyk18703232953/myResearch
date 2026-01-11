@@ -23,19 +23,22 @@ def main(n):
     a = a[::-1]
 
     if m <= k:
-        print(0)
+        # print(0)
+        pass
+
     else:
         c = 0
         while c < n:
             k = k + a[c] - 1
             c += 1
             if k >= m:
-                print(c)
+                # print(c)
+                pass
                 return
+
         else:
-            print(-1)
-
-
+            # print(-1)
+            pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 进行规模实验
     main(10)

@@ -7,6 +7,7 @@ def binary(num, arr, n):
             left = mid + 1
         elif arr[mid] > num:
             right = mid
+
         else:
             return True
     return False
@@ -28,6 +29,7 @@ def solve(arr):
                     if cnt[now] >= 2:
                         can = True
                         break
+
                 else:
                     can = True
                     break
@@ -40,7 +42,7 @@ def main(n):
     # 示例构造：包含正数、负数和重复值的模式化序列
     arr = [((i * 3) // 2) - (i // 3) for i in range(n)]
     result = solve(arr)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

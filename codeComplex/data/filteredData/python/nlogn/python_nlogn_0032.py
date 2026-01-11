@@ -6,10 +6,12 @@ def main(n):
     # 原始逻辑开始
     ls.sort()
     if ls.count(min(ls)) == len(ls):
-        print('NO')
+        # print('NO')
+        pass
     for i in range(n):
         if ls[i] != min(ls):
-            print(ls[i])
+            # print(ls[i])
+            pass
             break
 
 

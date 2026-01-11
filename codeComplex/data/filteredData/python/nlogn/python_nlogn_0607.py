@@ -23,10 +23,12 @@ def main(n):
         if i != N - 1:
             ans += a[i] - 1
             c += 1
+
         else:
             ans += c - 1
 
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

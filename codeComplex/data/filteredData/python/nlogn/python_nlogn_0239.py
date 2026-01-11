@@ -17,13 +17,15 @@ def main(n):
         elif i < 2 * n // 3:
             x = i
             y = 2 * i + 1
+
         else:
             x = i
             y = (i % 5) * i + (i // 5)
         points.append([x, y])
 
     if n < 5:
-        print('YES')
+        # print('YES')
+        pass
         return
 
     st = [False] * n
@@ -41,6 +43,7 @@ def main(n):
             elif dy == 0:
                 if p[1] == first[1]:
                     st[idx] = True
+
             else:
                 if (p[0] - first[0]) * dy == (p[1] - first[1]) * dx:
                     st[idx] = True
@@ -70,10 +73,11 @@ def main(n):
         return not (False in st)
 
     if check(0, 1) or check(0, 2) or check(1, 2):
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

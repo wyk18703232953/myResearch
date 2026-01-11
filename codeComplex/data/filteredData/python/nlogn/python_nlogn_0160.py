@@ -47,6 +47,7 @@ def solve(W, H, N, A):
             node = xnodes[v]
             w = node.right.val - node.left.val
             maxw = max(maxw, w)
+
         else:
             node = ynodes[v]
             h = node.right.val - node.left.val
@@ -75,6 +76,7 @@ def solve2(W, H, N, A):
             heapq.heappush(ws, (m - r, m, r))
             while ws[0] in iw:
                 heapq.heappop(ws)
+
         else:
             bisect.insort(ys, v)
             i = bisect.bisect_left(ys, v)
@@ -103,6 +105,7 @@ def generate_data(n):
             v = (i + 1) % W
             if v == 0:
                 v = 1
+
         else:
             v = (2 * i + 1) % H
             if v == 0:
@@ -115,8 +118,7 @@ def main(n):
     W, H, N, A = generate_data(n)
     res = solve(W, H, N, A)
     for x in res:
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
     main(10)

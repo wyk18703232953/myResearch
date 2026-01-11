@@ -39,6 +39,7 @@ def main(n):
             if horiz[i] < vert[b]:
                 oof[b] += 1
                 break
+
             else:
                 b += 1
     mini = 1000000
@@ -47,8 +48,7 @@ def main(n):
         bad -= oof[i]
         if bad + i < mini:
             mini = bad + i
-    print(mini)
-
-
+    # print(mini)
+    pass
 if __name__ == "__main__":
     main(1000)

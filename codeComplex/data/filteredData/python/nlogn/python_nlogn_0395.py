@@ -25,11 +25,13 @@ def main(n):
     for i, t in enumerate(p_pairs):
         if k == 0:
             ans.append((c[t[1]], t[1]))
+
         else:
             if i < k:
                 cur_gold += c[t[1]]
                 ans.append((cur_gold, t[1]))
                 heapq.heappush(top_k, c[t[1]])
+
             else:
                 smallest = heapq.nsmallest(1, top_k)[0]
                 if smallest < c[t[1]]:
@@ -38,12 +40,12 @@ def main(n):
                     heapq.heappop(top_k)
                     heapq.heappush(top_k, c[t[1]])
                     cur_gold -= smallest
+
                 else:
                     ans.append((cur_gold + c[t[1]], t[1]))
 
     ans = sorted(ans, key=lambda x: x[1])
-    print(" ".join(map(lambda x: str(x[0]), ans)))
-
-
+    # print(" ".join(map(lambda x: str(x[0]), ans)))
+    pass
 if __name__ == "__main__":
     main(10)

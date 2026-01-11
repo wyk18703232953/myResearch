@@ -16,12 +16,14 @@ def main(n):
             break
 
     if flag:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
+        # print("YES")
+        pass
         for s in arr:
-            print(s)
-
-
+            # print(s)
+            pass
 if __name__ == "__main__":
     main(5)

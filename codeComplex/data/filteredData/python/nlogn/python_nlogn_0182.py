@@ -11,11 +11,13 @@ def main(n):
         summ.append(i + summ[len(summ) - 1])
         if i in d:
             d[i] = d[i] + 1
+
         else:
             d[i] = 1
     for i in range(0, len(brr)):
         if brr[i] in nd:
             nd[brr[i]] = nd[brr[i]] + 1
+
         else:
             nd[brr[i]] = 1
         mimpn[i] = 0
@@ -36,8 +38,7 @@ def main(n):
         ans = ans + mimpn[i]
         ans = ans - mimpp[i]
         ind = ind + 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

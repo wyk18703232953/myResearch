@@ -21,10 +21,11 @@ def main(n):
                 l1[j] = l1[i]
                 l1[i] = temp
     if len(l1) > 1:
-        print(l1[1])
+        # print(l1[1])
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

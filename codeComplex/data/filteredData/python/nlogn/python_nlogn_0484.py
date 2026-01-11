@@ -10,12 +10,14 @@ def main(n):
     for i in range(n):
         if a[i] in d:
             d[a[i]] += 1
+
         else:
             d[a[i]] = 1
     d1 = {}
     for i in d:
         if d[i] in d1:
             d1[d[i]] += 1
+
         else:
             d1[d[i]] = 1
         tmp.append(d[i])
@@ -32,7 +34,8 @@ def main(n):
                 x -= (j // i) * d1[j]
         if x <= 0:
             ans = max(ans, i)
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

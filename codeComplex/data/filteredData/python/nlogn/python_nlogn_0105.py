@@ -11,10 +11,11 @@ def main(n):
             count += 1
 
     if count <= 2:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

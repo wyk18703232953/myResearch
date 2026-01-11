@@ -7,12 +7,14 @@ class Digit:
     def increment(self, k):
         if k in self.count:
             self.count[k] += 1
+
         else:
             self.count[k] = 1
 
     def found(self, k):
         if k in self.count:
             return self.count[k]
+
         else:
             return 0
 

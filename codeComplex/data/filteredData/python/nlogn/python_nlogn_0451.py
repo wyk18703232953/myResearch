@@ -18,13 +18,13 @@ def main(n):
             s += 1
         if fla:
             ans += ma.get(s, 0) + ma.get(s - 1, 0)
+
         else:
             ma[s] = ma.get(s, 0) + 1
 
     # Keep the output to preserve core behavior
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example call with a chosen scale; adjust as needed for experiments
     main(10)

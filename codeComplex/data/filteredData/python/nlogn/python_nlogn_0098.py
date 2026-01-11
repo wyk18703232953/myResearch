@@ -7,7 +7,8 @@ def main(n):
     complexity = [i * 2 for i in range(n)]
     complexity.sort()
     result = complexity[chores[2]] - complexity[chores[2] - 1]
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

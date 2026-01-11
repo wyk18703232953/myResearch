@@ -19,6 +19,7 @@ def main(n):
         for j in range(i - 1, -1, -1):
             if li[j] + k >= li[i] and dic[li[j]] != 0:
                 dic[li[j]] = 0
+
             else:
                 break
 
@@ -28,4 +29,5 @@ def main(n):
 
 if __name__ == "__main__":
     # Example deterministic call
-    print(main(10))
+    # print(main(10))
+    pass

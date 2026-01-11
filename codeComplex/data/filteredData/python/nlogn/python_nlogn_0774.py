@@ -12,13 +12,15 @@ def main(n):
             q = max(0, q - 1)
         elif a[q1] == s[q2]:
             q1 = min(len(a) - 1, q1 + 1)
+
         else:
-            print("NO")
+            # print("NO")
+            pass
             break
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
     # Example call for time complexity experiments
     main(10)

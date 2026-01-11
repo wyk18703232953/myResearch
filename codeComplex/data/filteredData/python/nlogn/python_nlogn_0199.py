@@ -17,9 +17,8 @@ def main(n):
         cnt += 1
         tot += i
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example call for scalability / benchmarking
     main(10**5)

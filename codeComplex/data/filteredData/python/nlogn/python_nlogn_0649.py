@@ -19,15 +19,17 @@ def main(n):
 
     lh = len(h)
     if lh == 0:
-        print(0)
+        # print(0)
+        pass
     elif n == 0:
-        print(lh - bisect_left(h, MAX))
+        # print(lh - bisect_left(h, MAX))
+        pass
+
     else:
         mn = n + lh - bisect_left(h, MAX)
         for i in range(n):
             mn = min(mn, lh - bisect_left(h, v[i]) + i)
-        print(mn)
-
-
+        # print(mn)
+        pass
 if __name__ == "__main__":
     main(10)

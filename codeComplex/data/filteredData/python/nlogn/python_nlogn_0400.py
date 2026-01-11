@@ -22,6 +22,7 @@ def main(n):
             x = nx1
             y = ny1
             ans[v[i][2]] = 1
+
         else:
             x = nx2
             y = ny2
@@ -29,10 +30,11 @@ def main(n):
 
     # Mimic original stopping condition once (no loop)
     if x * x + y * y <= 1500000 ** 2:
-        print(*ans)
+        # print(*ans)
+        pass
+
     else:
-        print(*ans)
-
-
+        # print(*ans)
+        pass
 if __name__ == "__main__":
     main(10)

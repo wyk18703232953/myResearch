@@ -7,12 +7,12 @@ def main(n):
     flag = 0
     for i in vals:
         if i > vals[0]:
-            print(i)
+            # print(i)
+            pass
             flag = 1
             break
     if flag == 0:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

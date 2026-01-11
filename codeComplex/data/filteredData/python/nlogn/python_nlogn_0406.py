@@ -4,6 +4,7 @@ def find_gt(a, x):
     i = bi.bisect_left(a, x)
     if i != len(a):
         return i
+
     else:
         return len(a)
 
@@ -37,16 +38,19 @@ def solve(intervals):
         cnts = l1[i] - l1[i - 1] - 1
         if ans.get(last, -1) != -1:
             ans[last] += cnts
+
         else:
             ans[last] = cnts
         last += dp[i][0]
         if ans.get(last, -1) != -1:
             ans[last] += 1
+
         else:
             ans[last] = 1
         last += dp[i][1]
     if ans.get(last, -1) != -1:
         ans[last] += 1
+
     else:
         ans[last] = 1
     res = []
@@ -59,7 +63,7 @@ def main(n):
     # Deterministic generation of intervals: [ (i, 2*i+1) for i in range(1, n+1) ]
     intervals = [(i, 2 * i + 1) for i in range(1, n + 1)]
     res = solve(intervals)
-    print(" ".join(map(str, res)))
-
+    # print(" ".join(map(str, res)))
+    pass
 if __name__ == "__main__":
     main(10)

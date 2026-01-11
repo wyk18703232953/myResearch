@@ -10,7 +10,8 @@ def main(n):
     m = n * 2
     arr = [(i % n) + 1 for i in range(m)]
     if n > m:
-        print(0)
+        # print(0)
+        pass
         return
     c = Counter(arr)
     d1 = list(sorted(c.values()))
@@ -31,7 +32,7 @@ def main(n):
             people += curr
         if done:
             days = i
-    print(days)
-
+    # print(days)
+    pass
 if __name__ == "__main__":
     main(1000)

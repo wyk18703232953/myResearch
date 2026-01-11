@@ -21,8 +21,7 @@ def main(n):
         ind = b[n - 1][1]
         a[ind] = -a[ind] - 1
 
-    print(' '.join(map(str, a)))
-
-
+    # print(' '.join(map(str, a)))
+    pass
 if __name__ == "__main__":
     main(10)

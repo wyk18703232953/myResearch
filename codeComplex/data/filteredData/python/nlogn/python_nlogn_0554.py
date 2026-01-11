@@ -17,6 +17,7 @@ def main(n):
         cnt += 1
         if fst[u] == 0:
             fst[u] = cnt
+
         else:
             nxt[lst[u]] = cnt
         lst[u] = cnt
@@ -44,6 +45,7 @@ def main(n):
         elif deep[a[i]] < now:
             Ans = 1
             break
+
         else:
             b = fst[a[i]]
             res += 1
@@ -54,11 +56,12 @@ def main(n):
             now = deep[a[i]]
 
     if Ans == 0:
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     # Example call for time complexity experiments
     main(10)

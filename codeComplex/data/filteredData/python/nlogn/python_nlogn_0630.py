@@ -23,6 +23,7 @@ def main(n):
         if val == 1:
             art.append(ar[idx])
             res.append(0)
+
         else:
             arc.append(ar[idx])
 
@@ -34,8 +35,7 @@ def main(n):
             res[nt] += 1
 
     # Output in the same format as original code
-    print(" ".join(str(x) for x in res))
-
-
+    # print(" ".join(str(x) for x in res))
+    pass
 if __name__ == "__main__":
     main(10)

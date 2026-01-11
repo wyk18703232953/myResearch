@@ -11,6 +11,7 @@ def f(q):
     for i in sorted(d.keys()):
         if prev is None:
             prev = i
+
         else:
             ans[res] += i - prev
             prev = i
@@ -25,9 +26,8 @@ def main(n):
     res = f(q)
     # 为了避免输出过大，仅在前若干项规模下打印全部结果
     # 实际做时间复杂度实验时，可以注释掉打印，仅保留算法运行
-    print(*res)
-
-
+    # print(*res)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需要修改 n 的取值进行实验
     main(10)

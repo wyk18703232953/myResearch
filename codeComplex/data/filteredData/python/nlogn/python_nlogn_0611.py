@@ -34,8 +34,7 @@ def main(n):
             ans -= c_tv - (start[i] - end[k]) * c_es
             v[k] = 1
 
-    print(ans % M)
-
-
+    # print(ans % M)
+    pass
 if __name__ == "__main__":
     main(10)

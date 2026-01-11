@@ -72,6 +72,7 @@ class SortedList:
         _list_lens[pos] -= 1
         if _list_lens[pos]:
             _mins[pos] = _lists[pos][0]
+
         else:
             del _lists[pos]
             del _list_lens[pos]
@@ -88,6 +89,7 @@ class SortedList:
             mi = (lo + pos) >> 1
             if value <= _mins[mi]:
                 pos = mi
+
             else:
                 lo = mi
         if pos and value <= _lists[pos - 1][-1]:
@@ -98,6 +100,7 @@ class SortedList:
             mi = (lo + idx) >> 1
             if value <= _list[mi]:
                 idx = mi
+
             else:
                 lo = mi
         return pos, idx
@@ -112,6 +115,7 @@ class SortedList:
             mi = (pos + hi) >> 1
             if value < _mins[mi]:
                 hi = mi
+
             else:
                 pos = mi
         _list = _lists[pos]
@@ -120,6 +124,7 @@ class SortedList:
             mi = (lo + idx) >> 1
             if value < _list[mi]:
                 idx = mi
+
             else:
                 lo = mi
         return pos, idx
@@ -144,6 +149,7 @@ class SortedList:
                 _list_lens[pos] = _load
                 del _list[_load:]
                 self._rebuild = True
+
         else:
             _lists.append([value])
             _mins.append(value)
@@ -222,11 +228,12 @@ def main(n):
         if d[i]:
             ans += 1
             d[i * k] = 0
-    print(ans)
+    # print(ans)
+    pass
 
     endtime = datetime.datetime.now()
     time = (endtime - starttime).total_seconds() * 1000
-    print("Time:", time, "ms")
-
+    # print("Time:", time, "ms")
+    pass
 if __name__ == "__main__":
     main(10)

@@ -22,11 +22,15 @@ def f(a, limit):
         if len(res) >= mid:
             lo = mid + 1
             ans = (res, mid)
+
         else:
             hi = mid - 1
-    print(ans[1])
-    print(ans[1])
-    print(*ans[0])
+    # print(ans[1])
+    pass
+    # print(ans[1])
+    pass
+    # print(*ans[0])
+    pass
 
 def main(n):
     # 映射含义：

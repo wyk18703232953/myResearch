@@ -22,14 +22,17 @@ def main(n):
         No_arrows += arrows[i]
         if No_arrows >= strength[-1]:
             No_arrows = 0
-            print(warriors_minus_one + 1)
+            # print(warriors_minus_one + 1)
+            pass
+
         else:
             it = bisect.bisect_left(strength, No_arrows)
             if strength[it] == No_arrows:
-                print(warriors_minus_one - it + 1)
+                # print(warriors_minus_one - it + 1)
+                pass
+
             else:
-                print(warriors_minus_one - it + 2)
-
-
+                # print(warriors_minus_one - it + 2)
+                pass
 if __name__ == "__main__":
     main(10)

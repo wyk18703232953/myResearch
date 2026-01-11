@@ -21,11 +21,11 @@ def main(n):
     for i in range(n - 1, -1, -1):
         if not tree[i]:
             leafs[i] = 1
+
         else:
             leafs[i] = sum(leafs[j] for j in tree[i])
 
-    print(*sorted(leafs))
-
-
+    # print(*sorted(leafs))
+    pass
 if __name__ == "__main__":
     main(10)

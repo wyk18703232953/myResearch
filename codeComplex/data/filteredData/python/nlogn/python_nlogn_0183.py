@@ -14,7 +14,8 @@ def main(n):
         return s
 
     result = d(ar, n) - d(rev, n)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

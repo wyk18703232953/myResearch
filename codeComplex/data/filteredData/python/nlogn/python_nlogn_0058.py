@@ -9,10 +9,10 @@ def main(n):
     for i in range(n):
         if sum(lst[:i]) > sum(lst[i:]):
             break
+
         else:
             m += 1
-    print(m)
-
-
+    # print(m)
+    pass
 if __name__ == "__main__":
     main(10)

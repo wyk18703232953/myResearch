@@ -15,15 +15,16 @@ def main(n):
 
     for segment, index in segments:
         if last_r >= segment[1]:
-            print(index, last_index)
+            # print(index, last_index)
+            pass
             break
 
         last_r = segment[1]
         last_index = index
+
     else:
-        print(-1, -1)
-
-
+        # print(-1, -1)
+        pass
 if __name__ == "__main__":
     # 示例规模，可以按需修改或在外部多次调用 main(n)
     main(10)

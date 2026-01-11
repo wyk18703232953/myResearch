@@ -49,9 +49,8 @@ def main(n):
 
     x.sort(key=takeFirst)
 
-    print(" ".join([z[1] for z in x]))
-
-
+    # print(" ".join([z[1] for z in x]))
+    pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

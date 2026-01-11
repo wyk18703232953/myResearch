@@ -17,12 +17,12 @@ def main(n):
     for i in range(1, len(ks)):
         if ks[i] <= ks[i - 1] + k:
             continue
+
         else:
             ans += cs[ks[i - 1]]
     if ks:
         ans += cs[ks[-1]]
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

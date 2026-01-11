@@ -26,9 +26,8 @@ def main(n):
             min1 = q2 + len(s) - q1
         if q1 == len(s):
             break
-    print(min1)
-
-
+    # print(min1)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for testing / benchmarking
     main(1000)

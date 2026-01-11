@@ -8,11 +8,11 @@ def main(n):
     arr.sort()
     if arr[-1] == 1:
         arr[-1] = 2
+
     else:
         arr[-1] = 1
     arr.sort()
-    print(*arr)
-
-
+    # print(*arr)
+    pass
 if __name__ == "__main__":
     main(10)

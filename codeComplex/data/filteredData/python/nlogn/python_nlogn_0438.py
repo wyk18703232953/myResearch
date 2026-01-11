@@ -12,6 +12,7 @@ def main(n):
     for x in l:
         if x in d:
             d[x] += 1
+
         else:
             d[x] = 1
 
@@ -21,11 +22,11 @@ def main(n):
         for j in ans:
             if j - i in d and (j - i != i or d[j - i] > 1):
                 break
+
         else:
             c += d[i]
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(1000)

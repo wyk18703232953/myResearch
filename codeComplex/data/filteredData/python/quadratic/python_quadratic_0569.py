@@ -16,12 +16,14 @@ def main(n):
         left, right = 1, m
         while left <= m and count < total:
             if count < total:
-                sys.stdout.write(f"{up} {left}\n")
+                # sys.stdout.write(f"{up} {left}\n")
+                pass
             count += 1
             left += 1
 
             if count < total:
-                sys.stdout.write(f"{down} {right}\n")
+                # sys.stdout.write(f"{down} {right}\n")
+                pass
             count += 1
             right -= 1
         up += 1

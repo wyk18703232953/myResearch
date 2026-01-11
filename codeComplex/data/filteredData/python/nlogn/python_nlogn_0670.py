@@ -69,6 +69,7 @@ def main(n_input):
         mid = (l + r) >> 1
         if check(mid):
             r = mid
+
         else:
             l = mid + 1
 
@@ -77,11 +78,13 @@ def main(n_input):
         if c[i] <= l and top[v[i]] < top[u[i]]:
             cnt += 1
 
-    print(f"{l} {cnt}")
+    # print(f"{l} {cnt}")
+    pass
     for i in range(1, m + 1):
         if c[i] <= l and top[v[i]] < top[u[i]]:
-            print(i, end=" ")
-    print()
-
+            # print(i, end=" ")
+            pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(1000)

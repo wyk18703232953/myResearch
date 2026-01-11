@@ -15,10 +15,11 @@ def main(n):
     if 1 <= k <= n:
         target = dp[k - 1]
         cnt = dp.count(target)
-        print(cnt)
+        # print(cnt)
+        pass
+
     else:
-        print(0)
-
-
+        # print(0)
+        pass
 if __name__ == "__main__":
     main(10)

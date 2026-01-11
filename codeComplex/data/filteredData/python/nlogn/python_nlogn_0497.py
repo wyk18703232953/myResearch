@@ -17,11 +17,12 @@ def main(n):
         i += 1
 
     if i >= n and sum_a > m:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(i)
-
-
+        # print(i)
+        pass
 if __name__ == "__main__":
     # Example: run with a moderate n for timing experiments
     main(10_000)

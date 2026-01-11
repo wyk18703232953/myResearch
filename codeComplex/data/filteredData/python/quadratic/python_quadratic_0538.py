@@ -75,7 +75,7 @@ def main(n):
         else:
             out_lines.append("NO")
 
-    stdout.write("\n".join(out_lines))
+    # stdout.write("\n".join(out_lines))
 
 
 if __name__ == "__main__":

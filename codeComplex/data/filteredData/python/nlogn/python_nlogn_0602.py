@@ -13,11 +13,13 @@ def main(n):
     for h in a:
         if p <= h:
             p += 1
+
         else:
             same += 1
     res = a[-1] + same
     result = sum(a) - res
-    print(result)
+    # print(result)
+    pass
     return result
 
 

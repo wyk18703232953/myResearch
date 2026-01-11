@@ -8,7 +8,8 @@ def main(n):
     l.sort(key=lambda x: x[0] + x[1])
 
     if n == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     last = 0
@@ -19,9 +20,8 @@ def main(n):
             last = i
             ans += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for scaling experiments
     main(10)

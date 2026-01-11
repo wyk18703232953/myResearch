@@ -35,9 +35,8 @@ def main(n):
     # 示例构造：A[i] = i // 2 形成一定重复但受控的多重集
     A = [i // 2 for i in range(n)]
     result = find(A)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用，时间复杂度实验时可修改 n
     main(10)

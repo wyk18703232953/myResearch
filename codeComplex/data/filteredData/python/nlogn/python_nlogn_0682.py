@@ -17,8 +17,10 @@ def main(n):
         for i in range(M):
             if maxi == g[i]:
                 continue
+
             else:
                 ans += g[i] - maxi
+
     else:
         ans = M * sum(b)
         b.sort(reverse=True)
@@ -27,12 +29,13 @@ def main(n):
                 # Handle edge case when N < 2
                 if N > 1:
                     ans += g[i] - b[1]
+
                 else:
                     ans += g[i] - b[0]
+
             else:
                 ans += g[i] - b[0]
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

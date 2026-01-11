@@ -21,10 +21,10 @@ def main(n):
             re += g - t
             za[i + 1] = t
             re += a - 1
+
         else:
             re += g
-    print(re)
-
-
+    # print(re)
+    pass
 if __name__ == "__main__":
     main(10)

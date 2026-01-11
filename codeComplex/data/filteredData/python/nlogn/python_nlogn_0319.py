@@ -21,10 +21,11 @@ def main(n):
                 j = ml[j - 1]
 
     if k % 2 == 0:
-        print("Petr")
+        # print("Petr")
+        pass
+
     else:
-        print("Um_nik")
-
-
+        # print("Um_nik")
+        pass
 if __name__ == "__main__":
     main(10)

@@ -11,6 +11,7 @@ def main(n):
     degrees = []
     if n == 1:
         degrees = [1]
+
     else:
         degrees = [2] + [2 + (i % 3) for i in range(n - 1)]
 
@@ -24,20 +25,30 @@ def main(n):
             one_deg_count += 1
     if one_deg_count == len(a):  # only 1-degree vertices
         if one_deg_count == 2:
-            print("YES", 1)  # result, diameter
-            print(1)  # edge count
-            print(1, 2)  # edge info
+            # print("YES", 1)# result, diameter  
+            pass
+            # print(1)# edge count  
+            pass
+            # print(1, 2)# edge info  
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
         return
     elif one_deg_count == len(a) - 1:  # one multi-degree vertex and n-1 1-degree vertices
         if one_deg_count <= a[0][1]:
-            print("YES", 2)  # star-shaped graph
-            print(one_deg_count)
+            # print("YES", 2)# star-shaped graph  
+            pass
+            # print(one_deg_count)
+            pass
             for i in range(one_deg_count):
-                print(a[0][0], a[-i - 1][0])
+                # print(a[0][0], a[-i - 1][0])
+                pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
         return
     else:  # more than one multi-degree vertices
         spare_edges = 2
@@ -63,12 +74,16 @@ def main(n):
                 a[idx][1] -= 1
                 if a[idx][1] <= 0:
                     idx += 1
-            print("YES", diameter)
-            print(len(edge_list))
+            # print("YES", diameter)
+            pass
+            # print(len(edge_list))
+            pass
             for i in edge_list:
-                print(i[0], i[1])
-        else:
-            print("NO")  # impossible
+                # print(i[0], i[1])
+                pass
 
+        else:
+            # print("NO")# impossible  
+            pass
 if __name__ == "__main__":
     main(5)

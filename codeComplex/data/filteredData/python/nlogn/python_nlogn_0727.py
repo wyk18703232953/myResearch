@@ -13,50 +13,73 @@ def main(n):
     b.sort()
     if (b[0][0] == b[1][0] and b[1][0] == b[2][0]):
         if (b[0] == b[1] and b[1] == b[2]):
-            print(0)
+            # print(0)
+            pass
         elif (b[0][1] + 1 == b[1][1] and b[1][1] + 1 == b[2][1]):
-            print(0)
+            # print(0)
+            pass
         elif (b[0] == b[1]):
-            print(1)
+            # print(1)
+            pass
         elif (b[1] == b[2]):
-            print(1)
+            # print(1)
+            pass
         elif b[0][1] + 1 == b[1][1]:
-            print(1)
+            # print(1)
+            pass
         elif b[0][1] + 2 == b[1][1]:
-            print(1)
+            # print(1)
+            pass
         elif b[1][1] + 1 == b[2][1]:
-            print(1)
+            # print(1)
+            pass
         elif b[1][1] + 2 == b[2][1]:
-            print(1)
+            # print(1)
+            pass
         elif b[0][1] + 1 == b[2][1]:
-            print(1)
+            # print(1)
+            pass
         elif b[0][1] + 2 == b[2][1]:
-            print(1)
+            # print(1)
+            pass
+
         else:
-            print(2)
+            # print(2)
+            pass
     elif (b[0][0] != b[1][0] and b[1][0] != b[2][0] and b[2][0] != b[0][0]):
-        print(2)
+        # print(2)
+        pass
     elif b[0][0] == b[1][0]:
         if b[0] == b[1]:
-            print(1)
+            # print(1)
+            pass
         elif b[0][1] + 1 == b[1][1]:
-            print(1)
+            # print(1)
+            pass
         elif b[0][1] + 2 == b[1][1]:
-            print(1)
+            # print(1)
+            pass
+
         else:
-            print(2)
+            # print(2)
+            pass
     elif b[1][0] == b[2][0]:
         if (b[1] == b[2]):
-            print(1)
+            # print(1)
+            pass
         elif b[1][1] + 1 == b[2][1]:
-            print(1)
+            # print(1)
+            pass
         elif b[1][1] + 2 == b[2][1]:
-            print(1)
+            # print(1)
+            pass
+
         else:
-            print(2)
+            # print(2)
+            pass
+
     else:
-        print(2)
-
-
+        # print(2)
+        pass
 if __name__ == "__main__":
     main(1)

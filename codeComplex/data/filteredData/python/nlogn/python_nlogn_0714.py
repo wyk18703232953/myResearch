@@ -10,10 +10,13 @@ def main(n):
     if n == 1:
         if stones[0] % 2 == 0:
             result = 'cslnb'
+
         else:
             result = 'sjfnb'
-        print(result)
+        # print(result)
+        pass
         return result
+
     else:
         chilly = -1
         chill = 2
@@ -23,6 +26,7 @@ def main(n):
             if x == prev:
                 chill -= 1
                 chilly = x
+
             else:
                 streak = 1
                 prev = x
@@ -38,10 +42,12 @@ def main(n):
             result = 'cslnb'
         elif s % 2 == 1:
             result = 'cslnb'
+
         else:
             result = 'sjfnb'
 
-        print(result)
+        # print(result)
+        pass
         return result
 
 

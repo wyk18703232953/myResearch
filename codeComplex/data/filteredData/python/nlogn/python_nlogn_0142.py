@@ -1,7 +1,8 @@
 def main(n):
     # n 表示数组长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成 k 和数组 l
@@ -18,8 +19,7 @@ def main(n):
             res.add(i)
         elif i // k not in res:
             res.add(i)
-    print(len(res))
-
-
+    # print(len(res))
+    pass
 if __name__ == "__main__":
     main(10)

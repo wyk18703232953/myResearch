@@ -6,10 +6,11 @@ def main(n):
         if lis[i] != sor[i]:
             cnt += 1
     if cnt > 2:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
     main(10)

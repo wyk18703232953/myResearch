@@ -14,9 +14,11 @@ def main(n):
     for i in range(1, n):
         if piles[i] == num:
             count += 1
+
         else:
             if count > 2:
-                print('cslnb')
+                # print('cslnb')
+                pass
                 return
             elif count == 2:
                 two_num = num
@@ -29,20 +31,24 @@ def main(n):
             two_num = num
             two += 1
         if count > 2:
-            print('cslnb')
+            # print('cslnb')
+            pass
             return
     if two > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
         return
 
     if two == 1:
         if (two_num - 1) in piles:
-            print('cslnb')
+            # print('cslnb')
+            pass
             return
 
     if n >= 2:
         if piles[0] == piles[1] and piles[0] == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
             return
 
     moves = 0
@@ -62,11 +68,12 @@ def main(n):
         moves += 1
 
     if moves % 2 != 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
-        print('sjfnb')
-
-
+        # print('sjfnb')
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n to scale input size
     main(10)

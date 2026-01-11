@@ -8,7 +8,8 @@ def main(n):
         c.append((a, b, i))
 
     if n == 0:
-        print(-1, -1)
+        # print(-1, -1)
+        pass
         return
 
     c.sort(key=lambda x: (x[0], -x[1]))
@@ -21,11 +22,11 @@ def main(n):
             an2 = b + 1
             an1 = c[i][2] + 1
             break
+
         else:
             a = c[i][1]
             b = c[i][2]
-    print(an1, an2)
-
-
+    # print(an1, an2)
+    pass
 if __name__ == "__main__":
     main(10)

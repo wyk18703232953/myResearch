@@ -30,8 +30,7 @@ def main(n):
     out = []
     for i in range(n):
         out.append(str(ans[i]))
-    print(' '.join(out))
-
-
+    # print(' '.join(out))
+    pass
 if __name__ == "__main__":
     main(10)

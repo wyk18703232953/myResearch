@@ -7,41 +7,53 @@ def main(n):
     a.sort()
     if len(a) == 1:
         if a[0] % 2 == 1:
-            print('sjfnb')
+            # print('sjfnb')
+            pass
+
         else:
-            print('cslnb')
+            # print('cslnb')
+            pass
     elif a[0] == a[1] == 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
         x = False
         for i in range(2, n):
             if a[i] == a[i - 1] and a[i - 1] == a[i - 2]:
                 x = True
         if x:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
             x = False
             for i in range(2, n):
                 if a[i] == a[i - 1] and a[i] - 1 == a[i - 2]:
                     x = True
             if x:
-                print('cslnb')
+                # print('cslnb')
+                pass
+
             else:
                 summ = 0
                 for i in range(1, n):
                     if a[i] == a[i - 1]:
                         summ += 1
                 if summ > 1:
-                    print('cslnb')
+                    # print('cslnb')
+                    pass
+
                 else:
                     summ = 0
                     for i in range(n):
                         summ += a[i] - i
                     if summ % 2 == 0:
-                        print('cslnb')
+                        # print('cslnb')
+                        pass
+
                     else:
-                        print('sjfnb')
-
-
+                        # print('sjfnb')
+                        pass
 if __name__ == "__main__":
     main(10)

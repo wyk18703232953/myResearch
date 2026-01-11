@@ -8,6 +8,7 @@ def gC(m, a, n):
         if a[i] < m:
             cur -= 1
             ad -= s[cur]
+
         else:
             ad += s[cur]
             cur += 1
@@ -27,4 +28,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的大小进行实验
-    print(main(10))
+    # print(main(10))
+    pass

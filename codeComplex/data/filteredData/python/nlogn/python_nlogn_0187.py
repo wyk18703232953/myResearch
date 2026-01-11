@@ -1,7 +1,8 @@
 def main(n):
     N = n
     if N <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic data generation: A is a list of length N
@@ -27,9 +28,8 @@ def main(n):
             n_local += cnt[b]
             tmp -= b * cnt[b]
         ans += tmp - a * (N - 1 - i - n_local)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different input scales
     main(10)

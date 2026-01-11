@@ -23,12 +23,13 @@ def main(n):
             heapq.heappop(idx)
             res.append(l[1])
             heapq.heapush(ones, [-l[0], l[1]])
+
         else:
             l = ones[0]
             heapq.heappop(ones)
             res.append(l[1])
     res = ' '.join(str(i) for i in res)
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

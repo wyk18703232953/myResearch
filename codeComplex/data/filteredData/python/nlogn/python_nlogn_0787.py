@@ -2,7 +2,8 @@ def main(n):
     # 规模含义：
     # n: 数组长度
     if n <= 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成 k 和数组 arr
@@ -19,8 +20,7 @@ def main(n):
     k -= 1
     arr_new = sorted([arr[i + 1] - arr[i] for i in range(n - 1)], reverse=True)
     result = arr[-1] - arr[0] - sum(arr_new[:k])
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -34,6 +34,7 @@ def generate_p(n):
     for i in range(1, n + 1):
         if i % 3 == 0:
             p[i] = -1
+
         else:
             p[i] = (i * 7) % n + 1 if n > 0 else 1
 
@@ -55,12 +56,14 @@ def main(n):
     for i in range(1, n + 1):
         if p[i] > 0:
             dd[p[i]] = 1
+
         else:
             cnt += 1
 
     for i in range(1, n + 1):
         if dd[i] == 0:
             s[i] = s[i - 1] + 1
+
         else:
             s[i] = s[i - 1]
 
@@ -70,6 +73,7 @@ def main(n):
     for i in range(1, n + 1):
         if p[i] == -1:
             cnt1 += 1
+
         else:
             u = cnt - cnt1
             if cnt != 0:
@@ -92,7 +96,7 @@ def main(n):
 
     P = (P + P1) % K
 
-    print(P)
-
+    # print(P)
+    pass
 if __name__ == "__main__":
     main(1000)

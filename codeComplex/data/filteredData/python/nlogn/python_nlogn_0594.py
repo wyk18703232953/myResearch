@@ -18,8 +18,7 @@ def main(n):
         worst = max(worst, bad)
     result = sum(a) - n - worst
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

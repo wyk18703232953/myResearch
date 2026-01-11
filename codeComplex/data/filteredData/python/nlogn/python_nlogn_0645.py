@@ -37,8 +37,7 @@ def main(n):
             ans = min(ans, m - k + i)
             break
         ans = min(ans, m - k + i)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

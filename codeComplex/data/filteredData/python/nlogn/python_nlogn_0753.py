@@ -16,6 +16,7 @@ def main(n):
                 if a[i] and a[i] != a[i - 1] + 1:
                     a[i] -= 1
                     break
+
                 else:
                     return "cslnb"
     return ["cslnb", "sjfnb"][(sum(a) - t - n * (n - 1) // 2) & 1]
@@ -24,4 +25,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     result = main(10)
-    print(result)
+    # print(result)
+    pass

@@ -6,10 +6,11 @@ def main(n):
     a = set(a)
     a = list(sorted(list(a)))
     if len(a) == 1:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print(a[1])
-
-
+        # print(a[1])
+        pass
 if __name__ == "__main__":
     main(10)

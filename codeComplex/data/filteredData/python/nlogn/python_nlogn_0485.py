@@ -47,10 +47,10 @@ def main(n):
         if isValid(mid, a, n_param, m):
             ans = mid
             l = mid + 1
+
         else:
             h = mid - 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

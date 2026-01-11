@@ -26,13 +26,13 @@ def main(n):
 
         if s[i - 1] > m:
             f[i] = f[i - 1] - 1
+
         else:
             f[i] = f[i - 1] + 1
 
         res += count[f[i]] + count[f[i] - 1]
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

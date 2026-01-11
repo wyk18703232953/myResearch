@@ -37,8 +37,7 @@ def main(n):
         while j < m and h[j] < v[i]:
             j += 1
         mina = min(mina, i + m - j)
-    print(mina)
-
-
+    # print(mina)
+    pass
 if __name__ == "__main__":
     main(10)

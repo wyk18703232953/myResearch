@@ -18,13 +18,15 @@ def main(n):
     for i in range(1, upper_k + 1):
         c.append(b[-i])
         total += b[-i]
-    print(total)
+    # print(total)
+    pass
 
     d = []
     for i in range(n):
         if a[i] in c:
             d.append(i)
             c.remove(a[i])
+
         else:
             pass
     d.insert(0, -1)
@@ -32,8 +34,7 @@ def main(n):
     e = []
     for i in range(1, len(d)):
         e.append(d[i] - d[i - 1])
-    print(" ".join(map(str, e)))
-
-
+    # print(" ".join(map(str, e)))
+    pass
 if __name__ == "__main__":
     main(10)

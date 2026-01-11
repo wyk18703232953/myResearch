@@ -25,9 +25,9 @@ def main(n):
             return [i]
 
     lst = solve()
-    print(len(lst))
-    print(*lst)
-
-
+    # print(len(lst))
+    pass
+    # print(*lst)
+    pass
 if __name__ == "__main__":
     main(10)

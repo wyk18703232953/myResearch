@@ -2,6 +2,7 @@ def nod(a, b):
     while ((a != 0) and (b != 0)):
         if (a > b):
             a = a % b
+
         else:
             b = b % a
     return a + b
@@ -13,6 +14,7 @@ def point3(x1, y1, x2, y2, x3, y3):
     dy13 = y3 - y1
     if ((dx12 * dx13 + dy12 * dy13) == 0):
         return True
+
     else:
         return False
 
@@ -30,7 +32,9 @@ def main(n):
     points = generate_points(n)
     lstline = []
     if (n <= 4):
-        print('YES')
+        # print('YES')
+        pass
+
     else:
         lst5 = []
         for j in range(5):
@@ -53,7 +57,9 @@ def main(n):
                 if not(point3(l1x1, l1y1, l1x2, l1y2, lst5[j][0], lst5[j][1])):
                     lstline = lstline + [[lst5[j][0], lst5[j][1]]]
         if (ok):
-            print('NO')
+            # print('NO')
+            pass
+
         else:
             res = 'YES'
             ok1 = True
@@ -76,7 +82,7 @@ def main(n):
                     okey2 = point3(l2x1, l2y1, l2x2, l2y2, mas[0], mas[1])
                     if (not(okey2)):
                         res = 'NO'
-            print(res)
-
+            # print(res)
+            pass
 if __name__ == "__main__":
     main(10)

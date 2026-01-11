@@ -12,6 +12,7 @@ def main(n):
     # This creates repeated values with controlled frequencies
     if n_items == 1:
         A = [1] * m
+
     else:
         base = n_items // 2 + 1
         A = [(i % base) + 1 for i in range(m)]
@@ -31,11 +32,11 @@ def main(n):
         c = (ok + ng) // 2
         if is_ok(c):
             ok = c
+
         else:
             ng = c
 
-    print(ok)
-
-
+    # print(ok)
+    pass
 if __name__ == "__main__":
     main(10)

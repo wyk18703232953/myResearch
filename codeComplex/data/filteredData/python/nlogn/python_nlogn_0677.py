@@ -21,7 +21,8 @@ def main(n):
     i = 0
     for girl in girls_in:
         if girl < max_boy:
-            print(-1)
+            # print(-1)
+            pass
             return
 
         if girl > max_boy:
@@ -29,13 +30,13 @@ def main(n):
                 count = 0
                 i += 1
             if i >= n:
-                print(-1)
+                # print(-1)
+                pass
                 return
             ans += girl - boys_out[i]
             count += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

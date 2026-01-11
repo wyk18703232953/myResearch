@@ -29,7 +29,7 @@ def main(n):
                 for j in range(orig_m):
                     out_lines.append(f"{x1} {orig_m-j}")
                     out_lines.append(f"{x2} {j+1}")
-    sys.stdout.write("\n".join(out_lines) + ("\n" if out_lines else ""))
+    # sys.stdout.write("\n".join(out_lines) + ("\n" if out_lines else ""))
 
 if __name__ == "__main__":
     main(5)

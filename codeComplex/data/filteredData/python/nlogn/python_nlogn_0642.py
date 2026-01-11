@@ -29,7 +29,7 @@ def main(n):
         if cur_blockers < min_blockers:
             min_blockers = cur_blockers
 
-    print(min_blockers)
-
+    # print(min_blockers)
+    pass
 if __name__ == "__main__":
     main(1000)

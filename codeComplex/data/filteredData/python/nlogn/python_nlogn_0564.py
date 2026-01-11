@@ -6,7 +6,9 @@ def main(n):
         # 当原程序 input()=='1' 时，第二次 input() 是任意字符串，这里构造为确定性的
         # 构造一个长度为 n 的确定性字符串
         s = ''.join(chr(97 + (i % 26)) for i in range(n))
-        print(s)
+        # print(s)
+        pass
+
     else:
         # 当原程序 input()!='1' 时，第二次 input() 是一行整数
         # 使用 n 作为列表长度规模，构造一个确定性的整数列表
@@ -15,8 +17,7 @@ def main(n):
         # 保持原程序逻辑
         x, *a, y = sorted(arr)
         result = y - x + sum(map(abs, a))
-        print(result)
-
-
+        # print(result)
+        pass
 if __name__ == "__main__":
     main(10)

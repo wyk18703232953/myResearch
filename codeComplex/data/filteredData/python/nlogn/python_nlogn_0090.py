@@ -3,7 +3,8 @@ def main(n):
     # n: 数组长度
     # a, b 由 n 确定性构造，且满足 1 <= b <= n, 1 <= a <= n-b+1
     if n < 2:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造参数 a, b
@@ -24,11 +25,12 @@ def main(n):
             r = c[i]
             break
     if ok:
-        print(r - l)
+        # print(r - l)
+        pass
+
     else:
-        print(0)
-
-
+        # print(0)
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 以进行规模实验
     main(10)

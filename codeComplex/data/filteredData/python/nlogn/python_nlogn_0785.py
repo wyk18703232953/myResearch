@@ -16,8 +16,7 @@ def main(n):
     delta = [-a[i] + a[i - 1] for i in range(1, n)]
     delta.sort()
     ans += sum(delta[:(k - 1)])
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

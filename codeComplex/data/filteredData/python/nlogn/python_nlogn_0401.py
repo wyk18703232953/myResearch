@@ -22,10 +22,10 @@ def main(n):
         a, b, u, v = x + dx, y + dy, x - dx, y - dy
         if hypot(a, b) < hypot(u, v):
             x, y = a, b
+
         else:
             x, y, res[i] = u, v, '-1'
-    print(' '.join(res))
-
-
+    # print(' '.join(res))
+    pass
 if __name__ == "__main__":
     main(10)

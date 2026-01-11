@@ -21,7 +21,8 @@ def main(n):
     mab = max(b)
     mig = min(g)
     if mab > mig:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     b = sorted(b, reverse=True)
@@ -39,8 +40,7 @@ def main(n):
             k += 1
         num += b[i] * (m - k)
 
-    print(num)
-
-
+    # print(num)
+    pass
 if __name__ == "__main__":
     main(10)

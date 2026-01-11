@@ -28,10 +28,11 @@ def main(n):
         win = (sum(a) - (n * (n - 1) // 2)) % 2 == 1
 
     if win:
-        print('sjfnb')
+        # print('sjfnb')
+        pass
+
     else:
-        print('cslnb')
-
-
+        # print('cslnb')
+        pass
 if __name__ == "__main__":
     main(10)

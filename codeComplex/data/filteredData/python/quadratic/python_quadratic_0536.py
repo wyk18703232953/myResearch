@@ -112,4 +112,4 @@ def main(n):
         pass
 if __name__ == "__main__":
     # 示例：可以在这里手动指定规模进行快速运行
-    main(10)
+    main(100)

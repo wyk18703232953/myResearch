@@ -27,6 +27,7 @@ def div(n):
         if n % i == 0:
             if i != n // i:
                 cnt += 2
+
             else:
                 cnt += 1
     return cnt
@@ -36,6 +37,7 @@ def isPrime(n):
         return False
     elif n <= 2:
         return True
+
     else:
         flag = True
         for i in range(2, int(n ** 0.5) + 1):
@@ -80,7 +82,7 @@ def core_logic(n, k, arr):
 def main(n):
     n, k, arr = generate_data(n)
     result = core_logic(n, k, arr)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

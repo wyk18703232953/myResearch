@@ -37,9 +37,8 @@ def main(n):
             hi += 1
         res = min(res, vi + hsl - hi)
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # Example call for testing / timing
     main(1000)

@@ -25,4 +25,5 @@ def main(n):
 	return answer
 
 if __name__ == "__main__":
-	print(main(10))
+	# print(main(10))
+	pass

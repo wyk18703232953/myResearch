@@ -21,8 +21,7 @@ def main(n):
         count += 1
 
     result = -1 if size > m else count
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

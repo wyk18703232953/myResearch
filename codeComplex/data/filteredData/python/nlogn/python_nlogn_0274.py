@@ -11,16 +11,18 @@ def main(n):
 
     for i in range(n - 1):
         if a[i][0] == a[i + 1][0]:
-            print(str(a[i][2]) + ' ' + str(a[i + 1][2]))
+            # print(str(a[i][2]) + ' ' + str(a[i + 1][2]))
+            pass
             break
 
         if a[i][1] >= a[i + 1][1]:
-            print(str(a[i + 1][2]) + ' ' + str(a[i][2]))
+            # print(str(a[i + 1][2]) + ' ' + str(a[i][2]))
+            pass
             break
+
     else:
-        print('-1 -1')
-
-
+        # print('-1 -1')
+        pass
 if __name__ == "__main__":
     # Example deterministic call for time complexity experiments
     main(10)

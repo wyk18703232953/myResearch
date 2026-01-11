@@ -14,9 +14,10 @@ def main(n):
             s = s - a[i]
             if d.get(s) is not None and ((d[s] == 1 and s != a[i]) or d[s] >= 2):
                 break
+
         else:
             ans += 1
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

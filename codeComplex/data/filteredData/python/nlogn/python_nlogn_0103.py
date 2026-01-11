@@ -6,10 +6,11 @@ def main(n):
         if l[i] != l1[i]:
             c += 1
     if c <= 2:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

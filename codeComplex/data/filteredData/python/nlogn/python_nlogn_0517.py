@@ -18,6 +18,7 @@ def cleanarr(arr):
             if curr[1] >= 2:
                 c.append(curr)
             curr = [arr[i + 1], 1]
+
         else:
             curr[1] += 1
     if curr[1] >= 2:
@@ -34,10 +35,14 @@ def run_single_case(n):
             if c[i][1] >= 4:
                 f = c[i][0]
                 break
-        print(f, " ")
-        print(f, " ")
-        print(f, " ")
-        print(f, "\n")
+        # print(f, " ")
+        pass
+        # print(f, " ")
+        pass
+        # print(f, " ")
+        pass
+        # print(f, "\n")
+        pass
         return
     mi = 10**18
     pair = [-1, -1]
@@ -55,10 +60,14 @@ def run_single_case(n):
             continue
         if ((((pair[0] + pair[1]) ** 2) * a * b) - (((a + b) ** 2) * pair[0] * pair[1]) > 0):
             pair = [a, b]
-    print(pair[0], " ")
-    print(pair[0], " ")
-    print(pair[1], " ")
-    print(pair[1], "\n")
+    # print(pair[0], " ")
+    pass
+    # print(pair[0], " ")
+    pass
+    # print(pair[1], " ")
+    pass
+    # print(pair[1], "\n")
+    pass
 
 def main(n):
     t = 3

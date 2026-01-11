@@ -20,10 +20,10 @@ def main(n):
                 mxSiz = 2
                 ans = [x - y, x]
 
-    print(mxSiz)
-    print(*ans)
-
-
+    # print(mxSiz)
+    pass
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 以进行时间复杂度实验
     main(100000)

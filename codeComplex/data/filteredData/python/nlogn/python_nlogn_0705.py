@@ -20,16 +20,18 @@ def main(n):
                     or (k >= 2 and l[k] == l[k - 2] + 1)
                 ):
                     return False
+
                 else:
                     dou = True
         return (sum(l) - (n * (n - 1)) // 2) % 2
 
     if f(l, n):
-        print("sjfnb")
+        # print("sjfnb")
+        pass
+
     else:
-        print("cslnb")
-
-
+        # print("cslnb")
+        pass
 if __name__ == "__main__":
     # Example deterministic call for time-complexity experiments
     main(10)

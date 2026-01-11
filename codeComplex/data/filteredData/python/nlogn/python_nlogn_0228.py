@@ -116,6 +116,7 @@ def primeFactor(n):
             while n > 1:
                 if isPrimeMR(n):
                     ret[n], n = 1, 1
+
                 else:
                     rhoFlg = 1
                     j = findFactorRho(n)
@@ -150,6 +151,7 @@ def xorfactorial(num):
         return 3
     elif num==3:
         return 0
+
     else:
         x=baseorder(num)
         return (2**x)*((num-2**x+1)%2)+function(num-2**x)
@@ -179,6 +181,7 @@ def merge_sort(A,B):
         if a < b:
             res.append(a)
             pos_A += 1
+
         else:
             res.append(b)
             pos_B += 1
@@ -212,6 +215,7 @@ class UnionFindVerSize():
         if self._size[gx] < self._size[gy]:
             self._parent[gx] = gy
             self._size[gy] += self._size[gx]
+
         else:
             self._parent[gy] = gx
             self._size[gx] += self._size[gy]
@@ -254,6 +258,7 @@ class WeightedUnionFind():
             self.size[x] += self.size[y]
             self.val[y] = self.val[x] - w
             self.dfs(y,x)
+
         else:
             self.edge[x].append((y,-w))
             self.edge[y].append((x,w))
@@ -358,6 +363,7 @@ class dancinglink():
         if L!=-1:
             if R!=self.n:
                 self._right[L],self._left[R] = R,L
+
             else:
                 self._right[L] = self.n
         elif R!=self.n:
@@ -425,12 +431,15 @@ class BinaryTrie:
                 if pos.right is None:
                     pos.right = self.node(val)
                     pos = pos.right
+
                 else:
                     pos = pos.right
+
             else:
                 if pos.left is None:
                     pos.left = self.node(val)
                     pos = pos.left
+
                 else:
                     pos = pos.left
         pos.max = max(pos.max,val)
@@ -447,13 +456,16 @@ class BinaryTrie:
                     if pos.right:
                         res = max(res,pos.right.max)
                     pos = pos.left
+
                 else:
                     if pos.left:
                         res = max(res,pos.left.max)
                     pos = pos.right
+
             else:
                 if xor>>i & 1:
                     pos = pos.right
+
                 else:
                     pos = pos.left
 
@@ -473,6 +485,7 @@ def solveequation(edge,ans,n,m):
             y=dfs(to)
             if dire==-1:
                 x[id]=y
+
             else:
                 x[id]=-y
             r+=y
@@ -547,6 +560,7 @@ class Matrix():
                         temp+=self._matrix[i][k]*other._matrix[k][j]
                     res[i][j]=temp%Matrix.mod
             return Matrix(res)
+
         else:
             n=other
             res=[[(n*self._matrix[i][j])%Matrix.mod for j in range(self.column)] for i in range(self.row)]
@@ -586,9 +600,11 @@ def solve(n,X,Y):
                 a = i
             elif b==-1:
                 b = i
+
             else:
                 if not check(a,i,b):
                     break
+
     else:
         return True
     a,b = -1,-1
@@ -598,9 +614,11 @@ def solve(n,X,Y):
                 a = i
             elif b==-1:
                 b = i
+
             else:
                 if not check(a,i,b):
                     break
+
     else:
         return True
     a,b = -1,-1
@@ -610,9 +628,11 @@ def solve(n,X,Y):
                 a = i
             elif b==-1:
                 b = i
+
             else:
                 if not check(a,i,b):
                     break
+
     else:
         return True
     return False
@@ -623,7 +643,7 @@ def main(n):
     X = [i for i in range(n)]
     Y = [(i*i + 3*i) for i in range(n)]
     res = solve(n,X,Y)
-    print("YES" if res else "NO")
-
+    # print("YES" if res else "NO")
+    pass
 if __name__ == "__main__":
     main(10)

@@ -26,7 +26,7 @@ def main(n):
     x = [2 * (i + 1) for i in range(n)]
     a = [(i % 5) + 1 for i in range(n)]
     result = solve(n, t, x, a)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

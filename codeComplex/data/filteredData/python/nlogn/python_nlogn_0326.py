@@ -22,10 +22,11 @@ def main(n):
                 now = dic[now]
                 vis[now] = 1
     if (3 * n - sm) % 2 == 0:
-        print(p)
+        # print(p)
+        pass
+
     else:
-        print(u)
-
-
+        # print(u)
+        pass
 if __name__ == "__main__":
     main(10)

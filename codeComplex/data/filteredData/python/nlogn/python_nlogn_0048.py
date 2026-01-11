@@ -60,6 +60,7 @@ def get_frequency(lst):
     for ele in lst:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -117,10 +118,11 @@ def main(n):
     a.sort()
     if a[n-1]==1:
         a[n-1]=2
+
     else:
         a[n-1]=1
     a.sort()
-    print(*a)
-
+    # print(*a)
+    pass
 if __name__ == "__main__":
     main(10)

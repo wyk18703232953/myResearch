@@ -11,8 +11,7 @@ def main(n):
         if int(sum1 / 2) >= sum2:
             sum2 = sum2 + list1[i]
             count = count + 1
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(10)

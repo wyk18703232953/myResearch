@@ -10,19 +10,32 @@ def main(n):
         if x1 == x2:
             for j in range(m // 2 + m % 2):
                 if j + 1 == m - j:
-                    sys.stdout.write(str(x1) + " " + str(j + 1) + "\n")
+                    # sys.stdout.write(str(x1) + " " + str(j + 1) + "\n")
+                    pass
 
                 else:
-                    sys.stdout.write(str(x1) + " " + str(j + 1) + "\n")
-                    sys.stdout.write(str(x2) + " " + str(m - j) + "\n")
+                    # sys.stdout.write(str(x1) + " " + str(j + 1) + "\n")
+                    pass
+                    # sys.stdout.write(str(x2) + " " + str(m - j) + "\n")
+                    pass
 
         else:
             if i % 2 == 0:
                 for j in range(m):
-                    sys.stdout.write(str(x1) + " " + str(j + 1) + "\n")
-                    sys.stdout.write(str(x2) + " " + str(m - j) + "\n")
+                    # sys.stdout.write(str(x1) + " " + str(j + 1) + "\n")
+                    pass
+                    # sys.stdout.write(str(x2) + " " + str(m - j) + "\n")
+                    pass
 
             else:
                 for j in range(m):
-                    sys.stdout.write(str(x1) + " " + str(m - j) + "\n")
-                    sys.stdout.write(str(x2) + " " + str(j + 1) + "\n")
+                    # sys.stdout.write(str(x1) + " " + str(m - j) + "\n")
+                    pass
+                    # sys.stdout.write(str(x2) + " " + str(j + 1) + "\n")
+                    pass
+
+
+
+if __name__ == "__main__":
+    # 示例：调用 main(3) 以生成测试数据并输出
+    main(3)

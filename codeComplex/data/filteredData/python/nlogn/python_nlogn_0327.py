@@ -22,15 +22,20 @@ def main(n):
 
     if n % 2 == 1:
         if tot % 2 == 1:
-            print('Petr')
+            # print('Petr')
+            pass
+
         else:
-            print('Um_nik')
+            # print('Um_nik')
+            pass
+
     else:
         if tot % 2 == 0:
-            print('Petr')
+            # print('Petr')
+            pass
+
         else:
-            print('Um_nik')
-
-
+            # print('Um_nik')
+            pass
 if __name__ == "__main__":
     main(10)

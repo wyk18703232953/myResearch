@@ -14,7 +14,8 @@ def main(n):
             a, b = divmod(N * M - i // 2, M)
         Ans[i - 1] = (a + 1, b + 1)
     for a in Ans:
-        sys.stdout.write('{} {}\n'.format(*a))
+        # sys.stdout.write('{} {}\n'.format(*a))
+        pass
 
 
 if __name__ == "__main__":

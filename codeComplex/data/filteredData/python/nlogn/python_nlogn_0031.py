@@ -10,9 +10,11 @@ def main(n):
         if x not in unique_list:
             unique_list.append(x)
     if len(unique_list) == 1:
-        print("NO")
-    else:
-        print(secondorder(unique_list, size))
+        # print("NO")
+        pass
 
+    else:
+        # print(secondorder(unique_list, size))
+        pass
 if __name__ == "__main__":
     main(10)

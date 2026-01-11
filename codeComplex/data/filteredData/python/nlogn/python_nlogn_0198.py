@@ -26,7 +26,8 @@ def main(n):
     # values grow moderately to keep them in a reasonable range
     array = [(i * 2) % (10 ** 6) for i in range(1, n + 1)]
     result = almost_difference(array)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

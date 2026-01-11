@@ -24,8 +24,7 @@ def main(n):
         fre += 1
         total_sum += l[i]
         d[l[i]] += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

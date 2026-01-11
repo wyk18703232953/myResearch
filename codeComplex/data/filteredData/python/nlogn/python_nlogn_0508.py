@@ -32,16 +32,18 @@ def main(n):
     iterador = 0
 
     if sinComprimir <= b[1]:
-        print("0")
+        # print("0")
+        pass
     elif comprimido > b[1]:
-        print("-1")
+        # print("-1")
+        pass
+
     else:
         while newTotal > b[1] and iterador < len(invDifference):
             iterador = iterador + 1
             newTotal = newTotal - invDifference[iterador - 1]
             iteraciones += 1
-        print(iteraciones)
-
-
+        # print(iteraciones)
+        pass
 if __name__ == "__main__":
     main(10)

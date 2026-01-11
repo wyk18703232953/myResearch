@@ -14,7 +14,8 @@ def main(n):
 
     # Core logic from original program
     if k == 1:
-        print(original_n)
+        # print(original_n)
+        pass
         return
 
     a.sort()
@@ -27,6 +28,7 @@ def main(n):
         if x % k == 0 and int(x / k) in a:
             b[x] = b[int(x / k)]
             count[b[int(x / k)]] += 1
+
         else:
             b[x] = x
             count[x] = 1
@@ -35,8 +37,7 @@ def main(n):
     for _, y in count.items():
         result -= int(y / 2)
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

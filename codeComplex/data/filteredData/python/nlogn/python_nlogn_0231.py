@@ -8,7 +8,8 @@ def main(n):
     A = [[i, (i * i) % modv] for i in range(n)]
 
     if n <= 4:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     def is_colinear(a1, a2, a3):
@@ -43,11 +44,11 @@ def main(n):
         return True
 
     if good(X, Y) or good(Y, Z) or good(X, Z):
-        print("YES")
+        # print("YES")
+        pass
         return
 
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     main(10)

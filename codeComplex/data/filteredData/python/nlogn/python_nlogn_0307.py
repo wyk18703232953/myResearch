@@ -12,12 +12,14 @@ def main(n):
         if stack_balance == 0:
             pa.append(0)
             stack_balance += 1
+
         else:
             # Alternate deterministically based on index parity
             if (i % 2 == 0) or (n - i <= stack_balance):
                 pa.append(1)
                 stack_balance -= 1
                 ones_used += 1
+
             else:
                 pa.append(0)
                 stack_balance += 1
@@ -32,11 +34,11 @@ def main(n):
             out.append(str(bus[tail][1]))
             seq.append(tail)
             tail += 1
+
         else:
             v = seq.pop()
             out.append(str(bus[v][1]))
-    print(" ".join(out))
-
-
+    # print(" ".join(out))
+    pass
 if __name__ == "__main__":
     main(10)

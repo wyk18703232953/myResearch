@@ -20,9 +20,8 @@ def main(n):
         elif gap == T:
             count += 1
 
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(10)

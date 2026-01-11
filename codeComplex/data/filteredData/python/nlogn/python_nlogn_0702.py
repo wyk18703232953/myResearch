@@ -16,11 +16,13 @@ def main(n):
         if i in d:
             if t[i] + 1 == 3:
                 return "cslnb"
+
             else:
                 t[i] += 1
                 rep.add(i)
                 if len(rep) >= 2:
                     return "cslnb"
+
         else:
             t[i] = 1
             d.add(i)
@@ -37,6 +39,7 @@ def main(n):
 
     if s % 2 == 1:
         return "sjfnb"
+
     else:
         return "cslnb"
 
@@ -45,4 +48,5 @@ if __name__ == "__main__":
     # Example deterministic calls for experimentation
     for size in [1, 2, 5, 10, 20]:
         result = main(size)
-        print(size, result)
+        # print(size, result)
+        pass

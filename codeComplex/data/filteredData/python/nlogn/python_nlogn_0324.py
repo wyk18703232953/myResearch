@@ -8,6 +8,7 @@ def main(n):
     for index in range(n):
         if index in visited:
             continue
+
         else:
             visited.add(index)
             length = 0
@@ -19,10 +20,11 @@ def main(n):
             swaps += length
 
     if (3 * n - swaps) % 2:
-        print("Um_nik")
+        # print("Um_nik")
+        pass
+
     else:
-        print("Petr")
-
-
+        # print("Petr")
+        pass
 if __name__ == "__main__":
     main(10)

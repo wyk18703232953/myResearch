@@ -13,6 +13,7 @@ def kstr(xy1, xy2):
         return str(x) + '/y'
     elif dy == 0:
         return 'x/' + str(y)
+
     else:
         g = gcd(dx, dy)
         dx //= g
@@ -66,12 +67,12 @@ def generate_points(n):
 def main(n):
     # n 表示点的数量
     if n <= 0:
-        print('YES')
+        # print('YES')
+        pass
         return
     xy_a = generate_points(n)
     res = pair_of_lines(n, xy_a)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

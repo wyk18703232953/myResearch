@@ -26,7 +26,8 @@ def main(n):
     # Deterministic data generation for time-complexity experiments
     # n represents the length of array a
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Construct a with a deterministic pattern including -1s and permutations
@@ -40,6 +41,7 @@ def main(n):
     for i in range(half, n):
         if (i - half) % 3 == 0:
             a[i] = -1
+
         else:
             a[i] = (i % n) + 1
 
@@ -49,7 +51,8 @@ def main(n):
     if minus == 0:
         # Avoid division by zero; just run the rest logically
         # In original problem, minus>0 is usually guaranteed; here just handle gracefully
-        print(0)
+        # print(0)
+        pass
         return
 
     m_inv = pow(minus, mod - 2, mod)
@@ -92,8 +95,7 @@ def main(n):
         if x not in present:
             ans = (ans + (acc_u[x] + acc_d[x]) * m_inv) % mod
 
-    print(ans % mod)
-
-
+    # print(ans % mod)
+    pass
 if __name__ == "__main__":
     main(10)

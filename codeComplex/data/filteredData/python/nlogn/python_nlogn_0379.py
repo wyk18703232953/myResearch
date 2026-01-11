@@ -32,11 +32,11 @@ def main(n):
             x = heapq.heappop(coins)
             if x < X[j][1]:
                 heapq.heappush(coins, X[j][1])
+
             else:
                 heapq.heappush(coins, x)
 
-    print(*res)
-
-
+    # print(*res)
+    pass
 if __name__ == "__main__":
     main(10)

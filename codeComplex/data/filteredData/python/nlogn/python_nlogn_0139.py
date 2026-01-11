@@ -10,8 +10,10 @@ def main(n):
     l = [(i * k + (i // 2) + 1) for i in range(1, n + 1)]
 
     if k == 1:
-        print(n)
+        # print(n)
+        pass
         return
+
     else:
         l.sort()
         ndict = defaultdict(list)
@@ -31,11 +33,11 @@ def main(n):
                 if group[count] * k != group[count + 1]:
                     ans += 1
                     count += 1
+
                 else:
                     ans += 1
                     count += 2
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     main(1000)

@@ -17,6 +17,7 @@ def main(n):
         tmp = (sz[i], a[i] % k)
         if tmp in cnt:
             cnt[tmp] += 1
+
         else:
             cnt[tmp] = 1
 
@@ -34,8 +35,7 @@ def main(n):
             if (sz[i] == l and cur == a[i] % k):
                 ans -= 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

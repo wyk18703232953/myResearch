@@ -10,6 +10,7 @@ def solve(n, a):
         if not is_on_line(a[0], a[1], a[i]):
             if len(line2) < 2:
                 line2.append(i)
+
             else:
                 ok *= is_on_line(a[line2[0]], a[line2[1]], a[i])
                 if ok == 0:
@@ -23,6 +24,7 @@ def solve(n, a):
         if not is_on_line(a[0], a[2], a[i]):
             if len(line2) < 2:
                 line2.append(i)
+
             else:
                 ok *= is_on_line(a[line2[0]], a[line2[1]], a[i])
                 if ok == 0:
@@ -36,6 +38,7 @@ def solve(n, a):
         if not is_on_line(a[1], a[2], a[i]):
             if len(line2) < 2:
                 line2.append(i)
+
             else:
                 ok *= is_on_line(a[line2[0]], a[line2[1]], a[i])
                 if ok == 0:
@@ -53,7 +56,7 @@ def generate_data(n):
 def main(n):
     n, a = generate_data(n)
     res = solve(n, a)
-    print("Yes" if res == 1 else "No")
-
+    # print("Yes" if res == 1 else "No")
+    pass
 if __name__ == "__main__":
     main(10)

@@ -18,12 +18,13 @@ def main(n):
             if p != a[i]:
                 if d[p] >= 1:
                     f = 1
+
             else:
                 if d[p] >= 2:
                     f = 1
         if not f:
             cnt += 1
-    print(cnt)
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     main(1000)

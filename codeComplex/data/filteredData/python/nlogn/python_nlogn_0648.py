@@ -42,7 +42,7 @@ def main(n):
         if cur_ans < best:
             best = cur_ans
 
-    print(best)
-
+    # print(best)
+    pass
 if __name__ == "__main__":
     main(10)

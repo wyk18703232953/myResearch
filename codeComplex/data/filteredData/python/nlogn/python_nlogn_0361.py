@@ -30,9 +30,9 @@ def main(n):
         if m == 3:
             break
 
-    print(m)
-    print(*ans)
-
-
+    # print(m)
+    pass
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

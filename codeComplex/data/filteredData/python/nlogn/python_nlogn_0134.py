@@ -15,7 +15,9 @@ def main(n):
     # 原算法逻辑
     x.sort(reverse=True)
     if k >= m:
-        print(0)
+        # print(0)
+        pass
+
     else:
         for i in range(n):
             k -= 1
@@ -23,10 +25,11 @@ def main(n):
             if k >= m:
                 break
         if k >= m:
-            print(i + 1)
+            # print(i + 1)
+            pass
+
         else:
-            print(-1)
-
-
+            # print(-1)
+            pass
 if __name__ == "__main__":
     main(10)

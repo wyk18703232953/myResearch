@@ -16,7 +16,8 @@ def main(n):
     # 当 n < 2 时，原逻辑对 x[v] 和 x[v-1] 不合法，这里约定直接返回 0
 
     if n < 2:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造长度为 n 的确定性数组 x
@@ -35,9 +36,8 @@ def main(n):
     # 原逻辑：排序后取差值
     x.sort()
     result = x[v] - x[v - 1]
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的大小进行时间复杂度实验
     main(10)

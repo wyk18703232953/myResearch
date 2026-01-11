@@ -3,7 +3,8 @@ def main(n):
     # n -> 数组长度
     # m -> 与数组元素大小相关的上界（确定性构造）
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成 arr：长度为 n，元素值在 [1, n] 内循环分布
@@ -26,9 +27,8 @@ def main(n):
                 cnt += 1
         if cnt >= n:
             ans = max(ans, d)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要调整 n 规模进行实验
     main(1000)

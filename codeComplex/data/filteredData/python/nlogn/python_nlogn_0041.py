@@ -8,16 +8,17 @@ def main(n):
     if len(set(a)) == 1 and a[0] == 1:
         if len(a) > 1:
             result = a[:-1] + [2]
+
         else:
             result = [2]
+
     else:
         idx = a.index(temp)
         a[idx] = 1
         a.sort()
         result = a
 
-    print(*result)
-
-
+    # print(*result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -27,10 +27,12 @@ def main(n):
     for i in range(mindex - 1, -1, -1):
         if p[i] < m:
             diff -= 1
+
         else:
             diff += 1
         if diff in ldict:
             ldict[diff] += 1
+
         else:
             ldict[diff] = 1
 
@@ -38,10 +40,12 @@ def main(n):
     for i in range(mindex + 1, n):
         if p[i] < m:
             diff -= 1
+
         else:
             diff += 1
         if diff in rdict:
             rdict[diff] += 1
+
         else:
             rdict[diff] = 1
 
@@ -51,7 +55,8 @@ def main(n):
         if -num + 1 in rdict:
             ans += ldict[num] * rdict[-num + 1]
 
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

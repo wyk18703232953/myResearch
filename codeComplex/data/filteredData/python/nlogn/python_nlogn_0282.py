@@ -1,7 +1,8 @@
 def main(n):
     # Ensure n is at least 1 to avoid empty behavior
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Define sizes for the two phases based on n
@@ -20,6 +21,7 @@ def main(n):
         if a in d:
             d[a][0] += 1
             d[a][1].append(x)
+
         else:
             d[a] = [1, [x]]
 
@@ -31,6 +33,7 @@ def main(n):
         if a in d:
             d[a][0] += 1
             d[a][1].append(x)
+
         else:
             d[a] = [1, [x]]
 
@@ -38,10 +41,10 @@ def main(n):
     for key in d:
         if d[key][0] == 1:
             s += d[key][1][0]
+
         else:
             s += max(d[key][1])
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     main(10)

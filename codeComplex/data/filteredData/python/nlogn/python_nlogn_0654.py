@@ -13,7 +13,8 @@ def main(n):
     #   该构造确保存在多个 other，并且叶子数量至少 1
 
     if n < 3:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     a = [0] * n
@@ -22,6 +23,7 @@ def main(n):
         a[0] = 1
         a[1] = 2
         a[2] = 2
+
     else:
         a[0] = 1
         for i in range(1, n - 1):
@@ -35,6 +37,7 @@ def main(n):
     for i, val in enumerate(a):
         if val == 1:
             leafs.add(i)
+
         else:
             other[i] = val
             other_indices.append(i)
@@ -42,7 +45,8 @@ def main(n):
 
     if not other:
         # n >= 3，但所有度数都是 1，则输出 NO
-        print("NO")
+        # print("NO")
+        pass
         return
 
     other_indices.sort(key=lambda index: other[index])
@@ -64,7 +68,8 @@ def main(n):
 
     while leafs:
         if len(other) == 0:
-            print("NO")
+            # print("NO")
+            pass
             return
         l = leafs.pop()
         if not has_start and other.get(other_indices[0], 0):
@@ -73,6 +78,7 @@ def main(n):
         elif not has_end and other.get(other_indices[-1], 0):
             i = other_indices[-1]
             has_end = True
+
         else:
             i = next(iter(other))
         edges.append((l, i))
@@ -80,12 +86,13 @@ def main(n):
         if other[i] == 0:
             del other[i]
 
-    print("YES", diam - 1)
-    print(len(edges))
+    # print("YES", diam - 1)
+    pass
+    # print(len(edges))
+    pass
     for x, y in edges:
-        print(x + 1, y + 1)
-
-
+        # print(x + 1, y + 1)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为输入规模
     main(10)

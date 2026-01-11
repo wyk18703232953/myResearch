@@ -27,11 +27,11 @@ def main(n):
     # 保证下标安全
     if 1 <= x <= len(p_list):
         result = p_list.count(p_list[x - 1])
+
     else:
         result = 0
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

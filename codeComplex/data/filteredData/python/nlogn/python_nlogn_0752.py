@@ -21,10 +21,11 @@ def main(n):
     a = [i % (n + 1) for i in range(n)]
     r = solve(n, a)
     if r:
-        print('sjfnb')
+        # print('sjfnb')
+        pass
+
     else:
-        print('cslnb')
-
-
+        # print('cslnb')
+        pass
 if __name__ == "__main__":
     main(5)

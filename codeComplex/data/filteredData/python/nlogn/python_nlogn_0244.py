@@ -7,11 +7,14 @@ def Solution(N, Q, wariors_strength, arrows):
     for arrow in arrows:
         arrow_so_far += arrow
         if arrow_so_far >= prefix_sum[-1]:
-            print(N)
+            # print(N)
+            pass
             arrow_so_far = 0
+
         else:
             idx = binarySearch_LowerBound(prefix_sum, arrow_so_far)
-            print(N - idx)
+            # print(N - idx)
+            pass
 
 
 def binarySearch_LowerBound(arr, key):
@@ -23,6 +26,7 @@ def binarySearch_LowerBound(arr, key):
             return mid + 1
         elif arr[mid] > key:
             r = mid - 1
+
         else:
             l = mid + 1
     return r + 1

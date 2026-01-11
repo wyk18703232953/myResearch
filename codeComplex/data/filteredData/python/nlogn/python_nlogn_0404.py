@@ -29,11 +29,11 @@ def main(n):
 
     # Output format: first line is single-testcase result,
     # followed by T lines of multi-testcase results
-    print(" ".join(str(x) for x in res_single))
+    # print(" ".join(str(x) for x in res_single))
+    pass
     for res in all_results:
-        print(" ".join(str(x) for x in res))
-
-
+        # print(" ".join(str(x) for x in res))
+        pass
 if __name__ == "__main__":
     # Example call; adjust n for different input scales
     main(10)

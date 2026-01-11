@@ -22,11 +22,15 @@ def main(n):
         if c == 1:
             segments.append(n - j)
             break
-    print(total_sum)
-    if segments:
-        print(" ".join(map(str, segments)))
-    else:
-        print()
+    # print(total_sum)
+    pass
 
+    if segments:
+        # print(" ".join(map(str, segments)))
+        pass
+
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

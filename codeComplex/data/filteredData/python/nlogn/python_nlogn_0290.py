@@ -26,4 +26,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call for testing / timing
     result = main(10**4)
-    print(result)
+    # print(result)
+    pass

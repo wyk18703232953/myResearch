@@ -5,6 +5,7 @@ def f(d, n):
     for i in sorted(d.keys()):
         if prev is None:
             prev = i
+
         else:
             ans[res] += i - prev
             prev = i
@@ -23,8 +24,7 @@ def main(n):
         d[x] += 1
         d[y + 1] -= 1
     result = f(d, n)
-    print(*result)
-
-
+    # print(*result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -12,11 +12,11 @@ def main(n):
         if b > cur:
             ans += 1
             cur += 1
+
         else:
             ans += 1
     result = sum(a) - (ans + max(a) - cur)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

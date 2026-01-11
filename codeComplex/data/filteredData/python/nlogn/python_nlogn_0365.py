@@ -13,6 +13,7 @@ def main(n):
     for j in t:
         if j not in f:
             f[j] = 1
+
         else:
             f[j] += 1
 
@@ -22,8 +23,7 @@ def main(n):
             if t[j + 1] > t[j] and t[j] + k >= t[j + 1]:
                 p += f[t[j]]
 
-    print(n - p)
-
-
+    # print(n - p)
+    pass
 if __name__ == "__main__":
     main(10)

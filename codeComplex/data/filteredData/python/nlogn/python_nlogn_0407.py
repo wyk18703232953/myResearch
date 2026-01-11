@@ -25,9 +25,8 @@ def main(n):
             ans[count] += arr[i + 1] - arr[i]
 
     # 原程序输出 ans[1:]
-    print(*ans[1:])
-
-
+    # print(*ans[1:])
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 的大小进行时间复杂度实验
     main(10)

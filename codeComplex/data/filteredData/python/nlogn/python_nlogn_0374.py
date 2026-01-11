@@ -17,9 +17,8 @@ def main(n):
                 current_n -= 1
             j += 1
 
-    print(current_n)
-
-
+    # print(current_n)
+    pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

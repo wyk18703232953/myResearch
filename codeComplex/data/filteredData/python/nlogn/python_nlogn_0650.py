@@ -4,7 +4,8 @@ def main(n):
     # - number of candidate triples m (we set m = n for scalable experiments)
 
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = n
@@ -43,13 +44,13 @@ def main(n):
             if X2[j] < V[i]:
                 c += 1
                 j += 1
+
             else:
                 break
         ans = min(ans, k - c + i)
         i += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

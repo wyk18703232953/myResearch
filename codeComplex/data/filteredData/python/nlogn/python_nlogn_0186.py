@@ -27,9 +27,8 @@ def main(n):
         back_cnt[a[i]] += 1
         i -= 1
 
-    print(tot)
-
-
+    # print(tot)
+    pass
 if __name__ == "__main__":
     # Example call for time complexity experiments
     main(1000)

@@ -26,6 +26,7 @@ def main(n):
             u = y % k
             if u in d:
                 d[u] += 1
+
             else:
                 d[u] = 1
         for i in s:
@@ -47,4 +48,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call for time-complexity experiments
     result = main(1000)
-    print(result)
+    # print(result)
+    pass

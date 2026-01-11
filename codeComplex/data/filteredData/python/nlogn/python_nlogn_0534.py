@@ -1,7 +1,8 @@
 def main(n):
     # n: length of array arr
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate k and arr based on n
@@ -34,8 +35,7 @@ def main(n):
             if int(st + st) % k == 0:
                 count_pair -= 1
 
-    print(count_pair)
-
-
+    # print(count_pair)
+    pass
 if __name__ == "__main__":
     main(10)

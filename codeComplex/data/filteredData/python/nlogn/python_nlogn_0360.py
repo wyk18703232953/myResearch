@@ -41,8 +41,9 @@ def generate_input(n):
 def main(n):
     x = generate_input(n)
     k, vals = core_logic(x)
-    print(k)
-    print(*vals)
-
+    # print(k)
+    pass
+    # print(*vals)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -35,7 +35,7 @@ def main(n):
         if ok:
             ans += C[x]
 
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

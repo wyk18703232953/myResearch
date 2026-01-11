@@ -14,6 +14,7 @@ def main(n):
         while i < 11:
             if x in a_pow_dict[i]:
                 a_pow_dict[i][x] += 1
+
             else:
                 a_pow_dict[i][x] = 1
             i += 1
@@ -33,4 +34,5 @@ def main(n):
 if __name__ == "__main__":
     # Example call for time-complexity experiment
     result = main(1000)
-    print(result)
+    # print(result)
+    pass

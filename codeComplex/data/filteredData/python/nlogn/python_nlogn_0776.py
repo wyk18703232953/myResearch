@@ -4,15 +4,17 @@ def main(n):
     li = [(i * 7) % (n + 5) for i in range(n)] if n > 0 else []
 
     if not li:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     x = li.index(max(li))
     if li[:x] == sorted(li[:x]) and li[x:] == sorted(li[x:])[::-1]:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

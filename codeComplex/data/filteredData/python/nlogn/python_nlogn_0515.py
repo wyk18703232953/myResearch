@@ -29,7 +29,7 @@ def main(n):
         res = solve_one(a)
         results.append(res)
     for r in results:
-        print(*r)
-
+        # print(*r)
+        pass
 if __name__ == "__main__":
     main(5)

@@ -28,4 +28,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用：可根据需要调整 n
     result = main(10)
-    print(result)
+    # print(result)
+    pass

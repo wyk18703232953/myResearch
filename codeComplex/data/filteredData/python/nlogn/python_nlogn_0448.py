@@ -2,7 +2,8 @@ def main(n):
     # Interpret n as length of numbers array
     # Deterministically generate m and numbers
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = n // 2  # median-like value
@@ -19,6 +20,7 @@ def main(n):
             smaller_greater.append((s + 1, g))
         elif k > m:
             smaller_greater.append((s, g + 1))
+
         else:
             smaller_greater.append((s, g))
 
@@ -33,6 +35,7 @@ def main(n):
         diff = s - g
         if diff in difference:
             difference[diff] += 1
+
         else:
             difference[diff] = 1
 
@@ -48,8 +51,7 @@ def main(n):
         if d2 in difference:
             count += difference[d2]
 
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(10)

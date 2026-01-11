@@ -18,8 +18,7 @@ def main(n):
             out = 'NO'
             s = []
             break
-    print(out + '\n'.join(s))
-
-
+    # print(out + '\n'.join(s))
+    pass
 if __name__ == "__main__":
     main(10)

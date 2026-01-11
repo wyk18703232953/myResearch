@@ -16,10 +16,11 @@ def main(n):
         a.sort()
 
         if cur_n == 2:
-            print(0)
+            # print(0)
+            pass
+
         else:
-            print(min(cur_n - 2, a[-2] - 1))
-
-
+            # print(min(cur_n - 2, a[-2] - 1))
+            pass
 if __name__ == "__main__":
     main(5)

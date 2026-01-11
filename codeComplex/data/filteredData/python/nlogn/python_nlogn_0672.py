@@ -34,6 +34,7 @@ def solve_instance(N, edges):
         mid = (ma + mi) // 2
         if len(check(mid)) == N:
             ma = mid
+
         else:
             mi = mid
     ans = check(ma)
@@ -50,8 +51,10 @@ def solve_instance(N, edges):
         if dd[s] > dd[t] and c <= ma:
             answer.append(i + 1)
             num += 1
-    print(ma, num)
-    print(' '.join(map(str, answer)))
+    # print(ma, num)
+    pass
+    # print(' '.join(map(str, answer)))
+    pass
 
 
 def main(n):

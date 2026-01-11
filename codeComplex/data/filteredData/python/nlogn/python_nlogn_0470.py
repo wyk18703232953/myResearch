@@ -22,18 +22,19 @@ def main(n):
                 mark[i] = True
                 break
         idx += 1
-    print(profit)
+    # print(profit)
+    pass
 
     prev, counter = -1, 0
     for i in range(n):
         if counter == (k - 1):
             break
         if mark[i]:
-            print(i - prev, end=' ')
+            # print(i - prev, end=' ')
+            pass
             prev = i
             counter += 1
-    print(n - prev - 1)
-
-
+    # print(n - prev - 1)
+    pass
 if __name__ == "__main__":
     main(10)

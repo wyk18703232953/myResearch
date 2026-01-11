@@ -12,6 +12,7 @@ def merge(a, b):
         if a[inda] < b[indb]:
             c.append(a[inda])
             inda += 1
+
         else:
             c.append(b[indb])
             indb += 1
@@ -55,13 +56,16 @@ def main(n):
     for i in range(n):
         if a[i] == -1:
             negsseen += 1
+
         else:
             mix += unused[a[i] - 1] * (negs - negsseen) + negsseen * (negs - unused[a[i] - 1])
     num = invs * 2 * negs + pairs * negs + mix * 2
     denom = 2 * negs
     MOD = 998244353
     if negs == 0:
-        print(invs % MOD)
+        # print(invs % MOD)
+        pass
+
     else:
         # Compute modular inverse of denom modulo MOD using extended Euclid
         def egcd(a, b):
@@ -73,10 +77,10 @@ def main(n):
         g, x, _ = egcd(denom, MOD)
         if g != 1:
             inv = 1
+
         else:
             inv = x % MOD
-        print((num * inv) % MOD)
-
-
+        # print((num * inv) % MOD)
+        pass
 if __name__ == "__main__":
     main(1000)

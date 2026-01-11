@@ -7,7 +7,8 @@ def main(n):
     arr = [(i // 2) for i in range(N)]
 
     if sum(arr) == 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
         return
 
     arr.sort()
@@ -21,17 +22,20 @@ def main(n):
         if num == 0:
             zeros += 1
             if zeros == 2:
-                print('cslnb')
+                # print('cslnb')
+                pass
                 return
 
         if num not in freq:
             freq[num] = 1
+
         else:
             dup += 1
             freq[num] += 1
 
         if dup == 2:
-            print('cslnb')
+            # print('cslnb')
+            pass
             return
 
     for i in range(N):
@@ -43,8 +47,10 @@ def main(n):
                 arr[i] = arr[i] - 1
                 res += 1
                 break
+
             else:
-                print('cslnb')
+                # print('cslnb')
+                pass
                 return
 
     minus = [0] * N
@@ -59,10 +65,11 @@ def main(n):
         res += arr[i] - minus[i]
 
     if res % 2 == 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
-        print('sjfnb')
-
-
+        # print('sjfnb')
+        pass
 if __name__ == "__main__":
     main(10)

@@ -14,8 +14,7 @@ def main(n):
                 break
         if j >= n:
             break
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     main(10)

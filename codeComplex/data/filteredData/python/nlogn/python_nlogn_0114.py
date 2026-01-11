@@ -8,8 +8,7 @@ def main(n):
     c = 0
     for i in range(n):
         c = c + 1 if A[i] != B[i] else c
-    print("YES" if c <= 2 else "NO")
-
-
+    # print("YES" if c <= 2 else "NO")
+    pass
 if __name__ == "__main__":
     main(10)

@@ -7,10 +7,12 @@ def main(n):
     l = sorted(l)
     for i in range(1, n):
         if l[i][1] >= l[i - 1][1]:
-            print(l[i][2], l[i - 1][2])
+            # print(l[i][2], l[i - 1][2])
+            pass
             break
-    else:
-        print(-1, -1)
 
+    else:
+        # print(-1, -1)
+        pass
 if __name__ == "__main__":
     main(10)

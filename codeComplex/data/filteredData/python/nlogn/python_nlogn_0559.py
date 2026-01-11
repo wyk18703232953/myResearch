@@ -38,16 +38,18 @@ def main(n):
             if dp[x] == 1:
                 s.append(x)
                 dp[x] = -1
+
             else:
                 ok = False
                 break
         s.popleft()
 
     if ok and len(b) == 0:
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     main(10)

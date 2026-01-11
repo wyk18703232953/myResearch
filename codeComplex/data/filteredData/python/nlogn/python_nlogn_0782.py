@@ -15,8 +15,7 @@ def main(n):
     d = [a[i] - a[i - 1] for i in range(1, n)]
     d = sorted(d)[::-1]
     c -= sum(d[:k - 1])
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     main(10)

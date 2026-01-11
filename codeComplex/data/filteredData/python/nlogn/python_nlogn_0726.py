@@ -17,6 +17,7 @@ def main(n):
             results.append("0")
         elif a == b or b == c or a == c:
             results.append("1")
+
         else:
             na = int(a[0])
             nb = int(b[0])
@@ -36,6 +37,7 @@ def main(n):
                     or (cp[1] + 1) == cp[2]
                 ):
                     results.append("1")
+
                 else:
                     results.append("2")
             elif a[1] == b[1]:
@@ -43,6 +45,7 @@ def main(n):
                 ma = max(na, nb)
                 if mi == (ma - 1) or mi == (ma - 2):
                     results.append("1")
+
                 else:
                     results.append("2")
             elif a[1] == c[1]:
@@ -50,6 +53,7 @@ def main(n):
                 ma = max(na, nc)
                 if mi == (ma - 1) or mi == (ma - 2):
                     results.append("1")
+
                 else:
                     results.append("2")
             elif b[1] == c[1]:
@@ -57,13 +61,14 @@ def main(n):
                 ma = max(nb, nc)
                 if mi == (ma - 1) or mi == (ma - 2):
                     results.append("1")
+
                 else:
                     results.append("2")
+
             else:
                 results.append("2")
     # Aggregate output so total printed text scales linearly with n
-    print("\n".join(results))
-
-
+    # print("\n".join(results))
+    pass
 if __name__ == "__main__":
     main(10)

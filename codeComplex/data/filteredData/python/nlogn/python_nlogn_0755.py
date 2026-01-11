@@ -22,4 +22,5 @@ if __name__ == "__main__":
     # 示例：以 n=5 作为规模运行
     out = main(5)
     for v in out:
-        print(v)
+        # print(v)
+        pass

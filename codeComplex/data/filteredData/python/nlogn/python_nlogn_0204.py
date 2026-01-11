@@ -27,6 +27,7 @@ def main(n):
 
         if c >= md:
             be = md
+
         else:
             en = md - 1
 
@@ -36,12 +37,15 @@ def main(n):
             ans.append(_)
             be -= 1
 
-    print(f"{l}\n{l}")
+    # print(f"{l}\n{l}")
+    pass
+
     if ans:
-        print(*ans)
+        # print(*ans)
+        pass
+
     else:
-        print()
-
-
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

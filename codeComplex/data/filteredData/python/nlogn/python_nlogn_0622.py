@@ -21,6 +21,7 @@ def main(n):
         for v in range(2, n + 1):
             connections[1].add(v)
             connections[v].add(1)
+
     else:
         # Chain: 1-2-3-...-n
         for u in range(1, n):
@@ -57,11 +58,12 @@ def main(n):
             break
 
     if is_correct and steps == k:
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     main(1000)

@@ -19,8 +19,10 @@ def main(n):
     elif n == 2:
         if vec[0][0] * vec[1][0] + vec[0][1] * vec[1][1] <= 0:
             res = [1, 1]
+
         else:
             res = [1, -1]
+
     else:
         res = [0 for _ in range(n)]
         fer = [[vec[0], vec[1], vec[2]], [[0], [1], [2]]]
@@ -49,6 +51,7 @@ def main(n):
                     if l == len(vec) - 3:
                         del fer[0][ner[1]]
                         del fer[1][ner[1]]
+
                     else:
                         fer[0][ner[1]] = vec[3 + l]
                         fer[1][ner[1]] = [3 + l]
@@ -59,11 +62,13 @@ def main(n):
                     res[fer[1][0][0]] = 1
                 if len(fer[1][1]) == 1:
                     res[fer[1][1][0]] = 1
+
             else:
                 if len(fer[1][0]) == 1:
                     res[fer[1][0][0]] = -1
                 elif len(fer[1][1]) == 1:
                     res[fer[1][1][0]] = -1
+
                 else:
                     for k in fer[1][0]:
                         res[k] *= -1
@@ -72,8 +77,7 @@ def main(n):
     for i in res:
         res1 += str(i) + ' '
     res1 = res1[:-1]
-    print(res1)
-
-
+    # print(res1)
+    pass
 if __name__ == "__main__":
     main(5)

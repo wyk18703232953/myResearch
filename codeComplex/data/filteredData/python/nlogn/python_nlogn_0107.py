@@ -40,10 +40,11 @@ def main(n):
             if l1[i] != l[i]:
                 pos.append(i)
         if (len(pos) == 0) or (len(pos) == 2 and l[pos[0]] == l1[pos[1]] and l[pos[1]] == l1[pos[0]]):
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     main(10)

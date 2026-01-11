@@ -42,7 +42,8 @@ def generate_tree(n):
 def main(n):
     if n < 2:
         # For n < 2, behavior is trivial; just print NO to keep it defined
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # Define k as a function of n; ensure 2*k is within a reasonable diameter
@@ -57,7 +58,8 @@ def main(n):
             break
 
     if leaf == -1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     d, parent, _ = bfs(graph, leaf, k, n)
@@ -71,7 +73,8 @@ def main(n):
             break
 
     if farthest_leaf == -1 or len(graph[farthest_leaf]) != 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     for _ in range(k):
@@ -81,10 +84,11 @@ def main(n):
     _, _, valid = bfs(graph, center, k, n)
 
     if valid:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(1000)

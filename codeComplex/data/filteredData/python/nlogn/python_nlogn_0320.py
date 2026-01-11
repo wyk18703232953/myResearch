@@ -22,10 +22,11 @@ def main(n):
         ans += 1
 
     if ans % 2 == 0:
-        print("Petr")
+        # print("Petr")
+        pass
+
     else:
-        print("Um_nik")
-
-
+        # print("Um_nik")
+        pass
 if __name__ == "__main__":
     main(10)

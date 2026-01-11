@@ -50,8 +50,7 @@ def main(n):
         if u < v:
             whmax[flag] = v
 
-    print('\n'.join(map(str, res)))
-
-
+    # print('\n'.join(map(str, res)))
+    pass
 if __name__ == "__main__":
     main(10)

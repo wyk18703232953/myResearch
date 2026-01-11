@@ -19,11 +19,13 @@ def main(n):
             break
 
     if ok:
-        print("YES")
-        print(*l, sep='\n')
+        # print("YES")
+        pass
+        # print(*l, sep='\n')
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

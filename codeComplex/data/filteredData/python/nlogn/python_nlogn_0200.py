@@ -20,6 +20,7 @@ def main(n):
         d.sort()
         if len(d) < K:
             return False
+
         else:
             return sum(d[:K]) <= T
 
@@ -29,11 +30,14 @@ def main(n):
         med = (r + l) // 2
         if possible(med):
             l = med
+
         else:
             r = med
 
-    print(l)
-    print(l)
+    # print(l)
+    pass
+    # print(l)
+    pass
     d = []
     for i, (a, t) in enumerate(problems):
         if a >= l:
@@ -41,10 +45,11 @@ def main(n):
     d.sort(key=lambda x: x[0])
     ans = [v[1] for v in d[:l]]
     if ans:
-        print(*ans)
+        # print(*ans)
+        pass
+
     else:
-        print()
-
-
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

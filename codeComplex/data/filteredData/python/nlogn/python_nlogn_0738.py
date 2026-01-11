@@ -9,6 +9,7 @@ def main(n):
     val = 0
     if n == 1:
         ans = (l[0] + 1) % 2
+
     else:
         l.sort()
         for elem in l:
@@ -26,13 +27,13 @@ def main(n):
             ans = 1
         elif hm == 1 and d.get(which - 1, 0) > 0:
             ans = 1
+
         else:
             for i in range(n):
                 val += l[i] - i
             ans = (val + 1) % 2
-    print(ansl[ans])
-
-
+    # print(ansl[ans])
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 以实验不同规模
     main(10)

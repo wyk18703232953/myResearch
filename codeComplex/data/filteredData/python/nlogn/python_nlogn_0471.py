@@ -13,15 +13,20 @@ def main(n):
     cs = [bs[i][1] for i in range(k)]
     ans = sum(bs[i][0] for i in range(k))
     cs.sort()
-    print(ans)
+    # print(ans)
+    pass
+
     if k == 1:
-        print(n)
+        # print(n)
+        pass
+
     else:
-        print(cs[0], end=" ")
+        # print(cs[0], end=" ")
+        pass
         for i in range(1, k - 1):
-            print(cs[i] - cs[i - 1], end=" ")
-        print(n - cs[k - 2])
-
-
+            # print(cs[i] - cs[i - 1], end=" ")
+            pass
+        # print(n - cs[k - 2])
+        pass
 if __name__ == "__main__":
     main(10)

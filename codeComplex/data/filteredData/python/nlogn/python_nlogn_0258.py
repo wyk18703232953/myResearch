@@ -4,7 +4,8 @@ def main(n):
     # 第 i 个区间为 [i, i + (i % max(1, n//3)) + 1]
     # 并保证有一定概率产生包含关系用于覆盖原逻辑
     if n <= 0:
-        print("-1 -1")
+        # print("-1 -1")
+        pass
         return
 
     base = max(1, n // 3)
@@ -23,14 +24,15 @@ def main(n):
     for i in range(n):
         if r >= a[i][1]:
             f = 0
-            print(a[i][2], a[iid][2])
+            # print(a[i][2], a[iid][2])
+            pass
             break
+
         else:
             r = a[i][1]
             iid = i
     if f:
-        print("-1 -1")
-
-
+        # print("-1 -1")
+        pass
 if __name__ == "__main__":
     main(10)

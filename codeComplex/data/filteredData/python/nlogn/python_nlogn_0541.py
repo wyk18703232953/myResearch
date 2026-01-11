@@ -8,7 +8,8 @@ def main(n):
     #   s: list of length n with positive integers
     # Ensure values are reasonable and exercise the algorithm.
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = 10**9 + 7  # large prime, fixed
@@ -33,6 +34,7 @@ def main(n):
             u = y % k
             if u in d:
                 d[u] += 1
+
             else:
                 d[u] = 1
         aux = 0
@@ -51,13 +53,13 @@ def main(n):
                     ans += d[x]
                 d[aux1] += 1
                 aux += 1
+
             else:
                 break
         for _ in range(aux):
             s1.popleft()
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example call for time-complexity experiments
     main(1000)

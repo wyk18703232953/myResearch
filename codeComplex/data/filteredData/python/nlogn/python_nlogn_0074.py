@@ -21,7 +21,7 @@ def main(n):
     for a in arr:
         if a == req:
             count += 1
-    print(count)
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(10)

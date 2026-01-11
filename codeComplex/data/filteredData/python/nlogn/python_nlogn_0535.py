@@ -29,7 +29,7 @@ def main(n):
         if (a[i] + (a[i] % k) * pow(10, ln[i], k)) % k == 0:
             res -= 1
         ans += res
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

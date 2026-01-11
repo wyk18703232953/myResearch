@@ -15,7 +15,8 @@ def main(n):
     for i in range(len(coins)):
         minCoins += coins[i]
         if minCoins > halfCoinsValueTotal:
-            print(i + 1)
+            # print(i + 1)
+            pass
             break
 
 

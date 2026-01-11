@@ -15,11 +15,11 @@ def main(n):
             z = s.pop()
             if s:
                 s[-1][1] += (x - z[0] + 1)
+
         else:
             s.append([x, 0])
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     main(10)

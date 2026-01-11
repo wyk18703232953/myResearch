@@ -10,6 +10,7 @@ def main(n):
         # 对于 n 太小的情况，构造最小的树并设置 k=0
         k = 0
         graph = [set() for _ in range(1)]
+
     else:
         graph = [set() for _ in range(n)]
         current = 1
@@ -83,10 +84,11 @@ def main(n):
         centers = {}
 
     if valid and count == k:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(1000)

@@ -15,12 +15,12 @@ def main(n):
         if a[i - 1] < h - 1:
             ans = ans + a[i] - h + a[i - 1]
             h = a[i - 1]
+
         else:
             ans = ans + a[i] - 1
             h = h - 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

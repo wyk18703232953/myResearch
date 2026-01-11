@@ -6,8 +6,7 @@ def main(n):
     for a in arr:
         if a * k not in dic:
             dic[a] = 1
-    print(len(dic))
-
-
+    # print(len(dic))
+    pass
 if __name__ == "__main__":
     main(10)

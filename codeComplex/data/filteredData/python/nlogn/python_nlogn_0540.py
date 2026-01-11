@@ -25,6 +25,7 @@ def main(n):
             u = y % k
             if u in d:
                 d[u] += 1
+
             else:
                 d[u] = 1
         aux = 0
@@ -42,13 +43,13 @@ def main(n):
                     ans += d[x]
                 d[key] += 1
                 aux += 1
+
             else:
                 break
         for _ in range(aux):
             s1.popleft()
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

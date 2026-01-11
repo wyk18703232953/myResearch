@@ -10,12 +10,13 @@ def main(n):
         if i == imin - 1 or i == imax + 1:
             imin = min(imin, i)
             imax = max(imax, i)
+
         else:
-            print('NO')
+            # print('NO')
+            pass
             return
-    print('YES')
-
-
+    # print('YES')
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小进行规模化实验
     main(10)

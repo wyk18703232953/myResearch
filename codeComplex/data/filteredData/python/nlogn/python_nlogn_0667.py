@@ -4,7 +4,8 @@ def main(n):
     min_s = 2 * n - 1
     max_s = n * (n + 1) // 2
     if min_s > max_s:
-        print("NO")
+        # print("NO")
+        pass
         return
     # Choose a deterministic s in the valid range
     # Example: middle of the valid interval
@@ -12,7 +13,8 @@ def main(n):
 
     # Core logic from original code, without any input() or sys.exit()
     if 2 * s > n * (n + 1) or s < 2 * n - 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     for i in range(n, -1, -1):
@@ -51,6 +53,7 @@ def main(n):
                     dic[j] -= 1
                     dic[s - tmp + j] = dic.get(s - tmp + j, 0) + 1
                     tmp = s
+
                 else:
                     dic[j] -= 1
                     dic[maxi + 1] = dic.get(maxi + 1, 0) + 1
@@ -66,7 +69,8 @@ def main(n):
         for _ in range(dic[i]):
             b.append(i)
     b.sort()
-    print('YES')
+    # print('YES')
+    pass
     children = [0] * n
     ans = [-1] * n
     curr = 0
@@ -81,9 +85,8 @@ def main(n):
     finans = []
     for i in range(1, n):
         finans.append(ans[i] + 1)
-    print(' '.join(map(str, finans)))
-
-
+    # print(' '.join(map(str, finans)))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

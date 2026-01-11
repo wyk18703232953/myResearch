@@ -18,19 +18,20 @@ def main(n):
                 vis[j] = 1
                 break
 
-    print(summ)
+    # print(summ)
+    pass
     cnt = 0
     ans = []
     for i in range(n):
         if vis[i] == 1:
             ans.append(cnt + 1)
             cnt = 0
+
         else:
             cnt += 1
     if ans:
         ans[-1] += cnt
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

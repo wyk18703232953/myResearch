@@ -31,9 +31,8 @@ def main(n):
                 temp = tc[i]
         summ += temp
 
-    print(summ)
-
-
+    # print(summ)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

@@ -39,8 +39,7 @@ def main(n):
         b = i + (i % 3) + 1
         A.append((a, b))
     res = solve(N, A)
-    print(*res)
-
-
+    # print(*res)
+    pass
 if __name__ == "__main__":
     main(10)

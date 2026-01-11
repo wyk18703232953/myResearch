@@ -48,15 +48,21 @@ def solve(a, n, T):
         for x in H.his[:pos]:
             if x not in d:
                 d[x] = 1
+
             else:
                 del d[x]
 
     if len(d) > 0:
-        print(len(d))
-        print(len(d))
-        print(' '.join([str(x + 1) for x in d]))
+        # print(len(d))
+        pass
+        # print(len(d))
+        pass
+        # print(' '.join([str(x + 1) for x in d]))
+        pass
+
     else:
-        print('0' + '\n' + '0')
+        # print('0' + '\n' + '0')
+        pass
 
 
 def main(n):

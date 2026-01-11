@@ -1,7 +1,8 @@
 def main(n):
     # n 表示序列长度
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # 生成一个确定性的“山峰”序列：严格递增后严格递减，无重复
@@ -16,10 +17,11 @@ def main(n):
     has_dups = (len(nums) > len(set(nums)))
     mx = nums.index(max(nums))
     if has_dups or nums[:mx + 1] != sorted(nums[:mx + 1]) or nums[mx:] != sorted(nums[mx:], reverse=True):
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
     main(10)

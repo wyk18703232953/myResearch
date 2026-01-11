@@ -29,4 +29,5 @@ def main(n):
 if __name__ == "__main__":
     # Example call for time complexity experiments
     result = main(10)
-    print(result)
+    # print(result)
+    pass

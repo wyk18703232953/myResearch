@@ -6,12 +6,16 @@ def main(n):
     a = [(i * 3 + 1) % (2 * n + 1) for i in range(n)]
 
     if n == 1:
-        print(a[0])
-        print(1)
+        # print(a[0])
+        pass
+        # print(1)
+        pass
+
     else:
         lst = sorted(a)[-k:]
         total = sum(lst)
-        print(total)
+        # print(total)
+        pass
         ln = len(lst)
         positions = [0]
         cnt = 0
@@ -26,9 +30,9 @@ def main(n):
                     break
         ln = len(positions)
         for i in range(1, ln):
-            print(positions[i] - positions[i - 1], end=" ")
-        print(n - positions[-1])
-
-
+            # print(positions[i] - positions[i - 1], end=" ")
+            pass
+        # print(n - positions[-1])
+        pass
 if __name__ == "__main__":
     main(10)

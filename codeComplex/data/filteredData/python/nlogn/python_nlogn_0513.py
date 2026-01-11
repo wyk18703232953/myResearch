@@ -35,10 +35,12 @@ def main(n):
         LIST = []
         for c in counter:
             if counter[c] >= 4:
-                print(c, c, c, c)
+                # print(c, c, c, c)
+                pass
                 break
             elif counter[c] >= 2:
                 LIST.append(c)
+
         else:
             LIST.sort()
             if len(LIST) < 2:
@@ -46,6 +48,7 @@ def main(n):
                 # Construct a deterministic fallback
                 if len(LIST) == 0:
                     LIST = [1, 2]
+
                 else:
                     LIST = [LIST[0], LIST[0] + 1]
             ANS = [LIST[0], LIST[1], LIST[1] / LIST[0]]
@@ -53,8 +56,7 @@ def main(n):
                 ratio = LIST[i] / LIST[i - 1]
                 if ratio < ANS[2]:
                     ANS = [LIST[i - 1], LIST[i], ratio]
-            print(ANS[0], ANS[0], ANS[1], ANS[1])
-
-
+            # print(ANS[0], ANS[0], ANS[1], ANS[1])
+            pass
 if __name__ == "__main__":
     main(10)

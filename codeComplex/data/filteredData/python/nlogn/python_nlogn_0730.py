@@ -11,10 +11,12 @@ def main(n):
 
     a.sort()
     if a[0] == a[1] == a[2]:
-        print(0)
+        # print(0)
+        pass
         return
     elif a[0] == a[1] or a[1] == a[2]:
-        print(1)
+        # print(1)
+        pass
         return
 
     a1 = []
@@ -23,25 +25,30 @@ def main(n):
     a1.sort()
     if a1[1][1] == a1[2][1] == a1[0][1]:
         if a1[0][0] == a1[1][0] - 1 and a1[0][0] == a1[2][0] - 2:
-            print(0)
+            # print(0)
+            pass
             return
         for i in range(3):
             for j in range(3):
                 if abs(a1[i][0] - a1[j][0]) == 1 or abs(a1[i][0] - a1[j][0]) == 2:
-                    print(1)
+                    # print(1)
+                    pass
                     return
-        print(2)
+        # print(2)
+        pass
         return
     for i in range(3):
         for j in range(i + 1, 3):
             if a1[i][1] == a1[j][1]:
                 if a1[i][0] == a1[j][0] - 1 or a1[i][0] == a1[j][0] - 2:
-                    print(1)
+                    # print(1)
+                    pass
+
                 else:
-                    print(2)
+                    # print(2)
+                    pass
                 return
-    print(2)
-
-
+    # print(2)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -6,6 +6,7 @@ def next_pos(A, n, x):
         m = (l + r) // 2
         if A[m] <= x:
             l = m + 1
+
         else:
             p = m
             r = m - 1
@@ -35,10 +36,12 @@ def main(n):
         arrows += B[q]
         if arrows >= soldiers:
             arrows = 0
-            print(N)
+            # print(N)
+            pass
+
         else:
             ind = next_pos(P, N, arrows)
-            print(N - ind)
-
+            # print(N - ind)
+            pass
 if __name__ == "__main__":
     main(10)

@@ -11,7 +11,8 @@ def main(n):
         a.append([l, -r, i])
 
     if n == 0:
-        print(-1, -1)
+        # print(-1, -1)
+        pass
         return
 
     a.sort()
@@ -19,13 +20,14 @@ def main(n):
     nma = a[0][2]
     for i in range(1, n):
         if a[i][1] >= ma:
-            print(a[i][2], nma)
+            # print(a[i][2], nma)
+            pass
             return
+
         else:
             ma = a[i][1]
             nma = a[i][2]
-    print(-1, -1)
-
-
+    # print(-1, -1)
+    pass
 if __name__ == "__main__":
     main(10)

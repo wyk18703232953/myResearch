@@ -29,12 +29,12 @@ def main(n):
             ans += ele * (i - dic[ele - 1]) - (cursum - (dic[ele - 1] * (ele - 1)))
         elif ele + 1 in dic.keys():
             ans += ele * (i - dic[ele + 1]) - (cursum - (dic[ele + 1] * (ele + 1)))
+
         else:
             ans += ele * i - cursum
         dic[ele] += 1
         cursum += ele
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10_000)

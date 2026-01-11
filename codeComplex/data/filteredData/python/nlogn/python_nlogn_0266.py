@@ -16,12 +16,12 @@ def main(n):
     X = 0
     for i in range(1, n):
         if L[i][1] <= L[i - 1][1]:
-            print(L[i][2], L[i - 1][2])
+            # print(L[i][2], L[i - 1][2])
+            pass
             X = 1
             break
     if X == 0:
-        print(-1, -1)
-
-
+        # print(-1, -1)
+        pass
 if __name__ == "__main__":
     main(10)

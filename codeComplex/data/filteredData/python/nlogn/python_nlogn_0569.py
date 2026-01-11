@@ -32,10 +32,12 @@ def main(n):
         return
 
     if n == 1:
-        print(1)
+        # print(1)
+        pass
         return
     if n == 2:
-        print(1, 1)
+        # print(1, 1)
+        pass
         return
 
     # l[1..n], construct deterministically:
@@ -61,9 +63,9 @@ def main(n):
     x = bfs(g, d, n)
     x.sort()
     for i in range(1, n + 1):
-        print(x[i], end=' ')
-    print()
-
-
+        # print(x[i], end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

@@ -11,25 +11,30 @@ def main(n):
         if u[i] == u[i - 1]:
             k += 1
             if k == 3:
-                print('cslnb')
+                # print('cslnb')
+                pass
                 return
             if k == 2:
                 if ok or u[i] == 0 or (i >= 2 and u[i] - u[i - 2] == 1):
-                    print('cslnb')
+                    # print('cslnb')
+                    pass
                     return
                 if i < 2 and (ok or u[i] == 0):
-                    print('cslnb')
+                    # print('cslnb')
+                    pass
                     return
                 ok = True
+
         else:
             k = 1
     for i in range(n):
         ans += u[i] - i
     if ans % 2 == 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
-        print('sjfnb')
-
-
+        # print('sjfnb')
+        pass
 if __name__ == "__main__":
     main(10)

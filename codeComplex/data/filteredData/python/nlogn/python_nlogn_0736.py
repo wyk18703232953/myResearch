@@ -5,9 +5,12 @@ def main(n):
     a.sort()
 
     if not any(a):
-        print('cslnb')
+        # print('cslnb')
+        pass
     elif n > 2 and a[0] == a[1] == 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
         seq_cnt = 0
         seq_sz = 1
@@ -19,6 +22,7 @@ def main(n):
                 elif a[i] + 1 == a[i + 1] and i + 2 < n and a[i + 1] == a[i + 2]:
                     max_seq_sz = 3
                     break
+
                 else:
                     if seq_sz > max_seq_sz:
                         max_seq_sz = seq_sz
@@ -32,7 +36,9 @@ def main(n):
                 seq_cnt += 1
 
         if max_seq_sz > 2 or seq_cnt > 1:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
             last = 0
             to_play = 0
@@ -41,10 +47,11 @@ def main(n):
                 last += 1
 
             if to_play % 2 == 0:
-                print('cslnb')
+                # print('cslnb')
+                pass
+
             else:
-                print('sjfnb')
-
-
+                # print('sjfnb')
+                pass
 if __name__ == "__main__":
     main(10)

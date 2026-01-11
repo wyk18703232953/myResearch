@@ -2,7 +2,8 @@ def main(n):
     # 生成确定性输入数据：长度为 n 的数组 a
     # 保证至少有 1 个值大于 1，以避免明显的退化情况
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # 构造数组 a：a[i] = (i % 3) + 1，保证有很多 >1 的元素
@@ -18,7 +19,8 @@ def main(n):
     ed = []
     if not lf:
         # 无法构造，因为原逻辑需要至少一个 lf 元素
-        print("NO")
+        # print("NO")
+        pass
         return
 
     _, last = lf.pop()
@@ -35,6 +37,7 @@ def main(n):
 
     if lf:
         ans = 'NO'
+
     else:
         ans = 'YES %d' % (len(it) + 1,)
         if it:
@@ -42,11 +45,11 @@ def main(n):
             ans1 = str(len(ed))
             ans2 = '\n'.join('%d %d' % (u + 1, v + 1) for u, v in ed)
             ans = '\n'.join([ans, ans1, ans2])
+
         else:
             ans = 'NO'
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为输入规模
     main(10)

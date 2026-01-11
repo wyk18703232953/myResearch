@@ -7,14 +7,15 @@ def main(n):
     for i in s:
         for j in s:
             if (i not in j) and (j not in i):
-                print('NO')
+                # print('NO')
+                pass
                 return
 
-    print('YES')
+    # print('YES')
+    pass
     s = sorted(s, key=lambda x: len(x))
     for pal in s:
-        print(pal)
-
-
+        # print(pal)
+        pass
 if __name__ == "__main__":
     main(5)

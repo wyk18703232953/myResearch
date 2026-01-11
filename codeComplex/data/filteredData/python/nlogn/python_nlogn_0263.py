@@ -14,18 +14,21 @@ def main(n):
         for i in range(n - 1):
             if a[i][0] == a[i + 1][0]:
                 if a[i][1] >= a[i + 1][1]:
-                    print(a[i + 1][2], a[i][2])
+                    # print(a[i + 1][2], a[i][2])
+                    pass
+
                 else:
-                    print(a[i][2], a[i + 1][2])
+                    # print(a[i][2], a[i + 1][2])
+                    pass
                 f = 1
                 break
             if a[i][1] >= a[i + 1][1]:
                 f = 1
-                print(a[i + 1][2], a[i][2])
+                # print(a[i + 1][2], a[i][2])
+                pass
                 break
     if f == 0:
-        print(-1, -1)
-
-
+        # print(-1, -1)
+        pass
 if __name__ == "__main__":
     main(10)

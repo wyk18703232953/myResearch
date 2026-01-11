@@ -23,9 +23,9 @@ def main(n):
             rev[now] += b[0] - a[0] - (1 if b[1] == 0 else 0)
 
     for i in range(1, n + 1):
-        print(rev[i], end=" ")
-    print()
-
-
+        # print(rev[i], end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

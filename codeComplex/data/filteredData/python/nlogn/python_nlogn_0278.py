@@ -19,6 +19,7 @@ def main(n):
         b = i // 2
         if d.get(a) is None:
             d[a] = b
+
         else:
             if b > d[a]:
                 d[a] = b
@@ -27,8 +28,7 @@ def main(n):
     for key in d:
         ans += d[key]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

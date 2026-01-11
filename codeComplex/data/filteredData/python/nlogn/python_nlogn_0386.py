@@ -33,9 +33,9 @@ def main(n):
             total += c
 
     for x in ans:
-        print(x, end=" ")
-    print()
-
-
+        # print(x, end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

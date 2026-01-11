@@ -6,6 +6,7 @@ def main(n):
     for i in range(n):
         if i % 3 == 0:
             P.append(-1)
+
         else:
             # deterministic permutation-like pattern
             P.append((i * 2 + 1) % n + 1 if n > 0 else 1)
@@ -18,6 +19,7 @@ def main(n):
 
     if BLA == 0 or BLA == 1:
         ANS = 0
+
     else:
         LEFT = BLA * (BLA - 1) // 2 * INV[BLA] % mod
         AVEP = BLA * (BLA - 1) // 2 * pow(BLA - 1, mod - 2, mod)
@@ -37,6 +39,7 @@ def main(n):
             BLALIST[P[i]] = 0
             BLANUM[i] = BLANUM[i - 1] if i > 0 else 0
             NONBLA.append(P[i])
+
         else:
             BLANUM[i] = (BLANUM[i - 1] if i > 0 else 0) + 1
 
@@ -59,7 +62,8 @@ def main(n):
     A = NONBLA
 
     if A == []:
-        print(ANS)
+        # print(ANS)
+        pass
         return
 
     nA = len(A)
@@ -86,8 +90,7 @@ def main(n):
             BIT[y] += 1
             y += (y & -y)
 
-    print(ANS)
-
-
+    # print(ANS)
+    pass
 if __name__ == "__main__":
     main(10)

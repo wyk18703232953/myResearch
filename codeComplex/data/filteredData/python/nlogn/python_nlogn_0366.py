@@ -61,6 +61,7 @@ def get_frequency(list_):
     for ele in list_:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -83,12 +84,13 @@ def core_logic(n, k, a):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     k = max(1, n // 3)
     a = [(i * 2 + (i // 3)) % (2 * n + 1) for i in range(n)]
     result = core_logic(n, k, a)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -12,13 +12,13 @@ def main(n):
         a.sort()
         if size >= 2:
             res = min(a[-2] - 1, size - 2)
+
         else:
             res = 0
         results.append(res)
     # Aggregate output for determinism
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     main(5)

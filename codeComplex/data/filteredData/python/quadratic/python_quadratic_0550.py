@@ -19,7 +19,7 @@ def main(n):
             ans.append((x + 1, y + 1))
 
     out_lines = ["{} {}".format(x, y) for x, y in ans]
-    sys.stdout.write("\n".join(out_lines))
+    # sys.stdout.write("\n".join(out_lines))
 
 
 if __name__ == "__main__":

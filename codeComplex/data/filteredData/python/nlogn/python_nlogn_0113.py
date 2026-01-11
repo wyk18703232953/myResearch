@@ -10,13 +10,15 @@ def main(n):
         b = B[i]
         if a == b:
             continue
+
         else:
             c += 1
     if c == 0 or c == 2:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

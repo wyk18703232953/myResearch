@@ -11,6 +11,7 @@ def main(n):
         elif i == n - 1:
             rawsum = rawsum + (arr[i] * b)
             b += 1
+
         else:
             rawsum = rawsum + (arr[i] * b)
             rawsum = rawsum - (arr[i] * a)
@@ -20,6 +21,7 @@ def main(n):
     while i >= 0:
         if d.get(arr[i]) is None:
             d[arr[i]] = 1
+
         else:
             d[arr[i]] = d[arr[i]] + 1
         s = arr[i] - 1
@@ -29,8 +31,7 @@ def main(n):
         if d.get(g) is not None:
             rawsum -= d[g]
         i -= 1
-    print(rawsum)
-
-
+    # print(rawsum)
+    pass
 if __name__ == "__main__":
     main(10)

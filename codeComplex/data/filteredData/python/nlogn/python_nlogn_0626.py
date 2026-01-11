@@ -5,6 +5,7 @@ def main(n):
     # Ensure a meaningful k while staying within bounds of the original logic
     if n < 2:
         k = 0
+
     else:
         k = max(1, n // 3)
 
@@ -69,10 +70,11 @@ def main(n):
         centers = {}
 
     if valid and count == k:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

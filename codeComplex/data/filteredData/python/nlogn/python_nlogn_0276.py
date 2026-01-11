@@ -15,11 +15,11 @@ def main(n):
         b = (i * 2) % 11 + (i // 5)
         if a in ans:
             ans[a] = max(ans[a], b)
+
         else:
             ans[a] = b
 
-    print(sum(ans.values()))
-
-
+    # print(sum(ans.values()))
+    pass
 if __name__ == "__main__":
     main(10)

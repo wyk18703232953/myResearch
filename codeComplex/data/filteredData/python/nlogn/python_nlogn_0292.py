@@ -31,9 +31,8 @@ def main(n):
                 stack.pop()
                 size -= 1
 
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     # example call for time-complexity experiments
     main(10)

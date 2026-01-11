@@ -9,11 +9,12 @@ def main(n):
     if len(a) > 1:
         x = iter(a)
         next(x)
-        print(next(x))
+        # print(next(x))
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for scaling experiments
     main(10)

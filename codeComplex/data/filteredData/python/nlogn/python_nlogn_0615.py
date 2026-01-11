@@ -31,12 +31,14 @@ def main(n):
                 rj = (val - x) // y
                 cost += (ri - rj) * y
                 heapq.heappush(tv, ri)
+
             else:
                 cost += x + (ri - t) * y
                 heapq.heappush(tv, ri)
         cost %= MOD_NUM
 
-    print(cost)
+    # print(cost)
+    pass
     return cost
 
 

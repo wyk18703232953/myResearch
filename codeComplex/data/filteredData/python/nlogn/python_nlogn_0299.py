@@ -15,6 +15,7 @@ def main(n):
     for i in range(n):
         if i < half:
             s.append('0')
+
         else:
             s.append('1')
 
@@ -26,10 +27,10 @@ def main(n):
             q = two_seats.pop()
             res.append(str(q[1]))
             one_seat.append(q)
+
         else:
             res.append(str(one_seat.pop()[1]))
-    print(" ".join(res))
-
-
+    # print(" ".join(res))
+    pass
 if __name__ == "__main__":
     main(10)

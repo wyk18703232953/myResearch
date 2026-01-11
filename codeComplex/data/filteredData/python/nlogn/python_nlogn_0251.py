@@ -11,6 +11,7 @@ def main(n):
             z = (r + l) // 2
             if pr_a[z] > c_k:
                 r = z
+
             else:
                 l = z
         return l
@@ -33,8 +34,7 @@ def main(n):
             c_k = 0
             l = 0
         ans.append(str(n - l))
-    print('\n'.join(ans))
-
-
+    # print('\n'.join(ans))
+    pass
 if __name__ == "__main__":
     main(10)

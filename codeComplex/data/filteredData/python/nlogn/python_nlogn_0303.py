@@ -22,13 +22,13 @@ def main(n):
             brr.append(arr[i])
             output.append(str(arr[i][0] + 1))
             i += 1
+
         else:
             x = brr.pop()
             output.append(str(x[0] + 1))
 
     # Print all outputs in one line, space-separated
-    print(" ".join(output))
-
-
+    # print(" ".join(output))
+    pass
 if __name__ == "__main__":
     main(10)

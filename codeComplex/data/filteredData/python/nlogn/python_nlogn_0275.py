@@ -9,12 +9,13 @@ def main(n):
     # 查找满足条件的第一对
     for i in range(1, n):
         if pairs[i][1] <= pairs[i - 1][1]:
-            print(pairs[i][2] + 1, pairs[i - 1][2] + 1)
+            # print(pairs[i][2] + 1, pairs[i - 1][2] + 1)
+            pass
             break
+
     else:
-        print(-1, -1)
-
-
+        # print(-1, -1)
+        pass
 if __name__ == "__main__":
     # 示例：可按需修改 n 进行规模化实验
     main(10)

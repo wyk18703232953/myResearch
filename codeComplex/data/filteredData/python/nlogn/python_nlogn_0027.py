@@ -7,10 +7,11 @@ def main(n):
     arr = [i % (n // 2 + 1) for i in range(num)]
     list_ = sorted(set(arr))
     if len(list_) == 1:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print(list_[1])
-
-
+        # print(list_[1])
+        pass
 if __name__ == "__main__":
     main(10)

@@ -25,12 +25,12 @@ def main(n):
                     break
         if ans >= n:
             final = i
+
         else:
             break
 
-    print(final)
-
-
+    # print(final)
+    pass
 if __name__ == "__main__":
     # Example call; adjust n for different input scales
     main(1000)

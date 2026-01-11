@@ -13,8 +13,7 @@ def main(n):
             ans += 1
         elif last > d[i][1]:
             last = d[i][1]
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

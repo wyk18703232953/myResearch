@@ -47,7 +47,8 @@ def main(n):
         return
 
     if n <= 4:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     A = generate_points(n)
@@ -55,10 +56,11 @@ def main(n):
     X, Y, Z = A[0], A[1], A[2]
 
     if good(A, X, Y, n) or good(A, Y, Z, n) or good(A, X, Z, n):
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

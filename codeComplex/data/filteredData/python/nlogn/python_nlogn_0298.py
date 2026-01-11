@@ -20,15 +20,18 @@ def main(n):
                 x = b.pop()
                 f.append(x)
                 p.append(x[1])
+
         else:
             if f:
                 y = f.pop()
                 p.append(y[1])
 
     if p:
-        print(*p)
-    else:
-        print()
+        # print(*p)
+        pass
 
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

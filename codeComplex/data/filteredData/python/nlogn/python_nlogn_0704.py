@@ -13,26 +13,29 @@ def main(n):
     a = sorted(a)
     tmp = 0
     if a.count(0) > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
         return
     if n - len(set(a)) > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
         return
     if n == 1:
-        print('cslnb' if not a[0] % 2 else 'sjfnb')
+        # print('cslnb' if not a[0] % 2 else 'sjfnb')
+        pass
         return
     if n - len(set(a)) == 1:
         for i in range(1, n):
             if a[i] == a[i - 1]:
                 if a[i] - 1 in a:
-                    print('cslnb')
+                    # print('cslnb')
+                    pass
                     return
                 break
     for i in range(n):
         tmp += a[i] - i
-    print('cslnb' if not tmp % 2 else 'sjfnb')
-
-
+    # print('cslnb' if not tmp % 2 else 'sjfnb')
+    pass
 if __name__ == "__main__":
     # Example deterministic calls for experimentation
     for size in [1, 2, 5, 10, 20, 50]:

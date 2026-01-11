@@ -3,12 +3,14 @@ def max_eligible(a, x):
     ind = bisect.bisect_right(a, x)
     if ind <= len(a):
         return a[ind - 1]
+
     else:
         return -1
 
 def main(n):
     if n < 3:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     U = n
@@ -24,7 +26,7 @@ def main(n):
             if val > max_val:
                 max_val = val
 
-    print(max_val)
-
+    # print(max_val)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -11,12 +11,13 @@ def main(n):
     s = sorted(l, key=len)
     for i in range(1, n):
         if s[i - 1] not in s[i]:
-            print("NO")
+            # print("NO")
+            pass
             return
-    print("YES")
+    # print("YES")
+    pass
     for i in s:
-        print(i)
-
-
+        # print(i)
+        pass
 if __name__ == "__main__":
     main(5)

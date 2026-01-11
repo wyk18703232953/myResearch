@@ -8,7 +8,8 @@ def timer(func):
         stime = time.perf_counter()
         res = func(*args, **kwargs)
         elapsed = time.perf_counter() - stime
-        print(f"{func.__name__} in {elapsed:.4f} secs")
+        # print(f"{func.__name__} in {elapsed:.4f} secs")
+        pass
         return res
     return wrapper
 
@@ -37,7 +38,7 @@ def main(n):
     a = [(i % (n // 2 + 1)) + 1 for i in range(m)]
     s = solver()
     result = s(n, m, a)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(1000)

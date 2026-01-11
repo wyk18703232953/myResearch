@@ -12,6 +12,7 @@ def main(n):
 
     if n == 0:
         ans = 0
+
     else:
         last = 0
         ans = 1
@@ -21,8 +22,7 @@ def main(n):
                 last = i
                 ans = ans + 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

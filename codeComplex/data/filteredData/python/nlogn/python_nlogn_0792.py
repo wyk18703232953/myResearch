@@ -14,8 +14,7 @@ def main(n):
     delta = [data[i + 1] - data[i] for i in range(n - 1)]
     delta.sort(reverse=True)
     result = span - sum(delta[:k - 1]) if k > 0 else span
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

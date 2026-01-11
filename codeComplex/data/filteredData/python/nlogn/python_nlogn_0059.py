@@ -13,9 +13,8 @@ def main(n):
         cnt += 1
         if c > (s / 2):
             break
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为输入规模
     main(10)

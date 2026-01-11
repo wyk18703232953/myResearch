@@ -12,6 +12,7 @@ def main(n):
     for i in range(m):
         if i < m // 2:
             p.append(i + 1)
+
         else:
             p.append(total_pages - (m - i - 1) * 2)
     p.sort()
@@ -35,4 +36,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小做实验
-    print(main(1000))
+    # print(main(1000))
+    pass

@@ -6,6 +6,7 @@ def main(n):
         a = [1 + (i % (case_idx + 2)) for i in range(size)]
         if len(set(a)) == 1:
             results.append(f"{a[0]} {a[0]} {a[0]} {a[0]}")
+
         else:
             a.sort()
             g1 = False
@@ -14,6 +15,7 @@ def main(n):
             for val in a:
                 if val not in d:
                     d[val] = 1
+
                 else:
                     d[val] += 1
                 if d[val] == 4:
@@ -22,6 +24,7 @@ def main(n):
                         mx = val
             if g1:
                 results.append(f"{mx} {mx} {mx} {mx}")
+
             else:
                 res = []
                 for k in d:
@@ -33,9 +36,11 @@ def main(n):
                     if m == 0:
                         x = 1
                         results.append(f"{x} {x} {x} {x}")
+
                     else:
                         x = res[0]
                         results.append(f"{x} {x} {x} {x}")
+
                 else:
                     minj = 0
                     for j in range(m - 1):
@@ -45,8 +50,7 @@ def main(n):
                             minj = j
                     results.append(f"{res[minj]} {res[minj]} {res[minj+1]} {res[minj+1]}")
     for line in results:
-        print(line)
-
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     main(5)

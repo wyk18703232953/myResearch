@@ -15,8 +15,7 @@ def main(n):
         if intervals[i][0] >= left:
             ans += 1
             left = intervals[i][1]
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

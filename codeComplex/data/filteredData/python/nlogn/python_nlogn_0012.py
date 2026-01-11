@@ -21,8 +21,7 @@ def main(n):
         elif gap > new_width:
             possible_loc += 2
 
-    print(possible_loc)
-
-
+    # print(possible_loc)
+    pass
 if __name__ == "__main__":
     main(10)

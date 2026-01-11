@@ -12,10 +12,11 @@ def main(n):
     min_y, max_y = sorted([king_y, tar_y])
 
     if max_x > queen_x > min_x or max_y > queen_y > min_y:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
     main(10)

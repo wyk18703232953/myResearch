@@ -14,16 +14,17 @@ def main(n):
         if arr[i] == arr[i - 1]:
             c += 1
         if i != 1 and arr[i] == arr[i - 1] and arr[i - 1] == arr[i - 2] + 1:
-            print("cslnb")
+            # print("cslnb")
+            pass
             return
 
     if c > 1 or (len(arr) >= 2 and arr[0] == arr[1] == 0):
-        print("cslnb")
+        # print("cslnb")
+        pass
         return
 
-    print("cslnb" if tmp % 2 == 0 else "sjfnb")
-
-
+    # print("cslnb" if tmp % 2 == 0 else "sjfnb")
+    pass
 if __name__ == "__main__":
     # example deterministic call; adjust n for different scales
     main(10)

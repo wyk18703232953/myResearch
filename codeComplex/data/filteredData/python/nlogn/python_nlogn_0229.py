@@ -10,12 +10,14 @@ def line(a, b):
     x1, y1 = b
     if x0 == x1:
         return [True, x1, None]
+
     else:
         slope_num = (y1 - y0)
         slope_den = (x1 - x0)
         if slope_num == 0:
             num = 0
             den = 1
+
         else:
             g = gcd(abs(slope_num), abs(slope_den))
             num = slope_num // g
@@ -23,6 +25,7 @@ def line(a, b):
         inter = den * y0 - num * x0
         if inter == 0:
             den2 = 1
+
         else:
             den2 = den
         return [False, num, den, inter, den2]
@@ -31,6 +34,7 @@ def online(line_obj, a):
     x0, y0 = a
     if line_obj[0]:
         return x0 == line_obj[1]
+
     else:
         C, num, den, inter, den2 = line_obj
         return (num * x0 + inter) == y0 * den
@@ -74,7 +78,7 @@ def generate_points(n):
 def main(n):
     A = generate_points(n)
     result = process(A)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

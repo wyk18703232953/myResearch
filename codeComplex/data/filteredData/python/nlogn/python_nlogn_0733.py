@@ -17,29 +17,41 @@ def main(n):
     thirdnum = int(third[0])
     if first == second:
         if second == third:
-            print(0)
+            # print(0)
+            pass
+
         else:
-            print(1)
+            # print(1)
+            pass
     elif second == third:
-        print(1)
+        # print(1)
+        pass
     elif first[1] == second[1] and second[1] == third[1]:
         if firstnum + 1 == secondnum and secondnum + 1 == thirdnum:
-            print(0)
+            # print(0)
+            pass
         elif firstnum + 1 == secondnum or firstnum + 2 == secondnum:
-            print(1)
+            # print(1)
+            pass
         elif secondnum + 1 == thirdnum or secondnum + 2 == thirdnum:
-            print(1)
+            # print(1)
+            pass
+
         else:
-            print(2)
+            # print(2)
+            pass
     elif first[1] == second[1] and (firstnum + 1 == secondnum or firstnum + 2 == secondnum):
-        print(1)
+        # print(1)
+        pass
     elif second[1] == third[1] and (secondnum + 1 == thirdnum or secondnum + 2 == thirdnum):
-        print(1)
+        # print(1)
+        pass
     elif first[1] == third[1] and (firstnum + 1 == thirdnum or firstnum + 2 == thirdnum):
-        print(1)
+        # print(1)
+        pass
+
     else:
-        print(2)
-
-
+        # print(2)
+        pass
 if __name__ == "__main__":
     main(10)

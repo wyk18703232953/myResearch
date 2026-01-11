@@ -2,7 +2,8 @@ def main(n):
     if n <= 0:
         return
     if n == 1:
-        print(1)
+        # print(1)
+        pass
         return
 
     a = []
@@ -22,6 +23,7 @@ def main(n):
             if b[i] % k == 0 and b[i] % (k * 2) != 0:
                 a.append(k)
                 p -= 1
+
             else:
                 c.append(b[i])
         b = c[:]
@@ -36,9 +38,8 @@ def main(n):
     a.append(q)
 
     for i in a:
-        print(i, end=" ")
-
-
+        # print(i, end=" ")
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 10 作为输入规模运行
     main(10)

@@ -5,7 +5,8 @@ def main(n):
     global a, m
     if n < 3:
         # 原逻辑在长度不足时不会进入主循环，直接输出 -1
-        print(-1)
+        # print(-1)
+        pass
         return
 
     m = n // 2
@@ -20,6 +21,7 @@ def main(n):
             if a[mid] - a[tt] <= m:
                 f = mid
                 l = mid + 1
+
             else:
                 r = mid - 1
         return f
@@ -35,10 +37,11 @@ def main(n):
                     Maxx = val
 
     if Maxx == -1:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print("%.15f" % Maxx)
-
-
+        # print("%.15f" % Maxx)
+        pass
 if __name__ == "__main__":
     main(1000)

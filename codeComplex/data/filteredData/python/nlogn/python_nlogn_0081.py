@@ -19,8 +19,7 @@ def main(n):
     target = A_sorted[k - 1]
     result = A_sorted.count(target)
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

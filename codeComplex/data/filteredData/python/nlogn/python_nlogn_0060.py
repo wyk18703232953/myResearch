@@ -14,8 +14,7 @@ def main(n):
         m = m + 1
         if q > (b / 2):
             break
-    print(m)
-
-
+    # print(m)
+    pass
 if __name__ == "__main__":
     main(10)

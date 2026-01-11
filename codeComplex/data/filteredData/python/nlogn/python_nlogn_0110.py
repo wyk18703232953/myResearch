@@ -7,10 +7,11 @@ def main(n):
         if values[i] != sorted_values[i]:
             wrong += 1
     if wrong > 2:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
     main(10)

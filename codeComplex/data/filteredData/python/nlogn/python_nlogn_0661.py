@@ -13,12 +13,14 @@ def main(n):
             D[L[i]] = i
             J.append(L[i])
             T[i + 1] = T[i]
+
         else:
             T[i + 1] = T[i] + 1
 
     def I(J_list):
         if len(J_list) <= 1:
             return J_list, 0
+
         else:
             a = J_list[: len(J_list) // 2]
             b = J_list[len(J_list) // 2 :]
@@ -32,6 +34,7 @@ def main(n):
                 if a[i] <= b[j]:
                     c.append(a[i])
                     i += 1
+
                 else:
                     c.append(b[j])
                     j += 1
@@ -56,12 +59,14 @@ def main(n):
                 guess = (high + low) // 2
                 if S[guess] > val:
                     high = guess
+
                 else:
                     low = guess
             if S[low] > val:
                 smaller = low
             elif S[high] > val:
                 smaller = high
+
             else:
                 smaller = high + 1
             themostimportantsum += (
@@ -75,9 +80,13 @@ def main(n):
     denom *= 2
     if num == denom:
         if I(J)[1] == 0:
-            print(0)
+            # print(0)
+            pass
+
         else:
-            print(I(J)[1] % 998244353)
+            # print(I(J)[1] % 998244353)
+            pass
+
     else:
         num += denom * I(J)[1]
         print(

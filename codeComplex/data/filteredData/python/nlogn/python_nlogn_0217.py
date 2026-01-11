@@ -13,9 +13,8 @@ def main(n):
             R += 1
         if i + 1 < R:
             ans = max((Ar[R] - Ar[i + 1]) / (Ar[R] - Ar[i]), ans)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(10)

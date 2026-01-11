@@ -48,14 +48,15 @@ def main(n):
             if dp[b[i]] == 1:
                 s.append(b[i])
                 dp[b[i]] = 0
+
             else:
-                print("No")
+                # print("No")
+                pass
                 return
         c += aux
         c1 += 1
-    print("Yes")
-
-
+    # print("Yes")
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需要修改 n 规模进行实验
     main(10)

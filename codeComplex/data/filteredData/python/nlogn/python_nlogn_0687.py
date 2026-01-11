@@ -13,23 +13,26 @@ def main(n):
     b.sort()
     g.sort()
     if b[-1] > g[0]:
-        print(-1)
+        # print(-1)
+        pass
         return
     a = 0
     a += sum(g) - g[0]
     if g[0] == b[-1]:
         a += g[0]
         a += m * sum(b[:-1])
-        print(a)
+        # print(a)
+        pass
+
     else:
         if len(b) < 2:
             # Fallback, though with our generation this shouldn't happen
-            print(-1)
+            # print(-1)
+            pass
             return
         a += g[0]
         a += m * sum(b[:-2]) + (m - 1) * b[-2] + b[-1]
-        print(a)
-
-
+        # print(a)
+        pass
 if __name__ == "__main__":
     main(10)

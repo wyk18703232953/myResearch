@@ -87,8 +87,7 @@ def main(n):
     k = 2 + (n % 5)
     a = [i * k + (i % 3) for i in range(1, n + 1)]
     result = core_algorithm(n, k, a)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

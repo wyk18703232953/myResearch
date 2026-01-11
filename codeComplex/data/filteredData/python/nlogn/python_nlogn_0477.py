@@ -9,6 +9,7 @@ def main(n):
     for i in arr:
         if i in d:
             d[i] += 1
+
         else:
             d[i] = 1
     flag = True
@@ -17,12 +18,12 @@ def main(n):
         for j in d.values():
             t2 += j // i
         if t2 >= n:
-            print(i)
+            # print(i)
+            pass
             flag = False
             break
     if flag:
-        print(0)
-
-
+        # print(0)
+        pass
 if __name__ == "__main__":
     main(10)

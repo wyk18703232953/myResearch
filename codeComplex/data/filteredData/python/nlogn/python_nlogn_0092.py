@@ -3,6 +3,7 @@ def main(n):
     if n < 2:
         a = 1
         b = 1
+
     else:
         a = max(1, n // 2)
         if a >= n:
@@ -16,8 +17,7 @@ def main(n):
     alist.sort(reverse=True)
     p = alist[a - 1]
     q = alist[a]
-    print(p - q)
-
-
+    # print(p - q)
+    pass
 if __name__ == "__main__":
     main(10)

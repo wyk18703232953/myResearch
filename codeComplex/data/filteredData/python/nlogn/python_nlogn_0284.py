@@ -27,8 +27,10 @@ def main(n):
             sm -= d[indx]
             if y > d[indx]:
                 sm += y
+
             else:
                 sm += d[indx]
+
         else:
             sm += y
 

@@ -13,9 +13,8 @@ def main(n):
         rem = sum(a) - sum1
         i -= 1
         c += 1
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 作为输入规模运行
     main(10)

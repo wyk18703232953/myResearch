@@ -16,10 +16,12 @@ def main(n):
     k = max(a) if a else 0
     if n == 1:
         result = 0
+
     else:
         for i in range(n):
             if a[i] < j:
                 flag = 1
+
             else:
                 flag = 0
             if a[i] == 1:
@@ -28,15 +30,15 @@ def main(n):
                 need += 1
             elif a[i] >= j and i == n - 1 and j <= k:
                 need += k - j + 1
+
             else:
                 need += 1
             if flag != 1:
                 j += 1
         result = s - need
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例规模调用，可根据需要修改 n 以做时间复杂度实验
     main(10)

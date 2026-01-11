@@ -59,8 +59,9 @@ def main(n):
     else:
         for x in range(n // 2):
             for y in range(1, m + 1):
-                stdout.write(str(x + 1) + ' ' + str(y) + '\n')
-                stdout.write(str(n - x) + ' ' + str(m + 1 - y) + '\n')
+                # stdout.write(str(x + 1) + ' ' + str(y) + '\n')
+                # stdout.write(str(n - x) + ' ' + str(m + 1 - y) + '\n')
+                pass
         if n % 2 == 1:
             c = 1
             way = []
@@ -70,7 +71,8 @@ def main(n):
                 c += x * mult
                 mult *= -1
             for x in way:
-                stdout.write(str(n // 2 + 1) + ' ' + str(x) + '\n')
+                # stdout.write(str(n // 2 + 1) + ' ' + str(x) + '\n')
+                pass
 
 
 if __name__ == "__main__":

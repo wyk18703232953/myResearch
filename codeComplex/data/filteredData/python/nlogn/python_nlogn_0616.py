@@ -34,7 +34,8 @@ def main(n):
             c += (s[k] - e[i]) * y - x
 
     result = c % (10**9 + 7)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -9,8 +9,10 @@ def main(n):
     if n == 1:
         if a[0] % 2 == 1:
             v = True
+
         else:
             v = False
+
     else:
         v = True
         c = 0
@@ -31,10 +33,11 @@ def main(n):
             v = False
 
     if v:
-        print("sjfnb")
+        # print("sjfnb")
+        pass
+
     else:
-        print("cslnb")
-
-
+        # print("cslnb")
+        pass
 if __name__ == "__main__":
     main(10)

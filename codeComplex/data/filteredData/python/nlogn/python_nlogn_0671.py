@@ -9,6 +9,7 @@ def check(n, mid, path, cost, num):
             if poi[x] == len(y):
                 visi[x] = 1
                 st1.append(st.pop())
+
             else:
                 i2, j = y[poi[x]], cost[st[-1]][poi[x]]
                 poi[x] += 1
@@ -32,6 +33,7 @@ def check(n, mid, path, cost, num):
             x, y = st[-1], path[st[-1]]
             if poi[x] == len(y):
                 st.pop()
+
             else:
                 i2, j, k = y[poi[x]], cost[st[-1]][poi[x]], num[st[-1]][poi[x]]
                 poi[x] += 1
@@ -70,13 +72,16 @@ def main(n):
         z = check(n, mid, path, cost, num)
         if z == -1:
             lo = mid + 1
+
         else:
             hi = mid - 1
             ans = mid
             an = z
-    print(ans, len(an))
-    if an:
-        print(*an)
+    # print(ans, len(an))
+    pass
 
+    if an:
+        # print(*an)
+        pass
 if __name__ == "__main__":
     main(5)

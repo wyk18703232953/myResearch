@@ -11,6 +11,7 @@ def main(n):
     for j in range(1, n + 1):
         if w[j - 1] == j:
             continue
+
         else:
             res += 1
             y = w[j - 1]
@@ -22,15 +23,20 @@ def main(n):
 
     if n % 2 == 0:
         if res % 2 == 0:
-            print("Petr")
+            # print("Petr")
+            pass
+
         else:
-            print("Um_nik")
+            # print("Um_nik")
+            pass
+
     else:
         if res % 2:
-            print("Petr")
+            # print("Petr")
+            pass
+
         else:
-            print("Um_nik")
-
-
+            # print("Um_nik")
+            pass
 if __name__ == "__main__":
     main(10)

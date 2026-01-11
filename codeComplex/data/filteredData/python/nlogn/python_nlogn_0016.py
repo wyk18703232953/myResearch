@@ -13,8 +13,7 @@ def main(n):
             v += 2
         elif d == 2 * t:
             v += 1
-    print(v)
-
-
+    # print(v)
+    pass
 if __name__ == "__main__":
     main(10)

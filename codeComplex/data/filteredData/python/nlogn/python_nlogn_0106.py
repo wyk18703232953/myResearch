@@ -10,17 +10,21 @@ def main(n):
             diffs.append(i)
 
     if len(diffs) > 2:
-        print("NO")
+        # print("NO")
+        pass
     elif not diffs:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
         i, j = diffs
         if a[i] == b[j] and b[i] == a[j]:
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     # Example call for time complexity experiments
     main(10)

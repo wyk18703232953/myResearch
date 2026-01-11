@@ -14,10 +14,11 @@ def main(n):
             f = 0
             break
     if f == 0:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
     main(10)

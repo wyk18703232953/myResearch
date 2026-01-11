@@ -5,7 +5,8 @@ def main(n):
     if n < 2:
         # For n < 2, behavior is undefined in original code (index out of range),
         # here we just print 0 deterministically.
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic construction of nab:
@@ -25,10 +26,11 @@ def main(n):
 
     l.sort()
     if l[nab[2] - 1] == l[nab[2]]:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print(l[nab[2]] - l[nab[2] - 1])
-
-
+        # print(l[nab[2]] - l[nab[2] - 1])
+        pass
 if __name__ == "__main__":
     main(10)

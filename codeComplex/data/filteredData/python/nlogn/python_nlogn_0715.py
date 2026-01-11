@@ -40,7 +40,7 @@ def generate_input(n):
 def main(n):
     arr = generate_input(n)
     result = core_logic(arr)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

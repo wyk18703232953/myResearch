@@ -10,7 +10,9 @@ def main(n):
 
         if len(set(a)) == 1:
             v = a[0]
-            print(v, v, v, v)
+            # print(v, v, v, v)
+            pass
+
         else:
             a.sort()
             g1 = False
@@ -19,6 +21,7 @@ def main(n):
             for val in a:
                 if val not in d:
                     d[val] = 1
+
                 else:
                     d[val] += 1
                 if d[val] == 4:
@@ -26,7 +29,9 @@ def main(n):
                     if val < mx:
                         mx = val
             if g1:
-                print(mx, mx, mx, mx)
+                # print(mx, mx, mx, mx)
+                pass
+
             else:
                 res = []
                 for k in d:
@@ -38,14 +43,14 @@ def main(n):
                     # pick first 4 elements of sorted a
                     x = a[0]
                     y = a[1] if size > 1 else a[0]
-                    print(x, x, y, y)
+                    # print(x, x, y, y)
+                    pass
                     continue
                 minj = 0
                 for j in range(m - 1):
                     if res[j] * res[j + 1] * (res[minj] ** 2 + res[minj + 1] ** 2) > res[minj] * res[minj + 1] * (res[j] ** 2 + res[j + 1] ** 2):
                         minj = j
-                print(res[minj], res[minj], res[minj + 1], res[minj + 1])
-
-
+                # print(res[minj], res[minj], res[minj + 1], res[minj + 1])
+                pass
 if __name__ == "__main__":
     main(10)

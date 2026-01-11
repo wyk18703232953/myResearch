@@ -12,7 +12,9 @@ def main(n):
 
     diff = []
     if n == 1:
-        print(0)
+        # print(0)
+        pass
+
     else:
         for i in range(n - 1):
             diff.append(a[i + 1] - a[i])
@@ -22,9 +24,8 @@ def main(n):
         for i in range(min(k - 1, len(diff))):
             ans -= diff[i]
 
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例调用：可以修改这里的 n 来做规模化实验
     main(10)

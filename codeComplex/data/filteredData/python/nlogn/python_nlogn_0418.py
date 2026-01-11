@@ -33,9 +33,9 @@ def main(n):
         count += 1
 
     for k in range(1, n + 1):
-        print(ans[k], end=" ")
-    print()
-
-
+        # print(ans[k], end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(5)

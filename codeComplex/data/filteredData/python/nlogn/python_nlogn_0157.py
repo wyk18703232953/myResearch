@@ -21,15 +21,18 @@ def main(n):
             if v_pos < w:
                 V[i] = v_pos
                 v_pos += 1
+
             else:
                 # If vertical positions exhausted, use horizontal
                 if h_pos < h:
                     H[i] = h_pos
                     h_pos += 1
+
         else:
             if h_pos < h:
                 H[i] = h_pos
                 h_pos += 1
+
             else:
                 # If horizontal positions exhausted, use vertical
                 if v_pos < w:
@@ -69,6 +72,7 @@ def main(n):
                 max_w = max(max_w, r[V[i]] - l[V[i]])
                 r[l[V[i]]] = r[V[i]]
                 l[r[V[i]]] = l[V[i]]
+
             else:
                 max_h = max(max_h, t[H[i]] - b[H[i]])
                 b[t[H[i]]] = b[H[i]]
@@ -76,8 +80,7 @@ def main(n):
             res[i - 1] = max_h * max_w
 
     for i in range(cuts):
-        print(res[i])
-
-
+        # print(res[i])
+        pass
 if __name__ == "__main__":
     main(10)

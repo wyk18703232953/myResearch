@@ -22,14 +22,14 @@ def main(n):
             x = (x * 10) % k
             if x:
                 ans += dct[j][k - x]
+
             else:
                 ans += dct[j][0]
         if not (a1[i] * (pow(10, len(a[i]), k) + 1)) % k:
             ans -= 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for testing / benchmarking
     main(1000)

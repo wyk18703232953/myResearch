@@ -25,8 +25,7 @@ def main(n):
         for r in range(1, 10):
             if s + str(r - 1) in ts and s + str(r + 1) in ts:
                 ans = min(ans, 1)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

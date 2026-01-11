@@ -11,8 +11,7 @@ def main(n):
         if s1 > s2:
             break
 
-    print(i + 1)
-
-
+    # print(i + 1)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -12,6 +12,7 @@ def main(n):
     for i in range(m):
         if a[i] in dic:
             dic[a[i]] += 1
+
         else:
             dic[a[i]] = 1
 
@@ -20,7 +21,8 @@ def main(n):
         for j in dic:
             r += dic[j] // i
         if r < n_person:
-            print(i - 1)
+            # print(i - 1)
+            pass
             break
 
 

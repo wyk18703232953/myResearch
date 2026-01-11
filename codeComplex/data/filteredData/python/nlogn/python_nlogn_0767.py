@@ -17,8 +17,7 @@ def main(n):
 
     # 输出所有结果
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     main(10)

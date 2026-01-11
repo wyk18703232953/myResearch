@@ -4,13 +4,14 @@ def main(n):
     ind = lst.index(p)
     if p == 1:
         lst[ind] = 2
+
     else:
         lst[ind] = 1
     lst.sort()
     for j in range(n):
-        print(lst[j], end=" ")
-    print()
-
-
+        # print(lst[j], end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

@@ -26,11 +26,13 @@ def main(n):
     for i in range(k):
         if S[k - 1 - i] < m:
             L[k - 1 - i] = L[k - i] - 1
+
         else:
             L[k - 1 - i] = L[k - i] + 1
     for i in range(n - k - 1):
         if S[k + 1 + i] > m:
             R[1 + i] = R[i] + 1
+
         else:
             R[1 + i] = R[i] - 1
     c = 0
@@ -39,14 +41,17 @@ def main(n):
             P[el] += 1
             if el == 0:
                 N[el] += 1
+
         else:
             N[-el] += 1
     for el in L:
         if el >= 1:
             c = c + N[el] + N[el - 1]
+
         else:
             c = c + P[-el] + P[-el + 1]
-    print(c)
+    # print(c)
+    pass
     return c
 
 

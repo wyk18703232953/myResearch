@@ -6,7 +6,8 @@ def main(n):
     # l: 确定性生成的整数序列，长度为 x=n
 
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     x = n
@@ -21,10 +22,11 @@ def main(n):
         c += 1
         s = s + l[x - c] - 1
     if s < y:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(c)
-
-
+        # print(c)
+        pass
 if __name__ == "__main__":
     main(10)

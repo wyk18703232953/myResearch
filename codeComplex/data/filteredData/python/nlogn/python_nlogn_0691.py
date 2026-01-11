@@ -16,6 +16,7 @@ def main(n):
     elif n % 3 == 1:
         # 使 min(g) == max(b) 分支触发
         g = [b[-1] + i for i in range(m)]
+
     else:
         # 使 min(g) > max(b) 分支触发
         g = [b[-1] + 1 + i for i in range(m)]
@@ -27,13 +28,15 @@ def main(n):
     for i in range(m):
         Sum += max(0, g[i] - b[-1])
     if min(g) < max(b):
-        print(-1)
+        # print(-1)
+        pass
     elif min(g) == max(b):
-        print(Sum)
+        # print(Sum)
+        pass
+
     else:
         Sum += b[-1] - b[-2]
-        print(Sum)
-
-
+        # print(Sum)
+        pass
 if __name__ == "__main__":
     main(10)

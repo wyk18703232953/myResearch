@@ -2,7 +2,8 @@ def main(n):
     # Interpret n as N (input size)
     N = n
     if N <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic generation of A: simple increasing sequence with some variation
@@ -39,6 +40,7 @@ def main(n):
             if B[i] == (B[i - 1] + 1):
                 idx += 1
                 index[B[i]] = idx
+
             else:
                 idx += 2
                 index[B[i]] = idx
@@ -54,9 +56,8 @@ def main(n):
         have += s2
         up(index[A[i]], A[i])
 
-    print(have)
-
-
+    # print(have)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for testing / benchmarking
     main(1000)

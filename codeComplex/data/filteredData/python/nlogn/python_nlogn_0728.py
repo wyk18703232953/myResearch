@@ -19,6 +19,7 @@ def main(n):
             res = '0'
         elif t.count(t[0]) == 2 or t.count(t[1]) == 2:
             res = '1'
+
         else:
             num = list(map(int, [t[0][0], t[1][0], t[2][0]]))
             suit = [t[0][1], t[1][1], t[2][1]]
@@ -28,33 +29,39 @@ def main(n):
                 if num[1] == num[0] + 1 or num[2] == num[1] + 1:
                     if num[2] == num[0] + 2:
                         res = '0'
+
                     else:
                         res = '1'
                 elif num[1] == num[0] + 2 or num[2] == num[1] + 2:
                     res = '1'
+
                 else:
                     res = '2'
+
             else:
                 if suit[0] == suit[1]:
                     if num[1] - num[0] in [1, 2]:
                         res = '1'
+
                     else:
                         res = '2'
                 elif suit[1] == suit[2]:
                     if num[2] - num[1] in [1, 2]:
                         res = '1'
+
                     else:
                         res = '2'
+
                 else:
                     if num[2] - num[0] in [1, 2]:
                         res = '1'
+
                     else:
                         res = '2'
         results.append(res)
 
     # Aggregate output so the work scales with n but I/O stays small
-    print("\n".join(results))
-
-
+    # print("\n".join(results))
+    pass
 if __name__ == "__main__":
     main(10)

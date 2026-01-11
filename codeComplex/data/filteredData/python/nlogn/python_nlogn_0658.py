@@ -16,7 +16,8 @@ def main(n):
     list.reverse(vec)
 
     if vec[0][0] == 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     dia = 0
@@ -30,6 +31,7 @@ def main(n):
             A[path[-1]] = A[path[-1]] - 1
             path += [i[1]]
             A[path[-1]] = A[path[-1]] - 1
+
         else:
             if col == 1:
                 dia = dia + 1
@@ -41,21 +43,24 @@ def main(n):
                 bol = 0
                 A[path[-1]] -= 1
                 ans = ans + [[path[-1], i[1]]]
+
             else:
                 while idx < len(path) and A[path[idx]] == 0:
                     idx = idx + 1
                 if idx == len(path):
-                    print("NO")
+                    # print("NO")
+                    pass
                     return
                 A[path[idx]] = A[path[idx]] - 1
                 ans = ans + [[path[idx], i[1]]]
 
-    print("YES", dia)
-    print(len(ans))
+    # print("YES", dia)
+    pass
+    # print(len(ans))
+    pass
     for i in ans:
-        print(i[0], i[1])
-
-
+        # print(i[0], i[1])
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

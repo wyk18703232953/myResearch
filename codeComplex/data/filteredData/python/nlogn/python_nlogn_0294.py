@@ -13,6 +13,7 @@ def main(n):
     for i in range(2 * n):
         if i % 4 < 2:
             passenger.append('0')
+
         else:
             passenger.append('1')
     passenger = ''.join(passenger)
@@ -35,19 +36,20 @@ def main(n):
             que.append(new_arr[left][1])
             left += 1
             le += 1
+
         else:
             if le >= 1:
                 ans[i] = que[-1]
                 que.pop()
                 le -= 1
+
             else:
                 ans[i] = new_arr[right][1]
                 que.append(new_arr[right][1])
                 right -= 1
                 le += 1
 
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(5)

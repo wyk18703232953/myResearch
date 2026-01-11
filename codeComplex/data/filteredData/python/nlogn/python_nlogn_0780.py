@@ -17,8 +17,7 @@ def main(n):
     while k < K - 1 and k < len(diff):
         res -= diff[k][1]
         k += 1
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

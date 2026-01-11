@@ -15,18 +15,23 @@ def main(n):
             if num + p in d:
                 ans = [num, num + p]
                 if num + p + p in d:
-                    print(3)
+                    # print(3)
+                    pass
                     ans.append(num + p + p)
-                    print(*ans)
+                    # print(*ans)
+                    pass
                     return
     if ans:
-        print(2)
-        print(*ans)
+        # print(2)
+        pass
+        # print(*ans)
+        pass
+
     else:
-        print(1)
-        print(a[0])
-
-
+        # print(1)
+        pass
+        # print(a[0])
+        pass
 if __name__ == "__main__":
     # Example call for experimentation; adjust n as needed
     main(10)

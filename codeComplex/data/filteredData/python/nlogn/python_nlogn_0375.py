@@ -16,8 +16,7 @@ def main(n):
             cnt -= 1
         cnt += 1
         ar[cnt] = v[i]
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     main(10)

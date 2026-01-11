@@ -9,8 +9,7 @@ def main(n):
 
     D = sorted([A[i + 1] - A[i] for i in range(N - 1)])
     result = A[-1] - A[0] - (sum(D[-K + 1:]) if K - 1 else 0)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

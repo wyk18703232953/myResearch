@@ -8,11 +8,11 @@ def main(n):
     a = sorted(a)
     if a[-1] == 1:
         result = [*a[:-1], 2]
+
     else:
         result = [1, *a[:-1]]
 
-    print(*result)
-
-
+    # print(*result)
+    pass
 if __name__ == "__main__":
     main(5)

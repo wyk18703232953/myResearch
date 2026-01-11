@@ -10,6 +10,7 @@ def main(n):
     # 当 n = 0 时，l 为空列表
     if n > 0:
         l = [(3 * i + 1) % (2 * n + 1) for i in range(n)]
+
     else:
         l = []
 
@@ -20,9 +21,8 @@ def main(n):
         if not d.get(l[i]):
             c.add(l[i])
             d.setdefault(l[i] * k, 1)
-    print(len(c))
-
-
+    # print(len(c))
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的值进行规模实验
     main(10)

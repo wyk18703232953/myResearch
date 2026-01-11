@@ -24,7 +24,8 @@ def main(n):
     # 若 k-1 越界则返回 0（理论上不会，因为 1<=k<=n）
     target = lst[k - 1]
     result = lst.count(target)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

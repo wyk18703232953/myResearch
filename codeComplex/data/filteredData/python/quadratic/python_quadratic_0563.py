@@ -15,7 +15,8 @@ def main(n):
         Ans[i - 1] = (a + 1, b + 1)
 
     for a in Ans:
-        sys.stdout.write('{} {}\n'.format(*a))
+        # sys.stdout.write('{} {}\n'.format(*a))
+        pass
 
 
 if __name__ == "__main__":

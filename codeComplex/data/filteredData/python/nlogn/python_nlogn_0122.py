@@ -23,10 +23,11 @@ def main(n):
         c += 1
 
     if k >= m:
-        print(c)
+        # print(c)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(10)

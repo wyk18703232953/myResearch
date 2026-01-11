@@ -21,6 +21,7 @@ def main(n):
     for i in range(p + 1, n):
         if l[i] < m:
             c += 1
+
         else:
             c -= 1
         ri[c] += 1
@@ -28,14 +29,14 @@ def main(n):
     for i in range(p - 1, -1, -1):
         if l[i] < m:
             c -= 1
+
         else:
             c += 1
         le[c] += 1
     res = 0
     for c, x in le.items():
         res += x * (ri[c] + ri[c - 1])
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

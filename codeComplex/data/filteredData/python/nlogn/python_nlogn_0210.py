@@ -9,9 +9,12 @@ def main(n):
     # t_i = (i * 2) % (n + 5) + 1  (some varying cost)
     # k   = n * (n + 1) // 4 (scales ~ n^2)
     if n <= 0:
-        print(0)
-        print(0)
-        print()
+        # print(0)
+        pass
+        # print(0)
+        pass
+        # print()
+        pass
         return
 
     k = n * (n + 1) // 4
@@ -42,6 +45,7 @@ def main(n):
                 if b[j][0] in d:
                     d[b[j][0]] += b[j][1]
                     e[b[j][0]] += 1
+
                 else:
                     d[b[j][0]] = b[j][1]
                     e[b[j][0]] = 1
@@ -53,6 +57,7 @@ def main(n):
 
         if j <= n and l == curr and currsum <= k:
             ans += 1
+
         else:
             break
         curr += 1
@@ -68,13 +73,17 @@ def main(n):
             l += 1
         j += 1
 
-    print(ans)
-    print(ans)
+    # print(ans)
+    pass
+    # print(ans)
+    pass
+
     if c:
-        print(*c)
+        # print(*c)
+        pass
+
     else:
-        print()
-
-
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

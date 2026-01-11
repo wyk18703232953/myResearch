@@ -26,10 +26,11 @@ def main(n):
         i += 1
         ans += 1
     if sm <= m:
-        print(ans)
+        # print(ans)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -10,7 +10,7 @@ def main(n):
         ans += mp.get(x + 1, 0)
         mp[x] = mp.get(x, 0) + 1
         s += x
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -16,8 +16,7 @@ def main(n):
         y = (j * 5 + 2) % (n + 1)  # value
         d[b] = max(y, d.get(b, 0))
 
-    print(sum(d.values()))
-
-
+    # print(sum(d.values()))
+    pass
 if __name__ == "__main__":
     main(10)

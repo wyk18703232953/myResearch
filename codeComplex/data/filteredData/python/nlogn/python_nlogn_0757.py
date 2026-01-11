@@ -16,8 +16,7 @@ def main(n):
                 ans = i
         results.append(ans)
     for v in results:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     main(5)

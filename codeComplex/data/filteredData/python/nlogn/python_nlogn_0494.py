@@ -16,6 +16,7 @@ def main(n):
     # To exercise all branches, choose m between c and o when possible
     if o == 0:
         m = 0
+
     else:
         # Ensure deterministic choice: close to middle between c and o
         m = (c + o) // 2
@@ -24,6 +25,7 @@ def main(n):
         result = 0
     elif m < c:
         result = -1
+
     else:
         diff.sort(reverse=True)
         nd = o - m
@@ -36,9 +38,8 @@ def main(n):
         if result is None:
             # In case nd never <= 0, mimic no-output behavior; here we choose -1 deterministically
             result = -1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example call with a chosen n for experimentation
     main(10)

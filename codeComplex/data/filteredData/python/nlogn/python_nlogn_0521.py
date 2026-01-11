@@ -27,8 +27,7 @@ def main(n):
         results.append((res_a, res_a, res_b, res_b))
 
     for res in results:
-        print(*res)
-
-
+        # print(*res)
+        pass
 if __name__ == "__main__":
     main(5)

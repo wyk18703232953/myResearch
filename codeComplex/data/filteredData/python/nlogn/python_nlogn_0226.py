@@ -15,11 +15,13 @@ def main(n):
         a.append([x, y])
 
     if n == 0:
-        print('YES')
+        # print('YES')
+        pass
         return
 
     if n == 1:
-        print('YES')
+        # print('YES')
+        pass
         return
 
     d = {}
@@ -37,6 +39,7 @@ def main(n):
             num *= -1
         if (num, den) in d:
             d[(num, den)].append(i)
+
         else:
             d[(num, den)] = [i]
 
@@ -48,7 +51,8 @@ def main(n):
             ki = key
 
     if ki is None:
-        print('YES')
+        # print('YES')
+        pass
         return
 
     vis[0] = 1
@@ -85,11 +89,14 @@ def main(n):
                 f = 0
 
     if f:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
         d = {}
         if n == 1:
-            print('YES')
+            # print('YES')
+            pass
             return
         vis = [0] * n
         a[0], a[1] = a[1], a[0]
@@ -105,6 +112,7 @@ def main(n):
                 num *= -1
             if (num, den) in d:
                 d[(num, den)].append(i)
+
             else:
                 d[(num, den)] = [i]
         maxx = 0
@@ -115,7 +123,8 @@ def main(n):
                 ki = key
 
         if ki is None:
-            print('YES')
+            # print('YES')
+            pass
             return
 
         vis[0] = 1
@@ -150,10 +159,11 @@ def main(n):
                 if (num, den) != m:
                     f = 0
         if f:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
-
-
+            # print('NO')
+            pass
 if __name__ == "__main__":
     main(10)

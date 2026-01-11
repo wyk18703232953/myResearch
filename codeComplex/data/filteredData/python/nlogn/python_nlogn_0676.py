@@ -15,16 +15,18 @@ def main(n):
     g.sort()
 
     if b[-1] > g[0]:
-        print(-1)
+        # print(-1)
+        pass
         return
     if b[-1] == g[0]:
-        print(sum(g) + m * (sum(b) - b[-1]))
+        # print(sum(g) + m * (sum(b) - b[-1]))
+        pass
         return
     if n == 1:
-        print(-1)
+        # print(-1)
+        pass
         return
-    print(sum(g) + b[-1] + b[-2] * (m - 1) + m * (sum(b) - b[-1] - b[-2]))
-
-
+    # print(sum(g) + b[-1] + b[-2] * (m - 1) + m * (sum(b) - b[-1] - b[-2]))
+    pass
 if __name__ == "__main__":
     main(10)

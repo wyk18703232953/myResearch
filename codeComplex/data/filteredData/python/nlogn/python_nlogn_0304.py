@@ -10,6 +10,7 @@ def main(n):
         if zeros < n and (i % 2 == 0 or ones >= n):
             s_list.append('0')
             zeros += 1
+
         else:
             s_list.append('1')
             ones += 1
@@ -26,11 +27,11 @@ def main(n):
             stk.append(lst[i][1])
             out.append(str(lst[i][1]))
             i += 1
+
         else:
             out.append(str(stk[-1]))
             stk.pop()
-    print(" ".join(out))
-
-
+    # print(" ".join(out))
+    pass
 if __name__ == "__main__":
     main(5)

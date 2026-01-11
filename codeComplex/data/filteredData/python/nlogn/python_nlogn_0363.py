@@ -3,7 +3,8 @@ from bisect import bisect_right
 def main(n):
     # n: length of array a
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate k and array a based on n
@@ -17,8 +18,7 @@ def main(n):
         if a[bisect_right(a, x)] <= x + k:
             ans -= 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

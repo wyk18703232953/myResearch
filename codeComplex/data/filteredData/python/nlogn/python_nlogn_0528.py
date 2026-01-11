@@ -14,6 +14,7 @@ def main(n):
             d = (a[j] * (10 ** i)) % k
             if d in c:
                 c[d] += 1
+
             else:
                 c[d] = 1
         b.append(c)
@@ -28,9 +29,8 @@ def main(n):
         if (a[i] * (10 ** length)) % k == d:
             s -= 1
 
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(1000)

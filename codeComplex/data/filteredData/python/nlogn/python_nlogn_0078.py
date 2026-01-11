@@ -27,6 +27,7 @@ def div(n):
         if n % i == 0:
             if i != n // i:
                 cnt += 2
+
             else:
                 cnt += 1
     return cnt
@@ -36,6 +37,7 @@ def isPrime(n):
         return False
     elif n <= 2:
         return True
+
     else:
         flag = True
         for i in range(2, int(n ** .5) + 1):
@@ -55,7 +57,8 @@ def s(b):
 def main(n):
     # n controls the input size: number of pairs
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = (n + 1) // 2
@@ -68,7 +71,7 @@ def main(n):
     arr.sort()
     target = arr[k - 1]
     cnt = arr.count(target)
-    print(cnt)
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -31,4 +31,5 @@ def main(n):
 
 if __name__ == "__main__":
     # Example deterministic call for testing / benchmarking
-    print(main(10))
+    # print(main(10))
+    pass

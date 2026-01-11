@@ -24,8 +24,7 @@ def main(n):
             ans += rda[ln][k - r]
             if (a[i] * x) % k == k - r:
                 ans -= 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10000)

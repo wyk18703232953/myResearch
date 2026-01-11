@@ -13,6 +13,7 @@ def main(n):
         if i % 3 == 0:
             # 构造一个 x，使得前面有可能存在 x/k
             x = (i + 1) * k
+
         else:
             x = i + base
         a.append(x)
@@ -26,6 +27,7 @@ def main(n):
         if x % k == 0 and int(x / k) in a:
             b[x] = b[int(x / k)]
             count[b[int(x / k)]] += 1
+
         else:
             b[x] = x
             count[x] = 1
@@ -34,8 +36,7 @@ def main(n):
     for _, y in count.items():
         res -= int(y / 2)
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

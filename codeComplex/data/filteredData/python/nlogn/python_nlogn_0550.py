@@ -10,6 +10,7 @@ def main(n):
 
     if n == 1:
         ans_str = "B"
+
     else:
         ans = ["Q"] * n
         ans[pos[1]] = "A"
@@ -36,7 +37,8 @@ def main(n):
                 ans[pos[i]] = "B"
         ans_str = "".join(ans)
 
-    print(ans_str)
+    # print(ans_str)
+    pass
     return ans_str
 
 

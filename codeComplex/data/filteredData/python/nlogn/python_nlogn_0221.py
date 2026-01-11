@@ -2,7 +2,8 @@ def main(n):
     # Interpret n as the size of the list E
     if n < 3:
         # Not enough elements to form (i, j, k) with i < j < k
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministically generate U and E based on n
@@ -34,9 +35,8 @@ def main(n):
             if efficiency > maxi_efficiency:
                 maxi_efficiency = efficiency
 
-    print(maxi_efficiency)
-
-
+    # print(maxi_efficiency)
+    pass
 if __name__ == "__main__":
     # Example call for time-complexity experiments
     main(10)

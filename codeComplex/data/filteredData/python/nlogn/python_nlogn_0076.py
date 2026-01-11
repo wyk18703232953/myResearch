@@ -19,12 +19,12 @@ def main(n):
     if 1 <= k <= len(a):
         b = a[k - 1]
         result = a.count(b)
+
     else:
         result = 0
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 进行规模实验
     main(10)

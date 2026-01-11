@@ -19,8 +19,7 @@ def main(n):
         if u[1] >= r:
             a += 1
             r = u[0]
-    print(a)
-
-
+    # print(a)
+    pass
 if __name__ == "__main__":
     main(10)

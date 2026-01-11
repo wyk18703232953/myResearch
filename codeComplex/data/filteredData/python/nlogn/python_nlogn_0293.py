@@ -24,12 +24,12 @@ def main(n):
             ans[i] = l[p][1] + 1
             ln += 1
             p += 1
+
         else:
             ans[i] = l[st[ln - 1]][1] + 1
             ln -= 1
 
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(5)

@@ -36,4 +36,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用，规模可按需修改
     res = main(10)
-    print(*res)
+    # print(*res)
+    pass

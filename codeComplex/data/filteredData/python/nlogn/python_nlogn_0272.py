@@ -15,14 +15,17 @@ def main(n):
     for i, seg in enumerate(segments):
         j = i + 1
         if j >= n:
-            print("-1 -1")
+            # print("-1 -1")
+            pass
             return
 
         while segments[j][1] <= seg[1]:
-            print(f"{segments[j][2]} {seg[2]}")
+            # print(f"{segments[j][2]} {seg[2]}")
+            pass
             return
 
-    print("-1 -1")
+    # print("-1 -1")
+    pass
     return
 
 

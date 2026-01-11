@@ -14,7 +14,8 @@ def main(n):
 
     # Handle small n cases safely
     if n < 2:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     for i in range(n - 2):
@@ -31,9 +32,8 @@ def main(n):
             v = (a[i] - a[j - 1]) / (a[i] - a[j])
             ans = max(ans, v)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example call for scalability experiments
     main(1000)

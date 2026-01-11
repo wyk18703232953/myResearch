@@ -63,11 +63,13 @@ def main(n):
 
         if can_go_to_looser():
             answers[position] = "A"
+
         else:
             answers[position] = "B"
 
     result = ''.join(answers)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

@@ -6,10 +6,11 @@ def main(n):
     ab = sorted(arr)
     t = [i for i in range(n) if arr[i] != ab[i]]
     if len(t) < 3:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

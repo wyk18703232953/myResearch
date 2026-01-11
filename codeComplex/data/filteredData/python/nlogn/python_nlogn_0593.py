@@ -9,6 +9,7 @@ def solve(N, M, A):
         elif lh - 1 <= a:
             cnt += 1
             lh -= 1
+
         else:
             cnt += lh - a
             lh = a
@@ -28,9 +29,8 @@ def main(n):
     A = [(i % (M + 1)) + 1 for i in range(N)]
 
     result = solve(N, M, A)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 以改变规模
     main(10)

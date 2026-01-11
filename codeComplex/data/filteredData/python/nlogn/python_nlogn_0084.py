@@ -31,7 +31,7 @@ def solve(n, k, t):
 def main(n):
     n, k, t = generate_input(n)
     ans = solve(n, k, t)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

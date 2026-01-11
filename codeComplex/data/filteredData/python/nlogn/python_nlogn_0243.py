@@ -16,6 +16,7 @@ def checkfortwolines(a, b, points):
 
     if len(set1) <= 2:
         return True
+
     else:
         pts1 = list(set1)
         for i in range(len(pts1)):
@@ -33,16 +34,19 @@ def generate_points(n):
 
 def main(n):
     if n <= 4:
-        print("YES")
+        # print("YES")
+        pass
         return
     points = generate_points(n)
     a = points[0]
     b = points[1]
     c = points[2]
     if checkfortwolines(a, b, points) or checkfortwolines(b, c, points) or checkfortwolines(c, a, points):
-        print("YES")
-    else:
-        print("NO")
+        # print("YES")
+        pass
 
+    else:
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

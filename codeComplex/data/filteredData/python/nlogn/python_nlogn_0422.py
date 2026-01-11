@@ -17,6 +17,7 @@ def main(n):
     for v in a:
         if v not in d:
             d[v] = 1
+
         else:
             d[v] += 1
         if v > m:
@@ -45,9 +46,8 @@ def main(n):
         if find == 0:
             ans += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different input scales
     main(1000)

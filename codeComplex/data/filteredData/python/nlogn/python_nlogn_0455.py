@@ -30,10 +30,12 @@ def main(n):
     while pos_r <= length - 1:
         if numList[pos_r] > targetnumber:
             rem += 1
+
         else:
             rem -= 1
         if rem not in right:
             right[rem] = 1
+
         else:
             right[rem] += 1
         pos_r += 1
@@ -42,10 +44,12 @@ def main(n):
     while pos_l >= 0:
         if numList[pos_l] > targetnumber:
             rem += 1
+
         else:
             rem -= 1
         if rem not in left:
             left[rem] = 1
+
         else:
             left[rem] += 1
         pos_l -= 1
@@ -55,8 +59,7 @@ def main(n):
             total += left[number_l] * right[-number_l]
         if 1 - number_l in right:
             total += left[number_l] * right[1 - number_l]
-    print(total)
-
-
+    # print(total)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -12,8 +12,7 @@ def main(n):
         results.append(res)
     # For time complexity experiments, we still print results
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     main(5)

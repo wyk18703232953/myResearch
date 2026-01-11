@@ -40,10 +40,12 @@ def main(n):
 
     f.append(n - y)
 
-    print(ans)
+    # print(ans)
+    pass
     for i in f:
-        print(i, end=" ")
-    print()
-
+        # print(i, end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

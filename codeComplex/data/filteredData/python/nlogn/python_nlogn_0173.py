@@ -23,8 +23,7 @@ def main(n):
                 cant_visit.add(end[end_index][1])
                 end_index += 1
 
-    print(answer)
-
-
+    # print(answer)
+    pass
 if __name__ == "__main__":
     main(10)

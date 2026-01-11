@@ -29,8 +29,7 @@ def main(n):
         valid = i - adj
         ans += (valid * x) - c
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

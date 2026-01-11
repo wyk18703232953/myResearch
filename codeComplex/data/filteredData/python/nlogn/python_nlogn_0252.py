@@ -7,6 +7,7 @@ def bin_ser(arr, curr):
         if arr[mid] <= curr:
             ans = mid
             l = mid + 1
+
         else:
             r = mid - 1
     return ans
@@ -47,6 +48,7 @@ def main(n):
     # 例如：brr[i] = (i % N) + 1
     if N == 0:
         brr = []
+
     else:
         brr = [(i % N) + 1 for i in range(Q)]
 
@@ -54,9 +56,8 @@ def main(n):
 
     # 为了在时间复杂度实验中有可观测输出，这里打印结果
     for v in outputs:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 的规模做实验
     main(10)

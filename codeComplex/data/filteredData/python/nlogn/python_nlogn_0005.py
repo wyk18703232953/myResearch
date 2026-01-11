@@ -19,8 +19,7 @@ def main(n):
             c += 2
         elif l[i + 1][0] - l[i][1] == t:
             c += 1
-    print(c + 2)
-
-
+    # print(c + 2)
+    pass
 if __name__ == "__main__":
     main(10)

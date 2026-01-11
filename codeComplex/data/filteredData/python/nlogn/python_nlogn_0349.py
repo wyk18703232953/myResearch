@@ -22,6 +22,7 @@ def isPrime(n):
         return False
     elif n <= 2:
         return True
+
     else:
         for i in range(2, int(n ** 0.5) + 1):
             if n % i == 0:
@@ -59,9 +60,9 @@ def generate_input(n):
 def main(n):
     arr = generate_input(n)
     ans = core_logic(arr)
-    print(len(ans))
-    print(*ans)
-
-
+    # print(len(ans))
+    pass
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

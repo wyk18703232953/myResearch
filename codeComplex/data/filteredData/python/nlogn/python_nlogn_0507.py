@@ -17,15 +17,17 @@ def main(n):
 
     for i in range(n):
         if suma <= m:
-            print(i)
+            # print(i)
+            pass
             return
         suma -= songs[i][0] - songs[i][1]
 
     if suma <= m:
-        print(n)
+        # print(n)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(10)

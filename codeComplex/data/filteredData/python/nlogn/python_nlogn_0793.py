@@ -14,9 +14,8 @@ def main(n):
     t.sort()
     # 保证切片安全：当 n == 1 时，range(1, n) 为空，t 为空，n-k 至少为 0
     result = sum(t[:max(0, n - k)])
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：可修改 n 以进行规模化时间复杂度实验
     main(10)

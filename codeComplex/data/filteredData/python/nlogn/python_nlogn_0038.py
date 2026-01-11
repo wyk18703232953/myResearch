@@ -7,10 +7,10 @@ def main(n):
     z = max(b)
     if z == 1:
         b[b.index(z)] = 2
+
     else:
         b[b.index(z)] = 1
-    print(*sorted(b))
-
-
+    # print(*sorted(b))
+    pass
 if __name__ == "__main__":
     main(10)

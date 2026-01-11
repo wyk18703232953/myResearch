@@ -13,10 +13,11 @@ def main(n):
         L[i] = int(L[i])
     L = sorted(L)
     if len(L) == 1:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print(L[1])
-
-
+        # print(L[1])
+        pass
 if __name__ == "__main__":
     main(10)

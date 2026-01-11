@@ -11,8 +11,7 @@ def main(n):
         res = min(len(a) - 2, max(a[-2] - 1, 0))
         results.append(res)
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     main(5)

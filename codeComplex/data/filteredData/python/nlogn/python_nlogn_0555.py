@@ -60,7 +60,7 @@ def main(n):
                 visited[y] = True
                 q.append(y)
     res = check_sequence(n, edges, l)
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -22,6 +22,7 @@ def main(n):
     elif max_boy == min_girl:
         bmin.pop()
         out = sum(gmax) + sum(x * m for x in bmin)
+
     else:
         bmin.pop()
         out = sum(gmax) - min_girl + max_boy
@@ -29,8 +30,7 @@ def main(n):
         bmin.pop()
         out += sum(x * m for x in bmin)
 
-    print(out)
-
-
+    # print(out)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -1,6 +1,7 @@
 def main(n):
     if n < 1:
-        print("")
+        # print("")
+        pass
         return
 
     # Deterministic generation of arr (parent array for nodes 2..n)
@@ -19,11 +20,11 @@ def main(n):
     for i in range(n, 0, -1):
         if not children[i]:
             leaves[i] = 1
+
         else:
             leaves[i] = sum(leaves[j] for j in children[i])
 
-    print(' '.join(map(str, sorted(leaves[1:]))))
-
-
+    # print(' '.join(map(str, sorted(leaves[1:]))))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -15,6 +15,7 @@ def main(n):
                 a = j
         if a:
             results.append((a, a, a, a))
+
         else:
             c = 0
             x = 0
@@ -31,6 +32,7 @@ def main(n):
                     a = j
                 elif c == 2:
                     b = j
+
                 else:
                     if x / j + j / x < a / b + b / a:
                         a, b = x, j
@@ -39,8 +41,7 @@ def main(n):
 
     # Output to keep same observable behavior as original (for analysis)
     for quad in results:
-        print(*quad)
-
-
+        # print(*quad)
+        pass
 if __name__ == "__main__":
     main(5)

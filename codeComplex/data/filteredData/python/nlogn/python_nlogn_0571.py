@@ -14,8 +14,7 @@ def main(n):
         ans[1] = 1
     ans = ans[1:]
     ans.sort()
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

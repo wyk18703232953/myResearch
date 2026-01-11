@@ -17,16 +17,19 @@ def main(n):
                 if a[i] == a[i - 1] + 1:
                     lose = True
     if lose:
-        print("cslnb")
+        # print("cslnb")
+        pass
+
     else:
         eventual = n * (n - 1) // 2
         curr = sum(a)
         if (curr - eventual) % 2 == 0:
-            print("cslnb")
+            # print("cslnb")
+            pass
+
         else:
-            print("sjfnb")
-
-
+            # print("sjfnb")
+            pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

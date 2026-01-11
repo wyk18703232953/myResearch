@@ -37,9 +37,8 @@ def main(n):
     output = []
     for k in x:
         output.append(str(k.ans))
-    print(" ".join(output))
-
-
+    # print(" ".join(output))
+    pass
 if __name__ == "__main__":
     # Example deterministic call for time complexity experiments
     main(10)

@@ -23,10 +23,11 @@ def main(n):
         c += arr[a]
         a -= 1
     if c < b:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(p)
-
-
+        # print(p)
+        pass
 if __name__ == "__main__":
     main(10)

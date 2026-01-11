@@ -21,6 +21,7 @@ def main(n):
         elif i % 3 == 0:
             # Some type=1 with varying values
             Y.append([1, (i * 7) % (10**6 + 7) + 1])
+
         else:
             # Other types
             Y.append([2, (i * 11) % (10**6 + 33) + 2])
@@ -46,6 +47,7 @@ def main(n):
     while i < l + 1 and j < n:
         if Z[i] >= X[j]:
             i += 1
+
         else:
             XCOUNT[j] = i
             j += 1
@@ -57,7 +59,8 @@ def main(n):
             count = i + XCOUNT[i]
 
     result = count + ANS
-    print(result)
+    # print(result)
+    pass
     return result
 
 

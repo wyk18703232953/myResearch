@@ -7,16 +7,19 @@ def main(n):
     # 原逻辑：输出成对坐标
     for i in range(1, n // 2 + 1):
         for j in range(1, m + 1):
-            sys.stdout.write("".join((str(i), " ", str(j), "\n")))
-            sys.stdout.write("".join((str(n - i + 1), " ", str(m - j + 1), "\n")))
+            # sys.stdout.write("".join((str(i), " ", str(j), "\n")))
+            # sys.stdout.write("".join((str(n - i + 1), " ", str(m - j + 1), "\n")))
+            pass
 
     if n % 2 == 1:
         for j in range(1, m // 2 + 1):
-            sys.stdout.write("".join((str(n // 2 + 1), " ", str(j), "\n")))
-            sys.stdout.write("".join((str(n // 2 + 1), " ", str(m - j + 1), "\n")))
+            # sys.stdout.write("".join((str(n // 2 + 1), " ", str(j), "\n")))
+            # sys.stdout.write("".join((str(n // 2 + 1), " ", str(m - j + 1), "\n")))
+            pass
 
         if m % 2 == 1:
-            sys.stdout.write("".join((str(n // 2 + 1), " ", str(m // 2 + 1), "\n")))
+            # sys.stdout.write("".join((str(n // 2 + 1), " ", str(m // 2 + 1), "\n")))
+            pass
 
 
 if __name__ == "__main__":

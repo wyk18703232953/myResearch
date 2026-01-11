@@ -17,9 +17,12 @@ def main(n):
         l.append(a - b)
 
     if s1 <= m:
-        print(0)
+        # print(0)
+        pass
     elif s2 > m:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         r = 0
         l.sort(reverse=True)
@@ -27,7 +30,8 @@ def main(n):
             r += 1
             s1 -= diff
             if s1 <= m:
-                print(r)
+                # print(r)
+                pass
                 break
 
 

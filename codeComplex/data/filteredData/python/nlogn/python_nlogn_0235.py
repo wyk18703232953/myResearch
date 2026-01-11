@@ -8,7 +8,8 @@ def main(n):
     Y = [(i * i) % (10**9 + 7) for i in range(n)]
 
     if n <= 3:
-        print('YES')
+        # print('YES')
+        pass
         return
 
     # Deterministic replacement for random sampling:
@@ -36,7 +37,8 @@ def main(n):
             if dx * Dy - dy * Dx != 0:
                 not_on_line.append(c)
         if len(not_on_line) <= 1:
-            print('YES')
+            # print('YES')
+            pass
             return
 
         if len(not_on_line) >= 2:
@@ -58,10 +60,10 @@ def main(n):
                     can = False
                     break
             if can:
-                print('YES')
+                # print('YES')
+                pass
                 return
-    print('NO')
-
-
+    # print('NO')
+    pass
 if __name__ == "__main__":
     main(10)

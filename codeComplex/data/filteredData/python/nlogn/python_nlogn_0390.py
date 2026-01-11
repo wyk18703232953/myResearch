@@ -28,7 +28,9 @@ def main(n):
     acc = []
 
     if k == 0:
-        print(' '.join(map(str, c)))
+        # print(' '.join(map(str, c)))
+        pass
+
     else:
         for i in range(n):
             idx = sortedp[i][1]
@@ -37,14 +39,14 @@ def main(n):
             if len(acc) < k:
                 acc_coins += coins
                 heapq.heappush(acc, coins)
+
             else:
                 smallest_coin = acc[0]
                 if smallest_coin < coins:
                     acc_coins -= smallest_coin
                     heapq.heapreplace(acc, coins)
                     acc_coins += coins
-        print(' '.join(map(str, ans)))
-
-
+        # print(' '.join(map(str, ans)))
+        pass
 if __name__ == "__main__":
     main(10)

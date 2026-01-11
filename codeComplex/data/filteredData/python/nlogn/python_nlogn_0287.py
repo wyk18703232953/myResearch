@@ -24,13 +24,13 @@ def main(n):
         if i in dictb:
             ans += max(dicta[i], dictb[i])
             del dictb[i]
+
         else:
             ans += dicta[i]
     for v in dictb.values():
         ans += v
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

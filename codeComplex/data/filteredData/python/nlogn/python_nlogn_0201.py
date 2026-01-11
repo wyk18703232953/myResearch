@@ -32,6 +32,7 @@ def solve(n, T, a, t):
         if possible:
             result, final_probs = mid, probs
             low = mid + 1
+
         else:
             high = mid - 1
 
@@ -48,11 +49,13 @@ def main(n):
     t = [((i * 3) % (2 * n)) + 1 for i in range(1, n + 1)]
 
     point, probs = solve(n, T, a, t)
-    print(point)
-    print(len(probs))
+    # print(point)
+    pass
+    # print(len(probs))
+    pass
+
     if len(probs) > 0:
-        print(" ".join(str(x) for x in probs))
-
-
+        # print(" ".join(str(x) for x in probs))
+        pass
 if __name__ == "__main__":
     main(10)

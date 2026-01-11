@@ -15,12 +15,14 @@ def main(n):
     for i in range(len(distances)):
         if taxiDriver[i]:
             drivers.append(distances[i])
+
         else:
             people.append(distances[i])
 
     if not drivers:
         # Edge case: no drivers, just return zeros
-        print(' '.join(map(str, result)))
+        # print(' '.join(map(str, result)))
+        pass
         return
 
     j = 0
@@ -29,11 +31,11 @@ def main(n):
             while (j + 1) < len(drivers) and (drivers[j] - person) < (person - drivers[j + 1]):
                 j += 1
             result[j] += 1
+
         else:
             result[j] += 1
 
-    print(' '.join(map(str, result)))
-
-
+    # print(' '.join(map(str, result)))
+    pass
 if __name__ == "__main__":
     main(10)

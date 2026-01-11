@@ -15,8 +15,7 @@ def main(n):
         ais.append([first, second])
 
     ais.sort(key=lambda x: (-x[0], x[1]))
-    print(ais.count(ais[k - 1]))
-
-
+    # print(ais.count(ais[k - 1]))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -20,6 +20,7 @@ def main(n):
             mx -= 1
             cc += ll[i] - 1
             ll[i] = 1
+
         else:
             mx = ll[i]
             cc += 1
@@ -34,4 +35,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call for testing / benchmarking
     result = main(10)
-    print(result)
+    # print(result)
+    pass

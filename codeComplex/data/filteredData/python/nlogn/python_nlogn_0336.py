@@ -15,14 +15,15 @@ def main(n):
     flag = False
     for i in range(n - 1):
         if sortedAr[i + 1].find(sortedAr[i]) == -1:
-            print('NO')
+            # print('NO')
+            pass
             flag = True
             break
     if not flag:
-        print('YES')
+        # print('YES')
+        pass
         for s in sortedAr:
-            print(s)
-
-
+            # print(s)
+            pass
 if __name__ == "__main__":
     main(5)

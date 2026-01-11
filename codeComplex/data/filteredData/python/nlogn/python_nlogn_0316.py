@@ -6,10 +6,11 @@ def main(n):
     a = [(i % (n // 2 + 1)) + 1 for i in range(n)]
     w = sum(a[i] == i + 1 for i in range(n))
     if w >= n // 1000:
-        print("Petr")
+        # print("Petr")
+        pass
+
     else:
-        print("Um_nik")
-
-
+        # print("Um_nik")
+        pass
 if __name__ == "__main__":
     main(1000000)

@@ -1,6 +1,7 @@
 def main(n):
     if n < 2:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = max(1, n // 3)
@@ -28,8 +29,7 @@ def main(n):
             mi = 10 ** 9
             ma = -10 ** 9
             u += 1
-    print(ans + ma - mi)
-
-
+    # print(ans + ma - mi)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -12,13 +12,16 @@ def main(n):
     for chr in a:
         if chr not in d:
             d[chr] = 1
+
         else:
             d[chr] += 1
 
     p = list(d.values())
     z = k // n
     if z == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         o = []
         if len(a) >= n:
@@ -29,9 +32,8 @@ def main(n):
                 c += p[j] // i
             if c >= n:
                 o.append(i)
-        print(max(o))
-
-
+        # print(max(o))
+        pass
 if __name__ == "__main__":
     # 示例：可以调整此处的 n 进行规模化实验
     main(10)

@@ -10,8 +10,7 @@ def main(n):
         if i // k not in res or i % k != 0:
             res.add(i)
 
-    print(len(res))
-
-
+    # print(len(res))
+    pass
 if __name__ == "__main__":
     main(10)

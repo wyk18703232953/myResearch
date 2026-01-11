@@ -20,9 +20,8 @@ def main(n):
     for x, y in a:
         if x == p and y == t:
             ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 以做时间复杂度实验
     main(10)

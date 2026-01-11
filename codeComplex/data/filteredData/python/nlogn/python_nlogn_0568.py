@@ -32,14 +32,14 @@ def main(n):
     while j < len(SUM):
         if i <= SUM[j]:
             out.append(str(SC[j - 1]))
+
         else:
             j += 1
             continue
         i += 1
 
     if out:
-        print(" ".join(out))
-
-
+        # print(" ".join(out))
+        pass
 if __name__ == "__main__":
     main(10)

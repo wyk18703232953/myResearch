@@ -56,19 +56,25 @@ def main(n):
             if a[i] == 0:
                 poss = 0
     if same > 1 or poss == 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
         if ind > 0:
             if a[ind] - a[ind - 1] == 1:
-                print('cslnb')
+                # print('cslnb')
+                pass
                 return
         c = 0
         for i in range(n):
             c += a[i] - i
         if c % 2:
-            print('sjfnb')
+            # print('sjfnb')
+            pass
+
         else:
-            print('cslnb')
+            # print('cslnb')
+            pass
     return
 
 
