@@ -103,6 +103,28 @@ def clean_data(x_raw, y_raw):
 
     return x_clean, y_clean
 
+def check_power_law_slope(x_data, y_data):
+    """
+    通过 Log-Log 线性拟合估算增长的幂次。
+    slope ≈ 1.0 -> Linear
+    slope ≈ 2.0 -> Quadratic
+    slope ≈ 3.0 -> Cubic
+    """
+    try:
+        # 过滤掉 <=0 的点避免 log 报错
+        valid_mask = (x_data > 0) & (y_data > 0)
+        if np.sum(valid_mask) < 4: return 0
+        
+        log_x = np.log(x_data[valid_mask])
+        log_y = np.log(y_data[valid_mask])
+        
+        # 线性拟合 log(y) = b * log(x) + a，其中 b 是斜率
+        coeffs = np.polyfit(log_x, log_y, 1)
+        slope = coeffs[0]
+        return slope
+    except:
+        return 0
+
 # ==========================================
 # 3. 核心处理函数
 # ==========================================
@@ -200,44 +222,101 @@ def process_code_file(code_path, expected_models, base_dir):
         print("   [警告] 清洗后数据过少，回退使用原始数据。")
         x_data, y_data = x_raw, y_raw
 
+   # ==========================================
+    #  替换后的拟合逻辑 (开始)
+    # ==========================================
     fit_report = {}
-    best_score = -np.inf
     best_model_name = "None"
+    best_info = None # 用于存储最佳模型的信息以便绘图
     
+    # 1. 定义复杂度优先级 (数值越小越简单，用于奥卡姆剃刀原则)
+    complexity_order = {
+        "Constant": 0, "Logarithmic": 1, "Linear": 2, 
+        "N Log N": 3, "Quadratic": 4, "Cubic": 5
+    }
+
     print("正在拟合模型...")
-    
+
+    # 2. 先计算物理斜率 (Power Law)
+    # 这是区分 Quadratic(2.0) 和 Cubic(3.0) 的最强参考
+    power_slope = check_power_law_slope(x_data, y_data)
+    print(f"  [物理检测] Log-Log 斜率: {power_slope:.4f}")
+
+    candidates = []
+
     for name, func in MODELS.items():
         try:
-            # 使用清洗后的数据进行拟合
-            popt, pcov = curve_fit(func, x_data, y_data, maxfev=10000)
+            # --- 改进点 A: 增加 bounds 约束 ---
+            # 强制参数必须 >= 0 (假设时间复杂度函数系数不为负)
+            # 这能极大减少 Cubic 曲线震荡拟合导致的误判
+            popt, pcov = curve_fit(func, x_data, y_data, maxfev=10000, bounds=(0, np.inf))
+            
             y_pred = func(x_data, *popt)
             r2 = r2_score(y_data, y_pred)
             
-            # 计算 AIC/BIC
+            # --- 改进点 B: 计算 BIC (贝叶斯信息准则) ---
             resid = y_data - y_pred
             ssr = np.sum(resid**2)
             if ssr <= 0: ssr = 1e-10
             k = len(popt)
             n_samples = len(y_data)
             
-            aic = 2 * k + n_samples * np.log(ssr / n_samples)
+            # BIC: 惩罚参数过多的模型。BIC 越小越好。
             bic = n_samples * np.log(ssr / n_samples) + k * np.log(n_samples)
             
-            fit_report[name] = {
+            # 记录结果
+            report_item = {
+                "name": name,
                 "r2": r2,
-                "aic": aic,
                 "bic": bic,
-                "params": popt.tolist()
+                "params": popt.tolist(),
+                "order": complexity_order.get(name, 10)
             }
+            fit_report[name] = report_item
             
-            if r2 > best_score:
-                best_score = r2
-                best_model_name = name
+            # 只有拟合度尚可的模型才进入候选 (R2 > 0.8)
+            if r2 > 0.8:
+                candidates.append(report_item)
                 
         except Exception as e:
             fit_report[name] = {"r2": -np.inf, "success": False}
 
+    # ==========================================
+    #  决策逻辑: 结合 BIC, R2 和 斜率
+    # ==========================================
+    
+    if not candidates:
+        print("  [失败] 没有模型能良好拟合数据 (R2 < 0.8)")
+    else:
+        # 1. 首先按 BIC 从小到大排序 (BIC 越小越好)
+        candidates.sort(key=lambda x: x['bic'])
+        best_candidate = candidates[0]
+        
+        # 2. 引入防误判机制 (针对 Cubic vs Quadratic)
+        # 如果当前最佳是 Cubic，但 Quadratic 表现也不差，且斜率不像 Cubic
+        if best_candidate['name'] == 'Cubic':
+            # 在 candidates 里找找有没有 Quadratic
+            quad_candidate = next((c for c in candidates if c['name'] == 'Quadratic'), None)
+            
+            if quad_candidate:
+                # 判据 1: 如果斜率明显小于 2.5，强行降级为 Quadratic
+                if power_slope < 2.5:
+                    print(f"  [修正] 模型选了 Cubic 但斜率({power_slope:.2f})接近2.0 -> 修正为 Quadratic")
+                    best_candidate = quad_candidate
+                
+                # 判据 2: 如果 R2 差距极小 (< 0.005) 且 BIC 差距不大，优先选简单的
+                elif (best_candidate['r2'] - quad_candidate['r2'] < 0.005):
+                    print(f"  [修正] Cubic 与 Quadratic 差距微弱，依奥卡姆剃刀原则 -> 修正为 Quadratic")
+                    best_candidate = quad_candidate
+
+        best_model_name = best_candidate['name']
+        best_info = best_candidate # 暂存以便后续绘图使用
+        best_score = best_candidate['r2'] # 兼容旧代码变量名
+
     print(f"分析完成。最佳拟合模型: {best_model_name} (R2={best_score:.4f})")
+    # ==========================================
+    #  替换后的拟合逻辑 (结束)
+    # ==========================================
     
     # --- 绘图与报告保存 ---
     
@@ -256,10 +335,12 @@ def process_code_file(code_path, expected_models, base_dir):
     # 2. 绘制有效数据点（蓝色圆点）
     plt.scatter(x_data, y_data, color='blue', alpha=0.6, label='Valid Data')
     
-    # 3. 绘制最佳拟合曲线
-    if best_model_name in fit_report:
+  # 3. 绘制最佳拟合曲线
+    # 注意：确保从 fit_report 里取值，或者使用我们上面暂存的 best_info
+    if best_model_name != "None" and best_model_name in fit_report:
         best_info = fit_report[best_model_name]
-        x_smooth = np.linspace(min(x_raw), max(x_raw), 500) # 画线覆盖全范围
+        # 下面这行不用变
+        x_smooth = np.linspace(min(x_raw), max(x_raw), 500)
         y_smooth = MODELS[best_model_name](x_smooth, *best_info['params'])
         
         plt.plot(x_smooth, y_smooth, 'r-', linewidth=2, 
@@ -348,7 +429,7 @@ def main():
     for i, file_name in enumerate(python_files, 1):
         full_path = os.path.join(folder_path, file_name)
         print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
-        if(i>=0):
+        if(i==1):
             try:
                 success = process_code_file(full_path, expected_models, base_dir)
                 if success:
@@ -357,13 +438,13 @@ def main():
                 else:
                     print(">>> 判定结果: 不符合预期 ❌")
                     global_stats['failed'] += 1
-                    global_stats['failed_files'].append(file_name)
-                    
+                    global_stats['failed_files'].append(file_name)                    
             except Exception as e:
                 print(f"处理发生未捕获异常: {e}")
                 global_stats['failed'] += 1
                 global_stats['failed_files'].append(file_name)
-
+            break
+        
     print("\n" + "="*50)
     print("最终统计报告")
     print("="*50)
