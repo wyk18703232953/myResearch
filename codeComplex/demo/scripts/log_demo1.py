@@ -7,6 +7,7 @@ from sklearn.metrics import r2_score
 import os
 import sys
 import warnings
+from typing import Optional, Dict
 
 # 忽略拟合过程中的 RuntimeWarning
 warnings.filterwarnings("ignore")
@@ -46,6 +47,57 @@ MODELS = {
     "Logarithmic": logarithmic,
     "N Log N": n_log_n,
 }
+
+LLM_RESULTS_PATH = "/home/wuyankai/myResearch/codeComplex/results/LLM/ast_llm_results1.json"
+
+# LLM输出 -> 模型名称映射
+LLM_LABEL_MAP = {
+    "constant": "Constant",
+    "o(1)": "Constant",
+    "logn": "Logarithmic",
+    "logarithmic": "Logarithmic",
+    "linear": "Linear",
+    "o(n)": "Linear",
+    "nlogn": "N Log N",
+    "n_log_n": "N Log N",
+    "n log n": "N Log N",
+    "quadratic": "Quadratic",
+    "o(n^2)": "Quadratic",
+    "cubic": "Cubic",
+    "o(n^3)": "Cubic",
+}
+
+# ==========================================
+# 1.1 LLM结果加载与归一化
+# ==========================================
+
+def normalize_llm_label(label: Optional[str]) -> Optional[str]:
+    if not label:
+        return None
+    label_norm = label.strip().lower()
+    return LLM_LABEL_MAP.get(label_norm)
+
+def load_llm_map(json_path: str) -> Dict[str, str]:
+    """
+    加载LLM结果映射：complexity_id -> 预测复杂度标签
+    """
+    if not os.path.exists(json_path):
+        print(f"[警告] LLM结果文件不存在: {json_path}")
+        return {}
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        result = {}
+        for record in data.get("detailed_records", []):
+            complexity_id = record.get("complexity_id")
+            raw_label = record.get("model_raw_output")
+            normalized = normalize_llm_label(raw_label)
+            if complexity_id and normalized:
+                result[complexity_id] = normalized
+        return result
+    except Exception as e:
+        print(f"[警告] 读取LLM结果失败: {e}")
+        return {}
 
 def calculate_confidence_score(r2, num_params, n_samples, complexity_order):
     """
@@ -153,11 +205,96 @@ def check_power_law_slope(x_data, y_data):
     except:
         return 0
 
+def _tail_mask(x_data, min_tail_n=1000, min_points=4, tail_fraction=0.4):
+    """
+    返回代表“大规模区间”的mask，用于评估拟合在大输入规模上的优势。
+    """
+    if len(x_data) == 0:
+        return np.array([], dtype=bool)
+    x_sorted = np.sort(x_data)
+    if np.max(x_sorted) >= min_tail_n:
+        mask = x_data >= min_tail_n
+    else:
+        cutoff_index = int(np.floor((1 - tail_fraction) * len(x_sorted)))
+        cutoff_index = max(0, min(cutoff_index, len(x_sorted) - 1))
+        cutoff_value = x_sorted[cutoff_index]
+        mask = x_data >= cutoff_value
+
+    if np.sum(mask) < min_points:
+        mask = np.zeros_like(x_data, dtype=bool)
+        mask[np.argsort(x_data)[-min_points:]] = True
+    return mask
+
+def _tail_sse(model_name, fit_report, x_data, y_data, mask):
+    if model_name not in fit_report:
+        return None
+    params = fit_report[model_name].get("params")
+    if not params:
+        return None
+    y_pred = MODELS[model_name](x_data[mask], *params)
+    resid = y_data[mask] - y_pred
+    return float(np.sum(resid ** 2))
+
+def fuse_predictions(
+    llm_pred,
+    fit_best,
+    fit_report,
+    candidates,
+    x_data,
+    y_data,
+    confidence_gap,
+    confidence_threshold,
+    power_slope,
+):
+    """
+    LLM优先 + 拟合强证据纠正。
+    """
+    if not llm_pred:
+        return None, "no_llm_prior"
+    if not fit_best or fit_best == "None":
+        return llm_pred, "dynamic_failure"
+    if llm_pred == fit_best:
+        return llm_pred, "agreement"
+
+    tail_mask = _tail_mask(x_data)
+    best_tail_sse = _tail_sse(fit_best, fit_report, x_data, y_data, tail_mask)
+    second_tail_sse = None
+    if candidates and len(candidates) >= 2:
+        second_best = candidates[1]["name"]
+        second_tail_sse = _tail_sse(second_best, fit_report, x_data, y_data, tail_mask)
+
+    tail_advantage = False
+    if best_tail_sse is not None and second_tail_sse is not None:
+        tail_advantage = best_tail_sse <= second_tail_sse * 0.9
+    elif best_tail_sse is not None:
+        tail_advantage = True
+
+    fit_confident = (
+        confidence_gap is not None
+        and confidence_gap >= confidence_threshold
+        and tail_advantage
+    )
+
+    # 高阶纠偏：LLM低估、拟合呈现明显立方趋势时可覆盖
+    if (
+        fit_best == "Cubic"
+        and llm_pred != "Cubic"
+        and power_slope >= 2.7
+        and tail_advantage
+        and (fit_confident or fit_report.get("Cubic", {}).get("r2", 0) >= 0.9)
+    ):
+        return fit_best, "high_order_correction"
+
+    if fit_confident:
+        return fit_best, "strong_dynamic_evidence"
+
+    return llm_pred, "fallback_to_llm"
+
 # ==========================================
 # 3. 核心处理函数
 # ==========================================
 
-def process_code_file(code_path, expected_models, base_dir):
+def process_code_file(code_path, expected_models, base_dir, llm_map=None):
     if not os.path.exists(code_path):
         print(f"错误：文件 {code_path} 不存在")
         return False
@@ -256,6 +393,7 @@ def process_code_file(code_path, expected_models, base_dir):
     fit_report = {}
     best_model_name = "None"
     best_info = None # 用于存储最佳模型的信息以便绘图
+    best_score = float("nan")
     
     # 1. 定义复杂度优先级 (数值越小越简单，用于奥卡姆剃刀原则)
     complexity_order = {
@@ -274,6 +412,7 @@ def process_code_file(code_path, expected_models, base_dir):
     print(f"  [物理检测] Log-Log 斜率: {power_slope:.4f}")
 
     candidates = []
+    confidence_gap = None
 
     for name, func in MODELS.items():
         try:
@@ -328,7 +467,6 @@ def process_code_file(code_path, expected_models, base_dir):
         best_candidate = candidates[0]
         
         # 2. 计算置信度差距
-        confidence_gap = 0
         if len(candidates) >= 2:
             second_best = candidates[1]
             confidence_gap = best_candidate['confidence_score'] - second_best['confidence_score']
@@ -366,19 +504,41 @@ def process_code_file(code_path, expected_models, base_dir):
     print(f"分析完成。最佳拟合模型: {best_model_name} (R2={best_score:.4f})")
     
     # --- 保存置信度信息到报告 ---
-    if 'confidence_gap' in locals():
+    if confidence_gap is not None:
         fit_report['confidence_analysis'] = {
             'best_model': best_model_name,
             'best_score': float(best_candidate['confidence_score']) if best_candidate else None,
             'second_best_model': candidates[1]['name'] if len(candidates) >= 2 else None,
             'second_best_score': float(candidates[1]['confidence_score']) if len(candidates) >= 2 else None,
-            'confidence_gap': float(confidence_gap) if 'confidence_gap' in locals() else None,
-            'is_confident': bool(confidence_gap >= CONFIDENCE_THRESHOLD) if 'confidence_gap' in locals() else False,
+            'confidence_gap': float(confidence_gap),
+            'is_confident': bool(confidence_gap >= CONFIDENCE_THRESHOLD),
             'threshold': float(CONFIDENCE_THRESHOLD)
         }
     # ==========================================
     #  替换后的拟合逻辑 (结束)
     # ==========================================
+
+    # --- 融合策略 ---
+    llm_prediction = None
+    if llm_map is not None:
+        llm_prediction = llm_map.get(base_name)
+    fused_prediction, fusion_reason = fuse_predictions(
+        llm_prediction,
+        best_model_name,
+        fit_report,
+        candidates,
+        x_data,
+        y_data,
+        confidence_gap,
+        CONFIDENCE_THRESHOLD,
+        power_slope,
+    )
+    fit_report['fit_best_model'] = best_model_name
+    fit_report['llm_prediction'] = llm_prediction
+    fit_report['fusion_prediction'] = fused_prediction
+    fit_report['fusion_reason'] = fusion_reason
+    if llm_prediction:
+        print(f"  [融合] LLM: {llm_prediction}, 融合结果: {fused_prediction}, 原因: {fusion_reason}")
     
     # --- 绘图与报告保存 ---
     
@@ -436,7 +596,7 @@ def process_code_file(code_path, expected_models, base_dir):
     
     if best_model_name != "None":
         # 检查置信度
-        if 'confidence_gap' in locals() and confidence_gap < CONFIDENCE_THRESHOLD:
+        if confidence_gap is not None and confidence_gap < CONFIDENCE_THRESHOLD:
             is_low_confidence = True
             print(f"  [判定警告] 置信度较低 ({confidence_gap:.4f} < {CONFIDENCE_THRESHOLD})，拟合结果可能不稳定")
             # 策略：当置信度低时，选择更简单的模型（奥卡姆剃刀原则）
@@ -457,7 +617,7 @@ def process_code_file(code_path, expected_models, base_dir):
             'N Log N': ['nlogn', 'n_log_n']
         }
         
-        cleaned_best = best_model_name
+        cleaned_best = fused_prediction if fused_prediction else best_model_name
         for expected in expected_models:
             expected_lower = expected.lower()
             if expected_lower == cleaned_best.lower():
@@ -484,6 +644,7 @@ def main():
     }
     
     folder_type = 'cubic'  # 可在此处修改
+    llm_map = load_llm_map(LLM_RESULTS_PATH)
 
     folder_config = {
         'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
@@ -509,21 +670,21 @@ def main():
     
     print(f"找到 {total_files} 个文件，开始处理...")
     
-    base_dir_map = {
-        'logn': config.logn_results_base_dir,
-        'linear': config.linear_results_base_dir,
-        'quadratic': config.quadratic_results_base_dir,
-        'cubic': config.cubic_results_base_dir,
-        'nlogn': config.nlogn_results_base_dir
-    }
-    base_dir = base_dir_map.get(folder_type, config.linear_results_base_dir)
+    # 结果统一保存到根目录 results/fusion/<folder_type>
+    base_dir = os.path.join(
+        "/home/wuyankai/myResearch/codeComplex",
+        "results",
+        "fusion",
+        folder_type,
+    )
+    os.makedirs(base_dir, exist_ok=True)
                       
     for i, file_name in enumerate(python_files, 1):
         full_path = os.path.join(folder_path, file_name)
         print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
         if(i>=1):
             try:
-                success = process_code_file(full_path, expected_models, base_dir)
+                success = process_code_file(full_path, expected_models, base_dir, llm_map)
                 if success:
                     print(">>> 判定结果: 符合预期 ✅")
                     global_stats['success'] += 1

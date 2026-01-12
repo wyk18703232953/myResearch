@@ -384,9 +384,10 @@ def main():
         'failed_files': []
     }
     
-    folder_type = 'cubic'  # 可在此处修改
+    folder_type = 'constant'  # 可在此处修改
 
     folder_config = {
+        'constant': (config.constant_folder_path, ['Constant']),
         'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
         'linear': (config.linear_folder_path, ['Linear']),
         'quadratic': (config.quadratic_folder_path, ['Quadratic']),
@@ -411,6 +412,7 @@ def main():
     print(f"找到 {total_files} 个文件，开始处理...")
     
     base_dir_map = {
+        'constant': config.constant_results_base_dir,
         'logn': config.logn_results_base_dir,
         'linear': config.linear_results_base_dir,
         'quadratic': config.quadratic_results_base_dir,
@@ -437,7 +439,7 @@ def main():
                 print(f"处理发生未捕获异常: {e}")
                 global_stats['failed'] += 1
                 global_stats['failed_files'].append(file_name)
-            break
+            
 
     print("\n" + "="*50)
     print("最终统计报告")
