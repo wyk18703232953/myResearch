@@ -7,6 +7,7 @@ from sklearn.metrics import r2_score
 import os
 import sys
 import warnings
+import traceback
 
 # 忽略拟合过程中的 RuntimeWarning
 warnings.filterwarnings("ignore")
@@ -50,6 +51,40 @@ MODELS = {
 # ==========================================
 # 2. 新增：数据清洗与异常处理函数
 # ==========================================
+
+def run_with_timeout(code_str, timeout_seconds):
+    """
+    在指定超时时间内执行代码
+    
+    Args:
+        code_str: 要执行的代码字符串
+        timeout_seconds: 超时时间（秒）
+    
+    Returns:
+        (success: bool, execution_time: float, error: str)
+    """
+    import signal
+    
+    def timeout_handler(signum, frame):
+        raise TimeoutError(f"Execution timed out after {timeout_seconds} seconds")
+    
+    try:
+        signal.signal(signal.SIGALRM, timeout_handler)
+        signal.alarm(timeout_seconds)
+        
+        t0 = time.perf_counter()
+        exec(code_str, {})
+        t1 = time.perf_counter()
+        
+        signal.alarm(0)  # 取消定时器
+        return (True, t1 - t0, None)
+        
+    except TimeoutError as e:
+        signal.alarm(0)
+        return (False, 0, str(e))
+    except Exception as e:
+        signal.alarm(0)
+        return (False, 0, str(e))
 
 def clean_data(x_raw, y_raw):
     """
@@ -163,13 +198,19 @@ def process_code_file(code_path, expected_models, base_dir):
 
     print(f"开始测试 {file_name}: n={start_n} -> {config.max_n}")
 
+    # >>> 新增：配置参数 <<<
+    REPEAT_COUNT = 3  # 每个n重复运行的次数 r
+    TIMEOUT_SECONDS = 30  # 单次运行超时时间 τ (秒)
+
     # >>> 新增：预热 (Warm-up) <<<
     # 执行一次空跑，不计入结果，用于让 JIT 编译和缓存生效
     if len(test_results) == 0: # 只有刚开始跑才需要预热
         print("   [系统] 正在进行预热 (Warm-up)...")
         try:
             warmup_code = f"{code_content}\n\nmain({start_n})"
-            exec(warmup_code, {})
+            success, exec_time, error = run_with_timeout(warmup_code, TIMEOUT_SECONDS)
+            if not success:
+                print(f"   [警告] 预热失败: {error}")
         except Exception as e:
             print(f"   [警告] 预热失败: {e}")
 
@@ -177,17 +218,29 @@ def process_code_file(code_path, expected_models, base_dir):
         for n in range(start_n, config.max_n + 1, config.step):
             run_code = f"{code_content}\n\nmain({n})"
             
-            t0 = time.perf_counter()
-            exec_globals = {}
-            try:
-                exec(run_code, exec_globals)
-            except Exception as e:
-                print(f"代码执行出错 (n={n}): {e}")
-                break
+            # >>> 新增：重复运行 r 次，取中位数 <<<
+            run_times = []
+            for attempt in range(REPEAT_COUNT):
+                # print(f"   [运行] n={n}, 第{attempt+1}次运行...")
+                success, exec_time, error = run_with_timeout(run_code, TIMEOUT_SECONDS)
                 
-            t1 = time.perf_counter()
-            run_time_ms = (t1 - t0) * 1000
-            test_results.append((n, run_time_ms))
+                if success:
+                    run_times.append(exec_time * 1000)  # 转换为毫秒
+                    # print(f"   [成功] n={n}, 第{attempt+1}次运行耗时: {exec_time:.6f}s (转换为 {run_times[-1]:.3f}ms)")
+                else:
+                    print(f"   [警告] n={n}, 第{attempt+1}次运行失败: {error}")
+                    if "Timeout" in error:
+                        print(f"   [停止] n={n} 超时，停止测试")
+                        break
+                    continue
+            
+            if len(run_times) == 0:
+                print(f"   [错误] n={n} 所有运行都失败，跳过")
+                break
+            
+            # 取中位数作为代表值
+            median_time = np.median(run_times)
+            test_results.append((n, median_time))
             
             if len(test_results) % 10 == 0:
                 np.savez(temp_results_path, results=test_results)
@@ -384,6 +437,7 @@ def main():
                 print(f"处理发生未捕获异常: {e}")
                 global_stats['failed'] += 1
                 global_stats['failed_files'].append(file_name)
+            break
 
     print("\n" + "="*50)
     print("最终统计报告")
