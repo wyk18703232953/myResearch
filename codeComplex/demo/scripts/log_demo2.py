@@ -369,7 +369,7 @@ def main():
     for i, file_name in enumerate(python_files, 1):
         full_path = os.path.join(folder_path, file_name)
         print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
-        if(i==5):
+        if(i>=1):
             try:
                 success = process_code_file(full_path, expected_models, base_dir)
                 if success:

@@ -1,8 +1,6 @@
 {
   "total": 601,
-  "success": 0,
-  "failed": 1,
-  "failed_files": [
-    "python_cubic_0001.py"
-  ]
+  "success": 1,
+  "failed": 0,
+  "failed_files": []
 }

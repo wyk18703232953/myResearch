@@ -25,10 +25,10 @@ def linear(n, a, b):
     return a * n + b
 
 def quadratic(n, a, b, c):
-    return a * n**2 + c
+    return a * n**2 + b * n + c
 
 def cubic(n, a, b, c, d):
-    return a * n**3 + d
+    return a * n**3 + b * n**2 + c * n + d
 
 def logarithmic(n, a, b):
     n_safe = np.maximum(n, 1e-10)
@@ -46,6 +46,34 @@ MODELS = {
     "Logarithmic": logarithmic,
     "N Log N": n_log_n,
 }
+
+def calculate_confidence_score(r2, num_params, n_samples, complexity_order):
+    """
+    计算综合置信度分数 = R2 - 惩罚项
+    
+    惩罚项包括：
+    1. 参数数量惩罚：参数越多，惩罚越大
+    2. 复杂度惩罚：复杂度越高，惩罚越大
+    
+    Args:
+        r2: R2分数
+        num_params: 模型参数数量
+        n_samples: 样本数量
+        complexity_order: 复杂度优先级（数值越大越复杂）
+    
+    Returns:
+        综合置信度分数（越高越好）
+    """
+    # 参数数量惩罚：基于AIC/BIC的思想，参数越多惩罚越大
+    param_penalty = (num_params * np.log(n_samples)) / n_samples * 0.5
+    
+    # 复杂度惩罚：复杂度越高，惩罚越大
+    complexity_penalty = complexity_order * 0.02
+    
+    # 综合分数：R2 - 惩罚项
+    confidence_score = r2 - param_penalty - complexity_penalty
+    
+    return confidence_score
 
 # ==========================================
 # 2. 新增：数据清洗与异常处理函数
@@ -235,6 +263,9 @@ def process_code_file(code_path, expected_models, base_dir):
         "N Log N": 3, "Quadratic": 4, "Cubic": 5
     }
 
+    # 置信度阈值：如果最佳模型与第二好模型的差距小于此值，则认为拟合不确定
+    CONFIDENCE_THRESHOLD = 0.03
+
     print("正在拟合模型...")
 
     # 2. 先计算物理斜率 (Power Law)
@@ -264,11 +295,15 @@ def process_code_file(code_path, expected_models, base_dir):
             # BIC: 惩罚参数过多的模型。BIC 越小越好。
             bic = n_samples * np.log(ssr / n_samples) + k * np.log(n_samples)
             
+            # --- 新增：计算置信度分数 ---
+            confidence_score = calculate_confidence_score(r2, k, n_samples, complexity_order.get(name, 10))
+            
             # 记录结果
             report_item = {
                 "name": name,
-                "r2": r2,
-                "bic": bic,
+                "r2": float(r2),
+                "bic": float(bic),
+                "confidence_score": float(confidence_score),
                 "params": popt.tolist(),
                 "order": complexity_order.get(name, 10)
             }
@@ -279,20 +314,35 @@ def process_code_file(code_path, expected_models, base_dir):
                 candidates.append(report_item)
                 
         except Exception as e:
-            fit_report[name] = {"r2": -np.inf, "success": False}
+            fit_report[name] = {"r2": float(-np.inf), "success": False}
 
     # ==========================================
-    #  决策逻辑: 结合 BIC, R2 和 斜率
+    #  决策逻辑: 结合 BIC, R2, 斜率和置信度
     # ==========================================
     
     if not candidates:
         print("  [失败] 没有模型能良好拟合数据 (R2 < 0.8)")
     else:
-        # 1. 首先按 BIC 从小到大排序 (BIC 越小越好)
-        candidates.sort(key=lambda x: x['bic'])
+        # 1. 按置信度分数从高到低排序
+        candidates.sort(key=lambda x: x['confidence_score'], reverse=True)
         best_candidate = candidates[0]
         
-        # 2. 引入防误判机制 (针对 Cubic vs Quadratic)
+        # 2. 计算置信度差距
+        confidence_gap = 0
+        if len(candidates) >= 2:
+            second_best = candidates[1]
+            confidence_gap = best_candidate['confidence_score'] - second_best['confidence_score']
+            print(f"  [置信度分析] 最佳模型: {best_candidate['name']} (Score={best_candidate['confidence_score']:.4f})")
+            print(f"  [置信度分析] 第二好模型: {second_best['name']} (Score={second_best['confidence_score']:.4f})")
+            print(f"  [置信度分析] 差距: {confidence_gap:.4f} (阈值: {CONFIDENCE_THRESHOLD})")
+            
+            # 如果差距太小，说明拟合不确定
+            if confidence_gap < CONFIDENCE_THRESHOLD:
+                print(f"  [警告] 置信度差距 ({confidence_gap:.4f}) < 阈值 ({CONFIDENCE_THRESHOLD})，拟合结果可能不稳定")
+                # 可以在这里选择更保守的策略，比如选择更简单的模型
+                # 或者标记为不确定，保持LLM的判断
+        
+        # 3. 引入防误判机制 (针对 Cubic vs Quadratic)
         # 如果当前最佳是 Cubic，但 Quadratic 表现也不差，且斜率不像 Cubic
         if best_candidate['name'] == 'Cubic':
             # 在 candidates 里找找有没有 Quadratic
@@ -314,6 +364,18 @@ def process_code_file(code_path, expected_models, base_dir):
         best_score = best_candidate['r2'] # 兼容旧代码变量名
 
     print(f"分析完成。最佳拟合模型: {best_model_name} (R2={best_score:.4f})")
+    
+    # --- 保存置信度信息到报告 ---
+    if 'confidence_gap' in locals():
+        fit_report['confidence_analysis'] = {
+            'best_model': best_model_name,
+            'best_score': float(best_candidate['confidence_score']) if best_candidate else None,
+            'second_best_model': candidates[1]['name'] if len(candidates) >= 2 else None,
+            'second_best_score': float(candidates[1]['confidence_score']) if len(candidates) >= 2 else None,
+            'confidence_gap': float(confidence_gap) if 'confidence_gap' in locals() else None,
+            'is_confident': bool(confidence_gap >= CONFIDENCE_THRESHOLD) if 'confidence_gap' in locals() else False,
+            'threshold': float(CONFIDENCE_THRESHOLD)
+        }
     # ==========================================
     #  替换后的拟合逻辑 (结束)
     # ==========================================
@@ -343,10 +405,21 @@ def process_code_file(code_path, expected_models, base_dir):
         x_smooth = np.linspace(min(x_raw), max(x_raw), 500)
         y_smooth = MODELS[best_model_name](x_smooth, *best_info['params'])
         
+        # 构建标题，包含置信度信息
+        title_text = f"Time Complexity: {file_name}\n(Raw data count: {len(x_raw)}, Cleaned: {len(x_data)})"
+        if 'confidence_analysis' in fit_report:
+            conf_info = fit_report['confidence_analysis']
+            conf_status = "高置信度" if conf_info.get('is_confident', False) else "低置信度"
+            title_text += f"\n最佳模型: {best_model_name} (R2={best_info['r2']:.3f}, {conf_status})"
+            if conf_info.get('confidence_gap') is not None:
+                title_text += f" | 差距: {conf_info['confidence_gap']:.4f}"
+        
+        plt.title(title_text)
         plt.plot(x_smooth, y_smooth, 'r-', linewidth=2, 
                  label=f'Best Fit: {best_model_name} ($R^2={best_info["r2"]:.3f}$)')
+    else:
+        plt.title(f"Time Complexity: {file_name}\n(Raw data count: {len(x_raw)}, Cleaned: {len(x_data)})")
         
-    plt.title(f"Time Complexity: {file_name}\n(Raw data count: {len(x_raw)}, Cleaned: {len(x_data)})")
     plt.xlabel("Input Size (n)")
     plt.ylabel("Time (ms)")
     plt.legend()
@@ -359,7 +432,23 @@ def process_code_file(code_path, expected_models, base_dir):
 
     # --- 结果判定 ---
     is_success = False
+    is_low_confidence = False
+    
     if best_model_name != "None":
+        # 检查置信度
+        if 'confidence_gap' in locals() and confidence_gap < CONFIDENCE_THRESHOLD:
+            is_low_confidence = True
+            print(f"  [判定警告] 置信度较低 ({confidence_gap:.4f} < {CONFIDENCE_THRESHOLD})，拟合结果可能不稳定")
+            # 策略：当置信度低时，选择更简单的模型（奥卡姆剃刀原则）
+            # 在候选列表中找到最简单的模型
+            if len(candidates) >= 2:
+                # 按复杂度排序，选择最简单的
+                candidates_by_complexity = sorted(candidates, key=lambda x: x['order'])
+                simplest_candidate = candidates_by_complexity[0]
+                if simplest_candidate['name'] != best_model_name:
+                    print(f"  [保守策略] 低置信度时选择更简单的模型: {best_model_name} -> {simplest_candidate['name']}")
+                    best_model_name = simplest_candidate['name']
+        
         aliases = {
             'Logarithmic': ['logn', 'logarithmic', 'log'],
             'Linear': ['linear', 'o(n)'],
@@ -378,6 +467,9 @@ def process_code_file(code_path, expected_models, base_dir):
                 if expected_lower in aliases[cleaned_best]:
                     is_success = True
                     break
+        
+        # 保存置信度状态到报告
+        fit_report['is_low_confidence'] = bool(is_low_confidence)
                     
     return is_success
 
@@ -429,7 +521,7 @@ def main():
     for i, file_name in enumerate(python_files, 1):
         full_path = os.path.join(folder_path, file_name)
         print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
-        if(i==1):
+        if(i>=1):
             try:
                 success = process_code_file(full_path, expected_models, base_dir)
                 if success:
@@ -443,7 +535,6 @@ def main():
                 print(f"处理发生未捕获异常: {e}")
                 global_stats['failed'] += 1
                 global_stats['failed_files'].append(file_name)
-            break
         
     print("\n" + "="*50)
     print("最终统计报告")
