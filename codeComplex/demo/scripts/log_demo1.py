@@ -310,7 +310,7 @@ def main():
         'failed_files': []
     }
     
-    folder_type = 'quadratic'  # 可在此处修改
+    folder_type = 'cubic'  # 可在此处修改
 
     folder_config = {
         'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
