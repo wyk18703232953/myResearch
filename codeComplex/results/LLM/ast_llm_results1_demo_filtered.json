@@ -1,11 +1,4 @@
 {
-  "summary": {
-    "total": 4900,
-    "correct": 3124,
-    "failed": 1776,
-    "accuracy": 63.755102040816325,
-    "timestamp": "2025-12-29T15:01:17.296784"
-  },
   "detailed_records": [
     {
       "sample_id": 792,
@@ -35637,7 +35630,5 @@
       "error": null,
       "complexity_id": "python_cubic_0606"
     }
-  ],
-  "input_file": "d:/MyResearch/codeComplex/data/python_data_cleaned.jsonl",
-  "max_items": null
+  ]
 }
