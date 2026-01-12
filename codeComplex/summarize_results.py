@@ -119,12 +119,12 @@ def main():
             # 构建结果项
             result_item = {
                 'ID': file_id,
+                'bestfit_output': bestfit_output,
                 'model_raw_output': llm_info.get('model_raw_output'),
                 'expected_complexity': llm_info.get('expected_complexity'),
                 'problem': llm_info.get('problem'),
                 'filteredData': filtered_data_content,
                 'onlyCode': only_code_content,
-                'bestfit_output': bestfit_output
             }
             
             all_results.append(result_item)
