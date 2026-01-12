@@ -278,6 +278,16 @@ def process_code_file(code_path, expected_models, base_dir):
     best_score = -np.inf
     best_model_name = "None"
     
+    # 模型复杂度顺序（参数数量）：constant < logn < linear < nlogn < quadratic < cubic
+    COMPLEXITY_ORDER = {
+        "Constant": 0,
+        "Logarithmic": 1,
+        "Linear": 2,
+        "N Log N": 3,
+        "Quadratic": 4,
+        "Cubic": 5
+    }
+    
     print("正在拟合模型...")
     
     for name, func in MODELS.items():
@@ -297,11 +307,17 @@ def process_code_file(code_path, expected_models, base_dir):
             aic = 2 * k + n_samples * np.log(ssr / n_samples)
             bic = n_samples * np.log(ssr / n_samples) + k * np.log(n_samples)
             
+            # 计算置信度分数：R2 + 复杂度惩罚
+            # 复杂度惩罚：越复杂的模型，惩罚越大
+            complexity_penalty = COMPLEXITY_ORDER.get(name, 0) * 0.01
+            confidence_score = r2 - complexity_penalty
+            
             fit_report[name] = {
                 "r2": r2,
                 "aic": aic,
                 "bic": bic,
-                "params": popt.tolist()
+                "params": popt.tolist(),
+                "confidence_score": confidence_score
             }
             
             if r2 > best_score:
@@ -348,7 +364,11 @@ def process_code_file(code_path, expected_models, base_dir):
     plt.close()
     
     with open(os.path.join(result_dir, "analysis_report.json"), 'w') as f:
-        json.dump(fit_report, f, indent=2)
+        report_with_metadata = {
+            "valid_points": len(x_data),
+            "models": fit_report
+        }
+        json.dump(report_with_metadata, f, indent=2)
 
     # --- 结果判定 ---
     is_success = False
@@ -384,10 +404,10 @@ def main():
         'failed_files': []
     }
     
-    folder_type = 'constant'  # 可在此处修改
+    # 移除手动设置的 folder_type，改为遍历所有类型
+    # folder_type = 'cubic'  # 可在此处修改
 
     folder_config = {
-        'constant': (config.constant_folder_path, ['Constant']),
         'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
         'linear': (config.linear_folder_path, ['Linear']),
         'quadratic': (config.quadratic_folder_path, ['Quadratic']),
@@ -395,50 +415,87 @@ def main():
         'nlogn': (config.nlogn_folder_path, ['N Log N'])
     }
     
-    if folder_type not in folder_config:
-        print(f"未知的类型: {folder_type}")
-        return
-        
-    folder_path, expected_models = folder_config[folder_type]
-
-    if not os.path.exists(folder_path):
-        print(f"文件夹不存在: {folder_path}")
-        return
-        
-    python_files = sorted([f for f in os.listdir(folder_path) if f.endswith('.py')])
-    total_files = len(python_files)
-    global_stats['total'] = total_files
-    
-    print(f"找到 {total_files} 个文件，开始处理...")
-    
     base_dir_map = {
-        'constant': config.constant_results_base_dir,
         'logn': config.logn_results_base_dir,
         'linear': config.linear_results_base_dir,
         'quadratic': config.quadratic_results_base_dir,
         'cubic': config.cubic_results_base_dir,
         'nlogn': config.nlogn_results_base_dir
     }
-    base_dir = base_dir_map.get(folder_type, config.linear_results_base_dir)
-                      
-    for i, file_name in enumerate(python_files, 1):
-        full_path = os.path.join(folder_path, file_name)
-        print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
-        if(i>=1):
+    
+    # 遍历所有类型
+    for folder_type in folder_config:
+        print(f"\n{'='*60}")
+        print(f"正在处理类型: {folder_type}")
+        print(f"{'='*60}")
+        
+        folder_path, expected_models = folder_config[folder_type]
+
+        if not os.path.exists(folder_path):
+            print(f"文件夹不存在: {folder_path}")
+            continue
+            
+        python_files = sorted([f for f in os.listdir(folder_path) if f.endswith('.py')])
+        total_files = len(python_files)
+        
+        # 为每个类型创建单独的统计信息
+        type_stats = {
+            'total': total_files, 'success': 0, 'failed': 0,
+            'failed_files': []
+        }
+        
+        print(f"找到 {total_files} 个文件，开始处理...")
+                       
+        base_dir = base_dir_map[folder_type]
+                       
+        for i, file_name in enumerate(python_files, 1):
+            if i > 15:
+                print(f"\n已处理前15个文件，跳过剩余 {total_files - 15} 个文件。")
+                break
+                
+            full_path = os.path.join(folder_path, file_name)
+            print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
             try:
                 success = process_code_file(full_path, expected_models, base_dir)
                 if success:
                     print(">>> 判定结果: 符合预期 ✅")
+                    type_stats['success'] += 1
                     global_stats['success'] += 1
                 else:
                     print(">>> 判定结果: 不符合预期 ❌")
+                    type_stats['failed'] += 1
                     global_stats['failed'] += 1
-                    global_stats['failed_files'].append(file_name)
+                    type_stats['failed_files'].append(file_name)
+                    global_stats['failed_files'].append(f"{folder_type}/{file_name}")
                     
             except Exception as e:
                 print(f"处理发生未捕获异常: {e}")
+                traceback.print_exc()
+                type_stats['failed'] += 1
                 global_stats['failed'] += 1
-                global_stats['failed_files'].append(file_name)
+                type_stats['failed_files'].append(file_name)
+                global_stats['failed_files'].append(f"{folder_type}/{file_name}")
+            
+        # 更新全局总文件数（实际处理的文件数，最多50个）
+        actual_processed = min(50, total_files)
+        global_stats['total'] += actual_processed
+        
+        print(f"\n{'='*50}")
+        print(f"类型 {folder_type} 统计报告")
+        print(f"{'='*50}")
+        print(f"总文件数: {type_stats['total']}")
+        print(f"成功匹配: {type_stats['success']}")
+        print(f"失败/不匹配: {type_stats['failed']}")
+        if type_stats['failed_files']:
+            print("\n失败文件列表:")
+            for f in type_stats['failed_files'][:10]:
+                print(f" - {f}")
+                
+        # 保存类型统计
+        stats_path = os.path.join(base_dir, f"stats_{folder_type}.json")
+        with open(stats_path, 'w') as f:
+            json.dump(type_stats, f, indent=2)
+        print(f"\n类型统计已保存至: {stats_path}")
             
 
     print("\n" + "="*50)
@@ -452,10 +509,11 @@ def main():
         for f in global_stats['failed_files'][:10]:
             print(f" - {f}")
             
-    stats_path = os.path.join(base_dir, f"stats_{folder_type}.json")
-    with open(stats_path, 'w') as f:
+    # 保存全局统计信息到线性结果目录
+    global_stats_path = os.path.join(config.linear_results_base_dir, "stats_global.json")
+    with open(global_stats_path, 'w') as f:
         json.dump(global_stats, f, indent=2)
-    print(f"\n统计已保存至: {stats_path}")
+    print(f"\n全局统计已保存至: {global_stats_path}")
 
 if __name__ == "__main__":
     main()
