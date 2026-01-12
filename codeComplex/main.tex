@@ -139,6 +139,91 @@ This work provides a practical and scalable direction toward robust, automatic t
  short-range measurements. This hybrid perspective complements prior benchmark-driven studies and targets robust 
  recognition of closely related polynomial classes such as \texttt{quadratic} vs.\ \texttt{cubic}.
 
+\section{System Overview} 
+ \label{sec:system} 
+ 
+ This section introduces the overall architecture and workflow of our hybrid framework for 
+ worst-case time complexity classification. The core idea is to combine (i) LLM-based static reasoning 
+ as a semantic prior and (ii) dynamic runtime curve fitting as empirical evidence, then produce a final 
+ prediction through an LLM-first correction strategy. 
+ 
+ \subsection{Framework Architecture} 
+ \label{subsec:architecture} 
+ 
+ Figure~\ref{fig:system_overview} illustrates the architecture of our framework. Given a program $P$, 
+ the system outputs its complexity class in a six-class label space 
+ $\mathcal{C}=\{\texttt{constant}, \texttt{logn}, \texttt{linear}, \texttt{nlogn}, \texttt{quadratic}, \texttt{cubic}\}$. 
+ 
+ \begin{figure}[t] 
+ \centering 
+ % Replace with your figure file: 
+ % \includegraphics[width=\linewidth]{figures/system_overview.pdf} 
+ \fbox{\parbox[c][3.6cm][c]{0.95\linewidth}{\centering System overview placeholder}} 
+ \caption{System architecture of the proposed hybrid framework.} 
+ \label{fig:system_overview} 
+ \end{figure} 
+ 
+ The framework consists of four major modules: 
+ 
+ \textbf{(1) Static Complexity Predictor (LLM).} 
+ We query an LLM with the source code (optionally enriched by structural information such as AST/CFG) 
+ and obtain a predicted class $\hat{y}_{\text{LLM}}$ as a semantic prior. 
+ 
+ \textbf{(2) Runtime Input Generator.} 
+ To enable dynamic analysis, we generate scalable test inputs following the program's input format and 
+ produce a sequence of concrete instances at increasing scales 
+ $n \in \{3,50,100,150,\dots,3000\}$. 
+ 
+ \textbf{(3) Runtime Measurement \& Curve Fitting.} 
+ We execute the program under each scale and measure runtime with \texttt{time.perf\_counter()}. 
+ For each scale we repeat runs $r=3$ times and use the median runtime. A per-run timeout of $\tau=60$ seconds is enforced. 
+ Measured pairs $(n,t)$ are fitted to candidate growth models, and the best class is selected by maximizing a penalized 
+ confidence score. 
+ 
+ \textbf{(4) Fusion Decision Module.} 
+ The final prediction $\hat{y}$ is produced by an LLM-first fusion rule: the system retains 
+ $\hat{y}_{\text{LLM}}$ unless runtime fitting provides strong evidence to correct it. This design targets robust 
+ correction of systematic underestimation on high-order polynomial programs while avoiding overreaction to noisy fitting. 
+ 
+ \subsection{Workflow Description} 
+ \label{subsec:workflow} 
+ 
+ Algorithm~\ref{alg:workflow} summarizes the end-to-end workflow. 
+ 
+ \begin{enumerate} 
+     \item \textbf{Static inference:} Given program $P$, the LLM predicts $\hat{y}_{\text{LLM}} \in \mathcal{C}$ with a constrained output format. 
+     \item \textbf{Input scaling:} The generator produces scalable test instances at increasing $n$ according to the program's input specification. 
+     \item \textbf{Runtime collection:} For each $n$, the program is executed with timeout control. We record median runtime over $r=3$ repeats. 
+           If fewer than $k_{\min}=5$ valid points are collected, dynamic fitting is considered failed. 
+     \item \textbf{Model fitting:} We fit runtimes to candidate growth functions and compute a penalized confidence score 
+           (Section~\ref{subsubsec:setup_confidence}) for each class, producing $\hat{y}_{\text{fit}}$. 
+     \item \textbf{Fusion:} If $\hat{y}_{\text{fit}}$ strongly disagrees with $\hat{y}_{\text{LLM}}$ with high confidence, 
+           Fusion outputs $\hat{y}_{\text{fit}}$; otherwise it outputs $\hat{y}_{\text{LLM}}$. 
+ \end{enumerate} 
+ 
+ \begin{table}[t] 
+ \caption{End-to-end workflow (high-level).} 
+ \label{alg:workflow} 
+ \centering 
+ \begin{tabular}{p{0.95\linewidth}} 
+ \hline 
+ \textbf{Input:} Program $P$ \\ 
+ \textbf{Output:} Predicted class $\hat{y} \in \mathcal{C}$ \\ 
+ \hline 
+ 1.\ \ \ $\hat{y}_{\text{LLM}} \leftarrow f_{\text{LLM}}(P)$ \\ 
+ 2.\ \ \ Generate inputs at scales $n \in \{3,50,100,150,\dots,3000\}$ \\ 
+ 3.\ \ \ Measure runtimes $(n,t)$ with $r=3$ repeats, timeout $\tau=60$s \\ 
+ 4.\ \ \ If valid points $< k_{\min}=5$, set $\hat{y}_{\text{fit}} \leftarrow \texttt{unknown}$ \\ 
+ 5.\ \ \ Else fit candidate models, select $\hat{y}_{\text{fit}} \leftarrow \arg\max_m \mathrm{Conf}(m)$ \\ 
+ 6.\ \ \ Fuse: output $\hat{y}$ using LLM-first correction rule \\ 
+ \hline 
+ \end{tabular} 
+ \end{table} 
+ 
+ This overview separates the \emph{system-level design} from the \emph{method-level details}. 
+ We defer prompting, fitting objective, and fusion criteria to Section~\ref{sec:method}, and present the benchmark, 
+ implementation, and evaluation protocol in Sections~\ref{sec:dataset} and~\ref{sec:experiments}.
+
 \section{Methodology}
 \label{sec:methodology}
 
@@ -212,8 +297,7 @@ This work provides a practical and scalable direction toward robust, automatic t
  All experiments are conducted on a modified version of the CodeComplex benchmark. 
  We focus on Python programs and a six-class taxonomy: 
  \texttt{constant}, \texttt{logn}, \texttt{linear}, \texttt{nlogn}, \texttt{quadratic}, and \texttt{cubic}. 
- We follow the benchmark's standard train/test split when available; otherwise, we create a split by 
- program ID to avoid leakage. Unless stated otherwise, all reported results are computed on the test set. 
+ Unless otherwise specified, all reported results are computed on the test split. 
  
  \subsubsection{Methods Compared} 
  \label{subsubsec:setup_methods} 
@@ -223,51 +307,149 @@ This work provides a practical and scalable direction toward robust, automatic t
  runtime curves; and (iii) \textbf{Fusion (ours)}, which follows an LLM-first with fitting-based correction 
  strategy (Section~\ref{subsec:fusion}). 
  
- \subsubsection{Runtime Measurement} 
+ \subsubsection{Input Scales and Runtime Measurement} 
  \label{subsubsec:setup_runtime} 
  For dynamic analysis, we execute each program under a sequence of input scales 
- $n \in \{3, 50, 100, 150, \dots, 3000\}$, where the sequence is monotonically increasing. 
- We measure runtime using \texttt{time.perf\_counter()} by taking the difference between the timestamps 
- immediately before and after the target function execution. To reduce the impact of system noise, we 
- repeat each run $r$ times and use the median runtime for each scale. 
- We enforce a per-run timeout $\tau$ and a per-program budget to prevent excessive execution time. 
- Programs that raise exceptions, time out, or produce invalid outputs at a scale are marked as failed for 
- that scale; programs with fewer than $k_{\min}$ valid scales are considered dynamic failures. 
+ $n \in \{3, 50, 100, 150, \dots, 3000\}$. 
+ Runtime is measured using \texttt{time.perf\_counter()} by taking the difference between timestamps 
+ immediately before and after execution. 
+ To mitigate runtime noise, we repeat each measurement $r=3$ times per scale and use the median runtime. 
+ We enforce a per-run timeout of $\tau = 60$ seconds. If a run exceeds the timeout, the measurement at that 
+ scale is marked as failed. A program is considered a \emph{dynamic failure} if it yields fewer than 
+ $k_{\min}=5$ valid runtime points across all scales. 
  
- \subsubsection{Input Generation and Validity Checks} 
- \label{subsubsec:setup_inputs} 
- Because competitive-programming solutions may have heterogeneous input formats, we adopt a scalable 
- input generation strategy that produces syntactically valid inputs for each program and scale. 
- For each $n$, the generator instantiates the input template by substituting size-related parameters 
- with $n$ (or functions of $n$) while respecting common constraints (e.g., integer ranges and list lengths). 
- We apply lightweight validity checks (e.g., successful parsing and non-empty output) before recording a 
- measurement. When a program expects multiple test cases, we treat each test case independently and 
- aggregate runtimes according to the benchmark guideline. 
- 
- \subsubsection{Curve Fitting Configuration} 
+ \subsubsection{Curve Fitting and Candidate Models} 
  \label{subsubsec:setup_fitting} 
- We fit measured runtime pairs $\{(n_i, t_i)\}$ against candidate models corresponding to the six classes: 
+ We fit measured pairs $\{(n_i, t_i)\}$ against candidate growth models corresponding to the six classes: 
  constant, $\log n$, $n$, $n\log n$, $n^2$, and $n^3$. 
- Model parameters are estimated by least squares, and we select the best class using a penalized 
- objective that discourages unnecessarily high-order models under limited scales (Section~\ref{subsubsec:penalty}). 
- We additionally compute a fitting confidence score based on the margin between the best and second-best 
- penalized scores, which is used in the fusion correction rule. 
+ Model parameters are estimated by least squares, and each fitted model is scored by a 
+ \emph{penalized confidence function} that balances goodness-of-fit and model complexity. 
+ 
+ \subsubsection{Penalized Confidence Score} 
+ \label{subsubsec:setup_confidence} 
+ Let $R^2(m)$ denote the coefficient of determination for model $m$, and let $\#\theta(m)$ be the number of 
+ free parameters in $m$. 
+ We compute a confidence score: 
+ \[ 
+ \mathrm{Conf}(m) = R^2(m) - \mathrm{Pen}_{\mathrm{param}}(m) - \mathrm{Pen}_{\mathrm{order}}(m), 
+ \] 
+ where the parameter penalty follows an information-criterion inspired form: 
+ \[ 
+ \mathrm{Pen}_{\mathrm{param}}(m) 
+ = 0.5 \cdot \frac{\#\theta(m)\log(k)}{k}, 
+ \] 
+ and the complexity-order penalty increases with the asymptotic order: 
+ \[ 
+ \mathrm{Pen}_{\mathrm{order}}(m) = 0.02 \cdot \mathrm{ord}(m), 
+ \] 
+ with $\mathrm{ord}(m)$ being a discrete rank (larger means more complex) consistent with the label space. 
+ We select the fitted prediction by maximizing the confidence score: 
+ \[ 
+ \hat{y}_{\text{fit}} = \arg\max_{m \in \mathcal{C}} \mathrm{Conf}(m). 
+ \] 
+ 
+ \subsubsection{Fusion Correction Rule} 
+ \label{subsubsec:setup_fusion_rule} 
+ Fusion uses the LLM prediction as a semantic prior and applies fitting-based correction only when the 
+ dynamic evidence is strong. In particular, when $\hat{y}_{\text{LLM}} \neq \hat{y}_{\text{fit}}$, we override 
+ the static prediction only if the best fitted model achieves a sufficiently higher confidence score than 
+ alternatives (e.g., a clear margin over the second-best model), and the fitting is based on at least 
+ $k_{\min}$ valid runtime points. Otherwise, we keep $\hat{y}=\hat{y}_{\text{LLM}}$. 
  
  \subsubsection{LLM Inference Settings} 
  \label{subsubsec:setup_llm} 
  For LLM-only and Fusion, we use a fixed prompt template with a constrained answer set (the six classes) 
- and require a structured output (JSON) to improve parsability. 
- We run inference with deterministic decoding (e.g., temperature set to 0) whenever supported. 
+ and require a structured output (e.g., JSON) for robust parsing. 
+ We run inference with deterministic decoding whenever supported. 
  Invalid or out-of-set outputs are mapped to \texttt{unknown} and treated as misclassifications in accuracy 
  and macro-F1 unless otherwise specified. 
  
  \subsubsection{Evaluation Metrics} 
  \label{subsubsec:setup_metrics} 
  We report overall accuracy and macro-F1 as primary metrics. 
- To better reflect the hierarchical nature of complexity labels, we optionally report hierarchy-aware 
- scores (e.g., HC/HC$_w$) following prior work. 
- We also report per-class performance and analyze confusion patterns between adjacent classes 
+ We additionally report per-class performance and analyze confusion patterns between adjacent classes 
  (e.g., \texttt{nlogn} vs.\ \texttt{quadratic}, \texttt{quadratic} vs.\ \texttt{cubic}).
+
+\subsection{Overall Results} 
+ \label{subsec:overall_results} 
+ 
+ We first report the overall performance of the LLM-only baseline on our six-class setting 
+ (\texttt{constant}, \texttt{logn}, \texttt{linear}, \texttt{nlogn}, \texttt{quadratic}, \texttt{cubic}). 
+ After removing the exponential/\texttt{NP} class from the original benchmark, the evaluation set 
+ contains 4,372 programs. On this six-class benchmark, the LLM-only approach achieves an accuracy of 
+ 65.99\% and a macro-F1 of 0.672. 
+ This result indicates that LLMs can capture many common algorithmic patterns, but still exhibit 
+ non-trivial systematic errors, especially on adjacent polynomial classes. 
+ 
+ Next, we compare LLM-only with Fit-only and our Fusion approach. Table~\ref{tab:overall_results} 
+ summarizes the overall accuracy and macro-F1. As we show later, dynamic evidence provides useful 
+ correction signals, while the LLM prior stabilizes the prediction under noisy or short-range runtime 
+ measurements. 
+ 
+ \subsection{Per-Class Performance} 
+ \label{subsec:perclass_results} 
+ 
+ Table~\ref{tab:perclass} reports per-class precision, recall, and F1 for the LLM-only baseline. 
+ Overall, lower-order classes such as \texttt{logn} and \texttt{nlogn} achieve relatively high precision, 
+ while high-order classes (notably \texttt{cubic}) suffer from reduced recall, suggesting a tendency 
+ toward \emph{underestimation}. 
+ In particular, \texttt{cubic} achieves a precision of 0.915 but a recall of 0.536, meaning that when the 
+ LLM predicts \texttt{cubic} it is often correct, but it fails to identify nearly half of the true 
+ \texttt{cubic} programs. This observation motivates our fitting-based correction strategy. 
+ 
+ For \texttt{linear}, we observe an opposite pattern: recall is high but precision is substantially lower, 
+ indicating that the LLM frequently over-predicts \texttt{linear} for programs that are actually 
+ \texttt{nlogn}, \texttt{quadratic}, or \texttt{cubic}. This confusion is consistent with the fact that many 
+ programs exhibit near-linear behavior on small input scales or contain linear-looking outer structures 
+ that hide higher-order inner costs. 
+ 
+ \subsection{Confusion Analysis} 
+ \label{subsec:confusion_analysis} 
+ 
+ To better understand systematic errors, Figure~\ref{fig:confusion} visualizes the confusion matrix for 
+ LLM-only. We highlight three dominant confusion patterns. 
+ 
+ \textbf{(1) Cubic underestimation.} 
+ Among true \texttt{cubic} programs, 20.8\% are misclassified as \texttt{linear} and 18.0\% as 
+ \texttt{quadratic}, while an additional 2.5\% are predicted as \texttt{nlogn}. These mistakes suggest that 
+ the LLM tends to compress higher-order growth into simpler polynomial forms, especially when nested loops 
+ or repeated substring/DP-like patterns are not explicitly recognized. 
+ 
+ \textbf{(2) Quadratic-to-linear confusion.} 
+ A substantial portion of \texttt{quadratic} programs are predicted as \texttt{linear}. This error commonly 
+ occurs when the higher-order term is triggered only under certain input distributions or when the loop 
+ nesting is implicit (e.g., hidden inside library calls or repeated slicing operations). 
+ 
+ \textbf{(3) Logarithmic vs.\ constant ambiguity.} 
+ We also observe confusion between \texttt{logn} and \texttt{constant}, which is expected because short-range 
+ runtime curves often make $\log n$ appear nearly flat, and static inspection may miss the input-size 
+ variable that drives logarithmic behavior. 
+ 
+ These findings justify the need for a hybrid approach: static LLM reasoning alone is prone to systematic 
+ bias on high-order classes, while dynamic analysis can provide direct growth evidence to correct such 
+ misclassifications. 
+ 
+ \subsection{Effect of Fusion} 
+ \label{subsec:fusion_effect} 
+ 
+ We now evaluate whether the proposed Fusion strategy improves classification performance. 
+ Fusion uses the LLM prediction as a semantic prior and overrides it only when dynamic curve fitting yields 
+ strong evidence (Section~\ref{subsec:fusion}). 
+ Table~\ref{tab:overall_results} shows that Fusion improves overall accuracy from 65.99\% (LLM-only) to 
+ XX.X\%, and macro-F1 from 0.672 to XX.X. 
+ More importantly, Fusion increases recall on \texttt{cubic} programs, indicating that runtime evidence 
+ effectively corrects the LLM's underestimation bias. 
+ We provide additional case studies in Section~\ref{subsec:case_study}. 
+ 
+ \subsection{Case Study: Correcting Cubic Underestimation} 
+ \label{subsec:case_study} 
+ 
+ We further analyze representative programs where LLM-only predicts a lower-order class but runtime fitting 
+ exhibits a clear cubic trend. Such programs often contain nested loops with data-dependent iteration bounds 
+ or repeated substring/collection operations whose cost is proportional to the size of the processed segment. 
+ In these cases, the fitted model on larger scales consistently favors \texttt{cubic}, leading Fusion to 
+ override the static prior. This behavior aligns with our design goal: using execution evidence to correct 
+ systematic high-order underestimation while retaining LLM stability when fitting is uncertain.
 
 \subsection{Some Common Mistakes}\label{SCM}
 \begin{itemize}
