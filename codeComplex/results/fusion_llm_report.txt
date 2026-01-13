@@ -1,0 +1,15 @@
+Fusion LLM Refinement Report
+==================================================
+
+Total records: 3563
+Processed: 3563
+Skipped: 0
+
+LLM-only accuracy: 2366/3563 (66.40%)
+Fit-only accuracy: 1914/3563 (53.72%)
+Fusion accuracy: 2319/3563 (65.09%)
+
+LLM-Fit agreement: 1885
+LLM-Fit disagreement: 1678
+Strong fitting evidence: 1004
+Rechecked by LLM: 0
