@@ -20,7 +20,7 @@ def main(n):
         B = [[0] * M for _ in range(0)]
 
     # Core algorithm logic preserved
-    X = [[0] * M for _ in range(N))
+    X = [[0] * M for _ in range(N)]
     inf = 1 << 30
 
     if K % 2:

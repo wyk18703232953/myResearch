@@ -22,4 +22,5 @@ def main(n):
 
 
 if __name__ == "__main__":
-    main(10)
+    main(1000000)
+    print('ok')

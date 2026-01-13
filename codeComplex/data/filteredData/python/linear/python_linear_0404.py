@@ -20,4 +20,5 @@ def main(n):
     # print(v - m)
     pass
 if __name__ == "__main__":
-    main(10)
+    main(1000000010)
+    print('ok')

@@ -24,4 +24,3 @@ while 1>0:
     if x*x+y*y <= 1500000**2:
         print(*ans)
         break
-2
