@@ -1,15 +1,24 @@
 Fusion LLM Refinement Report
 ==================================================
 
-Total records: 3563
-Processed: 3563
+Total records: 3504
+Processed: 3504
 Skipped: 0
 
-LLM-only accuracy: 2366/3563 (66.40%)
-Fit-only accuracy: 1914/3563 (53.72%)
-Fusion accuracy: 2319/3563 (65.09%)
+LLM-only accuracy: 2328/3504 (66.44%)
+Fit-only accuracy: 2108/3504 (60.16%)
+Fusion accuracy: 2171/3504 (61.96%)
 
-LLM-Fit agreement: 1885
-LLM-Fit disagreement: 1678
-Strong fitting evidence: 1004
-Rechecked by LLM: 0
+LLM-Fit agreement: 1893
+LLM-Fit disagreement: 1611
+Strong fitting evidence: 1009
+Rechecked by LLM: 332
+
+==================================================
+类型准确率统计
+==================================================
+cubic           总:  599 LLM正确:  322 ( 53.76%) Fit正确:  403 ( 67.28%) Fusion正确:  294 ( 49.08%)
+linear          总:  834 LLM正确:  692 ( 82.97%) Fit正确:  602 ( 72.18%) Fusion正确:  681 ( 81.65%)
+logn            总:  659 LLM正确:  378 ( 57.36%) Fit正确:  426 ( 64.64%) Fusion正确:  364 ( 55.24%)
+nlogn           总:  785 LLM正确:  498 ( 63.44%) Fit正确:  267 ( 34.01%) Fusion正确:  399 ( 50.83%)
+quadratic       总:  627 LLM正确:  438 ( 69.86%) Fit正确:  410 ( 65.39%) Fusion正确:  433 ( 69.06%)

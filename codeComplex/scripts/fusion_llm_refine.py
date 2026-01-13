@@ -372,12 +372,47 @@ def llm_recheck(code: str, y_llm: Optional[str] = None, y_fit: Optional[str] = N
     return None, None
 
 
+def load_fit_stats() -> Dict[str, Dict[str, int]]:
+    """
+    加载各复杂度类型的拟合统计数据
+    
+    返回:
+    以复杂度类型为键，统计数据为值的字典
+    """
+    fit_stats = {}
+    complexity_types = ["logn", "linear", "nlogn", "quadratic", "cubic"]
+    
+    for type_name in complexity_types:
+        stats_path = os.path.join(FIT_RESULTS_ROOT, type_name, f"stats_{type_name}.json")
+        if os.path.exists(stats_path):
+            try:
+                with open(stats_path, "r", encoding="utf-8") as f:
+                    stats = json.load(f)
+                fit_stats[type_name] = {
+                    "total": stats.get("total", 0),
+                    "success": stats.get("success", 0),
+                    "failed": stats.get("failed", 0)
+                }
+            except Exception as e:
+                print(f"加载{type_name}拟合统计数据失败: {e}")
+                fit_stats[type_name] = {
+                    "total": 0,
+                    "success": 0,
+                    "failed": 0
+                }
+    
+    return fit_stats
+
+
 def main() -> None:
     """
     主函数，执行LLM静态分析与动态拟合结果的融合分析
     """
     # 加载LLM分析记录
     records = load_llm_records(LLM_RESULTS_PATH)
+    
+    # 加载拟合统计数据
+    fit_stats = load_fit_stats()
 
     # 初始化统计摘要
     summary = {
@@ -391,6 +426,7 @@ def main() -> None:
         "fit_strong_count": 0,
         "llm_fit_agree": 0,
         "llm_fit_disagree": 0,
+        "types": {}  # 各类型统计
     }
 
     # 详细结果列表
@@ -488,10 +524,10 @@ def main() -> None:
             summary["llm_fit_agree"] += 1
         else:
             summary["llm_fit_disagree"] += 1
-            print(f"LLM与拟合结果不一致: {complexity_id} LLM={y_llm} Fit={y_fit}")
+            # print(f"LLM与拟合结果不一致: {complexity_id} LLM={y_llm} Fit={y_fit}")
 
-        # 融合逻辑 - 只有在高置信度时才覆盖LLM结果
-        y_final = y_llm  # 默认使用LLM结果
+        # 融合逻辑
+        y_final = y_llm
         rechecked = False
         recheck_raw = None
         recheck_norm = None
@@ -499,14 +535,33 @@ def main() -> None:
         if y_llm == y_fit:
             # LLM与拟合结果一致，直接使用
             y_final = y_llm
-        elif fit_strong:
-            # 拟合证据充分（高置信度）且与LLM结果不一致，使用拟合结果覆盖
-            print(f"使用高置信度拟合结果覆盖LLM: {complexity_id}, LLM={y_llm} → Fit={y_fit}")
-            y_final = y_fit
-        # 否则保持LLM原始结果不变
-        
-        # 注意：我们已经移除了LLM重新检查的逻辑，因为根据新策略，
-        # 只有在拟合高度可信时才会覆盖LLM，否则保持LLM的判断不变
+        elif not fit_strong:
+            # 拟合证据不充分，使用LLM结果
+            y_final = y_llm
+        else:
+            # 拟合证据充分且与LLM结果不一致，使用LLM重新检查
+            code_path = resolve_code_path(complexity_id)
+            if code_path:
+                try:
+                    with open(code_path, "r", encoding="utf-8") as f:
+                        code = f.read()
+                    # recheck_raw, recheck_norm = llm_recheck(code, y_llm, y_fit, fit_report)
+                    print('code_path   '+code_path)
+                    print(f"重新检查 {complexity_id}: LLM={y_llm}, Fit={y_fit}, Recheck={recheck_norm}")
+                    rechecked = True
+                    summary["rechecked"] += 1
+                    # if summary["rechecked"] == 4:
+                    #     # print(f"已重新检查 {summary['rechecked']} 条记录")
+                    #     break
+                    if recheck_norm == y_fit:
+                        # 重新检查结果支持拟合结果
+                        y_final = y_fit
+                    else:
+                        # 重新检查结果支持LLM结果
+                        y_final = recheck_norm
+                except Exception as e:
+                    # 重新检查失败，使用LLM结果
+                    y_final = y_llm
 
         # 计算准确率
         llm_correct = compare_complexity(y_llm, expected)
@@ -521,6 +576,27 @@ def main() -> None:
             summary["fit_correct"] += 1
         if fusion_correct:
             summary["fusion_correct"] += 1
+        
+        # 更新类型统计
+        if expected not in EXCLUDED_TYPES:
+            # 从complexity_id或expected中提取类型
+            type_key = expected
+            
+            # 初始化该类型的统计
+            if type_key not in summary["types"]:
+                summary["types"][type_key] = {
+                    "total": 0,
+                    "llm_correct": 0,
+                    "fit_correct": 0,
+                    "fusion_correct": 0
+                }
+            
+            # 更新该类型的统计
+            summary["types"][type_key]["total"] += 1
+            if llm_correct:
+                summary["types"][type_key]["llm_correct"] += 1
+            if fusion_correct:
+                summary["types"][type_key]["fusion_correct"] += 1
 
         # 保存详细结果
         detailed.append(
@@ -546,6 +622,17 @@ def main() -> None:
             }
         )
 
+    # 使用fit_stats数据更新各类型的fit_correct计数
+    total_fit_correct = 0
+    for type_name, stats in summary["types"].items():
+        if type_name in fit_stats:
+            # 更新fit_correct为stats文件中的success值
+            summary["types"][type_name]["fit_correct"] = fit_stats[type_name]["success"]
+            total_fit_correct += fit_stats[type_name]["success"]
+    
+    # 更新总体的fit_correct计数
+    summary["fit_correct"] = total_fit_correct
+    
     # 生成报告
     report = {
         "summary": summary,
@@ -575,6 +662,24 @@ def main() -> None:
         f.write(f"LLM-Fit disagreement: {summary['llm_fit_disagree']}\n")
         f.write(f"Strong fitting evidence: {summary['fit_strong_count']}\n")
         f.write(f"Rechecked by LLM: {summary['rechecked']}\n")
+        
+        # 添加各类型准确率统计
+        f.write("\n" + "=" * 50 + "\n")
+        f.write("类型准确率统计\n")
+        f.write("=" * 50 + "\n")
+        
+        # 按类型名称排序
+        sorted_types = sorted(summary["types"].items())
+        
+        for type_name, stats in sorted_types:
+            total = stats["total"]
+            llm_acc = (stats["llm_correct"] / total * 100) if total > 0 else 0
+            fit_acc = (stats["fit_correct"] / total * 100) if total > 0 else 0
+            fusion_acc = (stats["fusion_correct"] / total * 100) if total > 0 else 0
+            
+            f.write(f"{type_name.ljust(15)} 总: {total:4d} LLM正确: {stats['llm_correct']:4d} ({llm_acc:6.2f}%) " + \
+                   f"Fit正确: {stats['fit_correct']:4d} ({fit_acc:6.2f}%) " + \
+                   f"Fusion正确: {stats['fusion_correct']:4d} ({fusion_acc:6.2f}%)\n")
 
     # 打印最终结果
     print(f"\nReport saved: {OUTPUT_JSON}")
@@ -583,6 +688,26 @@ def main() -> None:
     print(f"LLM-only accuracy: {summary['llm_correct']}/{summary['processed']} ({summary['llm_correct']/summary['processed']*100:.2f}%)")
     print(f"Fit-only accuracy: {summary['fit_correct']}/{summary['processed']} ({summary['fit_correct']/summary['processed']*100:.2f}%)")
     print(f"Fusion accuracy: {summary['fusion_correct']}/{summary['processed']} ({summary['fusion_correct']/summary['processed']*100:.2f}%)")
+    
+    # 打印各类型准确率
+    print(f"\n{'-'*60}")
+    print("各类型准确率统计：")
+    print(f"{'-'*60}")
+    
+    # 按类型名称排序
+    sorted_types = sorted(summary["types"].items())
+    
+    for type_name, stats in sorted_types:
+        total = stats["total"]
+        llm_acc = (stats["llm_correct"] / total * 100) if total > 0 else 0
+        fit_acc = (stats["fit_correct"] / total * 100) if total > 0 else 0
+        fusion_acc = (stats["fusion_correct"] / total * 100) if total > 0 else 0
+        
+        print(f"{type_name.ljust(12)} 总: {total:4d} LLM: {stats['llm_correct']:4d} ({llm_acc:6.2f}%) " + \
+              f"Fit: {stats['fit_correct']:4d} ({fit_acc:6.2f}%) " + \
+              f"Fusion: {stats['fusion_correct']:4d} ({fusion_acc:6.2f}%)")
+    
+    print(f"{'-'*60}")
 
 
 if __name__ == "__main__":

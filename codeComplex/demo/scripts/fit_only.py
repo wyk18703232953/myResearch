@@ -408,10 +408,10 @@ def main():
     # folder_type = 'cubic'  # 可在此处修改
 
     folder_config = {
-        'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
-        'linear': (config.linear_folder_path, ['Linear']),
-        'quadratic': (config.quadratic_folder_path, ['Quadratic']),
-        'cubic': (config.cubic_folder_path, ['Cubic']),
+        # 'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
+        # 'linear': (config.linear_folder_path, ['Linear']),
+        # 'quadratic': (config.quadratic_folder_path, ['Quadratic']),
+        # 'cubic': (config.cubic_folder_path, ['Cubic']),
         'nlogn': (config.nlogn_folder_path, ['N Log N'])
     }
     
@@ -449,9 +449,9 @@ def main():
         base_dir = base_dir_map[folder_type]
                        
         for i, file_name in enumerate(python_files, 1):
-            if i > 15:
-                print(f"\n已处理前15个文件，跳过剩余 {total_files - 15} 个文件。")
-                break
+            # if i > 15:
+            #     print(f"\n已处理前15个文件，跳过剩余 {total_files - 15} 个文件。")
+            #     break
                 
             full_path = os.path.join(folder_path, file_name)
             print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
