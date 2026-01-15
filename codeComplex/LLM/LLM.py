@@ -131,7 +131,7 @@ def batch_validate_from_jsonl(jsonl_file_path, max_items=None, save_results=True
     detailed_records = []  # 存储详细记录
     
     # 确保结果目录存在
-    results_dir = "D:/MyResearch/codeComplex/results/LLM"
+    results_dir = "/home/wuyankai/myResearch/codeComplex/results/LLM"
     if not os.path.exists(results_dir):
         os.makedirs(results_dir)
     
@@ -276,7 +276,7 @@ if __name__ == "__main__":
     
     # 示例2：从JSONL文件批量验证
     print("\n=== 示例2: 从JSONL文件批量验证 ===")
-    jsonl_path = "d:/MyResearch/codeComplex/data/python_data.jsonl"
+    jsonl_path = "/home/wuyankai/myResearch/codeComplex/data/python_data.jsonl"
     if os.path.exists(jsonl_path):
         # 处理所有样本
         batch_results, detailed_records = batch_validate_from_jsonl(jsonl_path, max_items=None, save_results=True)
