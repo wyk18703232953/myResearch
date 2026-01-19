@@ -2,8 +2,8 @@ import os
 import time
 from openai import OpenAI
 
-SOURCE_DIR = r"/home/wuyankai/myResearch/codeComplex/data/onlyCode/python"
-OUTPUT_DIR = r"/home/wuyankai/myResearch/codeComplex/data/filteredData/python"
+SOURCE_DIR = r"/home/wuyankai/myResearch/codeComplex/data/onlyCode/python/np"
+OUTPUT_DIR = r"/home/wuyankai/myResearch/codeComplex/data/filteredData/python/np"
 
 def call_large_model(original_code, api_key=None, base_url=None):
     if api_key is None:
@@ -101,6 +101,27 @@ def process_file(source_path, output_path, force_regenerate=False):
         return False
 
 def process_directory(source_dir, output_dir, force_regenerate=False):
+    # 检查源目录是否包含.py文件，如果有则直接处理
+    python_files = sorted([f for f in os.listdir(source_dir) if f.endswith('.py') and not os.path.isdir(os.path.join(source_dir, f))])
+    
+    if python_files:
+        print(f"\n处理目录: {os.path.basename(source_dir)}")
+        total_files = len(python_files)
+        success_count = 0
+        
+        for i, filename in enumerate(python_files, 1):
+            source_path = os.path.join(source_dir, filename)
+            output_path = os.path.join(output_dir, filename)
+            
+            print(f"[{i}/{total_files}]", end=" ")
+            if process_file(source_path, output_path, force_regenerate):
+                success_count += 1
+            
+            time.sleep(0.1)
+        
+        print(f"\n目录 {os.path.basename(source_dir)} 完成: {success_count}/{total_files} 文件成功")
+    
+    # 处理子目录（保留原功能）
     subdirs = [d for d in os.listdir(source_dir) if os.path.isdir(os.path.join(source_dir, d))]
     
     for subdir in subdirs:
