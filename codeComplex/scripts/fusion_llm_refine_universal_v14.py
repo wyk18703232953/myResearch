@@ -65,7 +65,7 @@ EQUIVALENCE = {
     "np": {"np", "o(n^p)", "n^p", "exponential", "o(2^n)", "2^n"},
 }
 
-DEFAULT_CANDIDATES = ["logn", "linear", "nlogn", "quadratic", "cubic", "constant"]
+DEFAULT_CANDIDATES = ["logn", "linear", "nlogn", "quadratic", "cubic", "constant", "np"]
 
 # 通用融合策略参数
 # 拟合质量评估阈值 - 保持较高门槛，确保拟合结果质量
@@ -440,7 +440,7 @@ def load_fit_stats() -> Dict[str, Dict[str, int]]:
     加载各复杂度类型的拟合统计数据
     """
     fit_stats = {}
-    complexity_types = ["logn", "linear", "nlogn", "quadratic", "cubic", "constant"]
+    complexity_types = ["logn", "linear", "nlogn", "quadratic", "cubic", "constant", "np"]
     
     for type_name in complexity_types:
         stats_path = os.path.join(FIT_RESULTS_ROOT, type_name, f"stats_{type_name}.json")
