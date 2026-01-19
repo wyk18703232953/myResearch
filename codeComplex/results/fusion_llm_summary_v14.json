@@ -321,7 +321,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "quadratic",
-    "y_final": "linear"
+    "y_final": "quadratic"
   },
   {
     "expected_complexity": "constant",
@@ -555,19 +555,19 @@
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "nlogn",
-    "y_final": "nlogn"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "nlogn",
-    "y_final": "nlogn"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -585,7 +585,7 @@
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -603,7 +603,7 @@
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -621,7 +621,7 @@
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -651,7 +651,7 @@
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -831,7 +831,7 @@
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "constant",
-    "y_final": "constant"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -849,7 +849,7 @@
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "constant",
-    "y_final": "constant"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -1401,7 +1401,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "quadratic",
-    "y_final": "linear"
+    "y_final": "quadratic"
   },
   {
     "expected_complexity": "constant",
@@ -2313,7 +2313,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "logn",
-    "y_final": "linear"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -2367,7 +2367,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "logn",
-    "y_final": "linear"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -2943,7 +2943,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "constant",
@@ -3033,7 +3033,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "logn",
-    "y_final": "linear"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -3675,7 +3675,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "constant",
@@ -3735,13 +3735,13 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "constant",
@@ -3765,7 +3765,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "constant",
@@ -3789,7 +3789,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "constant",
@@ -3921,13 +3921,13 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "logn",
-    "y_final": "linear"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "quadratic",
-    "y_final": "linear"
+    "y_final": "quadratic"
   },
   {
     "expected_complexity": "constant",
@@ -4353,7 +4353,7 @@
     "expected_complexity": "constant",
     "y_llm": "logn",
     "y_fit": "nlogn",
-    "y_final": "nlogn"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "constant",
@@ -4617,7 +4617,7 @@
     "expected_complexity": "constant",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "constant",
@@ -4731,7 +4731,7 @@
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
@@ -4851,7 +4851,7 @@
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
@@ -4911,13 +4911,13 @@
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
@@ -5151,7 +5151,7 @@
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
@@ -5805,7 +5805,7 @@
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
@@ -5877,7 +5877,7 @@
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "nlogn",
-    "y_final": "nlogn"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
@@ -7281,7 +7281,7 @@
     "expected_complexity": "logn",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "logn",
@@ -7299,7 +7299,7 @@
     "expected_complexity": "logn",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "logn",
@@ -7395,7 +7395,7 @@
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
@@ -7905,7 +7905,7 @@
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
@@ -8193,7 +8193,7 @@
     "expected_complexity": "logn",
     "y_llm": "logn",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "logn",
@@ -8619,7 +8619,7 @@
     "expected_complexity": "logn",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "logn",
@@ -9123,7 +9123,7 @@
     "expected_complexity": "linear",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "linear",
@@ -9897,7 +9897,7 @@
     "expected_complexity": "linear",
     "y_llm": "np",
     "y_fit": "nlogn",
-    "y_final": "nlogn"
+    "y_final": "np"
   },
   {
     "expected_complexity": "linear",
@@ -10671,7 +10671,7 @@
     "expected_complexity": "linear",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "linear",
@@ -11139,7 +11139,7 @@
     "expected_complexity": "linear",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "linear",
@@ -11241,13 +11241,13 @@
     "expected_complexity": "linear",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "linear",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "linear",
@@ -12771,7 +12771,7 @@
     "expected_complexity": "linear",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "linear",
@@ -12783,7 +12783,7 @@
     "expected_complexity": "linear",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "linear",
@@ -13095,7 +13095,7 @@
     "expected_complexity": "linear",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "linear",
@@ -15021,7 +15021,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "quadratic",
     "y_fit": "nlogn",
-    "y_final": "quadratic"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -15081,7 +15081,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -15417,7 +15417,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -15585,7 +15585,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -15723,7 +15723,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "nlogn",
@@ -16053,7 +16053,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "nlogn",
@@ -16491,7 +16491,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "nlogn",
@@ -16503,7 +16503,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "nlogn",
@@ -16587,7 +16587,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "np",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "np"
   },
   {
     "expected_complexity": "nlogn",
@@ -16719,7 +16719,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -16923,7 +16923,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "quadratic",
     "y_fit": "linear",
-    "y_final": "quadratic"
+    "y_final": "linear"
   },
   {
     "expected_complexity": "nlogn",
@@ -17673,13 +17673,13 @@
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -17698,54 +17698,6 @@
     "y_llm": "linear",
     "y_fit": "linear",
     "y_final": "linear"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
-    "y_final": "nlogn"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
-    "y_final": "nlogn"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
-    "y_final": "linear"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
-    "y_final": "linear"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "linear",
-    "y_fit": "linear",
-    "y_final": "linear"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
-    "y_final": "nlogn"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
-    "y_final": "nlogn"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "nlogn",
-    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -17781,6 +17733,48 @@
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
     "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "nlogn",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "linear",
+    "y_fit": "linear",
     "y_final": "linear"
   },
   {
@@ -17792,20 +17786,8 @@
   {
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
-    "y_fit": "nlogn",
-    "y_final": "nlogn"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
     "y_fit": "linear",
     "y_final": "nlogn"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
-    "y_final": "linear"
   },
   {
     "expected_complexity": "nlogn",
@@ -17829,12 +17811,6 @@
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
     "y_fit": "nlogn",
-    "y_final": "nlogn"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
     "y_final": "nlogn"
   },
   {
@@ -17882,6 +17858,30 @@
   {
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "nlogn",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
     "y_fit": "nlogn",
     "y_final": "nlogn"
   },
@@ -17889,7 +17889,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -18105,7 +18105,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -18129,7 +18129,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -18327,25 +18327,7 @@
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
     "y_final": "nlogn"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
-    "y_final": "nlogn"
-  },
-  {
-    "expected_complexity": "nlogn",
-    "y_llm": "nlogn",
-    "y_fit": "linear",
-    "y_final": "linear"
   },
   {
     "expected_complexity": "nlogn",
@@ -18375,7 +18357,25 @@
     "expected_complexity": "nlogn",
     "y_llm": "nlogn",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
+  },
+  {
+    "expected_complexity": "nlogn",
+    "y_llm": "nlogn",
+    "y_fit": "linear",
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "nlogn",
@@ -19041,7 +19041,7 @@
     "expected_complexity": "quadratic",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "quadratic",
@@ -19053,7 +19053,7 @@
     "expected_complexity": "quadratic",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "quadratic",
@@ -19551,7 +19551,7 @@
     "expected_complexity": "quadratic",
     "y_llm": "quadratic",
     "y_fit": "linear",
-    "y_final": "quadratic"
+    "y_final": "linear"
   },
   {
     "expected_complexity": "quadratic",
@@ -19593,7 +19593,7 @@
     "expected_complexity": "quadratic",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "quadratic",
@@ -20325,13 +20325,13 @@
     "expected_complexity": "quadratic",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "quadratic",
     "y_llm": "linear",
     "y_fit": "nlogn",
-    "y_final": "linear"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "quadratic",
@@ -20751,7 +20751,7 @@
     "expected_complexity": "quadratic",
     "y_llm": "quadratic",
     "y_fit": "nlogn",
-    "y_final": "quadratic"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "quadratic",
@@ -20907,7 +20907,7 @@
     "expected_complexity": "quadratic",
     "y_llm": "quadratic",
     "y_fit": "linear",
-    "y_final": "quadratic"
+    "y_final": "linear"
   },
   {
     "expected_complexity": "quadratic",
@@ -21147,7 +21147,7 @@
     "expected_complexity": "quadratic",
     "y_llm": "quadratic",
     "y_fit": "linear",
-    "y_final": "quadratic"
+    "y_final": "linear"
   },
   {
     "expected_complexity": "quadratic",
@@ -21249,7 +21249,7 @@
     "expected_complexity": "quadratic",
     "y_llm": "quadratic",
     "y_fit": "logn",
-    "y_final": "quadratic"
+    "y_final": "logn"
   },
   {
     "expected_complexity": "quadratic",
@@ -21417,7 +21417,7 @@
     "expected_complexity": "quadratic",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "quadratic",
@@ -22161,7 +22161,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -22845,7 +22845,7 @@
     "expected_complexity": "cubic",
     "y_llm": "cubic",
     "y_fit": "quadratic",
-    "y_final": "cubic"
+    "y_final": "quadratic"
   },
   {
     "expected_complexity": "cubic",
@@ -23025,7 +23025,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -23367,7 +23367,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -23553,7 +23553,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -23649,7 +23649,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -23667,7 +23667,7 @@
     "expected_complexity": "cubic",
     "y_llm": "constant",
     "y_fit": "cubic",
-    "y_final": "constant"
+    "y_final": "cubic"
   },
   {
     "expected_complexity": "cubic",
@@ -23829,7 +23829,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -23865,7 +23865,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -23937,7 +23937,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -24045,7 +24045,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -24285,7 +24285,7 @@
     "expected_complexity": "cubic",
     "y_llm": "quadratic",
     "y_fit": "nlogn",
-    "y_final": "quadratic"
+    "y_final": "nlogn"
   },
   {
     "expected_complexity": "cubic",
@@ -24585,7 +24585,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -24807,7 +24807,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -24903,7 +24903,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -24921,7 +24921,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -25017,7 +25017,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -25341,7 +25341,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -25377,7 +25377,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -25509,7 +25509,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "linear",
-    "y_final": "linear"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -25641,7 +25641,7 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -25677,13 +25677,13 @@
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
     "y_llm": "np",
     "y_fit": "quadratic",
-    "y_final": "quadratic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "cubic",
@@ -25869,7 +25869,7 @@
     "expected_complexity": "np",
     "y_llm": "np",
     "y_fit": "cubic",
-    "y_final": "cubic"
+    "y_final": "np"
   },
   {
     "expected_complexity": "np",

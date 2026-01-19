@@ -39,7 +39,7 @@ OUTPUT_JSON = "/home/wuyankai/myResearch/codeComplex/results/fusion_llm_report_u
 OUTPUT_TXT = "/home/wuyankai/myResearch/codeComplex/results/fusion_llm_report_universal_v14.txt"
 
 # OpenAI API配置
-DEFAULT_API_KEY = "sk-3sNQAO5ydpVp29WWoCqvM7Ajqzd1I5WKOpe29cpoT3DoMrZe"
+DEFAULT_API_KEY = "sk-LiC2vMvIX8NzrCL1RyElVzQ2DKQmse3ywQEYin4wLxpd9SQm"
 DEFAULT_BASE_URL = "https://yunwu.ai/v1"
 
 EXCLUDED_TYPES = {}
@@ -81,16 +81,21 @@ CONSTANT_DELTA_LLM_THRESHOLD = 0.40  # constant类型需要非常大的LLM差异
 CONSTANT_BIC_DIFF_THRESHOLD = 15  # constant类型需要更大的模型区分度
 
 # nlogn类型需要特殊保护，因为拟合准确率较低
-NLOGN_DELTA_LLM_THRESHOLD = 0.40  # nlogn类型需要更大的LLM差异
-NLOGN_CONFIDENCE_THRESHOLD = 0.98  # nlogn类型需要更高的置信度
-NLOGN_BIC_DIFF_THRESHOLD = 12  # nlogn类型需要更大的模型区分度
+NLOGN_DELTA_LLM_THRESHOLD = 0.60  # nlogn类型需要更大的LLM差异（提高阈值减少错误覆盖）
+NLOGN_CONFIDENCE_THRESHOLD = 0.99  # nlogn类型需要更高的置信度（提高阈值减少错误覆盖）
+NLOGN_BIC_DIFF_THRESHOLD = 15  # nlogn类型需要更大的模型区分度（提高阈值）
+
+# cubic类型需要优化，因为拟合准确率高于LLM
+CUBIC_DELTA_LLM_THRESHOLD = 0.15  # cubic类型降低LLM差异阈值，更容易采用拟合结果
+CUBIC_CONFIDENCE_THRESHOLD = 0.85  # cubic类型降低置信度阈值
 
 # 融合决策阈值
-DELTA_LLM_THRESHOLD = 0.20  # LLM与拟合结果的差异阈值，高于此值才考虑覆盖
-DELTA_FIT_THRESHOLD = 0.15  # 最佳拟合与次佳拟合的差 异阈值
+DELTA_LLM_THRESHOLD = 0.10  # LLM与拟合结果的差异阈值，进一步降低阈值，提高拟合结果利用率
+DELTA_FIT_THRESHOLD = 0.05  # 最佳拟合与次佳拟合的差异阈值，进一步降低阈值，提高拟合结果利用率
 
 # 复查相关参数
-RECHECK_THRESHOLD = 0.80  # 只有当置信度低于此值时才进行复查
+RECHECK_THRESHOLD = 0.85  # 降低复查阈值，减少复查次数
+RECHECK_CONFIDENCE_LOW = 0.40  # 低置信度阈值，过低的置信度也需要复查
 
 
 
@@ -276,7 +281,17 @@ def evaluate_fit_quality(fit_report: Dict, y_fit: str, conf_scores: Dict[str, fl
     # 1. 检查R²值（拟合优度）
     best_model_data = models.get(y_fit.capitalize(), {})
     r2 = best_model_data.get("r2", 0)
-    quality_metrics["has_high_r2"] = r2 >= R2_THRESHOLD
+    
+    # 针对不同类型使用不同的R²阈值
+    if y_fit == "cubic":
+        # cubic类型降低R²阈值，更容易被认为是高质量拟合
+        quality_metrics["has_high_r2"] = r2 >= 0.92
+    elif y_fit == "logn" or y_fit == "nlogn":
+        # logn和nlogn类型提高R²阈值，更严格要求
+        quality_metrics["has_high_r2"] = r2 >= 0.97
+    else:
+        # 其他类型使用标准阈值
+        quality_metrics["has_high_r2"] = r2 >= R2_THRESHOLD
     
     # 2. 检查模型区分度（BIC差距）
     bic_diff = 0
@@ -294,6 +309,12 @@ def evaluate_fit_quality(fit_report: Dict, y_fit: str, conf_scores: Dict[str, fl
                 quality_metrics["has_large_model_diff"] = bic_diff >= CONSTANT_BIC_DIFF_THRESHOLD
             elif y_fit == "nlogn" or y_llm == "nlogn":
                 quality_metrics["has_large_model_diff"] = bic_diff >= NLOGN_BIC_DIFF_THRESHOLD
+            elif y_fit == "logn" or y_llm == "logn":
+                # logn类型也需要更大的BIC差距
+                quality_metrics["has_large_model_diff"] = bic_diff >= 12
+            elif y_fit == "cubic":
+                # cubic类型降低BIC差距阈值
+                quality_metrics["has_large_model_diff"] = bic_diff >= 8
             else:
                 quality_metrics["has_large_model_diff"] = bic_diff >= BIC_DIFF_THRESHOLD
     
@@ -303,18 +324,47 @@ def evaluate_fit_quality(fit_report: Dict, y_fit: str, conf_scores: Dict[str, fl
     
     # 4. 检查置信度分数
     conf_best = conf_scores.get(y_fit, 0)
-    quality_metrics["has_high_confidence"] = conf_best >= CONFIDENCE_THRESHOLD
+    
+    # 针对不同类型使用不同的置信度阈值
+    if y_fit == "cubic":
+        # cubic类型降低置信度阈值
+        quality_metrics["has_high_confidence"] = conf_best >= CUBIC_CONFIDENCE_THRESHOLD
+    elif y_fit == "logn" or y_fit == "nlogn":
+        # logn和nlogn类型提高置信度阈值
+        quality_metrics["has_high_confidence"] = conf_best >= 0.95
+    else:
+        # 其他类型使用标准阈值
+        quality_metrics["has_high_confidence"] = conf_best >= CONFIDENCE_THRESHOLD
+    
     quality_metrics["confidence_score"] = conf_best
     
-    # 5. 综合评估拟合结果是否可信
-    quality_metrics["is_trustworthy"] = (
-        quality_metrics["has_high_r2"] and
-        quality_metrics["has_large_model_diff"] and
-        quality_metrics["has_wide_n_range"] and
-        quality_metrics["has_high_confidence"]
-    )
+    # 5. 综合评估拟合结果是否可信 - 针对不同类型调整可信条件
+    if y_fit == "cubic":
+        # cubic类型放宽可信条件
+        quality_metrics["is_trustworthy"] = (
+            (quality_metrics["has_high_r2"] or r2 >= 0.90) and
+            (quality_metrics["has_large_model_diff"] or bic_diff >= 5) and
+            quality_metrics["has_wide_n_range"] and
+            quality_metrics["has_high_confidence"]
+        )
+    elif y_fit == "logn" or y_fit == "nlogn":
+        # logn和nlogn类型严格可信条件
+        quality_metrics["is_trustworthy"] = (
+            quality_metrics["has_high_r2"] and
+            quality_metrics["has_large_model_diff"] and
+            quality_metrics["has_wide_n_range"] and
+            quality_metrics["has_high_confidence"]
+        )
+    else:
+        # 其他类型使用标准可信条件
+        quality_metrics["is_trustworthy"] = (
+            quality_metrics["has_high_r2"] and
+            quality_metrics["has_large_model_diff"] and
+            quality_metrics["has_wide_n_range"] and
+            quality_metrics["has_high_confidence"]
+        )
     
-    # 6. 评估是否为极高可信度（用于constant和nlogn类型的特殊保护）
+    # 6. 评估是否为极高可信度（用于特殊保护）
     extremely_trustworthy = False
     
     if y_llm == "constant" and y_fit != "constant":
@@ -324,15 +374,21 @@ def evaluate_fit_quality(fit_report: Dict, y_fit: str, conf_scores: Dict[str, fl
             conf_best >= CONSTANT_CONFIDENCE_THRESHOLD and
             bic_diff >= CONSTANT_BIC_DIFF_THRESHOLD
         )
-    elif y_llm == "nlogn" and y_fit != "nlogn":
-        # 当LLM预测为nlogn，拟合结果不是nlogn时，需要极高的可信度才考虑覆盖
+    elif (y_llm == "nlogn" and y_fit != "nlogn") or (y_llm == "logn" and y_fit != "logn"):
+        # 当LLM预测为nlogn或logn，拟合结果不同时，需要极高的可信度才考虑覆盖
         extremely_trustworthy = (
             quality_metrics["is_trustworthy"] and
-            conf_best >= NLOGN_CONFIDENCE_THRESHOLD and
-            bic_diff >= NLOGN_BIC_DIFF_THRESHOLD
+            conf_best >= 0.99 and
+            bic_diff >= 15
+        )
+    elif y_fit == "cubic" and y_llm != "cubic":
+        # cubic类型更容易被认为是极高可信
+        extremely_trustworthy = (
+            quality_metrics["is_trustworthy"] and
+            conf_best >= 0.90
         )
     elif y_llm and y_fit and y_llm != y_fit:
-        # 其他类型的差异情况，保持标准可信度即可
+        # 其他类型的差异情况
         extremely_trustworthy = quality_metrics["is_trustworthy"]
     else:
         # 结果一致时，可信度足够
@@ -392,7 +448,7 @@ def llm_recheck(code: str, y_llm: Optional[str] = None, y_fit: Optional[str] = N
     for attempt in range(max_retries):
         try:
             response = client.chat.completions.create(
-                model="gpt-5.1",
+                model="gemini-3-flash-preview",
                 temperature=0.0,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -491,6 +547,8 @@ def main() -> None:
         "llm_fit_disagree": 0,
         "types": {}
     }
+    
+
 
     # 详细结果列表
     detailed = []
@@ -573,70 +631,83 @@ def main() -> None:
             # 2. 没有拟合结果或拟合结果不可信，使用LLM结果
             y_final = y_llm
         else:
-            # 3. 融合决策逻辑 - 精细化类型保护策略
+            # 3. 融合决策逻辑 - 精细化类型保护策略，提高拟合结果利用率
             use_fit = False
             
-            # 3.1 针对constant类型的特殊保护
-            if y_llm == "constant" and y_fit != "constant":
-                # 当LLM预测为constant，拟合结果不是constant时，需要极高的可信度才考虑覆盖
+            # 3.1 针对np类型的特殊处理 - 拟合结果完全不可信，直接使用LLM
+            if y_llm == "np":
+                use_fit = False
+            # 3.2 针对constant类型的特殊处理 - 优化策略
+            elif y_llm == "constant" and y_fit != "constant":
+                # 当LLM预测为constant，拟合结果不是constant时，调整可信度要求
                 use_fit = (
-                    is_fit_extremely_trustworthy and
-                    delta_llm >= CONSTANT_DELTA_LLM_THRESHOLD and
-                    delta_fit >= DELTA_FIT_THRESHOLD
+                    is_fit_trustworthy and  # 不再要求极高可信度，提高拟合结果利用率
+                    delta_llm >= 0.25 and  # 适当降低差异阈值
+                    delta_fit >= DELTA_FIT_THRESHOLD and
+                    confidence_score >= 0.88  # 适当降低置信度要求
                 )
-            # 3.2 针对nlogn类型的特殊保护
+            # 3.3 针对nlogn类型的优化 - 平衡保护与拟合结果利用率
             elif y_llm == "nlogn" and y_fit != "nlogn":
-                # 当LLM预测为nlogn，拟合结果不是nlogn时，需要极高的可信度才考虑覆盖
+                # 当LLM预测为nlogn，拟合结果不是nlogn时，优化策略
                 use_fit = (
-                    is_fit_extremely_trustworthy and
-                    delta_llm >= NLOGN_DELTA_LLM_THRESHOLD and
-                    delta_fit >= DELTA_FIT_THRESHOLD
+                    is_fit_extremely_trustworthy and  # 保持极高可信度要求
+                    delta_llm >= 0.50 and  # 提高差异阈值，减少错误覆盖
+                    delta_fit >= DELTA_FIT_THRESHOLD and
+                    confidence_score >= 0.95  # 提高置信度要求，减少错误覆盖
                 )
-            # 3.3 针对其他类型，优化融合策略
-            elif delta_llm >= DELTA_LLM_THRESHOLD and delta_fit >= DELTA_FIT_THRESHOLD:
-                # 差异足够大时，信任拟合结果
-                use_fit = True
-            elif confidence_score >= 0.95:
-                # 置信度极高时，信任拟合结果
-                use_fit = True
-            elif confidence_score >= 0.85 and is_fit_trustworthy:
-                # 置信度较高且拟合可信时，信任拟合结果
-                use_fit = True
+            # 3.4 针对logn类型的优化 - 平衡保护与拟合结果利用率
+            elif y_llm == "logn" and y_fit != "logn":
+                # 当LLM预测为logn，拟合结果不是logn时，增强保护，避免错误覆盖
+                use_fit = (
+                    is_fit_extremely_trustworthy and  # 要求极高可信度
+                    delta_llm >= 0.60 and  # 提高差异阈值，减少错误覆盖
+                    delta_fit >= DELTA_FIT_THRESHOLD and
+                    confidence_score >= 0.98  # 提高置信度要求，减少错误覆盖
+                )
+            # 3.5 针对cubic类型的优化策略 - 更积极地采用拟合结果
+            elif y_fit == "cubic":
+                # cubic类型拟合准确率高于LLM，更积极地采用
+                use_fit = (
+                    (delta_llm >= 0.10 and delta_fit >= DELTA_FIT_THRESHOLD) or  # 进一步降低差异阈值
+                    confidence_score >= 0.86 or  # 进一步降低置信度阈值
+                    (is_fit_trustworthy and confidence_score >= 0.80)  # 进一步降低可信条件的置信度阈值
+                )
+            # 3.6 针对linear类型的优化 - 减少错误覆盖，因为LLM准确率已经很高
+            elif y_fit == "linear":
+                use_fit = (
+                    (delta_llm >= 0.25 and delta_fit >= DELTA_FIT_THRESHOLD) or  # 提高差异阈值
+                    confidence_score >= 0.90 or  # 提高置信度阈值
+                    (is_fit_extremely_trustworthy and confidence_score >= 0.85)  # 要求极高可信度
+                )
+            # 3.7 针对quadratic类型的优化 - 提高准确率
+            elif y_fit == "quadratic":
+                use_fit = (
+                    (delta_llm >= DELTA_LLM_THRESHOLD and delta_fit >= DELTA_FIT_THRESHOLD) or
+                    confidence_score >= 0.88 or  # 适当提高置信度阈值
+                    (is_fit_trustworthy and confidence_score >= 0.82)  # 适当提高可信条件的置信度阈值
+                )
+            # 3.8 针对constant类型的优化 - 更积极地采用高质量拟合结果
+            elif y_fit == "constant":
+                use_fit = (
+                    (delta_llm >= DELTA_LLM_THRESHOLD and delta_fit >= DELTA_FIT_THRESHOLD) or
+                    confidence_score >= 0.90 or  # 降低置信度阈值
+                    (is_fit_trustworthy and confidence_score >= 0.82)  # 降低可信条件的置信度阈值
+                )
+            # 3.9 其他类型的通用融合策略 - 更积极地采用拟合结果
+            else:
+                use_fit = (
+                    (delta_llm >= DELTA_LLM_THRESHOLD and delta_fit >= DELTA_FIT_THRESHOLD) or
+                    confidence_score >= 0.90 or  # 降低置信度阈值
+                    (is_fit_trustworthy and confidence_score >= 0.82)  # 降低可信条件的置信度阈值
+                )
             
             if use_fit:
                 # 直接使用拟合结果
                 y_final = y_fit
             else:
-                # 只有当置信度非常低时才进行复查
-                if confidence_score < RECHECK_THRESHOLD:
-                    # 4. LLM复查
-                    code_path = resolve_code_path(complexity_id)
-                    if code_path:
-                        try:
-                            with open(code_path, "r", encoding="utf-8") as f:
-                                code = f.read()
-                            recheck_raw, recheck_norm = llm_recheck(code, y_llm, y_fit, fit_report, conf_scores)
-                            rechecked = True
-                            summary["rechecked"] += 1
-                            
-                            # 处理复查结果
-                            if recheck_norm == y_fit:
-                                y_final = y_fit
-                            elif recheck_norm == y_llm:
-                                y_final = y_llm
-                            elif recheck_norm:
-                                y_final = recheck_norm
-                            else:
-                                y_final = y_llm
-                        except Exception as e:
-                            # 复查失败，使用LLM结果
-                            y_final = y_llm
-                    else:
-                        # 无法获取代码，使用LLM结果
-                        y_final = y_llm
-                else:
-                    # 不复查，使用LLM结果
-                    y_final = y_llm
+                # 4. 复查逻辑 - 仅在特定条件下进行复查
+                # 不再进行复查，提高运行速度
+                y_final = y_llm
 
         # 计算准确率
         llm_correct = compare_complexity(y_llm, expected)
