@@ -1,19 +1,19 @@
 Fusion LLM Refinement Report (Universal Strategy V14)
 ==================================================
 
-Total records: 4368
-Processed: 4368
+Total records: 4820
+Processed: 4820
 Skipped: 0
 
-LLM-only accuracy: 2855/4368 (65.36%)
-Fit-only accuracy: 2254/4368 (51.60%)
-Fusion accuracy: 2971/4368 (68.02%)
+LLM-only accuracy: 3075/4820 (63.80%)
+Fit-only accuracy: 2254/4820 (46.76%)
+Fusion accuracy: 3190/4820 (66.18%)
 
-LLM-Fit agreement: 2194
-LLM-Fit disagreement: 2174
+LLM-Fit agreement: 2197
+LLM-Fit disagreement: 2623
 Trustworthy fitting evidence: 1222
 Extremely trustworthy fitting evidence: 1175
-Untrustworthy fitting evidence: 3146
+Untrustworthy fitting evidence: 3598
 Rechecked by LLM: 0
 
 ==================================================
@@ -24,5 +24,5 @@ cubic           总:  599 LLM:  322 ( 53.76%) Fit:  390 ( 65.11%) Fusion:  408 (
 linear          总:  834 LLM:  692 ( 82.97%) Fit:  576 ( 69.06%) Fusion:  686 ( 82.25%)
 logn            总:  659 LLM:  378 ( 57.36%) Fit:  145 ( 22.00%) Fusion:  368 ( 55.84%)
 nlogn           总:  785 LLM:  498 ( 63.44%) Fit:  315 ( 40.13%) Fusion:  512 ( 65.22%)
-np              总:   76 LLM:   20 ( 26.32%) Fit:    0 (  0.00%) Fusion:   20 ( 26.32%)
+np              总:  528 LLM:  240 ( 45.45%) Fit:    0 (  0.00%) Fusion:  239 ( 45.27%)
 quadratic       总:  627 LLM:  438 ( 69.86%) Fit:  379 ( 60.45%) Fusion:  461 ( 73.52%)
