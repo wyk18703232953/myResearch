@@ -1,7 +1,7 @@
 import json
 import os
 
-def split_jsonl_by_complexity(input_file, output_dir, only_src=False):
+def split_jsonl_by_complexity(input_file, output_dir, only_src=False, target_complexity=None):
     # 确保输出目录存在
     os.makedirs(output_dir, exist_ok=True)
     
@@ -34,6 +34,10 @@ def split_jsonl_by_complexity(input_file, output_dir, only_src=False):
             # 获取complexity字段
             complexity = data.get('complexity', 'unknown')
             
+            # 如果指定了目标复杂度且不匹配，则跳过
+            if target_complexity and complexity != target_complexity:
+                continue
+            
             # 如果只需要保存src字段
             if only_src:
                 if 'src' in data:
@@ -54,17 +58,17 @@ def split_jsonl_by_complexity(input_file, output_dir, only_src=False):
         print(f"已保存 {len(items)} 条记录到 {output_file}")
 
 if __name__ == "__main__":
-    output_dir = 'd:/MyResearch/codeComplex/data/'
-    only_code_dir = 'd:/MyResearch/codeComplex/data/onlyCode/'
+    output_dir = './data/'
+    only_code_dir = './data/onlyCode/'
     
     # 处理Python文件（完整数据）
     print("开始处理Python文件（完整数据）...")
-    python_file = 'd:/MyResearch/codeComplex/data/python_data.jsonl'
+    python_file = './data/python_data.jsonl'
     # split_jsonl_by_complexity(python_file, output_dir)
     
     # 处理Java文件（完整数据）
     print("\n开始处理Java文件（完整数据）...")
-    java_file = 'd:/MyResearch/codeComplex/data/java_data.jsonl'
+    # java_file = 'd:/MyResearch/codeComplex/data/java_data.jsonl'
     # split_jsonl_by_complexity(java_file, output_dir)
     
     # 处理Python文件（只保存src）
@@ -73,4 +77,9 @@ if __name__ == "__main__":
     
     # 处理Java文件（只保存src）
     print("\n开始处理Java文件（只保存src）...")
-    split_jsonl_by_complexity(java_file, only_code_dir, only_src=True)
+    # split_jsonl_by_complexity(java_file, only_code_dir, only_src=True)
+    
+    # 提取Python的np类型数据到指定文件夹
+    print("\n开始提取Python的np类型数据到指定文件夹...")
+    python_np_output_dir = '/home/wuyankai/myResearch/codeComplex/data/onlyCode/python'
+    split_jsonl_by_complexity(python_file, python_np_output_dir, only_src=True, target_complexity='np')
