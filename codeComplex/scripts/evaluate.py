@@ -149,7 +149,7 @@ def compute_one(
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--input", required=True, help="Path to input JSON (list[dict]).")
+    ap.add_argument("--input", default="./results/fusion_llm_summary_v14.json", help="Path to input JSON (list[dict]).")
     ap.add_argument("--outdir", default="metrics_codecomplex", help="Output directory.")
     ap.add_argument("--ytrue", default="expected_complexity", help="Ground-truth column.")
     ap.add_argument(
