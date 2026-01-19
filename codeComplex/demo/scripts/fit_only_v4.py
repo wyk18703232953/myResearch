@@ -589,12 +589,13 @@ def main():
     }
     
     folder_config = {
-        'constant': (config.constant_folder_path, ['Constant', 'constant']),
-        'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
-        'linear': (config.linear_folder_path, ['Linear']),
-        'nlogn': (config.nlogn_folder_path, ['N Log N', 'nlogn', 'n_log_n']),
-        'quadratic': (config.quadratic_folder_path, ['Quadratic']),
-        'cubic': (config.cubic_folder_path, ['Cubic']),
+        # 'constant': (config.constant_folder_path, ['Constant', 'constant']),
+        # 'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
+        # 'linear': (config.linear_folder_path, ['Linear']),
+        # 'nlogn': (config.nlogn_folder_path, ['N Log N', 'nlogn', 'n_log_n']),
+        # 'quadratic': (config.quadratic_folder_path, ['Quadratic']),
+        # 'cubic': (config.cubic_folder_path, ['Cubic']),
+        'np': (config.np_folder_path, ['NP']),
     }
     
     base_dir_map = {
@@ -604,6 +605,7 @@ def main():
         'nlogn': config.nlogn_results_base_dir,
         'quadratic': config.quadratic_results_base_dir,
         'cubic': config.cubic_results_base_dir,
+        'np': config.np_results_base_dir,
     }
     
     for folder_type in folder_config:
