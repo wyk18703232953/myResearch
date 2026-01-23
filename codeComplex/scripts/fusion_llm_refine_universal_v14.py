@@ -219,10 +219,21 @@ def load_fit_report(complexity_id: str) -> Tuple[Optional[Dict], Optional[str]]:
     if not os.path.exists(report_path):
         return None, None
     
-    with open(report_path, "r", encoding="utf-8") as f:
-        report = json.load(f)
-    
-    return report, report_path
+    try:
+        with open(report_path, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+            if not content:
+                return None, None
+            report = json.loads(content)
+        return report, report_path
+    except json.JSONDecodeError:
+        # 处理无效的JSON文件
+        print(f"警告: 文件 {report_path} 包含无效的JSON格式")
+        return None, None
+    except Exception as e:
+        # 处理其他可能的错误
+        print(f"警告: 读取文件 {report_path} 时出错: {str(e)}")
+        return None, None
 
 
 

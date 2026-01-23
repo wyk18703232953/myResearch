@@ -9,7 +9,7 @@ stats_files = [f for f in stats_files if 'stats_global' not in f]
 print("复杂度类型统计结果：")
 print("=" * 50)
 
-# 定义类型名称映射
+# 定义类型名称映射（排除np类型）
 type_name_map = {
     'constant': 'constant',
     'logn': 'logn',

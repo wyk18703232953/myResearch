@@ -2,8 +2,8 @@ import os
 import time
 from openai import OpenAI
 
-SOURCE_DIR = r"/home/wuyankai/myResearch/codeComplex/data/onlyCode/python/np"
-OUTPUT_DIR = r"/home/wuyankai/myResearch/codeComplex/data/filteredData/python/np"
+SOURCE_DIR = r"/home/wuyankai/myResearch/codeComplex/data/onlyCode/python/"
+OUTPUT_DIR = r"/home/wuyankai/myResearch/codeComplex/data/filteredData/python/"
 
 def call_large_model(original_code, api_key=None, base_url=None):
     if api_key is None:

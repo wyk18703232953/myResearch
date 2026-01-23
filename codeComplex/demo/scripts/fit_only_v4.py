@@ -43,8 +43,11 @@ MODELS = {
     "N Log N": n_log_n,
 }
 
+import timeit
+
 def run_with_timeout(code_str, timeout_seconds):
     import signal
+    import re
     
     def timeout_handler(signum, frame):
         raise TimeoutError(f"Execution timed out after {timeout_seconds} seconds")
@@ -53,12 +56,42 @@ def run_with_timeout(code_str, timeout_seconds):
         signal.signal(signal.SIGALRM, timeout_handler)
         signal.alarm(timeout_seconds)
         
-        t0 = time.perf_counter()
-        exec(code_str, {})
-        t1 = time.perf_counter()
+        # 1. 解析代码字符串，分离代码内容和main函数调用
+        parts = code_str.split('\n\nmain(')
+        if len(parts) != 2:
+            raise Exception("Invalid code format: expected 'code_content\n\nmain(n)'")
+        
+        code_content = parts[0]
+        main_call = parts[1].rstrip(')')
+        
+        # 2. 提取n值
+        try:
+            n_value = eval(main_call)
+        except:
+            raise Exception(f"Invalid main call: main({main_call})")
+        
+        # 3. 准备环境 (Context)
+        global_scope = {}
+        
+        # 4. 在计时前，先执行一次定义 (Compile & Define)
+        # 这样 main 函数就被加载到了 global_scope 字典里，而且只做了一次
+        exec(code_content, global_scope)
+        
+        # 5. 从字典里把函数捞出来
+        if 'main' not in global_scope:
+            raise Exception("main function not found in code")
+        main_func = global_scope['main']
+        
+        # 6. 【关键】直接测这个函数对象，没有任何 exec 开销
+        # 注意：这里直接调用 main_func(n_value)，纯净无噪声
+        timer = timeit.Timer(lambda: main_func(n_value))
+        
+        # 7. 放心跑 10000 次
+        total_time = timer.timeit(number=5)
+        avg_time = total_time / 5  # 计算平均执行时间（秒）
         
         signal.alarm(0)
-        return (True, t1 - t0, None)
+        return (True, avg_time, None)
         
     except TimeoutError as e:
         signal.alarm(0)
@@ -311,8 +344,8 @@ def process_code_file(code_path, expected_models, base_dir):
 
     print(f"开始测试 {file_name}: n={start_n} -> {config.max_n}")
 
-    REPEAT_COUNT = 3
-    TIMEOUT_SECONDS = 30
+    REPEAT_COUNT = 5
+    TIMEOUT_SECONDS = 1
 
     if len(test_results) == 0:
         print("   [系统] 正在进行预热 (Warm-up)...")
@@ -334,6 +367,7 @@ def process_code_file(code_path, expected_models, base_dir):
                 
                 if success:
                     run_times.append(exec_time * 1000)
+                    # print(f"   [成功] n={n}, 第{attempt+1}次运行成功，耗时 {exec_time*1000:.4f} ms")
                 else:
                     print(f"   [警告] n={n}, 第{attempt+1}次运行失败: {error}")
                     if "Timeout" in error:
@@ -344,9 +378,11 @@ def process_code_file(code_path, expected_models, base_dir):
             if len(run_times) == 0:
                 print(f"   [错误] n={n} 所有运行都失败，跳过")
                 break
-            
-            median_time = np.median(run_times)
-            test_results.append((n, median_time))
+            # median_time = np.median(run_times)
+            # test_results.append((n, median_time))
+            min_time = np.min(run_times)
+            # print(f"   [成功] n={n}, 最小耗时 {min_time:.4f} ms")
+            test_results.append((n, min_time))
             
             if len(test_results) % 10 == 0:
                 np.savez(temp_results_path, results=test_results)
@@ -589,13 +625,13 @@ def main():
     }
     
     folder_config = {
-        'constant': (config.constant_folder_path, ['Constant', 'constant']),
+        # 'constant': (config.constant_folder_path, ['Constant', 'constant']),
         'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
         'linear': (config.linear_folder_path, ['Linear']),
         'nlogn': (config.nlogn_folder_path, ['N Log N', 'nlogn', 'n_log_n']),
         'quadratic': (config.quadratic_folder_path, ['Quadratic']),
         'cubic': (config.cubic_folder_path, ['Cubic']),
-        # 'np': (config.np_folder_path, ['NP']),
+        'np': (config.np_folder_path, ['NP']),
     }
     
     base_dir_map = {
@@ -633,6 +669,7 @@ def main():
         base_dir = base_dir_map[folder_type]
                        
         for i, file_name in enumerate(python_files, 1):
+            # if(i==3):
             full_path = os.path.join(folder_path, file_name)
             print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
             try:
