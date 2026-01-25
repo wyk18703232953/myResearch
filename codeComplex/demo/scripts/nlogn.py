@@ -628,7 +628,7 @@ def main():
         # 'constant': (config.constant_folder_path, ['Constant', 'constant']),
         # 'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
         # 'linear': (config.linear_folder_path, ['Linear']),
-        # 'nlogn': (config.nlogn_folder_path, ['N Log N', 'nlogn', 'n_log_n']),
+        'nlogn': (config.nlogn_folder_path, ['N Log N', 'nlogn', 'n_log_n']),
         # 'quadratic': (config.quadratic_folder_path, ['Quadratic']),
         'cubic': (config.cubic_folder_path, ['Cubic']),
         'np': (config.np_folder_path, ['NP']),
