@@ -344,7 +344,7 @@ def process_code_file(code_path, expected_models, base_dir):
 
     print(f"开始测试 {file_name}: n={start_n} -> {config.max_n}")
 
-    REPEAT_COUNT = 5
+    REPEAT_COUNT = 1
     TIMEOUT_SECONDS = 1
 
     if len(test_results) == 0:
