@@ -1,0 +1,73 @@
+def main(n):
+    s0 = ("10" * ((n // 2) + 1))[:n] if n > 0 else "1"
+    k = (n % 20) + 1
+
+    s1 = s0[::-1]
+    lens1 = len(s1)
+    maxnum = max(2, lens1 + 5)
+    mod = 1000000007
+
+    dp = [[0] * maxnum for _ in range(maxnum)]
+    f = [0] * maxnum
+    c = [[0] * maxnum for _ in range(maxnum)]
+
+    def cntone(num):
+        tmps = bin(num)[2:]
+        cnt = 0
+        for ch in tmps:
+            if ch == '1':
+                cnt += 1
+        return cnt
+
+    for i in range(1, maxnum):
+        if i == 1:
+            f[i] = 0
+        else:
+            f[i] = f[cntone(i)] + 1
+
+    for i in range(maxnum):
+        if i == 0:
+            c[i][0] = 1
+            continue
+        for j in range(i + 1):
+            if j == 0:
+                c[i][j] = 1
+            else:
+                c[i][j] = (c[i - 1][j - 1] + c[i - 1][j]) % mod
+
+    for i in range(lens1):
+        if i == 0:
+            dp[i][0] = 1
+            if s1[i] == '1':
+                dp[i][1] = 1
+            else:
+                dp[i][1] = 0
+            continue
+        else:
+            for j in range(0, i + 2):
+                if j == 0:
+                    dp[i][j] = 1
+                    continue
+                if s1[i] == '1':
+                    dp[i][j] = (dp[i - 1][j - 1] + c[i][j]) % mod
+                else:
+                    dp[i][j] = dp[i - 1][j] % mod
+
+    ans = 0
+    for i in range(1, lens1 + 1):
+        if f[i] == k - 1:
+            ans = (ans + dp[lens1 - 1][i]) % mod
+
+    if k == 0:
+        ans = 1
+    elif k == 1:
+        ans -= 1
+    else:
+        ans = ans
+
+    print(ans)
+    return ans
+
+
+if __name__ == "__main__":
+    main(10)
