@@ -17,7 +17,8 @@ def main(n):
                 ids.add(j)
                 done.add(j)
         if len(ids) == 0:
-            print('NO')
+            # print('NO')
+            pass
             return
         v += len(ids)
         for i in ids:
@@ -25,13 +26,14 @@ def main(n):
             for j in range(len(l)):
                 if j < i:
                     r[j] -= 1
+
                 else:
                     l[j] -= 1
         a -= 1
-    print('YES')
-    print(' '.join(map(str, out)))
-
-
+    # print('YES')
+    pass
+    # print(' '.join(map(str, out)))
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需要修改 n 以做时间复杂度实验
     main(5)

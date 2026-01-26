@@ -19,10 +19,12 @@ def main(n):
                 counter[a[i]] = minus
             counter[a[i]] += 1
             maxi = max(maxi, counter[a[i]] + count - minus)
+
         else:
             minus += 1
     result = max(maxi, minus)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

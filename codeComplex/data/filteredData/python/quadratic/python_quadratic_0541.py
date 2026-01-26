@@ -8,6 +8,7 @@ def main(n):
     a = [0]
     if n == 1:
         a.append(0)
+
     else:
         # 构造度序列：
         # 前 k 个点度较大，其余尽量为 1，使 sum(a) 接近 2*(n-1)
@@ -70,16 +71,20 @@ def main(n):
                 a[j] -= 1
 
     if len(edge) != n - 1:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES", ans)
-        print(len(edge))
+        # print("YES", ans)
+        pass
+        # print(len(edge))
+        pass
         for u, v in edge:
-            print(u, v)
-
-
+            # print(u, v)
+            pass
 if __name__ == "__main__":
     # 示例：对若干规模运行，以便做时间复杂度实验
     for size in [5, 10, 50]:
-        print("---- n =", size, "----")
+        # print("---- n =", size, "----")
+        pass
         main(size)

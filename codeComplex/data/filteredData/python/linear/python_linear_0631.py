@@ -13,15 +13,18 @@ def run_case(n, k):
     for i in range(1, n + 1):
         if k >= g[i]:
             if n >= MAX:
-                print("YES %d" % (n - i))
+                # print("YES %d" % (n - i))
+                pass
                 ans = True
             elif k <= f[n] - ((1 << (i + 1)) - 1) * f[n - i]:
-                print("YES %d" % (n - i))
+                # print("YES %d" % (n - i))
+                pass
                 ans = True
         if ans:
             break
     if not ans:
-        print("NO")
+        # print("NO")
+        pass
 
 
 def main(n):

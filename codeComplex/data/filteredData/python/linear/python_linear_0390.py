@@ -26,8 +26,8 @@ def main(n):
         ans = (ans + (a[i] * series[ind]) % M) % M
         ind -= 1
 
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 的规模做复杂度实验
     main(10)

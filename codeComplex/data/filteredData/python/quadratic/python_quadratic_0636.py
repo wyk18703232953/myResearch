@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate input:
@@ -22,9 +23,8 @@ def main(n):
                 tmp[j] = c
         c += 1
 
-    print(c - 1)
-
-
+    # print(c - 1)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

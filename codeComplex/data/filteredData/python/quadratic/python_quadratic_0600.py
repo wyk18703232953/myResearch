@@ -36,15 +36,15 @@ def main(n):
         for j in range(max(1, i), n_local):
             if j % m_local == i % m_local:
                 SUMMIN[j] = min(SUMMIN[j - 1], SUM[j - 1])
+
             else:
                 SUMMIN[j] = SUMMIN[j - 1]
 
         for j in range(i, n_local):
             ANS = max(ANS, SUM[j] - SUMMIN[j])
 
-    print(ANS)
-
-
+    # print(ANS)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change 10 to other n for experiments
     main(10)

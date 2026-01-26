@@ -3,7 +3,9 @@ def main(n):
     b = (n // 5) % 5 + 1
 
     if a != 1 and b != 1:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
         con_char = '1'
         discon_char = '0'
@@ -15,7 +17,8 @@ def main(n):
             b = t
 
         if a > 1:
-            print("YES")
+            # print("YES")
+            pass
             n_con = n - a + 1
             for i in range(n):
                 res = []
@@ -24,12 +27,16 @@ def main(n):
                         res.append('0')
                     elif i < n_con and j < n_con:
                         res.append(con_char)
+
                     else:
                         res.append(discon_char)
-                print(''.join(res))
+                # print(''.join(res))
+                pass
+
         else:
             if n == 1 or n > 3:
-                print("YES")
+                # print("YES")
+                pass
                 for i in range(n):
                     res = []
                     for j in range(n):
@@ -37,12 +44,14 @@ def main(n):
                             res.append('0')
                         elif abs(i - j) == 1:
                             res.append('1')
+
                         else:
                             res.append('0')
-                    print(''.join(res))
+                    # print(''.join(res))
+                    pass
+
             else:
-                print("NO")
-
-
+                # print("NO")
+                pass
 if __name__ == "__main__":
     main(10)

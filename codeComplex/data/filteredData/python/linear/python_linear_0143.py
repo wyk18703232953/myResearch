@@ -24,9 +24,8 @@ def main(n):
             mark[i] = mark[i + 1] - 1
         j += mark[i] - m[i] - 1
 
-    print(j)
-
-
+    # print(j)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值做规模实验
     main(10)

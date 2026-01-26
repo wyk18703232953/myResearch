@@ -10,7 +10,7 @@ def main(n):
         if tmp < value:
             value = tmp
             ans = i + 1
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

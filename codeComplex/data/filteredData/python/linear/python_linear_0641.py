@@ -18,6 +18,7 @@ def main(n):
         if a[i] == 1:
             os += 1
             oss.append(i + 1)
+
         else:
             sumnos += a[i]
             nos += 1
@@ -37,7 +38,8 @@ def main(n):
             ans += 1
             es.append((nos_1, oss[1]))
             oss_i += 1
-        print("YES", ans)
+        # print("YES", ans)
+        pass
         prev_nos = -1
         for i in range(n):
             if a[i] > 1:
@@ -49,12 +51,14 @@ def main(n):
                     es.append((i + 1, oss[oss_i]))
                     oss_i += 1
                 prev_nos = i
-        print(len(es))
+        # print(len(es))
+        pass
         for e in es:
-            print(*e)
+            # print(*e)
+            pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

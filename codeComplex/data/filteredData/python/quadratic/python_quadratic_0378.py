@@ -10,6 +10,7 @@ def main(n):
         if i == rows // 2:
             # Create a row with a contiguous block of 'B's in the middle
             s = ''.join('B' if cols // 4 <= j < cols - cols // 4 else 'W' for j in range(cols))
+
         else:
             s = 'W' * cols
 
@@ -18,7 +19,8 @@ def main(n):
             right = s.rfind('B')
             c = (right - left) // 2 + 1
             # Print 1-based coordinates
-            print(i + c, left + c)
+            # print(i + c, left + c)
+            pass
             break
 
 

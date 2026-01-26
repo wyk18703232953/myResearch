@@ -13,6 +13,7 @@ def solve(n, m, grid):
                     if must:
                         return 'NO'
                     break
+
             else:
                 for di, dj in [(0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1), (2, 2)]:
                     grid[i + di][j + dj] = 2
@@ -30,6 +31,7 @@ def build_grid(n, m):
             # Use a simple arithmetic rule to vary structure with n, m
             if (i * 31 + j * 17) % 7 == 0:
                 row.append(0)
+
             else:
                 row.append(1)
         grid.append(row)
@@ -44,9 +46,8 @@ def main(n):
     cols = n
     grid = build_grid(rows, cols)
     res = solve(rows, cols, grid)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(10)

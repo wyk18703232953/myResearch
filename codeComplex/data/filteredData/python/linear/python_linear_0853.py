@@ -4,7 +4,8 @@ def main(n):
     # Interpret n as the length of array a.
     # Deterministically construct m, k, and a based on n.
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = max(1, n // 3)          # number of buckets, derived from n
@@ -30,9 +31,8 @@ def main(n):
         if s[idx] > p[i]:
             s[idx] = p[i]
         s[idx] += k
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

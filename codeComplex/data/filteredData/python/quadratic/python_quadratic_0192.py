@@ -20,8 +20,7 @@ def main(n):
         y = n - 1 - (k % n)
         if x > y:
             x, y = y, x
-        print(dp[y - x][x])
-
-
+        # print(dp[y - x][x])
+        pass
 if __name__ == "__main__":
     main(10)

@@ -30,13 +30,15 @@ def main(n):
             c = arr[i - 1][0]
         if i == 0:
             ans = ans + s - arr[i][0]
+
         else:
             ans = ans + c - arr[i][0]
         if arr[i][1] >= ans:
             ans = ans + (arr[i][1] - ans)
 
     ans = ans + arr[n - 1][0]
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

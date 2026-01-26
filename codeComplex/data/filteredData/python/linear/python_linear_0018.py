@@ -21,6 +21,7 @@ def main(n):
     if n < 1:
         a = 1
         b = 1
+
     else:
         # a 至少为 2，最多不超过 h 中的最大值，且随 n 增长
         max_h = max(h) + 1
@@ -50,11 +51,12 @@ def main(n):
 
     # 根据 j 和 b 输出结果
     if j >= b:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 进行复杂度实验
     main(10)

@@ -25,7 +25,8 @@ def main(n):
         count0 = dp[m - n + i + 1][0] - dp[i][0]
         count1 = dp[m - n + i + 1][1] - dp[i][1]
         ans += count0 * int(a[i]) + count1 * (int(a[i]) ^ 1)
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

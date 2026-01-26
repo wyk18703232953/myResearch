@@ -13,9 +13,8 @@ def main(n):
             if i < n - 1 and a[i] == b[i + 1] and b[i] == a[i + 1]:
                 i += 1
         i += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 测试不同规模
     main(10)

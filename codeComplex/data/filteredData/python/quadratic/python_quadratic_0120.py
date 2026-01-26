@@ -15,12 +15,13 @@ def main(n):
     # 原算法逻辑
     for x in range(1, n + 1):
         if x not in arr:
-            print(0)
+            # print(0)
+            pass
             break
+
     else:
-        print(arr.count(min(arr, key=lambda x: arr.count(x))))
-
-
+        # print(arr.count(min(arr, key=lambda x: arr.count(x))))
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要更改 n
     main(10)

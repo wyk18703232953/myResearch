@@ -22,6 +22,7 @@ def main(n):
     for s in S:
         if s == "1":
             LIST.append(LIST[-1] + 1)
+
         else:
             LIST.append(LIST[-1])
 
@@ -38,8 +39,8 @@ def main(n):
         m = LIST[r] - LIST[l - 1]
         total_len = r - l + 1
         zero_cnt = total_len - m
-        print(count(m, zero_cnt, mod))
-
+        # print(count(m, zero_cnt, mod))
+        pass
 if __name__ == "__main__":
     # 示例：使用一个固定 n 进行演示
     main(10)

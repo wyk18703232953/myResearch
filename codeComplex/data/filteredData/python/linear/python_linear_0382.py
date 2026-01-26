@@ -22,12 +22,14 @@ def main(n):
         ans += n * x
         if d >= 0:
             ans += d * MAX
+
         else:
             ans += d * MIN
 
     # Use integer division as in original code (Python 2 style)
     result = ans / n
-    print(result)
+    # print(result)
+    pass
     return result
 
 

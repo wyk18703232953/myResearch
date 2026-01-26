@@ -27,4 +27,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：用若干不同规模调用 main
     for size in [1, 5, 10, 20]:
-        print(size, main(size))
+        # print(size, main(size))
+        pass

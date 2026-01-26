@@ -20,6 +20,7 @@ def main(n):
     for x in xs:
         if x in mapka:
             result.append(mapka[x])
+
         else:
             left = max(0, x - k + 1)
             range_potential = x - left
@@ -31,6 +32,7 @@ def main(n):
                         mapka[y] = potential_left
                     lengths[potential_left] = x - potential_left + 1
                     break
+
                 else:
                     if lengths[mapka[potential_left]] + (x - potential_left) <= k:
                         result.append(mapka[potential_left])
@@ -39,9 +41,8 @@ def main(n):
                             lengths[mapka[potential_left]] += 1
                         break
 
-    print(' '.join(map(str, result)))
-
-
+    # print(' '.join(map(str, result)))
+    pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     main(10000)

@@ -32,19 +32,21 @@ def main(n):
                 if not start:
                     start.append(a + 1)
                     start.append(b + 1)
+
                 else:
                     end.clear()
                     end.append(a + 1)
                     end.append(b + 1)
 
     if not start or not end:
-        print(start[0], start[1])
+        # print(start[0], start[1])
+        pass
+
     else:
         mid1 = int((end[0] + start[0]) / 2)
         mid2 = int((end[1] + start[1]) / 2)
-        print(mid1, mid2)
-
-
+        # print(mid1, mid2)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; change n to probe different input scales
     main(10)

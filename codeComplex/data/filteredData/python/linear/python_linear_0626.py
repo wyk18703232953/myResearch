@@ -19,26 +19,29 @@ def main(n):
         if is_rider:
             if current_left_driver is None:
                 result.append(len(current_citizens))
+
             else:
                 result.append(0)
                 for citizen in current_citizens:
                     if abs(citizen - current_left_driver) <= abs(citizen - house):
                         result[-2] += 1
+
                     else:
                         result[-1] += 1
             current_citizens = []
             current_left_driver = house
+
         else:
             current_citizens.append(house)
 
     if result:
         result[-1] += len(current_citizens)
+
     else:
         # Edge case: if somehow no riders, all are citizens counted once
         result = [len(current_citizens)]
 
-    print(' '.join(map(str, result)))
-
-
+    # print(' '.join(map(str, result)))
+    pass
 if __name__ == "__main__":
     main(10)

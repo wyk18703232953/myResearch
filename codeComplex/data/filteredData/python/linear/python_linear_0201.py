@@ -39,9 +39,8 @@ def main(n):
     hour = result // 60
     minute = result % 60
 
-    print(hour, minute)
-
-
+    # print(hour, minute)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(5)

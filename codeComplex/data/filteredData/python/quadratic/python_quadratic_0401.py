@@ -19,6 +19,7 @@ def compute_result(n, k, s):
     if fl:
         ans = s + s[l:n] * (k - 1)
         return ans
+
     else:
         return s * k
 
@@ -30,7 +31,8 @@ def main(n):
     base = "abca"
     s = (base * ((n + len(base) - 1) // len(base)))[:n]
     result = compute_result(n, k, s)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

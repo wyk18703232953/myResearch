@@ -23,6 +23,7 @@ def main(n):
             if v != 0:
                 ans = max(ans, cost + v + suf[i])
             cost += a[i] - a[i - 1]
+
         else:
             v = a[i - 1] + 1
             if v != a[i]:
@@ -33,4 +34,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     for size in [1, 2, 5, 10, 20]:
-        print(size, main(size))
+        # print(size, main(size))
+        pass

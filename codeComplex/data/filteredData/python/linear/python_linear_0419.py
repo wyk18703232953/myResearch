@@ -23,6 +23,7 @@ def solve(n, x, arr):
             break
     if can:
         return 0
+
     else:
         res = dict().fromkeys([i for i in range(max(arr) + 1)])
         for i in res:
@@ -49,7 +50,7 @@ def solve(n, x, arr):
 def main(n):
     n, x, arr = generate_input(n)
     ans = solve(n, x, arr)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

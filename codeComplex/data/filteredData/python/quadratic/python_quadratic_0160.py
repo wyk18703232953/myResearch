@@ -24,8 +24,7 @@ def main(n):
             u(rt(rx - 1), rx)
             rx = rt(p)
         ans[i] = rt(p)
-    print(' '.join(map(str, ans)))
-
-
+    # print(' '.join(map(str, ans)))
+    pass
 if __name__ == "__main__":
     main(10)

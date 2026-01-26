@@ -36,6 +36,7 @@ def generate_board(N, M):
         for j in range(M):
             if (i + j) % 3 == 0:
                 row_chars.append('#')
+
             else:
                 row_chars.append('.')
         row = [transform(c) for c in row_chars]
@@ -46,6 +47,7 @@ def main(n):
     if n < 1:
         N = 1
         M = 1
+
     else:
         N = n
         M = n
@@ -55,9 +57,10 @@ def main(n):
             take_care(board, i, j, N, M)
     for row in board:
         if 1 in row:
-            print('NO')
+            # print('NO')
+            pass
             return
-    print('YES')
-
+    # print('YES')
+    pass
 if __name__ == "__main__":
     main(10)

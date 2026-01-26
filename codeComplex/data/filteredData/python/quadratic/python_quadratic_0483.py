@@ -30,7 +30,8 @@ def main(n):
 
     # Original pre-checks
     if l[0] != 0 or r[n - 1] != 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     s = [l[i] + r[i] for i in range(n)]
@@ -54,15 +55,18 @@ def main(n):
         r1.append(d)
 
     if l1 != l or r1 != r:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-        print(*k_reconstructed)
-
-
+        # print("YES")
+        pass
+        # print(*k_reconstructed)
+        pass
 if __name__ == "__main__":
     # Example deterministic calls for time complexity experiments
     # You can change or loop these n values as needed.
     for size in [1, 5, 10, 50]:
-        print(f"n = {size}")
+        # print(f"n = {size}")
+        pass
         main(size)

@@ -10,6 +10,7 @@ def main(n):
     for i in range(len(s) - 1):
         if s[i] != s[i + 1]:
             c += 1
+
         else:
             if c > cnt:
                 cnt = c
@@ -17,7 +18,8 @@ def main(n):
     if c > cnt:
         cnt = c
     result = min(cnt, n)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

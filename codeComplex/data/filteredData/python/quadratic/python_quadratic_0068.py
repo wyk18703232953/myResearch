@@ -29,10 +29,11 @@ def main(n):
         if pairs % 2 == 1:
             even = not even
         if even:
-            print("even")
+            # print("even")
+            pass
+
         else:
-            print("odd")
-
-
+            # print("odd")
+            pass
 if __name__ == "__main__":
     main(5)

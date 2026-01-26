@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministic generation of nums and costs based on n
@@ -31,9 +32,8 @@ def main(n):
                     k = nat + kc + costs[i]
                 k = min(nat + kc + costs[i], k)
 
-    print(k)
-
-
+    # print(k)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     main(10)

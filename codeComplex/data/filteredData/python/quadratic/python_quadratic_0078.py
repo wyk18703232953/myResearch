@@ -12,7 +12,7 @@ def main(n):
             s = s.replace(d1[j], d2[j])
         outputs.append(s)
     for s in outputs:
-        print(s)
-
+        # print(s)
+        pass
 if __name__ == "__main__":
     main(10)

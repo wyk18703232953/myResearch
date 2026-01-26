@@ -1,6 +1,7 @@
 def main(n):
     if n <= 1:
-        print(1)
+        # print(1)
+        pass
         return
 
     # 构造一个确定性的父节点数组 p，表示一棵树的父节点关系（1 为根）
@@ -31,14 +32,14 @@ def main(n):
         for vert in layer:
             if children[vert] == []:
                 count[vert] = 1
+
             else:
                 count[vert] = sum(count[v] for v in children[vert])
     count.sort()
     out = ""
     for guy in count:
         out += str(guy) + " "
-    print(out)
-
-
+    # print(out)
+    pass
 if __name__ == "__main__":
     main(10)

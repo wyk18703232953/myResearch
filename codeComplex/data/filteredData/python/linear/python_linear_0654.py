@@ -1,7 +1,8 @@
 def main(n):
     # n controls the length of nums; c is chosen deterministically
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # deterministic construction of nums: alternating small pattern based on n
@@ -18,6 +19,7 @@ def main(n):
         for key, groups in groupsList.items():
             if groups[-1] < 0:
                 groups[-1] -= 1
+
             else:
                 groups += [-1]
         return groupsList
@@ -30,8 +32,10 @@ def main(n):
         elif num in groupsList.keys():
             if groupsList[num][-1] > 0:
                 groupsList[num][-1] += 1
+
             else:
                 groupsList[num] += [1]
+
         else:
             groupsList[num] = [1]
 
@@ -47,8 +51,7 @@ def main(n):
         if maxDiff + countC > solution:
             solution = countC + maxDiff
 
-    print(solution)
-
-
+    # print(solution)
+    pass
 if __name__ == "__main__":
     main(1000)

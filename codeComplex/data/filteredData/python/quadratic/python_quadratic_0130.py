@@ -19,8 +19,7 @@ def main(n):
         if i in daf2.keys():
             daf2[i] += 1
 
-    print(min(daf2.values()))
-
-
+    # print(min(daf2.values()))
+    pass
 if __name__ == "__main__":
     main(10)

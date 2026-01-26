@@ -54,7 +54,7 @@ def core_algorithm(n, m, grid):
 def main(n):
     rows, cols, grid = generate_grid(n)
     result = core_algorithm(rows, cols, grid)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

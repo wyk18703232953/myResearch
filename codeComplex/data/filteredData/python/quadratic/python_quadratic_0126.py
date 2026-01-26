@@ -4,7 +4,8 @@ def main(n):
     # m: 序列长度，这里设为 n 的平方，以便放大时间复杂度
     # 序列 li: 使用确定性构造 (i % n) + 1 得到 1..n 的循环序列
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = n * n  # 可根据需要调整为其他与 n 相关的确定性规模
@@ -23,9 +24,8 @@ def main(n):
         dic[i] = dic[i] + 1
     if 0 not in dic.values():
         c = c + 1
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的值来做规模实验
     main(5)

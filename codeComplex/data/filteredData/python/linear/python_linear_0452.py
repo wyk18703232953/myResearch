@@ -15,6 +15,7 @@ def main(n):
     for i in range(n):
         if i == star_pos and n > 1:
             s_chars.append('*')
+
         else:
             s_chars.append(chr(ord('a') + (i % 26)))
 
@@ -29,26 +30,35 @@ def main(n):
 
     if n == 1:
         if s == t or s == '*':
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
+            # print('NO')
+            pass
     elif s.count('*') == 0:
         if s == t:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
+            # print('NO')
+            pass
     elif n > m + 1:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
         l = s.split('*')
         x = t[:len(l[0])] if len(l[0]) > 0 else ""
         y = t[-len(l[1]):] if len(l[1]) > 0 else ""
         if (l[0] == x and l[1] == y) or (s[:1] == '*' and l[1] == y) or (l[0] == x and s[-1:] == '*'):
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
-
-
+            # print('NO')
+            pass
 if __name__ == "__main__":
     # Example deterministic call for time complexity experiments
     main(10)

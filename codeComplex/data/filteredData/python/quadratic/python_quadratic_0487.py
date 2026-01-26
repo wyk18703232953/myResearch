@@ -55,14 +55,17 @@ def main(n):
             break
 
     if flag:
-        print("YES")
+        # print("YES")
+        pass
         for i in range(0, n - 1):
-            print(ans_check[i], end=" ")
-        print(ans_check[n - 1])
+            # print(ans_check[i], end=" ")
+            pass
+        # print(ans_check[n - 1])
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 以进行规模实验
     main(10)

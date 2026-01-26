@@ -28,8 +28,7 @@ def main(n):
             d = d + 1
             if i == m:
                 break
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     main(10)

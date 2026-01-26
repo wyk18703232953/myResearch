@@ -6,9 +6,9 @@ def main(n):
 
     for i in list1:
         if i in list2:
-            print(i, end=' ')
-    print()  # 换行，便于多次调用观察
-
-
+            # print(i, end=' ')
+            pass
+    # print()# 换行，便于多次调用观察  
+    pass
 if __name__ == "__main__":
     main(10)

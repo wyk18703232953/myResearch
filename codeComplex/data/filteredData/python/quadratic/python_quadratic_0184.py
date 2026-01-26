@@ -33,8 +33,7 @@ def main(n):
         # r index depends on l and i, but always within [l, n]
         span = n - l + 1
         r = l + (i % span)
-        print(str(array[r - l][l - 1]))
-
-
+        # print(str(array[r - l][l - 1]))
+        pass
 if __name__ == "__main__":
     main(5)

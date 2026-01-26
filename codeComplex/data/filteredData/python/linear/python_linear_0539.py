@@ -19,6 +19,7 @@ def solve(slimes):
     elif not haveNeg:
         m = min(slimes)
         return sum(list(map(abs, slimes))) - 2 * m
+
     else:
         return 0
 
@@ -32,12 +33,12 @@ def main(n):
             val = 0
         elif i % 3 == 1:
             val = i // 3 + 1
+
         else:
             val = -(i // 3 + 1)
         slimes.append(val)
     result = solve(slimes)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

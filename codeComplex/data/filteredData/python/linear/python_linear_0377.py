@@ -8,6 +8,7 @@ def main(n):
             chars.append('0')
         elif r == 1:
             chars.append('1')
+
         else:
             chars.append('2')
     a = ''.join(chars)
@@ -18,8 +19,7 @@ def main(n):
     m = len(parts)
     for i in range(1, m):
         lex = lex + '2' + '0' * parts[i].count('0')
-    print(lex)
-
-
+    # print(lex)
+    pass
 if __name__ == "__main__":
     main(50)

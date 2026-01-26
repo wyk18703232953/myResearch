@@ -31,8 +31,8 @@ def main(n: int):
     # Here n controls the length of s.
     s = generate_input_string(n)
     result = transform_string(s)
-    print(result, end="")
-
+    # print(result, end="")
+    pass
 if __name__ == "__main__":
     # example: run with n = 10
     main(10)

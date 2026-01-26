@@ -1,8 +1,10 @@
 def main(n):
     # Interpret n as both the array length and modulus
     if n <= 0:
-        print(0)
-        print()
+        # print(0)
+        pass
+        # print()
+        pass
         return
 
     m = n
@@ -28,9 +30,9 @@ def main(n):
             a[elm] += delta
             ans += delta
 
-    print(ans)
-    print(*a)
-
-
+    # print(ans)
+    pass
+    # print(*a)
+    pass
 if __name__ == "__main__":
     main(10)

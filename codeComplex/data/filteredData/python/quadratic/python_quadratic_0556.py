@@ -21,6 +21,7 @@ def main(n):
             for i in range(n):
                 steps.append((j, i))
                 steps.append((m - j - 1, n - i - 1))
+
     else:
         steps = []
         for j in range(m // 2):

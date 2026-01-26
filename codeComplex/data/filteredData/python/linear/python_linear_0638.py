@@ -10,6 +10,7 @@ def solve(a):
     for i in range(n):
         if a[i] == 1:
             ones.append(i + 1)
+
         else:
             others.append(i + 1)
 
@@ -22,6 +23,7 @@ def solve(a):
         if len(ones) == 1:
             write("YES 0")
             write("0")
+
         else:
             write("NO")
         return "\n".join(outputs)
@@ -53,6 +55,7 @@ def solve(a):
                 this = ones.pop()
                 graph.append((this, others[j]))
                 cap[others[j]] -= 1
+
             else:
                 done = True
                 break
@@ -61,6 +64,7 @@ def solve(a):
 
     if len(ones) > 0:
         write("NO")
+
     else:
         write("YES " + str(dia - 1))
         write(len(graph))
@@ -84,4 +88,5 @@ if __name__ == "__main__":
     # Example deterministic call; change n as needed for experiments
     result = main(10)
     if result:
-        print(result)
+        # print(result)
+        pass

@@ -32,9 +32,8 @@ def main(n):
     # Pattern: position i is 'H' if i is even, else 'T'
     seq = ['H' if i % 2 == 0 else 'T' for i in range(n)]
     result = solve(seq)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

@@ -22,9 +22,8 @@ def main(n):
     d = d[1:]
     d.sort()
 
-    print(*d)
-
-
+    # print(*d)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

@@ -1,7 +1,8 @@
 def main(n):
     # 生成确定性测试数据：长度为 n 的整数数组
     if n <= 1:
-        print(0)
+        # print(0)
+        pass
         return
     nums = [i * 3 + 1 for i in range(n)]
 
@@ -14,8 +15,7 @@ def main(n):
             continue
         curr = num // dist
         ans = min(ans, curr)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

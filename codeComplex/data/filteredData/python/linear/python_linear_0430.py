@@ -2,7 +2,8 @@ def main(n):
     # n 表示后续将要读取的行数（包括第一行）
     # 第一行有 n 个整数；后面 n-1 行也各有 n 个整数
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造第一行数据：1 到 n 的整数
@@ -19,8 +20,7 @@ def main(n):
         if line_sum > t:
             r += 1
 
-    print(r)
-
-
+    # print(r)
+    pass
 if __name__ == "__main__":
     main(5)

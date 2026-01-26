@@ -12,6 +12,7 @@ def main(n):
         for j in range(m):
             if (i + j) % 3 == 0:
                 row.append('#')
+
             else:
                 row.append('.')
         s.append(row)
@@ -57,11 +58,12 @@ def main(n):
             break
 
     if f == 1:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

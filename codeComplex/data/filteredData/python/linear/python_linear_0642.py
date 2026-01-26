@@ -4,6 +4,7 @@ def main(n):
         return
     if n == 1:
         A = [1]
+
     else:
         A = [2] * n
         need = 2 * n - 2
@@ -16,11 +17,13 @@ def main(n):
             i += 1
 
     if sum(A) < 2 * n - 2:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     ONES = A.count(1)
-    print("YES", min(n - 1, n - ONES + 1))
+    # print("YES", min(n - 1, n - ONES + 1))
+    pass
 
     NOONE = []
     for i in range(n):
@@ -45,11 +48,11 @@ def main(n):
         ANS.append((i + 1, NOONE[j][1]))
         NOONE[j][0] -= 1
 
-    print(len(ANS))
+    # print(len(ANS))
+    pass
     for a, b in ANS:
-        print(a, b)
-
-
+        # print(a, b)
+        pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     main(10)

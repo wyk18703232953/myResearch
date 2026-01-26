@@ -22,14 +22,15 @@ def main(n):
         if arr[i] - par[j] + 1 <= k:
             par[arr[i]] = par[j]
             path[j] = arr[i]
+
         else:
             par[arr[i]] = par[j + 1]
 
     for i in range(n):
-        print(par[arr[i]], end=' ')
-    print()
-
-
+        # print(par[arr[i]], end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     # example deterministic call
     main(20)

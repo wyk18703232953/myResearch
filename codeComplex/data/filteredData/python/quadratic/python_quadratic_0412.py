@@ -17,8 +17,7 @@ def main(n):
         i += 1
 
     result = s + s[ap:] * (k - 1)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

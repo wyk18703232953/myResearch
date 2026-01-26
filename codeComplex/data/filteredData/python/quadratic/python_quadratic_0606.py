@@ -7,6 +7,7 @@ def main(n):
     # n < 2 时，退化为固定最小规模
     if n < 2:
         n_use = 5
+
     else:
         n_use = n
 
@@ -25,12 +26,12 @@ def main(n):
         for i in range(start, n_val):
             if i % m == start:
                 cur = max(ac[i] + cur, ac[i])
+
             else:
                 cur += ac[i]
             ans = max(cur, ans)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可自行修改 n 观察规模变化
     main(10)

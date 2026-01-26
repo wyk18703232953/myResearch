@@ -18,6 +18,7 @@ def rotate(matrix, degree):
         return matrix
     elif degree > 0:
         return rotate(zip(*matrix[::-1]), degree - 90)
+
     else:
         return rotate(zip(*matrix)[::-1], degree + 90)
 
@@ -47,6 +48,7 @@ def generate_board(n, offset):
             # Deterministic pattern: toggle 'X' based on (i * n + j + offset)
             if ((i * n + j + offset) % 3) == 0:
                 row.append('X')
+
             else:
                 row.append('.')
         board.append(row)
@@ -68,10 +70,11 @@ def main(n):
     l2 = len(s)
 
     if l1 == l2:
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     main(5)

@@ -44,14 +44,16 @@ def main(n):
         right.append(guys)
 
     if left == l and right == r:
-        print("YES")
+        # print("YES")
+        pass
         candiesstr = ""
         for i in range(n):
             candiesstr += str(candies_rec[i]) + " "
-        print(candiesstr[: len(candiesstr) - 1])
+        # print(candiesstr[: len(candiesstr) - 1])
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(5)

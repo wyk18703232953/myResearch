@@ -12,6 +12,7 @@ def build_input_from_n(n):
     # 让 K 在 [0, max_k] 内随 n 确定性变化
     if max_k == 0:
         K = 0
+
     else:
         K = n % (max_k + 1)
     return N, K
@@ -27,6 +28,7 @@ def core_logic(N, K):
             s[1][j]="#"
             s[2][j]="#"
             k-=2
+
     else:
         cen=n//2
         s[1][cen]="#"
@@ -41,6 +43,7 @@ def core_logic(N, K):
         outputs.append("YES")
         for i in range(4):
             outputs.append("".join(s[i]))
+
     else:
         outputs.append("NO")
     return "\n".join(outputs)
@@ -48,7 +51,7 @@ def core_logic(N, K):
 def main(n):
     N, K = build_input_from_n(n)
     result = core_logic(N, K)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

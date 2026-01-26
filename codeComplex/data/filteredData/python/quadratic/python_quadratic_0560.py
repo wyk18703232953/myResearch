@@ -18,8 +18,7 @@ def main(n):
         if n_cols & 1:
             rappend(str((n_rows + 1) >> 1) + ' ' + str((n_cols + 1) >> 1))
 
-    print('\n'.join(r))
-
-
+    # print('\n'.join(r))
+    pass
 if __name__ == "__main__":
     main(5)

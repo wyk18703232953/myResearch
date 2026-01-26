@@ -5,12 +5,15 @@ def main(n):
     b = 1 if n % 3 == 0 else 1
 
     if a > 1 and b > 1:
-        print("NO")
+        # print("NO")
+        pass
         return
     if 2 <= n <= 3 and a == b == 1:
-        print("NO")
+        # print("NO")
+        pass
         return
-    print("YES")
+    # print("YES")
+    pass
 
     if b == 1:
         adj = [[0] * n for _ in range(n)]
@@ -34,12 +37,12 @@ def main(n):
             conn -= 1
             if conn == b:
                 break
+
     else:
         adj = [[0] * n for _ in range(n)]
 
     for row in adj:
-        print(*row, sep='')
-
-
+        # print(*row, sep='')
+        pass
 if __name__ == "__main__":
     main(5)

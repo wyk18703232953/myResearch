@@ -24,11 +24,14 @@ def main(n):
             ndup += 1
 
     if screwed or ndup > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
         if ndup == 1:
             if C[thedup - 1] != 0:
-                print('cslnb')
+                # print('cslnb')
+                pass
                 return
 
         target = sum(range(n))
@@ -36,10 +39,11 @@ def main(n):
         togo = cur - target
 
         if togo % 2 == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
-            print('sjfnb')
-
-
+            # print('sjfnb')
+            pass
 if __name__ == "__main__":
     main(10)

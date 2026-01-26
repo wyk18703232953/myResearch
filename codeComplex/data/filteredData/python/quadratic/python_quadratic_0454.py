@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     # deterministic array generation based on n
@@ -35,9 +36,8 @@ def main(n):
         return res
 
     ans = ['A' if can_win(i) else 'B' for i in range(n)]
-    print(''.join(ans))
-
-
+    # print(''.join(ans))
+    pass
 if __name__ == "__main__":
     # example deterministic call
     main(10)

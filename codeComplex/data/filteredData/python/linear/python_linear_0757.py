@@ -9,6 +9,7 @@ def main(n):
     for i in arr:
         if abs(-i - 1) > abs(i):
             a.append(-i - 1)
+
         else:
             a.append(i)
 
@@ -24,9 +25,8 @@ def main(n):
         a[me] = -a[me] - 1
 
     # Preserve original output format: space-separated on one line
-    print(*a)
-
-
+    # print(*a)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

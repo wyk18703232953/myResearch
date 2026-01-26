@@ -11,6 +11,7 @@ def main(n):
     for i in range(n):
         if i == star_pos:
             s_chars.append('*')
+
         else:
             s_chars.append(chr(ord('a') + (i % 3)))
     s = s_chars
@@ -28,8 +29,10 @@ def main(n):
             offset = (n - 1) - (m - 1 - i)
             if 0 <= offset < n and offset != star_pos:
                 t.append(s[offset])
+
             else:
                 t.append(chr(ord('b') + (i % 3)))
+
         else:
             t.append(chr(ord('c') + (i % 3)))
 
@@ -39,12 +42,18 @@ def main(n):
             idx = i
     if idx == -1:
         if s == t:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
+            # print('NO')
+            pass
+
     else:
         if m < n - 1:
-            print('NO')
+            # print('NO')
+            pass
+
         else:
             s_left = s[0:idx]
             s_right = s[idx + 1:n]
@@ -58,10 +67,12 @@ def main(n):
             for i in range(b):
                 t_right.append(t[m - i - 1])
             if s_left == t_left and s_right == t_right[::-1]:
-                print('YES')
-            else:
-                print('NO')
+                # print('YES')
+                pass
 
+            else:
+                # print('NO')
+                pass
 if __name__ == "__main__":
     # example deterministic call
     main(10)

@@ -5,7 +5,8 @@ from collections import defaultdict, deque
 def main(n):
     # n is the length of the strings
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministic construction of s and t based on n
@@ -20,6 +21,7 @@ def main(n):
     for i in range(n):
         if s[i] == t[i]:
             continue
+
         else:
             ind = -1
             for j in range(i + 1, n):
@@ -33,11 +35,15 @@ def main(n):
                 ans.append(j + 1)
                 s[j], s[j + 1] = s[j + 1], s[j]
     if res:
-        print(len(ans))
-        if ans:
-            print(*ans)
-    else:
-        print(-1)
+        # print(len(ans))
+        pass
 
+        if ans:
+            # print(*ans)
+            pass
+
+    else:
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(10)

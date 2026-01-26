@@ -12,7 +12,7 @@ def main(n):
 
     cs = collections.Counter(arr)
     result = min(cs[x] for x in range(1, n + 1))
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

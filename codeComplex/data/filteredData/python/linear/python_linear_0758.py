@@ -11,9 +11,8 @@ def main(n):
         a[i] = -a[i] - 1
 
     a_str = list(map(str, a))
-    print(" ".join(a_str))
-
-
+    # print(" ".join(a_str))
+    pass
 if __name__ == "__main__":
     # Example call; you can change n for different input sizes
     main(10)

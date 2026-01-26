@@ -18,9 +18,11 @@ def main(n):
             for j in range(cols):
                 if mid_col <= j < mid_col + seg_len:
                     row_chars.append('B')
+
                 else:
                     row_chars.append('.')
             s.append("".join(row_chars))
+
         else:
             s.append("." * cols)
 
@@ -32,9 +34,11 @@ def main(n):
                 for k in range(j + 1, cols):
                     if s[i][k] == 'B':
                         cnt += 1
+
                     else:
                         break
-                print(i + 1 + cnt // 2, j + 1 + cnt // 2)
+                # print(i + 1 + cnt // 2, j + 1 + cnt // 2)
+                pass
                 return
 
 

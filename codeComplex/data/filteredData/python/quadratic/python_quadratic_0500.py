@@ -20,7 +20,8 @@ def solve_generated(n):
     ans = []
 
     if n <= 0:
-        print()
+        # print()
+        pass
         return
 
     # 构造一个确定性的树：父节点为 i//2（i>=2）
@@ -33,7 +34,8 @@ def solve_generated(n):
     dfs(g, 1, 0)
     ans.sort()
     st = ' '.join(map(str, ans))
-    print(st)
+    # print(st)
+    pass
 
 def main(n):
     solve_generated(n)

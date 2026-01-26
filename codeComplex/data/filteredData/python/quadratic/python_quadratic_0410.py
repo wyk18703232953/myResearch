@@ -12,7 +12,8 @@ def main(n):
         if s[:i] == s[-i:] or i == 0:
             c = i
     result = s + s[c:] * (k - 1)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

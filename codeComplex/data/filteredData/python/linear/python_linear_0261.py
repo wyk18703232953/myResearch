@@ -2,6 +2,7 @@ def main(n):
     # 生成确定性字符串，长度为 n，使用周期性字符模式
     if n <= 0:
         s = ""
+
     else:
         chars = "abcd"
         s = "".join(chars[i % len(chars)] for i in range(n))
@@ -15,13 +16,15 @@ def main(n):
         if s[i] == s[0]:
             c1 += 1
     if c1 == len(s):
-        print(0)
+        # print(0)
+        pass
     elif c == len(s) // 2:
-        print(len(s) - 1)
+        # print(len(s) - 1)
+        pass
+
     else:
-        print(len(s))
-
-
+        # print(len(s))
+        pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 进行规模实验
     main(10)

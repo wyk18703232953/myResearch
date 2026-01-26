@@ -6,13 +6,13 @@ def main(n):
     s = 0
     for j, i in enumerate(a):
         if i > s:
-            print(j + 1)
+            # print(j + 1)
+            pass
             return
         if i == s:
             s += 1
-    print(-1)
-
-
+    # print(-1)
+    pass
 if __name__ == "__main__":
     # 示例调用，使用 n = 10
     main(10)

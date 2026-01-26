@@ -15,15 +15,20 @@ def main(n):
                     ans.append(k)
                 break
     if s == t:
-        print(len(ans))
+        # print(len(ans))
+        pass
+
         if ans:
-            print(' '.join(map(str, ans)))
+            # print(' '.join(map(str, ans)))
+            pass
+
         else:
-            print()
+            # print()
+            pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # Example deterministic call
     main(5)

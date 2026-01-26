@@ -13,6 +13,7 @@ def main(n):
         for j in range(c):
             if (i + j) % 3 == 0:
                 row.append("*")
+
             else:
                 row.append(".")
         s.append(row)
@@ -27,6 +28,7 @@ def main(n):
         for j in range(c):
             if si[j] == "*":
                 cnt += 1
+
             else:
                 cnt = 0
             if cnt < t[i][j]:
@@ -35,6 +37,7 @@ def main(n):
         for j in range(c - 1, -1, -1):
             if si[j] == "*":
                 cnt += 1
+
             else:
                 cnt = 0
             if cnt < t[i][j]:
@@ -45,6 +48,7 @@ def main(n):
         for i in range(r):
             if s[i][j] == "*":
                 cnt += 1
+
             else:
                 cnt = 0
             if cnt < t[i][j]:
@@ -53,6 +57,7 @@ def main(n):
         for i in range(r - 1, -1, -1):
             if s[i][j] == "*":
                 cnt += 1
+
             else:
                 cnt = 0
             if cnt < t[i][j]:
@@ -90,14 +95,15 @@ def main(n):
         for j in range(c):
             if s[i][j] == "*":
                 if not (ok1[i][j] or ok2[i][j]):
-                    print(-1)
+                    # print(-1)
+                    pass
                     return
 
     k = len(ans)
-    print(k)
+    # print(k)
+    pass
     for ans0 in ans:
-        print(ans0[0], ans0[1], ans0[2])
-
-
+        # print(ans0[0], ans0[1], ans0[2])
+        pass
 if __name__ == "__main__":
     main(5)

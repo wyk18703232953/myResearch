@@ -10,8 +10,10 @@ def main(n):
     t = letters[::-1]                 # t 为 s 的反转，确保 sorted(s) == sorted(t)
 
     if sorted(s) != sorted(t):
-        print(-1)
+        # print(-1)
+        pass
         return
+
     else:
         lst = [0] * n
         for i in range(n):
@@ -29,11 +31,12 @@ def main(n):
                         ans += 1
                         lst[j], lst[j + 1] = lst[j + 1], lst[j]
                         a.append(j + 1)
-        print(ans)
+        # print(ans)
+        pass
+
         if a:
-            print(*a)
-
-
+            # print(*a)
+            pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的规模
     main(5)

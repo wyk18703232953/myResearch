@@ -21,4 +21,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用：使用 n = 10 作为规模
     result = main(10)
-    print(result)
+    # print(result)
+    pass

@@ -52,6 +52,7 @@ def main(n):
         for j in range(cols):
             if K % 2 == 1:
                 row_ans.append("-1")
+
             else:
                 dp = [INF] * (halfK + 1)
                 dp[0] = 0
@@ -59,9 +60,8 @@ def main(n):
                     for l in range(0, k):
                         dp[k] = min(dp[k], dp[l] + f[i][j][k - l] * 2)
                 row_ans.append(str(dp[halfK]))
-        print(" ".join(row_ans))
-
-
+        # print(" ".join(row_ans))
+        pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 以进行规模实验
     main(20)

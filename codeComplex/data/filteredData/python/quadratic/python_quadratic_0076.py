@@ -25,10 +25,11 @@ def main(n):
         if s % 2 == 1:
             c = (c + 1) % 2
         if c == 0:
-            print("even")
+            # print("even")
+            pass
+
         else:
-            print("odd")
-
-
+            # print("odd")
+            pass
 if __name__ == "__main__":
     main(10)

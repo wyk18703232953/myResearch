@@ -3,6 +3,7 @@ def main(n):
     if n < 1:
         values = []
         queries = []
+
     else:
         # First part: original n elements
         base_n = n
@@ -34,6 +35,7 @@ def main(n):
         cnt &= 1
         if cnt == 1:
             stdout.write("odd\n")
+
         else:
             stdout.write("even\n")
 

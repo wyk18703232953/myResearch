@@ -66,6 +66,7 @@ def core_logic(n, S, C):
         ans = min(ans, L[i] + C[i] + R[i])
     if ans >= INF:
         return -1
+
     else:
         return ans
 
@@ -81,8 +82,7 @@ def generate_data(n):
 def main(n):
     n, S, C = generate_data(n)
     result = core_logic(n, S, C)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

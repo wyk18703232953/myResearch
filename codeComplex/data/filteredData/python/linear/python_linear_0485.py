@@ -22,8 +22,7 @@ def main(n):
             r2 = r
 
     ans = max(0, (r2 - l2, max(r1 - l2, r2 - l1))[il != ir])
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(5)

@@ -29,9 +29,8 @@ def main(n):
             r = i + 1 + cc // 2
             c = ci + cc // 2 + 1
 
-    print(r, c)
-
-
+    # print(r, c)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小进行实验
     main(10)

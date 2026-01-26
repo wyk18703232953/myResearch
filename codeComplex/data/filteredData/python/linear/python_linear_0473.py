@@ -55,8 +55,7 @@ def core_logic(n, cost, arr):
 def main(n):
     n, cost, arr = generate_data(n)
     result = core_logic(n, cost, arr)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

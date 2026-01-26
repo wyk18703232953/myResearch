@@ -18,8 +18,7 @@ def main(n):
         a1.append(new_a)
         a2.append(new_a2)
 
-    print(*(a1 + a2[::-1]))
-
-
+    # print(*(a1 + a2[::-1]))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -3,6 +3,7 @@ def main(n):
     # 构造方式：前半部分为升序字母，后半部分为降序字母，保证有一定的非回文结构
     if n <= 0:
         s = ""
+
     else:
         base = [chr(ord('a') + (i % 26)) for i in range(n)]
         # 为了增加变化，后半部分逆序
@@ -12,11 +13,11 @@ def main(n):
     while s != "":
         if s == s[::-1]:
             s = s[:(len(s) - 1)]
+
         else:
             break
-    print(len(s))
-
-
+    # print(len(s))
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行调用，可根据需要修改 n
     main(10)

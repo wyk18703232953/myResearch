@@ -12,6 +12,7 @@ def main(n):
     for i in range(n):
         if i % 3 == 0:
             cmds.append('f')
+
         else:
             cmds.append('x')
     # 确保首个命令不会破坏算法特性
@@ -25,11 +26,13 @@ def main(n):
         p = cmds[i]
         if i == 0:
             dp[i][0] = 1
+
         else:
             c = 0
             if prev == 'f':
                 for j in range(n):
                     dp[i][j + 1] = dp[i - 1][j]
+
             else:
                 for j in range(n, -1, -1):
                     c = (c + dp[i - 1][j]) % mod
@@ -37,7 +40,8 @@ def main(n):
         prev = p
 
     result = sum(dp[n - 1]) % mod if n > 0 else 0
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

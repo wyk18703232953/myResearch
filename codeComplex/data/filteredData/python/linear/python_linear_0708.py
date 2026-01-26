@@ -9,11 +9,13 @@ def main(n):
     for i in s:
         if i == '+':
             now += 1
+
         else:
             now -= 1
         maxn = max(maxn, -now)
     result = now + maxn
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

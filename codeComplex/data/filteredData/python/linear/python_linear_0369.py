@@ -19,8 +19,7 @@ def main(n):
             note += 1
         if note == total_notes:
             break
-    print(note)
-
-
+    # print(note)
+    pass
 if __name__ == "__main__":
     main(10)

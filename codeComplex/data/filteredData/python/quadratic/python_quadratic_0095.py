@@ -37,7 +37,7 @@ def main(n):
     s1 = generate_matrix(N, 0)
     s2 = rotate(s1, N)
     result = solve(s1, s2, N)
-    print('Yes' if result else 'No')
-
+    # print('Yes' if result else 'No')
+    pass
 if __name__ == "__main__":
     main(5)

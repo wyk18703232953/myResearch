@@ -23,13 +23,15 @@ def main(n):
                 q = abs(m - s.index("B") - 1)
 
                 if p == q:
-                    print(rownum + 1, row.index(row[p]) + 1)
+                    # print(rownum + 1, row.index(row[p]) + 1)
+                    pass
                     flag = True
                     break
                 mr = (q + p) / 2
                 length = abs(q - p + 1)
                 rn = rownum + length // 2
-                print(rn + 1, int(mr + 1))
+                # print(rn + 1, int(mr + 1))
+                pass
                 flag = True
                 break
         if flag:

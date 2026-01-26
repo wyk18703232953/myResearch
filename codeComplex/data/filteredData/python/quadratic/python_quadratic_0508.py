@@ -9,7 +9,8 @@ DEBUG = False
 
 def dprint(*value, sep=' ', end='\n'):
     if DEBUG:
-        print(*value, sep=sep, end=end)
+        # print(*value, sep=sep, end=end)
+        pass
 
 
 def solve(H, W, A):
@@ -71,14 +72,14 @@ def main(n):
         for x in range(W):
             if ((x // 3) + (y // 3)) % 2 == 0:
                 row_chars.append('#')
+
             else:
                 row_chars.append('.')
         A.append(''.join(row_chars))
 
     result = solve(H, W, A)
-    print('YES' if result else 'NO')
-
-
+    # print('YES' if result else 'NO')
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 以进行规模实验
     main(9)

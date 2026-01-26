@@ -21,6 +21,7 @@ def main(n):
         if work[0] > work[1]:
             # 把第二个元素移到末尾
             work.append(work.pop(1))
+
         else:
             # 把第一个元素移到末尾
             work.append(work.pop(0))
@@ -31,6 +32,7 @@ def main(n):
         if mj <= len(ab):
             pair = ab[mj - 1]
             a, b = str(pair[0]), str(pair[1])
+
         else:
             idx = (mj - len(ab) - 1) % (len(work) - 1) + 1
             pair = (m, work[idx])
@@ -39,7 +41,8 @@ def main(n):
 
     # 为了保持行为可观察，这里打印结果
     for line in outputs:
-        print(line)
+        # print(line)
+        pass
 
     return outputs
 

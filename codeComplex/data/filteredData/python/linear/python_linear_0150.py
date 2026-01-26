@@ -19,15 +19,15 @@ def main(n):
     allsum = sum(arr)
 
     if len(arr) == 2:
-        print(arr[0] % p + arr[1] % p)
+        # print(arr[0] % p + arr[1] % p)
+        pass
         return
 
     for i in range(1, n - 1):
         res.append((prefsums[i] % p) + ((allsum - prefsums[i]) % p))
 
-    print(max(res))
-
-
+    # print(max(res))
+    pass
 if __name__ == "__main__":
     # 示例：使用规模 n = 10 运行
     main(10)

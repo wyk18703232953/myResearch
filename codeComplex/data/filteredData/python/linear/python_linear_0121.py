@@ -1,6 +1,7 @@
 def main(n):
     if n < 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     t = [[] for _ in range(n + 1)]
@@ -20,10 +21,11 @@ def main(n):
                 break
 
     if flag:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

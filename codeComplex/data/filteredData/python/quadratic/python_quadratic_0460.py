@@ -35,7 +35,8 @@ def main(n):
                 break
 
     result = ''.join(res)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

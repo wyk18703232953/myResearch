@@ -32,10 +32,11 @@ def main(n):
     for i in range(m):
         ans = ans_tmp[i]
         if ans % 2 == 1:
-            print("odd")
+            # print("odd")
+            pass
+
         else:
-            print("even")
-
-
+            # print("even")
+            pass
 if __name__ == "__main__":
     main(10)

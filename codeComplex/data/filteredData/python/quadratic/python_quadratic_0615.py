@@ -8,7 +8,8 @@ def main(n):
     a = [(i * 2 + 1) % 100 for i in range(n)] if n > 0 else []
 
     if n == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Core logic from original program
@@ -21,8 +22,7 @@ def main(n):
 
     result = max(max(row) for row in dp)
     result = max(result - k, 0)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

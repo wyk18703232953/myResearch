@@ -11,8 +11,7 @@ def main(n):
         res += need_to_by * c
         cur_tank += need_to_by
         cur_tank -= 1
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

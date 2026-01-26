@@ -30,6 +30,7 @@ def christmas(gr, start, visited):
             if not isleaf(val, gr):
                 q.append(val)
                 visited[val] = True
+
             else:
                 visited[val] = True
                 count = count + 1
@@ -55,13 +56,14 @@ def main(n):
         gr = router(values)
         visited = [False] * (n + 2)
         result = christmas(gr, 1, visited)
-        print(result)
+        # print(result)
+        pass
         return
     values = generate_values(n)
     gr = router(values)
     visited = [False] * (n + 2)
     result = christmas(gr, 1, visited)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

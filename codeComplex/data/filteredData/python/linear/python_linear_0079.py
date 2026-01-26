@@ -12,17 +12,18 @@ def main(n):
     for i in range(al - 1):
         if a[i] == '0':
             count += s
+
         else:
             count += bl - al + 1 - s
         s += int(b[bl - al + i + 1]) - int(b[i])
 
     if a[-1] == '0':
         count += s
+
     else:
         count += bl - al + 1 - s
 
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -7,6 +7,7 @@ def main(n):
     if n < 2:
         # 对于过小的 n，退化为最小有意义规模
         n_len = 2
+
     else:
         n_len = n
     c = n_len // 2
@@ -18,9 +19,8 @@ def main(n):
         res1[ai] = max(res1[ai], res1[c])
         res1[ai] += 1
         res = max(res, res1[ai] - res1[c])
-    print(res + res1[c])
-
-
+    # print(res + res1[c])
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 的规模
     main(10)

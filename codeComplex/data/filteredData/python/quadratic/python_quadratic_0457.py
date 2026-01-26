@@ -12,6 +12,7 @@ def main(n):
         ok = True
         if idx + lister[idx] >= a and idx - lister[idx] < 0:
             ok = False
+
         else:
             for i in range(mod, a, lister[idx]):
                 if i != idx and lister[i] > lister[idx]:
@@ -27,11 +28,11 @@ def main(n):
     for i in range(a):
         if ans[i]:
             level.append('A')
+
         else:
             level.append('B')
 
-    print(''.join(level))
-
-
+    # print(''.join(level))
+    pass
 if __name__ == "__main__":
     main(10)

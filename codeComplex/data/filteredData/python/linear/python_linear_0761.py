@@ -55,18 +55,21 @@ def main(n):
     for i in Q:
         if i > n:
             x = n - 1 if i % (n - 1) == 0 else i % (n - 1)
-            print(a[0], a[x])
+            # print(a[0], a[x])
+            pass
+
         else:
             # some queries may not be in d if mx < i or the loop limit prevented filling them
             # to keep behavior defined and deterministic, fall back to a fixed pair if missing
             if i in d:
-                print(*d[i])
+                # print(*d[i])
+                pass
+
             else:
                 # fallback pair uses current a[0] and a[1] (or a[0] twice if n==1, but n>1 here)
                 second_index = 1 if n > 1 else 0
-                print(a[0], a[second_index])
-
-
+                # print(a[0], a[second_index])
+                pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n to probe different scales
     main(10)

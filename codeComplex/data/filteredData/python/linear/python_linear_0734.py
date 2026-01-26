@@ -38,6 +38,7 @@ def main(n):
         i -= 1
         if i <= k:
             out_lines.append(f"{X[i][0]} {X[i][1]}")
+
         else:
             idx = (i - k) % (N - 1) + k
             out_lines.append(f"{X[idx][0]} {X[idx][1]}")

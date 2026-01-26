@@ -13,6 +13,7 @@ def build_input(n):
             val = (y * 17 + x * 23) % 5
             if val == 0:
                 row_chars.append('.')
+
             else:
                 row_chars.append('#')
         a.append(''.join(row_chars))
@@ -47,7 +48,8 @@ def main(n):
                     dp[i][new_mask] = dp[i][bitset] + cost[k]
 
     result = min(dp[4 * n])
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

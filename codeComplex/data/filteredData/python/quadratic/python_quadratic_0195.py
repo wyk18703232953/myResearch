@@ -42,8 +42,7 @@ def main(n):
         out.append(a[r - l][l - 1])
 
     for v in out:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     main(5)

@@ -17,8 +17,7 @@ def main(n):
                 a = a[:i] + a[i + 1:]
                 break
 
-    print(r)
-
-
+    # print(r)
+    pass
 if __name__ == "__main__":
     main(10)

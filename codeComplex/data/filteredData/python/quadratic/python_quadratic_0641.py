@@ -13,8 +13,7 @@ def main(n):
         for j in range(i + 1, n):
             if a[j] % cur_c == 0:
                 a[j] = 0
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -22,6 +22,7 @@ def main(n):
                 elif ch == "G":
                     a1 += 1
                     a3 += 1
+
                 else:
                     a1 += 1
                     a2 += 1
@@ -32,9 +33,11 @@ def main(n):
                 elif ch == "G":
                     a2 += 1
                     a3 += 1
+
                 else:
                     a3 += 1
                     a1 += 1
+
             else:
                 if ch == "R":
                     a1 += 1
@@ -42,13 +45,13 @@ def main(n):
                 elif ch == "G":
                     a1 += 1
                     a2 += 1
+
                 else:
                     a3 += 1
                     a2 += 1
         a = min(a, a1, a2, a3)
-    print(a)
-
-
+    # print(a)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(20)

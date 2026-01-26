@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate two binary lists a and b of length n
@@ -19,8 +20,7 @@ def main(n):
             i += 1
         i += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

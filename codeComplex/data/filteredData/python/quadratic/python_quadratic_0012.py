@@ -30,8 +30,8 @@ def main(n):
                     ),
                 )
         ans.append(y_cord)
-    print(" ".join(str(x) for x in ans))
-
+    # print(" ".join(str(x) for x in ans))
+    pass
 if __name__ == "__main__":
     # example deterministic call
     main(10)

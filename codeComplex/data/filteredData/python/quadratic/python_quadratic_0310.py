@@ -14,8 +14,7 @@ def main(n):
             c += 1
             if c >= k:
                 ans = max(ans, sum1 / c)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

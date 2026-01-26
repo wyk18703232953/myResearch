@@ -43,15 +43,17 @@ def main(n):
             if za2[j] > za2[i]:
                 r += 1
         if zl[i] != l or zr[i] != r:
-            print('NO')
+            # print('NO')
+            pass
             return
-    print('YES')
+    # print('YES')
+    pass
     for i in range(N):
-        print(za2[i], end=' ')
+        # print(za2[i], end=' ')
+        pass
     if N > 0:
-        print()
-
-
+        # print()
+        pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的大小进行实验
     main(10)

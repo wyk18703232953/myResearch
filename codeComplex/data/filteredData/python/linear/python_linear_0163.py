@@ -49,7 +49,7 @@ def main(n):
     for frac in l:
         ans.append(d[frac])
 
-    print(*ans)
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

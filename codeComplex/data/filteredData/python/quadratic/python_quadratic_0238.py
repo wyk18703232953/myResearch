@@ -33,6 +33,7 @@ def core_algorithm(n, s_list, c_list):
 
     if total_min != inf:
         return total_min
+
     else:
         return -1
 
@@ -40,8 +41,7 @@ def core_algorithm(n, s_list, c_list):
 def main(n):
     n, s_list, c_list = generate_data(n)
     result = core_algorithm(n, s_list, c_list)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -20,11 +20,12 @@ def main(n):
         if L[i] < L[i + 1] - 1:
             ans = max(ans, 2 * sumL[i] - sumL[-1] + (-1) ** i * (L[i] + 1))
     if N % 2 == 0:
-        print(max(ans, sumL[-1] + M))
+        # print(max(ans, sumL[-1] + M))
+        pass
+
     else:
-        print(max(ans + M, sumL[-1]))
-
-
+        # print(max(ans + M, sumL[-1]))
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

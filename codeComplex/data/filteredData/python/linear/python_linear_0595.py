@@ -5,8 +5,7 @@ def main(n):
         while j * i <= n:
             total += i
             j += 1
-    print(4 * total)
-
-
+    # print(4 * total)
+    pass
 if __name__ == "__main__":
     main(1000)

@@ -11,27 +11,31 @@ def main(n):
         if el in d:
             dupes += 1
             dupeVal = el
+
         else:
             d.add(el)
 
     inPlay = True
     if dupes > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
         inPlay = False
     elif dupes == 1:
         if dupeVal == 0 or (dupeVal - 1) in d:
-            print('cslnb')
+            # print('cslnb')
+            pass
             inPlay = False
 
     if inPlay:
         finalSum = (n * (n - 1)) // 2
         Sum = sum(a)
         if (Sum - finalSum) % 2 == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
-            print('sjfnb')
-
-
+            # print('sjfnb')
+            pass
 if __name__ == "__main__":
     # Example deterministic runs for different scales
     for n in [1, 2, 3, 5, 10]:

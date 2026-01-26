@@ -26,9 +26,8 @@ def main(n):
             ans = 'YES'
             break
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 来改变规模
     main(10)

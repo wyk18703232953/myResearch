@@ -27,7 +27,7 @@ def main(n):
                 ans = norm(ans + dp2[i] * dp2[j])
 
     ans = norm(ans * 2)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

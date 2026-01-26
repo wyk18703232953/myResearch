@@ -10,7 +10,8 @@ def main(n):
     mod = 998244353
 
     if k == 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     dp1 = [array('i', [0]) * orig_n for _ in range(orig_n)]
@@ -61,9 +62,8 @@ def main(n):
         x = sum(dp1[i - 1]) % mod
         ans = (ans + x * sum(dps1[:-1])) % mod
 
-    print(ans * 2 % mod)
-
-
+    # print(ans * 2 % mod)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different input scales.
     main(5)

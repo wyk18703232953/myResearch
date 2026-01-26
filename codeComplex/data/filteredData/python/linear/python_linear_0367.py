@@ -22,9 +22,8 @@ def main(n):
         elif g[i] > b[j]:
             i += 1
 
-    print(total)
-
-
+    # print(total)
+    pass
 if __name__ == "__main__":
     # Example call for experimental purposes
     main(10)

@@ -2,7 +2,8 @@ import math
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成 d
@@ -24,8 +25,7 @@ def main(n):
         elif math.fabs(pos[i] - pos[i - 1]) == 2 * d:
             count += 1
 
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(5)

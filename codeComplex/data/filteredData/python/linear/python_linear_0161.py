@@ -13,7 +13,8 @@ def main(n):
         result.append(D[e])
     # 输出结果以便保持原程序行为
     for v in result:
-        print(v)
+        # print(v)
+        pass
     return result
 
 if __name__ == "__main__":

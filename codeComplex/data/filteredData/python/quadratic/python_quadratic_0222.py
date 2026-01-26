@@ -1,7 +1,8 @@
 def main(n):
     # n 表示数组长度
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # 确定性生成输入数据
@@ -22,8 +23,7 @@ def main(n):
                 dp[i][3] = min(dp[i][3], dp[j][2] + b[i])
                 ans = min(ans, dp[i][3])
 
-    print(ans if ans != PI else -1)
-
-
+    # print(ans if ans != PI else -1)
+    pass
 if __name__ == "__main__":
     main(10)

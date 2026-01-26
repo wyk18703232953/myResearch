@@ -39,13 +39,15 @@ def main(n):
             res = False
             break
     if res:
-        print("YES")
+        # print("YES")
+        pass
         for i in range(n):
             a[i] = str(a[i])
-        print(" ".join(a))
+        # print(" ".join(a))
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

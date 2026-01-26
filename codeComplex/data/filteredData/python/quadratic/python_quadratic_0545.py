@@ -13,9 +13,8 @@ def main(n):
             ans += i
             b += 1
         b -= 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 进行实验
     main(10)

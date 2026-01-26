@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as the length of the theorem list and sleep list
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Choose k deterministically based on n, with 1 <= k <= n
@@ -33,9 +34,8 @@ def main(n):
         if diff > maxdiff:
             maxdiff = diff
 
-    print(slsum + maxdiff)
-
-
+    # print(slsum + maxdiff)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

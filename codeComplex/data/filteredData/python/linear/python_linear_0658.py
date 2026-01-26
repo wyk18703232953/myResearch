@@ -14,7 +14,8 @@ def main(n_input):
     a = [0] * (n + 1)
 
     if n == 2:
-        print(s)
+        # print(s)
+        pass
         return
 
     edges = build_tree_edges(n)
@@ -22,7 +23,7 @@ def main(n_input):
         a[u] += 1
         a[v] += 1
 
-    print(2.0 * s / a.count(1))
-
+    # print(2.0 * s / a.count(1))
+    pass
 if __name__ == "__main__":
     main(10)

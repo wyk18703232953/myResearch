@@ -4,7 +4,8 @@ from math import *
 def main(n):
     # Interpret n as both rows and columns for a square grid
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     rows = n
     cols = n
@@ -19,6 +20,7 @@ def main(n):
             # Place '*' when (i*j + i + j) % 7 < 3, else '.'
             if (i * j + i + j) % 7 < 3:
                 row.append('*')
+
             else:
                 row.append('.')
         a.append(row)
@@ -52,6 +54,7 @@ def main(n):
                     ll[k] = j
                     rr[k] = jj
                 j = jj + 1
+
             else:
                 j += 1
 
@@ -70,6 +73,7 @@ def main(n):
                     if x > 0:
                         res.append((k + 1, i + 1, x))
                 j = jj + 1
+
             else:
                 j += 1
 
@@ -84,6 +88,7 @@ def main(n):
                 c = ss[j]
             if c >= 0:
                 rr[j] = '*'
+
             else:
                 rr[j] = '.'
             j += 1
@@ -119,16 +124,17 @@ def main(n):
             if c >= 0:
                 r[j][i] = '*'
             if r[j][i] != a[j][i]:
-                print(-1)
+                # print(-1)
+                pass
                 return
             c -= 1
             j -= 1
 
-    print(len(res))
+    # print(len(res))
+    pass
     for item in res:
-        print(*item)
-
-
+        # print(*item)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; change the n below for different scales
     main(10)

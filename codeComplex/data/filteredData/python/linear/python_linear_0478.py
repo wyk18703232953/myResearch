@@ -46,4 +46,5 @@ def main(n):
 if __name__ == "__main__":
     # Example calls for different input scales
     for n in [1, 5, 10, 100]:
-        print(n, main(n))
+        # print(n, main(n))
+        pass

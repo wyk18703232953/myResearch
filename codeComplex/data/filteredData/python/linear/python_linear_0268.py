@@ -4,9 +4,12 @@ import sys
 def run_algorithm(n, edges):
     deg = [0] * n
     if n == 2:
-        print('Yes')
-        print(1)
-        print('1 2')
+        # print('Yes')
+        pass
+        # print(1)
+        pass
+        # print('1 2')
+        pass
         return
 
     for u, v in edges:
@@ -17,13 +20,18 @@ def run_algorithm(n, edges):
 
     if deg[ix] < 3 or deg.count(1) + deg.count(2) == n - 1:
         cnt1 = deg.count(1)
-        print('Yes')
-        print(cnt1)
+        # print('Yes')
+        pass
+        # print(cnt1)
+        pass
         for i in range(n):
             if deg[i] == 1:
-                print(i + 1, ix + 1)
+                # print(i + 1, ix + 1)
+                pass
+
     else:
-        print('No')
+        # print('No')
+        pass
 
 
 def build_input(n):

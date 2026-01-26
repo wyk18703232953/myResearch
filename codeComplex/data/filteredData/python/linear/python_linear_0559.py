@@ -31,6 +31,7 @@ def main(n):
             if key not in cnt:
                 cnt[key] = [0, 0]
             cnt[key][1] += 1
+
         else:
             key = pre[i]
             if key not in cnt:
@@ -45,8 +46,7 @@ def main(n):
     cnt1 += sum(cnt[0]) // 2
 
     result = (n * (n + 1)) // 2 - cnt1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -19,7 +19,8 @@ def main(n):
 
     # 若没能达到 k 个不同元素，原代码会输出 (-1, -1)
     if r == -2:
-        print(-1, -1)
+        # print(-1, -1)
+        pass
         return
 
     # 从左侧缩短区间，使得区间仍包含 k 个不同元素
@@ -29,9 +30,8 @@ def main(n):
             break
         d[a[i]] -= 1
 
-    print(l + 1, r + 1)
-
-
+    # print(l + 1, r + 1)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n
     main(10)

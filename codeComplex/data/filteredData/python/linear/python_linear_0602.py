@@ -10,9 +10,8 @@ def main(n):
     res = ""
     for i in ans:
         res += " ".join(map(str, i)) + "\n"
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 作为输入规模运行
     main(10)

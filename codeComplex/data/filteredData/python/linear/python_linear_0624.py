@@ -40,6 +40,7 @@ def main(n):
         num2 = ar[i2] - xi[i]
         if num <= num2:
             ai[i1] += 1
+
         else:
             ai[i2] += 1
 
@@ -47,9 +48,8 @@ def main(n):
     out = []
     for i in range(1, m + 1):
         out.append(str(ai[i]))
-    print(" ".join(out))
-
-
+    # print(" ".join(out))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n here for experiments
     main(10)

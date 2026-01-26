@@ -20,6 +20,7 @@ def main(n):
         nm = p[i] - ct
         if nm % k == 0:
             mnm = nm
+
         else:
             mnm = (nm // k) * k + k
         si = i
@@ -29,11 +30,11 @@ def main(n):
         ops += 1
         if i >= len(p):
             break
-    print(ops)
-
-
+    # print(ops)
+    pass
 if __name__ == "__main__":
     # 示例：用若干不同规模运行
     for scale in [1, 5, 10, 100]:
-        print(f"n={scale} -> ", end="")
+        # print(f"n={scale} -> ", end="")
+        pass
         main(scale)

@@ -19,7 +19,8 @@ def main(n):
         i = len(t)
 
     result = t[:i] * k + t[i:]
-    print(result)
+    # print(result)
+    pass
     return result
 
 

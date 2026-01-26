@@ -3,7 +3,8 @@ def main(n):
     # s and t will both be strings of length n, composed from 'a'..'z'
     # and guaranteed to be anagrams so the core logic runs.
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministically construct s and t
@@ -19,7 +20,9 @@ def main(n):
     tl = [i for i in t]
     ans = []
     if ''.join(sorted(s)) != ''.join(sorted(t)):
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         for i in range(n):
             if sl[i] != tl[i]:
@@ -29,11 +32,11 @@ def main(n):
                 for k in range(j - 1, i - 1, -1):
                     sl[k], sl[k + 1] = sl[k + 1], sl[k]
                     ans.append(k + 1)
-        print(len(ans))
+        # print(len(ans))
+        pass
         for i in ans:
-            print(i, end=' ')
-
-
+            # print(i, end=' ')
+            pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

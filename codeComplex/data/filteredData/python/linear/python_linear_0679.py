@@ -50,7 +50,7 @@ def core_algorithm(N, zb):
 def main(n):
     N, zb = generate_input(n)
     result = core_algorithm(N, zb)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

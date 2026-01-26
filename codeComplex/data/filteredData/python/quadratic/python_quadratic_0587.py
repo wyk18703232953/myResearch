@@ -24,6 +24,7 @@ def main(n):
                 rq1 += 'G'
                 rq2 += 'B'
                 rq3 += 'R'
+
             else:
                 rq1 += 'B'
                 rq2 += 'R'
@@ -46,8 +47,7 @@ def main(n):
         results.append(ans)
 
     for x in results:
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
     main(10)

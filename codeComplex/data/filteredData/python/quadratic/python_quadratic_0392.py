@@ -10,9 +10,11 @@ def main(n):
         for j in range(m):
             if n == 0:
                 ch = 'W'
+
             else:
                 if n // 4 <= i <= 3 * n // 4 and n // 4 <= j <= 3 * n // 4:
                     ch = 'B'
+
                 else:
                     ch = 'W'
             row.append(ch)
@@ -32,11 +34,11 @@ def main(n):
     if min1 is inf:
         # 若没有 'B'，保持行为确定，这里输出 (1, 1)
         x, y = 1, 1
+
     else:
         x = (min1 + max1) // 2 + 1
         y = (min2 + max2) // 2 + 1
-    print(x, y)
-
-
+    # print(x, y)
+    pass
 if __name__ == "__main__":
     main(10)

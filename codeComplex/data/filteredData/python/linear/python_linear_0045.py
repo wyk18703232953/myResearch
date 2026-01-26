@@ -12,10 +12,11 @@ def main(n):
         d[x] = i
         i += 1
     if len(d) == m:
-        print(min(d.values()), max(d.values()))
+        # print(min(d.values()), max(d.values()))
+        pass
+
     else:
-        print(-1, -1)
-
-
+        # print(-1, -1)
+        pass
 if __name__ == "__main__":
     main(10)

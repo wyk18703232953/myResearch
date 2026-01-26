@@ -15,8 +15,7 @@ def main(n):
         b[x - 1] += 1
     b.sort()
     # 为保持与原程序的输出行为一致，这里打印最小计数
-    print(b[0])
-
-
+    # print(b[0])
+    pass
 if __name__ == "__main__":
     main(10)

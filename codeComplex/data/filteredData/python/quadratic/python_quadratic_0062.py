@@ -28,10 +28,11 @@ def main(n):
         if x != 1 and (x * (x - 1) // 2) % 2:
             c = not c
         if c:
-            print("odd")
+            # print("odd")
+            pass
+
         else:
-            print("even")
-
-
+            # print("even")
+            pass
 if __name__ == "__main__":
     main(10)

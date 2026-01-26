@@ -22,25 +22,30 @@ def solve(n, e, h, a, b, c):
             if (tmp1 // 2) >= ntmp:
                 su += a * ntmp
                 ntmp -= ntmp
+
             else:
                 su += a * (tmp1 // 2)
                 ntmp -= (tmp1 // 2)
                 if ntmp <= (tmp2 // 3):
                     su += b * ntmp
                     ntmp -= ntmp
+
                 else:
                     su += b * (tmp2 // 3)
                     ntmp -= (tmp2 // 3)
+
         else:
             if (tmp2 // 3) >= ntmp:
                 su += b * ntmp
                 ntmp -= ntmp
+
             else:
                 su += b * (tmp2 // 3)
                 ntmp -= (tmp2 // 3)
                 if ntmp <= (tmp1 // 2):
                     su += a * ntmp
                     ntmp -= ntmp
+
                 else:
                     su += a * (tmp1 // 2)
                     ntmp -= (tmp1 // 2)
@@ -48,6 +53,7 @@ def solve(n, e, h, a, b, c):
             ans = min(ans, su)
     if ans == 1e9:
         return -1
+
     else:
         return int(ans)
 
@@ -58,6 +64,7 @@ def core_main(n, s):
     for c in s:
         if c not in m:
             m[c] = 1
+
         else:
             m[c] += 1
     ct = len(m)
@@ -88,6 +95,7 @@ def generate_string(n):
 def generate_params(n):
     if n <= 0:
         n_val = 1
+
     else:
         n_val = n
     e = 2 * n_val + 3
@@ -102,8 +110,9 @@ def main(n):
     cost_result = solve(n_val, e, h, a, b, c)
     s = generate_string(n_val)
     sub_result = core_main(len(s), s)
-    print(cost_result)
-    print(sub_result)
-
+    # print(cost_result)
+    pass
+    # print(sub_result)
+    pass
 if __name__ == "__main__":
     main(10)

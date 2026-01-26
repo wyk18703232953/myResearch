@@ -10,7 +10,8 @@ def main(n):
     start_a = 10
     if n <= 0:
         # Edge case: no pairs
-        print(0)
+        # print(0)
+        pass
         return
 
     pairs = []
@@ -36,7 +37,8 @@ def main(n):
 
     if q >= max_index:
         # No valid a assigned; by construction this shouldn't happen, but guard anyway
-        print(n)
+        # print(n)
+        pass
         return
 
     dp[q] = 1
@@ -46,14 +48,14 @@ def main(n):
     for i in range(q + 1, upper_limit + 1):
         if majak[i] == 0:
             dp[i] = dp[i - 1]
+
         else:
             dp[i] = dp[i - majak[i] - 1] + 1
             if dp[i] > ma:
                 ma = dp[i]
 
-    print(n - ma)
-
-
+    # print(n - ma)
+    pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

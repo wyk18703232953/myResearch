@@ -9,19 +9,23 @@ def main(n):
     N = max(2, n)
     if n <= 3:
         a, b = 1, 1
+
     else:
         # 确定性构造：n 的奇偶和模 3 控制 a, b
         if n % 2 == 0:
             a = 1
+
         else:
             a = 2
         if n % 3 == 0:
             b = 1
+
         else:
             b = 2
 
     if min(a, b) > 1 or ((N, a, b) in ((2, 1, 1), (3, 1, 1))):
-        print("NO")
+        # print("NO")
+        pass
         return
 
     res = [[0] * N for _ in range(N)]
@@ -31,12 +35,12 @@ def main(n):
     if a == 1:
         res = [[e ^ 1 for e in l] for l in res]
 
-    print("YES")
+    # print("YES")
+    pass
     for i in range(N):
         res[i][i] = 0
-        print(*res[i], sep='')
-
-
+        # print(*res[i], sep='')
+        pass
 if __name__ == "__main__":
     # 示例：用几种不同规模调用 main
     for size in [1, 2, 3, 4, 5, 10]:

@@ -9,7 +9,7 @@ def main(n):
         f = i
         t = (i * 2) % (n + 3)
         maxi = max(maxi, f + t)
-    print(maxi)
-
+    # print(maxi)
+    pass
 if __name__ == "__main__":
     main(10)

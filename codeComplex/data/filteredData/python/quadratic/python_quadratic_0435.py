@@ -18,6 +18,7 @@ def main(n):
     for i in range(n):
         if s2_list[i] == '0':
             continue
+
         else:
             s.append(int(s2_list[i]))
     s1 = sum(s)
@@ -41,14 +42,16 @@ def main(n):
                     f = 1
             elif c < l[i]:
                 c = c
+
             else:
                 break
     if f == 0:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
-
-
+        # print('YES')
+        pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 的大小以做时间复杂度实验
     main(10)

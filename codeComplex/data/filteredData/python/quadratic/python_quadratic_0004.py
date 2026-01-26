@@ -13,8 +13,7 @@ def main(n):
                 _y = max(_y, y[j] + math.sqrt(4 * r * r - dx * dx))
         y.append(round(_y, 6))
 
-    print(' '.join(map(str, y)))
-
-
+    # print(' '.join(map(str, y)))
+    pass
 if __name__ == "__main__":
     main(5)

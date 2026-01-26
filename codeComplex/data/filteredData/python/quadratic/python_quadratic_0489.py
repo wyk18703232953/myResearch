@@ -22,12 +22,14 @@ def main(n):
         ln = sum(1 for x in vals[:i] if x - vals[i] > 0)
         lr = sum(1 for x in vals[i:] if x - vals[i] > 0)
         if ln != l[i] or lr != r[i]:
-            print('NO')
+            # print('NO')
+            pass
             break
+
     else:
-        print('YES')
-        print(' '.join(str(i) for i in vals))
-
-
+        # print('YES')
+        pass
+        # print(' '.join(str(i) for i in vals))
+        pass
 if __name__ == "__main__":
     main(10)

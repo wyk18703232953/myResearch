@@ -16,26 +16,31 @@ def main(n):
 
     if b[0] != 1:
         curr += curr / (b[0] - 1)
+
     else:
         f = 1
 
     for i in range(n - 1, -1, -1):
         if a[i] != 1:
             curr += curr / (a[i] - 1)
+
         else:
             f = 1
         if i > 0:
             if b[i] != 1:
                 curr += curr / (b[i] - 1)
+
             else:
                 f = 1
 
     if f:
         result = -1
+
     else:
         result = curr - m
 
-    print(result)
+    # print(result)
+    pass
     return result
 
 

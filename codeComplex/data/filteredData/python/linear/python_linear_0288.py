@@ -12,12 +12,15 @@ def main(n):
                 # even positions depend on i and j
                 if (i + j) % 3 == 0:
                     chars.append('(')
+
                 else:
                     chars.append(')')
+
             else:
                 # odd positions depend on i and j in another way
                 if (i * 2 + j) % 4 < 2:
                     chars.append('(')
+
                 else:
                     chars.append(')')
         s.append(''.join(chars))
@@ -43,9 +46,8 @@ def main(n):
     for el in one.keys():
         ans += one[el] * two[-el]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # example call; adjust n as needed for experiments
     main(10)

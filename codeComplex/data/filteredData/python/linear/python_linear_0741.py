@@ -23,6 +23,7 @@ def main(n):
         P.append((L[0], L[1]))
         if L[0] < L[1]:
             L.append(L.pop(0))
+
         else:
             L.append(L.pop(1))
 
@@ -37,6 +38,7 @@ def main(n):
         if i % 2 == 0:
             # 尝试生成小于等于 indexmax 的 m
             m = (base % (indexmax + 1)) + 1 if indexmax > 0 else 1
+
         else:
             # 尝试生成大于 indexmax 的 m
             m = base + indexmax + 1
@@ -46,10 +48,11 @@ def main(n):
     for m in queries:
         if m <= indexmax:
             out_lines.append(f"{P[m-1][0]} {P[m-1][1]}")
+
         else:
             out_lines.append(f"{maxi} {Y[count(indexmax, m, array_len)]}")
 
-    print("\n".join(out_lines))
-
+    # print("\n".join(out_lines))
+    pass
 if __name__ == "__main__":
     main(10)

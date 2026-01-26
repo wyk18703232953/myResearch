@@ -11,7 +11,8 @@ def main(n):
     for j in range(n):
         u += t[j]
         if u >= a:
-            print(j + 1)
+            # print(j + 1)
+            pass
             break
 
 

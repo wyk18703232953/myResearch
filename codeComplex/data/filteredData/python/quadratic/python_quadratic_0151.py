@@ -34,6 +34,7 @@ def main(n):
                 if (i + j) % 2 == 0:
                     if chessdesk[i][j] != colour:
                         issue[w] += 1
+
                 else:
                     if chessdesk[i][j] == colour:
                         issue[w] += 1
@@ -47,7 +48,8 @@ def main(n):
             chess[1], chess[2] = chess[2], chess[1]
 
     result = min(min(issue.values()), min(reversed_issue.values()))
-    print(result)
+    # print(result)
+    pass
     return result
 
 

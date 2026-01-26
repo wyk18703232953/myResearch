@@ -14,7 +14,8 @@ def main(n):
 
     # 保持原算法逻辑：统计所有长度>=3 的连续 x 段的 (长度 - 2) 之和
     total = sum(len(f) - 2 for f in re.findall('x{3,}', s))
-    print(total)
+    # print(total)
+    pass
     return total
 
 if __name__ == "__main__":

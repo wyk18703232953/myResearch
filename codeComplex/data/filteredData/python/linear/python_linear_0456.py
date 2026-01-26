@@ -52,6 +52,7 @@ def get_frequency(lst):
     for ele in lst:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -69,7 +70,8 @@ def main(n):
     # deterministically construct k and s from n
     # k is even and at most n
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
     k = (n // 2) * 2
     base = "()"
@@ -80,6 +82,7 @@ def main(n):
     for i in range(n):
         if s[i] == "(":
             arrStack.my_push([i, "("])
+
         else:
             if not arrStack.isEmpty() and arrStack.my_peak()[1] == "(":
                 index = arrStack.my_peak()[0]
@@ -93,7 +96,7 @@ def main(n):
     for i in range(n):
         if i in dic:
             ans += s[i]
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

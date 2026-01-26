@@ -24,7 +24,8 @@ def main(n):
     # Map n to input size:
     # Use m = n (number of rows), n_bits = n (number of columns / string length)
     if n <= 0:
-        print(1)
+        # print(1)
+        pass
         return
 
     m = n
@@ -46,8 +47,7 @@ def main(n):
     for b in dd.values():
         ans = ans * dp[b] % mod
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

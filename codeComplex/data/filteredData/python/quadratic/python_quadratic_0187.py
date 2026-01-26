@@ -26,6 +26,7 @@ def main(n):
     if length == 1:
         for _ in range(q):
             outputs.append(str(f[0][0]))
+
     else:
         for i in range(q):
             l = i % length + 1
@@ -34,8 +35,7 @@ def main(n):
                 l, r = r, l
             outputs.append(str(f[r - l][l - 1]))
 
-    print("\n".join(outputs))
-
-
+    # print("\n".join(outputs))
+    pass
 if __name__ == "__main__":
     main(10)

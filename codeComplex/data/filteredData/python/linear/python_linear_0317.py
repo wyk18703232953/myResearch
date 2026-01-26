@@ -25,6 +25,7 @@ def main(n):
                     j += 1
                 elif len(idx[j % m]) >= n // m:
                     j += 1
+
                 else:
                     break
             last = idx[i].pop()
@@ -32,10 +33,10 @@ def main(n):
             idx[j % m].append(last)
 
     # Match original outputs: first the total increment, then final array
-    print(sum(arr) - s)
-    print(*arr)
-
-
+    # print(sum(arr) - s)
+    pass
+    # print(*arr)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n to scale the experiment
     main(10)

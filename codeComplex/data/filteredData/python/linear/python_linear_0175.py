@@ -31,7 +31,8 @@ def main(n):
             maxx = x
 
     result = summ + maxx
-    print(result)
+    # print(result)
+    pass
     return result
 
 

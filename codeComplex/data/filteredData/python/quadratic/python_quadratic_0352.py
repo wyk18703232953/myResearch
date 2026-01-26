@@ -3,7 +3,8 @@ def main(n):
     # s: 递增字母序列，从 'a' 开始循环
     # t: 在 s 的基础上做一次相邻交换，保证通常可通过相邻交换恢复
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     s = [chr(ord('a') + (i % 26)) for i in range(n)]
@@ -32,14 +33,16 @@ def main(n):
                     ans.append(k)
                 break
         if f == 0:
-            print(-1)
+            # print(-1)
+            pass
             return
 
-    print(len(ans))
+    # print(len(ans))
+    pass
+
     if ans:
-        print(*ans)
-
-
+        # print(*ans)
+        pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10)

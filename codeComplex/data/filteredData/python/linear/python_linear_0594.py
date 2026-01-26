@@ -5,8 +5,7 @@ def main(n):
         a = n // i
         r += (a + 2) * (a - 2 + 1) / 2
         i += 1
-    print(int(4 * r))
-
-
+    # print(int(4 * r))
+    pass
 if __name__ == "__main__":
     main(1000)

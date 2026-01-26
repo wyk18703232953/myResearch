@@ -1,7 +1,8 @@
 def main(n):
     # n 表示数组长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成测试数据：a[i] = (i + 1) * (i % 5 + 1)
@@ -17,8 +18,7 @@ def main(n):
                 b.append(x)
         a = b
         ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

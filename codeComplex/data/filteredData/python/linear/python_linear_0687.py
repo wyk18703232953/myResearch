@@ -20,14 +20,14 @@ def main(n):
         if b[l - 1] >= b[l]:
             a[l - 1] = a[l]
             a[r + 1] = b[l - 1] - a[l]
+
         else:
             a[r + 1] = a[r]
             a[l - 1] = b[l - 1] - a[r]
         l -= 1
         r += 1
 
-    print(*a)
-
-
+    # print(*a)
+    pass
 if __name__ == "__main__":
     main(10)

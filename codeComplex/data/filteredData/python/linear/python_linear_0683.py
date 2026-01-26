@@ -24,6 +24,7 @@ def main(n):
             a[i] = minV
             a[j] = b[i] - minV
             maxV = min(maxV, b[i] - minV)
+
         else:
             a[i] = b[i] - maxV
             a[j] = maxV
@@ -32,8 +33,7 @@ def main(n):
         i += 1
         j -= 1
 
-    print(' '.join(map(str, a)))
-
-
+    # print(' '.join(map(str, a)))
+    pass
 if __name__ == "__main__":
     main(10)

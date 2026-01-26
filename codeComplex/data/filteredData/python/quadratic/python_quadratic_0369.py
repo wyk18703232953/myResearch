@@ -45,12 +45,14 @@ def main(n):
             c[i][j + 1] += c[i][j]
             if i != 0 and j != 0:
                 if (b[i][j] + c[i][j] > 0) != (s[i][j] == "*"):
-                    print(-1)
+                    # print(-1)
+                    pass
                     return
-    print(len(ans))
+    # print(len(ans))
+    pass
     for i, j, t in ans:
-        print(i, j, t)
-
+        # print(i, j, t)
+        pass
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     main(10)

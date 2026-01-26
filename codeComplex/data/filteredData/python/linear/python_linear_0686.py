@@ -18,6 +18,7 @@ def core_algorithm(n, b):
             elif summ > val:
                 diff = summ - val
                 r -= diff
+
             else:
                 diff = val - summ
                 l += diff
@@ -31,8 +32,9 @@ def main(n):
     b = generate_b(n)
     a = core_algorithm(n, b)
     for x in a:
-        print(x, end=' ')
-    print('')
-
+        # print(x, end=' ')
+        pass
+    # print('')
+    pass
 if __name__ == "__main__":
     main(10)

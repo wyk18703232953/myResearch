@@ -34,9 +34,9 @@ def main(n):
                 sq = True
                 break
 
-    print(res1 - (2 if sq else 1 if p else 0))
-    print(res2, res3)
-
-
+    # print(res1 - (2 if sq else 1 if p else 0))
+    pass
+    # print(res2, res3)
+    pass
 if __name__ == "__main__":
     main(10)

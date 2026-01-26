@@ -37,9 +37,8 @@ def main(n):
 
     # Output results line by line to match original behavior
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # Example call; change n here to scale the experiment
     main(10)

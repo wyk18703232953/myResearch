@@ -27,4 +27,5 @@ if __name__ == "__main__":
     # Example deterministic calls for time-complexity experiments
     for size in [10, 100, 1000]:
         result = main(size)
-        print(size, result)
+        # print(size, result)
+        pass

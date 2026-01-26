@@ -30,9 +30,8 @@ def main(n):
     C = [(i * 2 + 1) for i in range(N)]
 
     result = solve(N, S, C)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用，可自行修改 n 的大小做时间复杂度实验
     main(10)

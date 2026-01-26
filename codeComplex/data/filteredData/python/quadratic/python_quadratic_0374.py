@@ -34,9 +34,8 @@ def main(n):
     # 确定性生成 k，这里选取 k = n * (n // 2)
     k = n * (n // 2)
     result = core(n, k)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 200 作为规模
     main(200)

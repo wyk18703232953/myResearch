@@ -38,8 +38,7 @@ def main(n):
                     cnt += 1
                 x = (x + 1) % 3
             ans = min(ans, cnt)
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     main(5)

@@ -11,8 +11,7 @@ def main(n):
         if mark[i] < mark[i + 1] - 1:
             mark[i] = mark[i + 1] - 1
         j += mark[i] - int(m[i]) - 1
-    print(j)
-
-
+    # print(j)
+    pass
 if __name__ == "__main__":
     main(10)

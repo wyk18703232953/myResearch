@@ -7,14 +7,14 @@ def main(n):
 
     # Edge cases: if no 'H' or no 'T', the replacement cost is 0
     if hc == 0 or tc == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     hr = min(s[i:i + hc].count('T') for i in range(n - hc + 1))
     tr = min(s[i:i + tc].count('H') for i in range(n - tc + 1))
-    print(min(hr, tr))
-
-
+    # print(min(hr, tr))
+    pass
 if __name__ == "__main__":
     # Example call with a specific n for reproducible experiment
     main(10)

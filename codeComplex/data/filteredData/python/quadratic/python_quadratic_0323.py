@@ -75,6 +75,7 @@ def main(n):
     attach1 = clevel[0]
     if len(clevel) > firstchild:
         attach2 = clevel[-1]
+
     else:
         attach2 = prevlevel[-1]
         d2 -= 1
@@ -98,6 +99,7 @@ def main(n):
             par[cptr] = attach2
             attach2 = cptr
             d2 += 1
+
         else:
             par[cptr] = attach1
             attach1 = cptr

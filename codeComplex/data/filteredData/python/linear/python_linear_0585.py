@@ -19,6 +19,7 @@ def main(n):
     for i in lst:
         if i == 0:
             new_lst.append((new_lst[-1][0] + 1, new_lst[-1][1]))
+
         else:
             new_lst.append((new_lst[-1][0], new_lst[-1][1] + 1))
 
@@ -36,9 +37,8 @@ def main(n):
         zeros = new_lst[r][0] - new_lst[l - 1][0]
         ones = new_lst[r][1] - new_lst[l - 1][1]
         total = zeros + ones
-        print((ls[total] - ls[zeros]) % C)
-
-
+        # print((ls[total] - ls[zeros]) % C)
+        pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

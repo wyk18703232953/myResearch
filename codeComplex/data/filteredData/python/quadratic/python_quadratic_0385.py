@@ -18,7 +18,8 @@ def main(n):
     for i in range(rows):
         mt = matrix[i]
         if mt.count('B') != 0:
-            print(mt.count('B') // 2 + i + 1, mt.count('B') // 2 + mt.index('B') + 1)
+            # print(mt.count('B') // 2 + i + 1, mt.count('B') // 2 + mt.index('B') + 1)
+            pass
             break
 
 

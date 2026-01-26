@@ -35,6 +35,7 @@ def main(n):
         for y in range(size):
             if min_block_row <= x <= max_block_row and min_block_col <= y <= max_block_col:
                 row_chars.append('B')
+
             else:
                 row_chars.append('.')
         a.append(''.join(row_chars))
@@ -54,7 +55,7 @@ def main(n):
     if maxx == 0 and maxy == 0:
         return
 
-    print((maxx + minx) // 2, (maxy + miny) // 2)
-
+    # print((maxx + minx) // 2, (maxy + miny) // 2)
+    pass
 if __name__ == "__main__":
     main(7)

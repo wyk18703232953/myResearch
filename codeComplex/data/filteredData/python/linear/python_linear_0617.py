@@ -20,14 +20,15 @@ def main(n):
     for s in b:
         if s in d and d[s] != -1:
             c = d[s]
-            print(c - k + 1, end=' ')
+            # print(c - k + 1, end=' ')
+            pass
             for i in range(k, c + 1):
                 d[a[i]] = -1
             k = c + 1
+
         else:
-            print(0, end=' ')
-
-
+            # print(0, end=' ')
+            pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

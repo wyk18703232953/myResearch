@@ -31,15 +31,16 @@ def main(n):
 
     finger = next((i for i in range(5) if can_finish[n - 1][i]), None)
     if finger is None:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         seq = [finger]
         for i in range(n - 1, 0, -1):
             finger = ref[i][finger]
             seq.append(finger)
-        print(' '.join(str(x + 1) for x in seq[::-1]))
-
-
+        # print(' '.join(str(x + 1) for x in seq[::-1]))
+        pass
 if __name__ == "__main__":
     # 示例调用，可以按需要修改 n 以做规模实验
     main(10)

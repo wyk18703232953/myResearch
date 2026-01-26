@@ -8,10 +8,12 @@ def main(n):
         n_input = 1
         d = 1
         k = 1
+
     else:
         n_input = n + 1  # 让规模整体偏大一点，触发更多分支
         if n_input <= 1:
             d = 1
+
         else:
             d = (n_input // 2) if (n_input // 2) > 0 else 1
         k = (n % 5) + 1
@@ -26,13 +28,18 @@ def main(n):
     l = []
     i = 1
     if n_val <= d_val:
-        print("NO")
+        # print("NO")
+        pass
     elif k_val == 1:
         if n_val > 2:
-            print("NO")
+            # print("NO")
+            pass
         elif n_val == 2:
-            print("YES")
-            print(1, 2)
+            # print("YES")
+            pass
+            # print(1, 2)
+            pass
+
     else:
         n_val += 1
         flag = False
@@ -54,6 +61,7 @@ def main(n):
                     while i < n_val and j < end:
                         if mode == 1:
                             c = min(j - start + 1, end - j)
+
                         else:
                             c = min(end - j, d_val - end + j)
                         if c > 1:
@@ -66,18 +74,21 @@ def main(n):
                             ki = i
                             i += 1
                         j += 1
+
                 else:
                     flag = True
                     break
                 kk += 1
             cnt1 += 1
         if i < n_val or flag:
-            print("NO")
+            # print("NO")
+            pass
+
         else:
-            print("YES")
-            print('\n'.join(l))
-
-
+            # print("YES")
+            pass
+            # print('\n'.join(l))
+            pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 以进行规模化实验
     main(10)

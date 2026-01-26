@@ -8,7 +8,7 @@ def main(n):
         s = (s + x) % MOD
         p = (ss + sp + s) % MOD
         sp = (sp + p) % MOD
-    print(p)
-
+    # print(p)
+    pass
 if __name__ == "__main__":
     main(10)

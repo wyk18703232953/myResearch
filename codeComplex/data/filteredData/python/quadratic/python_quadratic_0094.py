@@ -27,7 +27,8 @@ def main(n):
 
     ms = a
     result = ['NO', 'YES'][m1 in ms]
-    print(result)
+    # print(result)
+    pass
     return result
 
 

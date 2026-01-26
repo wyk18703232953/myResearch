@@ -1,7 +1,9 @@
 def main(n):
     if n <= 0:
-        print("YES")
-        print()
+        # print("YES")
+        pass
+        # print()
+        pass
         return
 
     # Deterministic construction of l and r based on n
@@ -20,7 +22,8 @@ def main(n):
             if c[j] > c[i]:
                 m += 1
         if m != l[i]:
-            print('NO')
+            # print('NO')
+            pass
             return
 
     for i in range(n):
@@ -29,13 +32,14 @@ def main(n):
             if c[j] > c[i]:
                 m += 1
         if m != r[i]:
-            print('NO')
+            # print('NO')
+            pass
             return
 
-    print('YES')
-    print(*c)
-
-
+    # print('YES')
+    pass
+    # print(*c)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(5)

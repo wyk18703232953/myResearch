@@ -4,7 +4,8 @@ def main(n):
     original_n = n
     k = max(1, n // 3)
     if original_n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     base = "abc"
@@ -24,9 +25,8 @@ def main(n):
         if cnt == k and len(s1) < lenn:
             ans = s1
             lenn = len(s1)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：调用 main(10)
     main(10)

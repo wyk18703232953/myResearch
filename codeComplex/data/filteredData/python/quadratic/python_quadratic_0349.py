@@ -10,6 +10,7 @@ def generate_strings(n):
     # 这里做一次简单的循环右移，保证 Counter(s) == Counter(t)
     if n == 1:
         t = s
+
     else:
         shift = n // 2  # 确定性的偏移
         shift %= n
@@ -19,7 +20,8 @@ def generate_strings(n):
 def main(n):
     s, t = generate_strings(n)
     if collections.Counter(s) != collections.Counter(t):
-        print(-1)
+        # print(-1)
+        pass
         return
     sl = list(s)
     st = list(t)
@@ -31,14 +33,17 @@ def main(n):
             ans.extend(list(range(k + p, p, -1)))
             sl.pop(k)
             st.pop(0)
+
         else:
             sl.pop(0)
             st.pop(0)
         p += 1
-    print(len(ans))
-    if ans:
-        print(*ans)
+    # print(len(ans))
+    pass
 
+    if ans:
+        # print(*ans)
+        pass
 if __name__ == "__main__":
     # 示例：以 n=10 作为输入规模
     main(10)

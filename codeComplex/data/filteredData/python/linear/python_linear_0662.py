@@ -4,7 +4,8 @@ def main(n):
     if n < 2:
         # For n < 2 the original logic (edges = n-1) does not make sense
         # Define output as 0 to avoid division / meaningless case
-        print(0)
+        # print(0)
+        pass
         return
 
     s = n
@@ -23,8 +24,7 @@ def main(n):
         if len(v[i]) == 1:
             ans += 1
 
-    print(2 * s / ans)
-
-
+    # print(2 * s / ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -3,7 +3,8 @@ def main(n):
         return
     # 确定性生成 permutation pi，长度为 n-1，范围 1..n-1
     if n == 1:
-        print(1)
+        # print(1)
+        pass
         return
     pi = [(i % (n - 1)) + 1 for i in range(n - 1)]
 
@@ -15,9 +16,9 @@ def main(n):
         ai[pi[i]] += ai[i + 2]
     ai.sort()
     for i in range(n):
-        print(ai[i], end=" ")
-    print()
-
-
+        # print(ai[i], end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

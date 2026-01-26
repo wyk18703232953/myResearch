@@ -10,8 +10,7 @@ def main(n):
 
     thomas = r[0]
     rank = sorted(r, reverse=True).index(thomas) + 1
-    print(rank)
-
-
+    # print(rank)
+    pass
 if __name__ == "__main__":
     main(10)

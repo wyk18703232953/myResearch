@@ -6,6 +6,7 @@ def decimal_to_26(num):
         if mod == 0:
             res = 'Z' + res
             num = num // 26 - 1
+
         else:
             num //= 26
             res = chr(mod + 64) + res
@@ -48,6 +49,7 @@ def detect_format(s):
         return None
     if min(di_index) < max(al_index):
         return "RXCY"
+
     else:
         return "EXCEL"
 
@@ -90,6 +92,7 @@ def generate_inputs(n):
             row = idx
             col = idx * 2
             inputs.append(f"R{row}C{col}")
+
         else:
             # Excel form: letters + digits
             # Use idx to derive row and column deterministically
@@ -107,7 +110,7 @@ def main(n):
         outputs.append(res)
     # For experimental setting, print all outputs to keep behavior similar
     for out in outputs:
-        print(out)
-
+        # print(out)
+        pass
 if __name__ == "__main__":
     main(10)

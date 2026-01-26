@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 生成确定性输入：长度为 n 的整数列表 a
@@ -20,9 +21,8 @@ def main(n):
         ted = ted + (khat[i] - (a[i] + 1))
 
     ted = ted + (khat[n - 1] - (a[n - 1] + 1))
-    print(ted)
-
-
+    # print(ted)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的大小进行实验
     main(10)

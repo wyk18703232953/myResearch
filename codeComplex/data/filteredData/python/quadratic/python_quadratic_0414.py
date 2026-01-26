@@ -8,10 +8,10 @@ def main(n):
 
     for i in range(1, n):
         if s[:n - i] == s[i:]:
-            print(s + s[n - i:] * (k - 1))
+            # print(s + s[n - i:] * (k - 1))
+            pass
             return
-    print(s * k)
-
-
+    # print(s * k)
+    pass
 if __name__ == "__main__":
     main(10)

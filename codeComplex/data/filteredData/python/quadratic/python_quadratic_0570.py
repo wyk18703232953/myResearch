@@ -8,19 +8,22 @@ def main(n):
     e = n - 1
     for i in range(n // 2):
         for j in range(m):
-            print(s + 1, j + 1)
-            print(e + 1, m - j)
+            # print(s + 1, j + 1)
+            pass
+            # print(e + 1, m - j)
+            pass
         s += 1
         e -= 1
     if n % 2 == 1:
         s = n // 2
         for j in range(m // 2):
-            print(s + 1, j + 1)
-            print(s + 1, m - j)
+            # print(s + 1, j + 1)
+            pass
+            # print(s + 1, m - j)
+            pass
         if m % 2 == 1:
-            print(s + 1, m // 2 + 1)
-
-
+            # print(s + 1, m // 2 + 1)
+            pass
 if __name__ == "__main__":
     # Example deterministic call for time complexity experiments
     main(10)

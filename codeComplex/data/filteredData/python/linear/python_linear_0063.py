@@ -30,21 +30,28 @@ def main(n):
         if letters_s[i] != 0 and letters_t[i] != 0:
             sim = letters_s[i]
             break
+
     else:
-        print(cnt)
-        print(-1, -1)
+        # print(cnt)
+        pass
+        # print(-1, -1)
+        pass
         return
 
     for i in range(n):
         if s[i] != t[i]:
             if (t[i], s[i]) in pair2ind:
-                print(cnt - 2)
-                print(pair2ind[(s[i], t[i])], pair2ind[(t[i], s[i])])
+                # print(cnt - 2)
+                pass
+                # print(pair2ind[(s[i], t[i])], pair2ind[(t[i], s[i])])
+                pass
                 return
 
     non_common.remove(sim)
-    print(cnt - 1)
-    print(sim, letters_t[ord(s[sim - 1]) - ord('a')])
+    # print(cnt - 1)
+    pass
+    # print(sim, letters_t[ord(s[sim - 1]) - ord('a')])
+    pass
     return
 
 

@@ -17,6 +17,7 @@ def chain_reaction(n, beacons):
             pos = beacons[mid][0]
             if beacons[mid][0] < r:
                 lo = mid + 1
+
             else:
                 hi = mid - 1
         # beacons destroyed by next activated one
@@ -31,6 +32,7 @@ def chain_reaction(n, beacons):
     for i in range(n):
         if i == 0:
             cost = (n - i)
+
         else:
             cost = (n - i) + table[i - 1]
         options.append(cost)
@@ -52,7 +54,7 @@ def generate_beacons(n):
 def main(n):
     beacons = generate_beacons(n)
     result = chain_reaction(n, beacons)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

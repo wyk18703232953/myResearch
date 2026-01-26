@@ -29,12 +29,14 @@ def main(n):
     for _ in range(4):
         for _ in range(2):
             if check(a, b):
-                print('Yes')
+                # print('Yes')
+                pass
                 return
             b = b[::-1]
         for _ in range(2):
             if check(a, b):
-                print('Yes')
+                # print('Yes')
+                pass
                 return
             b = [s[::-1] for s in b]
         c = [['' for _ in range(re)] for _ in range(re)]
@@ -43,9 +45,10 @@ def main(n):
                 c[t][u] = b[u][re - t - 1]
         b = c[:]
         if check(a, b):
-            print('Yes')
+            # print('Yes')
+            pass
             return
-    print('No')
-
+    # print('No')
+    pass
 if __name__ == "__main__":
     main(5)

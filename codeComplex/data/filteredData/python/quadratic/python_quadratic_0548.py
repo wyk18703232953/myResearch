@@ -22,7 +22,8 @@ def main(n):
             current_n -= 1
 
     result = "".join(l)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -45,14 +45,17 @@ def main(n):
             ans = ans and a[i] == l and b[i] == r
 
     if ans:
-        print("YES")
+        # print("YES")
+        pass
         for i in range(n):
-            print(n - a[i] - b[i], end=" ")
-        print()
+            # print(n - a[i] - b[i], end=" ")
+            pass
+        # print()
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例调用：可以按需修改 n
     main(10)

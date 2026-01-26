@@ -29,7 +29,7 @@ def main(n):
         ans = solve_case(length, m, s)
         results.append(ans)
     for res in results:
-        print(res)
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     main(5)

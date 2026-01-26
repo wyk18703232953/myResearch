@@ -22,7 +22,8 @@ def main(n):
     l.sort(reverse=True)
     for i in range(len(l)):
         if m == l[i]:
-            print(i + 1)
+            # print(i + 1)
+            pass
             break
 
 

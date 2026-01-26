@@ -2,7 +2,8 @@ def main(n):
     import bisect
 
     if n < 3:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministically generate s and c based on n
@@ -16,10 +17,11 @@ def main(n):
         l2 = [c[i] for i in range(mid + 1, n) if s[i] > s[mid]] + [INF]
         ans = min(ans, min(l1) + c[mid] + min(l2))
     if ans >= INF:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     main(10)

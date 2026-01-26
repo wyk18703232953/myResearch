@@ -14,7 +14,8 @@ def main(n):
             if arr[j] % arr[i] == 0:
                 color[j] = ans
 
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

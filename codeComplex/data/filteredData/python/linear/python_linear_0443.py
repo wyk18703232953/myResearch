@@ -8,8 +8,7 @@ def main(n):
         x -= m
     for i in range(1, x + 1):
         ans.append(i)
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(1000)

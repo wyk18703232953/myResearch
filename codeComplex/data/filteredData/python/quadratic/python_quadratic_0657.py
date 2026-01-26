@@ -15,17 +15,18 @@ def main(n):
         for a in alst:
             if a == 1:
                 ans.append("1")
-                print(".".join(ans))
+                # print(".".join(ans))
+                pass
                 continue
             while ans and int(ans[-1]) != a - 1:
                 ans.pop()
             if not ans:
                 ans.append(str(a))
+
             else:
                 ans.pop()
                 ans.append(str(a))
-            print(".".join(ans))
-
-
+            # print(".".join(ans))
+            pass
 if __name__ == "__main__":
     main(5)

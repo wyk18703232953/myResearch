@@ -17,7 +17,8 @@ def main(n):
         if a[i] != 1:
             c.append([a[i], i])
     if not c:
-        print("NO")
+        # print("NO")
+        pass
         return
     ans = len(c)
     for i in range(len(c) - 1):
@@ -39,17 +40,19 @@ def main(n):
         while i < len(c) and c[i][0] == 0:
             i += 1
         if i == len(c):
-            print("NO")
+            # print("NO")
+            pass
             return
         e.append((b[-1], c[i][1]))
         c[i][0] -= 1
         b.pop()
 
-    print("YES", ans - 1)
-    print(len(e))
+    # print("YES", ans - 1)
+    pass
+    # print(len(e))
+    pass
     for (x, y) in e:
-        print(x + 1, y + 1)
-
-
+        # print(x + 1, y + 1)
+        pass
 if __name__ == "__main__":
     main(10)

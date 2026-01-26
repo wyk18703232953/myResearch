@@ -17,12 +17,12 @@ def main(n):
         l = m[t]
         if max(l) >= 2:
             ret = min(ret, 3 - max(l))
+
         else:
             for i in range(7):
                 seq = sum(l[i:i + 3])
                 ret = min(ret, 3 - seq)
-    print(ret)
-
-
+    # print(ret)
+    pass
 if __name__ == "__main__":
     main(14)

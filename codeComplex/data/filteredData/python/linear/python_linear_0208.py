@@ -14,7 +14,8 @@ def main(n):
     for t in count():
         if all(abs(u - t) > s for u in times):
             h, m = divmod(t, 60)
-            print(h, m)
+            # print(h, m)
+            pass
             break
 
 if __name__ == "__main__":

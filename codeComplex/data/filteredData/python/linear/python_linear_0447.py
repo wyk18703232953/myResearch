@@ -19,6 +19,7 @@ def main(n):
     # If n is even, force a match; if odd, make it likely non-match
     if prefix_len + suffix_len <= m and n % 2 == 0:
         b = a1 + base[prefix_len:m - suffix_len] + a2
+
     else:
         b = base
 
@@ -38,15 +39,20 @@ def main(n):
         if Len2:
             b2 = b[-Len2:]
         if a1 == b1 and a2 == b2 and Len1 + Len2 <= len(b):
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
+            # print('NO')
+            pass
+
     else:
         if a == b:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
-
-
+            # print('NO')
+            pass
 if __name__ == "__main__":
     main(100)

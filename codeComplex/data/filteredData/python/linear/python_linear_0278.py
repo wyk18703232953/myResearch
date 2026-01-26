@@ -9,11 +9,12 @@ def main(n):
     n_val, m_val, a_val, b_val = N, M, A, B
 
     if n_val % m_val == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
         k = n_val % m_val
-        print(min(k * b_val, (m_val - k) * a_val))
-
-
+        # print(min(k * b_val, (m_val - k) * a_val))
+        pass
 if __name__ == "__main__":
     main(10)

@@ -28,15 +28,19 @@ def main(n):
         su += el
 
     if ma > mi:
-        print(-1)
+        # print(-1)
+        pass
     elif ma == mi or macount > 1:
         f = True
         for i in range(n):
             if a[i] == ma and f:
                 f = False
+
             else:
                 su += a[i] * m
-        print(su)
+        # print(su)
+        pass
+
     else:
         secmax = 0
         for el in a:
@@ -46,10 +50,10 @@ def main(n):
         for i in range(n):
             if a[i] == ma and f:
                 f = False
+
             else:
                 su += a[i] * m
-        print(su + ma - secmax)
-
-
+        # print(su + ma - secmax)
+        pass
 if __name__ == "__main__":
     main(10)

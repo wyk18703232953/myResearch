@@ -17,7 +17,8 @@ def main(n):
     # - list p has length n
     # All values are generated deterministically from n and indices.
     if n <= 0:
-        print()
+        # print()
+        pass
         return
 
     # Deterministically generate k based on n
@@ -39,6 +40,7 @@ def main(n):
             if kk in g:
                 if x - g[kk] < k:
                     ttt = g[kk]
+
                 else:
                     ttt = kk + 1
                 for i in range(kk + 1, x + 1):
@@ -52,9 +54,8 @@ def main(n):
                 break
             kk -= 1
 
-    print(' '.join(str(x) for x in t))
-
-
+    # print(' '.join(str(x) for x in t))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n to scale the experiment
     main(10)

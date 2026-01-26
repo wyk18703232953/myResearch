@@ -73,10 +73,11 @@ def main(n):
             break
         rotate(map1, n)
     if f:
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     main(5)

@@ -13,7 +13,8 @@ def main(n):
     # 生成一个长度为 n 的整数列表，元素为 1 到 n
     values = [i + 1 for i in range(n)]
     result = get_answer(values)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

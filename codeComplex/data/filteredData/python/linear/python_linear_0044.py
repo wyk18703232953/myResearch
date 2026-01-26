@@ -3,7 +3,8 @@ def main(n):
     # n 表示数组 a 的长度
     # k 取 min(5, n)（至少为 1）
     if n <= 0:
-        print(-1, -1)
+        # print(-1, -1)
+        pass
         return
 
     k = min(5, n)
@@ -39,11 +40,12 @@ def main(n):
                 break
 
     if len(set(a)) >= k:
-        print(w, t)
+        # print(w, t)
+        pass
+
     else:
-        print(-1, -1)
-
-
+        # print(-1, -1)
+        pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 进行时间复杂度实验
     main(10)

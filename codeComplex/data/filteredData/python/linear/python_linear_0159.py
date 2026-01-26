@@ -22,11 +22,13 @@ def main(n):
         s.append(value)
         if value not in f:
             f[value] = 1
+
         else:
             f[value] += 1
     for i in range(len(s)):
-        print(f[s[i]], end=" ")
-    print()
-
+        # print(f[s[i]], end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

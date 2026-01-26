@@ -26,7 +26,7 @@ def main(n):
     ans = 0
     for i in range((N + 1) // 2):
         ans = (ans + f(N - i, i + 1, mod)) % mod
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

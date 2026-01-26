@@ -24,14 +24,14 @@ def main(n):
                 if A[pn - j] is None:
                     A[pn - j] = pn - j
                     break
+
                 else:
                     if A[pn - j] + K - 1 >= pn:
                         break
             for jj in range(j, -1, -1):
                 A[pn - jj] = A[pn - j]
-    print(*[A[P[i]] for i in range(N)])
-
-
+    # print(*[A[P[i]] for i in range(N)])
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

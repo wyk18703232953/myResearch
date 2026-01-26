@@ -7,7 +7,8 @@ def timer(func):
         stime = time.perf_counter()
         res = func(*args, **kwargs)
         elapsed = time.perf_counter() - stime
-        print(f"{func.__name__} in {elapsed:.4f} secs")
+        # print(f"{func.__name__} in {elapsed:.4f} secs")
+        pass
         return res
     return wrapper
 
@@ -30,7 +31,8 @@ class solver:
                 dmin = min(abs(y - xi) for xi in x)
                 if dmin == d:
                     ans.add(y)
-        print(len(ans))
+        # print(len(ans))
+        pass
 
 def main(n):
     if n <= 0:

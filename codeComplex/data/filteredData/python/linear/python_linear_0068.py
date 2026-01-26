@@ -23,9 +23,8 @@ def main(n):
             ans += delta
             s += delta
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：用 n = 10 进行一次运行
     main(10)

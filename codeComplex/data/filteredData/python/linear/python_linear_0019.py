@@ -3,6 +3,7 @@ def main(n):
     # has parity different from all the others.
     if n <= 1:
         s = [1]
+
     else:
         # Make all elements even
         s = [2 * (i + 1) for i in range(n)]
@@ -15,13 +16,13 @@ def main(n):
         if i % 2 == 0:
             even += 1
             evenIndex = counter
+
         else:
             odd += 1
             oddIndex = counter
         counter += 1
     ans = evenIndex + 1 if even == 1 else oddIndex + 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

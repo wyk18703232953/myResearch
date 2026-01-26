@@ -16,7 +16,7 @@ def main(n):
     c = [i % n for i in range(m)]
     for x in c:
         cnt[x] += 1
-    print(min(cnt))
-
+    # print(min(cnt))
+    pass
 if __name__ == "__main__":
     main(10)

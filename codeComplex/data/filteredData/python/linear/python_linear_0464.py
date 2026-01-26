@@ -54,6 +54,7 @@ def core_logic(s):
     for i in range(1, len(s)):
         if s[i] != s[i - 1]:
             c += 1
+
         else:
             m = max(m, c)
             c = 1
@@ -72,7 +73,7 @@ def main(n):
     # n controls the length of the input string s
     s = generate_input_string(n)
     result = core_logic(s)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

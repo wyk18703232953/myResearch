@@ -33,8 +33,7 @@ def main(n):
         aux2.append((l, r))
 
     for l, r in aux2:
-        print(str(array[r - l][l - 1]))
-
-
+        # print(str(array[r - l][l - 1]))
+        pass
 if __name__ == "__main__":
     main(10)

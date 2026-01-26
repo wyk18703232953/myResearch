@@ -4,6 +4,7 @@ def main(n):
     base_chars = ['a', 'b', 'c']
     if n <= 0:
         s = ""
+
     else:
         s = ''.join(base_chars[i % 3] for i in range(n))
     s = s * 3
@@ -14,10 +15,12 @@ def main(n):
             curr += 1
             if curr > m:
                 m = curr
+
         else:
             curr = 1
     result = min(m, n_len // 3)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

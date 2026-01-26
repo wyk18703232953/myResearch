@@ -7,9 +7,11 @@ def main(n):
     for i in range(n):
         if i < n // 3:
             arr.append('f')
+
         else:
             if (i - n // 3) % 2 == 0:
                 arr.append('s')
+
             else:
                 arr.append('f')
 
@@ -60,4 +62,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例调用，可以根据需要修改 n 以进行规模实验
-    print(main(10))
+    # print(main(10))
+    pass

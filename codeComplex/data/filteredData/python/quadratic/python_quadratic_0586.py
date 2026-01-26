@@ -35,6 +35,7 @@ def generate_input_structure(n):
                 s_chars.append('R')
             elif v == 1:
                 s_chars.append('G')
+
             else:
                 s_chars.append('B')
         s = ''.join(s_chars)
@@ -47,7 +48,7 @@ def main(n):
     for (length, k, s) in cases:
         res = solve_single_case(length, k, s)
         results.append(str(res))
-    print("\n".join(results))
-
+    # print("\n".join(results))
+    pass
 if __name__ == "__main__":
     main(10)

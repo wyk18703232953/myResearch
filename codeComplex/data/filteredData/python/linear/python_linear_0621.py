@@ -12,7 +12,8 @@ def main(n):
     # 给定 n，构造 n 个 "普通点" 和 n 个 "特殊点"，总长度为 2n
     # 对应原程序中的 n, m -> n, n
     if n <= 0:
-        print()
+        # print()
+        pass
         return
 
     n_val = n
@@ -35,6 +36,7 @@ def main(n):
     for i in range(total):
         if check[i] == 0:
             left[i] = prev
+
         else:
             prev = i
 
@@ -42,6 +44,7 @@ def main(n):
     for i in range(total - 1, -1, -1):
         if check[i] == 0:
             right[i] = prev
+
         else:
             prev = i
 
@@ -59,6 +62,7 @@ def main(n):
         if a != -1 and b != -1:
             if abs(arr[i] - arr[a]) <= abs(arr[i] - arr[b]):
                 cnt[a] += 1
+
             else:
                 cnt[b] += 1
 
@@ -66,9 +70,8 @@ def main(n):
     for i in range(total):
         if check[i] == 1:
             ans.append(str(cnt[i]))
-    print(' '.join(ans))
-
-
+    # print(' '.join(ans))
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 测试不同规模
     main(10)

@@ -15,13 +15,16 @@ def main(n):
 
     # 模拟原先的提前结束逻辑，但不使用 sys.exit
     if n == 2 and (a0, b0) == (1, 1):
-        print('NO')
+        # print('NO')
+        pass
         return
     if n == 3 and (a0, b0) == (1, 1):
-        print('NO')
+        # print('NO')
+        pass
         return
     if a > 1 and b > 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     mat = [['0' for _ in range(n)] for _ in range(n)]
@@ -31,6 +34,7 @@ def main(n):
         for x in range(n - a):
             mat[x][x + 1] = '1'
             mat[x + 1][x] = '1'
+
     else:
         mat = mat1
         for x in range(n):
@@ -39,11 +43,11 @@ def main(n):
             mat[x][x + 1] = '0'
             mat[x + 1][x] = '0'
 
-    print('YES')
+    # print('YES')
+    pass
     for x in range(n):
-        print(''.join(mat[x]))
-
-
+        # print(''.join(mat[x]))
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(5)

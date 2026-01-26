@@ -43,18 +43,22 @@ def solve(n, grids):
         if mask in take:
             if mask & 1:
                 cnt += one[3]
+
             else:
                 cnt += zero[3]
             if mask & 2:
                 cnt += one[2]
+
             else:
                 cnt += zero[2]
             if mask & 4:
                 cnt += one[1]
+
             else:
                 cnt += zero[1]
             if mask & 8:
                 cnt += one[0]
+
             else:
                 cnt += zero[0]
         answer = min(answer, cnt)
@@ -75,7 +79,7 @@ def generate_grids(n):
 def main(n):
     grids = generate_grids(n)
     result = solve(n, grids)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(4)

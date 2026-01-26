@@ -64,7 +64,8 @@ def main(n):
             ans2 += fp[i][0]
 
     ans = min(ans1, ans2)
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

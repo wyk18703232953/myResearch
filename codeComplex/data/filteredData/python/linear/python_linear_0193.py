@@ -30,7 +30,7 @@ def core_logic(n, a, b, c, t, l):
 def main(n):
     n_gen, a_gen, b_gen, c_gen, t_gen, l_gen = generate_inputs(n)
     result = core_logic(n_gen, a_gen, b_gen, c_gen, t_gen, l_gen)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -312,6 +312,7 @@ def binarySearch(arr, n, key):
         if arr[mid] >= key:
             res = arr[mid]
             right = mid - 1
+
         else:
             left = mid + 1
     return res
@@ -324,6 +325,7 @@ def binarySearch1(arr, n, key):
         mid = (right + left) // 2
         if arr[mid] > key:
             right = mid - 1
+
         else:
             res = arr[mid]
             left = mid + 1
@@ -331,7 +333,8 @@ def binarySearch1(arr, n, key):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     a = [(i * 3 + 1) % MOD for i in range(n)]
     difficulty = a[0]
@@ -341,7 +344,7 @@ def main(n):
         difficulty = difficulty * 2 + a[i]
         expectation %= MOD
         difficulty %= MOD
-    print(expectation)
-
+    # print(expectation)
+    pass
 if __name__ == "__main__":
     main(5)

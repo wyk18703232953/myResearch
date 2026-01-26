@@ -59,9 +59,8 @@ def main(n):
 
     avg1 = (position1 + position2) // 2 + 1
     avg2 = (position3 + position4) // 2 + 1
-    print(avg1, avg2)
-
-
+    # print(avg1, avg2)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值进行规模实验
     main(10)

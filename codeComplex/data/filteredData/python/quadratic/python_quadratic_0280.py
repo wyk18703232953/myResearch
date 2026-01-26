@@ -8,6 +8,7 @@ def main(n):
     # b: i % (n//2 + 1) to ensure some overlap; handle n=0 separately
     if n == 0:
         b = []
+
     else:
         base = n // 2 + 1
         b = [(i % base) for i in range(m)]
@@ -19,9 +20,8 @@ def main(n):
         if x in b:
             result.append(str(x))
     if result:
-        print(" ".join(result))
-
-
+        # print(" ".join(result))
+        pass
 if __name__ == "__main__":
     # Example call; adjust n as needed for experiments
     main(10)

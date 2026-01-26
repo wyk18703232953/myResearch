@@ -82,7 +82,8 @@ def divideCeil(n, x):
 def main(n):
     # n is the length of the array
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # deterministically construct the array a of length n
@@ -95,7 +96,8 @@ def main(n):
     for i in range(n):
         cur += a[i]
         if cur >= s / 2:
-            print(i + 1)
+            # print(i + 1)
+            pass
             break
 
 

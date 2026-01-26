@@ -6,15 +6,18 @@ def main(n):
         return
 
     if n == 1:
-        print(1)
+        # print(1)
+        pass
         return
 
     if n == 2:
-        print(1, 2)
+        # print(1, 2)
+        pass
         return
 
     if n == 3:
-        print(1, 1, 3)
+        # print(1, 1, 3)
+        pass
         return
 
     ar = [0] * 30
@@ -26,12 +29,16 @@ def main(n):
     for i in range(30):
         if sd == n - 1:
             if n == (2 ** i):
-                print(2 ** i)
+                # print(2 ** i)
+                pass
+
             else:
-                print(n - n % (2 ** (i - 1)))
+                # print(n - n % (2 ** (i - 1)))
+                pass
             return
         for _ in range(ar[i]):
-            print(2 ** i, end=' ')
+            # print(2 ** i, end=' ')
+            pass
             sd += 1
 
 

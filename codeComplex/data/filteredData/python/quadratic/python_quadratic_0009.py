@@ -24,8 +24,7 @@ def main(n):
         )
 
     for i in temp_arr:
-        print(i, end=" ")
-
-
+        # print(i, end=" ")
+        pass
 if __name__ == "__main__":
     main(10)

@@ -39,9 +39,10 @@ def generate_points(n):
 def main(n):
     points = generate_points(n)
     res = solve(points)
-    print(len(res))
+    # print(len(res))
+    pass
     for x, y in res:
-        print(x, y)
-
+        # print(x, y)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -40,10 +40,12 @@ def main(n):
             if count >= k_gen:
                 maxi = max(maxi, sumt / count)
     if k_gen == 1:
-        print(max(maxi, max(num_gen)))
-    else:
-        print(maxi)
+        # print(max(maxi, max(num_gen)))
+        pass
 
+    else:
+        # print(maxi)
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

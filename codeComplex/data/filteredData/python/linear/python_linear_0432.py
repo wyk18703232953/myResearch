@@ -16,7 +16,8 @@ def main(n):
         if student_sum > score:
             rank += 1
 
-    print(rank)
+    # print(rank)
+    pass
     return rank
 
 if __name__ == "__main__":

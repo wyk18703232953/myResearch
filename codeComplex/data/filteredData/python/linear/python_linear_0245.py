@@ -47,9 +47,8 @@ def main(n):
 	cats = ('Kuro', 'Shiro', 'Katie', 'Draw')
 	ribbons = generate_ribbons(n)
 	k = solve(n, ribbons)
-	print(cats[k])
-
-
+	# print(cats[k])
+	pass
 if __name__ == "__main__":
 	# 示例：使用 n=10 作为规模参数
 	main(10)

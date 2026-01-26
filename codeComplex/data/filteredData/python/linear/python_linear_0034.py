@@ -6,14 +6,14 @@ def main(n):
     h = s.count('H')
     if h == 0:
         # 原逻辑中 h 为 0 时窗口长度为 0，切片 s[i:i+0] 为空串，其 'T' 计数为 0
-        print(0)
+        # print(0)
+        pass
         return
 
     s2 = s + s
     ans = min(s2[i:i + h].count('T') for i in range(n))
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行一次
     main(10)

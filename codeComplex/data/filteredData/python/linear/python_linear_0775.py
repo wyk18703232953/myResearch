@@ -17,6 +17,7 @@ def main(n):
         if c_page is None:
             c_page = (el - shift) // k
             items_to_del = 1
+
         else:
             page = (el - shift) // k
             if page != c_page:
@@ -24,12 +25,12 @@ def main(n):
                 ans += 1
                 c_page = (el - shift) // k
                 items_to_del = 1
+
             else:
                 items_to_del += 1
     if items_to_del != 0:
         ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

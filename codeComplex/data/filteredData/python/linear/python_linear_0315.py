@@ -20,10 +20,10 @@ def main(n):
             k = x[i].pop()
             arr[k] += (j - i) % m
             x[j % m].append(k)
-    print(sum(arr) - s)
-    print(*arr)
-
-
+    # print(sum(arr) - s)
+    pass
+    # print(*arr)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for time-complexity experiments
     main(10)

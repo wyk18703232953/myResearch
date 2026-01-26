@@ -10,7 +10,8 @@ def main(n):
     if n <= 0:
         return
     if n == 1:
-        print(1)
+        # print(1)
+        pass
         return
 
     a = [((i // 2) + (1 if i % 3 == 0 else 0)) % n for i in range(n - 1)]
@@ -36,8 +37,8 @@ def main(n):
 
     dfs(g, 0)
     st.sort()
-    print(*st)
-
+    # print(*st)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的规模
     main(10)

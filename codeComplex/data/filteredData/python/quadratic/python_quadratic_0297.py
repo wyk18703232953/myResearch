@@ -15,8 +15,7 @@ def main(n):
             a.insert(p, tmp)
         while p + 1 < len(a) and a[p] == a[p + 1]:
             p += 2
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     main(10)

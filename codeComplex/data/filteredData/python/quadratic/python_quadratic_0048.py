@@ -34,11 +34,13 @@ def main(n):
                 temp[i][j] = temp[i - 1][j - 1]
                 earlier[i][j] = add(earlier[i][j - 1], temp[i][j])
                 j += 1
+
         else:
             j = 0
             while j < n:
                 if j == 0:
                     temp[i][j] = earlier[i - 1][n - 1]
+
                 else:
                     temp[i][j] = earlier[i - 1][n - 1] - earlier[i - 1][j - 1]
                 earlier[i][j] = add(earlier[i][j - 1], temp[i][j])
@@ -55,6 +57,9 @@ def main(n):
 
 if __name__ == "__main__":
     # Example deterministic calls for experimentation
-    print(main(1))
-    print(main(5))
-    print(main(10))
+    # print(main(1))
+    pass
+    # print(main(5))
+    pass
+    # print(main(10))
+    pass

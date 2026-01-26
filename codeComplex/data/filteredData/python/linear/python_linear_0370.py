@@ -24,4 +24,5 @@ def main(n):
 if __name__ == "__main__":
     # Example call; you can change 10 to other n for experiments
     result = main(10)
-    print(result)
+    # print(result)
+    pass

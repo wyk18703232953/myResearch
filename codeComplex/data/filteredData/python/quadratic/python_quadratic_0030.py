@@ -80,8 +80,10 @@ def C(n, s):
             if s[i - 1] == 'f':
                 if j - 1 >= 0:
                     dp[i][j] = dp[i - 1][j - 1] % mod
+
                 else:
                     dp[i][j] = 0
+
             else:
                 dp[i][j] = (preSum[mxI] % mod - (pre if j != 0 else 0) % mod) % mod
             pre = preSum[j]
@@ -94,6 +96,7 @@ def generate_C_input(n):
     for i in range(n):
         if i % 2 == 0:
             s.append('f')
+
         else:
             s.append('s')
     return s
@@ -119,7 +122,7 @@ def main(n):
     res_C = C(len(s), s)
     rows, cols, k, w = generate_D_input(max(1, n // 2))
     res_D = D(rows, cols, min(k, cols), w)
-    print(res_C, res_D)
-
+    # print(res_C, res_D)
+    pass
 if __name__ == "__main__":
     main(10)

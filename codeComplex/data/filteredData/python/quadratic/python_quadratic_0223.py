@@ -1,6 +1,7 @@
 def main(n):
     if n < 3:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     s = [i % 10 for i in range(n)]
@@ -21,10 +22,11 @@ def main(n):
                 ans = min(ans, c[i] + d[j])
 
     if ans == 10 ** 12:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     main(10)

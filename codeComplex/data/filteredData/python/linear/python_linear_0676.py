@@ -1,7 +1,8 @@
 def main(n):
     # n 表示列表长度
     if n <= 0:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     # 确定性生成 n 个整数，以 i 的平方构造
@@ -11,14 +12,16 @@ def main(n):
     for j in s:
         if not l or int(j) % 2 != l[-1]:
             l.append(int(j) % 2)
+
         else:
             l.pop()
 
     if len(l) < 2:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

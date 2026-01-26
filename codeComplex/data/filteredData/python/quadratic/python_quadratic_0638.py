@@ -12,9 +12,8 @@ def main(n):
             for j in range(i, n):
                 if a[j] % a[i] == 0:
                     b[j] = 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小做规模实验
     main(10)

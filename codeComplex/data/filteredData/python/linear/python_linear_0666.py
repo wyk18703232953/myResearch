@@ -27,6 +27,7 @@ def main(n):
             if e < 0:
                 if big:
                     sol -= 3 * e
+
                 else:
                     sol -= 5 * e
                 e = 0
@@ -40,4 +41,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call
     result = main(10)
-    print(result)
+    # print(result)
+    pass

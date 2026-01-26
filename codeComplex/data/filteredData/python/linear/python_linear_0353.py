@@ -8,9 +8,8 @@ def main(n):
     for _ in range(n):
         ans += str(c ^ 1)
         c = c ^ 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 的大小进行实验
     main(10)

@@ -8,6 +8,7 @@ def main(n):
     for ch in a:
         if ch == '-':
             x = max(0, x - 1)
+
         else:
             x += 1
     return x
@@ -15,4 +16,5 @@ def main(n):
 
 if __name__ == "__main__":
     # 示例调用
-    print(main(10))
+    # print(main(10))
+    pass

@@ -20,9 +20,8 @@ def main(n):
         if cnt == 0 and sss:
             okk = 1
             break
-    print("YES" if okk else "NO")
-
-
+    # print("YES" if okk else "NO")
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 来做规模实验
     main(10)

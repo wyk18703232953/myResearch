@@ -92,7 +92,8 @@ def build_path_tree(n):
 
 def main(n):
     if n <= 1:
-        print("No")
+        # print("No")
+        pass
         return
     d = build_path_tree(n)
     node = 1
@@ -112,15 +113,20 @@ def main(n):
                 if visited[child - 1] != 1:
                     c = child
                     break
+
             else:
                 break
     if sum(visited) == n:
-        print("Yes")
-        print(len(ans))
+        # print("Yes")
+        pass
+        # print(len(ans))
+        pass
         for c in ans:
-            print(*c)
-    else:
-        print("No")
+            # print(*c)
+            pass
 
+    else:
+        # print("No")
+        pass
 if __name__ == "__main__":
     main(10)

@@ -3,14 +3,17 @@ def main(n):
     # 规则：第一个字符为 '1'，后续根据 (i % 3) 决定是 '0' 还是 '1'
     if n <= 0:
         a = ""
+
     else:
         chars = []
         for i in range(n):
             if i == 0:
                 chars.append("1")
+
             else:
                 if i % 3 == 0:
                     chars.append("1")
+
                 else:
                     chars.append("0")
         a = "".join(chars)
@@ -20,11 +23,13 @@ def main(n):
         if a[i] == "0":
             zero += 1
     if "1" in a:
-        print("1", end="")
-        print("0" * zero)
+        # print("1", end="")
+        pass
+        # print("0" * zero)
+        pass
+
     else:
-        print("0" * zero)
-
-
+        # print("0" * zero)
+        pass
 if __name__ == "__main__":
     main(10)

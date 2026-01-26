@@ -18,6 +18,7 @@ def binarySearch(a, x):
     i = bisect.bisect_left(a, x)
     if i != len(a) and a[i] == x:
         return i
+
     else:
         return -1
 
@@ -25,6 +26,7 @@ def lowerBound(a, x):
     i = bisect.bisect_left(a, x)
     if i:
         return (i - 1)
+
     else:
         return -1
 
@@ -32,6 +34,7 @@ def upperBound(a, x):
     i = bisect.bisect_right(a, x)
     if i != len(a) + 1 and a[i - 1] == x:
         return (i - 1)
+
     else:
         return -1
 
@@ -77,7 +80,8 @@ def isPrime(n, k=5):
 
 def main(n):
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
     s = [(i % 10) for i in range(n)]
     flag = False
@@ -90,9 +94,10 @@ def main(n):
                 count += 1
                 sum_val = 0
         if count > 1 and sum_val == 0:
-            print("YES")
+            # print("YES")
+            pass
             return
-    print("NO")
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     main(10)

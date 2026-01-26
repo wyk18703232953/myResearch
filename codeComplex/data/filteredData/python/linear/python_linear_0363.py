@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as the length of price and bill lists
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate prices c and bills a, both length n
@@ -19,9 +20,8 @@ def main(n):
         except StopIteration:
             break
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

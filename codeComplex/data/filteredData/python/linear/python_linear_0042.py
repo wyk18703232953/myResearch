@@ -21,7 +21,9 @@ def main(n):
         r += 1
 
     if p != k:
-        print('-1', '-1')
+        # print('-1', '-1')
+        pass
+
     else:
         while p == k:
             C[A[l]] -= 1
@@ -29,9 +31,8 @@ def main(n):
                 p -= 1
             l += 1
         l -= 1
-        print(l + 1, r)
-
-
+        # print(l + 1, r)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次固定规模的调用
     main(10)

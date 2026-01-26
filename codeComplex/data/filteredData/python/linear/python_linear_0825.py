@@ -35,7 +35,7 @@ def main(n):
     for cas in range(c):
         length, m, s = generate_case(cas, n)
         ans = solve_case(length, m, s)
-        print(ans)
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     main(5)

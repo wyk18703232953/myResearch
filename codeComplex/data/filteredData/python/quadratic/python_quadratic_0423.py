@@ -15,11 +15,13 @@ def main(n_input):
             f = 1
             break
     if f == 0:
-        print(s * k)
+        # print(s * k)
+        pass
+
     else:
         j = n - i
         final = s[j:]
-        print(s + final * (k - 1))
-
+        # print(s + final * (k - 1))
+        pass
 if __name__ == "__main__":
     main(5)

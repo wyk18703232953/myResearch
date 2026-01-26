@@ -47,6 +47,7 @@ def main(n):
                     c = 'G'
                 elif c == 'G':
                     c = 'B'
+
                 else:
                     c = 'R'
             s_chars.append(c)
@@ -57,8 +58,8 @@ def main(n):
         results.append(m)
     # 为保持输出行为，依次打印每个测试用例结果
     for res in results:
-        print(res)
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # 示例调用：可修改 n 以进行不同规模实验
     main(10)

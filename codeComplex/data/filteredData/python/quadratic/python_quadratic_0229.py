@@ -26,13 +26,14 @@ def core_algorithm(n, s, ce):
 
     if best >= 10 ** 9:
         return -1
+
     else:
         return best
 
 def main(n):
     n, s, ce = generate_input(n)
     result = core_algorithm(n, s, ce)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -3,7 +3,8 @@ import sys
 def main(n):
     # 映射：n 既作为数组长度，也作为 k 的规模参数
     if n <= 0:
-        print(0.0)
+        # print(0.0)
+        pass
         return
 
     # 确定性生成 n 与 k
@@ -30,9 +31,8 @@ def main(n):
             if avg > ans:
                 ans = avg
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 进行时间复杂度实验
     main(1000)

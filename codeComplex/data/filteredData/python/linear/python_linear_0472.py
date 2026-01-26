@@ -23,6 +23,7 @@ def main(n):
                     flag = True
                     p = A[v]
                     break
+
                 else:
                     s.append(A[v])
                     temp.add(A[v])
@@ -42,7 +43,8 @@ def main(n):
         for i in l:
             m = min(m, C[i])
         ans += m
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

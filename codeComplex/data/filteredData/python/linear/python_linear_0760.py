@@ -15,9 +15,8 @@ def main(n):
                 a[i] = -a[i] - 1
                 break
 
-    print(*a)
-
-
+    # print(*a)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需要修改 n 来做规模实验
     main(10)

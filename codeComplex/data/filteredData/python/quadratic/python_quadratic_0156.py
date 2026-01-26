@@ -14,6 +14,7 @@ def solution(n, k, arr):
                 break
         if l is not None and grp[l] > i - k:
             grp[i] = grp[l]
+
         else:
             ll = l + 1 if l else max(0, i - k + 1)
             for j in range(ll, i + 1):
@@ -34,12 +35,15 @@ def main(n):
     step = max(1, 256 // arr_len)
     arr = [(i * step) % 256 for i in range(arr_len)]
     res = solution(arr_len, k, arr)
-    print("n =", n)
-    print("k =", k)
-    print("len(arr) =", arr_len)
-    print("arr =", " ".join(map(str, arr)))
-    print("res =", " ".join(map(str, res)))
-
-
+    # print("n =", n)
+    pass
+    # print("k =", k)
+    pass
+    # print("len(arr) =", arr_len)
+    pass
+    # print("arr =", " ".join(map(str, arr)))
+    pass
+    # print("res =", " ".join(map(str, res)))
+    pass
 if __name__ == "__main__":
     main(10)

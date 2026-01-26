@@ -36,12 +36,13 @@ def main(n):
     # 回答查询
     for q in qr:
         if q <= rot:
-            print(log[q - 1][0], log[q - 1][1])
+            # print(log[q - 1][0], log[q - 1][1])
+            pass
+
         else:
             res = q - rot - 1
-            print(b, d[res % (n - 1) + 1])
-
-
+            # print(b, d[res % (n - 1) + 1])
+            pass
 if __name__ == "__main__":
     # 示例：以 n = 5 作为输入规模运行一次
     main(5)

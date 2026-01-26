@@ -17,6 +17,7 @@ def main(n):
             if i % 2 == 0:
                 ai.append(j % 2)
                 bi.append((j % 2) ^ 1)
+
             else:
                 ai.append((j % 2) ^ 1)
                 bi.append(j % 2)
@@ -47,8 +48,7 @@ def main(n):
         + heapq.heappop(b_cnts)
         + heapq.heappop(b_cnts)
     )
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

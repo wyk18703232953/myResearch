@@ -21,7 +21,7 @@ def main(n_scale):
     for x in a:
         t |= s & x
         s |= x
-    print(('YES', 'NO')[all(x & s & ~t for x in a)])
-
+    # print(('YES', 'NO')[all(x & s & ~t for x in a)])
+    pass
 if __name__ == "__main__":
     main(5)

@@ -8,7 +8,8 @@ def main(n):
 
     # 如果 n 为 0，则没有行可检查，直接输出 "NO"
     if n == 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # 计算列和
@@ -17,12 +18,12 @@ def main(n):
     # 保留原有逻辑：若存在一行，满足所有元素严格小于对应列和，则输出 "YES"
     for row in a:
         if all(rv < sv for (rv, sv) in zip(row, colsums)):
-            print("YES")
+            # print("YES")
+            pass
             return
 
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 5 作为规模参数
     main(5)

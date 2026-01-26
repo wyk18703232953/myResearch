@@ -3,7 +3,8 @@ base = 1000000007
 def main(n):
     # n controls the length of array a
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     m = max(1, n // 3)  # make m grow with n but m <= n
     k = 5               # fixed deterministic constant
@@ -21,12 +22,12 @@ def main(n):
             dd[i + 1] = dd[i] + a[i] - k * (i % m == j)
             if i == 0:
                 dp[i + 1] = min(0, dp[i])
+
             else:
                 dp[i + 1] = min(dd[i], dp[i])
             if i % m == j:
                 mx = max(mx, dd[i + 1] - dp[i + 1])
-    print(mx)
-
-
+    # print(mx)
+    pass
 if __name__ == "__main__":
     main(10)

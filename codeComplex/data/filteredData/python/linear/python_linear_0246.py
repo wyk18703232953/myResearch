@@ -2,6 +2,7 @@ def main(n):
     # 确定性地从 n 生成 (n_orig, k)
     if n < 3:
         n_orig = 3
+
     else:
         n_orig = n
 
@@ -10,6 +11,7 @@ def main(n):
         k = (n_orig // 2) * 2  # 偶数 k，触发第一分支
     elif n_orig % 4 == 1:
         k = max(1, (n_orig // 2) | 1)  # 奇数且较小，触发第二分支
+
     else:
         k = n_orig + 1  # 使 k > n-2，触发第三分支逻辑
 
@@ -21,33 +23,48 @@ def main(n):
         s = "."
         s = s + "#" * (k_val // 2)
         s = s + "." * (n_val - len(s))
-        print("YES")
-        print("." * n_val)
-        print(s)
-        print(s)
-        print("." * n_val)
+        # print("YES")
+        pass
+        # print("." * n_val)
+        pass
+        # print(s)
+        pass
+        # print(s)
+        pass
+        # print("." * n_val)
+        pass
+
     else:
         if k_val <= n_val - 2:
             a = "#" * k_val
             s = "." * ((n_val - k_val) // 2) + a + "." * ((n_val - k_val) // 2)
-            print("YES")
-            print("." * n_val)
-            print(s)
-            print("." * n_val)
-            print("." * n_val)
+            # print("YES")
+            pass
+            # print("." * n_val)
+            pass
+            # print(s)
+            pass
+            # print("." * n_val)
+            pass
+            # print("." * n_val)
+            pass
+
         else:
             k_val = k_val - n_val + 3
             a = "#" * k_val
             s = "." * ((n_val - k_val) // 2) + a + "." * ((n_val - k_val) // 2)
-            print("YES")
-            print("." * n_val)
-            print("." + "#" * (n_val - 2) + ".")
+            # print("YES")
+            pass
+            # print("." * n_val)
+            pass
+            # print("." + "#" * (n_val - 2) + ".")
+            pass
             s = list(s)
             s[n_val // 2] = "."
             s = "".join(s)
-            print(s)
-            print("." * n_val)
-
-
+            # print(s)
+            pass
+            # print("." * n_val)
+            pass
 if __name__ == "__main__":
     main(10)

@@ -13,6 +13,7 @@ def main(n):
         for j in range(cols):
             if (i + j) % 3 == 0:
                 row_chars.append('0')
+
             else:
                 row_chars.append('1')
         grid.append(''.join(row_chars))
@@ -29,10 +30,10 @@ def main(n):
                 flag = False
                 break
         if flag:
-            print('YES')
+            # print('YES')
+            pass
             return
-    print('NO')
-
-
+    # print('NO')
+    pass
 if __name__ == "__main__":
     main(5)

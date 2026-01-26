@@ -29,8 +29,7 @@ def main(n):
         results.append(mi)
 
     for v in results:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     main(3)

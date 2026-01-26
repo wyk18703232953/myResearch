@@ -1,7 +1,8 @@
 def main(n):
     # Ensure n is positive
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     # Deterministic construction of a based on n
@@ -22,8 +23,7 @@ def main(n):
                     if any(a[j] > x and s[j] == 'B' for j in r):
                         s[i] = 'A'
                         m -= 1
-    print(''.join(s))
-
-
+    # print(''.join(s))
+    pass
 if __name__ == "__main__":
     main(10)

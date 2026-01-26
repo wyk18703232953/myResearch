@@ -18,9 +18,8 @@ def main(n):
 
     l = sum(v == 1 for v in d.values())
     ans = s / l * 2
-    print('%.10f' % ans)
-
-
+    # print('%.10f' % ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需要修改 n 以进行规模实验
     main(10)

@@ -45,8 +45,7 @@ def main(n):
         l = [lv[x] for x in a]
         ans = all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
-    print(('No', 'Yes')[ans])
-
-
+    # print(('No', 'Yes')[ans])
+    pass
 if __name__ == "__main__":
     main(10)

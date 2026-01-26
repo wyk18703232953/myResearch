@@ -10,7 +10,8 @@ def main(n):
     ans = 0
     s = set(a)
     if len(s) != n:
-        print(0)
+        # print(0)
+        pass
         return
     for i in range(n):
         v = a[i]
@@ -19,13 +20,15 @@ def main(n):
             ans = 1
             break
     if ans == 1:
-        print(1)
+        # print(1)
+        pass
     elif len(set(a)) == n:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(2)
-
-
+        # print(2)
+        pass
 if __name__ == "__main__":
     # 示例调用
     main(10)

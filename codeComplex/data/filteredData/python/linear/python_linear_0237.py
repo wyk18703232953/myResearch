@@ -20,9 +20,11 @@ def main(n):
         for freq in d.values():
             if L - freq >= n:
                 res = max(res, freq + n)
+
             else:
                 if not (L - freq < n and n == 1):
                     res = L
+
                 else:
                     res = max(res, L - 1)
         return res
@@ -47,10 +49,11 @@ def main(n):
         MAXCNT += 1
 
     if MAXCNT == 1:
-        print(winner)
+        # print(winner)
+        pass
+
     else:
-        print("Draw")
-
-
+        # print("Draw")
+        pass
 if __name__ == "__main__":
     main(10)

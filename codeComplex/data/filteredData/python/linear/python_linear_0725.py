@@ -37,8 +37,8 @@ def main(n):
         ans = [1] + [0] * (n - 1)
 
     # 输出与原程序格式一致的结果
-    print(*ans, sep='')
-
+    # print(*ans, sep='')
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 以做规模实验
     main(10)

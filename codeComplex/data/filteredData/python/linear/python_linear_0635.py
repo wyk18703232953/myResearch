@@ -10,14 +10,17 @@ def main(n):
         a_ni = (4 ** ni - 1) // 3
         if a_ni <= 0:
             ki = 0
+
         else:
             ki = (it * it) % (a_ni + 1)
 
         if ni >= 50:
             if ki == 0:
                 results.append("YES " + str(ni))
+
             else:
                 results.append("YES " + str(ni - 1))
+
         else:
             a = [0] * (ni + 1)
             b = [0] * (ni + 1)
@@ -40,11 +43,11 @@ def main(n):
 
             if res == -1:
                 results.append("NO")
+
             else:
                 results.append("YES " + str(res))
     for line in results:
-        print(line)
-
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -7,7 +7,8 @@ for i in range(n):
         if seq[i]==f[j]:
             a.append(seq[i])
 for i in range(len(a)):
-    print(a[i],end=' ')
+    # print(a[i],end=' ')
+    pass
 
 def main(n):
     m = max(1, n//2)
@@ -19,8 +20,9 @@ def main(n):
             if seq[i]==f[j]:
                 a.append(seq[i])
     for i in range(len(a)):
-        print(a[i],end=' ')
-    print()
-
+        # print(a[i],end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

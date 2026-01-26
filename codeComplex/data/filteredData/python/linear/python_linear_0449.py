@@ -16,12 +16,15 @@ def main(n):
     if "*" in s:
         front_part, back_part = s.split("*")
         if len(t) >= len(s) - 1 and t.startswith(front_part) and t.endswith(back_part):
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
+
     else:
-        print("YES" if s == t else "NO")
-
-
+        # print("YES" if s == t else "NO")
+        pass
 if __name__ == "__main__":
     main(10)

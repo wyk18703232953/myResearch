@@ -36,7 +36,8 @@ def main(n):
     ok = True
     for i in range(N):
         if C_calc[i] <= 0:
-            print("NO")
+            # print("NO")
+            pass
             ok = False
             break
 
@@ -56,16 +57,18 @@ def main(n):
             j += 1
 
         if L[i] != l or R[i] != r:
-            print("NO")
+            # print("NO")
+            pass
             ok = False
             break
 
     if ok:
-        print("YES")
+        # print("YES")
+        pass
         for i in range(0, N - 1):
-            print(C_calc[i], end=" ")
-        print(C_calc[N - 1])
-
-
+            # print(C_calc[i], end=" ")
+            pass
+        # print(C_calc[N - 1])
+        pass
 if __name__ == "__main__":
     main(10)

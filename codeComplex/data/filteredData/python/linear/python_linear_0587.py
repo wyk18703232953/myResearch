@@ -21,6 +21,7 @@ def main(n):
         if l[i] == '1':
             cnt1[i + 1] = cnt1[i] + 1
             cnt0[i + 1] = cnt0[i]
+
         else:
             cnt0[i + 1] = cnt0[i] + 1
             cnt1[i + 1] = cnt1[i]
@@ -53,7 +54,8 @@ def main(n):
 
     # to keep behavior similar to original script, print all answers
     for ans in results:
-        print(ans)
+        # print(ans)
+        pass
 
     return results
 

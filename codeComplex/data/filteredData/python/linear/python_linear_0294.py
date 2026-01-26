@@ -13,8 +13,7 @@ def main(n):
         elif a[i] > 0 and po[a[i]] != 1:
             c += 1
             po[a[i]] = 1
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     main(100000)

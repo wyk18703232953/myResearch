@@ -48,9 +48,8 @@ def main(n):
 
     # Output results, one per line, to mimic original program behavior
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for experiments
     main(3)

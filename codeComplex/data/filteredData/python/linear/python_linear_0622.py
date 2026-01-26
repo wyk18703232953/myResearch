@@ -40,9 +40,11 @@ def main(n):
                     c[rr] += 1
             elif rr is None:
                 c[ll] += 1
+
             else:
                 if aa - a[ll] <= a[rr] - aa:
                     c[ll] += 1
+
                 else:
                     c[rr] += 1
 
@@ -51,8 +53,7 @@ def main(n):
         if b[i] == 1:
             out.append(str(c[i]))
     if out:
-        print(" ".join(out))
-
-
+        # print(" ".join(out))
+        pass
 if __name__ == "__main__":
     main(10)

@@ -20,8 +20,7 @@ def main(n):
             f = int(not f)
             break
 
-    print("YNEOS"[int(not f)::2])
-
-
+    # print("YNEOS"[int(not f)::2])
+    pass
 if __name__ == "__main__":
     main(5)

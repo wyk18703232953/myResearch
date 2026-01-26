@@ -18,8 +18,7 @@ def main(n):
         dp[i] = max(b2, a[i] - k)
         best = max(best, dp[i])
 
-    print(best)
-
-
+    # print(best)
+    pass
 if __name__ == "__main__":
     main(10)

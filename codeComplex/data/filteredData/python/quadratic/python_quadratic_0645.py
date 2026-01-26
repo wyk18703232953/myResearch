@@ -27,7 +27,8 @@ def main(n):
     for x in c:
         ans = max(ans, c[x])
 
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

@@ -30,6 +30,7 @@ def main(n):
         r = n
         if l <= r:
             results.append(str(Array[r - l][l - 1]))
+
         else:
             results.append("0")
 

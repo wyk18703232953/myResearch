@@ -1,6 +1,7 @@
 def main(n):
     if n < 3:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministic generation of ls1 and ls2 based on n
@@ -16,8 +17,7 @@ def main(n):
         if len(l) and len(r):
             ans = min(ans, min(l) + min(r) + ls2[i])
 
-    print([-1, ans][ans != float('inf')])
-
-
+    # print([-1, ans][ans != float('inf')])
+    pass
 if __name__ == "__main__":
     main(10)

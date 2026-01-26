@@ -11,7 +11,8 @@ def generate_matrix(n):
 def main(n):
     # n is the matrix dimension
     if n <= 0:
-        print("No")
+        # print("No")
+        pass
         return
 
     a1_mat = generate_matrix(n)
@@ -22,9 +23,11 @@ def main(n):
 
     for _ in range(4):
         if a2.mat in [a1.rotate(), a1.fliph(), a1.flipv(), a1.fliph(), a1.flipv()]:
-            print("Yes")
+            # print("Yes")
+            pass
             return
-    print("No")
+    # print("No")
+    pass
 
 
 class Matrix:
@@ -33,6 +36,7 @@ class Matrix:
 
         if mat is not None:
             self.mat = deepcopy(mat)
+
         else:
             self.mat = [[0 for _ in range(c)] for _ in range(r)]
 

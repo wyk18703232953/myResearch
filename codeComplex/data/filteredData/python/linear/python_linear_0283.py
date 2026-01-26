@@ -11,6 +11,7 @@ def main(n):
             # Deterministic pattern depending on i and j
             if (i + j) % 2 == 0:
                 s.append('(')
+
             else:
                 s.append(')')
         S.append(''.join(s))
@@ -24,6 +25,7 @@ def main(n):
         for c in s:
             if c == '(':
                 cum1 += 1
+
             else:
                 cum1 -= 1
             if cum1 < 0:
@@ -36,6 +38,7 @@ def main(n):
             c = s[i]
             if c == ')':
                 cum2 += 1
+
             else:
                 cum2 -= 1
             if cum2 < 0:
@@ -55,4 +58,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call; change n as needed for experiments
     result = main(10)
-    print(result)
+    # print(result)
+    pass

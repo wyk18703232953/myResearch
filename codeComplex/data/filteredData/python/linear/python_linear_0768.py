@@ -28,6 +28,7 @@ def main(n):
         if arr[ptr1] > arr[ptr1 + 1]:
             arr[ptr2] = arr[ptr1 + 1]
             arr[ptr1 + 1] = arr[ptr1]
+
         else:
             arr[ptr2] = arr[ptr1]
         ptr1 += 1
@@ -38,20 +39,22 @@ def main(n):
     for i in range(q):
         if i < ind:
             m = i + 1
+
         else:
             m = ind + 1 + (i - ind) % (orig_n * 2 + 1)
         queries.append(m)
 
     for m in queries:
         if m <= ind:
-            print(*ans[m - 1])
+            # print(*ans[m - 1])
+            pass
+
         else:
             mm = m - ind
             mm = mm % (orig_n - 1)
             if mm == 0:
                 mm += orig_n - 1
-            print(arr[ind], arr[ind + mm])
-
-
+            # print(arr[ind], arr[ind + mm])
+            pass
 if __name__ == "__main__":
     main(10)

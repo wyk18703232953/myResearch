@@ -36,14 +36,16 @@ def main(n):
         mid = (l + r) / 2.0
         if test(mid):
             r = mid
+
         else:
             l = mid
 
     if r < 1e19:
-        print('%.17f' % r)
+        # print('%.17f' % r)
+        pass
+
     else:
-        print(-1.0)
-
-
+        # print(-1.0)
+        pass
 if __name__ == "__main__":
     main(10)

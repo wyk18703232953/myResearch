@@ -20,8 +20,7 @@ def generate_input(n):
 def main(n):
     n_val, p, s = generate_input(n)
     result = solve(n_val, p, s)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

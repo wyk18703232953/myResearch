@@ -13,7 +13,8 @@ def main(n):
     if n <= 0:
         return []
     result = original_logic(n)
-    print(' '.join(map(str, result)))
+    # print(' '.join(map(str, result)))
+    pass
     return result
 
 if __name__ == "__main__":

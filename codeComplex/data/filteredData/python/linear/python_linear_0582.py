@@ -44,4 +44,5 @@ if __name__ == "__main__":
     # Example deterministic run
     results = main(10)
     for value in results:
-        print(value)
+        # print(value)
+        pass

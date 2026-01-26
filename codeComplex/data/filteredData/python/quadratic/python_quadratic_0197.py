@@ -17,6 +17,7 @@ def main(n):
         for j in range(n - i):
             if i == 0:
                 li[i][j] = ar[j]
+
             else:
                 li[i][j] = li[i - 1][j] ^ li[i - 1][j + 1]
 
@@ -38,9 +39,8 @@ def main(n):
             queries.append((l, r))
 
     for l, r in queries:
-        print(li[r - l][l - 1])
-
-
+        # print(li[r - l][l - 1])
+        pass
 if __name__ == "__main__":
     # Example deterministic run
     main(5)

@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     A = [i + 1 for i in range(n)]
@@ -14,8 +15,7 @@ def main(n):
             for j in range(n):
                 if A[j] % A[i] == 0:
                     B[j] = 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

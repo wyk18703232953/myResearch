@@ -2,7 +2,8 @@ import os
 
 def log(*args, **kwargs):
     if os.environ.get('CODEFR'):
-        print(*args, **kwargs)
+        # print(*args, **kwargs)
+        pass
 
 def main(n):
     # 这里将原程序的 n 映射为输入中的第一个整数
@@ -17,6 +18,7 @@ def main(n):
     # 原始逻辑开始
     if input_n - k < 0:
         s = '1'
+
     else:
         s = '0' * ((input_n - k) // 2) + '1'
 
@@ -25,7 +27,8 @@ def main(n):
     for i in range(input_n):
         res_chars.append(s[i % m])
     output = ''.join(res_chars)
-    print(output)
+    # print(output)
+    pass
     return output
 
 if __name__ == "__main__":

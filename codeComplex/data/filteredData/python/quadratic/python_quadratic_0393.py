@@ -12,6 +12,7 @@ def generate_input(n):
             for j in range(start_col, min(start_col + n_rows, m_cols)):
                 row[j] = 'B'
             grid.append(''.join(row))
+
         else:
             grid.append('.' * m_cols)
     return n_rows, m_cols, grid
@@ -34,7 +35,7 @@ def core_algorithm(n, m, grid):
 def main(n):
     n_gen, m_gen, grid = generate_input(n)
     row_center, col_center = core_algorithm(n_gen, m_gen, grid)
-    print(row_center, col_center)
-
+    # print(row_center, col_center)
+    pass
 if __name__ == "__main__":
     main(5)

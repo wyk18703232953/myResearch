@@ -19,9 +19,8 @@ def main(n):
                 )
 
     for v in y:
-        print(v, end=' ')
-
-
+        # print(v, end=' ')
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小进行时间复杂度实验
     main(10)

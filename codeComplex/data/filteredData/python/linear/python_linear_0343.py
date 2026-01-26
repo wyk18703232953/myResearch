@@ -54,6 +54,7 @@ def get_frequency(lst):
     for ele in lst:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -89,7 +90,7 @@ def generate_input(n):
 def main(n):
     n_val, d_val, x = generate_input(n)
     result = core_logic(n_val, d_val, x)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

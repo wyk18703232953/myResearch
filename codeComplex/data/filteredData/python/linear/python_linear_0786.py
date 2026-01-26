@@ -29,14 +29,17 @@ def main(n):
     nims = [(i * 2) // 3 for i in range(n_int)]
 
     if is_winning_state(nims, n_int):
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
         x = sum(nims) - (n_int * (n_int - 1)) // 2
         if x % 2 == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
-            print('sjfnb')
-
-
+            # print('sjfnb')
+            pass
 if __name__ == "__main__":
     main(10)

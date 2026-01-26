@@ -14,7 +14,7 @@ k=[zz(x) for x in z.split('"')]
 def main(n):
     n = max(0, min(n, len(k)-1))
     m = n + 1
-    print(k[n] % m)
-
+    # print(k[n] % m)
+    pass
 if __name__ == "__main__":
     main(10)

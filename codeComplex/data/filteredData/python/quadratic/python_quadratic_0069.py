@@ -30,10 +30,10 @@ def main(n):
             even = not even
         if even:
             ans.append('even')
+
         else:
             ans.append('odd')
-    print('\n'.join(ans))
-
-
+    # print('\n'.join(ans))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -13,6 +13,7 @@ def main(n):
         for j in range(b):
             if i == j:
                 row.append('B')
+
             else:
                 row.append('.')
         grid.append(''.join(row))
@@ -28,7 +29,8 @@ def main(n):
 
     if not c:
         # 如果没有 'B'，原程序会在 min/max 时出错，这里约定返回 (0, 0)
-        print(0, 0)
+        # print(0, 0)
+        pass
         return
 
     p = min(c)
@@ -37,8 +39,7 @@ def main(n):
     plus = (max(c) - min(c)) // 2
     p3 = p + plus + 1
     p4 = p1 + plus + 1
-    print(p3, p4)
-
-
+    # print(p3, p4)
+    pass
 if __name__ == "__main__":
     main(5)

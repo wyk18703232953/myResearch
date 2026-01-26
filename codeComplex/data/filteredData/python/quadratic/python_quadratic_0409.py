@@ -13,7 +13,8 @@ def main(n):
     base_chars = "abc"
     t = "".join(base_chars[i % len(base_chars)] for i in range(n))
     result = solve(n, k, t)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

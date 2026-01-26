@@ -24,8 +24,7 @@ def main(n):
                 continue
             res += 1
         i += 1
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

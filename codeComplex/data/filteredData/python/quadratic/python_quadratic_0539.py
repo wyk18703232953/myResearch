@@ -17,6 +17,7 @@ def main(n):
         if l[i] == 1:
             l[i] = 0
             ll.append(i)
+
         else:
             res.append((head + 1, i + 1))
             l[head] -= 1
@@ -44,14 +45,17 @@ def main(n):
                 break
 
     if len(res) < n - 1:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES " + str(dia))
-        print(n - 1)
+        # print("YES " + str(dia))
+        pass
+        # print(n - 1)
+        pass
         for p in res:
-            print(p[0], p[1])
-
-
+            # print(p[0], p[1])
+            pass
 if __name__ == "__main__":
     # Example deterministic call for time-complexity experiments
     main(10)

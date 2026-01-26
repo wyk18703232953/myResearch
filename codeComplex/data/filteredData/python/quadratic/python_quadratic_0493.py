@@ -31,28 +31,34 @@ def main(n):
                     for j in s:
                         if j < i:
                             l += 1
+
                         else:
                             r += 1
                     if d[i][0] >= l:
                         d[i][0] -= l
+
                     else:
                         return
                     if d[i][1] >= r:
                         d[i][1] -= r
+
                     else:
                         return
+
             else:
                 return
 
     run()
 
     if 0 in ans:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
-        print(*ans, sep=' ')
-
-
+        # print('YES')
+        pass
+        # print(*ans, sep=' ')
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

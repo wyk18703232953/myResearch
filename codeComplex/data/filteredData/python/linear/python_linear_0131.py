@@ -75,14 +75,15 @@ def main(n):
     # - k 在 1..min(n,20) 区间内确定性取值
     # 构造二进制字符串：周期性 "1010..."，长度为 n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     s = "".join('1' if i % 2 == 0 else '0' for i in range(n))
     # k 的确定性选择：在 1..20 中循环
     k = (n % 20) + 1
     ans = solve_C(s, k)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可自行修改 n 观察规模变化
     main(10)

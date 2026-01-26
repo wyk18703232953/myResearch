@@ -27,9 +27,8 @@ def main(n):
 
     for l, r in queries:
         # original logic: dp[r-l][l-1]
-        print(dp[r - l][l - 1])
-
-
+        # print(dp[r - l][l - 1])
+        pass
 if __name__ == "__main__":
     # example deterministic call; adjust n as needed for experiments
     main(10)

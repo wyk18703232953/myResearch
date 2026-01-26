@@ -12,6 +12,7 @@ def main(n):
     for i in range(n):
         if i % 2 == 0:
             statements.append('f')
+
         else:
             statements.append('s')
 
@@ -37,11 +38,13 @@ def main(n):
                 dp[i][j] = dp[i - 1][j - 1]
                 prefix[i][j] = add(prefix[i][j - 1], dp[i][j])
                 j += 1
+
         else:
             j = 0
             while j < n:
                 if j == 0:
                     dp[i][j] = prefix[i - 1][n - 1]
+
                 else:
                     dp[i][j] = prefix[i - 1][n - 1] - prefix[i - 1][j - 1]
                 prefix[i][j] = add(prefix[i][j - 1], dp[i][j])
@@ -54,7 +57,8 @@ def main(n):
         ans = add(ans, dp[n - 1][j])
         j += 1
 
-    print(ans % 1000000007)
+    # print(ans % 1000000007)
+    pass
     return ans % 1000000007
 
 if __name__ == "__main__":

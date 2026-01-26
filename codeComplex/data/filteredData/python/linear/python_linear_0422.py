@@ -5,23 +5,29 @@ def run_logic(n, x, a):
     d = Counter(a)
     sa = set(a)
     if len(sa) < n:
-        print(0)
+        # print(0)
+        pass
+
     else:
         c = 0
         for i in a:
             k = i & x
             if k != i and k in d:
                 c = 1
-                print(1)
+                # print(1)
+                pass
                 break
         if c == 0:
             z = []
             for i in a:
                 z.append(i & x)
             if len(set(z)) < n:
-                print(2)
+                # print(2)
+                pass
+
             else:
-                print(-1)
+                # print(-1)
+                pass
 
 def main(n):
     # 映射规则：

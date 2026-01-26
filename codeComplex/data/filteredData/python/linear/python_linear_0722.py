@@ -9,6 +9,7 @@ def second_largest(numbers):
         if x > m2:
             if x >= m1:
                 m1, m2 = x, m1
+
             else:
                 m2 = x
     return m2 if count >= 2 else None
@@ -24,6 +25,7 @@ def core_logic(n, m, boys, girls):
         minSum = m * (sum(boys) - firstMax) + sum(girls)
     elif n == 1:
         return -1
+
     else:
         minSum = m * sum(boys) + sum(girls) - (m - 1) * firstMax - secondMax
     return minSum
@@ -49,9 +51,8 @@ def generate_data(n):
 def main(n):
     n_boys, m, boys, girls = generate_data(n)
     result = core_logic(n_boys, m, boys, girls)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的规模
     main(10)

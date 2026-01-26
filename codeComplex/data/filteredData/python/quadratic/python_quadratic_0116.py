@@ -16,8 +16,7 @@ def main(n):
     col = [0] * orig_n
     for i in range(len(c_str)):
         col[int(c_str[i]) - 1] += 1
-    print(min(col))
-
-
+    # print(min(col))
+    pass
 if __name__ == "__main__":
     main(20)

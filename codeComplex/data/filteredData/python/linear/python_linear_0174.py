@@ -23,7 +23,8 @@ def main(n):
     for i in range(n - k + 1):
         s = max(s, p[i + k] - p[i])
     result = now + s
-    print(result)
+    # print(result)
+    pass
     return result
 
 

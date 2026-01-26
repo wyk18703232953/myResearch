@@ -8,6 +8,7 @@ def f(n, k):
     c = sum((i + 1) * k ** i for i in range(a + 1))
     if n < b:
         return c - (b - n) * (a + 1)
+
     else:
         return c + (n - b) * (a + 2)
 
@@ -22,19 +23,25 @@ def main(n):
     # 当 max_sum>0 时, 让 s 在 [1, max_sum] 上循环
     if max_sum == 0:
         s = 0
+
     else:
         s = (n % max_sum) + 1
 
     n_val = original_n
 
     if s == (n_val * (n_val + 1)) // 2:
-        print("Yes")
+        # print("Yes")
+        pass
         a = [str(i + 1) for i in range(n_val - 1)]
-        print(" ".join(a))
+        # print(" ".join(a))
+        pass
     elif s > (n_val * (n_val + 1)) // 2:
-        print("No")
+        # print("No")
+        pass
     elif s < 2 * n_val - 1:
-        print("No")
+        # print("No")
+        pass
+
     else:
         mini = 1
         maxi = n_val - 1
@@ -47,6 +54,7 @@ def main(n):
             elif a_val <= s:
                 maxi = curr - 1
                 curr = (curr + mini) // 2
+
             else:
                 opt = curr + 1
                 break
@@ -73,6 +81,7 @@ def main(n):
                 depths[bulk] -= 1
                 if depths[bulk] == 1:
                     bulk -= 1
+
             else:
                 depths[bulk] -= 1
                 depths[bulk + left] += 1
@@ -86,9 +95,10 @@ def main(n):
         for i in range(1, far):
             for j in range(len(verts[i])):
                 out += str(verts[i - 1][j // opt]) + " "
-        print("Yes")
-        print(out)
-
+        # print("Yes")
+        pass
+        # print(out)
+        pass
 if __name__ == "__main__":
     # 示例调用: 可调整 n 观察规模变化
     main(10)

@@ -29,6 +29,7 @@ def main(n):
             mx = max(mx, cnt[c])
         if mx == len(s) and N == 1:
             bu.append(mx - 1)
+
         else:
             bu.append(min(len(s), mx + N))
 
@@ -42,14 +43,17 @@ def main(n):
             ans = -1
 
     if ans == -1:
-        print('Draw')
+        # print('Draw')
+        pass
     elif ans == 0:
-        print('Kuro')
+        # print('Kuro')
+        pass
     elif ans == 1:
-        print('Shiro')
+        # print('Shiro')
+        pass
+
     else:
-        print('Katie')
-
-
+        # print('Katie')
+        pass
 if __name__ == "__main__":
     main(5)

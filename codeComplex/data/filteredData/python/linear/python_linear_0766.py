@@ -20,6 +20,7 @@ def main(n):
             if ai[i] > num2:
                 ar.append(num2)
                 num2 = ai[i]
+
             else:
                 ar.append(ai[i])
     ar2 = []
@@ -36,13 +37,13 @@ def main(n):
     for m in queries:
         if m <= num_pairs:
             outputs.append((ar3[m - 1][0], ar3[m - 1][1]))
+
         else:
             m2 = m - num_pairs - 1
             outputs.append((nummm, ar2[m2 % (n - 1)]))
 
     for x, y in outputs:
-        print(x, y)
-
-
+        # print(x, y)
+        pass
 if __name__ == "__main__":
     main(10)

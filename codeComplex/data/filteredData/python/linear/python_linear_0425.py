@@ -13,7 +13,9 @@ def main(n):
 
     # 原算法逻辑
     if len(a) < n:
-        print(0)
+        # print(0)
+        pass
+
     else:
         d = set()
         p = 0
@@ -21,15 +23,16 @@ def main(n):
             v = i & x
             d.add(v)
             if v != i and v in a:
-                print(1)
+                # print(1)
+                pass
                 p = 1
                 break
         if len(d) < n and p == 0:
-            print(2)
+            # print(2)
+            pass
         elif p != 1:
-            print(-1)
-
-
+            # print(-1)
+            pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 来做规模实验
     main(10)

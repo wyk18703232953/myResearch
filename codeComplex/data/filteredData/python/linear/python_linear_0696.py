@@ -15,12 +15,12 @@ def main(n):
     if n <= 1:
         nn = 1
         v = 0
+
     else:
         nn = n
         v = n // 2
     result = solve(nn, v)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -4,7 +4,8 @@ def main(n):
     # 下面构造满足这些限制并随 n 变化的确定性参数
     if n < 3:
         # 对于太小的 n，直接不构造树，保持逻辑兼容
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # 让 d 随 n 增长但小于 n，且至少为 2
@@ -17,7 +18,8 @@ def main(n):
 
     # 以下为原始算法逻辑，仅将输入改为使用上面生成的 n, d, k
     if n < d + 1 or (d > 1 and k == 1):
-        print('NO')
+        # print('NO')
+        pass
         return
 
     edges = [(1, 2)]
@@ -31,7 +33,8 @@ def main(n):
     next_i = d + 2
     while next_i <= n:
         if not stack:
-            print('NO')
+            # print('NO')
+            pass
             return
 
         node = stack[-1]
@@ -45,10 +48,10 @@ def main(n):
         stack.append([next_i, remaining_depth - 1, k - 1])
         next_i += 1
 
-    print('YES')
-    print('\n'.join(f'{a} {b}' for a, b in edges))
-
-
+    # print('YES')
+    pass
+    # print('\n'.join(f'{a} {b}' for a, b in edges))
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=20 运行一次以便做时间复杂度实验
     main(20)

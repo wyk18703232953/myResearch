@@ -14,8 +14,7 @@ def main(n):
                 h = max(h, sqrt((2 * r) ** 2 - (x[i] - x[j]) ** 2) + y[j])
         y[i] = h
         outputs.append(h)
-    print(" ".join(str(v) for v in outputs))
-
-
+    # print(" ".join(str(v) for v in outputs))
+    pass
 if __name__ == "__main__":
     main(10)

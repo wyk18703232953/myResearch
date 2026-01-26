@@ -11,6 +11,7 @@ def main(n):
         for j in range(cols):
             if (i // 2 + j // 3) % 2 == 0:
                 row.append("#")
+
             else:
                 row.append(".")
         MAP.append(row)
@@ -39,10 +40,11 @@ def main(n):
                 ANSMAP[i + 1][j + 1] = "#"
 
     if MAP == ANSMAP:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

@@ -48,7 +48,7 @@ def main(n):
         res = solve_single_case(nn, kk, ss)
         results.append(res)
     for x in results:
-        print(x)
-
+        # print(x)
+        pass
 if __name__ == "__main__":
     main(5)

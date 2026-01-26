@@ -1,7 +1,8 @@
 def main(n):
     # n 表示成对元素的数量，数组长度为 2n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造确定性数组：每个数字 i 出现两次，按顺序排列
@@ -25,8 +26,7 @@ def main(n):
                     count += 1
                 elif pairs[i] == pairs[j]:
                     minimumSwaps += count
-    print(minimumSwaps)
-
-
+    # print(minimumSwaps)
+    pass
 if __name__ == "__main__":
     main(10)

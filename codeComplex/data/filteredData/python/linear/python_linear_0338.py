@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as the length of the array a
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     d = max(1, n // 3)
@@ -19,8 +20,7 @@ def main(n):
         if abs(x - right) >= d:
             s.add(x)
 
-    print(len(s))
-
-
+    # print(len(s))
+    pass
 if __name__ == "__main__":
     main(10)

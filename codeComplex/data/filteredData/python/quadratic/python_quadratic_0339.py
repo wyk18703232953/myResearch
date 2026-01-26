@@ -2,7 +2,8 @@ import string
 
 def main(n):
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # 构造确定性的 s1 和 s2，长度均为 n
@@ -31,19 +32,22 @@ def main(n):
             np_flag += 1
             break
     if np_flag > 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     pos = dict()
     for i in range(n):
         if s1[i] in pos:
             pos[s1[i]].append(i)
+
         else:
             pos[s1[i]] = [i]
 
     for i in range(n):
         if s1[i] == s2[i]:
             continue
+
         else:
             row = pos[s2[i]]
             no = 0
@@ -59,14 +63,19 @@ def main(n):
             for j in range(n):
                 if s1[j] in pos:
                     pos[s1[j]].append(j)
+
                 else:
                     pos[s1[j]] = [j]
 
-    print(len(ans))
-    if ans:
-        print(*ans)
-    else:
-        print()
+    # print(len(ans))
+    pass
 
+    if ans:
+        # print(*ans)
+        pass
+
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

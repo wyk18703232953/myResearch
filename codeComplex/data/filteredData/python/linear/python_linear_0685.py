@@ -9,11 +9,13 @@ def main(n):
         f = q // 2
         if q % 2:
             s = f + 1
+
         else:
             s = f
         if len(ff) == 0:
             ff = [f]
             ss = [s]
+
         else:
             if f > ff[-1] or s < ss[-1]:
                 d = max(f - ff[-1], ss[-1] - s)
@@ -21,8 +23,7 @@ def main(n):
                 s += d
             ff.append(f)
             ss.append(s)
-    print(*(ff[::-1] + ss))
-
-
+    # print(*(ff[::-1] + ss))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -16,4 +16,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用，可按需要修改 n 的取值来做规模实验
     result = main(1000)
-    print(result)
+    # print(result)
+    pass

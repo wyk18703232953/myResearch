@@ -1,6 +1,7 @@
 def main(n):
     if n <= 3:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造一个确定性的树：长链结构 1-2-3-...-n
@@ -40,9 +41,8 @@ def main(n):
                 reach[tree[tree[node]]] = 1
                 build[tree[node]] = 1
 
-    print(sum(build))
-
-
+    # print(sum(build))
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的值进行实验
     main(10)

@@ -20,9 +20,8 @@ def main(n):
             lst3[i] = lst1.index(i)
     for i in sorted(lst3, key=lst3.get):
         ans.append(i)
-    print(*ans, sep=" ")
-
-
+    # print(*ans, sep=" ")
+    pass
 if __name__ == "__main__":
     # Example call; you can change 10 to other n to scale input size
     main(10)

@@ -28,20 +28,25 @@ def main(n):
         k += 1
         for j in list(dif.keys())[k:]:
             if dif[i] == dif[j][::-1]:
-                print(hem - 2)
-                print(i + 1, j + 1)
+                # print(hem - 2)
+                pass
+                # print(i + 1, j + 1)
+                pass
                 return
             if not change and (dif[i][0] == dif[j][1] or dif[j][0] == dif[i][1]):
                 change = [i, j]
 
     if change:
-        print(hem - 1)
-        print(change[0] + 1, change[1] + 1)
+        # print(hem - 1)
+        pass
+        # print(change[0] + 1, change[1] + 1)
+        pass
+
     else:
-        print(hem)
-        print('-1 -1')
-
-
+        # print(hem)
+        pass
+        # print('-1 -1')
+        pass
 if __name__ == "__main__":
     # Example deterministic call for time complexity experiments
     main(10)

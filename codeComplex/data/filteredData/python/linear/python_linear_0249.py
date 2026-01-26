@@ -18,6 +18,7 @@ def main(n):
                 if j & 1:
                     out[i][l] = '#'
                     l += 1
+
                 else:
                     out[i][r] = '#'
                     r -= 1
@@ -27,9 +28,9 @@ def main(n):
             kk -= 1
             out[i][width >> 1] = '#'
 
-    print('YES')
-    print('\n'.join(''.join(row) for row in out))
-
-
+    # print('YES')
+    pass
+    # print('\n'.join(''.join(row) for row in out))
+    pass
 if __name__ == "__main__":
     main(10)

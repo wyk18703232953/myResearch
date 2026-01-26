@@ -24,7 +24,8 @@ def main(n):
             cnt += 1
 
     result = 2.0 * s / cnt
-    print(result)
+    # print(result)
+    pass
     return result
 
 

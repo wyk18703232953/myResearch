@@ -1,7 +1,8 @@
 def main(n):
     # n 表示数组长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成测试数据：长度为 n 的整数列表
@@ -21,9 +22,8 @@ def main(n):
             a.remove(x)
         cnt += 1
 
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

@@ -17,6 +17,7 @@ def main(n):
             val = (i * cols + j) % 3
             if val == 0:
                 row.append('#')
+
             else:
                 row.append('.')
         arr2.append(row)
@@ -36,11 +37,12 @@ def main(n):
                 arr[i + 1][j - 1] = arr[i - 1][j + 1] = "#"
 
     if arr == arr2:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 10 作为输入规模运行
     main(10)

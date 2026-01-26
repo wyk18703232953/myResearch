@@ -2,7 +2,8 @@ def main(n):
     # n controls the size of the problem
     # define n and m based on n to keep them proportional and scalable
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = 2 * n
@@ -21,10 +22,10 @@ def main(n):
             a_i += 1
             c_i += 1
             bought += 1
+
         else:
             c_i += 1
-    print(bought)
-
-
+    # print(bought)
+    pass
 if __name__ == "__main__":
     main(10)

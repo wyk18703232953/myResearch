@@ -17,7 +17,8 @@ def main(n):
     a = sorted(list(set(a)))
 
     if not a or k <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     ans = [a.pop(0)]
@@ -29,10 +30,11 @@ def main(n):
         if k == 0:
             break
     if k != 0:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(sum(ans))
-
-
+        # print(sum(ans))
+        pass
 if __name__ == "__main__":
     main(10)

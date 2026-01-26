@@ -41,8 +41,10 @@ def generate_case(case_id, n):
                 s_list.append("G")
             elif ch == "G":
                 s_list.append("B")
+
             else:
                 s_list.append("R")
+
         else:
             s_list.append(ch)
     s = "".join(s_list)
@@ -65,4 +67,5 @@ if __name__ == "__main__":
     # example call
     out = main(10)
     for v in out:
-        print(v)
+        # print(v)
+        pass

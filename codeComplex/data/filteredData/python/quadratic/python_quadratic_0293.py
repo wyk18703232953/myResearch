@@ -30,6 +30,7 @@ def generate_input(n):
             # already adjacent pair
             v = (i % 5) + 1
             a.extend([v, v])
+
         else:
             # create a misaligned pair to trigger swaps
             v1 = (i % 7) + 1
@@ -41,7 +42,7 @@ def generate_input(n):
 def main(n):
     a, size = generate_input(n)
     ans = solve(a, size)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(5)

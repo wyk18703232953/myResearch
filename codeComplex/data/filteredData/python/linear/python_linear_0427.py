@@ -10,8 +10,7 @@ def main(n):
             t = s
         a.append(s)
     a.sort(reverse=True)
-    print(a.index(t) + 1)
-
-
+    # print(a.index(t) + 1)
+    pass
 if __name__ == "__main__":
     main(5)

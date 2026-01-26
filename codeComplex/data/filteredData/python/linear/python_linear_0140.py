@@ -20,11 +20,11 @@ def f(ar):
 def main(n):
     if n <= 0:
         ar = []
+
     else:
         ar = [i % 7 + i // 3 for i in range(n)]
     result = f(ar)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

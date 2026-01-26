@@ -11,6 +11,7 @@ def main(n):
         for j in range(cols):
             if (i + j) % 3 == 0:
                 row.append('*')
+
             else:
                 row.append('.')
         g.append(row)
@@ -64,12 +65,14 @@ def main(n):
                 g[i][j] = '.'
     if all(g[i][j] == '.' for i in range(n_local) for j in range(m)):
         r = [(i + 1, j + 1, c[i][j] - 1) for i in range(n_local) for j in range(m) if c[i][j]]
-        print(len(r))
+        # print(len(r))
+        pass
         for t in r:
-            print(*t)
+            # print(*t)
+            pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(5)

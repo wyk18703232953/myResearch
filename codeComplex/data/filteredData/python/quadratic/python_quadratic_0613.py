@@ -8,7 +8,8 @@ def main(n):
     # Then deterministically generate m, k, and a based on n.
 
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic generation of m and k from n
@@ -34,9 +35,8 @@ def main(n):
         sa[i] = max(sa[i], 0)
         ans = max(ans, sa[i])
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for testing / experimentation
     main(10)

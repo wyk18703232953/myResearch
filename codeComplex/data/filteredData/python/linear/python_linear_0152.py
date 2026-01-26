@@ -61,6 +61,7 @@ def get_frequency(list_):
     for ele in list_:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -85,6 +86,7 @@ def dupconscount(nums):
     for i in range(len(nums) - 1):
         if nums[i] == nums[i + 1]:
             running_count += 1
+
         else:
             freque.append(running_count)
             element.append(nums[i])
@@ -104,7 +106,8 @@ def main(n):
     # 原程序：n, p 然后长度为 n 的数组 a
     # 这里将规模参数 n 直接作为原来的 n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     p = n + 1
     a = [i + 1 for i in range(n)]
@@ -117,7 +120,7 @@ def main(n):
         temp = (fir % p) + (sec % p)
         if temp > ans:
             ans = temp
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

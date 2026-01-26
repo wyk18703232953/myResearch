@@ -13,10 +13,10 @@ def main(n):
             ans += 1
             a += 1
             b += 1
+
         else:
             a += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

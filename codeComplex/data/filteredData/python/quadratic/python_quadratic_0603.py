@@ -59,8 +59,7 @@ def main(n):
         return best_acr
 
     ans = max_sum(a, n, m, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

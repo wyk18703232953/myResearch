@@ -15,14 +15,14 @@ def main(n):
             zero += 1
     d = ""
     if ind == -1:
-        print("0" * zero + "1" * one)
+        # print("0" * zero + "1" * one)
+        pass
         return
     d = d + "0" * zero + "1" * one
     for i in s[ind:]:
         if i != '1':
             d += i
-    print(d)
-
-
+    # print(d)
+    pass
 if __name__ == "__main__":
     main(10)

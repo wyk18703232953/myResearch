@@ -1,7 +1,8 @@
 def main(n):
     # Ensure n is at least 1 to avoid empty strings
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically construct strings a and b based on n
@@ -27,12 +28,12 @@ def main(n):
     for i in range(len(a)):
         if a[i] == '1':
             ans += zeros[len(b) - len(a) + i] - zeros[i - 1]
+
         else:
             ans += ones[len(b) - len(a) + i] - ones[i - 1]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

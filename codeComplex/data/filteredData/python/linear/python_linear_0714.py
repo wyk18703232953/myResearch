@@ -10,9 +10,8 @@ def main(n):
             k = min(k, min(A[-1], A[i]) // (n - i - 1))
     if n >= 2:
         k = min(k, min(A[0], A[-1]) // (n - 1))
-    print(k)
-
-
+    # print(k)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

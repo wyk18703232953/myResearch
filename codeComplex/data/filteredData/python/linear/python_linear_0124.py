@@ -1,6 +1,7 @@
 def main(n):
     if n <= 1:
-        print("Yes")
+        # print("Yes")
+        pass
         return
 
     # Deterministically generate edges for a star-like structure:
@@ -17,11 +18,12 @@ def main(n):
 
     for i in range(1, n + 1):
         if m[i] > 0 and d[i] < 3:
-            print("No")
+            # print("No")
+            pass
             break
+
     else:
-        print("Yes")
-
-
+        # print("Yes")
+        pass
 if __name__ == "__main__":
     main(10)

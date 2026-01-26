@@ -3,7 +3,8 @@ def main(n):
     rows = n
     cols = n
     if rows <= 0 or cols <= 0:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     # 构造一个确定性的 rows x cols 网格
@@ -14,6 +15,7 @@ def main(n):
         for j in range(cols):
             if (i + j) % 3 == 0:
                 row_chars.append('#')
+
             else:
                 row_chars.append('.')
         a.append(''.join(row_chars))
@@ -49,11 +51,11 @@ def main(n):
             if i >= 2 and j <= m_local-2 and j >= 1 and a[i-2][j-1] == '#' and a[i-2][j] == '#' and a[i-2][j+1] == '#' \
                     and a[i-1][j-1] == '#' and a[i-1][j+1] == '#' and a[i][j-1] == '#' and a[i][j+1] == '#':
                 continue
-            print('NO')
+            # print('NO')
+            pass
             return
-    print('YES')
-
-
+    # print('YES')
+    pass
 if __name__ == "__main__":
     # 示例：以 n=5 作为规模调用
     main(5)

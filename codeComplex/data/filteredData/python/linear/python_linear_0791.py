@@ -27,10 +27,12 @@ def build_arrays(n, k):
     for i in range(2, n + 1):
         if a[i - 1] == a[i]:
             l[i] = l[i - 1]
+
         else:
             l[i] = i
         if a[n - i + 1] == a[n - i + 2]:
             r[n - i + 1] = r[n - i + 2]
+
         else:
             r[n - i + 1] = n - i + 1
     return a, l, r
@@ -43,11 +45,14 @@ def main(n):
         k = n
     a, l, r = build_arrays(n, k)
     if win1(n, k, a, l, r):
-        print("tokitsukaze")
+        # print("tokitsukaze")
+        pass
     elif win2(n, k, a, l, r):
-        print("quailty")
-    else:
-        print("once again")
+        # print("quailty")
+        pass
 
+    else:
+        # print("once again")
+        pass
 if __name__ == "__main__":
     main(10)

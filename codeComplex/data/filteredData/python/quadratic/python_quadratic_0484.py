@@ -9,8 +9,10 @@ def main(n):
     val = n
 
     if all(not left[i] and not right[i] for i in range(n)):
-        print("YES")
-        print(' '.join(['1'] * n))
+        # print("YES")
+        pass
+        # print(' '.join(['1'] * n))
+        pass
         return
 
     while not all(not left[i] and not right[i] for i in range(n)):
@@ -28,20 +30,23 @@ def main(n):
                     right[i] -= 1
         val -= 1
         if not zeroSet:
-            print("NO")
+            # print("NO")
+            pass
             return
 
     for i in range(n):
         if not res[i]:
             res[i] = str(val)
+
         else:
             res[i] = str(res[i])
     if any(i == '0' for i in res):
-        print("NO")
+        # print("NO")
+        pass
         return
-    print("YES")
-    print(' '.join(res))
-
-
+    # print("YES")
+    pass
+    # print(' '.join(res))
+    pass
 if __name__ == "__main__":
     main(10)

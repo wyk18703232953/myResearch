@@ -14,4 +14,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：使用 n=10 作为输入规模
     result = main(10)
-    print(result)
+    # print(result)
+    pass

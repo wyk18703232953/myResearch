@@ -11,11 +11,11 @@ def main(n):
     for i in range(n):
         if ha[b[i]] < removed:
             out += "0 "
+
         else:
             out += str(ha[b[i]] - removed + 1) + " "
             removed = ha[b[i]] + 1
-    print(out[:-1])
-
-
+    # print(out[:-1])
+    pass
 if __name__ == "__main__":
     main(10)

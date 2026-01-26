@@ -29,6 +29,7 @@ def f():
         o = bin(i).count("1")
         if o == 1:
             dp[i] = 2
+
         else:
             dp[i] += dp[o] + 1
     return dp
@@ -60,6 +61,7 @@ def main(n):
     if n <= 0:
         s = "1"
         k = 1
+
     else:
         length = n
         k = (n % 20) + 1
@@ -67,8 +69,7 @@ def main(n):
         if s[0] == "0":
             s = "1" + s[1:]
     result = bit(s, k)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

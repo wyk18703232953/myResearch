@@ -7,6 +7,7 @@ def check(st, n):
     while i < n:
         if pre != st[i]:
             count += 1
+
         else:
             indx[pre_indx] = count
             count = 1
@@ -25,14 +26,17 @@ def generate_string(n):
 def main(n):
     st = generate_string(n)
     if n == 0:
-        print(0)
+        # print(0)
+        pass
         return
     actual_indx = check(st, n)
     reverse_indx = check(st[::-1], n)
     if st[0] == st[-1]:
-        print(max(actual_indx))
-    else:
-        print(min(n, max(max(actual_indx[1:]), actual_indx[0] + reverse_indx[0])))
+        # print(max(actual_indx))
+        pass
 
+    else:
+        # print(min(n, max(max(actual_indx[1:]), actual_indx[0] + reverse_indx[0])))
+        pass
 if __name__ == "__main__":
     main(10)

@@ -3,7 +3,8 @@ def main(n):
     # 使用简单的算术构造，保证可重复性
     arr = [((i * 7 + 3) % (n + 5)) for i in range(n)] if n > 0 else []
     if not arr:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     maxval = max(arr)
@@ -19,6 +20,7 @@ def main(n):
         if temp <= arr[i]:
             flag = 1
             break
+
         else:
             temp = arr[i]
 
@@ -27,15 +29,17 @@ def main(n):
         if arr[i] >= temp:
             flag = 1
             break
+
         else:
             temp = arr[i]
 
     if flag == 0:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 的大小
     main(10)

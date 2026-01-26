@@ -29,9 +29,8 @@ def main(n):
         if number in fp:
             checklist.append(number)
 
-    print(" ".join(checklist))
-
-
+    # print(" ".join(checklist))
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 的大小做时间复杂度实验
     main(10)

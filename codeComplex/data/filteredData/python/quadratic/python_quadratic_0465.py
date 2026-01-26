@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     # Deterministic construction of a length-n array a of positive integers
@@ -22,9 +23,8 @@ def main(n):
                     m -= 1
                 if m == 0:
                     break
-    print(''.join(s))
-
-
+    # print(''.join(s))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change the value to test other scales
     main(10)

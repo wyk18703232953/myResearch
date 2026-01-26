@@ -80,15 +80,18 @@ def divideCeil(n, x):
 
 
 def ws(s):
-    print(s)
+    # print(s)
+    pass
 
 
 def wi(n):
-    print(n)
+    # print(n)
+    pass
 
 
 def wia(a):
-    print(' '.join(str(x) for x in a))
+    # print(' '.join(str(x) for x in a))
+    pass
 
 
 def power_set(L):
@@ -111,7 +114,8 @@ def power_set(L):
 
 
 def fastPlrintNextLines(a):
-    print('\n'.join(map(str, a)))
+    # print('\n'.join(map(str, a)))
+    pass
 
 
 def sortByFirstAndSecond(A):
@@ -128,6 +132,7 @@ def core_logic(n, k, s):
         if s[i] == '(':
             cnt += 1
             ans.append('(')
+
         else:
             ans.append(')')
             covered += 1
@@ -151,8 +156,7 @@ def main(n):
         s_chars.append(')' if i % 2 == 0 else '(')
     s = ''.join(s_chars)
     result = core_logic(n, k, s)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

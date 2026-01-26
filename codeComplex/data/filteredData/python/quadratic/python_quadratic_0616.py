@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as both the array length and parameter m
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate n, m, k and array a based on input scale n
@@ -20,13 +21,13 @@ def main(n):
                 sum1 = sum1 + a[j - i]
                 if sum1 > result:
                     result = sum1
+
             else:
                 continue
         if j - M >= 0:
             result = max(result, sum1 + values[j - M])
         values.append(max(0, result - K))
-    print(max(values) if values else 0)
-
-
+    # print(max(values) if values else 0)
+    pass
 if __name__ == "__main__":
     main(10)

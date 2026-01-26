@@ -21,7 +21,7 @@ def main(n):
     for _ in range(q - 1):
         s += add
 
-    print(s)
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     main(10)

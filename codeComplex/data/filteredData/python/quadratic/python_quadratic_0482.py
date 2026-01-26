@@ -19,11 +19,13 @@ def main(n):
                 if E[j][1] > i:
                     otv[E[j][1]] += 1
                     x -= 1
+
             else:
                 break
 
         if x > 0:
-            print("NO")
+            # print("NO")
+            pass
             return
 
         x = L[i]
@@ -32,11 +34,13 @@ def main(n):
                 if E[j][1] < i:
                     otv[E[j][1]] += 1
                     x -= 1
+
             else:
                 break
 
         if x > 0:
-            print("NO")
+            # print("NO")
+            pass
             return
 
     for i in range(n):
@@ -49,15 +53,17 @@ def main(n):
             if otv[z] > otv[i]:
                 l += 1
         if (r != R[i]) or (l != L[i]):
-            print("NO")
+            # print("NO")
+            pass
             return
 
-    print("YES")
+    # print("YES")
+    pass
     for i in range(n):
-        print(otv[i] + 1, end=' ')
-    print()
-
-
+        # print(otv[i] + 1, end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     # Example deterministic calls for time complexity experiments
     main(5)

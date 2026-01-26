@@ -1,7 +1,9 @@
 def main(n):
     if n <= 0:
-        print(0)
-        print(-1, -1)
+        # print(0)
+        pass
+        # print(-1, -1)
+        pass
         return
 
     # 生成确定性的字符串 s 和 t，长度为 n，字母表为前 26 个小写字母
@@ -40,9 +42,9 @@ def main(n):
                     break
             if x != -1:
                 break
-    print(ans)
-    print(x, y)
-
-
+    # print(ans)
+    pass
+    # print(x, y)
+    pass
 if __name__ == "__main__":
     main(1000)

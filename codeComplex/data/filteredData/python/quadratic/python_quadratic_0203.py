@@ -21,13 +21,14 @@ def main(n):
             if X[i][j] == '1':
                 if nums[j] > 1:
                     continue
+
                 else:
                     ok = False
         if ok is True:
-            print("YES")
+            # print("YES")
+            pass
             return
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     main(5)

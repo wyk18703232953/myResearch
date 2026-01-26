@@ -2,7 +2,8 @@ import sys
 
 def main(n):
     if n < 3:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # 确定性生成 l 和 c，长度为 n
@@ -26,10 +27,11 @@ def main(n):
         if lr < sys.maxsize and lc < sys.maxsize:
             a.append(lr + lc + c[i])
     if not a:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(min(a))
-
-
+        # print(min(a))
+        pass
 if __name__ == "__main__":
     main(10)

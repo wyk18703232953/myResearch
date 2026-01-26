@@ -11,6 +11,7 @@ def get_array(x, initial=None):
     dimension = len(x)
     if dimension == 1:
         return [copy.deepcopy(initial) for _ in range(x[0])]
+
     else:
         return [get_array(x[1:], initial) for _ in range(x[0])]
 
@@ -42,12 +43,12 @@ def solve_from_data(n, f):
 
 def main(n):
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
     f = [((i + 1) // 2 + 1) for i in range(n)]
     res = solve_from_data(n, f)
-    print(" ".join(str(x) for x in res))
-
-
+    # print(" ".join(str(x) for x in res))
+    pass
 if __name__ == "__main__":
     main(10)

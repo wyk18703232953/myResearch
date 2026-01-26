@@ -21,17 +21,21 @@ def main(n):
     if n == 0:
         # Edge case: no events, mimic original logic:
         # a[0] would not exist, so just print earliest possible time
-        print(0, 0)
+        # print(0, 0)
+        pass
         return
 
     if a[0] != 0 and a[0] > s:
-        print(0, 0)
+        # print(0, 0)
+        pass
+
     else:
         a.append(a[n - 1] + 2 * s + 3)
         for i in range(1, n + 1):
             if a[i] - (a[i - 1] + 2 + s) >= s:
                 t = a[i - 1] + s + 1
-                print(t // 60, t % 60)
+                # print(t // 60, t % 60)
+                pass
                 break
 
 

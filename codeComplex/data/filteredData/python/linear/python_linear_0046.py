@@ -13,6 +13,7 @@ def process(X, a, b):
             B.add(b - x)
         elif a - x not in X1 and b - x not in X1:
             return 'NO'
+
         else:
             Both.add(x)
     start = A.copy()
@@ -57,6 +58,7 @@ def process(X, a, b):
     for x in X:
         if x in A:
             answer.append(0)
+
         else:
             answer.append(1)
     return answer
@@ -71,12 +73,14 @@ def main(n):
     X = list(range(1, n + 1))
     answer = process(X, a, b)
     if answer == 'NO':
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
-        print(' '.join(map(str, answer)))
-
-
+        # print('YES')
+        pass
+        # print(' '.join(map(str, answer)))
+        pass
 if __name__ == "__main__":
     # example deterministic call for time complexity experiments
     main(10)

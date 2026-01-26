@@ -13,6 +13,7 @@ def main(n):
         for j in range(c):
             if (i + j) % 2 == 0:
                 row_chars.append('1')
+
             else:
                 row_chars.append('0')
         a.append(''.join(row_chars))
@@ -48,8 +49,7 @@ def main(n):
         if f:
             ans = "YES"
             break
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(5)

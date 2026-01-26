@@ -34,12 +34,15 @@ def core_logic(n, indices, cost):
             if flag != 0:
                 total += ans
                 mint.append(total)
+
             else:
                 continue
+
         else:
             continue
     if len(mint) > 0:
         return min(mint)
+
     else:
         return -1
 
@@ -54,7 +57,7 @@ def generate_data(n):
 def main(n):
     n_value, indices, cost = generate_data(n)
     result = core_logic(n_value, indices, cost)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

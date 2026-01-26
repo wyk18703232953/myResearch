@@ -12,10 +12,11 @@ def main(n):
         s += dob
         dob += 1
         if s - (orig_n - i - 1) == k:
-            print(orig_n - i - 1)
+            # print(orig_n - i - 1)
+            pass
             return
-    print(0)
-
+    # print(0)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 的值进行规模实验
     main(10)

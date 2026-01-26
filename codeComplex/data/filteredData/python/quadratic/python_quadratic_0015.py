@@ -19,9 +19,8 @@ def main(n):
 
     # 为了实验时保持输出行为，这里打印结果
     for value in results:
-        print(value)
-
-
+        # print(value)
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n
     main(10)

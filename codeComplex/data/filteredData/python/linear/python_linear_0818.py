@@ -14,7 +14,8 @@ def main(n):
         turn += 1
         summ += turn
     result = turns - turn
-    print(result)
+    # print(result)
+    pass
     return result
 
 

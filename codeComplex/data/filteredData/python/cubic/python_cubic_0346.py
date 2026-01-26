@@ -29,6 +29,7 @@ def solve_one(N, K, A):
                     used[j + 1] = used[j]
                 dp[j] += 1
                 used[j] = set([A[i]])
+
             else:
                 used[j].add(A[i])
     return min(dp) + 1

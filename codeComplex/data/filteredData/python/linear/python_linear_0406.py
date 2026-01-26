@@ -39,6 +39,7 @@ def main(n):
         if isPossible:
             ans = mid
             high = mid - 0.000001
+
         else:
             low = mid + 0.000001
 
@@ -63,9 +64,8 @@ def main(n):
         if isPossible:
             ans = 1000000000.0
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for time complexity experiments
     main(10)

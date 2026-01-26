@@ -20,6 +20,7 @@ def main(n):
             for j in range(i + 1, n + 1):
                 mm = max(mm, AA[j] - AA[i] - k)
         result = max(A[0] - k, 0) if n == 1 else mm
+
     else:
         DP = [[0] * (m + 1) for _ in range(n + 1)]
         for i in range(n):
@@ -30,6 +31,7 @@ def main(n):
                 DP[i + 1][0] = max(DP[i + 1][0], DP[i][j])
                 if j > i + 1:
                     continue
+
                 else:
                     DP[i + 1][j] = max(DP[i][j - 1] + a, DP[i][m] + a - k)
         result = max(0, max(DP[n]))
@@ -39,4 +41,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n，用于不同规模的时间复杂度实验
     for test_n in [1, 5, 10, 50, 100]:
-        print(test_n, main(test_n))
+        # print(test_n, main(test_n))
+        pass

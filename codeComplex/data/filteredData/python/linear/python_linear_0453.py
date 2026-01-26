@@ -17,14 +17,17 @@ def main(n):
     for i in range(length):
         if k <= 0:
             break
+
         else:
             if arr[i] == '(':
                 st.append((arr[i], i))
+
             else:
                 if st and st[-1][0] == '(':
                     k -= 2
                     ans.append(st.pop())
                     ans.append((arr[i], i))
+
                 else:
                     st.append((arr[i], i))
 
@@ -32,8 +35,7 @@ def main(n):
     res = []
     for i in ans:
         res.append(i[0])
-    print(''.join(res))
-
-
+    # print(''.join(res))
+    pass
 if __name__ == "__main__":
     main(10)

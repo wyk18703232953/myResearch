@@ -1,7 +1,8 @@
 def main(n):
     # n 表示数组长度
     if n < 3:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # 确定性生成测试数据：简单的“山峰”结构
@@ -16,16 +17,19 @@ def main(n):
         if a[i] > a[i - 1] and a[i] > a[i + 1]:
             c += 1
         if a[i] == a[i - 1] or a[i] == a[i + 1]:
-            print('NO')
+            # print('NO')
+            pass
             return
         if a[i] <= a[i - 1] and a[i] <= a[i + 1]:
-            print('NO')
+            # print('NO')
+            pass
             return
     if c > 1:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
-
-
+        # print('YES')
+        pass
 if __name__ == "__main__":
     main(10)

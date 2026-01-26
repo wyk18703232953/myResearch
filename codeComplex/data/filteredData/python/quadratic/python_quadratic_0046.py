@@ -25,9 +25,8 @@ def main(n):
     s_val = 0
     for x in curr:
         s_val = (s_val + x) % m
-    print(s_val)
-
-
+    # print(s_val)
+    pass
 if __name__ == "__main__":
     # example deterministic call; adjust n for experiments
     main(1000)

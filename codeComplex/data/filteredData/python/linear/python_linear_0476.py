@@ -2,7 +2,8 @@ import sys
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造确定性的 c 和 a
@@ -34,9 +35,8 @@ def main(n):
 
         res += mn
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 以做规模实验
     main(10)

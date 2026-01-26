@@ -57,6 +57,7 @@ def get_frequency(list_):
     for ele in list_:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -74,6 +75,7 @@ def core_logic(n, m, a, b):
         ul = (n // m) + 1
         ll = n // m
         return min(((ul * m) - n) * a, (n - (ll * m)) * b)
+
     else:
         return 0
 
@@ -87,14 +89,15 @@ def main(n):
         M = 1
         A = 1
         B = 1
+
     else:
         N = n
         M = max(1, n // 2)
         A = n + 1
         B = n + 2
     result = core_logic(N, M, A, B)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change the argument to test other scales.
     main(10)

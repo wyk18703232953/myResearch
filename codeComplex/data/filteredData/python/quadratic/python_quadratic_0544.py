@@ -23,4 +23,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     result = main(10)
-    print(result)
+    # print(result)
+    pass

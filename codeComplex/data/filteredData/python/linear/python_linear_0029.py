@@ -17,4 +17,5 @@ def main(n):
 if __name__ == "__main__":
     # Example: run main with a chosen n and print the result
     result = main(10)
-    print(result)
+    # print(result)
+    pass

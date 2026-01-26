@@ -43,10 +43,10 @@ def main(n):
             ans = len(d)
             ans_l = d
 
-    print(ans)
+    # print(ans)
+    pass
     for el in ans_l:
-        print(*el)
-
-
+        # print(*el)
+        pass
 if __name__ == "__main__":
     main(10)

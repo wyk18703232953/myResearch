@@ -23,24 +23,29 @@ def process_strings(strings):
         for ch in s:
             if ch == ")":
                 bal -= 1
+
             else:
                 if bal < 0:
                     req += bal
                     bal = 1
+
                 else:
                     bal += 1
 
         if req < 0:
             if bal > 0:
                 req = inf
+
             else:
                 req += bal
+
         else:
             req = bal
 
         t[j] = req
         if req not in m:
             m[req] = 1
+
         else:
             m[req] += 1
 
@@ -54,7 +59,7 @@ def process_strings(strings):
 def main(n):
     strings = generate_strings(n)
     result = process_strings(strings)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

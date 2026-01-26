@@ -24,11 +24,11 @@ def main(n):
 
         if can_win:
             winners[i] = 'A'
+
         else:
             winners[i] = 'B'
 
-    print(''.join(winners))
-
-
+    # print(''.join(winners))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -81,6 +81,7 @@ def countcon(s, i):
     for i in range(i, len(s)):
         if s[i] == ch:
             c += 1
+
         else:
             break
     return c
@@ -196,11 +197,13 @@ def main(n):
         inv += p % 2
         if inv % 2:
             results.append("odd")
+
         else:
             results.append("even")
 
     for res in results:
-        print(res)
+        # print(res)
+        pass
     return results
 
 

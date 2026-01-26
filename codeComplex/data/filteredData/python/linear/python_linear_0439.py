@@ -18,7 +18,8 @@ def main(n):
     a = getx(n)
     ans = getans(n, a)
     ans1 = [str(i) for i in ans]
-    print(' '.join(ans1))
+    # print(' '.join(ans1))
+    pass
     return ans
 
 if __name__ == "__main__":

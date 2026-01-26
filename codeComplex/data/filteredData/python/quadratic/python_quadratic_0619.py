@@ -3,7 +3,8 @@ from math import *
 def main(n):
     # n 作为数组长度规模；m 和 k 由 n 确定性生成
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     m = max(1, n // 3)
     k = n // 2
@@ -20,7 +21,7 @@ def main(n):
                 a[i] -= k
                 ans = max(ans, a[i] - min1)
             min1 = min(min1, a[i])
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

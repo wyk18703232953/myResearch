@@ -14,8 +14,7 @@ def main(n):
         d[x] += 1
 
     for i in arr:
-        print(d[i], end=" ")
-
-
+        # print(d[i], end=" ")
+        pass
 if __name__ == "__main__":
     main(10)

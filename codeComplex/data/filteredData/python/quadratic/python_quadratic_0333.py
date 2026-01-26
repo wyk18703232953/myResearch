@@ -4,6 +4,7 @@ def main(n):
     if n <= 1:
         d = 0
         k = 1
+
     else:
         d = max(1, n // 4)
         k = max(2, min(5, n))
@@ -11,7 +12,9 @@ def main(n):
     _min = d + 1
 
     if n < _min:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
         res = []
         deg = [0] * (n + 1)
@@ -50,12 +53,14 @@ def main(n):
         ok &= all(dist[i] <= d for i in range(1, n + 1))
 
         if not ok:
-            print('NO')
+            # print('NO')
+            pass
+
         else:
-            print('YES')
+            # print('YES')
+            pass
             for e in res:
-                print(*e)
-
-
+                # print(*e)
+                pass
 if __name__ == "__main__":
     main(10)

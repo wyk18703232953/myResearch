@@ -36,9 +36,8 @@ def main(n):
                         continue
                     ans = min(ans, whites[white1] + whites[white2] + blacks[black1] + blacks[black2])
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(5)

@@ -1,5 +1,6 @@
 def bad():
-    print("NO")
+    # print("NO")
+    pass
     raise SystemExit
 
 node = 1
@@ -49,15 +50,18 @@ def core(n, d, k):
         if used[i] == False:
             bad()
 
-    print("YES")
+    # print("YES")
+    pass
     for u in range(1, n + 1):
         for v in g[u]:
-            print(u, v)
+            # print(u, v)
+            pass
 
 def main(n):
     # 映射规则：n 为图的节点数，d = n // 2，k = max(2, min(10, n // 3))
     if n < 2:
-        print("NO")
+        # print("NO")
+        pass
         return
     d = max(1, n // 2)
     k = max(2, min(10, n // 3 if n >= 3 else 2))

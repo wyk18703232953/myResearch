@@ -17,8 +17,7 @@ def main(n):
 
     l = sum(v == 1 for v in d.values())
     ans = s / l * 2
-    print('%.10f' % (ans,))
-
-
+    # print('%.10f' % (ans,))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -41,4 +41,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用：使用 n = 5 进行一次确定性实验
     output = main(5)
-    print("\n".join(output))
+    # print("\n".join(output))
+    pass

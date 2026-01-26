@@ -19,8 +19,7 @@ def main(n):
                     arr[i] = val
 
     arr1 = [str(v) for v in arr]
-    print(" ".join(arr1))
-
-
+    # print(" ".join(arr1))
+    pass
 if __name__ == "__main__":
     main(10)

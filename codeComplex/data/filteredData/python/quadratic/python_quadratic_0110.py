@@ -51,7 +51,7 @@ def main(n):
         return
     map1, map2 = generate_maps(n)
     result = 'YES' if check(map1, map2) else 'NO'
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

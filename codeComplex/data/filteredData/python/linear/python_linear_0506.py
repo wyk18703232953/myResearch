@@ -34,9 +34,8 @@ def main(n):
     ans = ""
     for i in range(n):
         ans += "A" if wins(mem, l, i) else "B"
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example call; adjust n as needed for experiments
     main(10)

@@ -51,7 +51,7 @@ def core_logic(n, s):
 def main(n):
     n_in, s = generate_input(n)
     result = core_logic(n_in, s)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

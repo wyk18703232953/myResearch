@@ -8,6 +8,7 @@ def main(n):
     if n <= 1:
         orig_n = 1
         orig_m = 1
+
     else:
         orig_n = n
         orig_m = n
@@ -20,7 +21,8 @@ def main(n):
     for i in range(orig_m):
         L[A[i] - 1] += 1
     result = min(L)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

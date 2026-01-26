@@ -54,6 +54,7 @@ def get_frequency(list_):
     for ele in list_:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -89,6 +90,7 @@ def core_logic(n, k, kk):
                 break
     if k == 0:
         return ans
+
     else:
         return -1
 
@@ -100,7 +102,7 @@ def main(n):
     base = "abcdefghijklmnopqrstuvwxyz"
     kk = [base[i % 26] for i in range(n)]
     res = core_logic(n, k, kk)
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

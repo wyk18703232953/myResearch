@@ -19,13 +19,14 @@ def main(n):
                     tmp += 1
                     i = tmp
                     continue
+
                 else:
                     while i <= e:
                         ar[i] = tmp
                         i += 1
-        print(ar[e], end=" ")
-    print()
-
-
+        # print(ar[e], end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

@@ -12,7 +12,7 @@ def main(n):
     add = s[i + 1:]
     for _ in range(k - 1):
         s += add
-    print(s)
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     main(10)

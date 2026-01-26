@@ -29,20 +29,21 @@ def main(n):
         if x > y:
             B.append(y)
             y = A[i + 2]
+
         else:
             B.append(x)
             x, y = y, A[i + 2]
     for w in queries:
         if w <= len(Z):
             AN.append(Z[w - 1])
+
         else:
             w = w % len(B)
             if w == 0:
                 w = len(B)
             AN.append((x, B[w - 1]))
     for W in AN:
-        print(*W)
-
-
+        # print(*W)
+        pass
 if __name__ == "__main__":
     main(10)

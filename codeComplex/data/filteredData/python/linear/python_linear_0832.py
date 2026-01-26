@@ -42,4 +42,5 @@ if __name__ == "__main__":
     # Example deterministic call; users can change n here for experiments
     out = main(5)
     for v in out:
-        print(v)
+        # print(v)
+        pass

@@ -20,10 +20,11 @@ def main(n):
             j = i
         i += 1
     if cnt < b:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(su)
-
-
+        # print(su)
+        pass
 if __name__ == "__main__":
     main(10)

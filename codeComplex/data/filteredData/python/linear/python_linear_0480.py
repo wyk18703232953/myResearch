@@ -17,6 +17,7 @@ from heapq import heappush, heappop, heapify, _heapify_max, _heappop_max, nsmall
 def intersection(l1, r1, l2, r2):
     if l1 > r2 or r1 < l2:
         return [0, 0]
+
     else:
         return [max(l1, l2), min(r1, r2)]
 

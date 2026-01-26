@@ -11,11 +11,15 @@ def main(n):
 
     c = max(a, b)
     if a != 1 and b != 1:
-        print('NO')
+        # print('NO')
+        pass
     elif n == 2 and c == 1:
-        print('NO')
+        # print('NO')
+        pass
     elif n == 3 and c == 1:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
         if a == 1:
             g = [[1] * n for _ in range(n)]
@@ -23,14 +27,15 @@ def main(n):
                 g[i][i] = 0
             for i in range(c - 1, n - 1):
                 g[i][i + 1] = g[i + 1][i] = 0
+
         else:
             g = [[0] * n for _ in range(n)]
             for i in range(c - 1, n - 1):
                 g[i][i + 1] = g[i + 1][i] = 1
-        print('YES')
+        # print('YES')
+        pass
         for r in g:
-            print(''.join(str(x) for x in r))
-
-
+            # print(''.join(str(x) for x in r))
+            pass
 if __name__ == "__main__":
     main(5)

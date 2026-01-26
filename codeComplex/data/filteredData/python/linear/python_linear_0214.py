@@ -6,7 +6,8 @@ def main(n):
     #   n_points = n         点的数量
     #   a, b 由 n 确定性构造
     if n < 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     n_points = n
@@ -41,9 +42,8 @@ def main(n):
         tt += pp * (pp + 1) // 2
         tot += tt * 2
 
-    print(tot)
-
-
+    # print(tot)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的大小
     main(10)

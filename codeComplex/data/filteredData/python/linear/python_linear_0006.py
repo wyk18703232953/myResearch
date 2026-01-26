@@ -17,6 +17,7 @@ def letter_to_decimal(n):
             exponents.append(1)
             n = n - (26 ** pow_i)
             pow_i += 1
+
         else:
             exponents.append(n // (26 ** pow_i))
             n = n - ((n // (26 ** pow_i)) * (26 ** pow_i))
@@ -45,6 +46,7 @@ def generate_inputs(n):
             row = i
             col = (i % 702) + 1
             cell = "R%dC%d" % (row, col)
+
         else:
             col_index = (i % 702) + 1
             row = (i * 3) + 1
@@ -61,14 +63,16 @@ def main(n):
             rows = int(re.search("[0-9]*$", all_matches[0]).group())
             cols = int(re.search("[0-9]*$", all_matches[1]).group())
             converted_cols = letter_to_decimal(cols)
-            print("%s%s" % (converted_cols, rows))
+            # print("%s%s" % (converted_cols, rows))
+            pass
         elif len(all_matches) == 1:
             rows = re.match("[A-Z]*", all_matches[0]).group()
             cols = re.search("[0-9]*$", all_matches[0]).group()
             converted_rows = letters_to_deci(rows)
-            print("R%sC%s" % (cols, converted_rows))
-        else:
+            # print("R%sC%s" % (cols, converted_rows))
             pass
 
+        else:
+            pass
 if __name__ == "__main__":
     main(10)

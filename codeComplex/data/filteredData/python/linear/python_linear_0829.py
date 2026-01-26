@@ -3,6 +3,7 @@ def matches(pos, c, case):
         return pos % 3 == "RGB".index(c)
     elif case == 1:
         return pos % 3 == "GBR".index(c)
+
     else:
         return pos % 3 == "BRG".index(c)
 
@@ -48,8 +49,7 @@ def main(n):
 
     # Output all results, one per line
     for x in results:
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
     main(10)

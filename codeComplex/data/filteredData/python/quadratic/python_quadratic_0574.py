@@ -66,6 +66,7 @@ def main(n):
                 chars[j] = 'G'
             elif c == 'G':
                 chars[j] = 'B'
+
             else:
                 chars[j] = 'R'
         a = "".join(chars)
@@ -73,7 +74,7 @@ def main(n):
         results.append(res)
 
     for r in results:
-        print(r)
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     main(5)

@@ -1,7 +1,8 @@
 def main(n):
     # Ensure n is at least 1
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # Deterministically generate a sequence of n digits as characters
@@ -29,9 +30,8 @@ def main(n):
             if f == div:
                 ans = "YES"
                 break
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n for different scales
     main(10)

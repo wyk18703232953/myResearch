@@ -1,7 +1,8 @@
 def main(n):
     # n: length of the sequence a
     if n <= 0:
-        print('-1')
+        # print('-1')
+        pass
         return
 
     # Deterministic construction of input sequence:
@@ -14,6 +15,7 @@ def main(n):
             a_list[i] = a_list[i - 1] + 1
         elif i % 3 == 2:
             a_list[i] = a_list[i - 1] - 2
+
         else:
             a_list[i] = a_list[i - 1]
 
@@ -29,6 +31,7 @@ def main(n):
                     prev_res += 1
                     if prev_res == 5:
                         break
+
                 else:
                     prev_res = 1
                 prev_type = 1
@@ -37,9 +40,11 @@ def main(n):
                     prev_res -= 1
                     if prev_res == 1:
                         break
+
                 else:
                     prev_res = 5
                 prev_type = 2
+
             else:
                 if prev_type == 1:
                     prev_res += 1
@@ -47,11 +52,13 @@ def main(n):
                     prev_res -= 1
                 elif prev_res != 2:
                     prev_res = 2
+
                 else:
                     prev_res = 3
                 prev_type = 3
             res.append(prev_res)
             curr_a = next_a
+
         else:
             if prev_type == 1:
                 res.append(prev_res + 1)
@@ -59,13 +66,15 @@ def main(n):
                 res.append(prev_res - 1)
             elif prev_res != 1:
                 res.append(1)
+
             else:
                 res.append(2)
-            print(*res)
+            # print(*res)
+            pass
             break
+
     else:
-        print('-1')
-
-
+        # print('-1')
+        pass
 if __name__ == "__main__":
     main(10)

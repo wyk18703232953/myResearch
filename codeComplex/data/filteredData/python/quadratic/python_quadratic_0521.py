@@ -55,6 +55,7 @@ def generate_grid(n):
             # Deterministic pattern: place '#' when (i + j * 2) % 5 == 0
             if (i + 2 * j) % 5 == 0:
                 row_chars.append('#')
+
             else:
                 row_chars.append('.')
         grid.append(''.join(row_chars))
@@ -64,8 +65,7 @@ def generate_grid(n):
 def main(n):
     grid = generate_grid(n)
     result = run_once(grid)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

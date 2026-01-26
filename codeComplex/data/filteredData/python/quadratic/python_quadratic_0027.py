@@ -26,6 +26,7 @@ def main(n):
             for p in range(pos + 2, n + 1):
                 dpf[pos + 1][p] += dpf[pos + 1][p - 1]
                 dpf[pos + 1][p] %= MOD
+
         else:
             for depth in range(1, pos + 2):
                 dpf[pos + 1][depth] = (
@@ -42,7 +43,8 @@ def main(n):
                 dpf[pos + 1][p] %= MOD
 
     ans = dps[n][n] % MOD
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

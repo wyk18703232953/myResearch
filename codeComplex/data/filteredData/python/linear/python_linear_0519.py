@@ -21,14 +21,16 @@ def main(n):
         graph[v].discard(par[v])
         l = len(graph[v])
         if graph[v] != set(a[i:i + l]):
-            print("No")
+            # print("No")
+            pass
             break
         for j in range(i, i + l):
             q.append(a[j])
             par[a[j]] = v
         i += l
-    else:
-        print("Yes")
 
+    else:
+        # print("Yes")
+        pass
 if __name__ == "__main__":
     main(10)

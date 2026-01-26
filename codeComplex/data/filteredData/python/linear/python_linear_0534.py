@@ -12,8 +12,7 @@ def main(n):
 
     c = Counter(s)
     min_symbols = min(c[chr(ord("A") + i)] for i in range(k))
-    print(min_symbols * k)
-
-
+    # print(min_symbols * k)
+    pass
 if __name__ == "__main__":
     main(10)

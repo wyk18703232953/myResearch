@@ -36,6 +36,7 @@ def generate_matrices(n):
     first = [[chr(97 + (i + j) % 26) for j in range(n)] for i in range(n)]
     if n % 2 == 0:
         second = rotate_90(first)
+
     else:
         second = flip(first)
     return first, second
@@ -43,7 +44,7 @@ def generate_matrices(n):
 def main(n):
     first, second = generate_matrices(n)
     result = wrap(first, second, n)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

@@ -18,7 +18,7 @@ def main(n):
                 break
         if ans == "YES":
             break
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(5)

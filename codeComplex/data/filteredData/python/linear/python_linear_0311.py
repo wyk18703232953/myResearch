@@ -31,6 +31,7 @@ def main(n):
                     if i > y:
                         ans[x] = ans[x] + (i - y)
                         res = res + (i - y)
+
                     else:
                         ans[x] = ans[x] + (m - 1 - y) + (i + 1)
                         res = res + (m - 1 - y) + (i + 1)
@@ -39,10 +40,10 @@ def main(n):
                 while len(dp[i]) > k:
                     s.append(dp[i].pop())
 
-    print(res)
-    print(*ans)
-
-
+    # print(res)
+    pass
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 以做规模实验
     main(10)

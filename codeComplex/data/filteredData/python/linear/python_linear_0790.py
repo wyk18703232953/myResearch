@@ -22,6 +22,7 @@ def solve(n, k, cards):
             if i < min1:
                 min1 = i
             max1 = i
+
         else:
             if i < min0:
                 min0 = i
@@ -46,6 +47,7 @@ def solve(n, k, cards):
         return 'tokitsukaze'
     elif qual:
         return 'quailty'
+
     else:
         return 'once again'
 
@@ -55,7 +57,7 @@ def main(n):
     k = max(1, n // 2)
     cards = ''.join('1' if (i * 7 + 3) % 5 < 2 else '0' for i in range(n))
     result = solve(n, k, cards)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

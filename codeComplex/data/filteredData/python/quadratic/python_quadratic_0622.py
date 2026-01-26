@@ -4,7 +4,8 @@ def main(n):
     # m: number of residue classes, chosen as max(1, n // 3)
     # k: step size, chosen in relation to n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = max(1, n // 3)
@@ -34,8 +35,7 @@ def main(n):
             if j % m == i:
                 anstmp = max(anstmp, ls[j] - mn)
         ans = max(ans, anstmp)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

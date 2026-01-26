@@ -14,11 +14,13 @@ def main(n):
             res += s2[0]
             flag = 1
             break
+
         else:
             res += s1[i]
     if flag == 0:
         res += s2[0]
-    print(res)
+    # print(res)
+    pass
     return res
 
 

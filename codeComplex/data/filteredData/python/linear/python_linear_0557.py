@@ -28,13 +28,13 @@ def main(n):
             cnt += j + 1 - v1
             S ^= ai
             C[S] += 1
+
         else:
             cnt += j + 1 - v2
             S ^= nai
             C[S] += 1
 
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     main(10)

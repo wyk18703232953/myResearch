@@ -5,19 +5,24 @@ def main(n):
 
     if n == 1:
         if A[0] >= 0:
-            print(A[0])
+            # print(A[0])
+            pass
+
         else:
-            print(-A[0] - 1)
+            # print(-A[0] - 1)
+            pass
         return
 
     for i in range(n):
         if A[i] < 0:
             pass
+
         else:
             A[i] = -A[i] - 1
 
     if n % 2 == 0:
-        print(*A)
+        # print(*A)
+        pass
         return
 
     mim = 0
@@ -27,9 +32,8 @@ def main(n):
             mim = A[i]
             indmim = i
     A[indmim] = -A[indmim] - 1
-    print(*A)
-
-
+    # print(*A)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次运行
     main(10)

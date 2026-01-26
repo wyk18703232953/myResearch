@@ -39,7 +39,7 @@ def generate_input(n):
 def main(n):
     n, m, k, a = generate_input(n)
     result = core_algorithm(n, m, k, a)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

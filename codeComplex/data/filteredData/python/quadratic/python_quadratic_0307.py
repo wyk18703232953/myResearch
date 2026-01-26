@@ -18,14 +18,14 @@ def helper(n, k, l):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = max(1, n // 3)
     l = [(i * 2 - i // 3) for i in range(1, n + 1)]
     result = helper(n, k, l)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

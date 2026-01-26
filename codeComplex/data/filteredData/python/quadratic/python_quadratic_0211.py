@@ -14,7 +14,8 @@ def main(n):
         a.append(val)
 
     if nk == 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     from functools import reduce
@@ -26,10 +27,10 @@ def main(n):
         k.pop(i)
         n_or = reduce(ior, k)
         if n_or == num:
-            print("YES")
+            # print("YES")
+            pass
             return
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     main(5)

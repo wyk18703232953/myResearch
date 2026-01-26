@@ -49,10 +49,12 @@ def sq(a, target, arr=[]):
 mod = int(1e9) + 7
 
 def p(xyz):
-    print(xyz)
+    # print(xyz)
+    pass
 
 def p2(a, b):
-    print(a, b)
+    # print(a, b)
+    pass
 
 def main(n):
     # n controls the size: create two lists of length n each
@@ -63,9 +65,10 @@ def main(n):
     # deterministic and depends only on n
     for c in x:
         if c in y:
-            print(c, end=" ")
+            # print(c, end=" ")
+            pass
     if n > 0:
-        print()
-
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

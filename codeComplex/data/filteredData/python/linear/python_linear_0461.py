@@ -33,16 +33,18 @@ def main(n):
             if s[i] == ')':
                 if i <= len(p):
                     p.insert(i, ')')
+
                 else:
                     p.append(')')
                 c += 1
                 if c == k // 2:
                     break
-        print("".join(p))
+        # print("".join(p))
+        pass
+
     else:
-        print("".join(s))
-
-
+        # print("".join(s))
+        pass
 if __name__ == "__main__":
     # 示例调用，可按需要修改 n
     main(10)

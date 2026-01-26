@@ -26,9 +26,8 @@ def main(n):
         if a[j] != b[j]:
             res += 1
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # Example deterministic run for a chosen n
     main(10)

@@ -6,10 +6,11 @@ def main(n):
     A = [i - n // 2 for i in range(n)]
 
     if n == 1:
-        print(A[0])
-
+        # print(A[0])
+        pass
     elif n == 2:
-        print(abs(A[0] - A[1]))
+        # print(abs(A[0] - A[1]))
+        pass
 
     else:
         SUM = 0
@@ -22,9 +23,8 @@ def main(n):
             if ANS < candidate:
                 ANS = candidate
 
-        print(ANS)
-
-
+        # print(ANS)
+        pass
 if __name__ == "__main__":
     # 示例调用：可以修改 n 来进行规模实验
     main(10)

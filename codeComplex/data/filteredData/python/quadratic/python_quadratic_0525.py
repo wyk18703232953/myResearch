@@ -12,6 +12,7 @@ def main(n):
             # 简单确定性构造：根据 (i+j) 的奇偶决定字符
             if (i // 2 + j // 3) % 2 == 0:
                 row.append('#')
+
             else:
                 row.append('.')
         a.append(row)
@@ -50,10 +51,11 @@ def main(n):
                                 b[y][x] = '#'
 
     if a == b:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

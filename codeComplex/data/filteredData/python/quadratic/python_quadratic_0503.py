@@ -3,6 +3,7 @@ def main(n):
     if n < 3:
         # For grids smaller than 3x3, the inner loops won't run; just build and check.
         m = n
+
     else:
         m = n
 
@@ -14,6 +15,7 @@ def main(n):
             # Place '#' where (i+j) is even and inside the border, otherwise '.'
             if 0 < i < n - 1 and 0 < j < m - 1 and (i + j) % 2 == 0:
                 row.append('#')
+
             else:
                 row.append('.')
         a.append(row)
@@ -37,11 +39,11 @@ def main(n):
     for i in range(n):
         for j in range(m):
             if a[i][j] == '#':
-                print("NO")
+                # print("NO")
+                pass
                 return
-    print("YES")
-
-
+    # print("YES")
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

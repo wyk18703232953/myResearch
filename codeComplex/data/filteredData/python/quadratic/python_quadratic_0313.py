@@ -26,7 +26,7 @@ def main(n):
     k = max(1, n // 2)
     a = [(i * 7 + 3) % 1000 for i in range(n)]
     result = run_algorithm(n, k, a)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

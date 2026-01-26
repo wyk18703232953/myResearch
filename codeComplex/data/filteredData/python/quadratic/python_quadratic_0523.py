@@ -45,15 +45,18 @@ def core_algorithm(mat):
 def main(n):
     # Interpret n as matrix size: n x n
     if n <= 0:
-        print("YES")
+        # print("YES")
+        pass
         return
     mat = generate_matrix(n, n)
     result = core_algorithm(mat)
     if result:
-        print("YES")
-    else:
-        print("NO")
+        # print("YES")
+        pass
 
+    else:
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     main(10)

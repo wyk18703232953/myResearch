@@ -6,6 +6,7 @@ def main(n):
             chars.append('x')
         elif i % 5 == 1:
             chars.append('x')
+
         else:
             chars.append('a')
     s = ''.join(chars)
@@ -15,6 +16,7 @@ def main(n):
     for c in s:
         if c == 'x':
             temp_count += 1
+
         else:
             temp_count = 0
         if temp_count == 3:
@@ -27,4 +29,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的值
     result = main(10)
-    print(result)
+    # print(result)
+    pass

@@ -49,6 +49,7 @@ def generate_string(n):
             chars.append('1')
         elif r == 1:
             chars.append('2')
+
         else:
             chars.append('0')
     return "".join(chars)
@@ -59,6 +60,7 @@ def core_logic(a):
     c = a.find('2')
     if c == -1:
         a = a + '1' * b
+
     else:
         a = a[:c] + '1' * b + a[c:]
     return a
@@ -66,7 +68,7 @@ def core_logic(a):
 def main(n):
     s = generate_string(n)
     result = core_logic(s)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

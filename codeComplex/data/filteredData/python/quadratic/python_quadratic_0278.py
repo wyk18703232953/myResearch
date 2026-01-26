@@ -14,11 +14,12 @@ def main(n):
                 output.append(str(first))
 
     if output:
-        print(" ".join(output))
+        # print(" ".join(output))
+        pass
+
     else:
-        print()
-
-
+        # print()
+        pass
 if __name__ == "__main__":
     # 示例：可调整 n 观测规模变化
     main(10)

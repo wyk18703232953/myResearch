@@ -24,6 +24,7 @@ def Extended_Euclid(n, m):
         n, m = m, n % m
     if n >= 0:
         x, y = 1, 0
+
     else:
         x, y = -1, 0
     for i in range(len(stack) - 1, -1, -1):
@@ -42,6 +43,7 @@ class MOD:
         a %= self.mod
         if n >= 0:
             return pow(a, n, self.mod)
+
         else:
             assert math.gcd(a, self.mod) == 1
             x = Extended_Euclid(a, self.mod)[0]
@@ -81,6 +83,7 @@ class MOD:
         cnt = self.cnt[N] - self.cnt[N - K] - self.cnt[K]
         if divisible_count:
             return retu, cnt
+
         else:
             retu *= pow(self.p, cnt, self.mod)
             retu %= self.mod
@@ -97,6 +100,7 @@ def Bell_Numbers(N, mod, prime=False):
             bell_numbers[i] = sum(bell_numbers[j] * MD.Comb(i - 1, j) for j in range(i)) % mod
         for i in range(mod, N + 1):
             bell_numbers[i] = (bell_numbers[i - mod + 1] + bell_numbers[i - mod]) % mod
+
     else:
         MD.Build_Fact(N - 1)
         for i in range(1, N + 1):
@@ -108,7 +112,8 @@ def main(n):
     # Interpret n as total number of characters (M * N) in the original grid.
     # Use a near-square M,N such that M*N <= n, with N>=1, M>=1.
     if n <= 0:
-        print(1)
+        # print(1)
+        pass
         return
 
     N = int(n ** 0.5)
@@ -146,8 +151,7 @@ def main(n):
     for c in dct.values():
         ans *= bell[c]
         ans %= mod
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

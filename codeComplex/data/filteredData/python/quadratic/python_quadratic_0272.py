@@ -18,10 +18,11 @@ def main(n):
             r.append(i)
 
     if r:
-        print(' '.join(map(str, r)))
+        # print(' '.join(map(str, r)))
+        pass
+
     else:
-        print()
-
-
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

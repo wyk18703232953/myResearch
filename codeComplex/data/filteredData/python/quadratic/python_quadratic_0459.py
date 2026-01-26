@@ -31,6 +31,7 @@ def main(n):
             h[idx] = 0
         elif foundLosing:
             h[idx] = 1
+
         else:
             h[idx] = 0
 
@@ -38,10 +39,12 @@ def main(n):
     for i in range(n):
         if h[i] == 0:
             result.append('B')
+
         else:
             result.append('A')
     output = "".join(result)
-    print(output)
+    # print(output)
+    pass
     return output
 
 

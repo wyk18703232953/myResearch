@@ -1,7 +1,8 @@
 def main(n):
     # n is the length of the list / string of digits
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # Deterministic generation of ls: alternating 1 and 2 for example
@@ -23,11 +24,11 @@ def main(n):
                 cnt += 1
                 su = 0
         if cnt and su == 0:
-            print("YES")
+            # print("YES")
+            pass
             return
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

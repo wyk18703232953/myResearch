@@ -3,8 +3,10 @@ import string
 def main(n):
     # n: length of the strings s and t
     if n <= 0:
-        print(0)
-        print(-1, -1)
+        # print(0)
+        pass
+        # print(-1, -1)
+        pass
         return
 
     letters = string.ascii_lowercase
@@ -37,6 +39,7 @@ def main(n):
         i = sti_dict[c + c2] + 1
         j = tsi_dict[c + c2] + 1
         break
+
     else:
         for c in letters:
             if not sc_dict[c] or not tc_dict[c]:
@@ -46,10 +49,10 @@ def main(n):
             j = tsi_dict[c + tc_dict[c].pop()] + 1
             break
 
-    print(x)
-    print(i, j)
-
-
+    # print(x)
+    pass
+    # print(i, j)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(1000)

@@ -2,7 +2,8 @@ def main(n):
     # Interpret n as the number of special positions (m)
     # Keep k as a fixed deterministic divider, and n (first input) derived from m so the algorithm remains meaningful.
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = n
@@ -20,9 +21,8 @@ def main(n):
         op = ((special[numOn] - numOn - 1) // k) * k + k + numOn + 1
         while numOn < m and special[numOn] < op:
             numOn += 1
-    print(numOps)
-
-
+    # print(numOps)
+    pass
 if __name__ == "__main__":
     # Example: run with a few different scales
     for n in [1, 5, 10, 50]:

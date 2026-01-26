@@ -25,18 +25,19 @@ def main(n):
                     if tem2 - (tem + 1) < s:
                         ans = -1
                         break
+
                 else:
                     if tem - (tem2 + 1) < s:
                         ans = -1
                         break
 
             if ans != -1:
-                print('%d %d' % (ans[0], ans[1]))
+                # print('%d %d' % (ans[0], ans[1]))
+                pass
                 return
 
     # 如果没有找到满足条件的时间，也保持确定性行为
-    print('-1 -1')
-
-
+    # print('-1 -1')
+    pass
 if __name__ == "__main__":
     main(10)

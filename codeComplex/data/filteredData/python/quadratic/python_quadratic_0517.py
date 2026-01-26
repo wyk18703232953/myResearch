@@ -3,7 +3,8 @@
 def main(n):
     # 定义矩阵规模：n 映射到 n x n
     if n <= 0:
-        print("YES")
+        # print("YES")
+        pass
         return
     global cells, paper, n_rows, n_cols
 
@@ -18,6 +19,7 @@ def main(n):
         for j in range(n_cols):
             if (i + j) % 3 == 0:
                 row_chars.append('#')
+
             else:
                 row_chars.append('.')
         cells.append(''.join(row_chars))
@@ -32,10 +34,12 @@ def main(n):
     for r in range(n_rows):
         for c in range(n_cols):
             if cells[r][c] != paper[r][c]:
-                print("NO")
+                # print("NO")
+                pass
                 return
 
-    print("YES")
+    # print("YES")
+    pass
 
 
 def writable(r, c):

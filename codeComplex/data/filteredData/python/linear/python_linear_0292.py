@@ -5,7 +5,8 @@ def main(n):
     a_list = [i for i in range(n)]
     a = set(a_list)
     ans = len(a) - 1 if 0 in a else len(a)
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

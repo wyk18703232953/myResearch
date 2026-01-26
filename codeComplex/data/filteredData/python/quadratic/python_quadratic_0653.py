@@ -10,8 +10,7 @@ def main(n):
             for j in range(i + 1, n):
                 if a[j] and a[j] % a[i] == 0:
                     a[j] = 0
-    print(k)
-
-
+    # print(k)
+    pass
 if __name__ == "__main__":
     main(10)

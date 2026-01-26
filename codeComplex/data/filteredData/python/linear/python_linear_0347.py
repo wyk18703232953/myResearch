@@ -2,7 +2,8 @@ import heapq
 
 def main(n):
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
     # 设定边数量 m 为 n 的两倍，保证规模随 n 线性增长
     m = 2 * n
@@ -23,7 +24,7 @@ def main(n):
     ans = [0] * n
     for i in range(1, n, 2):
         ans[i] = 1
-    print(''.join(map(str, ans)))
-
+    # print(''.join(map(str, ans)))
+    pass
 if __name__ == "__main__":
     main(10)

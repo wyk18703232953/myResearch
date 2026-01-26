@@ -13,6 +13,7 @@ def main(n):
         for j in range(cols):
             if (i * 2 + j * 3) % 5 == 0:
                 row.append('.')
+
             else:
                 row.append('*')
         s.append(row)
@@ -30,6 +31,7 @@ def main(n):
         for j in range(n):
             if s[j][i] == ".":
                 acum = 0
+
             else:
                 acum += 1
             u[j][i] = acum
@@ -39,6 +41,7 @@ def main(n):
         for j in range(n - 1, -1, -1):
             if s[j][i] == ".":
                 acum = 0
+
             else:
                 acum += 1
             d[j][i] = acum
@@ -48,6 +51,7 @@ def main(n):
         for j in range(m):
             if s[i][j] == ".":
                 acum = 0
+
             else:
                 acum += 1
             l[i][j] = acum
@@ -57,6 +61,7 @@ def main(n):
         for j in range(m - 1, -1, -1):
             if s[i][j] == ".":
                 acum = 0
+
             else:
                 acum += 1
             r[i][j] = acum
@@ -96,13 +101,14 @@ def main(n):
                 dp[j][i] = '*'
 
     if dp != s:
-        print(-1)
+        # print(-1)
+        pass
         return
 
-    print(len(ans))
+    # print(len(ans))
+    pass
     for triple in ans:
-        print(*triple)
-
-
+        # print(*triple)
+        pass
 if __name__ == "__main__":
     main(5)

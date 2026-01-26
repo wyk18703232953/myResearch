@@ -24,8 +24,7 @@ def main(n):
     mx = d[0]
     for j in range(n + 1):
         mx = max(c[j] + (w[j + 1] - w[j] - 1) + (m - w[j + 1] - d[j + 1]), mx)
-    print(mx)
-
-
+    # print(mx)
+    pass
 if __name__ == "__main__":
     main(5)

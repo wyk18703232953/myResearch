@@ -16,9 +16,8 @@ def main(n):
         ans.append([s[0], s[1]])
 
     for i in ans:
-        print(*i)
-
-
+        # print(*i)
+        pass
 if __name__ == "__main__":
     # 示例调用：规模为 5（矩阵 5×5）
     main(5)

@@ -5,12 +5,15 @@ def main(n):
 
     if "0" in s:
         if "1" in s:
-            print("1" + "0" * s.count("0"))
+            # print("1" + "0" * s.count("0"))
+            pass
+
         else:
-            print("0")
+            # print("0")
+            pass
+
     else:
-        print("1")
-
-
+        # print("1")
+        pass
 if __name__ == "__main__":
     main(10)

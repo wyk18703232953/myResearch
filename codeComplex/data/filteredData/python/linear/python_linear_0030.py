@@ -3,12 +3,14 @@ def main(n):
     # 构造一个由 'H' 和 'T' 组成的确定性字符串
     if n <= 0:
         s = "HT"
+
     else:
         chars = []
         for i in range(n):
             # 偶数位放 'H'，奇数位放 'T'
             if i % 2 == 0:
                 chars.append('H')
+
             else:
                 chars.append('T')
         s = "".join(chars)
@@ -26,6 +28,7 @@ def main(n):
             h = s[:m] + s[-n_over:]
             k = h.count("T")
             p.append(k)
+
         else:
             h = s[i:d + i]
             k = h.count("T")
@@ -35,10 +38,11 @@ def main(n):
         if p[i] < mi:
             mi = p[i]
     if s.count("H") == 1 or s.count("T") == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print(mi)
-
-
+        # print(mi)
+        pass
 if __name__ == "__main__":
     main(10)

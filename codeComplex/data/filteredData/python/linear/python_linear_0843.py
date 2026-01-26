@@ -11,6 +11,7 @@ def main(n):
 
         if size == 1:
             results.append(0)
+
         else:
             max1 = max2 = -1
             for q in a:
@@ -21,9 +22,8 @@ def main(n):
             results.append(max(0, min(max2 - 1, len(a) - 2)))
 
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     # Example deterministic call
     main(5)

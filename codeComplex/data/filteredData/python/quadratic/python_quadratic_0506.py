@@ -2,7 +2,8 @@ def main(n):
     # Interpret n as both dimensions of the grid: n rows, n columns
     # Ensure minimum size of 3 to allow the original 3x3 pattern logic
     if n < 3:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     m = n
@@ -22,8 +23,10 @@ def main(n):
                 # Inside 3x3 block, follow the pattern
                 if (i == 1 and j == 1):
                     row.append('.')  # center is '.'
+
                 else:
                     row.append('#')
+
             else:
                 row.append('.')
         u.append(row)
@@ -43,6 +46,7 @@ def main(n):
             if ok:
                 if u[i + 2][j + 1] != '#' or u[i + 2][j + 2] != '#' or u[i + 1][j + 2] != '#':
                     ok = False
+
                 else:
                     for k in range(3):
                         u1[i][j + k] = '#'
@@ -61,10 +65,11 @@ def main(n):
             break
 
     if ok:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(5)

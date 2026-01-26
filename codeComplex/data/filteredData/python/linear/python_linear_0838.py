@@ -24,9 +24,8 @@ def main(n):
                 if j >= K - 1:
                     if d < mi:
                         mi = d
-        print(mi)
-
-
+        # print(mi)
+        pass
 if __name__ == "__main__":
     # 示例调用：可以修改 n 以测试不同规模
     main(10)

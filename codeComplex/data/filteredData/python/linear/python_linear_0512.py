@@ -23,8 +23,7 @@ def main(n):
     for i in range(n):
         ans += (a[i] != b[i])
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

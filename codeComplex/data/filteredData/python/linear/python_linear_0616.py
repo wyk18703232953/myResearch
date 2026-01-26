@@ -19,6 +19,7 @@ def main(n):
         n_eff = max_val - 1
         a = a[:n_eff]
         b = b[:n_eff]
+
     else:
         n_eff = n
 
@@ -33,12 +34,12 @@ def main(n):
         if x < max_val and pos_of[x] > current_pos:
             ans.append(pos_of[x] - current_pos)
             current_pos = pos_of[x]
+
         else:
             ans.append(0)
 
-    print(" ".join(str(x) for x in ans))
-
-
+    # print(" ".join(str(x) for x in ans))
+    pass
 if __name__ == "__main__":
     # Example deterministic call for time-complexity experiments
     main(10)

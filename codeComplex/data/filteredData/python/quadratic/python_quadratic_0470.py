@@ -22,7 +22,8 @@ def main(n):
                 zero_index.append(idx)
 
         if len(zero_index) == 0:
-            print("NO")
+            # print("NO")
+            pass
             return
 
         dec_left = 0
@@ -38,20 +39,22 @@ def main(n):
             if (l, r) != (0, 0):
                 LR[idx] = (l - dec_left, r - dec_right)
                 if LR[idx][0] < 0 or LR[idx][1] < 0:
-                    print("NO")
+                    # print("NO")
+                    pass
                     return
 
     if len(index_to_candies) != n:
-        print("NO")
+        # print("NO")
+        pass
         return
 
-    print("YES")
+    # print("YES")
+    pass
     j = []
     for i in range(n):
         j.append(str(index_to_candies.get(i, 0)))
-    print(" ".join(j))
-
-
+    # print(" ".join(j))
+    pass
 if __name__ == "__main__":
     # Example deterministic call for time complexity experiments
     main(10)

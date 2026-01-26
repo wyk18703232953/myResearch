@@ -18,6 +18,7 @@ def main(n):
             row = i
             col = (i * 7) % 1000 + 1  # 保证列号为正且分布有变化
             lines.append(f"R{row}C{col}")
+
         else:
             row = i
             # 构造确定性的列号并转为列名
@@ -40,13 +41,14 @@ def main(n):
                 r = (n2 - 1) % 26
                 a2 = chr(r + ord('A')) + a2
                 n2 = (n2 - r - 1) // 26
-            print(a2 + str(n1))
+            # print(a2 + str(n1))
+            pass
+
         else:
             n2 = 0
             for c in a1:
                 n2 = 26 * n2 + (ord(c) - ord('A') + 1)
-            print(f'R{n1}C{n2}')
-
-
+            # print(f'R{n1}C{n2}')
+            pass
 if __name__ == "__main__":
     main(10)

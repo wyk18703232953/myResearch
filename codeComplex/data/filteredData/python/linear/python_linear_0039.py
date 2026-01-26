@@ -35,8 +35,7 @@ def main(n):
         x = -1
         y = -1
 
-    print(x, y)
-
-
+    # print(x, y)
+    pass
 if __name__ == "__main__":
     main(10)

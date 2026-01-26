@@ -8,6 +8,7 @@ def generate_coordinates(n):
             row = i
             col = i * 3 + 5
             coords.append(f"R{row}C{col}")
+
         else:
             # 字母+行 型：{letters}{row}
             row = i
@@ -36,7 +37,9 @@ def main(n):
                 columns -= (alpha_index + 1) * (26 ** i)
                 i += 1
             output += str(rows)
-            print(output)
+            # print(output)
+            pass
+
         else:
             match = re.match(r"(\D+)(\d+)", coordinates)
             letters = match.group(1)
@@ -45,7 +48,7 @@ def main(n):
             for i in range(len(letters), 0, -1):
                 columns += (ord(letters[i - 1]) - 64) * (26 ** (len(letters) - i))
             output = f"R{rows}C{columns}"
-            print(output)
-
+            # print(output)
+            pass
 if __name__ == "__main__":
     main(10)

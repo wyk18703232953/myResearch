@@ -7,7 +7,8 @@ try:
     import numpy  # noqa: F401
 
     def dprint(*args, **kwargs):
-        print(*args, file=sys.stderr)
+        # print(*args, file=sys.stderr)
+        pass
 except Exception:
     def dprint(*args, **kwargs):
         pass
@@ -36,7 +37,8 @@ def run_case(N, K):
         if tk < 0:
             break
     if tk > 0:
-        print('NO')
+        # print('NO')
+        pass
         return
     nowcut = 0
     nt = 1
@@ -55,9 +57,12 @@ def run_case(N, K):
             ok = True
             break
     if ok:
-        print('YES', N - 1 - i)
+        # print('YES', N - 1 - i)
+        pass
+
     else:
-        print('NO')
+        # print('NO')
+        pass
 
 
 def main(n):

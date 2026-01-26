@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     # Deterministically generate the original input:
@@ -19,8 +20,7 @@ def main(n):
                 if s[i] == 0 and any(a[j] > x and s[j] == 'B' for j in r):
                     s[i] = 'A'
                     m -= 1
-    print(''.join(s))
-
-
+    # print(''.join(s))
+    pass
 if __name__ == "__main__":
     main(10)

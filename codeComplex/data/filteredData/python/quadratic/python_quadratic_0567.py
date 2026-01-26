@@ -16,8 +16,7 @@ def main(n):
             rappend(str((orig_n + 1) >> 1) + ' ' + str(orig_m + 1 - i))
         if orig_m & 1:
             rappend(str((orig_n + 1) >> 1) + ' ' + str((orig_m + 1) >> 1))
-    print('\n'.join(r))
-
-
+    # print('\n'.join(r))
+    pass
 if __name__ == "__main__":
     main(5)

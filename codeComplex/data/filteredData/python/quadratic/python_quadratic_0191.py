@@ -17,8 +17,7 @@ def main(n):
         r = n
         if l > r:
             l, r = r, l
-        print(dp[r - l][l - 1])
-
-
+        # print(dp[r - l][l - 1])
+        pass
 if __name__ == "__main__":
     main(10)

@@ -25,7 +25,8 @@ def main(n):
         )
 
     ans = max(max(v) for v in dp)
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

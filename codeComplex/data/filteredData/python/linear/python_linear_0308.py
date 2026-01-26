@@ -13,8 +13,7 @@ def main(n):
             break
         ans = (ans + 1) % n
         cnt += 1
-    print(ans + 1)
-
-
+    # print(ans + 1)
+    pass
 if __name__ == "__main__":
     main(10)

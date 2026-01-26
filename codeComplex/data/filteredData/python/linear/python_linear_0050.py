@@ -14,10 +14,12 @@ def run_algorithm(n, a, b, lst):
     for i in range(n):
         if a - lst[i] in temp:
             unionSet(i, temp[a - lst[i]], parent)
+
         else:
             unionSet(i, n, parent)
         if b - lst[i] in temp:
             unionSet(i, temp[b - lst[i]], parent)
+
         else:
             unionSet(i, n + 1, parent)
 
@@ -25,6 +27,7 @@ def run_algorithm(n, a, b, lst):
     pb = findSet(n + 1, parent)
     if pa == pb:
         return "NO", None
+
     else:
         lst_res = [0 if findSet(i, parent) == pb else 1 for i in range(n)]
         return "YES", lst_res
@@ -36,9 +39,11 @@ def main(n):
     b = 3 * n + 5
     lst = [i * 2 + (i % 3) for i in range(n)]
     res, arr = run_algorithm(n, a, b, lst)
-    print(res)
-    if arr is not None:
-        print(*arr)
+    # print(res)
+    pass
 
+    if arr is not None:
+        # print(*arr)
+        pass
 if __name__ == "__main__":
     main(10)

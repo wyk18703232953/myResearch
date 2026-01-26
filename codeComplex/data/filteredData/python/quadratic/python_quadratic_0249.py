@@ -7,9 +7,11 @@ def main(n):
     b = 0
 
     if min(a, b) > 1 or 1 < orig_n < 4 and max(a, b) == 1:
-        print('NO')
+        # print('NO')
+        pass
         return
-    print('YES')
+    # print('YES')
+    pass
     f = int(a == 1)
     g = [a, b][f]
     r = [[f] * orig_n for _ in range(orig_n)]
@@ -19,9 +21,8 @@ def main(n):
         r[i][i + 1] ^= 1
         r[i + 1][i] ^= 1
     for x in r:
-        print(*x, sep='')
-
-
+        # print(*x, sep='')
+        pass
 if __name__ == "__main__":
     # 示例：以 n=5 运行
     main(5)

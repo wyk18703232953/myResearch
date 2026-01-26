@@ -16,6 +16,7 @@ def main(n):
         val = a[idx]
         if val in b:
             b[val] += 1
+
         else:
             b[val] = 1
         if b[val] == 1:
@@ -35,16 +36,20 @@ def main(n):
             break
 
     if count != k:
-        print("-1 -1")
+        # print("-1 -1")
+        pass
+
     else:
         if n == 1:
-            print(1, 1)
+            # print(1, 1)
+            pass
         elif n == 2 and count == 2:
-            print(1, 2)
+            # print(1, 2)
+            pass
+
         else:
-            print(j + 1, i + 1)
-
-
+            # print(j + 1, i + 1)
+            pass
 if __name__ == "__main__":
     # 示例：使用 n=10 运行一次
     main(10)

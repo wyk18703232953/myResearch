@@ -17,6 +17,7 @@ def solve_one(n, q, x, queries):
         enjoyment = 0
         if delicious_count == 0:
             enjoyment = 0
+
         else:
             enjoyment += enjoyment_list[delicious_count]
             enjoyment += (
@@ -58,7 +59,7 @@ def main(n):
 
     outputs = solve_one(length, q, x, queries)
     for val in outputs:
-        print(val)
-
+        # print(val)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as the length of the list; keep k as a fixed proportion of n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic choice of k based on n (at least 1 and at most n)
@@ -22,8 +23,7 @@ def main(n):
                 avg = count / (j - i + 1)
             if avg > ans:
                 ans = avg
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

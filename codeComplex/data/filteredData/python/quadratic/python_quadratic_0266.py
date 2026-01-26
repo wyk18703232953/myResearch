@@ -6,22 +6,27 @@ def main(n):
     b = 1 if a != 1 else 2
 
     if min(a, b) > 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     M = [[0] * n for _ in range(n)]
 
     if a == 1 and b == 1:
         if n == 1:
-            print('YES')
-            print('0')
+            # print('YES')
+            pass
+            # print('0')
+            pass
             return
         if n == 2 or n == 3:
-            print('NO')
+            # print('NO')
+            pass
             return
         for i in range(1, n):
             M[i - 1][i] = 1
             M[i][i - 1] = 1
+
     else:
         s = n - max(a, b) + 1
         for i in range(s):
@@ -34,10 +39,10 @@ def main(n):
                     if i != j:
                         M[i][j] = 1 - M[i][j]
 
-    print('YES')
+    # print('YES')
+    pass
     for i in range(n):
-        print(''.join(map(str, M[i])))
-
-
+        # print(''.join(map(str, M[i])))
+        pass
 if __name__ == "__main__":
     main(5)

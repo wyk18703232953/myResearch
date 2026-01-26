@@ -18,11 +18,11 @@ def main(n):
                 ok = 0
                 break
         if ok:
-            print("YES")
+            # print("YES")
+            pass
             return
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(5)

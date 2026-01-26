@@ -14,7 +14,8 @@ def main(n):
         if s[i] <= chr(ord('A') + k - 1):
             c[ord(s[i]) - ord('A')] += 1
     result = min(c[:k]) * k
-    print(result)
+    # print(result)
+    pass
     return result
 
 

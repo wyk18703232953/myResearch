@@ -20,8 +20,7 @@ def main(n):
         alt = segment_sum + dp[max(i - k, 0)][0]
         dp[i][1] = max(base, alt)
 
-    print(max(dp[n]))
-
-
+    # print(max(dp[n]))
+    pass
 if __name__ == "__main__":
     main(10)

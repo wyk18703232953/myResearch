@@ -16,6 +16,7 @@ def main(n):
                 S[i] = 0
             elif S[i] == "G":
                 S[i] = 1
+
             else:
                 S[i] = 2
 
@@ -38,8 +39,7 @@ def main(n):
                     SUM += 1
                 ANS = min(ANS, SUM)
 
-        print(ANS)
-
-
+        # print(ANS)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -20,9 +20,8 @@ def main(n):
             d[j] = (i, final)
         res.append(final)
     # 与原程序行为一致：在一行输出，用空格分隔
-    print(" ".join(str(x) for x in res))
-
-
+    # print(" ".join(str(x) for x in res))
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 以做规模实验
     main(5)

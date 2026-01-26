@@ -10,8 +10,7 @@ def main(n):
         ans += pos - y
         pos -= 2
         a.pop(y)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(5)

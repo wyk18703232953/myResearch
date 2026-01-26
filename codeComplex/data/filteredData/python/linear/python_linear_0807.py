@@ -15,7 +15,8 @@ def main(n):
 
     if n <= 0:
         # 没有有效页面时，答案显然为 0
-        print(0)
+        # print(0)
+        pass
         return
 
     m = n
@@ -41,14 +42,14 @@ def main(n):
                 break
             if (arr[pos + i] - pos - 1) // k == page:
                 tmp += 1
+
             else:
                 break
         pos += tmp
         ans += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：可以根据需要修改 n 进行规模实验
     main(10)

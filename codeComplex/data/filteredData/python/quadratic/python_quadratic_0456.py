@@ -21,12 +21,14 @@ def main(n):
                 break
     for i in range(n):
         if answer[i] == 1:
-            print("A", end="")
+            # print("A", end="")
+            pass
+
         else:
-            print("B", end="")
-    print()
-
-
+            # print("B", end="")
+            pass
+    # print()
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

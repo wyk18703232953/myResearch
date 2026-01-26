@@ -16,16 +16,21 @@ def main(n):
 
     cicle = dfs(digraph)
     if cicle is None:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
         cicle.reverse()
         for i in range(len(cicle) - 1):
             c = dfs(digraph, cicle[i], cicle[i + 1])
             if c is None:
-                print("YES")
+                # print("YES")
+                pass
                 break
+
         else:
-            print("NO")
+            # print("NO")
+            pass
 
 
 def dfs(graph, u=-1, v=-1):

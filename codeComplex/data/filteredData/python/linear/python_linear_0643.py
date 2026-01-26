@@ -33,17 +33,23 @@ def main(n):
         leaf = leaf[1:]
 
     if sum(root_r) < len(leaf):
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES {}".format(len(l_path) - 1))
-        print(n - 1)
+        # print("YES {}".format(len(l_path) - 1))
+        pass
+        # print(n - 1)
+        pass
         for i in range(len(l_path) - 1):
-            print("{} {}".format(l_path[i], l_path[i + 1]))
+            # print("{} {}".format(l_path[i], l_path[i + 1]))
+            pass
         for l in leaf:
             while len(root_r) > 0 and root_r[0] == 0:
                 root_w = root_w[1:]
                 root_r = root_r[1:]
-            print("{} {}".format(l, root_w[0]))
+            # print("{} {}".format(l, root_w[0]))
+            pass
             root_r[0] = root_r[0] - 1
 
 

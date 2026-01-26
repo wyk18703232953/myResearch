@@ -41,8 +41,7 @@ def main(n):
     s_chars = [digits[(i // 3) % 3][i % 3] for i in range(n)]
     s = "".join(s_chars)
     result = solve_from_string(s)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

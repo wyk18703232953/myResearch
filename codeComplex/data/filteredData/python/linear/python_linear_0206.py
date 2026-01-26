@@ -40,17 +40,20 @@ def main(n):
 
         if j == 0:
             if total >= s + 1:
-                print(0, 0)
+                # print(0, 0)
+                pass
                 break
 
         if total - last > 2 * s:
             u = last + s
-            print(u // 60, u % 60)
+            # print(u // 60, u % 60)
+            pass
             break
 
         if j == n - 1:
             x = t[-1][0] * 60 + t[-1][1]
-            print((x + s + 1) // 60, (x + s + 1) % 60)
+            # print((x + s + 1) // 60, (x + s + 1) % 60)
+            pass
             break
 
 

@@ -33,9 +33,8 @@ def main(n):
     result = 2 * n ** 2 + min(
         sum(x * y for x, y in zip(q, m)) for q in set(p(b))
     )
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(5)

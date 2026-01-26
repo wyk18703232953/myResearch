@@ -4,7 +4,8 @@ import collections
 def main(n):
     # n 表示数组长度，k 设为 n//2（至少为 1）
     if n <= 0:
-        print(0.0)
+        # print(0.0)
+        pass
         return
     k = max(1, n // 2)
 
@@ -25,7 +26,7 @@ def main(n):
             if c >= k:
                 sol = max(sol, val / c)
         ans = max(sol, ans)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

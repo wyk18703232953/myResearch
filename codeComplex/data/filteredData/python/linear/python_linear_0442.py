@@ -1,7 +1,8 @@
 def main(n):
     # n is the input scale: the original program reads a single integer n
     if n <= 0:
-        print()
+        # print()
+        pass
         return
 
     x = int(n ** 0.5)
@@ -21,9 +22,8 @@ def main(n):
         arr = arr[::-1]
         for v in arr:
             ans.append(v)
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     # example deterministic call; adjust n to change scale
     main(10)

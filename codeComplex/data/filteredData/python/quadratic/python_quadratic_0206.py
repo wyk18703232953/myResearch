@@ -34,9 +34,8 @@ def main(n):
         if not only:
             res = True
 
-    print('YES' if res else 'NO')
-
-
+    # print('YES' if res else 'NO')
+    pass
 if __name__ == "__main__":
     # 示例调用，使用一个固定规模 n
     main(10)

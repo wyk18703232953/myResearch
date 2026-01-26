@@ -5,10 +5,11 @@ def main(n):
     s = set(l)
     x = 0
     if x in s:
-        print(len(s) - 1)
+        # print(len(s) - 1)
+        pass
+
     else:
-        print(len(s))
-
-
+        # print(len(s))
+        pass
 if __name__ == "__main__":
     main(10)

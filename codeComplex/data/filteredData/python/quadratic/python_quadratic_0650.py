@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成输入数组 a，模拟原来从 input 读取的一行 n 个整数
@@ -16,8 +17,7 @@ def main(n):
                 if not test[i] and a[i] % a[j] == 0:
                     test[i] = True
             counter += 1
-    print(counter)
-
-
+    # print(counter)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -10,6 +10,7 @@ def solve_case(n, k, s):
         for j in range(k):
             if s[j] != cur:
                 mis.append(1)
+
             else:
                 mis.append(0)
             cur = nxt[cur]
@@ -18,6 +19,7 @@ def solve_case(n, k, s):
             res.append(res[-1] + int(s[j] != cur) - mis[j - k])
             if s[j] != cur:
                 mis.append(1)
+
             else:
                 mis.append(0)
             cur = nxt[cur]

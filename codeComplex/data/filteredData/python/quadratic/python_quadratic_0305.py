@@ -18,9 +18,8 @@ def main(n):
             i = len(a) - 1
         del a[i]
         r += i
-    print(r)
-
-
+    # print(r)
+    pass
 if __name__ == "__main__":
     # example call; you can change n for different scales
     main(10)

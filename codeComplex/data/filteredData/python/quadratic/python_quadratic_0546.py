@@ -2,6 +2,7 @@ def stones_after(n, s):
     for ch in s:
         if ch == '-':
             n -= 1
+
         else:
             n += 1
         if n < 0:
@@ -17,8 +18,8 @@ def main(n):
         stones = stones_after(i, s)
         if stones != -1:
             ans = min(ans, stones)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例：将 n 视为字符串长度
     main(10)

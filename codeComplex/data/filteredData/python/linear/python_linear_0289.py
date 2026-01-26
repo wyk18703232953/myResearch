@@ -42,8 +42,8 @@ def main(n):
     # n controls the number of input strings
     strings = generate_parentheses_strings(n)
     result = core_logic(strings)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example call; you can change the value of n for different scales
     main(10)

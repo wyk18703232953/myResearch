@@ -11,8 +11,7 @@ def main(n):
         [x for x in arr2 if x in arr1],
         key=lambda k: arr1.index(k)
     )
-    print(*result)
-
-
+    # print(*result)
+    pass
 if __name__ == "__main__":
     main(10)

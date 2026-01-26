@@ -6,13 +6,13 @@ def main(n):
     for c in s:
         if c == '+':
             stones += 1
+
         else:
             stones -= 1
             if stones < 0:
                 stones = 0
-    print(stones)
-
-
+    # print(stones)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n
     main(10)

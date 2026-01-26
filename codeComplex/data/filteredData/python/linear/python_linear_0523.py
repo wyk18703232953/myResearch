@@ -1,6 +1,7 @@
 def main(n):
     if n < 2:
-        print("No")
+        # print("No")
+        pass
         return
 
     # 构造一棵确定性的树，根为 1，依次连接成链 1-2-3-...-n
@@ -10,10 +11,12 @@ def main(n):
         y = i + 1
         if y in dict1:
             dict1[y].append(x)
+
         else:
             dict1[y] = [x]
         if x in dict1:
             dict1[x].append(y)
+
         else:
             dict1[x] = [y]
 
@@ -22,7 +25,9 @@ def main(n):
     arr = list(range(1, n + 1))
 
     if arr[0] != 1:
-        print("No")
+        # print("No")
+        pass
+
     else:
         j = 0
         i = 1
@@ -30,13 +35,15 @@ def main(n):
         while i < n and j < n:
             if arr[i] in dict1.get(arr[j], []):
                 i += 1
+
             else:
                 j += 1
         if i != n and j == n:
-            print("No")
+            # print("No")
+            pass
+
         else:
-            print("Yes")
-
-
+            # print("Yes")
+            pass
 if __name__ == "__main__":
     main(10)

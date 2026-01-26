@@ -57,6 +57,7 @@ def main(n):
         for i in range(k - 1, length):
             if i - k == -1:
                 ans = min(ans, rgb[i], gbr[i], brg[i])
+
             else:
                 ans = min(
                     ans,
@@ -66,8 +67,7 @@ def main(n):
                 )
         results.append(ans)
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     main(10)

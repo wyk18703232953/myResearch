@@ -30,7 +30,9 @@ def main(n):
             dvx[(k, vx)] += 1
             dvy[(k, vy)] += 1
             dvxy[(k, vx, vy)] += 1
-        print(ans * 2)
+        # print(ans * 2)
+        pass
+
     else:
         ans = 0
         d = defaultdict(lambda: defaultdict(lambda: 0))
@@ -39,9 +41,8 @@ def main(n):
             ans += max(0, ds[vy] - d[vy][vx])
             d[vy][vx] += 1
             ds[vy] += 1
-        print(ans * 2)
-
-
+        # print(ans * 2)
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

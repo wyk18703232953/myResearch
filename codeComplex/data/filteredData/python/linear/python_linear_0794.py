@@ -18,8 +18,7 @@ def main(n):
     for i in range(3):
         for j in range(7):
             answ = min(answ, 3 - sum(cnt[i][j:j + 3]))
-    print(answ)
-
-
+    # print(answ)
+    pass
 if __name__ == "__main__":
     main(14)

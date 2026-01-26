@@ -3,7 +3,8 @@ def main(n):
     # n -> 数组 a 的长度
     # m, k 与 n 通过确定性方式设定，保持可规模化和确定性
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性构造 m 和 k，使其随 n 变化但不依赖外部输入
@@ -22,9 +23,8 @@ def main(n):
             s += a[j]
             mx = max(mx, s)
         dp[i] = max(0, (dp[i - m] if i - m >= 0 else 0) + s - k, mx - k)
-    print(max(dp))
-
-
+    # print(max(dp))
+    pass
 if __name__ == "__main__":
     # 示例：运行若干不同规模，方便做时间复杂度实验
     for size in [10, 100, 1000]:

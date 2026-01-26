@@ -40,8 +40,7 @@ def main(n):
             for j in range(1, n - k + 2):
                 a = min(a, ans[l][j + k - 1] - ans[l][j - 1])
 
-        print(a)
-
-
+        # print(a)
+        pass
 if __name__ == "__main__":
     main(10)

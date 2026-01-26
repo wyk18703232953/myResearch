@@ -10,10 +10,10 @@ def main(n):
         if A[j] > maxs:
             ans = j + 1
             break
+
         else:
             maxs = max(maxs, A[j] + 1)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

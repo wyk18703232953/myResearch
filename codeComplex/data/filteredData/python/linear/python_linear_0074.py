@@ -1,7 +1,8 @@
 def main(n):
     # n 控制输入规模，这里用作两个等长二进制串的长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性构造两个“数字串” a_str, b_str，由数字 0/1 组成
@@ -30,9 +31,8 @@ def main(n):
     for cur in range(0, a_len):
         for dig in range(2):
             res += (carCountPrefix[b_len - a_len + cur + 1][dig] - carCountPrefix[cur][dig]) * abs(a[cur] - dig)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=10 作为规模
     main(10)

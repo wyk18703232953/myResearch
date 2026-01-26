@@ -6,25 +6,36 @@ def main(n):
 
     # 以下是原程序逻辑
     if (nbColumn - 2) * 2 < h:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
+
         if h % 2 == 0:
-            print('.' * nbColumn)
-            print('.' + '#' * (h // 2) + '.' * (nbColumn - 1 - h // 2))
-            print('.' + '#' * (h // 2) + '.' * (nbColumn - 1 - h // 2))
-            print('.' * nbColumn)
+            # print('.' * nbColumn)
+            pass
+            # print('.' + '#' * (h // 2) + '.' * (nbColumn - 1 - h // 2))
+            pass
+            # print('.' + '#' * (h // 2) + '.' * (nbColumn - 1 - h // 2))
+            pass
+            # print('.' * nbColumn)
+            pass
+
         else:
-            print('.' * nbColumn)
+            # print('.' * nbColumn)
+            pass
             hFirst = min(h, nbColumn - 2)
             countPoint = (nbColumn - hFirst) // 2
-            print('.' * countPoint + '#' * hFirst + '.' * countPoint)
+            # print('.' * countPoint + '#' * hFirst + '.' * countPoint)
+            pass
             hSecond = (h - hFirst) // 2
             countPoint = nbColumn - 2 * hSecond - 2
-            print('.' + '#' * hSecond + '.' * countPoint + '#' * hSecond + '.')
-            print('.' * nbColumn)
-
-
+            # print('.' + '#' * hSecond + '.' * countPoint + '#' * hSecond + '.')
+            pass
+            # print('.' * nbColumn)
+            pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 以进行规模实验
     main(10)

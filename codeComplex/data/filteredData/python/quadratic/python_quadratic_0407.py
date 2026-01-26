@@ -23,7 +23,7 @@ def main(n):
     s = "".join(base)
     l = prefix_func(s)[-1] if s_len > 0 else 0
     result = s + s[l:] * (k - 1)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

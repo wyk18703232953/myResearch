@@ -15,11 +15,11 @@ def core_algorithm(N):
 def main(n):
     if n < 2:
         N = 2
+
     else:
         N = n
     result = core_algorithm(N)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

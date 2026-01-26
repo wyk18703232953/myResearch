@@ -15,6 +15,7 @@ def main(n):
     for v in arr:
         if v == c:
             cnt[c] = cnt[c] + 1
+
         else:
             if cnt[v] < cnt[c]:
                 cnt[v] = cnt[c]
@@ -22,7 +23,8 @@ def main(n):
         ans = max(ans, cnt[v] - cnt[c])
 
     result = ans + cnt[c]
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -9,11 +9,11 @@ def main(n):
         if a[i] > mx + 1:
             ans = i + 1
             break
+
         else:
             mx = max(mx, a[i])
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以按需要修改 n 的大小做实验
     main(10)

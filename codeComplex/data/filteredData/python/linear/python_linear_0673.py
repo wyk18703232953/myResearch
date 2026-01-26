@@ -9,16 +9,19 @@ def main(n):
         if len(b) != 0:
             if b[-1] == a[i]:
                 b.pop()
+
             else:
                 b.append(a[i])
+
         else:
             b.append(a[i])
     if len(b) > 1:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 的规模做实验
     main(10)

@@ -6,14 +6,16 @@ def main(n):
     for i in range(1, n):
         if st and st[-1] % 2 == a[i] % 2:
             st.pop()
+
         else:
             st.append(a[i])
     if len(st) <= 1:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：输入规模为 10
     main(10)

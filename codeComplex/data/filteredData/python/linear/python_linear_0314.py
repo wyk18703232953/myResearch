@@ -36,10 +36,10 @@ def main(n):
                 cnt += delta
                 arr[idx] += delta
 
-    print(cnt)
-    print(' '.join(str(x) for x in arr))
-
-
+    # print(cnt)
+    pass
+    # print(' '.join(str(x) for x in arr))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

@@ -14,6 +14,7 @@ def main(n):
             a[ptr1] = 1
             ptr1 += 1
             a[ptr1] = 3
+
         else:
             itera = m - m // 2
             for _ in range(itera):
@@ -27,9 +28,9 @@ def main(n):
     if n > 0:
         fun(n, 0)
     for v in a:
-        print(v, end=" ")
-    print()
-
-
+        # print(v, end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

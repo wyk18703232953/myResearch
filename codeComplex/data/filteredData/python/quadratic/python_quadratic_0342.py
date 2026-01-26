@@ -2,7 +2,8 @@ def main(n):
     from collections import Counter
 
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # 构造长度为 n 的字符串 s 和 t，保证为互为重排
@@ -13,6 +14,7 @@ def main(n):
     # 规则：索引 i 映射到 (i * 2 + 1) % n（当 n > 1），n == 1 时保持不变
     if n == 1:
         t = s[:]
+
     else:
         t = [None] * n
         for i in range(n):
@@ -22,7 +24,8 @@ def main(n):
     cs = Counter(s)
     ct = Counter(t)
     if cs != ct:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     xs = [[] for _ in range(26)]
@@ -46,10 +49,11 @@ def main(n):
             if x[j - 1] > x[j]:
                 x[j - 1], x[j] = x[j], x[j - 1]
                 ans.append(j)
-    print(len(ans))
+    # print(len(ans))
+    pass
+
     if ans:
-        print(*ans)
-
-
+        # print(*ans)
+        pass
 if __name__ == "__main__":
     main(10)

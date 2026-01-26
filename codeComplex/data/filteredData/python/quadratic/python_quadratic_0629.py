@@ -14,11 +14,11 @@ def main(n):
         for q1 in s:
             if q % q1 == 0:
                 break
+
         else:
             s.append(q)
-    print(len(s))
-
-
+    # print(len(s))
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 观察时间复杂度
     main(10)

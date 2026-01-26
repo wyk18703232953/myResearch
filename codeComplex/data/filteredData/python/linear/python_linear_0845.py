@@ -19,10 +19,11 @@ def main(n):
         if arr[i] < arr[i + 1]:
             ok = 0
     if ok:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

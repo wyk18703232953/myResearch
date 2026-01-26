@@ -31,6 +31,7 @@ def f():
         o = bin(i).count("1")
         if o == 1:
             dp[i] = 2
+
         else:
             dp[i] += dp[o] + 1
     return dp
@@ -47,6 +48,7 @@ def bit(s, k):
     for i in range(ll):
         if s[i] == "0":
             continue
+
         else:
             for j in range(max(ones, 1), 1000):
                 if dp[j] == k:
@@ -66,8 +68,7 @@ def main(n):
     k = bin(n).count("1")
     make_nCr_mod()
     result = bit(s, k)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

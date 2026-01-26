@@ -17,6 +17,7 @@ def main(n):
             if c1[1] > m:
                 c1[0] += 1
                 c1[1] = 1
+
         else:
             ans.append((c2[0], c2[1]))
             c2[1] -= 1

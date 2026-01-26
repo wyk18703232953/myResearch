@@ -69,11 +69,14 @@ def solve(n, m, grid):
     for r in range(n):
         for c in range(m):
             if A[r][c] and not valid[r][c]:
-                print(-1)
+                # print(-1)
+                pass
                 return
-    print(stars)
+    # print(stars)
+    pass
     for x, y, z in res:
-        print(x, y, z)
+        # print(x, y, z)
+        pass
 
 def generate_grid(n):
     # Use n as both rows and columns to scale the 2D input size.
@@ -86,6 +89,7 @@ def generate_grid(n):
             # Example: star if (r + c) is even, dot otherwise
             if (r + c) % 2 == 0:
                 row_chars.append('*')
+
             else:
                 row_chars.append('.')
         grid.append(''.join(row_chars))

@@ -41,9 +41,8 @@ def main(n):
 
     # 输出结果以便进行时间复杂度实验
     for a, b in outputs:
-        print(a, b)
-
-
+        # print(a, b)
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的规模
     main(10)

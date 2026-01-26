@@ -12,14 +12,17 @@ def main(n):
             for j in range(c // 2 + c % 2):
                 if j + 1 == c - j:
                     out_lines.append(f"{x1} {j+1}")
+
                 else:
                     out_lines.append(f"{x1} {j+1}")
                     out_lines.append(f"{x2} {c-j}")
+
         else:
             if i % 2 == 0:
                 for j in range(c):
                     out_lines.append(f"{x1} {j+1}")
                     out_lines.append(f"{x2} {c-j}")
+
             else:
                 for j in range(c):
                     out_lines.append(f"{x1} {c-j}")

@@ -25,12 +25,12 @@ def main(n):
                     if l1[(i + 2 - j) % 3] != s[i]:
                         m3 += 1
                 m = min(m, m1, m2, m3)
+
             else:
                 break
         results.append(m)
     for value in results:
-        print(value)
-
-
+        # print(value)
+        pass
 if __name__ == "__main__":
     main(5)

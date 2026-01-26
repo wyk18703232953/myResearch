@@ -30,12 +30,13 @@ def main(n):
                 start += 1
             if abs(dist[person] - d[start]) <= abs(dist[person] - d[start + 1]):
                 dists[d[start]] += 1
+
             else:
                 dists[d[start + 1]] += 1
     for key in dists:
-        print(dists[key] if key != 10**11 else "", end=" ")
-    print()
-
-
+        # print(dists[key] if key != 10**11 else "", end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

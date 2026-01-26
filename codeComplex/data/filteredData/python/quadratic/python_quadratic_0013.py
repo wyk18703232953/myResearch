@@ -17,7 +17,7 @@ def main(n):
                     _y = candidate
         y.append(_y)
 
-    print(' '.join(map(str, y)))
-
+    # print(' '.join(map(str, y)))
+    pass
 if __name__ == "__main__":
     main(10)

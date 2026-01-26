@@ -7,6 +7,7 @@ class Matrix:
         self.r, self.c = r, c
         if mat is not None:
             self.mat = deepcopy(mat)
+
         else:
             self.mat = [[0 for _ in range(c)] for _ in range(r)]
 
@@ -37,7 +38,8 @@ class Matrix:
 
 def main(n):
     if n <= 0:
-        print("No")
+        # print("No")
+        pass
         return
 
     # Deterministically generate two n x n matrices of characters
@@ -55,9 +57,8 @@ def main(n):
         ans.extend([a1.rotate(), a1.fliph()])
         a1.fliph()
 
-    print(["No", "Yes"][a2.mat in ans])
-
-
+    # print(["No", "Yes"][a2.mat in ans])
+    pass
 if __name__ == "__main__":
     # Example call for deterministic experiment; adjust n as needed
     main(5)

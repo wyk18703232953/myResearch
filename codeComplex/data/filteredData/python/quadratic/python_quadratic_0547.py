@@ -13,9 +13,11 @@ def main(n):
             if ch == '-':
                 if stones > 0:
                     stones -= 1
+
                 else:
                     flag = False
                     break
+
             else:
                 stones += 1
         if flag:
@@ -27,12 +29,12 @@ def main(n):
     for ch in s:
         if ch == '-':
             stones -= 1
+
         else:
             stones += 1
 
-    print(stones)
-
-
+    # print(stones)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的规模
     main(10)

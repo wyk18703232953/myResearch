@@ -25,10 +25,11 @@ def main(n):
             cval += x * mult
             mult *= -1
         for x in way:
-            print(1, x)
+            # print(1, x)
+            pass
         for x in way[::-1]:
-            print(2, x)
-
+            # print(2, x)
+            pass
     elif n_rows == 1:
         cval = 1
         way = []
@@ -38,8 +39,8 @@ def main(n):
             cval += x * mult
             mult *= -1
         for x in way:
-            print(1, x)
-
+            # print(1, x)
+            pass
     elif m_cols == 2:
         cval = 1
         way = []
@@ -49,10 +50,11 @@ def main(n):
             cval += x * mult
             mult *= -1
         for x in way:
-            print(x, 1)
+            # print(x, 1)
+            pass
         for x in way[:-1:-1]:
-            print(x, 2)
-
+            # print(x, 2)
+            pass
     elif m_cols == 1:
         cval = 1
         way = []
@@ -62,13 +64,16 @@ def main(n):
             cval += x * mult
             mult *= -1
         for x in way:
-            print(x, 1)
+            # print(x, 1)
+            pass
 
     else:
         for x in range(n_rows // 2):
             for y in range(1, m_cols + 1):
-                print(x + 1, y)
-                print(n_rows - x, m_cols + 1 - y)
+                # print(x + 1, y)
+                pass
+                # print(n_rows - x, m_cols + 1 - y)
+                pass
         if n_rows % 2 == 1:
             cval = 1
             way = []
@@ -78,9 +83,8 @@ def main(n):
                 cval += x * mult
                 mult *= -1
             for x in way:
-                print(n_rows // 2 + 1, x)
-
-
+                # print(n_rows // 2 + 1, x)
+                pass
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     main(20)

@@ -13,8 +13,7 @@ def main(n):
             res.append(f"{rows // 2 + 1} {cols - j}")
         if cols % 2:
             res.append(f"{rows // 2 + 1} {cols // 2 + 1}")
-    print("\n".join(res))
-
-
+    # print("\n".join(res))
+    pass
 if __name__ == "__main__":
     main(5)

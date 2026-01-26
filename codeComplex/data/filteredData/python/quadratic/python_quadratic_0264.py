@@ -12,9 +12,11 @@ def main(n):
 
     n = n_input
     if min(a, b) > 1 or 1 < n < 4 and max(a, b) == 1:
-        print('NO')
+        # print('NO')
+        pass
         return
-    print('YES')
+    # print('YES')
+    pass
     f = int(a == 1)
     g = [a, b][f]
     r = [[f] * n for _ in range(n)]
@@ -24,9 +26,8 @@ def main(n):
         r[i][i + 1] ^= 1
         r[i + 1][i] ^= 1
     for x in r:
-        print(*x, sep='')
-
-
+        # print(*x, sep='')
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次确定性实验
     main(10)

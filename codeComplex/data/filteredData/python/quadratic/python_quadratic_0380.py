@@ -33,9 +33,8 @@ def main(n):
                 minY = min(minY, j)
                 maxX = max(maxX, i)
                 maxY = max(maxY, j)
-    print((minX + maxX) // 2 + 1, (minY + maxY) // 2 + 1)
-
-
+    # print((minX + maxX) // 2 + 1, (minY + maxY) // 2 + 1)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 来做规模实验
     main(10)

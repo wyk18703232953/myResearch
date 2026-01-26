@@ -15,9 +15,8 @@ def main(n):
         k = l.index(i)
         l.insert(k, j)
         ans += k - j
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # example call; adjust n as needed for experiments
     main(5)

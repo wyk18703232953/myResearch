@@ -9,11 +9,13 @@ def main(size_n):
     while s != n:
         if (s+1)%(d+1) == 0:
             out_chars.append("1")
+
         else:
             out_chars.append("0")
         s += 1
     result = "".join(out_chars)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

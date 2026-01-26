@@ -16,6 +16,7 @@ def main(n):
                     prev = j
                 i += 1
                 j += 1
+
             else:
                 i = 0
                 j = prev + 1
@@ -24,11 +25,11 @@ def main(n):
         break
     if start == -1:
         result = s[:n] * k
+
     else:
         j = n - start
         result = s[:n] + s[j:n] * (k - 1)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

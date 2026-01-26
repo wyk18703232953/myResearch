@@ -1,7 +1,8 @@
 def main(n):
     # n 表示输入规模，这里映射为数组长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 生成确定性的整数数组 a，元素为 i % 7 + 1，保证为正数
@@ -30,6 +31,7 @@ def main(n):
             if e < 0:
                 if big:
                     sol -= 3 * e
+
                 else:
                     sol -= 5 * e
                 e = 0
@@ -38,8 +40,7 @@ def main(n):
         sol -= 2 * g
         sol -= (e - g)
 
-    print(int(sol))
-
-
+    # print(int(sol))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -46,6 +46,7 @@ def main(n):
         if x < y:
             d.appendleft(y)
             d.append(x)
+
         else:
             d.appendleft(x)
             d.append(y)
@@ -60,12 +61,13 @@ def main(n):
     for b in queries:
         if b <= f:
             ans.append(an1[b - 1])
+
         else:
             b -= f
             b -= 1
             b %= (N - 1)
             ans.append(r[0] + " " + r[b + 1])
-    print("\n".join(ans))
-
+    # print("\n".join(ans))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -14,10 +14,12 @@ def solve_from_segs(segs):
     for l, r in segs:
         if r in starts:
             starts[r] = max(starts[r], l)
+
         else:
             starts[r] = l
         if l in ends:
             ends[l] = min(ends[l], r)
+
         else:
             ends[l] = r
 
@@ -44,8 +46,7 @@ def generate_segments(n):
 def main(n):
     segs = generate_segments(n)
     result = solve_from_segs(segs)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

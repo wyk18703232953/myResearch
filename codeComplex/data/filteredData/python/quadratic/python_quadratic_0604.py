@@ -13,7 +13,8 @@ def brute(n, m, k, A):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = max(1, n // 3)
@@ -44,7 +45,7 @@ def main(n):
             best = max(best, run)
         bestbest = max(bestbest, best)
 
-    print(bestbest)
-
+    # print(bestbest)
+    pass
 if __name__ == "__main__":
     main(1000)

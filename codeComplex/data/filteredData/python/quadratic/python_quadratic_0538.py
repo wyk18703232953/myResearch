@@ -16,7 +16,8 @@ def run_case(n, k):
     path_count = 3
 
     if n > 75:
-        print("YES", n - 1)
+        # print("YES", n - 1)
+        pass
         return
 
     square_size = n - 1
@@ -29,9 +30,12 @@ def run_case(n, k):
         square_size -= 1
 
     if min_splits <= k <= min_splits + max_buffer:
-        print("YES", square_size)
+        # print("YES", square_size)
+        pass
+
     else:
-        print("NO")
+        # print("NO")
+        pass
 
 def main(n):
     global memo

@@ -5,20 +5,25 @@ def main(n):
     b = (n // 2) % n + 1
 
     if a > n:
-        print('NO')
+        # print('NO')
+        pass
         return
     if b > n:
-        print("NO")
+        # print("NO")
+        pass
         return
     if a == 1 and b == 1:
         if n == 2 or n == 3:
-            print('NO')
+            # print('NO')
+            pass
             return
     if (n == 1 and a > 1) or (n == 1 and b > 1):
-        print('NO')
+        # print('NO')
+        pass
         return
     if min(a, b) > 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     def check(mat):
@@ -52,19 +57,22 @@ def main(n):
                 mat[curr][j] = 0
                 mat[j][curr] = 0
     if b == 1:
-        print('YES')
+        # print('YES')
+        pass
         for i in range(n):
-            print(*mat[i], sep='')
+            # print(*mat[i], sep='')
+            pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
         for i in range(n):
             for j in range(n):
                 mat[i][j] = 1 - mat[i][j]
         for i in range(n):
             mat[i][i] = 0
         for i in range(n):
-            print(*mat[i], sep='')
-
-
+            # print(*mat[i], sep='')
+            pass
 if __name__ == "__main__":
     main(5)

@@ -7,6 +7,7 @@ def main(n):
     for i in l:
         if i % 2 == 0:
             c1 += 1
+
         else:
             c2 += 1
 
@@ -22,10 +23,11 @@ def main(n):
             break
 
     if c1 == 1 and lasteven != -1:
-        print(lasteven + 1)
+        # print(lasteven + 1)
+        pass
+
     else:
-        print(lastodd + 1 if lastodd != -1 else -1)
-
-
+        # print(lastodd + 1 if lastodd != -1 else -1)
+        pass
 if __name__ == "__main__":
     main(10)

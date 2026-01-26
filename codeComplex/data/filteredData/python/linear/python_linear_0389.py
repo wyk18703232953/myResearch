@@ -23,12 +23,12 @@ def main(n):
         answer += x
         if d >= 0:
             add_value += d * max_dist
+
         else:
             add_value += d * min_dist
 
     result = answer + (add_value / n)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

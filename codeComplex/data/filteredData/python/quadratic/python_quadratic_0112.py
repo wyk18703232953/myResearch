@@ -22,6 +22,7 @@ def main(n):
 
     if n % 2 == 0:
         b = r_gen(a)
+
     else:
         b = a[:]  # 直接等于 a，使得一定能匹配
 
@@ -44,7 +45,8 @@ def main(n):
     a_cur = a
     for _ in range(4):
         if a_cur == b:
-            print('YES')
+            # print('YES')
+            pass
             yes = 1
             break
         a_cur = r(a_cur)
@@ -52,13 +54,13 @@ def main(n):
         a_cur = h(a_cur)
         for _ in range(4):
             if a_cur == b:
-                print('YES')
+                # print('YES')
+                pass
                 yes = 1
                 break
             a_cur = r(a_cur)
     if yes == 0:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(5)

@@ -2,7 +2,8 @@ def main(n):
     # n 表示数组 a 的长度，值域固定为 [1, 10]，c 固定为 5
     # 所有数据由 n 确定性生成
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     c = 5
@@ -34,9 +35,8 @@ def main(n):
             if diff > ma:
                 ma = diff
 
-    print(m + ma)
-
-
+    # print(m + ma)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小进行实验
     main(10)

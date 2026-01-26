@@ -19,6 +19,7 @@ MOD = 10 ** 9 + 7
 def build_grid(H, W, intv, _type, space=True, padding=False, raw_grid=None):
     if padding:
         offset = 1
+
     else:
         offset = 0
     grid = list2d(H + offset * 2, W + offset * 2, intv)
@@ -58,6 +59,7 @@ def run_core(H, W, grid):
         for j in range(1, W + 1):
             if grid[i][j] == '.':
                 L[i][j] = 0
+
             else:
                 L[i][j] = L[i][j - 1] + 1
 
@@ -65,6 +67,7 @@ def run_core(H, W, grid):
         for j in range(W, 0, -1):
             if grid[i][j] == '.':
                 R[i][j] = 0
+
             else:
                 R[i][j] = R[i][j + 1] + 1
 
@@ -72,6 +75,7 @@ def run_core(H, W, grid):
         for i in range(1, H + 1):
             if grid[i][j] == '.':
                 U[i][j] = 0
+
             else:
                 U[i][j] = U[i - 1][j] + 1
 
@@ -79,6 +83,7 @@ def run_core(H, W, grid):
         for i in range(H, 0, -1):
             if grid[i][j] == '.':
                 D[i][j] = 0
+
             else:
                 D[i][j] = D[i + 1][j] + 1
 
@@ -100,6 +105,7 @@ def run_core(H, W, grid):
         for h, w, sz in ans:
             output_lines.append(f"{h} {w} {sz}")
         return "\n".join(output_lines)
+
     else:
         return "-1"
 
@@ -111,6 +117,7 @@ def generate_grid(H, W):
         for j in range(W):
             if (i + 1) * (j + 1) % 3 == 0:
                 row.append('*')
+
             else:
                 row.append('.')
         raw_grid.append("".join(row))
@@ -124,7 +131,7 @@ def main(n):
     raw_grid = generate_grid(H, W)
     grid = build_grid(H, W, '#', str, space=False, padding=True, raw_grid=raw_grid)
     result = run_core(H, W, grid)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

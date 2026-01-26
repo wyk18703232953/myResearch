@@ -9,6 +9,7 @@ def fun(s):
             v.append(s[i])
         elif l>0 and v[l-1]=='(':
             v.pop()
+
         else:
             v.append(')')
     l = len(v)
@@ -18,6 +19,7 @@ def fun(s):
     elif v[0]==v[l-1]:
         if v[0]=='(':
             op[l]+=1
+
         else:
             cl[l]+=1
 
@@ -36,7 +38,7 @@ def run_experiment(n):
 
 def main(n):
     result = run_experiment(n)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -11,6 +11,7 @@ def main(n):
         m = n - 1 if n > 1 else 1
     elif n % 3 == 1:
         m = n
+
     else:
         m = n + 1
 
@@ -20,6 +21,7 @@ def main(n):
     if n % 2 == 0:
         # 无 '*' 的情况：纯字母
         s = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
+
     else:
         # 有 '*' 的情况：在中间位置放一个 '*'
         mid = n // 2
@@ -40,8 +42,10 @@ def main(n):
         # 在头部做一个小变动
         if n > 1:
             t = chr((ord(s[0]) - ord('a') + 1) % 26 + ord('a')) + s[1:]
+
         else:
             t = s
+
     else:
         # 按照 m 的长度构造不同的字符串，但与 s 有一定前后缀关系
         base = ''.join(chr(ord('c') + (i % 26)) for i in range(max(n, m)))
@@ -49,7 +53,9 @@ def main(n):
 
     # 以下为原始算法逻辑（仅将 input 替换为已构造的 n,m,s,t）
     if n - 1 > m:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
         try:
             a = s.index('*')
@@ -57,27 +63,33 @@ def main(n):
             a = -1
         if a == -1:
             if s == t:
-                print('YES')
+                # print('YES')
+                pass
+
             else:
-                print('NO')
+                # print('NO')
+                pass
+
         else:
             for i in range(a):
                 if i >= len(t) or s[i] != t[i]:
-                    print('NO')
+                    # print('NO')
+                    pass
                     return
             i = 1
             # 防止负索引越界: 根据 m 和 n 当前约束按原逻辑循环
             while m - i >= a and n - i > a:
                 if m - i < 0 or n - i < 0:
-                    print('NO')
+                    # print('NO')
+                    pass
                     return
                 if s[n - i] != t[m - i]:
-                    print('NO')
+                    # print('NO')
+                    pass
                     return
                 i += 1
-            print('YES')
-
-
+            # print('YES')
+            pass
 if __name__ == "__main__":
     # 示例调用：可更改 n 来做规模实验
     main(10)

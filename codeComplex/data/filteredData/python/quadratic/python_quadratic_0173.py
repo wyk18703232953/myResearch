@@ -14,12 +14,14 @@ def main(n):
     for c in c_values:
         if a[c] != 0:
             output_parts.append(str(a[c] - 1))
+
         else:
             for x in range(c, c - k, -1):
                 if x < 0:
                     break
                 if a[x] == 0:
                     i = x
+
                 else:
                     if c - a[x] + 1 < k:
                         i = a[x] - 1
@@ -30,8 +32,7 @@ def main(n):
                 a[x] = i + 1
             output_parts.append(str(i))
 
-    print(" ".join(output_parts))
-
-
+    # print(" ".join(output_parts))
+    pass
 if __name__ == "__main__":
     main(10)

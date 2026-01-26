@@ -13,4 +13,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用
     result = main(10)
-    print(result)
+    # print(result)
+    pass

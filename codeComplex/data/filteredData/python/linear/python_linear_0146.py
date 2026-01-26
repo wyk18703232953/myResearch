@@ -13,8 +13,7 @@ def main(n):
     for i in range(n):
         Un.append(Al[i + 1] - Ab[i] - 1)
         r += Un[-1]
-    print(r)
-
-
+    # print(r)
+    pass
 if __name__ == "__main__":
     main(10)

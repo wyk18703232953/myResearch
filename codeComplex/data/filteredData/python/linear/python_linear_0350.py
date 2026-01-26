@@ -7,7 +7,8 @@ def timer(func):
         stime = time.perf_counter()
         res = func(*args, **kwargs)
         elapsed = time.perf_counter() - stime
-        print(f"{func.__name__} in {elapsed:.4f} secs")
+        # print(f"{func.__name__} in {elapsed:.4f} secs")
+        pass
         return res
     return wrapper
 
@@ -44,7 +45,8 @@ def run_solver(n):
             s1[i] = 1
             s2[i] = 0
     ans = s1 if calc(s1, segs) > calc(s2, segs) else s2
-    print(''.join(map(str, ans)))
+    # print(''.join(map(str, ans)))
+    pass
     return ans
 
 def main(n):

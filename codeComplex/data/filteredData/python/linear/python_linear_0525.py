@@ -14,6 +14,7 @@ def main(n):
     # 这里选用从 1 到 n 的顺序，始终是合法的 BFS 序
     if n <= 0:
         a = []
+
     else:
         a = list(range(1, n + 1))
 
@@ -34,18 +35,21 @@ def main(n):
                 if m[a[i]] == 0 and a[i] in g[first]:
                     m[a[i]] = 1
                     q.append(a[i])
+
                 else:
                     ans = False
                     break
             right += cnt
+
     else:
         ans = (len(a) > 0 and a[0] == 1)
 
     if ans:
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     main(10)

@@ -12,7 +12,8 @@ def main(n):
 
     # 原算法逻辑
     if k == 1:
-        print(' '.join(str(i) for i in ps))
+        # print(' '.join(str(i) for i in ps))
+        pass
         return
 
     g = [None for _ in range(256)]
@@ -23,6 +24,7 @@ def main(n):
         if g[p] is not None:
             ans.append(g[p])
             f[p] = 1
+
         else:
             gb = 0
             for j in range(1, k):
@@ -42,13 +44,13 @@ def main(n):
                     break
                 if f[gb + j] is None:
                     g[gb + j] = gb
+
                 else:
                     break
             f[gb] = 1
             f[p] = 1
-    print(' '.join(str(i) for i in ans))
-
-
+    # print(' '.join(str(i) for i in ans))
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

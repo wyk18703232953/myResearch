@@ -21,10 +21,10 @@ def main(n):
         y.append(max(tempY))
 
     for i in range(len(y)):
-        print(y[i], end=' ')
-    print()
-
-
+        # print(y[i], end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     # Example deterministic run; change n to test other scales
     main(10)

@@ -99,6 +99,7 @@ def run_core_logic(n, edges):
                 if visited[child - 1] != 1:
                     c = child
                     break
+
             else:
                 break
     if sum(visited) == n:
@@ -108,6 +109,7 @@ def run_core_logic(n, edges):
         for c in ans:
             output_lines.append(f"{c[0]} {c[1]}")
         return "\n".join(output_lines)
+
     else:
         return "No"
 
@@ -123,6 +125,9 @@ if __name__ == "__main__":
     # Example deterministic runs for timing / scaling
     for size in [5, 10, 100]:
         result = main(size)
-        print(f"n = {size}")
-        print(result)
-        print("-----")
+        # print(f"n = {size}")
+        pass
+        # print(result)
+        pass
+        # print("-----")
+        pass

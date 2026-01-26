@@ -3,6 +3,7 @@ def main(n):
     if n < 3:
         n_rows = 3
         m_cols = 3
+
     else:
         n_rows = n
         m_cols = n
@@ -15,6 +16,7 @@ def main(n):
         for j in range(m_cols):
             if (i + j) % 2 == 0:
                 row.append(True)   # '#'
+
             else:
                 row.append(False)  # '.'
         mp.append(row)
@@ -37,10 +39,11 @@ def main(n):
                     mp1[i + ik][j + jk] = True
 
     if all(all(mp[i][j] == mp1[i][j] for j in range(m_cols)) for i in range(n_rows)):
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

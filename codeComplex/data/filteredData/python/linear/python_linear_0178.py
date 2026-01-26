@@ -1,7 +1,8 @@
 def main(n):
     # n: input size, used as the length of arrays a and t
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic choice of k based on n, 1 <= k <= n
@@ -26,9 +27,8 @@ def main(n):
         rr += 1
         tmp = max(tmp, sws)
     ans += tmp
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example call; you can change 10 to other sizes for experiments
     main(10)

@@ -16,7 +16,7 @@ def main(n):
         for j in range(len(b)):
             ok = a[:i+1] + b[:j+1]
             p.append(ok)
-    print(min(p))
-
+    # print(min(p))
+    pass
 if __name__ == "__main__":
     main(10)

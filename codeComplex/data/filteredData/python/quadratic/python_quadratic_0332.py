@@ -4,6 +4,7 @@ def main(n):
     # 约束：d >= 1, k >= 1
     if n < 2:
         n_internal = 2
+
     else:
         n_internal = n
 
@@ -24,7 +25,8 @@ def main(n):
     if k_val > 1:
         cap = 2 * (k_val ** (r + 1) - 1) // (k_val - 1) if odd else 1 + (k_val + 1) * (k_val ** r - 1) // (k_val - 1)
     if n_val == 1 or k_val < 1 < n_val - 1 or k_val == 1 and d_val != n_val - 1 or d_val >= n_val or k_val > 1 and not d_val < n_val <= cap:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     def dfs(parent, depth, rest, res, k_val_local):
@@ -55,9 +57,8 @@ def main(n):
             dfs(q, de, rest, res, k_val)
     except IndexError:
         pass
-    print('\n'.join(res))
-
-
+    # print('\n'.join(res))
+    pass
 if __name__ == "__main__":
     # 示例调用：可调整不同 n 测试时间复杂度
     main(10)

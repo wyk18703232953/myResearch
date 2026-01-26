@@ -45,7 +45,7 @@ def main(n):
         cnt.append(l)
         mp[l] += 1
     result = f(mp, cnt)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

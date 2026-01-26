@@ -11,6 +11,7 @@ def main(n):
     if n == 1:
         # 单字符模式：在 'a' 和 '*' 之间切换
         s = 'a' if (n % 2 == 0) else '*'
+
     else:
         chars = ['a', 'b', 'c']
         pre_len = n // 2
@@ -19,6 +20,7 @@ def main(n):
         suffix = ''.join(chars[(i + 1) % 3] for i in range(suf_len))
         if n >= 3:
             s = prefix + '*' + suffix
+
         else:
             # n == 2 时构造无 '*' 的模式
             s = ''.join(chars[i % 3] for i in range(n))
@@ -35,6 +37,7 @@ def main(n):
         # 当没有 * 时，偶数 n 时让 s == t[:n]，奇数 n 保持不匹配
         if n % 2 == 0:
             t = s
+
     else:
         # 有 * 的情况，针对某些 n 调整 t 使其匹配
         if n % 3 == 0:
@@ -55,34 +58,48 @@ def main(n):
     # 4) 保持原有逻辑，移除所有输入依赖，改用已经构造好的 n, m, s, t
     if '*' not in s:
         if s == t:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
+            # print('NO')
+            pass
     elif n > m + 1:
-        print('NO')
+        # print('NO')
+        pass
     elif n == 1 and s == '*':
-        print('YES')
+        # print('YES')
+        pass
+
     else:
         s_list = list(s)
         t_list = list(t)
         if s_list[0] == '*':
             if s_list[1:] == t_list[-(len(s_list[1:])):]:
-                print('YES')
+                # print('YES')
+                pass
+
             else:
-                print('NO')
+                # print('NO')
+                pass
         elif s_list[-1] == '*':
             if s_list[:n - 1] == t_list[:n - 1]:
-                print('YES')
+                # print('YES')
+                pass
+
             else:
-                print('NO')
+                # print('NO')
+                pass
+
         else:
             ind = s_list.index('*')
             if s_list[:ind] == t_list[:ind] and s_list[ind + 1:] == t_list[-len(s_list[ind + 1:]):]:
-                print('YES')
+                # print('YES')
+                pass
+
             else:
-                print('NO')
-
-
+                # print('NO')
+                pass
 if __name__ == "__main__":
     # 示例：运行若干规模，以便做时间复杂度实验时手动修改
     for size in [1, 2, 3, 5, 10]:

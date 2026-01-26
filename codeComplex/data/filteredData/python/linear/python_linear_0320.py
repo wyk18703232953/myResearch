@@ -10,12 +10,12 @@ def main(n):
     for i in range(n):
         if l1[i] in l2:
             l2.remove(l1[i])
+
         else:
             c += 1
 
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n
     main(10)

@@ -21,17 +21,23 @@ def main(n):
                 tiles[0][g] += 1
             elif h == "p":
                 tiles[1][g] += 1
+
             else:
                 tiles[2][g] += 1
 
         if m[0] == m[1] and m[1] == m[2]:
-            print(0)
+            # print(0)
+            pass
         elif m[0] == m[1]:
-            print(1)
+            # print(1)
+            pass
         elif m[0] == m[2]:
-            print(1)
+            # print(1)
+            pass
         elif m[1] == m[2]:
-            print(1)
+            # print(1)
+            pass
+
         else:
             flag = False
             for i in range(3):
@@ -39,22 +45,26 @@ def main(n):
                     if tiles[i][j] != 0:
                         if j != 8 and tiles[i][j + 1] != 0:
                             if j != 7 and tiles[i][j + 2] != 0:
-                                print(0)
+                                # print(0)
+                                pass
                                 flag = True
                                 break
+
                             else:
-                                print(1)
+                                # print(1)
+                                pass
                                 flag = True
                                 break
                         elif j != 7 and j != 8 and tiles[i][j + 2] != 0:
-                            print(1)
+                            # print(1)
+                            pass
                             flag = True
                             break
                 if flag:
                     break
             if flag is False:
-                print(2)
-
+                # print(2)
+                pass
     if n <= 0:
         return
 

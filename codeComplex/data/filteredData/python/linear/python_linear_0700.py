@@ -10,6 +10,7 @@ def main(n):
 
     if b >= a - 1:
         result = a - 1
+
     else:
         summ = b
         k = a - b
@@ -17,9 +18,8 @@ def main(n):
             summ += i
         result = summ
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用，可以根据需要修改 n 的值进行规模化实验
     main(10)

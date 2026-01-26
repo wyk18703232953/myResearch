@@ -32,12 +32,15 @@ def main(n):
             break
 
     if not can:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         ans = []
         for i in range(n):
             if a[i] == b[i]:
                 continue
+
             else:
                 idx = -1
                 for j in range(i + 1, n):
@@ -47,11 +50,12 @@ def main(n):
                 for j in range(idx, i, -1):
                     ans.append(j)
                     swap(j, j - 1)
-        print(len(ans))
+        # print(len(ans))
+        pass
+
         if ans:
-            print(' '.join(map(str, ans)))
-
-
+            # print(' '.join(map(str, ans)))
+            pass
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     main(10)

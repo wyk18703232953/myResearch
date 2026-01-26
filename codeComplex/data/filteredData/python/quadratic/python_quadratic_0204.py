@@ -58,6 +58,7 @@ def get_frequency(list_):
     for ele in list_:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -78,16 +79,19 @@ def core_logic(n, m, l):
                 if j+1 not in discarded:
                     if j+1 not in dic:
                         dic[j+1]=i+1
+
                     else:
                         del dic[j+1]
                         discarded[j+1]=1
     if len(dic)==0:
         return "YES"
+
     else:
         kk=list(dic.values())
         temp=list(set(kk))
         if len(temp)==n:
             return "NO"
+
         else:
             return "YES"
 
@@ -107,7 +111,7 @@ def generate_input(n):
 def main(n):
     n_gen, m_gen, l = generate_input(n)
     result = core_logic(n_gen, m_gen, l)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

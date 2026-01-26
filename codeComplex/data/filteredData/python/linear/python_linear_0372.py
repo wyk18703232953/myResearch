@@ -15,8 +15,7 @@ def main(n: int):
         return
     s = ''.join('1' if i % 2 == 0 else '0' for i in range(n))
     result = transform(s)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

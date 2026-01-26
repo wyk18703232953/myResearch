@@ -8,21 +8,27 @@ def main(n):
         if a[i] % 2 == 1:
             if i % 2 == 0:
                 b += 1
+
             else:
                 b -= 1
 
     if n % 2 == 0:
         if b == 0:
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
+
     else:
         if b == 0 or b == 1:
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次实验
     main(10)

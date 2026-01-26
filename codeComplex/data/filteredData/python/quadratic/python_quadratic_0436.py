@@ -11,7 +11,8 @@ def solve(n):
         if total % j == 0:
             divisors.extend([j, total // j])
     if total == 0:
-        print("YES")
+        # print("YES")
+        pass
         return
     if total != 1:
         divisors.append(1)
@@ -27,9 +28,11 @@ def solve(n):
                 summ = 0
             index += 1
         if summ == 0 and index == n:
-            print("YES")
+            # print("YES")
+            pass
             return
-    print("NO")
+    # print("NO")
+    pass
 
 
 def main(n):

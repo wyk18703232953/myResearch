@@ -5,13 +5,14 @@ def main(n):
     m = -1
     for i, v in enumerate(arr):
         if v > m + 1:
-            print(i + 1)
+            # print(i + 1)
+            pass
             break
         m = max(m, v)
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次运行
     main(10)

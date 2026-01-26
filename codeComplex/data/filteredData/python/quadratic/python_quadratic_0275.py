@@ -14,9 +14,9 @@ def main(n):
         if i in d:
             e.append(i)
     for j in e:
-        print(j, end=" ")
-    print()
-
-
+        # print(j, end=" ")
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     main(10)

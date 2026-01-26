@@ -17,6 +17,7 @@ def core_algorithm(n, k):
         if i % 2:
             x, y = divmod(i // 2, k)
             ans.append([x + 1, y + 1])
+
         else:
             x, y = divmod(total - i // 2, k)
             ans.append([x + 1, y + 1])

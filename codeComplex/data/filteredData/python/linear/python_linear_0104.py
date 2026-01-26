@@ -2,7 +2,8 @@ def main(n):
     # 生成两个确定性的字符串 s1, s2，长度均为 n
     # 字符由 'a' 到 'z' 按照索引循环生成
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -15,8 +16,7 @@ def main(n):
             candidate = s1[:i] + s2[:j]
             if candidate < ans:
                 ans = candidate
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

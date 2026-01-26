@@ -1,7 +1,8 @@
 def main(n):
     # n 表示列表长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成输入列表 t：简单递增序列
@@ -24,9 +25,8 @@ def main(n):
         sw += pr - 1
         t = t[1:pr] + t[pr + 1:]
 
-    print(sw)
-
-
+    # print(sw)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值
     main(10)

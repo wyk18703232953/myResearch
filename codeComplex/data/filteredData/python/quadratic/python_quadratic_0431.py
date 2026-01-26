@@ -16,6 +16,7 @@ def check_ticket(digits):
             elif int_d == target or seg_sum + int_d == target:
                 seg_i += 1
                 seg_sum = 0
+
             else:
                 seg_sum += int_d
 
@@ -34,10 +35,11 @@ def main(n):
     # 确定性构造：周期性数字 0..9
     digits = ''.join(str(i % 10) for i in range(length))
     if check_ticket(digits):
-        print("yes")
+        # print("yes")
+        pass
+
     else:
-        print("no")
-
-
+        # print("no")
+        pass
 if __name__ == "__main__":
     main(10)

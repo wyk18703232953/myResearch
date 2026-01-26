@@ -10,6 +10,7 @@ def main(n):
         for i in range(2, int(x ** 0.5) + 1):
             if x % i == 0:
                 break
+
         else:
             p.append(x)
 
@@ -20,16 +21,18 @@ def main(n):
         for j in range(2, int(s ** 0.5) + 1):
             if s % j == 0:
                 break
+
         else:
             if s <= a:
                 c += 1
 
     if c >= k:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # Example deterministic call for time-complexity experiments
     main(1000)

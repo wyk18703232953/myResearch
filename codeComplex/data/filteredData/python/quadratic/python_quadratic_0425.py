@@ -1,7 +1,8 @@
 def main(n):
     # 生成确定性输入：n 位数字串，周期性重复 "1234567890"
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     s = ''.join(str((i % 10)) for i in range(1, n + 1))
@@ -21,15 +22,16 @@ def main(n):
                 sum1 = 0
                 r = r + 1
         if r >= 2 and sum1 == 0 and flag == 1:
-            print("YES")
+            # print("YES")
+            pass
             p = 1
             break
     if p == 0:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：运行若干不同规模，便于做时间复杂度实验
     for size in (10, 50, 100, 200, 400):
-        print(f"n = {size}")
+        # print(f"n = {size}")
+        pass
         main(size)

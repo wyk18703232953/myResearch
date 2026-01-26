@@ -7,7 +7,8 @@ def main(n):
     for puts in range(10**9):
         candy = puts * (puts + 1) // 2
         if candy - (n - puts) == k:
-            print(n - puts)
+            # print(n - puts)
+            pass
             return
 
 if __name__ == "__main__":

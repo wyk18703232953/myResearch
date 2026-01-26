@@ -30,9 +30,8 @@ def main(n):
 
     # Output all answers, one per line, matching original behavior over multiple test cases
     for ans in answers:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # Example call with a chosen scale n
     main(5)

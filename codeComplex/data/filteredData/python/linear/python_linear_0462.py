@@ -44,6 +44,7 @@ def core_algorithm(s):
     for v in k:
         if v == 1:
             t += 1
+
         else:
             ans = max(ans, t)
             t = 0
@@ -57,6 +58,7 @@ def core_algorithm(s):
     for v in k:
         if v == 1:
             t += 1
+
         else:
             ans = max(ans, t)
             t = 0
@@ -67,8 +69,7 @@ def core_algorithm(s):
 def main(n):
     s = generate_s(n)
     result = core_algorithm(s)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

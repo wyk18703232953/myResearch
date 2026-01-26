@@ -11,8 +11,7 @@ def main(n):
         cb = b.count(s)
         cost += ca - min(ca, cb)
 
-    print(cost)
-
-
+    # print(cost)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -22,7 +22,8 @@ def main(n):
     for i in range(n - k + 1):
         m = max(m, cf[i + k] - cf[i])
     result = ans + m
-    print(result)
+    # print(result)
+    pass
     return result
 
 

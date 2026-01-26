@@ -3,7 +3,8 @@ def main(n):
     # n: 初始的 n
     # s: 与 n 同规模的确定性构造，这里设为 n*(n+1)//2，保证算法有工作量
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     cur_n = n
@@ -16,8 +17,7 @@ def main(n):
         ans += a
         cur_n -= 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

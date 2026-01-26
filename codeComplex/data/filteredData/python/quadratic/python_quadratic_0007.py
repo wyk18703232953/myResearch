@@ -74,6 +74,7 @@ def NcR(n, r):
             k //= m
             n -= 1
             r -= 1
+
     else:
         p = 1
     return p
@@ -109,4 +110,5 @@ def main(n):
 if __name__ == "__main__":
     result = main(10)
     for v in result:
-        print(v)
+        # print(v)
+        pass

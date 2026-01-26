@@ -19,7 +19,7 @@ def main(size):
         for j in range(i, n):
             summ += lst[j]
             arr[j - i] = max(arr[j - i], summ / (j - i + 1))
-    print(max(arr[m - 1:]))
-
+    # print(max(arr[m - 1:]))
+    pass
 if __name__ == "__main__":
     main(10)

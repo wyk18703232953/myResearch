@@ -11,9 +11,8 @@ def main(n):
         if digit % 3 == 0 or r % 3 == 0 or c == 3:
             ans += 1
             r, c = 0, 0
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的值
     main(10)

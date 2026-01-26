@@ -1,7 +1,8 @@
 def main(n):
     # n is the number of pairs; total length of a is 2*n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic construction:
@@ -36,8 +37,7 @@ def main(n):
             j -= 1
             swaps += 1
 
-    print(swaps)
-
-
+    # print(swaps)
+    pass
 if __name__ == "__main__":
     main(5)

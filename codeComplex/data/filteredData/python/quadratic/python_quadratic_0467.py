@@ -28,10 +28,13 @@ def main(n):
                 cnt += 1
         tr.append(cnt)
     if tl != l or tr != r:
-        print("NO")
-    else:
-        print("YES")
-        print(' '.join(map(str, answer)))
+        # print("NO")
+        pass
 
+    else:
+        # print("YES")
+        pass
+        # print(' '.join(map(str, answer)))
+        pass
 if __name__ == "__main__":
     main(10)

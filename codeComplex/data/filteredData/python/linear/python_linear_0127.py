@@ -13,6 +13,7 @@ def main(n):
         # For n < 2, original loop "for _ in range(n-1)" has no iterations,
         # and the input sequence is effectively just the initial l = [0, 0].
         l = [0, 0]
+
     else:
         # Deterministically generate a tree parent array for nodes 2..n.
         # Use 1 as parent for all nodes to maximize leaves.
@@ -21,7 +22,7 @@ def main(n):
             l.append(1)
     s = set(l)
     result = if_spruce(n, l, s)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

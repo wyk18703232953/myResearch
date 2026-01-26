@@ -12,6 +12,7 @@ def main(n):
     if n % 2 == 0:
         a = 1
         b = max(1, (n % 5) + 1)
+
     else:
         b = 1
         a = max(1, (n % 5) + 1)
@@ -22,24 +23,29 @@ def main(n):
 
     def calc(n_val, a_val, b_val):
         if min(a_val, b_val) != 1:
-            print("NO")
+            # print("NO")
+            pass
             return
         if a_val == b_val == 1 and n_val in (2, 3):
-            print("NO")
+            # print("NO")
+            pass
             return
 
-        print("YES")
+        # print("YES")
+        pass
         ONE, ZERO = ("10" if a_val > 1 else "01")
 
         edges = n_val - max(a_val, b_val)
         line = "0" + (ZERO, ONE)[edges > 0] * (n_val > 1) + ZERO * (n_val - 2)
-        print(line)
+        # print(line)
+        pass
 
         for y in range(1, n_val):
             line = ZERO * (y - 1) + (ZERO, ONE)[y <= edges] + "0"
             if y < n_val - 1:
                 line += (ZERO, ONE)[y < edges] + ZERO * (n_val - y - 2)
-            print(line)
+            # print(line)
+            pass
 
     calc(nn, a, b)
 

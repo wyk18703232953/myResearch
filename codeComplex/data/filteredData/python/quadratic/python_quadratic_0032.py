@@ -169,8 +169,10 @@ class Factorial:
  
     def calc(self, n):
         if n <= -1:
-            print("Invalid argument to calculate n!")
-            print("n must be non-negative value. But the argument was " + str(n))
+            # print("Invalid argument to calculate n!")
+            pass
+            # print("n must be non-negative value. But the argument was " + str(n))
+            pass
             exit()
         if n < len(self.factorials):
             return self.factorials[n]
@@ -185,8 +187,10 @@ class Factorial:
  
     def inv(self, n):
         if n <= -1:
-            print("Invalid argument to calculate n^(-1)")
-            print("n must be non-negative value. But the argument was " + str(n))
+            # print("Invalid argument to calculate n^(-1)")
+            pass
+            # print("n must be non-negative value. But the argument was " + str(n))
+            pass
             exit()
         p = self.MOD
         pi = n % p
@@ -201,8 +205,10 @@ class Factorial:
  
     def invFactorial(self, n):
         if n <= -1:
-            print("Invalid argument to calculate (n^(-1))!")
-            print("n must be non-negative value. But the argument was " + str(n))
+            # print("Invalid argument to calculate (n^(-1))!")
+            pass
+            # print("n must be non-negative value. But the argument was " + str(n))
+            pass
             exit()
         if n < len(self.invFactorial_):
             return self.invFactorial_[n]
@@ -255,8 +261,7 @@ def main(n):
             continue
         for j in range(1, len(dp)):
             dp[j] = (dp[j] + dp[j-1]) % MOD
-    print(dp[-1])
-
-
+    # print(dp[-1])
+    pass
 if __name__ == "__main__":
     main(10)

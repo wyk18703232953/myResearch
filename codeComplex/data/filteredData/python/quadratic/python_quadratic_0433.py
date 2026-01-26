@@ -22,7 +22,8 @@ def main(n):
     s = [(i % 2) for i in range(n)]
     s = [str(x) for x in s]
     if len(set(s)) == 1:
-        print('YES')
+        # print('YES')
+        pass
         return
     l = []
     t = 0
@@ -34,10 +35,12 @@ def main(n):
         if i > 0:
             r = solve(i, s)
             if len(r) > 1 and len(set(r)) == 1:
-                print('YES')
+                # print('YES')
+                pass
                 break
-    else:
-        print('NO')
 
+    else:
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

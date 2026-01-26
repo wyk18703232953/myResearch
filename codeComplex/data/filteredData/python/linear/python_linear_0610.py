@@ -10,6 +10,7 @@ def main(n):
     for i in range(n):
         if b[i] in done:
             ans.append(0)
+
         else:
             c = 0
             while a[j] != b[i]:
@@ -20,8 +21,7 @@ def main(n):
             j += 1
             ans.append(c + 1)
 
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

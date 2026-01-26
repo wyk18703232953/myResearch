@@ -21,6 +21,7 @@ def main(n):
     for i in range(1, n):
         if cost[i][0] == cost[i - 1][0]:
             CANDIES[cost[i][1]] = candy
+
         else:
             candy -= 1
             CANDIES[cost[i][1]] = candy
@@ -40,14 +41,17 @@ def main(n):
             check = 0
 
     if check == 1:
-        print("YES")
+        # print("YES")
+        pass
         for c in CANDIES:
-            print(c, end=" ")
-        print()
+            # print(c, end=" ")
+            pass
+        # print()
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # Example deterministic call for experimental use
     main(10)

@@ -8,9 +8,8 @@ def main(n):
 
     x = original_n % m
     result = min(a * (m - x), b * x)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：用若干不同规模调用 main
     for size in [1, 10, 100, 1000]:

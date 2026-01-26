@@ -59,6 +59,7 @@ def compute_result(cl1, cl2):
     res = False
     if cl1 == cl2:
         res = True
+
     else:
         for x in cm:
             for y in permutations(x):
@@ -80,13 +81,16 @@ def main(n):
     # for odd n, use a different deterministic target to get "No"
     if n % 2 == 0:
         cl2 = vert(rotate90(cl1))
+
     else:
         cl2 = make_matrix(n, n)
     res = compute_result(cl1, cl2)
     if res:
-        print('Yes')
-    else:
-        print('No')
+        # print('Yes')
+        pass
 
+    else:
+        # print('No')
+        pass
 if __name__ == "__main__":
     main(4)

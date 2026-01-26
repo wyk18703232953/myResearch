@@ -3,7 +3,7 @@ def main(n):
     a = [i % (n // 2 + 1) for i in range(n)]
     s = set(a)
     s.discard(0)
-    print(len(s))
-
+    # print(len(s))
+    pass
 if __name__ == "__main__":
     main(10)

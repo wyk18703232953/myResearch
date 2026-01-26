@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as the string length; choose k deterministically from n
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     kk = n // 2 + 1  # deterministic mapping from n to kk (number of repetitions)
@@ -21,9 +22,8 @@ def main(n):
                 l = len(k)
         ss = s[l:]
         fs = s + (ss * (kk - 1))
-        print(fs)
-
-
+        # print(fs)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

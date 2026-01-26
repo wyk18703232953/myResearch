@@ -40,6 +40,7 @@ def main(n):
 
     if n <= 1:
         n_eff = 2
+
     else:
         n_eff = n
 
@@ -73,4 +74,5 @@ if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的大小做规模实验
     n = 10
     ans = main(n)
-    print(ans)
+    # print(ans)
+    pass

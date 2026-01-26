@@ -32,9 +32,8 @@ def main(n):
             pp += cc
         tt += pp * (pp + 1) // 2
         tot += tt * 2
-    print(tot)
-
-
+    # print(tot)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

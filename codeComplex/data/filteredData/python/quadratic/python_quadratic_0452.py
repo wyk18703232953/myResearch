@@ -12,13 +12,16 @@ def main(n):
             if oi < len(odds):
                 arr.append(odds[oi])
                 oi += 1
+
             else:
                 arr.append(evens[ei])
                 ei += 1
+
         else:
             if ei < len(evens):
                 arr.append(evens[ei])
                 ei += 1
+
             else:
                 arr.append(odds[oi])
                 oi += 1
@@ -40,9 +43,11 @@ def main(n):
     for i in range(n - 1, -1, -1):
         if len(dict1[arr[arr1[i]]]) == 0:
             strarr[arr1[i]] = 'B'
+
         else:
             if len(dict1[arr[arr1[i]]]) == 1 and len(dict1[dict1[arr[arr1[i]]][0]]) == 0:
                 strarr[arr1[i]] = 'A'
+
             else:
                 flag = 0
                 for j in dict1[arr[arr1[i]]]:
@@ -51,10 +56,12 @@ def main(n):
                         break
                 if flag == 1:
                     strarr[arr1[i]] = 'A'
+
                 else:
                     strarr[arr1[i]] = 'B'
     result = "".join(x for x in strarr)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -8,7 +8,8 @@ def main(n):
         r += t * 2
         t += 2
     result = r + t
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

@@ -58,13 +58,15 @@ def main(n):
             break
 
     if chk:
-        print(len(stars))
+        # print(len(stars))
+        pass
         for s in stars:
-            print(*s)
+            # print(*s)
+            pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(10)

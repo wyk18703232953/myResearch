@@ -5,7 +5,8 @@ def main(n):
     global wa
     wa = 0
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     # 确定性生成长度为 n 的数组 a
     a = [(i * 2 + 1) % M for i in range(n)]
@@ -19,7 +20,7 @@ def main(n):
         now %= M
     wa_local %= M
     wa = wa_local
-    print(wa_local)
-
+    # print(wa_local)
+    pass
 if __name__ == "__main__":
     main(5)

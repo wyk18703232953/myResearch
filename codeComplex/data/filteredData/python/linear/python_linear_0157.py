@@ -53,7 +53,7 @@ def core_logic(m, expressions):
 def main(n):
     m, expressions = generate_input(n)
     result = core_logic(m, expressions)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

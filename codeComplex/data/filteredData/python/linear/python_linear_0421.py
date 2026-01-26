@@ -42,11 +42,12 @@ def main(n):
                 ans = 2
 
     if ans == 3:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 以做规模实验
     main(10)

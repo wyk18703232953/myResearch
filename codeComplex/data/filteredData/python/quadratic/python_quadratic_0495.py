@@ -37,6 +37,7 @@ def main(n):
             vis[u] = True
             q.append(u)
             q.extend(children)
+
         else:
             vis[u] = True
             colors[u] = 1
@@ -44,8 +45,7 @@ def main(n):
 
     colors = colors[1:]
     colors.sort()
-    print(' '.join(map(str, colors)))
-
-
+    # print(' '.join(map(str, colors)))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -17,8 +17,7 @@ def main(n):
                 a.pop(i)
                 break
 
-    print(p)
-
-
+    # print(p)
+    pass
 if __name__ == "__main__":
     main(10)

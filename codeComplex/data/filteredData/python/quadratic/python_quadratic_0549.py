@@ -18,7 +18,8 @@ def main(n):
             n -= 1
 
     result = "".join(q)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

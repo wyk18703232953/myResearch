@@ -33,13 +33,16 @@ def main(n):
         ans[i] -= mini
 
     if flag:
-        print("YES")
+        # print("YES")
+        pass
         for i in ans:
-            print(i, end=' ')
-        print()
+            # print(i, end=' ')
+            pass
+        # print()
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

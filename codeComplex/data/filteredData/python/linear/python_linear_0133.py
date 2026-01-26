@@ -19,6 +19,7 @@ def precompute():
     for i in range(1, maxnum):
         if i == 1:
             f[i] = 0
+
         else:
             f[i] = f[cntone(i)] + 1
 
@@ -30,6 +31,7 @@ def precompute():
         for j in range(i + 1):
             if j == 0:
                 c[i][j] = 1
+
             else:
                 c[i][j] = (c[i - 1][j - 1] + c[i - 1][j]) % mod
 
@@ -47,9 +49,11 @@ def solve_for(s0, k):
             dp[i][0] = 1
             if s1[i] == '1':
                 dp[i][1] = 1
+
             else:
                 dp[i][1] = 0
             continue
+
         else:
             for j in range(0, i + 2):
                 if j == 0:
@@ -57,6 +61,7 @@ def solve_for(s0, k):
                     continue
                 if s1[i] == '1':
                     dp[i][j] = (dp[i - 1][j - 1] + c[i][j]) % mod
+
                 else:
                     dp[i][j] = dp[i - 1][j] % mod
 
@@ -70,6 +75,7 @@ def solve_for(s0, k):
         ans = 1
     elif k == 1:
         ans -= 1
+
     else:
         ans = ans
     return ans
@@ -94,7 +100,7 @@ def main(n):
     k = (n % 10) + 1
 
     result = solve_for(s0, k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

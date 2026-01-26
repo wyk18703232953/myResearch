@@ -22,10 +22,11 @@ def main(n):
         i += 1
 
     if count < b:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(summa)
-
-
+        # print(summa)
+        pass
 if __name__ == "__main__":
     main(10)

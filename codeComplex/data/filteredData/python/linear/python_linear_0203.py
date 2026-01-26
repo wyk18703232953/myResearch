@@ -20,6 +20,7 @@ def main(n):
             if (a * 60) + c > m:
                 b.append("0 0")
             d.append((a * 60) + c)
+
         else:
             if ((a * 60) + c) - d[-1] > (m * 2) + 1:
                 f = d[-1] + m + 1
@@ -31,9 +32,8 @@ def main(n):
         b.append(str(f // 60) + " " + str(f % 60))
 
     # For experiment purposes, keep the same behavior: print first element of b
-    print(b[0])
-
-
+    # print(b[0])
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n to scale input size
     main(10)

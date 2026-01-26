@@ -13,8 +13,7 @@ def main(n):
     for x in sequence:
         q[x] += 1
 
-    print(min(q.values()))
-
-
+    # print(min(q.values()))
+    pass
 if __name__ == "__main__":
     main(10)

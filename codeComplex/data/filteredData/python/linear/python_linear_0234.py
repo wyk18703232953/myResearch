@@ -9,12 +9,12 @@ def main(n):
     for ch in x:
         if ch == 'x':
             c += 1
+
         else:
             ans += max(0, c - 2)
             c = 0
     ans += max(0, c - 2)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

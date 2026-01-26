@@ -19,15 +19,16 @@ def score(x):
 
 def main(n):
     if n <= 3:
-        print(0)
+        # print(0)
+        pass
         return
 
     ans = 0
     for i in range(4, n + 1):
         ans += score(i)
 
-    print(ans * 4)
-
+    # print(ans * 4)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 100 作为输入规模
     main(100)

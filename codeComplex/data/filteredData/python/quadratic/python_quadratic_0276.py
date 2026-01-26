@@ -17,9 +17,11 @@ def main(n):
                     l3.append(l1[i])
     # 输出与原程序一致
     if l3:
-        print(*l3)
-    else:
-        print()
+        # print(*l3)
+        pass
 
+    else:
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

@@ -24,6 +24,7 @@ def main(n):
     for i in range(n + 1):
         if i % 2 == 0:
             t1.append(a[i + 1] - a[i])
+
         else:
             t2.append(a[i + 1] - a[i])
     t2.append(0)
@@ -35,9 +36,8 @@ def main(n):
         p = p + t1[i]
         q = q - t2[i - 1]
         ans = max(ans, p + q - 1)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

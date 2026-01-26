@@ -22,7 +22,9 @@ def main(n):
     i, r = 0, []
 
     if sorted(s_work) != sorted(t_work):
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         while i < n:
             j = i
@@ -31,11 +33,12 @@ def main(n):
             s_work[i:j + 1] = s_work[j:j + 1] + s_work[i:j]
             r.extend(range(j, i, -1))
             i += 1
-        print(len(r))
+        # print(len(r))
+        pass
+
         if r:
-            print(*r)
-
-
+            # print(*r)
+            pass
 if __name__ == "__main__":
     # example deterministic call; adjust n as needed for experiments
     main(10)

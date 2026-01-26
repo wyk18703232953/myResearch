@@ -30,10 +30,10 @@ def main(n):
                 mP = pos[right]
             if 0 <= mP < m_val:
                 result[mP] += 1
+
         else:
             left = i
-    print(*result)
-
-
+    # print(*result)
+    pass
 if __name__ == "__main__":
     main(10)

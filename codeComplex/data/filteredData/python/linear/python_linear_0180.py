@@ -18,6 +18,7 @@ def main(n):
     for i in range(n):
         if arr2[i] == 0:
             new_arr[i] = arr1[i]
+
         else:
             ans += arr1[i]
 
@@ -33,7 +34,8 @@ def main(n):
         j += 1
 
     result = mx + ans
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -16,6 +16,7 @@ def main(n):
         for j in range(m):
             if s[j] == '.':
                 dp[i][j] = -1
+
             else:
                 dp[i][j] = s[j]
 
@@ -39,10 +40,11 @@ def main(n):
                             dp2[k][h] = '#'
 
     if dp == dp2:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(5)

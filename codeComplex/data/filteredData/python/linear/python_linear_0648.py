@@ -15,6 +15,7 @@ def main(n):
     for num in a:
         if num == c:
             targets += 1
+
         else:
             since_last = targets - target_count_last[num]
             target_count_last[num] = targets
@@ -23,7 +24,8 @@ def main(n):
             best = max(best, tel[num])
 
     result = targets + best
-    print(result)
+    # print(result)
+    pass
     return result
 
 

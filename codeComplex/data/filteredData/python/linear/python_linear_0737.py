@@ -13,6 +13,7 @@ def main(n):
         ab.append([nums[0], nums[1]])
         if nums[0] > nums[1]:
             nums.append(nums.pop(1))
+
         else:
             nums.append(nums.pop(0))
 
@@ -21,6 +22,7 @@ def main(n):
         mj = i + 1
         if mj <= len(ab):
             a, b = ab[mj - 1]
+
         else:
             idx = (mj - len(ab) - 1) % (len(nums) - 1) + 1
             a, b = m, nums[idx]
@@ -32,4 +34,5 @@ if __name__ == "__main__":
     # example: run with n = 10 and print results
     result = main(10)
     for line in result:
-        print(line)
+        # print(line)
+        pass

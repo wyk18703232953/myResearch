@@ -10,12 +10,13 @@ def main(n):
     s = ''.join('1' if i % 3 == 0 else '0' for i in range(n))
 
     if n == 1:
-        print(s)
+        # print(s)
+        pass
+
     else:
         zeros = s.count('0')
-        print('1' + zeros * '0')
-
-
+        # print('1' + zeros * '0')
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行一次
     main(10)

@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as both array length and k (number of distinct values to look for)
     if n <= 0:
-        print(-1, -1)
+        # print(-1, -1)
+        pass
         return
 
     # Deterministically generate array of length n with values from 1 to n
@@ -23,11 +24,12 @@ def main(n):
             break
 
     if len(single) < k:
-        print(-1, -1)
+        # print(-1, -1)
+        pass
+
     else:
-        print(l, r)
-
-
+        # print(l, r)
+        pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

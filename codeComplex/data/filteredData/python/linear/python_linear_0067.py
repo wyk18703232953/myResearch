@@ -8,9 +8,8 @@ def main(n):
         f = i
         t = i * 2
         ans = max(ans, t + f)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的值
     main(10)

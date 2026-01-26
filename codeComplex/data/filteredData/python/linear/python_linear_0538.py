@@ -19,21 +19,24 @@ def main(n):
     N = n
 
     if N == 1:
-        print(za[0])
+        # print(za[0])
+        pass
         return
     t1 = max(za)
     t2 = min(za)
     if t2 >= 0:
-        print(sum(za) - 2 * t2)
+        # print(sum(za) - 2 * t2)
+        pass
         return
     if t1 <= 0:
-        print(2 * t1 - sum(za))
+        # print(2 * t1 - sum(za))
+        pass
         return
 
     res = 0
     for x in za:
         res += abs(x)
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

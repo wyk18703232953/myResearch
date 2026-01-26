@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # 确定性构造长度为 n 的数组：先严格递增再严格递减，保证有一个峰值
@@ -11,6 +12,7 @@ def main(n):
     for i in range(n):
         if i <= peak:
             arr.append(i + 1)
+
         else:
             arr.append(peak + 1 - (i - peak))
 
@@ -28,17 +30,18 @@ def main(n):
             ok *= (arr[l] < cur)
             cur = arr[l]
             l -= 1
+
         else:
             if arr[l] > arr[r]:
                 ok *= (arr[l] < cur)
                 cur = arr[l]
                 l -= 1
+
             else:
                 ok *= (arr[r] < cur)
                 cur = arr[r]
                 r += 1
-    print("YES" if ok else "NO")
-
-
+    # print("YES" if ok else "NO")
+    pass
 if __name__ == "__main__":
     main(10)

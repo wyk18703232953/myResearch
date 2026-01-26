@@ -24,9 +24,8 @@ def main(n):
                 continue
             result.append(str(m_dim + 1 - column) + ' ' + str(n_dim + 1 - row))
 
-    print('\n'.join(result))
-
-
+    # print('\n'.join(result))
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 来进行规模实验
     main(5)

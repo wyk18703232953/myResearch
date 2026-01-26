@@ -1,7 +1,8 @@
 def main(n):
     # Ensure n is at least 1 to avoid empty string edge cases
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate a string of length n
@@ -25,13 +26,13 @@ def main(n):
             total += (count - 3) + 1
         if flag:
             i = j
+
         else:
             i += 1
             j += 1
 
-    print(total)
-
-
+    # print(total)
+    pass
 if __name__ == "__main__":
     # Example call; adjust n as needed for experiments
     main(20)

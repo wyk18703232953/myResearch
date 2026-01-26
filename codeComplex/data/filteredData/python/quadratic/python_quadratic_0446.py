@@ -24,6 +24,7 @@ def main(n):
             map_vals.append(0)
             zer = True
             ampl = 0
+
         else:
             if nots[i] < nots[i + 1]:
                 if ampl < 0 and f_s is not True:
@@ -31,14 +32,17 @@ def main(n):
                     if ampl == -5:
                         possible = False
                     ampl = 1
+
                 else:
                     ampl += 1
+
             else:
                 if ampl > 0 and f_s is not True:
                     map_vals.append(ampl)
                     if ampl == 5:
                         possible = False
                     ampl = -1
+
                 else:
                     ampl += -1
         f_s = False
@@ -98,8 +102,10 @@ def main(n):
                     if fin[i] < 0:
                         for j in range(5, 5 + fin[i], -1):
                             appl.append(j)
+
             else:
                 appl = []
+
         else:
             appl = []
             try:
@@ -116,12 +122,15 @@ def main(n):
 
         if possible:
             for finger in appl:
-                print(finger, end=' ')
+                # print(finger, end=' ')
+                pass
+
         else:
-            print(-1)
+            # print(-1)
+            pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(20)

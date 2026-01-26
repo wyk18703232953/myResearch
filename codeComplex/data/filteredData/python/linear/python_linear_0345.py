@@ -2,7 +2,8 @@ from operator import itemgetter
 
 def main(n):
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     m = n
@@ -23,15 +24,18 @@ def main(n):
             for i in range(l, r + 1):
                 if flag:
                     ans[i] = 1
+
                 else:
                     ans[i] = 0
                 flag ^= 1
+
         else:
             flag = 1
             x = ans[l]
             for i in range(l, r + 1):
                 if flag:
                     ans[i] = x
+
                 else:
                     ans[i] = x ^ 1
                 flag ^= 1
@@ -41,7 +45,7 @@ def main(n):
             ans[i] = 0
 
     ans = map(str, ans)
-    print(''.join(ans))
-
+    # print(''.join(ans))
+    pass
 if __name__ == "__main__":
     main(10)

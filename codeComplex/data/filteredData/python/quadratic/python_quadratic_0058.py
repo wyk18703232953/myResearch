@@ -45,11 +45,12 @@ def main(n):
             parity ^= 1
 
         if parity:
-            print("odd")
+            # print("odd")
+            pass
+
         else:
-            print("even")
-
-
+            # print("even")
+            pass
 if __name__ == "__main__":
     # Example: run main with a chosen scale
     main(10)

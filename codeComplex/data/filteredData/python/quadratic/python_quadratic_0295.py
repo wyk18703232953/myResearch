@@ -1,7 +1,8 @@
 def main(n):
     # n 表示数组长度（必须为偶数，若为奇数则减一）
     if n < 2:
-        print(0)
+        # print(0)
+        pass
         return
     if n % 2 == 1:
         n -= 1
@@ -25,8 +26,7 @@ def main(n):
                 j += 1
         i += 2
 
-    print(z)
-
-
+    # print(z)
+    pass
 if __name__ == "__main__":
     main(10)

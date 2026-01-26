@@ -6,6 +6,7 @@ def f(x):
 def v_gen(x, l):
     if x == l:
         return x - 1
+
     else:
         return x + 1
 
@@ -26,6 +27,7 @@ def run_logic(n, z, s_b, s_c):
             return "Shiro"
         elif c > a and c > b:
             return "Katie"
+
         else:
             return "Draw"
     elif (l - a <= n) + (l - b <= n) + (l - c <= n) >= 2:
@@ -36,6 +38,7 @@ def run_logic(n, z, s_b, s_c):
         return "Shiro"
     elif c > a and c > b:
         return "Katie"
+
     else:
         return "Draw"
 
@@ -56,8 +59,8 @@ def main(n):
     l = n
     z, s_b, s_c = generate_strings(l)
     result = run_logic(n, z, s_b, s_c)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # example scalable call; adjust n as needed for experiments
     main(10)

@@ -10,7 +10,7 @@ def main(n):
         if t > r + k:
             break
         r = t + k + 1
-    print(r // 60, r % 60)
-
+    # print(r // 60, r % 60)
+    pass
 if __name__ == "__main__":
     main(n)

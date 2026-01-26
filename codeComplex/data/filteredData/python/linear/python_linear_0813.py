@@ -18,6 +18,7 @@ def main(n):
     for i in lst:
         if i not in st:
             st.add(i)
+
         else:
             flag = True
             count += 1
@@ -26,24 +27,32 @@ def main(n):
     sum1 = n * (n - 1) // 2
 
     if count > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
         return
 
     if not flag:
         if (sum(lst) - sum1) % 2 == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
-            print('sjfnb')
+            # print('sjfnb')
+            pass
+
     else:
         if (lol - 1) in lst or lol == 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
             if (sum(lst) - sum1) % 2 == 0:
-                print('cslnb')
+                # print('cslnb')
+                pass
+
             else:
-                print('sjfnb')
-
-
+                # print('sjfnb')
+                pass
 if __name__ == "__main__":
     # Example deterministic calls for experimentation
     for size in [1, 2, 3, 4, 5, 10]:

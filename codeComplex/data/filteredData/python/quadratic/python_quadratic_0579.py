@@ -30,9 +30,8 @@ def main(n):
 
     # 打印所有测试组结果
     for v in answers:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     # 示例调用，可以根据需要修改 n 的大小做实验
     main(10)

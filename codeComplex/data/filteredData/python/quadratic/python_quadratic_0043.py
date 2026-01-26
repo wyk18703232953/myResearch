@@ -2,7 +2,8 @@ modulo = int(1e9 + 7)
 
 def main(n):
     if n <= 0:
-        print(1)
+        # print(1)
+        pass
         return
 
     # deterministic generation of arr with 'f' and 's' pattern
@@ -16,8 +17,7 @@ def main(n):
             continue
         for j in range(1, len(dp)):
             dp[j] = (dp[j] + dp[j - 1]) % modulo
-    print(dp[-1])
-
-
+    # print(dp[-1])
+    pass
 if __name__ == "__main__":
     main(10)

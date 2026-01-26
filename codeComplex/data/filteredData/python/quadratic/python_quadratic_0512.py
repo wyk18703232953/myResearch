@@ -14,6 +14,7 @@ def main(n):
             # Inside such blocks, mark all positions as '#'
             if ((i // 3) + (j // 3)) % 2 == 0:
                 row.append('#')
+
             else:
                 row.append('.')
         grid.append(row)
@@ -49,11 +50,11 @@ def main(n):
                     or check(grid, nn, m, 1, 2)
                     or check(grid, nn, m, 2, 2)
                 ):
-                    print("NO")
+                    # print("NO")
+                    pass
                     return
-    print("YES")
-
-
+    # print("YES")
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n to adjust scale
     main(9)

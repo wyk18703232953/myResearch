@@ -14,7 +14,8 @@ def main(n):
         current_total += number
         current_position += 1
         if current_total >= number_total / 2:
-            print(current_position)
+            # print(current_position)
+            pass
             break
 
 

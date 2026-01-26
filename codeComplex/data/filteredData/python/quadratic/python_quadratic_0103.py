@@ -17,12 +17,14 @@ def main(n):
     for i in range(4):
         for j in range(2):
             if check(a, b):
-                print('Yes')
+                # print('Yes')
+                pass
                 return
             b = b[::-1]
         for j in range(2):
             if check(a, b):
-                print('Yes')
+                # print('Yes')
+                pass
                 return
             b = [s[::-1] for s in b]
         c = [['' for t in range(n)] for u in range(n)]
@@ -31,10 +33,11 @@ def main(n):
                 c[t][u] = b[u][n - t - 1]
         b = c[:]
         if check(a, b):
-            print('Yes')
+            # print('Yes')
+            pass
             return
-    print('No')
-
+    # print('No')
+    pass
 if __name__ == "__main__":
     # 示例：使用固定的 n 进行一次调用，保证可重复实验
     main(5)

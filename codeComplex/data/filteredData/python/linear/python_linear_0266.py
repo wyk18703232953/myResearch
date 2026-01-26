@@ -26,26 +26,30 @@ def main(n):
     coun = [0, deg.count(1), deg.count(2)]
 
     if n - coun[1] == 1:
-        print(f'Yes\n{n - 1}')
+        # print(f'Yes\n{n - 1}')
+        pass
         for x in edges:
-            print(*x)
-
+            # print(*x)
+            pass
     elif coun[1] + coun[2] == n:
-        print(f'Yes\n1')
-        print(deg.index(1) + 1, n - deg[::-1].index(1))
-
+        # print(f'Yes\n1')
+        pass
+        # print(deg.index(1) + 1, n - deg[::-1].index(1))
+        pass
     elif n - sum(coun) == 1:
         for i in range(n):
             if deg[i] > 2:
-                print(f'Yes\n{deg[i]}')
+                # print(f'Yes\n{deg[i]}')
+                pass
                 for j in range(n):
                     if deg[j] == 1:
-                        print(i + 1, j + 1)
+                        # print(i + 1, j + 1)
+                        pass
                 return
+
     else:
-        print('No')
-
-
+        # print('No')
+        pass
 if __name__ == "__main__":
     # example deterministic call
     main(10)

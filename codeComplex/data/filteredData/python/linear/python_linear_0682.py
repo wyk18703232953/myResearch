@@ -30,4 +30,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的规模
     result = main(5)
-    print(" ".join(map(str, result)))
+    # print(" ".join(map(str, result)))
+    pass

@@ -18,7 +18,8 @@ def main(n):
 
     s = sum(1 for c in count if c > 0)
     if s < k:
-        print("-1 -1")
+        # print("-1 -1")
+        pass
         return
 
     r = n - 1
@@ -41,9 +42,8 @@ def main(n):
         count[arr[l]] -= 1
         l += 1
 
-    print(l + 1, r + 1)
-
-
+    # print(l + 1, r + 1)
+    pass
 if __name__ == "__main__":
     # Example deterministic call
     main(1000)

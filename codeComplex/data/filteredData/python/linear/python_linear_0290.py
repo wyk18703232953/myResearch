@@ -17,6 +17,7 @@ def main(n):
         elif t == 2:
             # alternating starting with '('
             s = "".join("(" if j % 2 == 0 else ")" for j in range(length))
+
         else:
             # alternating starting with ')'
             s = "".join(")" if j % 2 == 0 else "(" for j in range(length))
@@ -30,6 +31,7 @@ def main(n):
         for c in s:
             if c == '(':
                 count += 1
+
             else:
                 count -= 1
             if count < min_count:
@@ -48,4 +50,5 @@ def main(n):
 
 if __name__ == "__main__":
     # example deterministic run
-    print(main(10))
+    # print(main(10))
+    pass

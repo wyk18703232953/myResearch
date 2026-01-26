@@ -49,7 +49,7 @@ def main(n):
         s = format(val, '08b')
         outputs.append(ans[int(s, 2)])
     for line in outputs:
-        print(line)
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     main(10)

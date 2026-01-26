@@ -11,8 +11,7 @@ def main(n):
                 ok = True
         if not ok:
             ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

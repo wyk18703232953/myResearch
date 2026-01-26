@@ -17,9 +17,12 @@ def solve(n, m, res):
             valid = True
             break
     if valid:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
+        # print("NO")
+        pass
 
 
 def main(n):

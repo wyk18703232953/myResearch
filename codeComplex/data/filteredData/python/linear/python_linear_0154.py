@@ -10,8 +10,7 @@ def main(n):
         curr += list1[i]
         nxt -= list1[i]
         mx = max(mx, curr % p + nxt % p)
-    print(mx)
-
-
+    # print(mx)
+    pass
 if __name__ == "__main__":
     main(10)

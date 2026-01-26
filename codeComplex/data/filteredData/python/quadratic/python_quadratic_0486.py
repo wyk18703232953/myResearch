@@ -12,7 +12,8 @@ def lr(a):
 
 def main(n):
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # Deterministic generation of l and r for a permutation a of [1..n]
@@ -30,11 +31,13 @@ def main(n):
                 a_rec[j] = n - i
     l1, r1 = lr(a_rec)
     if l1 != l or r1 != r:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-        print(" ".join(str(x) for x in a_rec))
-
-
+        # print("YES")
+        pass
+        # print(" ".join(str(x) for x in a_rec))
+        pass
 if __name__ == "__main__":
     main(5)

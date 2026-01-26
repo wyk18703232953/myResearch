@@ -11,7 +11,8 @@ def main(n):
         count[ord(c) - ord("A")] += 1
 
     result = k * min(count)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -13,6 +13,7 @@ def main(n):
             nx[0] = 0
             for j in range(1, n + 1):
                 nx[j] = dp[j - 1] % mod
+
         else:
             nx[n] = dp[n] % mod
             for j in reversed(range(n)):
@@ -25,4 +26,5 @@ def main(n):
 if __name__ == "__main__":
     # Example call for experiment; adjust n as needed
     result = main(5)
-    print(result)
+    # print(result)
+    pass

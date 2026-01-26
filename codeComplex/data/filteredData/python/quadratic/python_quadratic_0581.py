@@ -43,9 +43,8 @@ def main(n):
 
     # 输出所有测试结果
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 规模
     main(50)

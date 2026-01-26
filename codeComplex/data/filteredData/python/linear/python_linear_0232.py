@@ -24,10 +24,10 @@ def main(n):
             cnt += 1
             if cnt >= 3:
                 ans += 1
+
         else:
             cnt = 0
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

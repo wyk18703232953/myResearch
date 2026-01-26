@@ -8,10 +8,12 @@ def main(n):
             continue
         elif a[i] == mex + 1:
             mex += 1
-        else:
-            print(i + 1)
-            return
-    print(-1)
 
+        else:
+            # print(i + 1)
+            pass
+            return
+    # print(-1)
+    pass
 if __name__ == "__main__":
     main(10)

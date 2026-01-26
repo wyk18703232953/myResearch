@@ -17,12 +17,14 @@ def main(n):
             if d[q1] > d[q]:
                 g += 1
         if f != a[q] or g != s[q]:
-            print('NO')
+            # print('NO')
+            pass
             break
+
     else:
-        print('YES')
-        print(*d)
-
-
+        # print('YES')
+        pass
+        # print(*d)
+        pass
 if __name__ == "__main__":
     main(5)

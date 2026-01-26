@@ -8,12 +8,14 @@ def main(n):
     # 在 a 中放一个 '*'，位置由 n 确定（若 n>1）
     if n <= 0:
         a = ""
+
     else:
         star_pos = n // 2  # 确定性位置
         a_chars = []
         for i in range(n):
             if i == star_pos:
                 a_chars.append('*')
+
             else:
                 # 生成一些确定性的字母模式
                 a_chars.append(chr(ord('a') + (i % 3)))
@@ -21,6 +23,7 @@ def main(n):
 
     if m <= 0:
         b = ""
+
     else:
         # 根据 m 构造 b，与 a 有部分相似但又有区分，便于复杂度实验
         b_chars = []
@@ -33,6 +36,7 @@ def main(n):
                 b_chars.append('b')
             elif base == 2:
                 b_chars.append('c')
+
             else:
                 b_chars.append('d')
         b = "".join(b_chars)
@@ -42,25 +46,34 @@ def main(n):
         c = a.replace('*', '')
         i = a.index('*')
         if c == b:
-            print("YES")
+            # print("YES")
+            pass
         elif a[:i] == b[:i]:
             t = a[i + 1:]
             tt = b[m - len(a) + 1 + i:]
             if t == tt and len(a) - 1 <= m:
-                print("YES")
+                # print("YES")
+                pass
+
             else:
-                print("NO")
+                # print("NO")
+                pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
     elif len(a) > m:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
         if a == b:
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     # 示例调用，可自行调整 n
     main(10)

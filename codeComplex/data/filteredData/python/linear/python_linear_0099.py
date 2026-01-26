@@ -1,7 +1,8 @@
 def main(n):
     # n 表示字符串长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成测试字符串：周期性使用小写字母
@@ -24,8 +25,7 @@ def main(n):
                 d[s[j]] -= 1
                 j += 1
             ans = min(ans, i - j + 1)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

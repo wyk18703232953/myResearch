@@ -23,7 +23,8 @@ def main(n):
     # 当 p 变为 0 时，s[:0] == s[-0:] == ""，循环会终止
     # 与原程序逻辑保持一致
     result = s + s[p:] * (k - 1)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

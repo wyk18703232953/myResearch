@@ -12,6 +12,7 @@ def main(n):
         for j in range(m):
             if (i + j) % 2 == 0:
                 row.append('#')
+
             else:
                 row.append('.')
         A.append(row)
@@ -49,10 +50,11 @@ def main(n):
                 xhs += 1
 
     if xhs == xct:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

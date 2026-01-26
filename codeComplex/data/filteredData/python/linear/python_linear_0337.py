@@ -14,7 +14,8 @@ def main(n):
         elif arr[i + 1] - arr[i] > 2 * d:
             count += 2
     result = count + 2
-    print(result)
+    # print(result)
+    pass
     return result
 
 

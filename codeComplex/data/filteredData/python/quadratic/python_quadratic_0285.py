@@ -22,6 +22,7 @@ def main(n):
     # b: (i * 2) % n for i in range(n)
     if size_m > 0:
         b = [(i * 2) % size_n for i in range(size_m)]
+
     else:
         b = []
 
@@ -31,9 +32,8 @@ def main(n):
         if x in b:
             out.append(str(x))
     if out:
-        print(" ".join(out))
-
-
+        # print(" ".join(out))
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整规模
     main(10)

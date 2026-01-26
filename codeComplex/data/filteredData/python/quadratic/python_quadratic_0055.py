@@ -41,8 +41,7 @@ def main(n):
 
         Ans[qu] = 'odd' if current_cnt else 'even'
 
-    print('\n'.join(Ans))
-
-
+    # print('\n'.join(Ans))
+    pass
 if __name__ == "__main__":
     main(5)

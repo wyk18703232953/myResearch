@@ -22,8 +22,7 @@ def main(n):
         if winner == 'B':
             bs.add(i)
         winners[i] = winner
-    print(''.join(winners[ai] for ai in a))
-
-
+    # print(''.join(winners[ai] for ai in a))
+    pass
 if __name__ == "__main__":
     main(10)

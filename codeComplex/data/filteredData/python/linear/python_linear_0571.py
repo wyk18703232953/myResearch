@@ -53,11 +53,13 @@ def main(n):
         return []
     if n == 1:
         edges = []
+
     else:
         # edges length = n-1, all in [1, current_index], deterministic pattern
         edges = [(i % (i + 1)) + 1 for i in range(1, n)]  # i from 1 to n-1
     result = run_algorithm(n, edges)
-    print(" ".join(map(str, result)))
+    # print(" ".join(map(str, result)))
+    pass
     return result
 
 

@@ -13,6 +13,7 @@ def main(n):
         for j in range(m):
             if (i + j) % 3 == 0:
                 row.append('*')
+
             else:
                 row.append('.')
         MAP.append(row)
@@ -64,7 +65,9 @@ def main(n):
                 SUF[i][j] = "*"
 
     if SUF != MAP:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         ANSLIST = []
         for i in range(n):
@@ -72,11 +75,11 @@ def main(n):
                 if ANS[i][j] != 0:
                     ANSLIST.append((i + 1, j + 1, ANS[i][j] - 1))
 
-        print(len(ANSLIST))
+        # print(len(ANSLIST))
+        pass
         for ans in ANSLIST:
-            print(*ans)
-
-
+            # print(*ans)
+            pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(5)

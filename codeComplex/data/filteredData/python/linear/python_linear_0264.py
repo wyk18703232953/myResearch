@@ -17,6 +17,7 @@ def bfs(start, graph, explored, e):
         if e[0] == 0 and cnt != 1:
             ele = node
             break
+
         else:
             for neighbour in neighbours:
                 if neighbour not in visited:
@@ -30,12 +31,14 @@ def bootstrap(f, stack=[]):
     def wrappedfunc(*args, **kwargs):
         if stack:
             return f(*args, **kwargs)
+
         else:
             to = f(*args, **kwargs)
             while True:
                 if type(to) is GeneratorType:
                     stack.append(to)
                     to = next(to)
+
                 else:
                     stack.pop()
                     if not stack:
@@ -59,6 +62,7 @@ def solve(i, graph, visited, r):
             if k not in visited:
                 yield solve(k, graph, visited, r)
                 break
+
     else:
         r[0] = i
 
@@ -76,7 +80,8 @@ def build_tree_graph(n):
 
 def main(n):
     if n <= 1:
-        print("No")
+        # print("No")
+        pass
         return
 
     global_graph = build_tree_graph(n)
@@ -92,7 +97,8 @@ def main(n):
             roots.append(i)
 
     if not roots:
-        print("No")
+        # print("No")
+        pass
         return
 
     x = roots[0]
@@ -107,13 +113,16 @@ def main(n):
             ans.append([str(r[0]), str(ele)])
 
     if len(visited) == n:
-        print("Yes")
-        print(len(ans))
+        # print("Yes")
+        pass
+        # print(len(ans))
+        pass
         for i in ans:
-            print(" ".join(i))
+            # print(" ".join(i))
+            pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     main(10)

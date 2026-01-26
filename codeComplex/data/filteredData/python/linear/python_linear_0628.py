@@ -9,7 +9,9 @@ def main(n):
         case_k = (case_n * case_n * (ca + 2)) // 2 + 1
 
         if case_n >= 40:
-            print("YES " + str(case_n - 1))
+            # print("YES " + str(case_n - 1))
+            pass
+
         else:
             ans = -1
             for m in range(1, case_n + 1):
@@ -21,10 +23,11 @@ def main(n):
                     ans = case_n - m
                     break
             if ans == -1:
-                print("NO")
+                # print("NO")
+                pass
+
             else:
-                print("YES " + str(ans))
-
-
+                # print("YES " + str(ans))
+                pass
 if __name__ == "__main__":
     main(5)

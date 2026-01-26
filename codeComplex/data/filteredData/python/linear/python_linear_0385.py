@@ -9,6 +9,7 @@ def main(n):
     posf = (n * (n - 1)) // 2
     if n % 2 != 0:
         negf = (n // 2) * (n // 2 + 1)
+
     else:
         negf = (n // 2) * (n // 2 - 1) + n // 2
 
@@ -21,11 +22,13 @@ def main(n):
         ans += n * x
         if d >= 0:
             ans += posf * d
+
         else:
             ans += negf * d
 
     result = ans / n
-    print(result)
+    # print(result)
+    pass
     return result
 
 

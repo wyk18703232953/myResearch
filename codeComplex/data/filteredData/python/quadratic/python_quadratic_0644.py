@@ -13,8 +13,7 @@ def main(n):
                 if l[j] % l[i] == 0:
                     v[j] = True
         i += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(n)

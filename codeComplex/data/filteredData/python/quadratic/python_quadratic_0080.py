@@ -114,8 +114,8 @@ def main(n):
 
     # 为了实验时有可观测输出，这里打印所有结果行
     for s in results:
-        print(s)
-
+        # print(s)
+        pass
 if __name__ == "__main__":
     # 示例：输入规模 n = 5
     main(5)

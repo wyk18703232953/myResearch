@@ -55,9 +55,8 @@ def main(n):
             prev = (huhh[0], huhh[1])
         c1 += 1
 
-    print(anss)
-
-
+    # print(anss)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 以进行规模实验
     main(10)

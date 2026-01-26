@@ -15,8 +15,10 @@ def main(n):
                 # Place '#' in a 3x3 block pattern controlled by n
                 if (i // 3 + j // 3) % 2 == 0:
                     row_chars.append('#')
+
                 else:
                     row_chars.append('.')
+
             else:
                 row_chars.append('.')
         grid.append(''.join(row_chars))
@@ -39,10 +41,10 @@ def main(n):
     for i in range(m):
         for j in range(cols):
             if l[i][j] == '#' and (i, j) not in inks:
-                print("NO")
+                # print("NO")
+                pass
                 return
-    print("YES")
-
-
+    # print("YES")
+    pass
 if __name__ == "__main__":
     main(10)

@@ -19,6 +19,7 @@ def main(n):
         prefix = ''.join(chr(ord('a') + (i % 3)) for i in range(prefix_len))
         suffix = ''.join(chr(ord('x') - (i % 3)) for i in range(suffix_len))
         a = prefix + '*' + suffix
+
     else:
         # 不带通配符的模式：全由字母构成
         a = ''.join(chr(ord('a') + (i % 3)) for i in range(min(n, 10)))
@@ -37,13 +38,16 @@ def main(n):
         # 后缀部分：根据 n 的奇偶变化一个字符以制造不一定匹配的情况
         if n % 4 == 0:
             b_suffix = a2
+
         else:
             if Len2 > 0:
                 b_suffix = a2[:-1] + chr(ord(a2[-1]) + 1)
+
             else:
                 b_suffix = ''
         b = b_prefix + middle + b_suffix
         b = b[:m]
+
     else:
         # 无 '*'，b 有时等于 a，有时不等
         base = ''.join(chr(ord('a') + (i % 3)) for i in range(m))
@@ -51,12 +55,15 @@ def main(n):
             # 使得 b == a（在长度允许的范围内）
             if len(a) >= m:
                 b = a[:m]
+
             else:
                 b = a + base[len(a):]
+
         else:
             # 使得 b 与 a 至少一处不同
             if m == 0:
                 b = ''
+
             else:
                 b_list = list(base)
                 b_list[0] = chr(ord(b_list[0]) + 1)
@@ -76,16 +83,21 @@ def main(n):
         if Len2:
             b2 = b[-Len2:]
         if a1 == b1 and a2 == b2 and Len1 + Len2 <= len(b):
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
+            # print('NO')
+            pass
+
     else:
         if a == b:
-            print('YES')
+            # print('YES')
+            pass
+
         else:
-            print('NO')
-
-
+            # print('NO')
+            pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的规模
     main(10)

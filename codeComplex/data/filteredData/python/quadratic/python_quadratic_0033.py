@@ -17,6 +17,7 @@ def find_ans(arr, s):
                 if j > 0:
                     arr[i + 1][j] = arr[i][j - 1]
                     idx = i + 1
+
         else:
             arr[i + 1] = prefix_sums(arr[i][::-1])[::-1]
     return arr
@@ -35,11 +36,14 @@ def main(n):
     if n == 1 or 'f' not in s:
         if s[0] == 's':
             ans = 1
+
         else:
             ans = int(sum(find_ans(arr, s)[-1]) % (1e9 + 7))
+
     else:
         ans = int(sum(find_ans(arr, s)[-1]) % (1e9 + 7))
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

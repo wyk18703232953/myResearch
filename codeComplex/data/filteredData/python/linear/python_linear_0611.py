@@ -24,9 +24,8 @@ def main(n):
                     n2 = j + 1
                     break
         out.append(str(num))
-    print(" ".join(out))
-
-
+    # print(" ".join(out))
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次时间复杂度实验
     main(10)

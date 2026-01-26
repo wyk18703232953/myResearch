@@ -17,19 +17,25 @@ def main(n):
 
     # 以下是原程序的核心逻辑，保持不变，仅把 input/exit 去掉
     if n_input == 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     if k == 1:
         if n_input == 2 and d == 1:
-            print("YES")
-            print(1, 2)
+            # print("YES")
+            pass
+            # print(1, 2)
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
         return
 
     if n_input < d + 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     co = 1
@@ -41,6 +47,7 @@ def main(n):
     def dfs(r, dist, co_local):
         if 2 <= r <= d:
             t = k - 2
+
         else:
             t = k - 1
         if co_local == n_input:
@@ -59,13 +66,15 @@ def main(n):
         co = dfs(i, max(i - 1, d - i + 1), co)
 
     if co == n_input:
-        print("YES")
+        # print("YES")
+        pass
         for j in ans:
-            print(*j)
+            # print(*j)
+            pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：以规模 n=10 运行
     main(10)

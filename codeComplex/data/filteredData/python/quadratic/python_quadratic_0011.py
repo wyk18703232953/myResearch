@@ -2,7 +2,8 @@ def main(n):
     # Interpret n as number of circles; radius fixed as in typical CF constraints
     r = 1
     if n <= 0:
-        print()
+        # print()
+        pass
         return
 
     # Deterministic x-coordinates: evenly spaced by r (can overlap in influence)
@@ -16,9 +17,8 @@ def main(n):
                 dy = (4.0 * r ** 2 - (tx - xi) ** 2) ** 0.5
                 yi = max(yi, ty + dy)
         y.append(yi)
-    print(*y)
-
-
+    # print(*y)
+    pass
 if __name__ == "__main__":
     # Example call; adjust n as needed for experiments
     main(5)

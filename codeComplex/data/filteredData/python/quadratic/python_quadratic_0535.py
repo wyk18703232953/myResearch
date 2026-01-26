@@ -18,6 +18,7 @@ def main(n):
         if zeros_to_place > 0:
             t[i] = 0
             zeros_to_place -= 1
+
         else:
             break
     # if still need zeros, place from the beginning on odd indices
@@ -35,6 +36,7 @@ def main(n):
         if t[i] == 0:
             arr.append(i)
             pep[x[i]] = 0
+
         else:
             for j in arr:
                 pep[x[j]] = i
@@ -42,6 +44,7 @@ def main(n):
     for i in range(n_local + m - 1, -1, -1):
         if t[i] == 0:
             arr.append(i)
+
         else:
             for j in arr:
                 if abs(x[j] - x[i]) <= abs(x[pep[x[j]]] - x[j]):
@@ -51,16 +54,17 @@ def main(n):
     for i in range(n_local + m):
         if t[i]:
             ans.append(1)
+
         else:
             ans.append(0)
     for i in pep:
         ans[pep[i]] += 1
     for i in ans:
         if i:
-            print(i - 1, end=' ')
-    print()
-
-
+            # print(i - 1, end=' ')
+            pass
+    # print()
+    pass
 if __name__ == "__main__":
     # Example deterministic calls for experimentation
     main(10)

@@ -1,6 +1,7 @@
 def main(n):
     if n < 1:
-        print("No")
+        # print("No")
+        pass
         return
 
     # Generate a deterministic tree on vertices 1..n:
@@ -27,6 +28,7 @@ def main(n):
         if gcd(a, m) != 1:
             # identity sequence: 2,3,...,n
             order = list(range(2, n + 1))
+
         else:
             visited = [False] * m
             cur = 0
@@ -58,13 +60,14 @@ def main(n):
                 gv.remove(u)
                 graph[u].remove(v)
                 q.append(u)
-        print("Yes")
+        # print("Yes")
+        pass
     except (AssertionError, StopIteration):
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     # Example deterministic calls
     for n in range(1, 8):
-        print(f"n = {n} -> ", end="")
+        # print(f"n = {n} -> ", end="")
+        pass
         main(n)

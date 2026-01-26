@@ -6,7 +6,8 @@ def main(n):
     # 将参数 n 直接作为数组长度；
     # k 选择一个随 n 增长、但不小于 1 的确定性值。
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = max(1, n.bit_length())  # 与 n 相关的确定性 k 值
@@ -30,9 +31,8 @@ def main(n):
         c2 = v - c1
         ans += c1 * (c1 - 1) // 2 + c2 * (c2 - 1) // 2
 
-    print(n * (n - 1) // 2 + n - ans)
-
-
+    # print(n * (n - 1) // 2 + n - ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10)

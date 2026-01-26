@@ -67,57 +67,66 @@ def main(n):
 
     # identical
     if li1 == li2:
-        print('Yes')
+        # print('Yes')
+        pass
         return
 
     # flip horizontal
     templi = flipH(li2, n)
     if li1 == templi:
-        print('Yes')
+        # print('Yes')
+        pass
         return
 
     # flip vertical
     templi = flipV(li2, n)
     if li1 == templi:
-        print('Yes')
+        # print('Yes')
+        pass
         return
 
     # rotate1
     templi = rotate(li2, n)
     if li1 == templi:
-        print('Yes')
+        # print('Yes')
+        pass
         return
 
     # rotate2
     templi = rotate(templi, n)
     if li1 == templi:
-        print('Yes')
+        # print('Yes')
+        pass
         return
 
     # rotate3
     templi = rotate(templi, n)
     if li1 == templi:
-        print('Yes')
+        # print('Yes')
+        pass
         return
 
     # flip then rotates
     templi = flipH(li2, n)
     templi = rotate(templi, n)
     if li1 == templi:
-        print('Yes')
+        # print('Yes')
+        pass
         return
 
     templi = rotate(templi, n)
     if li1 == templi:
-        print('Yes')
+        # print('Yes')
+        pass
         return
 
     templi = rotate(templi, n)
     if li1 == templi:
-        print('Yes')
+        # print('Yes')
+        pass
         return
 
-    print('No')
-
+    # print('No')
+    pass
 if __name__ == "__main__":
     main(5)

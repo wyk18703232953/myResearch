@@ -9,7 +9,9 @@ def main(n):
     a = set(base_list)
 
     if len(a) < n:
-        print(0)
+        # print(0)
+        pass
+
     else:
         d = set()
         p = 0
@@ -17,15 +19,16 @@ def main(n):
             val = i & x
             d.add(val)
             if val != i and val in a:
-                print(1)
+                # print(1)
+                pass
                 p = 1
                 break
         if len(d) < n and p == 0:
-            print(2)
+            # print(2)
+            pass
         elif p != 1:
-            print(-1)
-
-
+            # print(-1)
+            pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 的值进行规模实验
     main(10)

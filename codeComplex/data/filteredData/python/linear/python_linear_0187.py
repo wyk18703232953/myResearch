@@ -12,7 +12,7 @@ def main(n):
         current_sum += num
         if current_sum >= half_problems:
             break
-    print(answer)
-
+    # print(answer)
+    pass
 if __name__ == "__main__":
     main(10)

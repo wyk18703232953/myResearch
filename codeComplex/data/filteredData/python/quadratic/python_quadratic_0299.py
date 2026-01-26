@@ -9,8 +9,7 @@ def main(n):
         i = a.index(c)
         ans += i
         del a[i]
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -13,12 +13,14 @@ class Combi():
     def com(self, K, R):
         if not (0 <= R <= K):
             return 0
+
         else:
             return ((self.power[K])*(self.rev[K-R])*(self.rev[R])) % self.mod
 
     def perm(self, K, R):
         if not (0 <= R <= K):
             return 0
+
         else:
             return (self.power[K])*(self.rev[K-R]) % self.mod
 
@@ -52,6 +54,7 @@ def main(n):
             for b in range(1010):
                 dp[pos + 1][b] = (dp[pos][b - 1] + c.com(pos, b)) % MOD
             continue
+
         else:
             for b in range(1010):
                 dp[pos + 1][b] = dp[pos][b]
@@ -67,8 +70,10 @@ def main(n):
         cnt[i] = 1 + cnt[bitcnt(i)]
 
     if K == 0:
-        print(dp[N][0])
+        # print(dp[N][0])
+        pass
         return
+
     else:
         ans = 0
         for bc in range(1010):
@@ -76,7 +81,8 @@ def main(n):
                 ans += dp[N][bc]
         if K == 1:
             ans -= 1
-        print(ans % MOD)
+        # print(ans % MOD)
+        pass
         return
 
 

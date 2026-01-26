@@ -16,6 +16,7 @@ def main(n):
             if (i * m + j) % 3 == 0:
                 row_chars.append('#')
                 st.add((i, j))
+
             else:
                 row_chars.append('.')
         s.append(''.join(row_chars))
@@ -48,11 +49,12 @@ def main(n):
             cst.add((i, j - 1))
 
     if len(cst) == len(st):
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     main(10)

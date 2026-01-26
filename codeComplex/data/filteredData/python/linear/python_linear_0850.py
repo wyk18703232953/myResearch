@@ -22,12 +22,13 @@ def main(n):
             l -= 1
         elif idx == r + 1:
             r += 1
+
         else:
-            print('NO')
+            # print('NO')
+            pass
             return
-    print('YES')
-
-
+    # print('YES')
+    pass
 if __name__ == "__main__":
     # Example: run main with a specific n for experiment
     main(10)

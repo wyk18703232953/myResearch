@@ -22,10 +22,12 @@ def main(n):
 
     # 以下为原程序核心逻辑，去除所有输入依赖
     if N <= d:
-        print('NO')
+        # print('NO')
+        pass
         return
     if k == 1 and N > 2:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     edgestot = []
@@ -51,13 +53,15 @@ def main(n):
             cur += 1
 
     if len(edgestot) == N - 1:
-        print('YES')
+        # print('YES')
+        pass
         for i in range(N - 1):
-            print(edgestot[i][0] + 1, edgestot[i][1] + 1)
+            # print(edgestot[i][0] + 1, edgestot[i][1] + 1)
+            pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为规模进行一次运行
     main(10)

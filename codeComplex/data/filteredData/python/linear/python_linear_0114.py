@@ -5,7 +5,7 @@ def main(n):
     S = (N * (N + 1)) / 2
     F = int(ceil(N / 2.0))
     ans = int((S + F) / 2)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

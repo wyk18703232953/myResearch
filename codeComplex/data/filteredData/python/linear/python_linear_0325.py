@@ -26,11 +26,11 @@ def main(n):
     for i in range(t):
         if last_copy[i] == current_copy[i]:
             continue
+
         else:
             total += 1
 
-    print(total)
-
-
+    # print(total)
+    pass
 if __name__ == "__main__":
     main(10)

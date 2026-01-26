@@ -78,6 +78,7 @@ def generate_grid(m, n):
         for j in range(n):
             if (i + j) % 3 == 0:
                 row_chars.append('*')
+
             else:
                 row_chars.append('.')
         grid.append(''.join(row_chars))
@@ -96,14 +97,15 @@ def main(n):
     count, ans = solve(m, k, grid_inner)
 
     if count == -1:
-        print(-1)
+        # print(-1)
+        pass
         return
 
-    print(count)
+    # print(count)
+    pass
     for i, j, s in ans:
-        print(i, j, s)
-
-
+        # print(i, j, s)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(5)

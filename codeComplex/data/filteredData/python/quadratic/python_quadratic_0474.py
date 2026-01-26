@@ -49,20 +49,22 @@ def main(n):
             if ans[j] > ans[i]:
                 k += 1
         if l[i] != k:
-            print('NO')
+            # print('NO')
+            pass
             return
         k = 0
         for j in range(i + 1, n):
             if ans[j] > ans[i]:
                 k += 1
         if r[i] != k:
-            print('NO')
+            # print('NO')
+            pass
             return
 
-    print('YES')
+    # print('YES')
+    pass
     for x in ans:
-        print(x, end=' ')
-
-
+        # print(x, end=' ')
+        pass
 if __name__ == "__main__":
     main(10)

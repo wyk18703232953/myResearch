@@ -19,6 +19,7 @@ def main(n):
             while i >= 0 and maps[i][0] == 'potential':
                 maps[i] = ['chosen', outnum]
                 i -= 1
+
         else:
             i = innum
             while i >= 0 and i >= innum - (k - 1) and maps[i][0] != 'chosen':
@@ -32,8 +33,7 @@ def main(n):
                     if maps[j][0] != 'chosen':
                         maps[j] = ['potential', outnum]
         output.append(str(outnum))
-    print(' '.join(output))
-
-
+    # print(' '.join(output))
+    pass
 if __name__ == "__main__":
     main(20)

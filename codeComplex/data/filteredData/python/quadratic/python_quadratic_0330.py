@@ -16,6 +16,7 @@ def main(n):
         if n_nodes == 2:
             if d != 1:
                 return 'NO'
+
             else:
                 return "YES\n1 2"
         if k < 2:
@@ -55,8 +56,7 @@ def main(n):
         return "YES\n%s" % "\n".join(["%d %d" % i for i in ans])
 
     result = solve()
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -14,11 +14,14 @@ def main(n):
 
     if n == 0:
         # 原题没有 n=0 情况，这里约定输出 0
-        print(0)
+        # print(0)
+        pass
         return
 
     if n == 1:
-        print(a[0])
+        # print(a[0])
+        pass
+
     else:
         sm = 0
         havePositive = False
@@ -31,12 +34,15 @@ def main(n):
             elif c > 0:
                 havePositive = True
                 sm += c
+
             else:
                 haveNegative = True
                 sm -= c
 
         if haveNegative and havePositive:
-            print(sm)
+            # print(sm)
+            pass
+
         else:
             for i in range(n):
                 a[i] = abs(a[i])
@@ -44,9 +50,8 @@ def main(n):
             low = a[0]
             for c in a:
                 low = min(low, c)
-            print(ans - 2 * low)
-
-
+            # print(ans - 2 * low)
+            pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 的规模进行复杂度实验
     main(10)

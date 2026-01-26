@@ -10,12 +10,15 @@ def main(n):
     if n % 2 == 0:
         k = n
         s = "(" * (n // 2) + ")" * (n // 2)
+
     else:
         k = n - 1
         s = "(" * (n // 2) + ")" * (n // 2) + "("
 
     if n == k:
-        print(s)
+        # print(s)
+        pass
+
     else:
         ans = []
         arr = []
@@ -36,7 +39,7 @@ def main(n):
 
         ans.sort()
         for i in ans:
-            print(arr[i], end="")
-
+            # print(arr[i], end="")
+            pass
 if __name__ == "__main__":
     main(10)

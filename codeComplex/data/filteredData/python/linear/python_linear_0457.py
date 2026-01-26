@@ -82,6 +82,7 @@ def solve(n, k, s):
         if lb > 0:
             if c == "(":
                 lb -= 1
+
             else:
                 rb -= 1
             ans.append(c)
@@ -97,7 +98,8 @@ def main(n):
     # Interpret n as the length of the parentheses string.
     # k is chosen as the largest even number ≤ n.
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
     k = n if n % 2 == 0 else n - 1
     # Deterministically generate a balanced-like pattern:
@@ -105,7 +107,7 @@ def main(n):
     half = n // 2
     s = "(" * half + ")" * (n - half)
     result = solve(n, k, s)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

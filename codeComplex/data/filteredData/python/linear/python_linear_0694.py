@@ -3,6 +3,7 @@ def main(n):
     # 保证 1 <= v <= N 且 N >= 1
     if n <= 0:
         N = 1
+
     else:
         N = n
     v = N // 2 if N // 2 > 0 else 1
@@ -14,13 +15,15 @@ def main(n):
     n_val -= 1
     if n_val <= v_val:
         result = n_val
+
     else:
         answer = v_val
         for i in range(1, n_val - v_val + 1):
             answer += (i + 1)
         result = answer
 
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -9,12 +9,14 @@ def bootstrap(f, stack=[]):
     def wrappedfunc(*args, **kwargs):
         if stack:
             return f(*args, **kwargs)
+
         else:
             to = f(*args, **kwargs)
             while True:
                 if type(to) is GeneratorType:
                     stack.append(to)
                     to = next(to)
+
                 else:
                     stack.pop()
                     if not stack:
@@ -119,7 +121,7 @@ def generate_test_data(n):
 def main(n):
     n_val, a, b, c, t, ti = generate_test_data(n)
     result = solve_from_data(n_val, a, b, c, t, ti)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

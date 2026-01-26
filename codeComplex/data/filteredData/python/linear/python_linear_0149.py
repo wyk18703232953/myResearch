@@ -15,7 +15,8 @@ def main(n):
     for i in range(0, n - 1):
         s += a[i]
         t = max(t, s % p + (k - s) % p)
-    print(t)
+    # print(t)
+    pass
     return t
 
 

@@ -7,6 +7,7 @@ def main(n):
     for val in arr:
         if val not in dic:
             dic[val] = 1
+
         else:
             dic[val] += 1
 
@@ -27,15 +28,18 @@ def main(n):
     if cnt >= 2:
         flag1 = False
     if flag1 is False:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
         flag2 = (n * (n - 1) // 2 + sum(arr)) % 2
         if flag2 == 1:
-            print('sjfnb')
+            # print('sjfnb')
+            pass
+
         else:
-            print('cslnb')
-
-
+            # print('cslnb')
+            pass
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     main(10)

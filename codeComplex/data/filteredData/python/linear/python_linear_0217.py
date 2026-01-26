@@ -47,8 +47,7 @@ def compute(lines):
 def main(n):
     lines = generate_input(n)
     result = compute(lines)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -21,6 +21,7 @@ def solve_single_case(n, s):
         mid = (lo + hi) >> 1
         if not good(mid, s, n):
             lo = mid + 1
+
         else:
             hi = mid
 
@@ -88,13 +89,15 @@ def main(n):
         res = solve_single_case(N, S)
         if res is None:
             results.append(("No", N, S, []))
+
         else:
             results.append(("Yes", N, S, res))
     for flag, N, S, parent in results:
-        print(flag, N, S)
+        # print(flag, N, S)
+        pass
+
         if flag == "Yes":
-            print(*parent)
-
-
+            # print(*parent)
+            pass
 if __name__ == "__main__":
     main(10)

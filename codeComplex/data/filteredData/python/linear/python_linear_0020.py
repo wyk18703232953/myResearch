@@ -13,15 +13,17 @@ def main(n):
         if arr[i] % 2 == 0:
             ceven += 1
             pteven = i
+
         else:
             codd += 1
             ptodd = i
 
     if ceven == 1:
-        print(pteven + 1)
+        # print(pteven + 1)
+        pass
+
     else:
-        print(ptodd + 1)
-
-
+        # print(ptodd + 1)
+        pass
 if __name__ == "__main__":
     main(10)

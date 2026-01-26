@@ -20,6 +20,7 @@ def main(n):
         k = i * i
         if k <= n:
             t = i
+
         else:
             break
         i += 1
@@ -39,4 +40,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     result = main(10)
-    print(" ".join(str(x) for x in result))
+    # print(" ".join(str(x) for x in result))
+    pass

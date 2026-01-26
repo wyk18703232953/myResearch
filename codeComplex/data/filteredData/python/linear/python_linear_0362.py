@@ -25,21 +25,23 @@ def main(n):
             cnt += 1
             sm = 0
             i += 1
+
         else:
             sm += s[i]
             if sm % 3 == 0:
                 sm = 0
                 cnt += 1
                 i += 1
+
             else:
                 if i + 1 < n and s[i] + s[i + 1] == 3:
                     i += 2
                     cnt += 1
                     sm = 0
+
                 else:
                     i += 1
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     main(100000)

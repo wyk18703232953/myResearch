@@ -64,17 +64,18 @@ def main(n):
 
     ok = prepare(n, m, adj, deg)
     if ok:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     m_pos = len([1 for i in range(n) if deg[i] > 0])
     for i in range(n):
         if deg[i] == 1 and solve(i, n, m_pos, adj, deg):
-            print("YES")
+            # print("YES")
+            pass
             return
 
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     main(10)

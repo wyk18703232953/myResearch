@@ -32,6 +32,7 @@ def main(n):
         if last < a[i]:
             tmp.append(last)
             last = a[i]
+
         else:
             tmp.append(a[i])
 
@@ -50,11 +51,12 @@ def main(n):
     # Process queries and print results
     for tm in queries:
         if 1 <= tm <= t:
-            print(Lis[tm - 1][0], Lis[tm - 1][1])
+            # print(Lis[tm - 1][0], Lis[tm - 1][1])
+            pass
+
         else:
-            print(max_a, anslist[(tm - t - 1) % len(anslist)])
-
-
+            # print(max_a, anslist[(tm - t - 1) % len(anslist)])
+            pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

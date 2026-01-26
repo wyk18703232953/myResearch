@@ -3,7 +3,8 @@ def main(n):
     # n = 输入数组 ns 的长度
     # k = 一个与 n 相关且可扩展的窗口大小，保持确定性
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     # 规模化且确定性的 k：保证 1 <= k <= 256
@@ -32,6 +33,7 @@ def main(n):
                     break
                 if idx <= c:
                     done[idx] = j
+
                 else:
                     done[idx] = -1
         elif done[c] == -1:
@@ -46,9 +48,8 @@ def main(n):
         ans[i] = done[c]
 
     ans_str = [str(x) for x in ans]
-    print(" ".join(ans_str))
-
-
+    # print(" ".join(ans_str))
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 来进行规模化实验
     main(10)

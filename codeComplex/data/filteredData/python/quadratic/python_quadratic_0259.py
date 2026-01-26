@@ -9,12 +9,14 @@ def main(n):
     # 可以用于分析算法在不同 N、a、b 下的时间复杂度。
     if n < 2:
         N = 2
+
     else:
         N = n
 
     if N - 1 <= 0:
         a = 1
         b = 1
+
     else:
         a = 1 + (n % (N - 1))
         b = 1 + ((n // 2) % (N - 1))
@@ -25,16 +27,19 @@ def main(n):
 
     if a == 1 and b == 1:
         if N == 2 or N == 3:
-            print('NO')
+            # print('NO')
+            pass
             return
 
     if a == 1 or b == 1:
         visited = [False] * (N + 1)
 
         if a > N or b > N:
-            print('NO')
+            # print('NO')
+            pass
             return
-        print('YES')
+        # print('YES')
+        pass
 
         l = []
         for _ in range(N):
@@ -51,7 +56,9 @@ def main(n):
                 l[i + 1][i] = '1'
 
             for row in l:
-                print(''.join(row))
+                # print(''.join(row))
+                pass
+
         else:
             ans = []
             for _ in range(N):
@@ -71,11 +78,12 @@ def main(n):
                             ans[i][j] = '1'
 
             for row in ans:
-                print(''.join(row))
+                # print(''.join(row))
+                pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例：使用不同规模进行实验
     # 可根据需要修改或在外部多次调用 main(n)

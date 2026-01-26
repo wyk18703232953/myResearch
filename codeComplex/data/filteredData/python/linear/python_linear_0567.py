@@ -23,6 +23,7 @@ def main(n):
                 for j in tr[i]:
                     total += get_lc(j)
                 lc[i] = total
+
             else:
                 lc[i] = 1
         return lc[i]
@@ -30,8 +31,7 @@ def main(n):
     for i in range(n - 1, -1, -1):
         get_lc(i)
 
-    print(*sorted(lc))
-
-
+    # print(*sorted(lc))
+    pass
 if __name__ == "__main__":
     main(10)

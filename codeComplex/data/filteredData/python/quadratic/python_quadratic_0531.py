@@ -23,10 +23,10 @@ def main(n):
                     a.pop()
                     break
                 a.pop()
+
         else:
             continue
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

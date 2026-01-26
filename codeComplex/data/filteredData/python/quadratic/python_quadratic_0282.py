@@ -12,8 +12,8 @@ def main(n):
 
     for i in l1:
         if i in l2:
-            print(i, end=" ")
-
+            # print(i, end=" ")
+            pass
 if __name__ == "__main__":
     # 示例调用，实际实验时可自行修改 n
     main(10)

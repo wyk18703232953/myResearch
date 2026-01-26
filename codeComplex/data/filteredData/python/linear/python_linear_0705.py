@@ -12,6 +12,7 @@ def core_logic(n, s):
         cur = max(cur, 0)
         if a == '-':
             cur -= 1
+
         else:
             cur += 1
         cur = max(cur, 0)
@@ -22,7 +23,7 @@ def main(n):
     n_global = n
     n_input, s = generate_input(n)
     result = core_logic(n_input, s)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

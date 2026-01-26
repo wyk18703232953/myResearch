@@ -2,7 +2,8 @@ def main(n):
     # 映射：给定 n，构造 m、k 和长度为 n 的数组 a
     # 这里令 m = max(1, n // 3)，k = max(1, n // 5)
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = max(1, n // 3)
@@ -20,9 +21,8 @@ def main(n):
                 cur -= k
             cur += a[j]
             ret = max(ret, cur)
-    print(ret)
-
-
+    # print(ret)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10)

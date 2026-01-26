@@ -18,8 +18,7 @@ def main(n):
                     ans = temp
         results.append(ans)
     for x in results:
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
     main(30)

@@ -24,9 +24,8 @@ def main(n):
     # Join once for efficiency and determinism
     result = "\n".join(output_lines)
     if result:
-        print(result)
-
-
+        # print(result)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; change the argument to test other scales
     main(5)

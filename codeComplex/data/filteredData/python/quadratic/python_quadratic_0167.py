@@ -30,10 +30,10 @@ def main(n):
     for i in range(n):
         if i != len(p) - 1:
             wk1 = " "
+
         else:
             wk1 = "\n"
-        print(ans[p[i]], end=wk1)
-
-
+        # print(ans[p[i]], end=wk1)
+        pass
 if __name__ == "__main__":
     main(10)

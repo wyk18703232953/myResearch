@@ -1,7 +1,8 @@
 def main(n):
     # n: number of points
     if n <= 0:
-        print()
+        # print()
+        pass
         return
     r = 1
     x = [i for i in range(n)]
@@ -13,8 +14,7 @@ def main(n):
                 val = (4 * r * r - d * d) ** 0.5
                 if y[j] + val > y[i]:
                     y[i] = y[j] + val
-    print(*y)
-
-
+    # print(*y)
+    pass
 if __name__ == "__main__":
     main(10)

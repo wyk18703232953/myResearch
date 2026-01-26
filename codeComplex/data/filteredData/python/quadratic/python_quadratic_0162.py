@@ -17,13 +17,15 @@ def solve(num_pixels, max_group_size, pixels):
                 and pixel - groups[smallest_of_group] + 1 <= max_group_size
             ):
                 group_color = groups[smallest_of_group]
+
             else:
                 group_color = smallest_of_group + 1
             smallest_of_group += 1
             for color in range(smallest_of_group, pixel + 1):
                 groups[color] = group_color
 
-    print(*(groups[pixel] for pixel in pixels))
+    # print(*(groups[pixel] for pixel in pixels))
+    pass
 
 
 def main(n):

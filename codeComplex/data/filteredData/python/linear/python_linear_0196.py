@@ -34,12 +34,14 @@ def main(n):
         b1 = a - ((T - arr[i]) * b)
         if b1 <= 0:
             ans += b1
+
         else:
             ans += b1
 
     ans1 = n * a
     result = max(ans, ans1)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -23,7 +23,8 @@ def main(n):
         if n % 2 == 0 and arr[i][1] > 0:
             count += n * (n - 1) * arr[i][1] // 2
     result = count / n
-    print(result)
+    # print(result)
+    pass
     return result
 
 

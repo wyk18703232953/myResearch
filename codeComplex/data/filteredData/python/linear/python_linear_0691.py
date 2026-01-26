@@ -20,6 +20,7 @@ def find_optimal_b(n, M):
         mid = (begin + end) // 2
         if get_min_H_given_b(n, mid) <= M:
             end = mid
+
         else:
             begin = mid + 1
     b = end
@@ -45,6 +46,7 @@ def locally_increase_H(h, M, b):
     while H < M:
         if b * (h[i - 1] - 1) >= (h[i] + 1):
             i -= 1
+
         else:
             while not b * (h[i] - 1) >= (h[i + 1] + 1):
                 i += 1
@@ -63,6 +65,7 @@ def fast_find_optimal_height_distribution(n, M, b):
         mid = (begin + end) // 2
         if H_fn(mid) <= M:
             begin = mid + 1
+
         else:
             end = mid
     L = begin - 1
@@ -73,6 +76,7 @@ def fast_find_optimal_height_distribution(n, M, b):
     unif_branch_h = uniform_height_distribution(n - L, b)
     if L == 0:
         h = unif_branch_h
+
     else:
         h = [int(i < L) for i in range(n)]
         for i, x in enumerate(unif_branch_h, 1):
@@ -114,7 +118,7 @@ def main(n):
         results.append((nn, M, status, parents))
     # Simple deterministic output for experiments
     for nn, M, status, parents in results:
-        print(nn, M, status, *parents)
-
+        # print(nn, M, status, *parents)
+        pass
 if __name__ == "__main__":
     main(10)

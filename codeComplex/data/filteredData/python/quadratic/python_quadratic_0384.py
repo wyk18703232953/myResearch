@@ -15,6 +15,7 @@ def main(n):
                 row.append('B')
             elif i == n - 1 and j == n - 1:
                 row.append('B')
+
             else:
                 row.append('.')
         l.append(''.join(row))
@@ -29,6 +30,7 @@ def main(n):
             if l[i][j] == 'B':
                 if x1 == 0 and y1 == 0:
                     x1, y1 = [i + 1, j + 1]
+
                 else:
                     x2, y2 = [i + 1, j + 1]
 
@@ -41,8 +43,7 @@ def main(n):
     res.append(x1 + x)
     res.append(y1 + y)
 
-    print(*res)
-
-
+    # print(*res)
+    pass
 if __name__ == "__main__":
     main(5)

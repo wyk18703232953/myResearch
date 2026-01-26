@@ -23,6 +23,7 @@ def main(n):
     for k in range(N):
         if k == 0:
             i, j = N // 2 - 1, N // 2
+
         else:
             i = N // 2 - 1 - k
             j = N // 2 + k
@@ -36,6 +37,7 @@ def main(n):
     A_rec[i] = B[-1] // 2
     if B[-1] % 2 == 0:
         A_rec[j] = B[-1] // 2
+
     else:
         A_rec[j] = B[-1] // 2 + 1
     l, r = A_rec[i], A_rec[j]
@@ -49,15 +51,17 @@ def main(n):
             A_rec[i] = l
             A_rec[j] = b - l
             r = b - l
+
         else:
             A_rec[j] = r
             A_rec[i] = b - r
             l = b - r
 
-    print("N =", N)
-    print("B:", " ".join(map(str, B)))
-    print("A_rec:", " ".join(map(str, A_rec)))
-
-
+    # print("N =", N)
+    pass
+    # print("B:", " ".join(map(str, B)))
+    pass
+    # print("A_rec:", " ".join(map(str, A_rec)))
+    pass
 if __name__ == "__main__":
     main(10)

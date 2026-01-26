@@ -29,7 +29,8 @@ def main(n):
             if abs(a[j] - a[i]) <= 2 * r:
                 ymax = max(ymax, ans[j] + math.sqrt(4 * r * r - (a[i] - a[j]) ** 2))
         ans.append(ymax)
-    print(*ans)
+    # print(*ans)
+    pass
     return
 
 

@@ -24,9 +24,8 @@ def main(n):
         group_size = sum(ss.values())
         for sss in ss.values():
             result += sss * (group_size - sss)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

@@ -13,9 +13,11 @@ def main(n):
     if S < min_s:
         S = min_s
     if not 2 * N - 1 <= S <= N * (N + 1) // 2:
-        print('No')
+        # print('No')
+        pass
         return
-    print('Yes')
+    # print('Yes')
+    pass
 
     def ok(d, N, S):
         dep, cur, total, m = 2, 1, 1, 0
@@ -34,6 +36,7 @@ def main(n):
         mid = (l + r) // 2
         if ok(mid, N, S):
             r = mid
+
         else:
             l = mid + 1
 
@@ -62,11 +65,11 @@ def main(n):
         while me_sorted[l_idx] < i - 1 or dg == r:
             dg = 0
             l_idx += 1
-        print(l_idx + 1, end=' ')
+        # print(l_idx + 1, end=' ')
+        pass
         dg += 1
-    print()
-
-
+    # print()
+    pass
 if __name__ == "__main__":
     # 示例：使用规模 n = 10 运行一次
     main(10)

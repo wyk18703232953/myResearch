@@ -24,8 +24,10 @@ def main(n):
             ti = ord(t[i]) - 97
             si = ord(s[i]) - 97
             if a[ti][si] != -1:
-                print(k - 2)
-                print(a[ti][si] + 1, i + 1)
+                # print(k - 2)
+                pass
+                # print(a[ti][si] + 1, i + 1)
+                pass
                 return
             a[si][ti] = i
 
@@ -34,15 +36,17 @@ def main(n):
             si = ord(s[i]) - 97
             for j in range(26):
                 if a[j][si] != -1:
-                    print(k - 1)
-                    print(a[j][si] + 1, i + 1)
+                    # print(k - 1)
+                    pass
+                    # print(a[j][si] + 1, i + 1)
+                    pass
                     return
             a[si][ord(t[i]) - 97] = i
 
-    print(k)
-    print(-1, -1)
-
-
+    # print(k)
+    pass
+    # print(-1, -1)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

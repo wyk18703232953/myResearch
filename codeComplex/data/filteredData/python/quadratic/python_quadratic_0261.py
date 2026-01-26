@@ -5,7 +5,8 @@ def main(n):
     b = ((n // 2) % 4) + 1
 
     if (n == 3 or n == 2) and (a == 1 and b == 1):
-        print("NO")
+        # print("NO")
+        pass
         return
     g = [[0 for _ in range(n)] for _ in range(n)]
     if a > 1 and b == 1:
@@ -27,14 +28,16 @@ def main(n):
         for i in range(n - 1):
             g[i][i + 1] = g[i + 1][i] = 1
     elif a > 1 and b > 1:
-        print("NO")
+        # print("NO")
+        pass
         return
-    print("YES")
+    # print("YES")
+    pass
     for i in range(n):
         for j in range(n):
-            print(g[i][j], end='')
-        print()
-
-
+            # print(g[i][j], end='')
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
     main(5)

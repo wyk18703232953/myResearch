@@ -107,6 +107,7 @@ def generate_grid(n, m):
             val = (i * j + i + j) % 3
             if val == 0:
                 row_chars.append("B")
+
             else:
                 row_chars.append("W")
         grid.append(''.join(row_chars))
@@ -117,6 +118,7 @@ def main(n):
     # To keep it simple and scalable, use n rows and n columns; ensure at least 1
     if n <= 0:
         n_eff = 1
+
     else:
         n_eff = n
     rows = n_eff
@@ -125,10 +127,12 @@ def main(n):
     res = core_logic(rows, cols, grid)
     # For complexity experiments we just print the result (or -1 if no position)
     if res is None:
-        print(-1)
-    else:
-        print(res[0], res[1])
+        # print(-1)
+        pass
 
+    else:
+        # print(res[0], res[1])
+        pass
 if __name__ == "__main__":
     # example deterministic call for complexity experiments
     main(10)

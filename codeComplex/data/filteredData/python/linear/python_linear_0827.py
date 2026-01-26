@@ -19,6 +19,7 @@ def main(n):
                 S.append("R")
             elif r == 1:
                 S.append("G")
+
             else:
                 S.append("B")
 
@@ -27,6 +28,7 @@ def main(n):
                 S[i] = 0
             elif S[i] == "G":
                 S[i] = 1
+
             else:
                 S[i] = 2
 
@@ -52,8 +54,7 @@ def main(n):
         results.append(ANS)
 
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     main(5)

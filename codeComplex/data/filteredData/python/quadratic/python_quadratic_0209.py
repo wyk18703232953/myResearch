@@ -29,14 +29,15 @@ def main(n):
         for j in range(m):
             if C[j] == 0:
                 break
+
         else:
-            print('YES')
+            # print('YES')
+            pass
             return
         for j, c in enumerate(a):
             C[j] += int(c)
-    print('NO')
-
-
+    # print('NO')
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的值
     main(10)

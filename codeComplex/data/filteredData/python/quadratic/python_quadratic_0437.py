@@ -3,7 +3,8 @@ def main(n):
     # 使用 0~9 的循环序列，避免全 0 的退化情况
     if n <= 0:
         # 和原程序行为保持一致：不存在输入数字时，可以定义为 "NO"
-        print("NO")
+        # print("NO")
+        pass
         return
 
     digits = [str(i % 10) for i in range(1, n + 1)]
@@ -19,7 +20,9 @@ def main(n):
 
     flag = False
     if lower == 0:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
         for i in range(lower, upper + 1):
             flag = True
@@ -35,18 +38,20 @@ def main(n):
                     elif temp == each:
                         temp = 0
                         p += 1
+
                     else:
                         flag = False
                         break
                 if flag:
-                    print("YES")
+                    # print("YES")
+                    pass
                     break
+
             else:
                 flag = False
         if not flag:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小做实验
     main(10)

@@ -23,4 +23,5 @@ def main(n):
 
 if __name__ == "__main__":
     # example call; change n to adjust input scale
-    print(main(10))
+    # print(main(10))
+    pass

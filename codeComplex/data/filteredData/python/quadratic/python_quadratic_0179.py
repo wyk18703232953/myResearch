@@ -36,6 +36,7 @@ def main(n):
         elt = p[i]
         if elt in processed:
             ans.append(color[elt])
+
         else:
             processed.add(elt)
             new = 1
@@ -52,6 +53,7 @@ def main(n):
                     length[elt] = length[elt - j] + new
                     run = False
                     break
+
                 else:
                     break
             if run:
@@ -62,9 +64,8 @@ def main(n):
     s = str(color[p[0]])
     for elt in p[1:]:
         s += ' ' + str(color[elt])
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10)

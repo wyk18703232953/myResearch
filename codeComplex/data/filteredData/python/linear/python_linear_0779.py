@@ -18,31 +18,40 @@ def main(n):
         if item in d:
             d[item] += 1
             z = item
+
         else:
             d[item] = 1
         s += item
 
     if len(a) - len(d) >= 2:
-        print("cslnb")
+        # print("cslnb")
+        pass
         return
 
     if len(a) == len(d):
         z = (n * (n - 1)) // 2
         if (s - z) % 2:
-            print("sjfnb")
+            # print("sjfnb")
+            pass
+
         else:
-            print("cslnb")
+            # print("cslnb")
+            pass
+
     else:
         if z - 1 in d or z == 0:
-            print("cslnb")
+            # print("cslnb")
+            pass
+
         else:
             zz = (n * (n - 1)) // 2
             if (s - zz) % 2:
-                print("sjfnb")
+                # print("sjfnb")
+                pass
+
             else:
-                print("cslnb")
-
-
+                # print("cslnb")
+                pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的大小
     main(10)

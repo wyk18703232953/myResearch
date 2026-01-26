@@ -10,11 +10,11 @@ def main(n):
         if b[i] - a[i - 1] <= a[-i]:
             a[i] = a[i - 1]
             a[-i - 1] = b[i] - a[i - 1]
+
         else:
             a[-i - 1] = a[-i]
             a[i] = b[i] - a[-i - 1]
-    print(*a)
-
-
+    # print(*a)
+    pass
 if __name__ == "__main__":
     main(10)

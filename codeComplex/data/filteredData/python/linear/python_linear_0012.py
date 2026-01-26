@@ -41,10 +41,12 @@ def main(n):
         if j in arr:
             count += 1
     if count >= K:
-        print("YES")
-    else:
-        print("NO")
+        # print("YES")
+        pass
 
+    else:
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例：以不同规模 n 调用 main
     main(10)

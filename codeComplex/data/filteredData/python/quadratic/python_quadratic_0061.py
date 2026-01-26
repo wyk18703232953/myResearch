@@ -36,9 +36,11 @@ def main(n):
         inv = (inv + (s % 2)) % 2
 
         if inv:
-            print("odd")
-        else:
-            print("even")
+            # print("odd")
+            pass
 
+        else:
+            # print("even")
+            pass
 if __name__ == "__main__":
     main(10)

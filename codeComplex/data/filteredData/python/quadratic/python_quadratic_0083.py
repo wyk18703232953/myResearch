@@ -98,6 +98,7 @@ def main(n):
 			# 构造有向边，按顺序截取前 m 条
 			if (i + j) % 3 == 0:
 				edges.append((j, i))
+
 			else:
 				edges.append((i, j))
 			cnt += 1
@@ -108,4 +109,5 @@ def main(n):
 if __name__ == "__main__":
 	# 示例调用：可根据需要修改 n 以进行规模化时间复杂度实验
 	result = main(10)
-	print(result)
+	# print(result)
+	pass

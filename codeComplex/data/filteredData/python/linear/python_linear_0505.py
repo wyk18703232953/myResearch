@@ -37,7 +37,8 @@ def main(n):
     for i in table[1:]:
         result.append(ans[i])
     output = ''.join(result)
-    print(output)
+    # print(output)
+    pass
     return output
 
 

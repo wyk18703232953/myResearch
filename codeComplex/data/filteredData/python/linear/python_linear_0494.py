@@ -163,8 +163,10 @@ class Factorial:
  
     def calc(self, n):
         if n <= -1:
-            print("Invalid argument to calculate n!")
-            print("n must be non-negative value. But the argument was " + str(n))
+            # print("Invalid argument to calculate n!")
+            pass
+            # print("n must be non-negative value. But the argument was " + str(n))
+            pass
             sys.exit(0)
         if n < len(self.factorials):
             return self.factorials[n]
@@ -179,8 +181,10 @@ class Factorial:
  
     def inv(self, n):
         if n <= -1:
-            print("Invalid argument to calculate n^(-1)")
-            print("n must be non-negative value. But the argument was " + str(n))
+            # print("Invalid argument to calculate n^(-1)")
+            pass
+            # print("n must be non-negative value. But the argument was " + str(n))
+            pass
             sys.exit(0)
         p = self.MOD
         pi = n % p
@@ -195,8 +199,10 @@ class Factorial:
  
     def invFactorial(self, n):
         if n <= -1:
-            print("Invalid argument to calculate (n^(-1))!")
-            print("n must be non-negative value. But the argument was " + str(n))
+            # print("Invalid argument to calculate (n^(-1))!")
+            pass
+            # print("n must be non-negative value. But the argument was " + str(n))
+            pass
             sys.exit(0)
         if n < len(self.invFactorial_):
             return self.invFactorial_[n]
@@ -259,6 +265,7 @@ def core_algorithm(a):
                     if k < j:
                         ch = k
                 dp[i][j] = ch
+
         else:
             for j in range(5):
                 ch = -1
@@ -281,6 +288,7 @@ def core_algorithm(a):
                     if k < j and dp[i-1][k] != -1:
                         ch = k
                 dp[i][j] = ch
+
         else:
             for j in range(5):
                 ch = -1
@@ -311,6 +319,7 @@ def generate_input_array(n):
             a.append(i)
         elif i % 3 == 1:
             a.append(i // 2)
+
         else:
             a.append(n - i)
     return a
@@ -318,7 +327,7 @@ def generate_input_array(n):
 def main(n):
     a = generate_input_array(n)
     result = core_algorithm(a)
-    print(*result)
-
+    # print(*result)
+    pass
 if __name__ == "__main__":
     main(10)

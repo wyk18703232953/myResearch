@@ -11,7 +11,8 @@ def main(n):
     for ch in s:
         cnt[ord(ch) - a] += 1
     result = k * min(cnt)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

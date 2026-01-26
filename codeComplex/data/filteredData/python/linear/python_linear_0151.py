@@ -8,10 +8,11 @@ def main(n):
     s = sum(a)
     sp = s % p
     if sp == s or sp + 1 == p:
-        print(sp)
+        # print(sp)
+        pass
+
     else:
-        print(sp + p)
-
-
+        # print(sp + p)
+        pass
 if __name__ == "__main__":
     main(10)

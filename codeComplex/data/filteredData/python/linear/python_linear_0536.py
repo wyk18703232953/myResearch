@@ -12,7 +12,8 @@ def main(n):
     ar = [((i * 2) % 11) - 5 for i in range(n)]
 
     if n == 1:
-        print(ar[0])
+        # print(ar[0])
+        pass
         return
 
     onlyNegs = True
@@ -24,15 +25,16 @@ def main(n):
         onlyPos = False
 
     if onlyNegs:
-        print(abs(sum(ar)) + max(ar) * 2)
+        # print(abs(sum(ar)) + max(ar) * 2)
+        pass
         return
 
     if onlyPos:
-        print(abs(sum(ar)) - min(ar) * 2)
+        # print(abs(sum(ar)) - min(ar) * 2)
+        pass
         return
 
-    print(sum(abs(i) for i in ar))
-
-
+    # print(sum(abs(i) for i in ar))
+    pass
 if __name__ == "__main__":
     main(10)

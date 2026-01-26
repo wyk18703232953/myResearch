@@ -44,8 +44,7 @@ def main(n):
             if b_needed < min_steps_needed:
                 min_steps_needed = b_needed
 
-    print(min_steps_needed)
-
-
+    # print(min_steps_needed)
+    pass
 if __name__ == "__main__":
     main(9)

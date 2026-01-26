@@ -18,7 +18,8 @@ def main(n):
         t |= s & x
         s |= x
     result = ("YES", "NO")[all(x & s & ~t for x in a)]
-    print(result)
+    # print(result)
+    pass
     return result
 
 

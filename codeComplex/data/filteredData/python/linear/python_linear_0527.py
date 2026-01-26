@@ -12,7 +12,8 @@ def main(n):
     c = Counter(s)
     ans = min(c[chr(ord('A') + i)] for i in range(k))
     result = k * ans
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

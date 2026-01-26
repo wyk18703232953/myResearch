@@ -28,13 +28,13 @@ def main(n):
         if REVA[b] > top:
             ANSLIST.append(REVA[b] - top)
             top = REVA[b]
+
         else:
             ANSLIST.append(0)
 
     for ans in ANSLIST:
-        print(ans, end=" ")
-
-
+        # print(ans, end=" ")
+        pass
 if __name__ == "__main__":
     # 示例调用：可按需要修改 n 的大小进行规模化实验
     main(10)

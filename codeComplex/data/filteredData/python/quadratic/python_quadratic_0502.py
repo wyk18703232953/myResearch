@@ -31,6 +31,7 @@ def main(n):
         for j in range(cols):
             if (i + j) % 3 == 0:
                 row.append('#')
+
             else:
                 row.append('.')
         sig.append(row)
@@ -46,9 +47,11 @@ def main(n):
                     fill(sig, i, j, cur)
 
     if sig == cur:
-        print("YES")
-    else:
-        print("NO")
+        # print("YES")
+        pass
 
+    else:
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

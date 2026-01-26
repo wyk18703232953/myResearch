@@ -4,12 +4,15 @@ def main(n):
 
     while True:
         if len(s) == 1:
-            print(0)
+            # print(0)
+            pass
             break
         elif s == s[::-1]:
             s = s[1:]
+
         else:
-            print(len(s))
+            # print(len(s))
+            pass
             break
 
 

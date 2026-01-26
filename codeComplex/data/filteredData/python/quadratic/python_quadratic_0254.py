@@ -9,10 +9,11 @@ def main(n):
         l[i][i] = '0'
     for i in range(n_flag - a * b):
         l[i][i + 1] = l[i + 1][i] = o
-    print(('YES', 'NO')[not n_flag])
+    # print(('YES', 'NO')[not n_flag])
+    pass
+
     if n_flag:
-        print('\n'.join(map(''.join, l)))
-
-
+        # print('\n'.join(map(''.join, l)))
+        pass
 if __name__ == "__main__":
     main(10)

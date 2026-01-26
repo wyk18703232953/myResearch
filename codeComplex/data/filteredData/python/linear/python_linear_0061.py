@@ -43,9 +43,9 @@ def main(n):
             if x != -1:
                 break
 
-    print(ans)
-    print(x, y)
-
-
+    # print(ans)
+    pass
+    # print(x, y)
+    pass
 if __name__ == "__main__":
     main(10)

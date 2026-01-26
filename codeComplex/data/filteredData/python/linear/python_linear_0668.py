@@ -2,7 +2,8 @@ def main(n):
     # n: length of sequence l and t
     n = int(n)
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic generation of l (integers) and t (chars from 'GWL')
@@ -16,6 +17,7 @@ def main(n):
     for i in range(n - 1, -1, -1):
         if t[i] != 2:
             mins[i] = max(mins[i + 1] - l[i], 0)
+
         else:
             mins[i] = mins[i + 1] + l[i]
 
@@ -44,9 +46,8 @@ def main(n):
             ans += l[i]
     if curs > 0:
         ans -= (curs // 2) * 2
-    print(ans // 2)
-
-
+    # print(ans // 2)
+    pass
 if __name__ == "__main__":
     # Example call; adjust n as needed for experiments
     main(10)

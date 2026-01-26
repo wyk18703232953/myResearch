@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     l = [i % (n + 5) + 1 for i in range(n)]
     l.sort()
@@ -15,7 +16,7 @@ def main(n):
         if f:
             s.add(i)
             res += 1
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

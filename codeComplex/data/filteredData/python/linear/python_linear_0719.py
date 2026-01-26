@@ -11,7 +11,8 @@ def main(n):
             # 当 n == 1 且 i == 0 时 denom 为 0，避免除零
             continue
         ans = min(ans, l[i] // denom)
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

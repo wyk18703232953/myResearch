@@ -4,6 +4,7 @@ def solve(n, k, p):
     for i, pi in enumerate(p):
         if group[pi] is not None:
             r[i] = group[pi][0]
+
         else:
             lo = pi
             while lo >= 0 and pi - lo < k and group[lo] is None:
@@ -15,6 +16,7 @@ def solve(n, k, p):
                 if pi - group[lo][0] < k:
                     lo = group[lo][0]
                     hi = pi + 1
+
                 else:
                     lo += 1
                     hi = pi + 1
@@ -22,7 +24,8 @@ def solve(n, k, p):
             for j in range(lo, hi):
                 group[j] = lohi
             r[i] = group[pi][0]
-    print(" ".join(map(str, r)))
+    # print(" ".join(map(str, r)))
+    pass
 
 
 def main(n):

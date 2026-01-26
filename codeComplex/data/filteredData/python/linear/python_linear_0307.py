@@ -12,8 +12,7 @@ def main(n):
         if x > val:
             x = val
             y = i + 1
-    print(y)
-
-
+    # print(y)
+    pass
 if __name__ == "__main__":
     main(10)

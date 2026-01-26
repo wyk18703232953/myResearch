@@ -38,6 +38,7 @@ def main(n):
                 if ok:
                     break
                 ind -= 1
+
             else:
                 ind = m - 1
                 for j in range(ind, -1, -1):
@@ -54,9 +55,9 @@ def main(n):
     for bucket in rem:
         for val, idx in bucket:
             out[idx] = val
-    print(sum(out) - sum(a))
-    print(' '.join(map(str, out)))
-
-
+    # print(sum(out) - sum(a))
+    pass
+    # print(' '.join(map(str, out)))
+    pass
 if __name__ == "__main__":
     main(1000)

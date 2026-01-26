@@ -1,7 +1,8 @@
 def main(n):
     # n 作为数组长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     MOD = 998244353
@@ -16,9 +17,8 @@ def main(n):
         s %= MOD
         y %= MOD
 
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     # 示例：使用规模 n=5 运行
     main(5)

@@ -36,4 +36,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的大小做时间复杂度实验
     result = main(10)
-    print(result)
+    # print(result)
+    pass

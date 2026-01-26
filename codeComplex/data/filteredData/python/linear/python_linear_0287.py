@@ -32,6 +32,7 @@ def generate_string(i, n):
             res.append("(")
         elif (i + k) % 3 == 1:
             res.append(")")
+
         else:
             # Alternate to keep some balance variety
             res.append("(" if (i // 2 + k) % 2 == 0 else ")")
@@ -46,7 +47,7 @@ def main(n):
         cnt.append(l)
         mp[l] += 1
     result = f(mp, cnt)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

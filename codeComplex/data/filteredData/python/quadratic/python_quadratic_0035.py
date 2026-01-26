@@ -15,13 +15,13 @@ def main(n):
         char_in = chars[i]
         if char_in == 'f':
             f += 1
+
         else:
             for j in range(1, f):
                 dp[j] = (dp[j] + dp[j - 1]) % MOD
 
-    print(dp[f - 1])
-
-
+    # print(dp[f - 1])
+    pass
 if __name__ == "__main__":
     # example deterministic run; adjust n as needed for experiments
     main(10)

@@ -10,8 +10,7 @@ def main(n):
         a = [i for i in a if i % k != 0]
         ans += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

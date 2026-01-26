@@ -86,7 +86,8 @@ def power_set(L):
     return powerset_orderred
 
 def fastPlrintNextLines(a):
-    print('\n'.join(map(str, a)))
+    # print('\n'.join(map(str, a)))
+    pass
 
 def sortByFirstAndSecond(A):
     A = sorted(A, key=lambda x: x[0])
@@ -104,6 +105,7 @@ def generate_input(n):
     for i in range(n):
         if i < half:
             s.append('(')
+
         else:
             s.append(')')
     return n, k, ''.join(s)
@@ -117,6 +119,7 @@ def core_algorithm(n, k, s):
         if s[i] == '(':
             cnt += 1
             ans.append('(')
+
         else:
             ans.append(')')
             covered += 1
@@ -128,7 +131,7 @@ def core_algorithm(n, k, s):
 def main(n):
     n_inp, k_inp, s_inp = generate_input(n)
     result = core_algorithm(n_inp, k_inp, s_inp)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

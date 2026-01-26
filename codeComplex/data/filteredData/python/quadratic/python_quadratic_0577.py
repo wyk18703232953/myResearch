@@ -35,8 +35,7 @@ def main(n):
                     if s[i + j] != "G":
                         count3 += 1
             min_ans = min(min_ans, count1, count2, count3)
-        print(min_ans)
-
-
+        # print(min_ans)
+        pass
 if __name__ == "__main__":
     main(10)

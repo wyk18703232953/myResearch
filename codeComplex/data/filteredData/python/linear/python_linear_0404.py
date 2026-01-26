@@ -18,7 +18,8 @@ def main(n):
     except Exception:
         v = m - 1
     result = v - m
-    print(result)
+    # print(result)
+    pass
     return result
 
 

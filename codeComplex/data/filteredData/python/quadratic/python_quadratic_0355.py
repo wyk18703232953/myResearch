@@ -123,6 +123,7 @@ def binarySearch(arr, n, key):
         if arr[mid] >= key:
             res = arr[mid]
             right = mid-1
+
         else:
             left = mid + 1
     return res
@@ -135,6 +136,7 @@ def binarySearch1(arr, n, key):
         mid = (right + left)//2
         if arr[mid] > key:
             right = mid-1
+
         else:
             res = arr[mid]
             left = mid + 1
@@ -219,6 +221,7 @@ def generate_grid(n):
         for j in range(cols):
             if (i + j) % 2 == 0:
                 row_chars.append('*')
+
             else:
                 row_chars.append('.')
         grid.append(''.join(row_chars))
@@ -227,9 +230,10 @@ def generate_grid(n):
 def main(n):
     grid = generate_grid(n)
     count, stars = solve_grid(grid)
-    print(count)
+    # print(count)
+    pass
     for triple in stars:
-        print(*triple)
-
+        # print(*triple)
+        pass
 if __name__ == "__main__":
     main(5)

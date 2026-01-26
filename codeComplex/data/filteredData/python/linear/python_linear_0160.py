@@ -10,9 +10,8 @@ def main(n):
     for e in E:
         D[e] = D.get(e, 0) + 1
     for e in E:
-        print(D[e])
-
-
+        # print(D[e])
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小
     main(10)

@@ -18,8 +18,7 @@ def main(n):
         MI[i % M] = min(MI[i % M], S[i])
         for j in range(M):
             ans = max(ans, (S[i] - MI[(i - j) % M] - K * ((-j) % M)) // M)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

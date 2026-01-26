@@ -62,6 +62,7 @@ def main(n):
         for j in range(k + 1, kk):
             if a[j] - a[k] <= a[kk] - a[j]:
                 ans[i - 1] += 1
+
             else:
                 ans[i] += 1
         k = kk
@@ -69,10 +70,10 @@ def main(n):
     ans[m] += (n + m - 1 - k)
 
     for i in range(1, m + 1):
-        print(ans[i], end=' ')
-    print()
-
-
+        # print(ans[i], end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     # example call with n = 20
     main(20)

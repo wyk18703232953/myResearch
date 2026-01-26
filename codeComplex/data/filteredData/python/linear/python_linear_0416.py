@@ -28,15 +28,17 @@ def main(n):
                 ans = ans + l[j]
                 s = s + ord(l[j])
                 index = j
+
         else:
             break
     if len(ans) == k:
         s = s - 96 * k
-        print(s)
+        # print(s)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # Example deterministic calls for experimental runs
     main(5)

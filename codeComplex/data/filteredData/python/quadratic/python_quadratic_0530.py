@@ -15,7 +15,7 @@ def main(n):
             s = s + g
         g = g + 1
         s = g * 2
-    print(str(v))
-
+    # print(str(v))
+    pass
 if __name__ == "__main__":
     main(10)

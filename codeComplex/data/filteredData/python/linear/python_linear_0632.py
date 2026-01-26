@@ -28,6 +28,7 @@ def run_single_case(n, k):
 
     if nn >= 0:
         return "YES " + str(nn)
+
     else:
         return "NO"
 
@@ -45,8 +46,8 @@ def main(n):
         results.append(res)
 
     for r in results:
-        print(r)
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为规模调用
     main(10)

@@ -67,7 +67,8 @@ def main(n):
         idx = cnt if cnt < len(ans_arr) else len(ans_arr) - 1
         answer = answer * ans_arr[idx] % mod_v
 
-    print(answer)
+    # print(answer)
+    pass
     return answer
 
 

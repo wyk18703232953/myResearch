@@ -41,10 +41,11 @@ def main(n):
             res ^= 1
         if res:
             outputs.append("odd")
+
         else:
             outputs.append("even")
     for line in outputs:
-        print(line)
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     main(10)

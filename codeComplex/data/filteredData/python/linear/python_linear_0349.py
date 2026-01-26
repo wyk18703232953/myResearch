@@ -17,11 +17,12 @@ def main(n):
     # 保持原程序的输出逻辑：输出长度为 n 的 0/1 序列
     for i in range(orig_n):
         if i % 2 == 0:
-            print(0, end='')
+            # print(0, end='')
+            pass
+
         else:
-            print(1, end='')
-
-
+            # print(1, end='')
+            pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 的大小
     main(10)

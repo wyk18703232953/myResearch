@@ -26,6 +26,7 @@ def generate_input_string(idx):
         row = idx + 1
         letters = "".join(z[(idx + j) % 26] for j in range(word_len))
         return f"{letters}{row}"
+
     else:
         row = idx + 1
         col = idx * 3 + 1
@@ -37,9 +38,10 @@ def main(n):
         hehexd = generate_input_string(i)
         if hehexd.startswith("R") and len(hehexd) > 1 and hehexd[1].isnumeric() and "C" in hehexd:
             output += f"{convert_num(hehexd)}\n"
+
         else:
             output += f"{convert_alpha(hehexd)}\n"
-    print(output, end="")
-
+    # print(output, end="")
+    pass
 if __name__ == "__main__":
     main(10)

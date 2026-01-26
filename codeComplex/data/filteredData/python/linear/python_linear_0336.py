@@ -34,4 +34,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call for demonstration
     result = main(10)
-    print(result)
+    # print(result)
+    pass

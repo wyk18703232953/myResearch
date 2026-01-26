@@ -25,6 +25,7 @@ def main(n):
     for i in range(m_len):
         if b[i]:
             ones[i] = 1
+
         else:
             zeros[i] = 1
 
@@ -35,12 +36,12 @@ def main(n):
     for i in range(n_len):
         if a[i] == 1:
             ans += zeros[m_len - n_len + i] - zeros[i]
+
         else:
             ans += ones[m_len - n_len + i] - ones[i]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example call; change n to scale input size
     main(5)

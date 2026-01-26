@@ -12,8 +12,7 @@ def main(n):
         a.extend([k // 2] * (m - t))
         m = t
         k *= 2
-    print(' '.join(map(str, a)))
-
-
+    # print(' '.join(map(str, a)))
+    pass
 if __name__ == "__main__":
     main(1000)

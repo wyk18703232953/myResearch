@@ -8,7 +8,8 @@ from operator import itemgetter
 def main(n):
     # 生成确定性输入：n, m, b 列表, g 列表
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 将 n 拆分为两个部分，用于构造 b 和 g 的长度
@@ -44,6 +45,7 @@ def main(n):
 
     if bMax > gMin:
         result = -1
+
     else:
         result = bSum * m_input
         result += gSum
@@ -51,8 +53,7 @@ def main(n):
         if gMin > bMax:
             result += bMax - bMax2
 
-    print(str(result))
-
-
+    # print(str(result))
+    pass
 if __name__ == "__main__":
     main(10)

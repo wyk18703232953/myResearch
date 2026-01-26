@@ -25,6 +25,7 @@ def main(n):
             cur_part_sum = part_sum[i] + k * (count_blocks - ((i - shift) // m))
             if i == 0 or prev_min_in_part_sum_add is None or cur_part_sum < prev_min_in_part_sum_add:
                 cur_min_in_part_sum_add = cur_part_sum
+
             else:
                 cur_min_in_part_sum_add = prev_min_in_part_sum_add
 
@@ -40,7 +41,8 @@ def main(n):
         if current_ans > max_result:
             max_result = current_ans
 
-    print(max_result)
+    # print(max_result)
+    pass
     return max_result
 
 if __name__ == "__main__":

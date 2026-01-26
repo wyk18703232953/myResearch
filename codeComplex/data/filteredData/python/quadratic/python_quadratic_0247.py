@@ -12,13 +12,18 @@ def main(n):
     g = {i: set() for i in range(n)}
 
     if a > 1 and b > 1:
-        print("NO")
+        # print("NO")
+        pass
     elif a == 1 and b == 1:
         if n == 1:
-            print("YES")
-            print("0")
+            # print("YES")
+            pass
+            # print("0")
+            pass
         elif n < 4:
-            print("NO")
+            # print("NO")
+            pass
+
         else:
             for i in range(n - 1):
                 g[i].add(i + 1)
@@ -28,11 +33,15 @@ def main(n):
                 for j in range(n):
                     if i in g[j]:
                         tmp.append('1')
+
                     else:
                         tmp.append('0')
                 ans.append(''.join(tmp))
-            print("YES")
-            print('\n'.join(ans))
+            # print("YES")
+            pass
+            # print('\n'.join(ans))
+            pass
+
     else:
         swap = False
         if a == 1:
@@ -49,22 +58,25 @@ def main(n):
                         tmp.append('0')
                     elif i not in g[j]:
                         tmp.append('1')
+
                     else:
                         tmp.append('0')
                 ans.append(''.join(tmp))
+
         else:
             for i in range(n):
                 tmp = []
                 for j in range(n):
                     if i in g[j]:
                         tmp.append('1')
+
                     else:
                         tmp.append('0')
                 ans.append(''.join(tmp))
-        print("YES")
-        print('\n'.join(ans))
-
-
+        # print("YES")
+        pass
+        # print('\n'.join(ans))
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 10 作为规模调用
     main(10)

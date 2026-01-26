@@ -68,11 +68,12 @@ def solve(N, EDGE):
 def main(n):
     if n < 2:
         N = 2
+
     else:
         N = n
     EDGE = generate_tree_edges(N)
     ans = solve(N, EDGE)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -35,9 +35,8 @@ def generate_tree(n):
 def main(n):
     l, m = generate_tree(n)
     result = if_spruce(n, l, m)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for experimental purposes
     main(10)

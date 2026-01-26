@@ -25,10 +25,11 @@ def main(n):
             row_bits.append(str(bit))
         grid.append("".join(row_bits))
     if fun(grid, counter, n, m):
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(5)

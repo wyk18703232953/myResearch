@@ -7,11 +7,13 @@ def main(n):
     for ch in s:
         if ch == '+':
             t += 1
+
         else:
             t = max(t - 1, 0)
 
     result = max(t, 0)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

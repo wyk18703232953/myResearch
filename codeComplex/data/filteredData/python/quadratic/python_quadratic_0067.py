@@ -50,6 +50,7 @@ def core_logic(size, lista, m, queries):
         if (invercount + summa) % 2:
             outputs.append('odd')
             invercount = 1
+
         else:
             outputs.append('even')
             invercount = 0
@@ -59,7 +60,7 @@ def main(n):
     size, lista, m, queries = build_input(n)
     results = core_logic(size, lista, m, queries)
     for line in results:
-        print(line)
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     main(10)

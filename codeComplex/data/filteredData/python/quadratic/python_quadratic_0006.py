@@ -14,6 +14,7 @@ def core_logic(n, r, x_cord):
     for i, x in enumerate(x_cord):
         if len(y_cord) == 0:
             y_cord.append(r)
+
         else:
             y_cord.append(r)
             for j in range(i):
@@ -25,7 +26,7 @@ def core_logic(n, r, x_cord):
 def main(n):
     n_disks, r, x_cord = generate_input(n)
     y_cord = core_logic(n_disks, r, x_cord)
-    print(" ".join(str(v) for v in y_cord))
-
+    # print(" ".join(str(v) for v in y_cord))
+    pass
 if __name__ == "__main__":
     main(10)

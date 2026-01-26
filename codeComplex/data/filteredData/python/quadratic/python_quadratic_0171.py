@@ -17,6 +17,7 @@ def main(n):
                         for j in range(i, x + 1):
                             mapping[j] = (mapping[i - 1][0], p)
                             p += 1
+
                     else:
                         p = 1
                         for j in range(i, x + 1):
@@ -25,9 +26,8 @@ def main(n):
                     break
         sol.append(mapping[x][0])
 
-    print(' '.join(map(str, sol)))
-
-
+    # print(' '.join(map(str, sol)))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

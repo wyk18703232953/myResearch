@@ -21,6 +21,7 @@ def main(n: int):
     # - cnt = (n % 11)，并限定在 [0,20] 范围，以避免超过 dp、使用有代表性的值
     if n <= 0:
         arr_len = 1
+
     else:
         arr_len = n
     if arr_len >= N:
@@ -34,7 +35,8 @@ def main(n: int):
     cnt = n % 21
 
     if cnt == 0:
-        print(1)
+        # print(1)
+        pass
         return
 
     res = 0
@@ -51,9 +53,8 @@ def main(n: int):
             res += 1
     if cnt == 1:
         res -= 1
-    print(res % MOD)
-
-
+    # print(res % MOD)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 进行实验
     main(10)

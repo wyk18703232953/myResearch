@@ -31,9 +31,8 @@ def main(n):
             ops += 1
             space = special
 
-    print(ops)
-
-
+    # print(ops)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

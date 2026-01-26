@@ -2,7 +2,8 @@ def main(n):
     # 生成两个只包含 0/1 的数字串，对应原程序中的两行输入
     # 将 n 映射为两行长度：len(a) = n，len(b) = 2n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     len_a = n
@@ -14,7 +15,8 @@ def main(n):
 
     dff = len(b) - len(a)
     if dff < 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     lb = len(b)
@@ -27,12 +29,12 @@ def main(n):
         item = a[i]
         if item:
             ans += (dff + 1 - (c[dff + i + 1] - c[i]))
+
         else:
             ans += (c[dff + i + 1] - c[i])
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小做复杂度实验
     main(5)

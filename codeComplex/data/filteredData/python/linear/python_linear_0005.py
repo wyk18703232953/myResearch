@@ -8,6 +8,7 @@ def main(n):
             row = i
             col = i * 3
             tests.append(f"R{row}C{col}")
+
         else:
             # Column letters + row form
             row = i * 2
@@ -36,13 +37,15 @@ def main(n):
                     r = co % 26
                     co = co // 26
                     v += chr(65 + r)
-                print(v[::-1] + ro)
+                # print(v[::-1] + ro)
+                pass
                 break
+
             else:
                 co = co * 26 + ord(c) - 64
+
         else:
-            print("R{}C{}".format(ro, co))
-
-
+            # print("R{}C{}".format(ro, co))
+            pass
 if __name__ == "__main__":
     main(10)

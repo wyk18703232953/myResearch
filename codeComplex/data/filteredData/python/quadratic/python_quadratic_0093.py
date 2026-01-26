@@ -49,14 +49,17 @@ def core_logic(n, f, g):
                 for _ in range(nrot):
                     h = rotate90(n, h)
                 if eq(n, h, g):
-                    print("Yes")
+                    # print("Yes")
+                    pass
                     return
-    print("No")
+    # print("No")
+    pass
 
 def main(n):
     n_internal, f, g = generate_matrices(n)
     if n_internal == 0:
-        print("No")
+        # print("No")
+        pass
         return
     core_logic(n_internal, f, g)
 

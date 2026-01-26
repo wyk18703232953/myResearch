@@ -1,7 +1,8 @@
 def main(n):
     # n: length of array a
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # deterministic generation of val and array a
@@ -29,8 +30,7 @@ def main(n):
         if a[i] != val and dp[i] > ans:
             ans = dp[i]
         pre[a[i]] = i
-    print(ans + target)
-
-
+    # print(ans + target)
+    pass
 if __name__ == "__main__":
     main(10)

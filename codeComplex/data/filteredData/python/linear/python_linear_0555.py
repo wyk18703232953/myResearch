@@ -16,8 +16,7 @@ def main(n):
             xor ^= comp
         ans -= xors[xor]
         xors[xor] += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

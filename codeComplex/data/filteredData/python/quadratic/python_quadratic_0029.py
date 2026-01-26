@@ -12,8 +12,8 @@ def main(n):
             continue
         for j in range(1, len(dp)):
             dp[j] = (dp[j] + dp[j-1]) % MOD
-    print(dp[-1])
-
+    # print(dp[-1])
+    pass
 if __name__ == "__main__":
     # 示例：使用规模 n = 10 运行
     main(10)

@@ -5,7 +5,8 @@ def main(n):
     d = (n - k) // 2 + 1
     ans = ['1' if (i + 1) % d == 0 else '0' for i in range(n)]
     result = ''.join(ans)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

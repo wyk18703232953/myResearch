@@ -125,6 +125,7 @@ def main(n):
             break
     if same:
         return True
+
     else:
         return False
 
@@ -132,4 +133,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用：以 n 作为矩阵规模，多次调用应得到确定性结果
     for size in [1, 2, 5, 10]:
-        print(size, main(size))
+        # print(size, main(size))
+        pass

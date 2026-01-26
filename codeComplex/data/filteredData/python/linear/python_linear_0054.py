@@ -41,14 +41,19 @@ def main(n):
     B = findSet(n + 1)
 
     if A != B:
-        print('YES')
+        # print('YES')
+        pass
         for i in range(1, n + 1):
             if findSet(i) == B:
-                print('1', end=" ")
-            else:
-                print('0', end=" ")
-    else:
-        print('NO')
+                # print('1', end=" ")
+                pass
 
+            else:
+                # print('0', end=" ")
+                pass
+
+    else:
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

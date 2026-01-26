@@ -60,8 +60,7 @@ def main(n):
         l = max(prefix_l, suffix_l)
         r = min(prefix_r, suffix_r)
         ans = max(ans, max(0, r - l))
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

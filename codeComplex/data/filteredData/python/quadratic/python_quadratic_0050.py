@@ -7,11 +7,11 @@ def main(n):
     for c in cmds:
         if c == "f":
             dp.insert(0, 0)
+
         else:
             for i in range(len(dp) - 2, -1, -1):
                 dp[i] = (dp[i] + dp[i + 1]) % MOD
-    print(dp[0])
-
-
+    # print(dp[0])
+    pass
 if __name__ == "__main__":
     main(10)

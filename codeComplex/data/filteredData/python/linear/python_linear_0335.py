@@ -21,11 +21,13 @@ def main(n):
     for i in range(len(d)):
         if i % 2 == 0:
             e.append(d[i] - current)
+
         else:
             e1.append(d[i] - current)
         current = d[i]
     if i % 2 == 0:
         e1.append(b - current)
+
     else:
         e.append(b - current)
     mx = sum(e)
@@ -38,8 +40,7 @@ def main(n):
             su2 -= e1[i]
         except:
             break
-    print(mx)
-
-
+    # print(mx)
+    pass
 if __name__ == "__main__":
     main(10)

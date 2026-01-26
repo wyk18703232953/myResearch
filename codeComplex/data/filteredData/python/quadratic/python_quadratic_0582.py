@@ -33,8 +33,7 @@ def main(n):
         res = solve_single(n_i, k_i, s_i)
         results.append(res)
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     main(5)

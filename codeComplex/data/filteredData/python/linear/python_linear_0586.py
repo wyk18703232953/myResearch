@@ -9,6 +9,7 @@ def build_queries(n):
         if i % 2 == 1:
             l = 1
             r = min(n, i)
+
         else:
             l = max(1, n - i + 1)
             r = n
@@ -35,6 +36,7 @@ def main(n):
     for ch in a:
         if ch == '0':
             r_zero += 1
+
         else:
             r_one += 1
         o.append(r_zero)
@@ -53,6 +55,7 @@ def main(n):
         os = m - zs
         if zs != 0:
             val = (((z[os] - 1) % mod) * (z[zs] % mod)) % mod
+
         else:
             val = (z[os] - 1) % mod
         out_lines.append(str(val))

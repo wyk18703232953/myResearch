@@ -10,9 +10,8 @@ def main(n):
             continue
         ans = min(ans, arr[i] // x)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的大小进行实验
     main(10)

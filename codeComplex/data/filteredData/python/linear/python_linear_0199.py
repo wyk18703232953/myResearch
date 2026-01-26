@@ -12,15 +12,16 @@ def main(n):
 
     # 以下为原算法逻辑
     if B > C:
-        print(n * A)
+        # print(n * A)
+        pass
+
     else:
         c = 0
         t.sort()
         for i in t:
             c += (T - i) * (C - B) + A
-        print(c)
-
-
+        # print(c)
+        pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10)

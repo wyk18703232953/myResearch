@@ -2,7 +2,8 @@ def main(n):
     # Generate deterministic strings s and t of length n over a small alphabet
     # so that the algorithm has non-trivial work but remains reproducible.
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     alphabet = ['a', 'b', 'c']
@@ -17,14 +18,19 @@ def main(n):
                 for k in range(j, i):
                     s[k], s[k + 1] = s[k + 1], s[k]
                     ans.append(str(k + 1))
-        print(len(ans))
+        # print(len(ans))
+        pass
+
         if ans:
-            print(' '.join(ans))
+            # print(' '.join(ans))
+            pass
+
         else:
-            print()
+            # print()
+            pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(10)

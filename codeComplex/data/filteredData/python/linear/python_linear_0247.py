@@ -94,7 +94,8 @@ def power_set(L):
     return powerset_orderred
 
 def fastPlrintNextLines(a):
-    print('\n'.join(map(str, a)))
+    # print('\n'.join(map(str, a)))
+    pass
 
 def sortByFirstAndSecond(A):
     A = sorted(A, key=lambda x: x[0])
@@ -103,11 +104,14 @@ def sortByFirstAndSecond(A):
 
 def solve_given(n, k):
     l = [['.' for _ in range(n)] for _ in range(4)]
-    print("YES")
+    # print("YES")
+    pass
+
     if k % 2 == 0:
         for i in range(1, k // 2 + 1):
             l[1][i] = '#'
             l[2][i] = '#'
+
     else:
         if k > n - 2:
             for i in range(1, n - 1):
@@ -128,15 +132,18 @@ def solve_given(n, k):
                 k -= 1
                 l[2][i] = '#'
     for row in l:
-        print(''.join(row))
+        # print(''.join(row))
+        pass
 
 def main(n):
     if n < 3:
         n_effective = 3
+
     else:
         n_effective = n
     if n_effective <= 10:
         k = n_effective
+
     else:
         k = n_effective * 2 // 3
     max_k = 2 * (n_effective - 2)

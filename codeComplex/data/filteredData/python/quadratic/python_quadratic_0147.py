@@ -10,7 +10,8 @@ def main(n):
                     c[k] += 1
     c.sort()
     result = c[0] + c[1] + 2 * n * n - c[2] - c[3]
-    print(result)
+    # print(result)
+    pass
     return result
 
 

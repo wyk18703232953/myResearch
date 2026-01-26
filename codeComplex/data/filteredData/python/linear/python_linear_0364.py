@@ -16,8 +16,7 @@ def main(n):
         if b[0] >= a[i]:
             ans += 1
             del b[0]
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

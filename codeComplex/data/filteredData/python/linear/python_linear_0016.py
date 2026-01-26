@@ -17,6 +17,7 @@ def solve(n, k):
             x += 1
     if x >= k:
         return "YES"
+
     else:
         return "NO"
 
@@ -28,8 +29,8 @@ def main(n):
     original_n = n
     original_k = max(1, n // 10)
     result = solve(original_n, original_k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以修改这里的 n 进行规模实验
     main(100)

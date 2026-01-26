@@ -1,7 +1,8 @@
 def main(n):
     # n 表示列表长度
     if n <= 1:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造一个确定性的长度为 n 的整数列表
@@ -16,8 +17,7 @@ def main(n):
         if a in l:  # 原代码假设一定存在 a，这里保持逻辑安全
             ans += l.index(a)
             l.remove(a)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

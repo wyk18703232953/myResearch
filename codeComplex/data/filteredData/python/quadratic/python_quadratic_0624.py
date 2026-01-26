@@ -11,9 +11,8 @@ def main(n):
                 f = 0
                 break
         ans += f
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example call; adjust n as needed for experiments
     main(10)

@@ -10,6 +10,7 @@ def generate_strings(n):
     for i in range(n):
         if i < split_point:
             second.append("A_" + str(i % (n // 2 + 1)))
+
         else:
             second.append("B_" + str(i % (n // 3 + 1)))
     return first, second
@@ -25,7 +26,7 @@ def main(n):
     ans = 0
     for key in b:
         ans += max(b[key] - a[key], 0)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

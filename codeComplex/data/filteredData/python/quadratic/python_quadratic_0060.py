@@ -19,9 +19,12 @@ def pro(arr, q):
         k = k % 2
         res = k ^ res
         if res:
-            print('odd')
+            # print('odd')
+            pass
+
         else:
-            print('even')
+            # print('even')
+            pass
 
 def main(n):
     if n <= 0:

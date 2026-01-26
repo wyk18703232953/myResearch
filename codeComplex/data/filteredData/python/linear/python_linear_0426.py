@@ -11,8 +11,7 @@ def main(n):
         a.append(sum(l))
     a.sort(reverse=True)
     # t 在构造中必定存在
-    print(a.index(t) + 1)
-
-
+    # print(a.index(t) + 1)
+    pass
 if __name__ == "__main__":
     main(10)

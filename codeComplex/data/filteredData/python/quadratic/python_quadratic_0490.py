@@ -49,8 +49,12 @@ if __name__ == "__main__":
     n = 10
     res = main(n)
     if not res:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
+        # print("YES")
+        pass
         for x in res:
-            print(x, end=" ")
+            # print(x, end=" ")
+            pass

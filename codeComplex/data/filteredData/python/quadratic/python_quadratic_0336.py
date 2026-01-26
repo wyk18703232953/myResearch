@@ -10,7 +10,8 @@ def main(n):
     k = max(1, (n // 2) % (N + 2))
 
     if d + 1 > N:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     ans = []
@@ -19,6 +20,7 @@ def main(n):
     for i in range(d + 1):
         if i == 0 or i == d:
             deg[i] = 1
+
         else:
             deg[i] = 2
         if i != d:
@@ -27,7 +29,8 @@ def main(n):
 
     for i in range(N):
         if deg[i] > k:
-            print('NO')
+            # print('NO')
+            pass
             return
 
     from collections import deque
@@ -43,16 +46,19 @@ def main(n):
             q.append(v)
             q.append(cur)
             cur += 1
+
         else:
             continue
     if cur != N:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
         for i in range(len(ans)):
-            print(*ans[i])
-
-
+            # print(*ans[i])
+            pass
 if __name__ == "__main__":
     # 示例：使用一个固定 n 调用，保证可重复实验
     main(10)

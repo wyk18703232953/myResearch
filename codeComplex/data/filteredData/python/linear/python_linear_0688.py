@@ -28,6 +28,7 @@ def main(n):
         mid = (r + l) // 2
         if clc(mid, n) > s:
             l = mid
+
         else:
             r = mid
 
@@ -54,6 +55,7 @@ def main(n):
             s -= mx - x[ip]
             x[ip] = mx
             dp[mx] = ip
+
         else:
             y[ip] = dp[s + x[ip] - 1]
             s = 0
@@ -61,7 +63,8 @@ def main(n):
 
     i = 2
     while i < n + 1:
-        print(y[i])
+        # print(y[i])
+        pass
         i = i + 1
 
 if __name__ == "__main__":

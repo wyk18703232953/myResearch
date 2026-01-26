@@ -1,8 +1,10 @@
 def main(n):
     # n 作为字符串长度规模参数
     if n <= 0:
-        print(0)
-        print(-1, -1)
+        # print(0)
+        pass
+        # print(-1, -1)
+        pass
         return
 
     # 生成两个确定性的字符串 a 和 b，长度为 n
@@ -44,10 +46,10 @@ def main(n):
                 q = True
                 break
 
-    print(ham - (2 if q else 1 if p else 0))
-    print(swap1, swap2)
-
-
+    # print(ham - (2 if q else 1 if p else 0))
+    pass
+    # print(swap1, swap2)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为规模参数运行
     main(10)

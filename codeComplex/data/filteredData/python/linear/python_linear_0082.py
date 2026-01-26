@@ -29,11 +29,13 @@ def main(n):
         ix = bisect_left(pos, pos[i] - power[i]) - 1
         if ix == -1:
             mem.append(1)
+
         else:
             mem.append(mem[ix] + 1)
 
     result = n - max(mem)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic generation of a and b based on n
@@ -25,8 +26,7 @@ def main(n):
         if a[idx] != b[idx]:
             count += 1
 
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     main(10)

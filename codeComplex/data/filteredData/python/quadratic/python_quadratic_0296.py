@@ -1,7 +1,8 @@
 def main(n):
     # n 表示数组长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性构造：让每个元素恰好出现两次，方便触发 index/remove 逻辑
@@ -16,9 +17,8 @@ def main(n):
         ans += arr.index(e)
         arr.remove(e)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n
     main(10)

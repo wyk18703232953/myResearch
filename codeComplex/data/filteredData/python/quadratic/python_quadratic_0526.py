@@ -17,6 +17,7 @@ def main(n):
             if (i * 131 + j * 17) % 5 < 2:
                 row_chars.append('#')
                 row_vals.append(1)
+
             else:
                 row_chars.append('.')
                 row_vals.append(0)
@@ -48,10 +49,11 @@ def main(n):
             break
 
     if mb:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

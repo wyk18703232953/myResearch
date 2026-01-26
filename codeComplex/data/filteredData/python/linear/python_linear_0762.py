@@ -21,6 +21,7 @@ def main(n):
         if x < a[i]:
             L.append(x)
             x = a[i]
+
         else:
             L.append(a[i])
 
@@ -38,12 +39,13 @@ def main(n):
     for m in queries:
         # In the original code m is read from input each time and used directly
         if m <= i:
-            print(str(L1[m - 1]) + " " + str(L2[m - 1]))
+            # print(str(L1[m - 1]) + " " + str(L2[m - 1]))
+            pass
+
         else:
             # Guard for n-1 > 0 (always true since n >= 2)
-            print(str(x) + " " + str(b[(m - i - 1) % (n - 1)]))
-
-
+            # print(str(x) + " " + str(b[(m - i - 1) % (n - 1)]))
+            pass
 if __name__ == "__main__":
     # Example deterministic run
     main(10)

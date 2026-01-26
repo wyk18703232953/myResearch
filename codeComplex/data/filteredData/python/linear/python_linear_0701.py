@@ -1,7 +1,8 @@
 def main(n):
     # 生成确定性参数 n_in, v 基于规模 n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     n_in = n
@@ -16,9 +17,8 @@ def main(n):
             x += add
         x -= 1
 
-    print(c)
-
-
+    # print(c)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为规模
     main(10)

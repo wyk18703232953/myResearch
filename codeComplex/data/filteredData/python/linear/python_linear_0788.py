@@ -21,41 +21,49 @@ def main(n):
         for c in C_local:
             if c == "0":
                 ANS_zero += 1
+
             else:
                 break
 
         for c in C_local[::-1]:
             if c == "0":
                 ANS_zero += 1
+
             else:
                 break
 
         for c in C_local:
             if c == "1":
                 ANS_one += 1
+
             else:
                 break
 
         for c in C_local[::-1]:
             if c == "1":
                 ANS_one += 1
+
             else:
                 break
 
         if ANS_zero >= n - k or ANS_one >= n - k:
             return 1
+
         else:
             return 0
 
     if JUDGE(C) == 1:
-        print("tokitsukaze")
+        # print("tokitsukaze")
+        pass
         return
 
     if k >= n - 1:
-        print("quailty")
+        # print("quailty")
+        pass
         return
     if k < n / 2:
-        print("once again")
+        # print("once again")
+        pass
         return
 
     CAN1 = copy.copy(C)
@@ -64,6 +72,7 @@ def main(n):
     if C[0] == "0":
         for i in range(1, k + 1):
             CAN1[i] = "1"
+
     else:
         for i in range(1, k + 1):
             CAN1[i] = "0"
@@ -71,16 +80,18 @@ def main(n):
     if C[-1] == "0":
         for i in range(n - 1, n - k - 1, -1):
             CAN2[i] = "1"
+
     else:
         for i in range(n - 2, n - k - 2, -1):
             CAN2[i] = "0"
 
     if JUDGE(CAN1) == 1 and JUDGE(CAN2) == 1:
-        print("quailty")
+        # print("quailty")
+        pass
+
     else:
-        print("once again")
-
-
+        # print("once again")
+        pass
 if __name__ == "__main__":
     # Example call for time-complexity experiments
     main(10)

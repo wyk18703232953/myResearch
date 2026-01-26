@@ -42,4 +42,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic call; change n to scale input size for experiments
     result = main(20)
-    print(result)
+    # print(result)
+    pass

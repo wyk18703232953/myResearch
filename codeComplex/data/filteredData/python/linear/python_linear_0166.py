@@ -69,14 +69,20 @@ def lcm(a, b):
 
 def main(n):
     if n < 6:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         for i in range(2, n - 2 + 1):
-            print(1, i)
-        print(2, n - 1)
-        print(2, n)
+            # print(1, i)
+            pass
+        # print(2, n - 1)
+        pass
+        # print(2, n)
+        pass
     for i in range(1, n):
-        print(i, i + 1)
+        # print(i, i + 1)
+        pass
     return
 
 

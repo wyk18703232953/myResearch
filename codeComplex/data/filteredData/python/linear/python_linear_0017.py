@@ -17,7 +17,8 @@ def sieve(n):
 
 def main(n):
     if n < 3:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # 确定性生成 k，规模与 n 成比例
@@ -39,10 +40,12 @@ def main(n):
             res += 1
 
     if res >= k:
-        print("YES")
-    else:
-        print("NO")
+        # print("YES")
+        pass
 
+    else:
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 以进行规模实验
     main(1000)

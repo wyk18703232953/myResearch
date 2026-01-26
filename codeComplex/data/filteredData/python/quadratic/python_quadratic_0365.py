@@ -13,6 +13,7 @@ def main(n):
         for j in range(cols):
             if (i * 31 + j * 17) % 7 != 0:
                 row.append("*")
+
             else:
                 row.append(".")
         c.append(row)
@@ -53,10 +54,12 @@ def main(n):
             if c[i][j] == "*":
                 if i > 0:
                     dpu[i][j] += dpu[i - 1][j] + 1
+
                 else:
                     dpu[i][j] = 1
                 if j > 0:
                     dpl[i][j] = dpl[i][j - 1] + 1
+
                 else:
                     dpl[i][j] = 1
 
@@ -67,10 +70,12 @@ def main(n):
             if c[i][j] == "*":
                 if i < (n_local - 1):
                     dpd[i][j] += dpd[i + 1][j] + 1
+
                 else:
                     dpd[i][j] = 1
                 if j < (m_local - 1):
                     dpr[i][j] = dpr[i][j + 1] + 1
+
                 else:
                     dpr[i][j] = 1
             j += -1
@@ -111,12 +116,14 @@ def main(n):
             break
 
     if f == 1:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(len(a))
+        # print(len(a))
+        pass
         for j in a:
-            print(*j)
-
-
+            # print(*j)
+            pass
 if __name__ == "__main__":
     main(5)

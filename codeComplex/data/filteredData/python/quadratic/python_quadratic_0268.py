@@ -13,8 +13,7 @@ def main(n):
             if y[i] == x[j]:
                 l.append(j)
     result = ' '.join(map(str, [x[i] for i in sorted(l)]))
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

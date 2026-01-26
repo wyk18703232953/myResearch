@@ -33,12 +33,12 @@ def main(n):
             cons[1] = cons[2]
             if t[i][j] > 0:
                 cons[2] = 1
+
             else:
                 cons[2] = 0
             max_cons = max(sum(cons), max_cons)
             max_mult = max(max_mult, t[i][j])
-    print(3 - max(max_cons, max_mult))
-
-
+    # print(3 - max(max_cons, max_mult))
+    pass
 if __name__ == "__main__":
     main(20)

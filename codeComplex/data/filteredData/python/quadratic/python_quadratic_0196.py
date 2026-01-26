@@ -33,6 +33,7 @@ def main(n):
     for i in range(1, n):
         if len(a[-1]) <= 1:
             a.append([])
+
         else:
             a.append(list(map(xor, a[-1][:-1], a[-1][1:])))
 
@@ -42,6 +43,7 @@ def main(n):
             break
         if len(a[i]) <= 1:
             a[i + 1] = []
+
         else:
             a[i + 1] = list(map(max, a[i][:-1], a[i][1:], a[i + 1]))
 
@@ -63,13 +65,13 @@ def main(n):
         row = a[k]
         if l - 1 < 0 or l - 1 >= len(row):
             out.append(0)
+
         else:
             out.append(row[l - 1])
 
     for v in out:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 5 运行一次
     main(5)

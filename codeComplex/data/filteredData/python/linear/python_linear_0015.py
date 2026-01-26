@@ -5,6 +5,7 @@ def main(n):
     # 约束：原程序中质数枚举从 2 到 n-1，所以 n 至少为 3
     if n < 3:
         n_val = 3
+
     else:
         n_val = n
     # 让 k 随规模线性变化但保持确定性
@@ -19,6 +20,7 @@ def main(n):
             if j % i == 0:
                 p = 1
                 break
+
             else:
                 pass
         if p == 0:
@@ -31,11 +33,12 @@ def main(n):
             c += 1
 
     if c >= k_val:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改不同的 n 进行实验
     main(10)

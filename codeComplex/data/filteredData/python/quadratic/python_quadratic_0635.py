@@ -20,8 +20,8 @@ def main(n):
     a = [2 * i + 1 for i in range(n)]
     solver = APaintTheNumbers()
     result = solver.solve(n, a)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用，使用一个固定的 n 值
     main(10)

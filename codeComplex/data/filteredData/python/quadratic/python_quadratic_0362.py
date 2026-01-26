@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as both number of rows and columns
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministic generation of an n x n grid of '*' and '.'
@@ -25,6 +26,7 @@ def main(n):
                     v += 1
                     if e[i] > v:
                         e[i] = v
+
                 else:
                     v = e[i] = 0
         if f:
@@ -39,6 +41,7 @@ def main(n):
             for i in r:
                 if v > e[i]:
                     v -= 1
+
                 else:
                     v = e[i]
                 if v:
@@ -48,15 +51,16 @@ def main(n):
             e.reverse()
 
     if any(w):
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         r = []
         for i, c in enumerate(e):
             if c:
                 r.append(f'{i // m + 1} {i % m + 1} {c - 1}')
-        print(len(r), '\n'.join(r), sep='\n')
-
-
+        # print(len(r), '\n'.join(r), sep='\n')
+        pass
 if __name__ == "__main__":
     # Example call for time-complexity experiments; adjust n as needed
     main(5)

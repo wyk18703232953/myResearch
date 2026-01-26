@@ -24,7 +24,9 @@ def main(n):
             ans += max(0, d[k] - dvx[(k, vx)])
             d[k] += 1
             dvx[(k, vx)] += 1
-        print(ans * 2)
+        # print(ans * 2)
+        pass
+
     else:
         ans = 0
         d = defaultdict(lambda: defaultdict(lambda: 0))
@@ -33,8 +35,7 @@ def main(n):
             ans += max(0, ds[vy] - d[vy][vx])
             d[vy][vx] += 1
             ds[vy] += 1
-        print(ans * 2)
-
-
+        # print(ans * 2)
+        pass
 if __name__ == "__main__":
     main(1000)

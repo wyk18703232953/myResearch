@@ -17,6 +17,7 @@ def main(n):
         N = 1
         M = 1
         K = 1
+
     else:
         N = n
         M = max(1, n // 2)
@@ -28,6 +29,7 @@ def main(n):
         # If requested length is >= N, just use 1..N
         A = list(range(1, N + 1))
         M = N
+
     else:
         # Spread M values in 1..N deterministically
         step = max(1, N // (M + 1))
@@ -54,6 +56,7 @@ def main(n):
         if a - NOW - 1 != 0:
             if a - NOW - 1 > 2 * k:
                 COMP.append([(a - NOW - 1) % k + k, 0])
+
             else:
                 COMP.append([a - NOW - 1, 0])
         COMP.append([1, 1])
@@ -94,9 +97,8 @@ def main(n):
     if NOW_SCORE > 0:
         ANS += 1
 
-    print(ANS)
-
-
+    # print(ANS)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n to vary input scale.
     main(100)

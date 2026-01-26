@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # 构造确定性输入数据 a, b，长度均为 n
@@ -23,8 +24,7 @@ def main(n):
         dp[i] = v
 
     ans = min(dp)
-    print(ans if ans != float('inf') else -1)
-
-
+    # print(ans if ans != float('inf') else -1)
+    pass
 if __name__ == "__main__":
     main(10)

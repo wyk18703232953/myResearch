@@ -42,7 +42,8 @@ def main(n):
         cur_indent = 0
 
     result = sum(dp) % mod
-    print(result)
+    # print(result)
+    pass
     return result
 
 

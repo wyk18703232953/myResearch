@@ -22,6 +22,7 @@ def main(n):
         for j in range(size):
             if start_row <= i < start_row + side and start_col <= j < start_col + side:
                 row_chars.append('B')
+
             else:
                 row_chars.append('W')
         matrix.append(''.join(row_chars))
@@ -46,8 +47,7 @@ def main(n):
             bottom[1] = right
             break
 
-    print(1 + top[0] + (bottom[0] - top[0]) // 2, 1 + top[1] + (bottom[1] - top[1]) // 2)
-
-
+    # print(1 + top[0] + (bottom[0] - top[0]) // 2, 1 + top[1] + (bottom[1] - top[1]) // 2)
+    pass
 if __name__ == "__main__":
     main(10)

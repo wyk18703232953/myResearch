@@ -28,18 +28,23 @@ def main(n):
     moves = total - final
 
     if len(repeated) > 1:
-        print('cslnb')
+        # print('cslnb')
+        pass
     elif 0 in repeated:
-        print('cslnb')
+        # print('cslnb')
+        pass
     elif len(repeated) == 1 and repeated[0] - 1 in a:
-        print('cslnb')
+        # print('cslnb')
+        pass
+
     else:
         if moves % 2 == 0 or moves <= 0:
-            print('cslnb')
+            # print('cslnb')
+            pass
+
         else:
-            print('sjfnb')
-
-
+            # print('sjfnb')
+            pass
 if __name__ == "__main__":
     # Example deterministic calls for different scales
     main(1)

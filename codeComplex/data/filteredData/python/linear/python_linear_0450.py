@@ -117,7 +117,8 @@ def power_set(L):
 
 
 def fastPlrintNextLines(a):
-    print('\n'.join(map(str, a)))
+    # print('\n'.join(map(str, a)))
+    pass
 
 
 def sortByFirstAndSecond(A):
@@ -129,9 +130,12 @@ def sortByFirstAndSecond(A):
 def solve_single_case(n, m, s, t):
     if '*' not in s:
         if s == t:
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
         return
     i = s.index('*')
     if s[:i] == t[:i]:
@@ -141,11 +145,16 @@ def solve_single_case(n, m, s, t):
         t_rev = t_suffix[::-1]
         i2 = s_rev.index('*')
         if len(t_rev) >= i2 and s_rev[:i2] == t_rev[:i2]:
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
+
     else:
-        print("NO")
+        # print("NO")
+        pass
 
 
 def generate_case(n):
@@ -166,6 +175,7 @@ def generate_case(n):
     for i in range(length):
         if i == star_pos:
             s_chars.append('*')
+
         else:
             # deterministic letter based on i and length
             idx = (i * 7 + length) % len(base_chars)
@@ -185,6 +195,7 @@ def generate_case(n):
             extra_idx = (length * 5 + n) % len(base_chars)
             t += base_chars[extra_idx]
         t = t[:length]
+
     else:
         # Force mismatch in prefix
         t_chars = []

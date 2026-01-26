@@ -29,8 +29,7 @@ def main(n):
             odd ^= 1
         ans.append("odd" if odd else "even")
 
-    print("\n".join(ans))
-
-
+    # print("\n".join(ans))
+    pass
 if __name__ == "__main__":
     main(10)

@@ -24,7 +24,8 @@ def main(n):
     # Behavior equivalent to original solve()
     if k % 2 or max(n, m) == 1:
         for _ in range(n):
-            print(*([-1] * m))
+            # print(*([-1] * m))
+            pass
         return
 
     half = k // 2
@@ -43,9 +44,8 @@ def main(n):
         row_out = []
         for j in range(m):
             row_out.append(dp[i][j][half] * 2)
-        print(*row_out)
-
-
+        # print(*row_out)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; change the argument to scale input size
     main(10)

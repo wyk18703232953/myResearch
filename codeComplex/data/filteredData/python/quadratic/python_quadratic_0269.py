@@ -14,6 +14,7 @@ def generate_data(n):
     for i in range(n):
         if i % 2 == 0:
             y.append(x[i])
+
         else:
             y.append(i * 2 + 1)
     m = len(y)
@@ -30,7 +31,8 @@ def core_logic():
     for i in l:
         output.append(str(x[i]))
     if output:
-        print(" ".join(output))
+        # print(" ".join(output))
+        pass
 
 
 def main(n):

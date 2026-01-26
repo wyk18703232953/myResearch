@@ -2,7 +2,8 @@ import sys
 
 def main(n):
     if n <= 1:
-        print("No")
+        # print("No")
+        pass
         return
 
     # 构造一棵确定性的树，结构为“星形 + 一条链”
@@ -55,19 +56,23 @@ def main(n):
                 if visited[child - 1] != 1:
                     c = child
                     break
+
             else:
                 # 没有未访问的 child，可防止死循环
                 break
 
     if sum(visited) == n:
-        print("Yes")
-        print(len(ans))
+        # print("Yes")
+        pass
+        # print(len(ans))
+        pass
         for c in ans:
-            print(*c)
+            # print(*c)
+            pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

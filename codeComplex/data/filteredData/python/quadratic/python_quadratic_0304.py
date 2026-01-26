@@ -20,7 +20,8 @@ def main(n):
     for i in range(n):
         ans += r[i] - l[i] - 1
     result = ans // 2
-    print(result)
+    # print(result)
+    pass
     return result
 
 

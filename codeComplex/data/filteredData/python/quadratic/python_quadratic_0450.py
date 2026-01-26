@@ -24,9 +24,8 @@ def main(n):
         f[i] = win_flag
 
     result = ''.join(['A' if f[a_i] else 'B' for a_i in a])
-    print(result, flush=True)
-
-
+    # print(result, flush=True)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for experiment
     main(10)

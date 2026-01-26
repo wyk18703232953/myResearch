@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     # 生成确定性的数字串，长度为 n，循环使用 1..9
     num_list = [((i % 9) + 1) for i in range(n)]
@@ -29,8 +30,7 @@ def main(n):
         ans += f[c]
         if ans >= myMod:
             ans -= myMod
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -11,8 +11,7 @@ def main(n):
     for i in range(len(a)):
         li.append(a[:i + 1] + b[0])
     li.sort()
-    print(li[0])
-
-
+    # print(li[0])
+    pass
 if __name__ == "__main__":
     main(10)

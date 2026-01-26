@@ -34,11 +34,12 @@ def core_logic(s, n):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     s = generate_grids(n)
     res = core_logic(s, n)
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(5)

@@ -20,20 +20,21 @@ def main(n):
             if k == False:
                 result += 1
             k = True
+
         else:
             if k == False and z != a[i]:
                 result += 1
                 k = True
             elif k == False and z == a[i]:
                 result += 1
+
             else:
                 k = False
                 z = a[i]
     if k == False:
         result += 1
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=10 进行一次确定性运行
     main(10)

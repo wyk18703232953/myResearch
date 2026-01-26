@@ -7,12 +7,12 @@ def main(n):
     for ch in s:
         if ch == '+':
             b += 1
+
         else:
             b -= 1
             b = max(b, 0)
-    print(b)
-
-
+    # print(b)
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行调用
     main(10)

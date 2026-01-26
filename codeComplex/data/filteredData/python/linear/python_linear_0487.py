@@ -124,7 +124,7 @@ def main(n):
         y = inte(a[0], a[1], b[0], b[1])
         if y[1] >= y[0]:
             ans = max(ans, y[1] - y[0])
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

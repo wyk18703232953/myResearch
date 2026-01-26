@@ -26,10 +26,10 @@ def main(n):
         while delta[ans] < i:
             ans += 1
         out.append(str(ans))
-    print(" ".join(out))
-    print()
-
-
+    # print(" ".join(out))
+    pass
+    # print()
+    pass
 if __name__ == "__main__":
     # 示例：使用一个固定的 n 进行调用
     main(10)

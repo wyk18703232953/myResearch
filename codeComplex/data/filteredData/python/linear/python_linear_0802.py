@@ -19,9 +19,8 @@ def main(n):
             i += 1
         num += (i - temp2)
         ans += 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以按需修改 n
     main(1000)

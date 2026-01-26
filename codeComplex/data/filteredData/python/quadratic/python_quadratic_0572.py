@@ -10,6 +10,7 @@ def main(n):
     if n % 2 == 1:
         rows = n
         cols = n
+
     else:
         rows = n // 2
         cols = n * 2
@@ -24,21 +25,29 @@ def main(n):
         if x1 == x2:
             for j in range(total_cols // 2 + total_cols % 2):
                 if j + 1 == total_cols - j:
-                    print(f"{x1} {j + 1}")
+                    # print(f"{x1} {j + 1}")
+                    pass
+
                 else:
-                    print(f"{x1} {j + 1}")
-                    print(f"{x2} {total_cols - j}")
+                    # print(f"{x1} {j + 1}")
+                    pass
+                    # print(f"{x2} {total_cols - j}")
+                    pass
+
         else:
             if i % 2 == 0:
                 for j in range(total_cols):
-                    print(f"{x1} {j + 1}")
-                    print(f"{x2} {total_cols - j}")
+                    # print(f"{x1} {j + 1}")
+                    pass
+                    # print(f"{x2} {total_cols - j}")
+                    pass
+
             else:
                 for j in range(total_cols):
-                    print(f"{x1} {total_cols - j}")
-                    print(f"{x2} {j + 1}")
-
-
+                    # print(f"{x1} {total_cols - j}")
+                    pass
+                    # print(f"{x2} {j + 1}")
+                    pass
 if __name__ == "__main__":
     # 示例：使用一个固定的规模参数进行调用
     main(10)

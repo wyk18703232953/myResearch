@@ -17,13 +17,13 @@ def main(n):
         for j in range(i, n):
             if j % m == i:
                 NOW = max(NOW + B[j], B[j])
+
             else:
                 NOW += B[j]
 
             ANS = max(ANS, NOW)
 
-    print(ANS)
-
-
+    # print(ANS)
+    pass
 if __name__ == "__main__":
     main(10)

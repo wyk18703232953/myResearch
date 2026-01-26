@@ -1,7 +1,8 @@
 def main(n):
     # n: input size, interpreted as length of arrays s and c
     if n < 3:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministically generate s and c of length n
@@ -22,9 +23,8 @@ def main(n):
         if candidate < ans:
             ans = candidate
 
-    print(ans if ans != float('inf') else -1)
-
-
+    # print(ans if ans != float('inf') else -1)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n here for experiments
     main(10)

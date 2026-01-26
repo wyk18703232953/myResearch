@@ -7,6 +7,7 @@ def main(n):
         # For too small n, just pick minimal valid parameters
         d = 1
         k = 2
+
     else:
         d = n // 3
         if d >= n:
@@ -18,7 +19,8 @@ def main(n):
     from collections import deque
 
     if d >= n:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     graph = [[] for _ in range(n + 1)]
@@ -38,7 +40,8 @@ def main(n):
 
     for x in deg:
         if x > k:
-            print("NO")
+            # print("NO")
+            pass
             return
 
     p = d + 2
@@ -57,9 +60,12 @@ def main(n):
                 p += 1
 
     if p <= n:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
+        # print("YES")
+        pass
         vis = [-1] * (n + 1)
 
         for i in range(1, d + 2):
@@ -71,7 +77,8 @@ def main(n):
                     vis[x] = 1
                     for j in range(1, len(graph[x])):
                         if vis[graph[x][j]] == -1:
-                            print(x, graph[x][j])
+                            # print(x, graph[x][j])
+                            pass
                             q.append(graph[x][j])
 
 

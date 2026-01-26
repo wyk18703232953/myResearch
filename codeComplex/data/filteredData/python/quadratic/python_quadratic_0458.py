@@ -30,12 +30,12 @@ def main(n):
     for i in status:
         if i is True:
             result = result + "A"
+
         else:
             result = result + "B"
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例：对不同规模进行调用
     for size in (5, 10, 20):

@@ -30,6 +30,7 @@ def solve(n, q, s, queries):
     for x, y in queries:
         if x == 1:
             total1 = arr[y - 1]
+
         else:
             total1 = arr[y - 1] - arr[x - 2]
         total0 = (y - x + 1 - total1)

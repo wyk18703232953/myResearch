@@ -2,7 +2,8 @@ def main(n):
     # n: number of distinct items
     # define m as a scalable function of n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = 3 * n  # total events, linear in n
@@ -20,8 +21,7 @@ def main(n):
             for j in range(n):
                 tL[j] = tL[j] - 1
 
-    print(score)
-
-
+    # print(score)
+    pass
 if __name__ == "__main__":
     main(5)

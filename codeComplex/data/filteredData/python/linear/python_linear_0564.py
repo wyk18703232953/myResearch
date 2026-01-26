@@ -3,7 +3,8 @@ def main(n):
     if n <= 0:
         return
     if n == 1:
-        print(1)
+        # print(1)
+        pass
         return
 
     # Deterministically generate a tree with n nodes.
@@ -52,9 +53,8 @@ def main(n):
         while colors[j] < i:
             j += 1
         ans += str(j) + " "
-    print(ans.strip())
-
-
+    # print(ans.strip())
+    pass
 if __name__ == "__main__":
     # Example deterministic calls for experimentation
     main(1)

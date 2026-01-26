@@ -6,13 +6,16 @@ def main(n):
     a = [(i % 3) + 1 for i in range(n)]
 
     if sum(a) < (2 * n) - 2:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
         one = []
         rst = []
         for i in range(0, n):
             if a[i] > 1:
                 rst.append(i)
+
             else:
                 one.append(i)
         ans = []
@@ -32,11 +35,12 @@ def main(n):
                     ans.append((rst[i], one[0]))
                     break
         siz = min(len(one) + len(rst), 2 + len(rst)) - 1
-        print("YES", siz)
-        print(len(ans))
+        # print("YES", siz)
+        pass
+        # print(len(ans))
+        pass
         for u, v in ans:
-            print(u + 1, v + 1)
-
-
+            # print(u + 1, v + 1)
+            pass
 if __name__ == "__main__":
     main(10)

@@ -25,7 +25,8 @@ def main(n):
         return ""
     l, m = build_tree_parents(n)
     result = if_Spruce(n, l, m)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

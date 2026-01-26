@@ -6,6 +6,7 @@ def main(n):
     # 构造长度为 n 的字符串 c：循环使用字母表前 a 个字母
     if n <= 0:
         c = ""
+
     else:
         c = "".join(lis[i % a] for i in range(n))
 
@@ -20,11 +21,12 @@ def main(n):
             j = i
         i += 1
     if cnt < b:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(su)
-
-
+        # print(su)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 100 作为规模参数
     main(100)

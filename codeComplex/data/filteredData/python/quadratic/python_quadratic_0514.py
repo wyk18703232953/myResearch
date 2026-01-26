@@ -13,6 +13,7 @@ def main(n):
         for j in range(cols):
             if (i + j) % 2 == 0:
                 row_chars.append('#')
+
             else:
                 row_chars.append('.')
         s.append(''.join(row_chars))
@@ -42,6 +43,7 @@ def main(n):
         for x, y in ps:
             if x >= 0 and x < rows and y >= 0 and y < cols and s[x][y] == '#':
                 continue
+
             else:
                 return False
         return True
@@ -63,11 +65,12 @@ def main(n):
             if s[i][j] == '#' and mapp[i][j] is False:
                 if check(i, j):
                     continue
+
                 else:
-                    print('NO')
+                    # print('NO')
+                    pass
                     return
-    print('YES')
-
-
+    # print('YES')
+    pass
 if __name__ == "__main__":
     main(5)

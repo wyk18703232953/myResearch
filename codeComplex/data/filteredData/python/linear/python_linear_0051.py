@@ -16,6 +16,7 @@ def generate_input(n):
     size_needed = max(100002, n + 5)
     if len(parent) < size_needed:
         parent = [i for i in range(size_needed)]
+
     else:
         for i in range(size_needed):
             parent[i] = i
@@ -24,6 +25,7 @@ def generate_input(n):
     # n 为规模参数本身
     if n <= 0:
         n_val = 1
+
     else:
         n_val = n
 
@@ -42,10 +44,12 @@ def core_logic(n, a, b, lst):
     for i in range(n):
         if a - lst[i] in temp:
             unionSet(i, temp[a - lst[i]])
+
         else:
             unionSet(i, n)
         if b - lst[i] in temp:
             unionSet(i, temp[b - lst[i]])
+
         else:
             unionSet(i, n + 1)
 
@@ -53,6 +57,7 @@ def core_logic(n, a, b, lst):
     pb = findSet(n + 1)
     if pa == pb:
         return "NO", []
+
     else:
         res = [0 if findSet(i) == pb else 1 for i in range(n)]
         return "YES", res
@@ -60,10 +65,12 @@ def core_logic(n, a, b, lst):
 def main(n):
     n_val, a, b, lst = generate_input(n)
     result, assignment = core_logic(n_val, a, b, lst)
-    print(result)
-    if result == "YES":
-        print(*assignment)
+    # print(result)
+    pass
 
+    if result == "YES":
+        # print(*assignment)
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

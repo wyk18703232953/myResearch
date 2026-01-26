@@ -36,4 +36,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用
     for test_n in [1, 5, 10, 100]:
-        print(test_n, main(test_n))
+        # print(test_n, main(test_n))
+        pass

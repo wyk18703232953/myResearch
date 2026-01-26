@@ -5,7 +5,8 @@ def main(n):
 
     # Handle the early-exit condition from original code
     if s == 0 or l == 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # Deterministically generate s rows, each a list of l digits (0 or 1)
@@ -32,15 +33,16 @@ def main(n):
         for x in range(l):
             if utp[x] - sig[i][x] <= 0:
                 break
+
             else:
                 res1 += 1
         if res1 == l:
-            print("YES")
+            # print("YES")
+            pass
             return
 
-    print("NO")
-
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     main(5)

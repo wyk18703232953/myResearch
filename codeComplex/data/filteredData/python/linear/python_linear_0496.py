@@ -19,6 +19,7 @@ def main(n):
             if arr[i + 2] < arr[i + 1]:
                 pal = 5
                 arr_pal.append(pal)
+
             else:
                 pal += 1
                 arr_pal.append(pal)
@@ -29,9 +30,11 @@ def main(n):
             if arr[i + 2] > arr[i + 1]:
                 pal = 1
                 arr_pal.append(pal)
+
             else:
                 pal -= 1
                 arr_pal.append(pal)
+
         else:
             if arr[i + 2] > arr[i + 1]:
                 pal = 2 if pal == 1 else 1
@@ -39,6 +42,7 @@ def main(n):
             elif arr[i + 2] < arr[i + 1]:
                 pal = 4 if pal == 5 else 5
                 arr_pal.append(pal)
+
             else:
                 pal = 4 if pal < 4 else 3
                 arr_pal.append(pal)
@@ -46,25 +50,29 @@ def main(n):
     if arr[-2] < arr[-1]:
         if pal == 5:
             b = False
+
         else:
             pal += 1
             arr_pal.append(pal)
     elif arr[-2] > arr[-1]:
         if pal == 1:
             b = False
+
         else:
             pal -= 1
             arr_pal.append(pal)
+
     else:
         pal = 3 if pal == 5 else 5
         arr_pal.append(pal)
 
     if b:
-        print(*arr_pal)
+        # print(*arr_pal)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different scales
     main(10)

@@ -8,6 +8,7 @@ def main(n):
     # Ensure positive n for meaningful behavior
     if n <= 0:
         n_local = 1
+
     else:
         n_local = n
     # Use a fixed prime-based modulus function of n for determinism
@@ -27,7 +28,8 @@ def main(n):
     ans = 0
     for i in range((n_local + 1) // 2):
         ans = (ans + f(n_local - i, i + 1)) % mod
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

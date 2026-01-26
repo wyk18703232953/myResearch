@@ -19,10 +19,10 @@ def main(n):
             last = idx[i].pop()
             arr[last] += (j - i) % m
             idx[j % m].append(last)
-    print(sum(arr) - s)
-    print(*arr)
-
-
+    # print(sum(arr) - s)
+    pass
+    # print(*arr)
+    pass
 if __name__ == "__main__":
     # Example: run main with a chosen input scale
     main(10)

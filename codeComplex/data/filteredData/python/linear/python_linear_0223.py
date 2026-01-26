@@ -11,6 +11,7 @@ def main(n):
 
     if n == 1:
         ans = s[0]
+
     else:
         count = 0
         for i in range(0, n):
@@ -20,9 +21,8 @@ def main(n):
         for i in range(0, count):
             ans = ans + '0'
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以修改这里的 n 来进行规模实验
     main(10)

@@ -15,7 +15,8 @@ INF = 99999999999999999999999999999999
 
 def main(n):
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
     mod = 1000000007
 
@@ -42,10 +43,11 @@ def main(n):
             if cur < ans:
                 ans = cur
         if ans == INF:
-            print(-1)
+            # print(-1)
+            pass
+
         else:
-            print(ans)
-
-
+            # print(ans)
+            pass
 if __name__ == "__main__":
     main(10)

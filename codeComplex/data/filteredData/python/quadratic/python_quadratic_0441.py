@@ -3,6 +3,7 @@ def main(n):
     # generate a deterministic digit string of length n
     if n <= 0:
         a = ""
+
     else:
         # cycle digits 1..9 then 0 to avoid all-zero except when n == 0
         digits = "1234567890"
@@ -51,8 +52,7 @@ def main(n):
                 ans = "YES"
         s += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

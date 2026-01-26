@@ -34,8 +34,7 @@ def main(n):
         results.append(dp[l][r])
 
     for res in results:
-        print(res)
-
-
+        # print(res)
+        pass
 if __name__ == "__main__":
     main(5)

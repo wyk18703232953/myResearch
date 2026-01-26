@@ -18,4 +18,5 @@ def main(n):
 
 
 if __name__ == "__main__":
-    print(main(5))
+    # print(main(5))
+    pass

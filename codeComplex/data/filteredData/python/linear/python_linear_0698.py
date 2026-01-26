@@ -8,11 +8,11 @@ def main(n):
         res += i * miss
         fuel += miss - 1
         if v - fuel == 0:
-            print(res)
+            # print(res)
+            pass
             return
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的规模
     main(10)

@@ -43,8 +43,7 @@ def main(n):
     out = []
     for lo, hi in queries:
         out.append(str(dp[hi - lo][lo - 1]))
-    print("\n".join(out))
-
-
+    # print("\n".join(out))
+    pass
 if __name__ == "__main__":
     main(5)

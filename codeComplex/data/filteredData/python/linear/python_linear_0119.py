@@ -7,6 +7,7 @@ def process(a):
     for i, (cnt, c) in enumerate(a):
         if i == 0 or i == n - 1:
             min_ = min(min_, cnt)
+
         else:
             min_ = min(min_, (cnt + 1) // 2)
 
@@ -14,6 +15,7 @@ def process(a):
     for i, (cnt, c) in enumerate(a):
         if i == 0 or i == n - 1:
             remain = cnt - min_
+
         else:
             remain = cnt - min_ * 2
 
@@ -22,6 +24,7 @@ def process(a):
 
         if len(b) == 0 or c != b[-1][1]:
             b.append([remain, c])
+
         else:
             pre_cnt, pre_c = b.pop()
             b.append([pre_cnt + remain, c])
@@ -52,6 +55,7 @@ def main(n):
             cur.append([cnt, pre])
             cnt = 1
             pre = x
+
         else:
             cnt += 1
 
@@ -60,8 +64,7 @@ def main(n):
         cur, min_ = process(cur)
         cnt += min_
 
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     main(10)

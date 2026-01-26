@@ -16,7 +16,8 @@ def main(n):
     for _ in range(4):
         ans.extend([a1.rotate(), a1.fliph(), a1.flipv(), a1.fliph(), a1.flipv()])
     # Same semantics as original: print "Yes" if a2.mat appears in ans, otherwise "No"
-    print(['No', 'Yes'][a2.mat in ans])
+    # print(['No', 'Yes'][a2.mat in ans])
+    pass
 
 
 class Matrix:
@@ -25,6 +26,7 @@ class Matrix:
 
         if mat is not None:
             self.mat = deepcopy(mat)
+
         else:
             self.mat = [[0 for _ in range(c)] for _ in range(r)]
 

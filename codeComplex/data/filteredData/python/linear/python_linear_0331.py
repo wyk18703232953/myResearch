@@ -17,6 +17,7 @@ def main(n):
         if i % 2 == 0:
             E.append(d)
             O.append(0)
+
         else:
             O.append(d)
             E.append(0)
@@ -39,4 +40,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic calls for time-complexity experiments
     for size in [1, 2, 5, 10, 20]:
-        print(size, main(size))
+        # print(size, main(size))
+        pass

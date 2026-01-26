@@ -1,7 +1,8 @@
 def main(n):
     # Ensure n is at least 3 to allow meaningful triples; smaller n will behave but are trivial
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministic generation of s and a based on n
@@ -28,9 +29,8 @@ def main(n):
                     t = cand
 
     total_a = sum(a)
-    print(t if t <= total_a else -1)
-
-
+    # print(t if t <= total_a else -1)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

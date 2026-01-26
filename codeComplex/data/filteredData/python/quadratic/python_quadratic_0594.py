@@ -31,9 +31,8 @@ def main(n):
             if scu < cumi:
                 cumi = scu
 
-    print(ma)
-
-
+    # print(ma)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n to scale input size
     main(10)

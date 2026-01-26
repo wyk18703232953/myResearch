@@ -21,6 +21,7 @@ def main(n):
         if g[p] is not None:
             ans.append(g[p])
             f[p] = 1
+
         else:
             gb = 0
             for j in range(k):
@@ -40,14 +41,14 @@ def main(n):
                     break
                 if f[gb + j] is None:
                     g[gb + j] = gb
+
                 else:
                     break
             f[gb] = 1
             f[p] = 1
 
-    print(" ".join(str(x) for x in ans))
-
-
+    # print(" ".join(str(x) for x in ans))
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要改变 n 来做规模实验
     main(10)

@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
         pieces_dimension = 1
+
     else:
         pieces_dimension = n
 
@@ -33,4 +34,5 @@ def n_squares_to_recolor_in(brokenPieces, nSquares, squares):
 
 if __name__ == "__main__":
     result = main(5)
-    print(result)
+    # print(result)
+    pass

@@ -15,8 +15,7 @@ def main(n):
             now += 1
             count += 1
         ans.append(str(count))
-    print(" ".join(ans))
-
-
+    # print(" ".join(ans))
+    pass
 if __name__ == "__main__":
     main(10)

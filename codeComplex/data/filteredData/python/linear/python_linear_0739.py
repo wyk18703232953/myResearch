@@ -31,15 +31,17 @@ def main(n):
 
     for c in queries:
         if c <= m:
-            print('{} {}'.format(b[c - 1][0], b[c - 1][1]))
+            # print('{} {}'.format(b[c - 1][0], b[c - 1][1]))
+            pass
+
         else:
             c_adj = c - (m + 1)
             c_adj %= n - 1
-            print('{} {}'.format(a[0], a[c_adj + 1]))
-
-
+            # print('{} {}'.format(a[0], a[c_adj + 1]))
+            pass
 if __name__ == "__main__":
     # 示例：对若干规模运行一遍
     for size in [2, 3, 5, 10]:
-        print("n =", size)
+        # print("n =", size)
+        pass
         main(size)

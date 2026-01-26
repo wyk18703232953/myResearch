@@ -62,7 +62,8 @@ def main(n):
         or matrix1 == rotate_180(matrix2)
         or matrix1 == rotate_270(matrix2)
     ):
-        print("Yes")
+        # print("Yes")
+        pass
         return
 
     matrix2 = reverse_row(matrix2)
@@ -74,7 +75,8 @@ def main(n):
         or matrix1 == rotate_180(matrix2)
         or matrix1 == rotate_270(matrix2)
     ):
-        print("Yes")
+        # print("Yes")
+        pass
         return
 
     matrix2 = reverse_column(matrix2)
@@ -86,7 +88,8 @@ def main(n):
         or matrix1 == rotate_180(matrix2)
         or matrix1 == rotate_270(matrix2)
     ):
-        print("Yes")
+        # print("Yes")
+        pass
         return
 
     matrix2 = transpose(matrix2)
@@ -98,10 +101,11 @@ def main(n):
         or matrix1 == rotate_180(matrix2)
         or matrix1 == rotate_270(matrix2)
     ):
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     main(5)

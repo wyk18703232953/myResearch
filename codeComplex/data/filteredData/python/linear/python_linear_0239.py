@@ -45,33 +45,39 @@ def main(n):
             maxi_b -= 2
         if maxi_c > l:
             maxi_c -= 2
+
     else:
         for i in range(123):
             if (65 <= i <= 90) or (97 <= i <= 122):
                 if a[i] + n >= l:
                     maxi_a = max(maxi_a, l)
+
                 else:
                     maxi_a = max(maxi_a, a[i] + n)
                 if b[i] + n >= l:
                     maxi_b = max(maxi_b, l)
+
                 else:
                     maxi_b = max(maxi_b, b[i] + n)
                 if c[i] + n >= l:
                     maxi_c = max(maxi_c, l)
+
                 else:
                     maxi_c = max(maxi_c, c[i] + n)
 
     s = [maxi_a, maxi_b, maxi_c]
     s.sort()
     if s[1] == s[2]:
-        print("Draw")
+        # print("Draw")
+        pass
     if maxi_a > max(maxi_b, maxi_c):
-        print("Kuro")
+        # print("Kuro")
+        pass
     if maxi_b > max(maxi_c, maxi_a):
-        print("Shiro")
+        # print("Shiro")
+        pass
     if maxi_c > max(maxi_b, maxi_a):
-        print("Katie")
-
-
+        # print("Katie")
+        pass
 if __name__ == "__main__":
     main(10)

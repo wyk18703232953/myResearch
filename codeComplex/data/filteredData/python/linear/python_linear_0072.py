@@ -18,10 +18,11 @@ def main(n):
 
     val = max(mylist) if mylist else mins
     if val < mins:
-        print(mins)
+        # print(mins)
+        pass
+
     else:
-        print(val)
-
-
+        # print(val)
+        pass
 if __name__ == "__main__":
     main(5)

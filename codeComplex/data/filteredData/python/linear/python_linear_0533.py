@@ -10,6 +10,7 @@ def main(n):
     # 生成确定性字符串 s，长度为 n，在前 k 个字母中循环
     if n <= 0:
         s = ""
+
     else:
         s = ''.join(alpha[i % k] for i in range(n))
 
@@ -18,7 +19,8 @@ def main(n):
     for ch in alpha[:k]:
         mn = min(mn, c[ch])
     result = mn * k
-    print(result)
+    # print(result)
+    pass
     return result
 
 

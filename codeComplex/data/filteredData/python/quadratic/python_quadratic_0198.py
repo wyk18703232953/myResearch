@@ -25,8 +25,7 @@ def main(n):
         r = n - (k % n)
         if l > r:
             l, r = r, l
-        print(dp[l - 1][r - 1])
-
-
+        # print(dp[l - 1][r - 1])
+        pass
 if __name__ == "__main__":
     main(5)

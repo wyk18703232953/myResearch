@@ -16,7 +16,8 @@ def main(n):
     # 为保持简单又有规律，直接使用该公式生成一个置换并调整重复。
 
     if n <= 0:
-        print()
+        # print()
+        pass
         return
 
     # 生成 a：严格递增的 1..n
@@ -49,9 +50,8 @@ def main(n):
                 c[a[-1] - 1] = 1
                 a.pop()
         bk.append(co)
-    print(*bk)
-
-
+    # print(*bk)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以自行修改 n 观察时间复杂度变化
     main(5)

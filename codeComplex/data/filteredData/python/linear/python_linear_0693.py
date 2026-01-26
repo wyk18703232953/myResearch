@@ -10,9 +10,8 @@ def main(n):
     if loop_count > 0:
         for i in range(loop_count):
             ans += i + 2
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的规模
     main(10)

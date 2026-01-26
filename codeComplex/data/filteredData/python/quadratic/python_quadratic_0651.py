@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     l = [(i + 1) * 2 for i in range(n)]
     l.sort()
@@ -13,8 +14,7 @@ def main(n):
             for j in range(n):
                 if l[j] % x == 0:
                     vis[j] = 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

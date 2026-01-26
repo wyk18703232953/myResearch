@@ -50,11 +50,13 @@ def check_structure(n, k, edges):
             for guy in degrees:
                 if degrees[guy] > 1 and degreelist[i][guy] != degrees[guy]:
                     return False
+
         else:
             break
     if not done:
         if len(degreelist[-1]) == 1:
             return True
+
         else:
             return False
 
@@ -66,8 +68,8 @@ def main(n):
     k = max(1, int(math.log2(n)))
     edges = build_tree(n)
     ok = check_structure(n, k, edges)
-    print("Yes" if ok else "No")
-
+    # print("Yes" if ok else "No")
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

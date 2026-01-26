@@ -14,6 +14,7 @@ def main(n):
     for i, el in enumerate(a, 1):
         if el not in duplicates:
             duplicates[el] = 0
+
         else:
             d = el
             duplicates[el] += 1
@@ -21,15 +22,18 @@ def main(n):
         delta += el - min_value
 
     if sum(duplicates.values()) > 1 or duplicates.get(0, 0) >= 1 or (d is not None and d - 1 in duplicates):
-        print('cslnb')
+        # print('cslnb')
+        pass
     elif delta == 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
     elif delta % 2 == 1:
-        print('sjfnb')
+        # print('sjfnb')
+        pass
+
     else:
-        print('cslnb')
-
-
+        # print('cslnb')
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为输入规模
     main(10)

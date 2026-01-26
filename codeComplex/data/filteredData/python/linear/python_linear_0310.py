@@ -44,9 +44,9 @@ def main(n):
     for bucket in rem:
         for val, idx in bucket:
             out[idx] = val
-    print(sum(out) - sum(a))
-    print(' '.join(map(str, out)))
-
-
+    # print(sum(out) - sum(a))
+    pass
+    # print(' '.join(map(str, out)))
+    pass
 if __name__ == "__main__":
     main(20)

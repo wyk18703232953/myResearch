@@ -5,7 +5,8 @@ def main(n):
     # p 为长度为 m 的递增数组，元素为 (i+1)*2
     m = n
     if m <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     k = n // 3 + 1
     p = [(i + 1) * 2 for i in range(m)]
@@ -19,9 +20,8 @@ def main(n):
             now += 1
             delete += 1
         count += 1
-    print(count)
-
-
+    # print(count)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n
     main(10)

@@ -23,9 +23,8 @@ def main(n):
             total = num - ind
             ind = num
         outputs.append(str(total))
-    print(" ".join(outputs))
-
-
+    # print(" ".join(outputs))
+    pass
 if __name__ == "__main__":
     # 示例：使用 n=10 进行一次确定性运行
     main(10)

@@ -17,6 +17,7 @@ def main(n):
                     break
                 if mp.get(j) is None:
                     key = j
+
                 else:
                     if mp[j] >= pi - k + 1:
                         key = mp[j]
@@ -27,8 +28,7 @@ def main(n):
                 mp[j] = key
         res.append(mp[pi])
 
-    print(*res, sep=" ")
-
-
+    # print(*res, sep=" ")
+    pass
 if __name__ == "__main__":
     main(10)

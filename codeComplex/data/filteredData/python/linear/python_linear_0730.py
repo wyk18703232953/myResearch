@@ -3,6 +3,7 @@ def main(n):
     # 这里将 k 定义为 n // 2，当 n < 2 时特殊处理以避免除零等问题
     if n < 2:
         k = 1
+
     else:
         k = n // 2
 
@@ -15,9 +16,8 @@ def main(n):
     while len(strr) < n:
         strr += "0" * block_len + "1"
     strr = strr[:n]
-    print(strr)
-
-
+    # print(strr)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的规模进行实验
     main(10)

@@ -29,7 +29,7 @@ def build_input_string(n):
 def main(n):
     s = build_input_string(n)
     result = core_logic(s)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

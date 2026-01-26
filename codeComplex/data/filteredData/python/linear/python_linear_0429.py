@@ -7,7 +7,8 @@ def main(n):
         S.append(sum(row))
 
     if S[0] == max(S):
-        print("1")
+        # print("1")
+        pass
         return
 
     thomas = S[0]
@@ -15,8 +16,10 @@ def main(n):
     S.sort(reverse=True)
     for x in S:
         if x == thomas:
-            print(rank)
+            # print(rank)
+            pass
             return
+
         else:
             rank += 1
 

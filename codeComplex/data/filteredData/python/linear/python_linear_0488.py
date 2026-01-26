@@ -44,7 +44,8 @@ def main(n):
     pr = min(i[1] for i in lst)
     result = max(mx, max(0, pr - pl))
 
-    print(result)
+    # print(result)
+    pass
     return result
 
 

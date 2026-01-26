@@ -1,7 +1,8 @@
 def main(n):
     # n 表示字符串长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成 a,b：用 i%2 和 (i//2)%2 构造两种不同的周期模式
@@ -16,6 +17,7 @@ def main(n):
             a[i + 1] = b[i + 1]
             res += 1
             i += 2
+
         else:
             i += 1
 
@@ -23,9 +25,8 @@ def main(n):
         if a[i] != b[i]:
             res += 1
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n
     main(10)

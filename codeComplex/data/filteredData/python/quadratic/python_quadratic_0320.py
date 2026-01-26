@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as array length; choose k deterministically as max(1, n//3)
     if n <= 0:
-        print(0.0)
+        # print(0.0)
+        pass
         return
     k = max(1, n // 3)
     if k > n:
@@ -18,9 +19,8 @@ def main(n):
         upper = min(n + 1, i + 2 * k)
         for j in range(i + k, upper):
             r = max(r, (s[j] - s[i]) / (j - i))
-    print(r)
-
-
+    # print(r)
+    pass
 if __name__ == "__main__":
     # example call; adjust n as needed for experiments
     main(10)

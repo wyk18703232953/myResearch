@@ -53,11 +53,12 @@ def solve_with_edges(edges):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     edges = build_tree(n)
     res = solve_with_edges(edges)
-    print(res)
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

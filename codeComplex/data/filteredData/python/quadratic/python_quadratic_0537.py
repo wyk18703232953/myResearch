@@ -27,6 +27,7 @@ def solve_single(n, m):
             break
     if found:
         return "YES {}".format(n - res)
+
     else:
         return "NO"
 
@@ -43,8 +44,7 @@ def main(n):
         mm = i * (i + 1) // 2
         results.append(solve_single(nn, mm))
     for line in results:
-        print(line)
-
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -11,9 +11,8 @@ def main(n):
         if a[i] > max_el:
             max_el = a[i]
 
-    print(er)
-
-
+    # print(er)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 作为规模运行
     main(10)

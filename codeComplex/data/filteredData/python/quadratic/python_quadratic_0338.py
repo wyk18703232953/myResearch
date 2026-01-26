@@ -55,12 +55,14 @@ def main(n):
 
     edges = construct_tree(nodes_count, d, k)
     if edges:
-        print('YES')
-        print('\n'.join(['{0} {1}'.format(e[0], e[1]) for e in edges]))
+        # print('YES')
+        pass
+        # print('\n'.join(['{0} {1}'.format(e[0], e[1]) for e in edges]))
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的值进行规模化实验
     main(10)

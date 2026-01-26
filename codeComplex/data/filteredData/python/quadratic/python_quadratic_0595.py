@@ -50,9 +50,8 @@ def main(n):
                 minsum = B[i]
                 candidat = i
         glans = max(glans, B[ans[1]] - B[ans[0]])
-    print(glans)
-
-
+    # print(glans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 进行规模实验
     main(10)

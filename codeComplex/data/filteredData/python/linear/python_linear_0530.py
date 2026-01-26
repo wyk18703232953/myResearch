@@ -15,8 +15,7 @@ def main(n):
         ct[ord(ch) - ord('A')] += 1
 
     result = min(ct[:k]) * k
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(100)

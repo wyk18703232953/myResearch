@@ -12,6 +12,7 @@ def main(n):
         for j in range(cols):
             if (i * n + j) % 3 == 0:
                 row_str.append('*')
+
             else:
                 row_str.append('.')
         grid.append(''.join(row_str))
@@ -30,6 +31,7 @@ def main(n):
                 en += 1
                 if be == -1:
                     be = en = j
+
             else:
                 if be != -1:
                     for k in range(be, en + 1):
@@ -46,6 +48,7 @@ def main(n):
                 en += 1
                 if be == -1:
                     be = en = j
+
             else:
                 if be != -1:
                     for k in range(be, en + 1):
@@ -63,6 +66,7 @@ def main(n):
                 ver = min(col[i][j][1] - i, i - col[i][j][0])
                 if hor <= ver:
                     ver = hor
+
                 else:
                     hor = ver
                 if hor > 0 and ver > 0:
@@ -90,10 +94,11 @@ def main(n):
             j += 1
 
     if len(dis) != all_cnt:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print('%d\n%s' % (len(out), '\n'.join(out)))
-
-
+        # print('%d\n%s' % (len(out), '\n'.join(out)))
+        pass
 if __name__ == "__main__":
     main(5)

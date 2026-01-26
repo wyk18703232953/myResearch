@@ -18,8 +18,7 @@ def main(n):
     k = n
     string = ''.join(chr(ord('a') + (i % 26)) for i in range(n))
     result = fn(string, k)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

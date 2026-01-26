@@ -22,12 +22,13 @@ def generate_data(n):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     a, b, l = generate_data(n)
     result = core_logic(n, a, b, l)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n as needed for experiments
     main(10)

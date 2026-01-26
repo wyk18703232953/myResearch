@@ -13,10 +13,12 @@ def main(n):
     for i in range(1, len(s1)):
         if s1[i] < s2[0]:
             ans += s1[i]
+
         else:
             break
     result = ans + s2[0]
-    print(result)
+    # print(result)
+    pass
     return result
 
 

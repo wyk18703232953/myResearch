@@ -6,7 +6,8 @@ def main(n):
 
     if n <= 0:
         # 对于非正规模，返回一个固定结果，避免除以零等问题
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性构造 m, a, b，且保证 m > 0
@@ -16,9 +17,8 @@ def main(n):
 
     # 保持原算法逻辑不变
     result = min(n % m * b, (m - n % m) * a)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值做时间复杂度实验
     main(10)

@@ -10,8 +10,10 @@ def main(n):
     arr = [(i * 7 + 3) % 2 for i in range(n)]
 
     if len(set(arr)) == 1:
-        print('YES')
+        # print('YES')
+        pass
         return
+
     else:
         val = sum(arr)
         factor = set()
@@ -31,15 +33,15 @@ def main(n):
                         temp += arr[idx]
                     elif temp + arr[idx] > each:
                         temp = 0
+
                     else:
                         temp = 0
                         cnt += 1
                     idx += 1
                 if cnt == i:
                     can = True
-        print('YES' if can else 'NO')
-
-
+        # print('YES' if can else 'NO')
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n
     main(10)

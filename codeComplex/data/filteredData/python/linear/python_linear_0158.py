@@ -11,8 +11,7 @@ def main(n):
         lst[i] = x
         dct[x] += 1
     for i in lst:
-        print(dct[i], end=' ')
-
-
+        # print(dct[i], end=' ')
+        pass
 if __name__ == "__main__":
     main(10)

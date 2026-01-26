@@ -21,12 +21,14 @@ def main(n):
         C.append(a)
 
     if 1 in C:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         M0 = M
         for c in C:
             M += M / (c - 1)
-        print(M - M0)
-
+        # print(M - M0)
+        pass
 if __name__ == "__main__":
     main(10)

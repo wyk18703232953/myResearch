@@ -20,6 +20,7 @@ def main(n):
             d = i  # 非负
         elif i % 3 == 1:
             d = -i  # 非正
+
         else:
             d = 0
         s += x * n
@@ -31,4 +32,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用
     result = main(10)
-    print(result)
+    # print(result)
+    pass

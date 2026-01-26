@@ -7,6 +7,7 @@ class Matrix:
         self.r, self.c = r, c
         if mat is not None:
             self.mat = deepcopy(mat)
+
         else:
             self.mat = [[0 for _ in range(c)] for _ in range(r)]
 
@@ -50,7 +51,8 @@ def generate_matrix(n, offset):
 def main(n):
     # n is the matrix dimension (n x n)
     if n <= 0:
-        print("No")
+        # print("No")
+        pass
         return
 
     base_mat = generate_matrix(n, 0)
@@ -69,9 +71,8 @@ def main(n):
     for _ in range(4):
         ans.extend([a1.rotate(), a1.fliph(), a1.flipv(), a1.fliph(), a1.flipv()])
 
-    print(['No', 'Yes'][a2.mat in ans])
-
-
+    # print(['No', 'Yes'][a2.mat in ans])
+    pass
 if __name__ == "__main__":
     # Example deterministic calls for experimentation
     # You can change these ns or loop over many ns in your experiments

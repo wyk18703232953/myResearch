@@ -18,11 +18,11 @@ def main(n):
     # Avoid division by zero; consistent behavior if no leaves exist
     if leaf_count == 0:
         result = 0
+
     else:
         result = 2 * s / leaf_count
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

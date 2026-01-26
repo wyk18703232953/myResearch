@@ -11,6 +11,7 @@ def main(n):
     if m == 1:
         c_start = 0
         length = 1
+
     else:
         c_start = (n // 2) % (m - 1)
         length = min(max(1, n % m), m - c_start)
@@ -22,6 +23,7 @@ def main(n):
         for j in range(m):
             if i == r and c_start <= j <= c_end:
                 row.append("B")
+
             else:
                 row.append("A")
         a.append(row)
@@ -58,8 +60,7 @@ def main(n):
         if ok:
             break
 
-    print(temp // 2 + pos1 + 1, temp // 2 + pos2 + 1)
-
-
+    # print(temp // 2 + pos1 + 1, temp // 2 + pos2 + 1)
+    pass
 if __name__ == "__main__":
     main(10)

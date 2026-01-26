@@ -17,7 +17,8 @@ def main(n):
             ans += (lst[i][1] - ans)
         prev = lst[i][0]
     result = ans + prev
-    print(result)
+    # print(result)
+    pass
     return result
 
 

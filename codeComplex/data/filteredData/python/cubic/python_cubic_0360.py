@@ -44,8 +44,7 @@ def main(n):
                     dp[j] += 1
                     ys[j] = {}
                 ys[j][s[i]] = 1
-        print(min(dp))
-
-
+        # print(min(dp))
+        pass
 if __name__ == "__main__":
     main(1000)

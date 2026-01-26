@@ -14,6 +14,7 @@ def main(n):
             ans[p] = "A"
         elif a[p] == n:
             ans[p] = "B"
+
         else:
             step = a[p]
             for i in range(p + step, n, step):
@@ -31,11 +32,13 @@ def main(n):
 
     if n == 1:
         result = "B"
+
     else:
         for i in range(n - 1, -1, -1):
             get(i)
         result = ''.join(ans)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

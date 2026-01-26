@@ -52,10 +52,11 @@ def main(n):
         last_row = (right - 1) - (left - 1)
         last_column = (left - 1)
         if last_row < 0 or last_row >= max_n or last_column < 0 or last_column >= 5009:
-            print(0)
+            # print(0)
+            pass
+
         else:
-            print(dp[last_row][last_column])
-
-
+            # print(dp[last_row][last_column])
+            pass
 if __name__ == "__main__":
     main(1000)

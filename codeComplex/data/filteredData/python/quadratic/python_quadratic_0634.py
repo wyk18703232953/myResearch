@@ -19,7 +19,8 @@ def main(n):
             NOW += 1
 
     result = max(ANS)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

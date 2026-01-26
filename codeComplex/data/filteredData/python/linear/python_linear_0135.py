@@ -54,6 +54,7 @@ def generate_input(n):
     for i in range(n):
         if i == 0:
             bits.append('1')
+
         else:
             bits.append('1' if i % 3 != 0 else '0')
     n_str = ''.join(bits)
@@ -61,6 +62,7 @@ def generate_input(n):
     # ensure k is non-negative and not too large
     if n == 1:
         k = 0
+
     else:
         k = (n % 5) + 1
     return n_str, k
@@ -69,9 +71,8 @@ def generate_input(n):
 def main(n):
     n_str, k = generate_input(n)
     ans = core(n_str, k)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # example: run with n = 10
     main(10)

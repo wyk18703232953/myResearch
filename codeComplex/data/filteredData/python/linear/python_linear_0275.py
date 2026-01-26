@@ -3,6 +3,7 @@ n, m, a, b = 0, 0, 0, 0
 def generate_inputs(n):
     if n < 4:
         k = 4
+
     else:
         k = n
     global n_val, m_val, a_val, b_val
@@ -23,4 +24,5 @@ def main(n):
 
 if __name__ == "__main__":
     result = main(10)
-    print(result)
+    # print(result)
+    pass

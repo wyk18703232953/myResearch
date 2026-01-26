@@ -46,6 +46,7 @@ def D(n):
         for j in range(i, n):
             if a[j] - a[i] <= 5:
                 c += 1
+
             else:
                 break
         cnt[i] = c
@@ -57,7 +58,8 @@ def D(n):
             dp[i + 1][j] = max(dp[i + 1][j], dp[i][j])
             if j + 1 <= k:
                 dp[i + cnt[i]][j + 1] = max(dp[i + cnt[i]][j + 1], dp[i][j] + cnt[i])
-    print(dp[n][k])
+    # print(dp[n][k])
+    pass
 
 
 def B(n):
@@ -102,7 +104,8 @@ def B(n):
     for i in range(q):
         l = (i % size) + 1
         r = size
-        print(dp_local[l - 1][r - 1])
+        # print(dp_local[l - 1][r - 1])
+        pass
 
 
 def main(n):

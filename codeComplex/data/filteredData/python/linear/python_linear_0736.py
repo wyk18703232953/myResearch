@@ -33,6 +33,7 @@ def main(n):
         if x > y:
             A.appendleft(x)
             A.append(y)
+
         else:
             A.appendleft(y)
             A.append(x)
@@ -45,6 +46,7 @@ def main(n):
             res = ANS[q]
             # ANS[q] is the pair (x, y)
             sys.stdout.write(f"{res[0]} {res[1]}\n")
+
         else:
             idx = (q - 10**5 - 2) % (n - 1)
             sys.stdout.write(f"{ANS0} {B[idx]}\n")

@@ -40,6 +40,7 @@ def main(n):
         aux2.append((l, r))
         if i % 2 == 0:
             l += 1
+
         else:
             r -= 1
         if l < 1:
@@ -56,8 +57,7 @@ def main(n):
             r = size
         if l > r:
             l, r = r, l
-        print(str(array[r - l][l - 1]))
-
-
+        # print(str(array[r - l][l - 1]))
+        pass
 if __name__ == "__main__":
     main(5)

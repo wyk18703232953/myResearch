@@ -37,6 +37,7 @@ def core_logic(n, a, b):
 
     if fl == False:
         return "NO", None
+
     else:
         zz = [0] * n
         for i in range(n):
@@ -55,6 +56,7 @@ def core_logic(n, a, b):
                 break
         if fl == True:
             return "YES", zz
+
         else:
             return "NO", None
 
@@ -62,11 +64,14 @@ def main(n):
     a, b = generate_data(n)
     res, zz = core_logic(n, a, b)
     if res == "NO":
-        print("NO")
-    else:
-        print("YES")
-        print(*zz)
+        # print("NO")
+        pass
 
+    else:
+        # print("YES")
+        pass
+        # print(*zz)
+        pass
 if __name__ == "__main__":
     # Example deterministic runs for different scales
     main(5)

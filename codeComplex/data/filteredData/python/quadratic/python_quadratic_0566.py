@@ -17,9 +17,8 @@ def main(n):
         if cols % 2 == 1:
             buf.append(f'{rows // 2 + 1} {cols // 2 + 1}\n')
 
-    print(*buf, sep='')
-
-
+    # print(*buf, sep='')
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 5 运行主函数，可根据需要修改 n 的数值
     main(5)

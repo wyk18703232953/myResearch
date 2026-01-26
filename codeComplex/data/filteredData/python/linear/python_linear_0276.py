@@ -7,6 +7,7 @@ def main(n):
         M = 1
         A = 1
         B = 1
+
     else:
         N = n
         M = max(1, n // 2)
@@ -15,10 +16,10 @@ def main(n):
 
     if N < M:
         result = min(A * (M - N), B * N)
+
     else:
         result = min(B * (N % M), A * (M - (N % M)))
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

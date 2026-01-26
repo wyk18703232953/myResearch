@@ -6,7 +6,8 @@ def main(n):
 
     q, r = divmod(a, 2)
     result = '01' * q + '0' * r
-    print(result)
+    # print(result)
+    pass
     return result
 
 

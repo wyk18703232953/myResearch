@@ -30,8 +30,7 @@ def main(n):
     for k in key:
         ans += now[k]
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

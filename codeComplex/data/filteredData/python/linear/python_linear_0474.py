@@ -37,12 +37,13 @@ def solve(n, cost, arr):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     cost = [(i * 7) % (n + 3) + 1 for i in range(1, n + 1)]
     arr = [((i * 3) % n) + 1 for i in range(1, n + 1)]
     result = solve(n, cost, arr)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

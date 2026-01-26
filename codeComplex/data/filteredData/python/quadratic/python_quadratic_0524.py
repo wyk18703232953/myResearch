@@ -10,6 +10,7 @@ def main(n):
         for j in range(m):
             if (i * 31 + j * 17) % 7 < 3:
                 row.append('#')
+
             else:
                 row.append('.')
         cl.append(''.join(row))
@@ -26,6 +27,7 @@ def main(n):
             cl[x][y + 1] == '#'
         ):
             return True
+
         else:
             return False
 
@@ -46,6 +48,7 @@ def main(n):
             return True
         elif x - 2 >= 0 and y - 1 >= 0 and y + 1 <= m - 1 and is_squad(x - 2, y - 1):
             return True
+
         else:
             return False
 
@@ -53,10 +56,10 @@ def main(n):
         for j in range(m):
             if cl[i][j] == '#':
                 if not cv(i, j):
-                    print('NO')
+                    # print('NO')
+                    pass
                     return
-    print('YES')
-
-
+    # print('YES')
+    pass
 if __name__ == "__main__":
     main(10)

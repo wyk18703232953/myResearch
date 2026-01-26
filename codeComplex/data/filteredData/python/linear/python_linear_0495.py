@@ -24,6 +24,7 @@ def main(n):
                     if dp[i - 1][k] == 1:
                         dp[i][j] = 1
                         break
+
         else:
             for j in range(1, 6):
                 for k in range(1, 6):
@@ -40,7 +41,8 @@ def main(n):
             break
 
     if len(ans) == 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     for i in range(n - 2, -1, -1):
@@ -55,6 +57,7 @@ def main(n):
                 if dp[i][j] == 1:
                     ans.append(j)
                     break
+
         else:
             for j in range(1, 6):
                 if j == curr:
@@ -64,8 +67,7 @@ def main(n):
                     break
 
     ans = ans[::-1]
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -24,15 +24,17 @@ def check(A):
 def main(n):
     if n <= 0:
         A = []
+
     else:
         # Deterministic construction: non-decreasing sequence with some duplicates
         # A[i] = i // 2 ensures sorted order and controlled multiplicities
         A = [i // 2 for i in range(n)]
     if check(A):
-        print('sjfnb')
+        # print('sjfnb')
+        pass
+
     else:
-        print('cslnb')
-
-
+        # print('cslnb')
+        pass
 if __name__ == "__main__":
     main(10)

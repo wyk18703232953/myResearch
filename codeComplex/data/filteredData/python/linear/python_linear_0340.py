@@ -12,8 +12,7 @@ def main(n):
             Ans += 2
         elif lst[i] - lst[i - 1] == 2 * d:
             Ans += 1
-    print(Ans)
-
-
+    # print(Ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -23,9 +23,8 @@ def main(n):
     for i, c in enumerate(first):
         end = len(second) - (len(first) - i)
         total += pref_dists[c][end + 1] - pref_dists[c][i]
-    print(total)
-
-
+    # print(total)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n for different scales
     main(5)

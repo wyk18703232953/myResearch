@@ -57,6 +57,7 @@ def get_frequency(lst):
     for ele in lst:
         if ele in dic:
             dic[ele] += 1
+
         else:
             dic[ele] = 1
     return dic
@@ -77,15 +78,18 @@ def main(n):
     #   - list length = n
     #   - m is derived deterministically from n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     m = n + 1
     c = [(i % m) + 1 for i in range(n)]
     kk = get_frequency(c)
     if len(set(c)) == n:
-        print(min(kk.values()))
-    else:
-        print(0)
+        # print(min(kk.values()))
+        pass
 
+    else:
+        # print(0)
+        pass
 if __name__ == "__main__":
     main(10)

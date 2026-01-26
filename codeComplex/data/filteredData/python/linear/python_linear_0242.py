@@ -35,13 +35,14 @@ def solve_game(n, a, b, c):
         return "Shiro"
     elif lc > max(la, lb):
         return "Katie"
+
     else:
         return "Draw"
 
 def main(n):
     a, b, c = generate_strings(n)
     result = solve_game(n, a, b, c)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

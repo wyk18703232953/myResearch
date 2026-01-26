@@ -10,14 +10,14 @@ def main(n):
         for c in s:
             if c == '-':
                 x -= 1
+
             else:
                 x += 1
             if x < 0:
                 f = False
         if f:
             ans = min(ans, x)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

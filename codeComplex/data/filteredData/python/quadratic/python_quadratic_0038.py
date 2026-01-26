@@ -9,7 +9,8 @@ def main(n):
     # 这里用 n 来表示行数，并以简单规律生成 'f'/'s' 序列
     # 例如：索引为偶数的位置为 'f'，奇数为 's'
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     s = ['f' if i % 2 == 0 else 's' for i in range(n)]
@@ -27,9 +28,8 @@ def main(n):
         for k in range(n - 1, -1, -1):
             dp[i][k] = (dp[i][k] + dp[i][k + 1]) % M
 
-    print(dp[n - 1][0] % M)
-
-
+    # print(dp[n - 1][0] % M)
+    pass
 if __name__ == "__main__":
     # 示例：用规模 n=5 运行
     main(5)

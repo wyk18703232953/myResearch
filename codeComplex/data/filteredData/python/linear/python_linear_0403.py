@@ -10,6 +10,7 @@ import string
 def yes_no(b):
     if b:
         return "YES"
+
     else:
         return "NO"
 
@@ -26,14 +27,17 @@ def binary_search(good, left, right, delta=1, right_true=False):
     while limits[1] - limits[0] > delta:
         if delta == 1:
             mid = sum(limits) // 2
+
         else:
             mid = sum(limits) / 2
         if good(mid):
             limits[int(right_true)] = mid
+
         else:
             limits[int(~right_true)] = mid
     if good(limits[int(right_true)]):
         return limits[int(right_true)]
+
     else:
         return False
 
@@ -48,6 +52,7 @@ def solve_a(n, m, a, b):
     ans = binary_search(good, 0, 10 ** 9 + 1, delta=10 ** (-6), right_true=True)
     if not ans:
         return -1
+
     else:
         return ans
 
@@ -59,8 +64,7 @@ def main(n):
     a = [i + 1 for i in range(n)]
     b = [i + 2 for i in range(n)]
     result = solve_a(n, m, a, b)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

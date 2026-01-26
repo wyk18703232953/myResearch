@@ -10,11 +10,13 @@ def main(n):
     for ch in s:
         if ch == '-':
             t -= 1
+
         else:
             t += 1
         mn = min(mn, t)
     result = -mn + t
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

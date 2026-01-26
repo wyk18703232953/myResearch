@@ -70,6 +70,7 @@ def generate_grid(n):
         for j in range(size):
             if (i + j) % 3 == 0:
                 row_chars.append("W")
+
             else:
                 row_chars.append("B")
         grid.append("".join(row_chars))
@@ -87,7 +88,8 @@ def main(n):
         for x in range(cols):
             if is_center(a, rows, cols, y, x):
                 result = (y + 1, x + 1)
-                print(y + 1, x + 1)
+                # print(y + 1, x + 1)
+                pass
                 found = True
                 break
         if found:

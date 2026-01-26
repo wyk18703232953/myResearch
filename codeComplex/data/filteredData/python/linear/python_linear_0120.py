@@ -6,6 +6,7 @@ def main(n):
         p = (i + 1) // 2
         if p in g:
             g[p].append(i + 1)
+
         else:
             g[p] = [i + 1]
 
@@ -17,8 +18,7 @@ def main(n):
                 c += 1
         if c < 3:
             ams = 'NO'
-    print(ams)
-
-
+    # print(ams)
+    pass
 if __name__ == "__main__":
     main(10)

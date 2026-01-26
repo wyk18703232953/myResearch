@@ -11,7 +11,8 @@ def main(n):
         if ch in mp:
             mp[ch] += 1
     result = min(mp.values()) * k
-    print(result)
+    # print(result)
+    pass
     return result
 
 

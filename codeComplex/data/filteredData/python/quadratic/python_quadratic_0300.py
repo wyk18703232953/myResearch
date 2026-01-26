@@ -9,9 +9,8 @@ def main(n):
         i = a.index(c)
         ans += i
         del a[i]
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的值
     main(10)

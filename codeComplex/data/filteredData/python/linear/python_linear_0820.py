@@ -12,9 +12,8 @@ def main(n):
             break
 
     if result is not None:
-        print(result)
-
-
+        # print(result)
+        pass
 if __name__ == "__main__":
     # 示例调用：可以修改 n 观察规模变化
     main(10)

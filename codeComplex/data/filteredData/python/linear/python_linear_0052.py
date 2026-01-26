@@ -26,10 +26,13 @@ def main(n):
     A = find(0)
     B = find(n + 1)
     if A != B:
-        print('YES')
-        print(' '.join(['1' if find(i) == B else '0' for i in range(1, n + 1)]))
-    else:
-        print('NO')
+        # print('YES')
+        pass
+        # print(' '.join(['1' if find(i) == B else '0' for i in range(1, n + 1)]))
+        pass
 
+    else:
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

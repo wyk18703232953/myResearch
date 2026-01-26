@@ -37,9 +37,8 @@ def generate_input(n):
 def main(n):
     arr = generate_input(n)
     ans = solve(arr)
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

@@ -5,7 +5,8 @@ def main(n):
     # Here we set M = 2 * n to scale linearly with n
     if n <= 0:
         # Degenerate case: no toggles, light off all the time
-        print(0)
+        # print(0)
+        pass
         return
 
     M = 2 * n
@@ -42,14 +43,14 @@ def main(n):
             newtime = ontime[0] - ontime[ind]
             if ind % 2 == 0:
                 newtime += x - l
+
             else:
                 newtime += r - x
             newtime += (M - r) - ontime[ind]
             mx = max(mx, newtime)
 
-    print(mx)
-
-
+    # print(mx)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiment
     main(10)

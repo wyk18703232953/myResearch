@@ -1,7 +1,8 @@
 def main(n):
     # n 表示字符串长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造一个确定性的字符串 S，包含多个不同字符，长度为 n
@@ -34,8 +35,7 @@ def main(n):
         if aux == len(s):
             ans = min(ans, j - i + 1)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(1000)

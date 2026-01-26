@@ -18,8 +18,7 @@ def main(n):
         first_rest = first_rest[1:]
     result = username + last[0]
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

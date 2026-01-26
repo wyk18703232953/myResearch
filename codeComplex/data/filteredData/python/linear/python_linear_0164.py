@@ -11,13 +11,13 @@ def main(n):
         ans = (a + b) / c
         if ans in dict2:
             dict2[ans] += 1
+
         else:
             dict2[ans] = 1
         dict1[i] = ans
 
     for i in range(n):
-        print(dict2[dict1[i]], end=' ')
-
-
+        # print(dict2[dict1[i]], end=' ')
+        pass
 if __name__ == "__main__":
     main(10)

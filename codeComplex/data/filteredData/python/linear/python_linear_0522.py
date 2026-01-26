@@ -1,6 +1,7 @@
 def main(n):
     if n <= 1:
-        print("No")
+        # print("No")
+        pass
         return
 
     # 构造一棵确定性的树：1-2-3-...-n（链式）
@@ -17,7 +18,9 @@ def main(n):
     arr = list(range(1, n + 1))
 
     if arr[0] != 1:
-        print("No")
+        # print("No")
+        pass
+
     else:
         j = 0
         i = 1
@@ -25,14 +28,16 @@ def main(n):
         while i < n and j < n:
             if arr[i] in dict1[arr[j]]:
                 i += 1
+
             else:
                 j += 1
         if i != n and j == n:
-            print("No")
+            # print("No")
+            pass
+
         else:
-            print("Yes")
-
-
+            # print("Yes")
+            pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的取值做规模化实验
     main(10)

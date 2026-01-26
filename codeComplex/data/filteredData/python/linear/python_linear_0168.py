@@ -1,14 +1,17 @@
 def main(n):
     if n < 6:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print("1 2\n1 3\n1 4")
+        # print("1 2\n1 3\n1 4")
+        pass
         for i in range(5, n + 1):
-            print("2 " + str(i))
+            # print("2 " + str(i))
+            pass
     for i in range(2, n + 1):
-        print("1 " + str(i))
-
-
+        # print("1 " + str(i))
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 的值
     main(10)

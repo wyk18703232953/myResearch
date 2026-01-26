@@ -9,9 +9,8 @@ def main(n):
         if x * (x + 3) == 2 * (K + N):
             ans = N - x
             break
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的值进行规模化实验
     main(10)

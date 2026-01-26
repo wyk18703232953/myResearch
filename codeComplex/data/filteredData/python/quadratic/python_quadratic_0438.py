@@ -8,9 +8,12 @@ def main(n):
 
     if n == 2:
         if arr[0] == arr[1]:
-            print("YES")
+            # print("YES")
+            pass
+
         else:
-            print("NO")
+            # print("NO")
+            pass
         return
 
     for l in range(1, n - 1):
@@ -33,14 +36,14 @@ def main(n):
             i += 1
 
         if len(set(v)) == 1:
-            print("YES")
+            # print("YES")
+            pass
             ans = 1
             return
 
     if not ans:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

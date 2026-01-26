@@ -7,6 +7,7 @@ def main(n):
             # Simple deterministic pattern using i and j
             if (i * n + j) % 2 == 0:
                 s[i][j] = '0'
+
             else:
                 s[i][j] = '1'
 
@@ -35,16 +36,18 @@ def main(n):
                 if (j + k) % 2:
                     if Map[j][k] == '0':
                         cnt0 += 1
+
                     else:
                         cnt1 += 1
+
                 else:
                     if Map[j][k] == '1':
                         cnt0 += 1
+
                     else:
                         cnt1 += 1
         res = min(res, cnt0, cnt1)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(5)

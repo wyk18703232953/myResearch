@@ -37,19 +37,21 @@ def main(n):
             if res_check[j] > res_check[i]:
                 ok += 1
         if ok != l[i]:
-            print("NO")
+            # print("NO")
+            pass
             return
         ok = 0
         for j in range(i + 1, n):
             if res_check[j] > res_check[i]:
                 ok += 1
         if ok != r[i]:
-            print("NO")
+            # print("NO")
+            pass
             return
 
-    print("YES")
-    print(' '.join(map(str, res_check)))
-
-
+    # print("YES")
+    pass
+    # print(' '.join(map(str, res_check)))
+    pass
 if __name__ == "__main__":
     main(10)

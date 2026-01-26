@@ -55,4 +55,5 @@ if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的规模做实验
     n = 10
     result = main(n)
-    print(result)
+    # print(result)
+    pass

@@ -1,7 +1,8 @@
 def main(n):
     # 映射 n 为原程序中的 n，固定 k 为 5（可根据需要调整）
     if n <= 0:
-        print(0.0)
+        # print(0.0)
+        pass
         return
     k = 5
     if k > n:
@@ -23,9 +24,8 @@ def main(n):
             val = ((dp[j] - dp[i]) + arr[i]) / (j - i + 1)
             if val > ans:
                 ans = val
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的规模
     main(10)

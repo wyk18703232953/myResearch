@@ -2,7 +2,8 @@ import sys, heapq
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     k = max(1, n // 2)
     arr = [(i * 2 + 1) % (n + 3) for i in range(n)]
@@ -19,12 +20,13 @@ def main(n):
             if right - left + 1 >= k:
                 if left == 0:
                     temp = pf[right]
+
                 else:
                     temp = pf[right] - pf[left - 1]
                 avg = temp / (right - left + 1)
                 if avg > ans:
                     ans = avg
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

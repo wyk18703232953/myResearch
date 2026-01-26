@@ -49,8 +49,7 @@ def main(n):
                 count3 = pr3[j] - pr3[j - k]
                 min_ans = min(min_ans, count1, count2, count3)
         ans.append(min_ans)
-    print(*ans, sep="\n")
-
-
+    # print(*ans, sep="\n")
+    pass
 if __name__ == "__main__":
     main(10)

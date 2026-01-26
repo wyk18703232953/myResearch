@@ -2,7 +2,8 @@ import sys
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     # 构造长度为 n 的串，由 'H' 和 'T' 组成，确定性生成
     s = ''.join('H' if i % 2 == 0 else 'T' for i in range(n))
@@ -19,7 +20,7 @@ def main(n):
                 c += 1
         if c < ans:
             ans = c
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

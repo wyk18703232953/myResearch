@@ -7,14 +7,16 @@ def main(n):
         return
     if n == 1:
         b = [2]  # 单元素，偶数
+
     else:
         b = [2 * i for i in range(1, n)] + [2 * n + 1]
     c = [int(i % 2 == 0) for i in b]
     if c.count(1) == 1:
-        print(c.index(1) + 1)
+        # print(c.index(1) + 1)
+        pass
+
     else:
-        print(c.index(0) + 1)
-
-
+        # print(c.index(0) + 1)
+        pass
 if __name__ == "__main__":
     main(10)

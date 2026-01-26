@@ -3,7 +3,8 @@ def main(n):
     # c: 长度为 n 的正整数数组
     # a: 长度为 n 的 0..n-1 的排列形式的“下一节点”数组，保证存在若干环
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造 c[i] = (i * 17 + 5) % 1000000007 + 1，保证正且确定
@@ -15,6 +16,7 @@ def main(n):
     a = [0] * n
     if n == 1:
         a[0] = 0
+
     else:
         half = n // 2
         if half == 0:
@@ -43,8 +45,7 @@ def main(n):
                     cost = c[ind]
                 ind = a[ind]
             ans += cost
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

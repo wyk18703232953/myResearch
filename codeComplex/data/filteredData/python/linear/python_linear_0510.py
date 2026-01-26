@@ -20,4 +20,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用
     for size in [1, 2, 5, 10]:
-        print(size, main(size))
+        # print(size, main(size))
+        pass

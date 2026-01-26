@@ -3,7 +3,8 @@ def main(n):
     # n = 数列长度 = m
     # n = 需要统计的前缀长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造确定性的 n 和 m
@@ -19,7 +20,9 @@ def main(n):
 
     d = dict()
     if len(set(l)) < orig_n:
-        print(0)
+        # print(0)
+        pass
+
     else:
         for i in range(m):
             d.setdefault(l[i], 0)
@@ -28,9 +31,8 @@ def main(n):
         for i in d.values():
             if i < min1:
                 min1 = i
-        print(min1)
-
-
+        # print(min1)
+        pass
 if __name__ == "__main__":
     # 示例调用，可自行调整 n 观察规模变化
     main(10)

@@ -7,6 +7,7 @@ def main(n):
         n_local = 2
         queries = 1
         l = [1, 2]
+
     else:
         n_local = n
         queries = n
@@ -46,13 +47,14 @@ def main(n):
     for m in range(queries):
         q = m + 1
         if q <= count:
-            print(str(pairs[q - 1][0]), str(pairs[q - 1][1]))
+            # print(str(pairs[q - 1][0]), str(pairs[q - 1][1]))
+            pass
+
         else:
             q -= (count + 1)
             pos = count + (q % (n_local - 1))
-            print(str(pairs[pos][0]), str(pairs[pos][1]))
-
-
+            # print(str(pairs[pos][0]), str(pairs[pos][1]))
+            pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

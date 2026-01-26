@@ -15,7 +15,8 @@ def main(n):
     t = "".join(t_chars)
 
     if sorted(s) != sorted(t):
-        print(-1)
+        # print(-1)
+        pass
         return
     s = list(s)
     t = list(t)
@@ -27,11 +28,12 @@ def main(n):
                     ans.append(k + 1)
                     s[k + 1], s[k] = s[k], s[k + 1]
                 break
-    print(len(ans))
+    # print(len(ans))
+    pass
+
     if ans:
-        print(*ans)
-
-
+        # print(*ans)
+        pass
 if __name__ == "__main__":
     # example deterministic call; adjust n as needed for experiments
     main(10)

@@ -3,7 +3,8 @@ def main(n):
     # Pattern: a[i] = '1' if i % 2 == 0 else '0'
     #          b[i] = '1' if (i * 3) % 5 < 2 else '0'
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     a = ''.join('1' if i % 2 == 0 else '0' for i in range(n))
@@ -16,6 +17,7 @@ def main(n):
     for ch in b:
         if ch == "0":
             c0 += 1
+
         else:
             c1 += 1
         o.append(c1)
@@ -30,13 +32,13 @@ def main(n):
             ans += z[(n_b - (m_a - i))] - z[i]
             if b[i] == "0":
                 ans += 1
+
         else:
             ans += o[(n_b - (m_a - i))] - o[i]
             if b[i] == "1":
                 ans += 1
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

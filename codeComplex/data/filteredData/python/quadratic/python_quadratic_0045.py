@@ -2,7 +2,8 @@ MOD = int(1e9 + 7)
 
 def main(n):
     if n <= 1:
-        print(1)
+        # print(1)
+        pass
         return
 
     # 确定性生成长度为 n 的字符串 a，由 'f' 和 's' 组成
@@ -27,9 +28,8 @@ def main(n):
         for j in reversed(range(n)):
             s[i][j] = (s[i][j] + dp[i][j] + s[i][j + 1]) % MOD
 
-    print(s[n - 1][0] % MOD)
-
-
+    # print(s[n - 1][0] % MOD)
+    pass
 if __name__ == "__main__":
     # 示例调用：可按需修改 n 以做规模实验
     main(5)

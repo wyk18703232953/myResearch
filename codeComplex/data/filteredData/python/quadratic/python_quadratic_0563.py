@@ -12,6 +12,7 @@ def main(n):
     for i in range(1, total + 1):
         if i % 2:
             a, b = divmod(i // 2, M)
+
         else:
             a, b = divmod(N * M - i // 2, M)
         Ans[i - 1] = (a + 1, b + 1)

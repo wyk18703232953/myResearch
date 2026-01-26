@@ -10,6 +10,7 @@ def main(n):
             val = base + (i % 3)
         elif i < 2 * n // 3:
             val = base + (n // 3) - (i - n // 3) // 2
+
         else:
             val = base + (n // 6) - (i - 2 * n // 3)
         a.append(val)
@@ -25,11 +26,13 @@ def main(n):
             elif a[i] > a[i - 1]:
                 for k in range(j):
                     dp[i][j] = dp[i][j] or dp[i - 1][k]
+
             else:
                 for k in range(j + 1, 5):
                     dp[i][j] = dp[i][j] or dp[i - 1][k]
     if dp[-1].count(True) == 0:
-        print(-1)
+        # print(-1)
+        pass
         return
     j = 0
     for k in range(5):
@@ -50,13 +53,13 @@ def main(n):
                 if dp[i - 1][k]:
                     j = k
                     break
+
         else:
             for k in range(j + 1, 5):
                 if dp[i - 1][k]:
                     j = k
                     break
-    print(*ans[::-1])
-
-
+    # print(*ans[::-1])
+    pass
 if __name__ == "__main__":
     main(10)

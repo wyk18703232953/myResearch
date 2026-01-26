@@ -6,7 +6,8 @@ def main(n):
 
     h = s.count('H') // 2
     if h == 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     max_h = 0
@@ -22,9 +23,8 @@ def main(n):
         if current_h > max_h:
             max_h = current_h
 
-    print(h - max_h)
-
-
+    # print(h - max_h)
+    pass
 if __name__ == "__main__":
     # 示例调用，可以根据需要修改 n
     main(10)

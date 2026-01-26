@@ -22,6 +22,7 @@ def main(n):
     if a % 2 == 0:
         for i in range(a):
             listb.append(lista[i][:])
+
     else:
         # 生成 90° 旋转后的矩阵作为目标
         listb = [[None] * a for _ in range(a)]
@@ -164,10 +165,11 @@ def main(n):
         flag = 1
 
     if flag == 1:
-        print("yes")
+        # print("yes")
+        pass
+
     else:
-        print("no")
-
-
+        # print("no")
+        pass
 if __name__ == "__main__":
     main(5)

@@ -3,7 +3,8 @@ def main(n):
 
     if n <= 1:
         # Degenerate case: no edges, no leaves
-        print(0.0)
+        # print(0.0)
+        pass
         return
 
     # Deterministically construct a path tree: 1-2-3-...-n
@@ -19,11 +20,12 @@ def main(n):
 
     cnt_leaf = a.count(1)
     if cnt_leaf == 0:
-        print(0.0)
+        # print(0.0)
+        pass
+
     else:
-        print(2.0 * s / cnt_leaf)
-
-
+        # print(2.0 * s / cnt_leaf)
+        pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

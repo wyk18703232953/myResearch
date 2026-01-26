@@ -6,6 +6,7 @@ class Matrix:
         self.r, self.c = r, c
         if mat is not None:
             self.mat = copy.deepcopy(mat)
+
         else:
             self.mat = [[0 for _ in range(c)] for _ in range(r)]
 
@@ -92,8 +93,7 @@ def main(n):
     ans = []
     for _ in range(4):
         ans.extend([a1.rotate(), a1.fliph(), a1.flipv(), a1.fliph(), a1.flipv()])
-    print(['No', 'Yes'][a2.mat in ans])
-
-
+    # print(['No', 'Yes'][a2.mat in ans])
+    pass
 if __name__ == "__main__":
     main(5)

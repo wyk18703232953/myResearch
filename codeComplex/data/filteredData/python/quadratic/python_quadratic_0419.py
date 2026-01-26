@@ -24,11 +24,12 @@ def main(n):
             m = i
 
     # 原程序的输出逻辑
-    print(s, end="")
+    # print(s, end="")
+    pass
     for _ in range(1, k):
         for j in range(m + 1, n):
-            print(s[j], end="")
-
+            # print(s[j], end="")
+            pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要调整 n
     main(10)

@@ -4,7 +4,8 @@ import bisect
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 构造确定性的区间数据：长度为 n 的起点/终点数组
@@ -26,29 +27,33 @@ def main(n):
         if starting[i] == maxim:
             if start_count[maxim] > 1:
                 loc_max = maxim
+
             else:
                 pos = bisect.bisect_left(s, maxim)
                 loc_max = s[pos - 1] if pos - 1 >= 0 else maxim
+
         else:
             loc_max = maxim
 
         if ending[i] == minim:
             if end_count[minim] > 1:
                 loc_min = minim
+
             else:
                 pos = bisect.bisect_right(e, minim)
                 if pos < len(e):
                     loc_min = e[pos]
+
                 else:
                     loc_min = minim
+
         else:
             loc_min = minim
 
         ans = max(ans, loc_min - loc_max)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需要调整 n 进行规模化实验
     main(10)

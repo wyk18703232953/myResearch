@@ -22,8 +22,7 @@ def main(n):
                             count += 1
             if count < best:
                 best = count
-    print(best)
-
-
+    # print(best)
+    pass
 if __name__ == "__main__":
     main(5)

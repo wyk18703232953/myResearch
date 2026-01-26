@@ -28,7 +28,8 @@ def main(n):
         moves += 1
 
     result = moves + 1
-    print(result)
+    # print(result)
+    pass
     return result
 
 

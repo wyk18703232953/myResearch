@@ -66,8 +66,7 @@ def main(n):
         b.append(minn)
 
     for i in range(q):
-        print(b[i])
-
-
+        # print(b[i])
+        pass
 if __name__ == "__main__":
     main(5)

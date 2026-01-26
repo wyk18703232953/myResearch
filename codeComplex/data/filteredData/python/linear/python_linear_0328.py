@@ -10,6 +10,7 @@ def main(n):
     # Example: spread roughly linearly in [1, M-1]
     if N == 1:
         lights = [M // 2]
+
     else:
         step = max(1, (M - 1) // (N + 1))
         lights = [step * (i + 1) for i in range(N)]
@@ -50,11 +51,11 @@ def main(n):
 
     if N % 2 == 0:
         result = max(ans, sumlight + M)
+
     else:
         result = max(ans + M, sumlight)
 
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(5)

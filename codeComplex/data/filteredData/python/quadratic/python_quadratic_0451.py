@@ -34,9 +34,8 @@ def main(n):
 
     # 保持原先输出结构：按 L 的顺序输出对应的字符，不含分隔符和换行
     output = ''.join(ans[L[i] - 1] for i in range(n))
-    print(output, end='')
-
-
+    # print(output, end='')
+    pass
 if __name__ == "__main__":
     # 示例：使用固定规模 n 运行
     main(10)

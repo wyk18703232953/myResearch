@@ -27,7 +27,7 @@ def generate_input(n):
 def main(n):
     n_val, m, k, p = generate_input(n)
     result = algorithm(n_val, m, k, p)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

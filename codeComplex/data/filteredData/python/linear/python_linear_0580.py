@@ -8,8 +8,7 @@ def main(n):
     for i in range(N, 0, -1):
         cnt += s // i
         s %= i
-    print(cnt)
-
-
+    # print(cnt)
+    pass
 if __name__ == "__main__":
     main(10)

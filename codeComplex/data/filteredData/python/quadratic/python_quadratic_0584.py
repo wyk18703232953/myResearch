@@ -40,9 +40,8 @@ def main(n):
         results.append(ans)
 
     for r in results:
-        print(r)
-
-
+        # print(r)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行一次
     main(10)

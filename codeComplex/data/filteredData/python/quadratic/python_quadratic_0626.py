@@ -1,7 +1,8 @@
 def main(n):
     # n 表示列表长度
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成测试数据：正整数列表
@@ -19,9 +20,8 @@ def main(n):
         for j in range(i + 1, n):
             if visited[j] == 0 and l1[j] % l1[i] == 0:
                 visited[j] = 1
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用
     main(10)

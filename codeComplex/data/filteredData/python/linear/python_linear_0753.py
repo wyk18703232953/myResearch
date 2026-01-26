@@ -12,7 +12,9 @@ def main(n):
             m += 1
     if m % 2 == 0:
         for i in range(n):
-            print(l[i], end=" ")
+            # print(l[i], end=" ")
+            pass
+
     else:
         maksi = -1000000000000
         for i in range(n):
@@ -21,9 +23,8 @@ def main(n):
                 mk = i
         l[mk] = -l[mk] - 1
         for i in range(n):
-            print(l[i], end=" ")
-
-
+            # print(l[i], end=" ")
+            pass
 if __name__ == "__main__":
     # Example call for experiment; adjust n as needed
     main(10)

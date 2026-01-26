@@ -11,7 +11,9 @@ def main(n):
         b = 1
 
     if a > 1 < b or a * b == 1 and 1 < n < 4:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
         z, o = ('01', '10')[a < b]
         l = [[z] * n for _ in range(n)]
@@ -19,9 +21,9 @@ def main(n):
             l[i][i] = '0'
         for i in range(n - a * b):
             l[i][i + 1] = l[i + 1][i] = o
-        print('YES')
-        print('\n'.join(map(''.join, l)))
-
-
+        # print('YES')
+        pass
+        # print('\n'.join(map(''.join, l)))
+        pass
 if __name__ == "__main__":
     main(6)

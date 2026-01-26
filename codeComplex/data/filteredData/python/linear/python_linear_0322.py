@@ -13,6 +13,7 @@ def main(n):
             x = current_seq[i]
             if x in a_dicts[j]:
                 a_dicts[j][x] += 1
+
             else:
                 a_dicts[j][x] = 1
             if x not in a_dicts[1 - j]:
@@ -27,4 +28,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic calls for experimentation
     for n in [1, 5, 10, 100]:
-        print(n, main(n))
+        # print(n, main(n))
+        pass

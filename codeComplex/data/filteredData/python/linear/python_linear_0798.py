@@ -8,6 +8,7 @@ def main(n):
         # 位置为偶数时放数字，奇数时放小写字母
         if i % 2 == 0:
             base.append(str((i // 2) % 10))
+
         else:
             base.append(chr(ord('a') + (i // 2) % 26))
     s = ''.join(base[:max(8, n)])
@@ -30,8 +31,7 @@ def main(n):
     ans = min(ans, func(s1))
     ans = min(ans, func(s2))
     ans = min(ans, func(s3))
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

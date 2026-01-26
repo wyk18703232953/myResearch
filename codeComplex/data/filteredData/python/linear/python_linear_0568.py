@@ -15,8 +15,7 @@ def main(n):
         d[1] = 1
     d = d[1:]
     d.sort()
-    print(*d)
-
-
+    # print(*d)
+    pass
 if __name__ == "__main__":
     main(10)

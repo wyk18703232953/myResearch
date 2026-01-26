@@ -15,8 +15,8 @@ def main(n):
     # 既包含非负数也包含负数，便于保留原逻辑特性
     a = [i // 2 if i % 3 == 0 else -i for i in range(n)]
     res = transform_array(a)
-    print(*res)
-
+    # print(*res)
+    pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

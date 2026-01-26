@@ -18,7 +18,8 @@ def flip(a):
 
 def main(n):
     if n <= 0:
-        print("no")
+        # print("no")
+        pass
         return
 
     l = []
@@ -45,7 +46,7 @@ def main(n):
         l = rotate_90(l)
         if l == l2:
             d = 'yes'
-    print(d)
-
+    # print(d)
+    pass
 if __name__ == "__main__":
     main(5)

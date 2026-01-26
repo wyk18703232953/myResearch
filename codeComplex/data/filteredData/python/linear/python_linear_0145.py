@@ -26,9 +26,8 @@ def main(n):
         Un.append(Al[i + 1] - Ab[i] - 1)
         r += Un[-1]
 
-    print(r)
-
-
+    # print(r)
+    pass
 if __name__ == "__main__":
     # Example deterministic calls for experimentation
     main(10)

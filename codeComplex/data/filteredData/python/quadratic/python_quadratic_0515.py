@@ -12,6 +12,7 @@ def main(n):
         for j in range(m):
             if (i + j) % 4 == 0:
                 row.append("#")
+
             else:
                 row.append(".")
         l.append(row)
@@ -55,11 +56,12 @@ def main(n):
             break
 
     if flag is True:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # Example deterministic call; change the argument to test other scales
     main(10)

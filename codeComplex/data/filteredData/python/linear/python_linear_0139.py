@@ -16,7 +16,8 @@ def main(n):
         ans += cur
     for i in range(n):
         ans -= (arr[i] + 1)
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

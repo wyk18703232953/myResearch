@@ -8,6 +8,7 @@ def solve(n, m, x, t):
         if t[i]:
             d[cd] = x[i]
             cd += 1
+
         else:
             r[cr] = x[i]
             cr += 1
@@ -38,8 +39,7 @@ def main(n):
     x = [i for i in range(1, total + 1)]
 
     res = solve(num_r, num_d, x, t)
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

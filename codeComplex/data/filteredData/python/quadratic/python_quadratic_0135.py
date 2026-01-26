@@ -7,6 +7,7 @@ def check(n):
         if n % 2:
             count1 += 1
             s = "1" + s
+
         else:
             s = "0" + s
         n //= 2
@@ -62,15 +63,17 @@ def main(n):
                     x = l2
                 elif j == 2:
                     x = l3
+
                 else:
                     x = l4
 
                 if s_bin[j] == "1":
                     res += min(res, solve(1, n, x, z))
+
                 else:
                     res += min(res, solve(0, n, x, z))
             ans = min(ans, res - m)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(5)

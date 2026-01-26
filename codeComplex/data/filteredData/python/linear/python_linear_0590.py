@@ -44,9 +44,8 @@ def main(n):
         val2 = temp[d - a]
         ansarr.append((val1 - val2) % mod)
 
-    print("\n".join(map(str, ansarr)))
-
-
+    # print("\n".join(map(str, ansarr)))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

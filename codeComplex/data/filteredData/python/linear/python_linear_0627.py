@@ -41,8 +41,7 @@ def main(n):
         if t[i] != 1 and j < m:
             taxi3[j] += 1
 
-    print(" ".join(map(str, taxi3)))
-
-
+    # print(" ".join(map(str, taxi3)))
+    pass
 if __name__ == "__main__":
     main(10)

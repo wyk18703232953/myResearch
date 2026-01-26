@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print("")
+        # print("")
+        pass
         return
 
     # 构造一个确定性的长度为 n 的数组 a
@@ -25,9 +26,8 @@ def main(n):
                     m -= 1
                     if m == 0:
                         break
-    print(''.join(s))
-
-
+    # print(''.join(s))
+    pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 运行
     main(10)

@@ -9,9 +9,9 @@ def main(n):
         l[i][i] = '0'
     for i in range(n_adj - a * b):
         l[i][i + 1] = l[i + 1][i] = o
-    print(('YES', 'NO')[not n_adj])
-    print('\n'.join(map(''.join, l)))
-
-
+    # print(('YES', 'NO')[not n_adj])
+    pass
+    # print('\n'.join(map(''.join, l)))
+    pass
 if __name__ == "__main__":
     main(5)

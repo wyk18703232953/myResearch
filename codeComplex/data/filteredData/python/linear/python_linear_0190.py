@@ -17,8 +17,10 @@ def main(n):
     for i in range(n):
         if prefix[i] < target:
             continue
+
         else:
-            print(i + 1)
+            # print(i + 1)
+            pass
             break
 
 

@@ -3,7 +3,8 @@ from collections import defaultdict
 def main(n):
     # Deterministic generation of k and array based on n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     k = max(1, (n % 20) + 1)  # k in [1, 21], deterministic from n
@@ -24,8 +25,7 @@ def main(n):
         pb = t - pa
         ans += pa * (pa - 1) // 2 + pb * (pb - 1) // 2
     ans = (n * (n + 1)) // 2 - ans
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

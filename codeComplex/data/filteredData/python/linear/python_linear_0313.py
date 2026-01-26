@@ -206,8 +206,9 @@ def generate_input(n):
 def main(n):
     n, m, a = generate_input(n)
     ans, res = core_algorithm(n, m, a)
-    print(ans)
-    print(*res)
-
+    # print(ans)
+    pass
+    # print(*res)
+    pass
 if __name__ == "__main__":
     main(10)

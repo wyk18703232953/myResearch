@@ -22,6 +22,7 @@ def main(n):
         if i % 2 == 0:
             a[i] = left
             left += 1
+
         else:
             a[i] = right
             right -= 1
@@ -58,9 +59,8 @@ def main(n):
         ans.append('odd' if tem % 2 else 'even')
 
     # 输出结果，供实验统计使用
-    print('\n'.join(ans))
-
-
+    # print('\n'.join(ans))
+    pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 来做规模实验
     main(10)

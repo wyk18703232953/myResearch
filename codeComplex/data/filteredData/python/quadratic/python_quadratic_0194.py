@@ -38,6 +38,7 @@ class AvlTree:
             if k < node.key:
                 if node.left:
                     node = node.left
+
                 else:
                     node.left = TreeNode(k, v)
                     node.left.parent = node
@@ -45,10 +46,12 @@ class AvlTree:
             elif node.key < k:
                 if node.right:
                     node = node.right
+
                 else:
                     node.right = TreeNode(k, v)
                     node.right.parent = node
                     return node.right
+
             else:
                 node.value = v
                 return
@@ -79,6 +82,7 @@ class AvlTree:
                 if self.get_height(n.right.right) < self.get_height(n.right.left):
                     self._rotate_right(n.right)
                 self._rotate_left(n)
+
             else:
                 n = n.parent
 
@@ -87,10 +91,12 @@ class AvlTree:
         if node.parent:
             if AvlTree._is_left(node):
                 node.parent.left = replacement
+
             else:
                 node.parent.right = replacement
             replacement.parent = node.parent
             node.parent = None
+
         else:
             self._tree = replacement
             replacement.parent = None
@@ -103,9 +109,11 @@ class AvlTree:
         if node.parent:
             if AvlTree._is_left(node):
                 node.parent.left = None
+
             else:
                 node.parent.right = None
             self._rebalance(node.parent)
+
         else:
             self._tree = None
         node.parent = None
@@ -125,9 +133,11 @@ class AvlTree:
             node.value = nxt.value
             if self._is_leaf(nxt):
                 self._remove_leaf(nxt)
+
             else:
                 self._remove_one(nxt)
             self._rebalance(node)
+
         else:
             self._remove_one(node)
 
@@ -144,6 +154,7 @@ class AvlTree:
                 node = node.left
             elif node.key < k:
                 node = node.right
+
             else:
                 return node
         return None
@@ -157,6 +168,7 @@ class AvlTree:
             elif node.num_left < x:
                 x -= node.num_left
                 node = node.right
+
             else:
                 return (node.key, node.value)
         raise IndexError("Out of ranges")
@@ -176,6 +188,7 @@ class AvlTree:
         elif AvlTree._is_left(node):
             node.parent.left = node.left
             node.left.parent = node.parent
+
         else:
             node.parent.right = node.left
             node.left.parent = node.parent
@@ -196,6 +209,7 @@ class AvlTree:
         elif AvlTree._is_left(node):
             node.parent.left = node.right
             node.right.parent = node.parent
+
         else:
             node.parent.right = node.right
             node.right.parent = node.parent
@@ -339,6 +353,7 @@ def powm(a, n, m):
     if n % 2 == 0:
         s = powm(a, n // 2, m)
         return s * s % m
+
     else:
         return a * powm(a, n - 1, m) % m
 
@@ -365,6 +380,7 @@ def binarySearchCount(arr, n, key):
         if arr[mid] <= key:
             count = mid + 1
             left = mid + 1
+
         else:
             right = mid - 1
     return count
@@ -392,6 +408,7 @@ def countGreater(arr, n, k):
         if arr[m] >= k:
             leftGreater = m
             r = m - 1
+
         else:
             l = m + 1
     return n - leftGreater
@@ -417,8 +434,7 @@ def main(n):
         r = n - 1
         outputs.append(dp[l][r])
     for v in outputs:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     main(10)

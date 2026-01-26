@@ -19,11 +19,12 @@ def main(n):
             k = t - i
             k *= (c - b)
             r += k
-        print(a * n + r)
+        # print(a * n + r)
+        pass
+
     else:
-        print(a * n)
-
-
+        # print(a * n)
+        pass
 if __name__ == "__main__":
     # 示例：以 n = 10 运行
     main(10)

@@ -2,7 +2,8 @@ def main(n):
     # n controls the total number of positions (n taxis + m passengers = n)
     if n <= 1:
         # Degenerate case: no passengers or no taxis
-        print(0)
+        # print(0)
+        pass
         return
 
     total = n
@@ -30,12 +31,14 @@ def main(n):
 
         if t_idx == len(taxi_idx) - 1:
             a_is[t_idx] += 1
+
         else:
             while t_idx < len(taxi_idx) - 1:
                 d1 = abs(passenger_idx[p_idx] - taxi_idx[t_idx])
                 d2 = abs(passenger_idx[p_idx] - taxi_idx[t_idx + 1])
                 if d1 > d2:
                     t_idx += 1
+
                 else:
                     break
 
@@ -43,8 +46,7 @@ def main(n):
 
         p_idx += 1
 
-    print(' '.join(str(x) for x in a_is))
-
-
+    # print(' '.join(str(x) for x in a_is))
+    pass
 if __name__ == "__main__":
     main(10)

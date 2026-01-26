@@ -12,12 +12,14 @@ def main(n):
     for i in range(n):
         if cnt % 2 == 0:
             ans.append("0")
+
         else:
             ans.append("1")
         cnt += 1
 
     result = "".join(ans)
-    print(result)
+    # print(result)
+    pass
     return result
 
 

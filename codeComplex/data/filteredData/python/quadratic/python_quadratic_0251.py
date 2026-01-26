@@ -13,9 +13,12 @@ def generate_params(n):
 def main(n):
     n, a, b = generate_params(n)
     if a > 1 and b > 1:
-        print('NO')
+        # print('NO')
+        pass
     elif a == 1 and b == 1 and (n == 2 or n == 3):
-        print('NO')
+        # print('NO')
+        pass
+
     else:
         c = max(a, b)
         m = [[0] * n for _ in range(n)]
@@ -27,10 +30,11 @@ def main(n):
                 for j in range(n):
                     if i != j:
                         m[i][j] = 1 - m[i][j]
-        print('YES')
+        # print('YES')
+        pass
         for i in range(n):
-            print(''.join(map(str, m[i])))
-
+            # print(''.join(map(str, m[i])))
+            pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 作为规模
     main(10)

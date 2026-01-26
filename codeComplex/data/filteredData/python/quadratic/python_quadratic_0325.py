@@ -16,6 +16,7 @@ def main(n):
     elif k == 1:
         ans = "YES" if N == 2 and d == 1 else "NO"
         e = [(1, 2)]
+
     else:
         e = [(i + 1, i + 2) for i in range(d)]
         from collections import deque
@@ -36,12 +37,13 @@ def main(n):
             if d0 - 1 > 0:
                 q.append((i, 1, d0 - 1))
 
-    print(ans)
+    # print(ans)
+    pass
+
     if ans == "YES":
         for u, v in e:
-            print(u, v)
-
-
+            # print(u, v)
+            pass
 if __name__ == "__main__":
     # 示例：使用 n = 100 进行一次规模为 100 的测试
     main(100)

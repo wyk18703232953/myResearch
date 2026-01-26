@@ -7,6 +7,7 @@ def main(n):
         n_nodes = n
         d = 1
         k = 1
+
     else:
         n_nodes = n
         d = max(1, min(n_nodes - 1, n_nodes // 3))
@@ -15,17 +16,23 @@ def main(n):
     n, d, k = n_nodes, d, k
 
     if n == 1:
-        print('NO')
+        # print('NO')
+        pass
         return
     if n == 2:
         if d > 1:
-            print('NO')
+            # print('NO')
+            pass
+
         else:
-            print('YES')
-            print(1, 2)
+            # print('YES')
+            pass
+            # print(1, 2)
+            pass
         return
     if (not 2 <= d <= n - 1) or k == 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     ans = []
@@ -50,13 +57,15 @@ def main(n):
             first = False
 
     if len(ans) == n - 1:
-        print('YES')
+        # print('YES')
+        pass
         for i, j in ans:
-            print(i, j)
+            # print(i, j)
+            pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 的大小做规模实验
     main(10)

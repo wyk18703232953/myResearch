@@ -52,7 +52,7 @@ def generate_tree_and_sequence(n):
 def main(n):
     a, s = generate_tree_and_sequence(n)
     result = solve(a, s)
-    print("Yes" if result else "No")
-
+    # print("Yes" if result else "No")
+    pass
 if __name__ == "__main__":
     main(10)

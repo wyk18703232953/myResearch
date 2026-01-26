@@ -52,11 +52,12 @@ def main(n):
             flg = 1
             break
     if flg == 1:
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     # Example deterministic call for testing / complexity experiments
     main(5)

@@ -123,6 +123,7 @@ def powm(a, n, m):
     if n % 2 == 0:
         s = powm(a, n // 2, m)
         return s * s % m
+
     else:
         return a * powm(a, n - 1, m) % m
 
@@ -146,6 +147,7 @@ def binarySearchCount(arr, n, key):
         if arr[mid] < key:
             count = mid + 1
             left = mid + 1
+
         else:
             right = mid - 1
     return count
@@ -170,6 +172,7 @@ def countGreater(arr, n, k):
         if arr[m] >= k:
             leftGreater = m
             r = m - 1
+
         else:
             l = m + 1
     return n - leftGreater
@@ -255,6 +258,7 @@ def generate_grid(size):
             # deterministic pattern: '*' if (i+j) divisible by 3, else '.'
             if (i + j) % 3 == 0:
                 row_chars.append('*')
+
             else:
                 row_chars.append('.')
         grid.append(''.join(row_chars))
@@ -266,11 +270,13 @@ def main(n):
     grid = generate_grid(n)
     k, tot = solve_one(grid)
     if k == -1:
-        print(-1)
+        # print(-1)
+        pass
         return
-    print(k)
+    # print(k)
+    pass
     for triple in tot:
-        print(*triple)
-
+        # print(*triple)
+        pass
 if __name__ == "__main__":
     main(5)

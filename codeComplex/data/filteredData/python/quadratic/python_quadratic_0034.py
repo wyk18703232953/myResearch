@@ -19,7 +19,7 @@ def core_logic(n, arr):
 def main(n):
     n_generated, arr = generate_input(n)
     result = core_logic(n_generated, arr)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

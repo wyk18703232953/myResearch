@@ -31,14 +31,17 @@ def main(n):
     for i in range(1, maxN):
         if b[i] == 0:
             dp[i] = dp[i - 1]
+
         else:
             if b[i] >= i:
                 dp[i] = 1
+
             else:
                 dp[i] = dp[i - b[i] - 1] + 1
 
     result = N - max(dp)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

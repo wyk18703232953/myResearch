@@ -28,11 +28,12 @@ def main(n):
     first_min = min(g)
 
     if first_max > first_min:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         total = sum(b) * m + sum(g) - m * first_max + (first_max - second_max) * (first_min != first_max)
-        print(total)
-
-
+        # print(total)
+        pass
 if __name__ == "__main__":
     main(10)

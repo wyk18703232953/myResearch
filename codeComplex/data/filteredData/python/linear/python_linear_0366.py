@@ -17,9 +17,8 @@ def main(n):
     for i in range(n):
         if j < m and arr2[j] >= arr1[i]:
             j += 1
-    print(j)
-
-
+    # print(j)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n 的大小做时间复杂度实验
     main(10)

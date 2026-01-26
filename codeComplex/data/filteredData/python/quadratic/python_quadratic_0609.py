@@ -31,7 +31,9 @@ def main(n):
     if m == 1:
         for i in range(n):
             arr[i] = arr[i] - k
-        print(max_sub(arr, n))
+        # print(max_sub(arr, n))
+        pass
+
     else:
         for i in range(n):
             dp[i][1] = arr[i] - k
@@ -40,14 +42,15 @@ def main(n):
                     continue
                 if (j + 1) % m != 1:
                     dp[i][(j + 1) % m] = dp[i - 1][j] + arr[i]
+
                 else:
                     dp[i][(j + 1) % m] = max(arr[i] - k, dp[i - 1][j] + arr[i] - k)
         ma = 0
         for i in range(n):
             for j in range(m):
                 ma = max(ma, dp[i][j])
-        print(ma)
-
+        # print(ma)
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 来进行不同规模的实验
     main(5)

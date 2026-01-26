@@ -14,6 +14,7 @@ def unionSet(u, v, parents, ranks):
         parents[vp] = up
     elif ranks[up] < ranks[vp]:
         parents[up] = vp
+
     else:
         parents[up] = vp
         ranks[vp] += 1
@@ -40,25 +41,32 @@ def main(n):
     for x in ps:
         if a - x in mapping:
             unionSet(x, a - x, parents, ranks)
+
         else:
             unionSet(x, 'B', parents, ranks)
 
         if b - x in mapping:
             unionSet(x, b - x, parents, ranks)
+
         else:
             unionSet(x, 'A', parents, ranks)
 
     if findSet('A', parents) == findSet('B', parents):
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
+        # print("YES")
+        pass
         for i in ps:
             if findSet(i, parents) == findSet('A', parents):
-                print("0", end=' ')
+                # print("0", end=' ')
+                pass
+
             else:
-                print("1", end=' ')
-        print()
-
-
+                # print("1", end=' ')
+                pass
+        # print()
+        pass
 if __name__ == "__main__":
     main(10)

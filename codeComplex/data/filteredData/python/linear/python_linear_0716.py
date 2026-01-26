@@ -12,8 +12,7 @@ def main(n):
 
     if ans == float('inf'):
         ans = 0
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -10,15 +10,15 @@ def main(n):
 
     for i in range(1, 1 + N // 2):
         for j in range(1, mp1):
-            print('%d %d\n%d %d' % (i, j, np1 - i, mp1 - j))
-
+            # print('%d %d\n%d %d' % (i, j, np1 - i, mp1 - j))
+            pass
     if N & 1:
         i = 1 + N // 2
         for j in range(1, 1 + M // 2):
-            print('%d %d\n%d %d' % (i, j, i, mp1 - j))
+            # print('%d %d\n%d %d' % (i, j, i, mp1 - j))
+            pass
         if M & 1:
-            print(i, 1 + M // 2)
-
-
+            # print(i, 1 + M // 2)
+            pass
 if __name__ == "__main__":
     main(5)

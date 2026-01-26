@@ -12,6 +12,7 @@ def core_algorithm(a, b, l):
         if t[idx][0] != -1:
             if idx != l[i] and t[idx][0] != 1:
                 t[idx] = [1, min(2, t[idx][1] + 1)]
+
         else:
             t[idx] = [2, 1]
     for i in range(a):
@@ -20,6 +21,7 @@ def core_algorithm(a, b, l):
             s = min(s, t[idx][1])
     if s == math.inf:
         return -1
+
     else:
         return s
 
@@ -34,7 +36,7 @@ def generate_inputs(n):
 def main(n):
     a, b, l = generate_inputs(n)
     result = core_algorithm(a, b, l)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(1000)

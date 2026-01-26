@@ -1,7 +1,8 @@
 def main(n):
     # n 表示事件数量
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成长度数组 l 和类型数组 t
@@ -14,6 +15,7 @@ def main(n):
     for i in range(n - 1, -1, -1):
         if t[i] != 2:
             mins[i] = max(mins[i + 1] - l[i], 0)
+
         else:
             mins[i] = mins[i + 1] + l[i]
 
@@ -41,9 +43,8 @@ def main(n):
 
     if curs > 0:
         ans -= curs // 2 * 2
-    print(ans // 2)
-
-
+    # print(ans // 2)
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 进行规模实验
     main(10)

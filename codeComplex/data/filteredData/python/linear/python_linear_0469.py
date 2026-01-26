@@ -76,7 +76,8 @@ def ceil(n, x):
 def main(n):
     # n is the length of the generated string
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic periodic pattern over 3 characters
@@ -87,6 +88,7 @@ def main(n):
     for i in range(n - 1):
         if s[i] != s[i + 1]:
             l[-1] += 1
+
         else:
             l.append(1)
 
@@ -95,9 +97,8 @@ def main(n):
         if s[0] != s[-1]:
             ans = max(ans, l[0] + l[-1])
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example call; adjust n for different input scales
     main(10)

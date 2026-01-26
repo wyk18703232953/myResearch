@@ -15,11 +15,11 @@ def main(n):
     for value in first:
         if first_sum < value:
             count += 1
+
         else:
             continue
-    print(count + 1)
-
-
+    # print(count + 1)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以修改 n 以实验不同规模
     main(5)

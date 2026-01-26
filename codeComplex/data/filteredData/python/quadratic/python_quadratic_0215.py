@@ -27,10 +27,10 @@ def main(n):
                     t = 1
                     break
         if t == 0:
-            print('YES')
+            # print('YES')
+            pass
             return
-    print('NO')
-
-
+    # print('NO')
+    pass
 if __name__ == "__main__":
     main(10)

@@ -3,7 +3,8 @@ def main(n):
     # k will be chosen as min(n, 26) to ensure it's meaningful and within 1..26
     if n <= 0:
         # No meaningful input, emulate impossible case
-        print(-1)
+        # print(-1)
+        pass
         return
 
     k = n if n <= 26 else 26
@@ -31,13 +32,14 @@ def main(n):
             k -= 1
             i += 1
             if k == 0:
-                print(ans)
+                # print(ans)
+                pass
                 break
         i += 1
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # Example deterministic run with n = 10
     main(10)

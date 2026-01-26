@@ -26,6 +26,7 @@ def main(n):
                 elif s[j] == 'G':
                     R += 1
                     B += 1
+
                 else:
                     R += 1
                     G += 1
@@ -36,9 +37,11 @@ def main(n):
                 elif s[j] == 'G':
                     G += 1
                     B += 1
+
                 else:
                     R += 1
                     B += 1
+
             else:
                 if s[j] == 'R':
                     R += 1
@@ -46,6 +49,7 @@ def main(n):
                 elif s[j] == 'G':
                     R += 1
                     G += 1
+
                 else:
                     G += 1
                     B += 1
@@ -60,6 +64,7 @@ def main(n):
                     elif s[start] == 'G':
                         R -= 1
                         B -= 1
+
                     else:
                         R -= 1
                         G -= 1
@@ -70,9 +75,11 @@ def main(n):
                     elif s[start] == 'G':
                         G -= 1
                         B -= 1
+
                     else:
                         R -= 1
                         B -= 1
+
                 else:
                     if s[start] == 'R':
                         R -= 1
@@ -80,6 +87,7 @@ def main(n):
                     elif s[start] == 'G':
                         R -= 1
                         G -= 1
+
                     else:
                         G -= 1
                         B -= 1
@@ -87,8 +95,7 @@ def main(n):
         results.append(ans)
 
     for v in results:
-        print(v)
-
-
+        # print(v)
+        pass
 if __name__ == "__main__":
     main(10)

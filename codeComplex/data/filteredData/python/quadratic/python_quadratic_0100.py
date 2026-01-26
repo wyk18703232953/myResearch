@@ -44,6 +44,7 @@ def main(n):
         X = flipV(A, N)
     elif N % 4 == 2:
         X = rotate90(A)
+
     else:
         X = [row[:] for row in A]
 
@@ -54,14 +55,17 @@ def main(n):
         if check(A, X, N) or check(B, X, N) or check(C, X, N):
             flag = True
             break
+
         else:
             A = rotate90(A)
             B = rotate90(B)
             C = rotate90(C)
     if flag:
-        print("Yes")
-    else:
-        print("No")
+        # print("Yes")
+        pass
 
+    else:
+        # print("No")
+        pass
 if __name__ == "__main__":
     main(5)

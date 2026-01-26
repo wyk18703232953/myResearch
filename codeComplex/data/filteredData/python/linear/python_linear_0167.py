@@ -4,6 +4,7 @@ def core_algorithm(n):
     outputs = []
     if n < 6:
         outputs.append("-1")
+
     else:
         l = []
         o = []

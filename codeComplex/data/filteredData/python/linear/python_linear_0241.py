@@ -35,16 +35,19 @@ def main(n):
 
     if turns == 1 and m0 == l0:
         score0 = m0 - 1
+
     else:
         score0 = min(l0, m0 + turns)
 
     if turns == 1 and m1 == l1:
         score1 = m1 - 1
+
     else:
         score1 = min(l1, m1 + turns)
 
     if turns == 1 and m2 == l2:
         score2 = m2 - 1
+
     else:
         score2 = min(l2, m2 + turns)
 
@@ -53,10 +56,11 @@ def main(n):
 
     winnerlist = [i for i in range(3) if scores[i] == bestscore]
     if len(winnerlist) > 1:
-        print('Draw')
+        # print('Draw')
+        pass
+
     else:
-        print(['Kuro', 'Shiro', 'Katie'][winnerlist[0]])
-
-
+        # print(['Kuro', 'Shiro', 'Katie'][winnerlist[0]])
+        pass
 if __name__ == "__main__":
     main(1000)

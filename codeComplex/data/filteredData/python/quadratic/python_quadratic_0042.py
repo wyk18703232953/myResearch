@@ -20,12 +20,12 @@ def main(n):
             curr_sum %= mod
             if v[i] == 'f':
                 dp[i][l] = dp[i + 1][l + 1]
+
             else:
                 dp[i][l] = curr_sum
 
-    print(dp[1][0])
-
-
+    # print(dp[1][0])
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(5)

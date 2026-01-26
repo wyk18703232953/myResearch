@@ -13,7 +13,8 @@ def main(n):
 
     if n <= 0:
         # 对非正规模给出一个简单的退化调用
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # 生成确定性的字符串 s，长度为 n，由 'a'..'z' 循环组成
@@ -45,11 +46,12 @@ def main(n):
             c += l[i]
             b = l[i]
     if a < k:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(c)
-
-
+        # print(c)
+        pass
 if __name__ == "__main__":
     # 示例：使用若干不同规模调用以便实验
     for size in (5, 10, 50, 100):

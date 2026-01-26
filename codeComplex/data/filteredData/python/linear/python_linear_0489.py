@@ -40,11 +40,12 @@ def build_tree(n):
 
 def main(n):
     if n < 1:
-        print(0)
+        # print(0)
+        pass
         return
     G = build_tree(n)
     ans = bfs(1, n, G)
-    print(ans)
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

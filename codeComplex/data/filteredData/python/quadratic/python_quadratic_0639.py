@@ -17,7 +17,8 @@ def main(n):
     # 生成确定性的测试数据：a[i] = (i + 1) * 2
     a = [(i + 1) * 2 for i in range(n)]
     result = solve(n, a)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

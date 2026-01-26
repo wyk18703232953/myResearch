@@ -15,6 +15,7 @@ def main(n):
                 if c[j] != -1:
                     if (c[j] + k) > a[i]:
                         c[a[i]] = c[j]
+
                     else:
                         c[a[i]] = j + 1
                     break
@@ -24,8 +25,7 @@ def main(n):
                 c[xx] = c[a[i]]
         ans[i] = str(c[a[i]])
 
-    print(" ".join(ans))
-
-
+    # print(" ".join(ans))
+    pass
 if __name__ == "__main__":
     main(10)

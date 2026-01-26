@@ -2,9 +2,12 @@ def main(n):
     if n <= 0:
         return
     if n == 1:
-        print("1")
+        # print("1")
+        pass
     elif n == 2:
-        print("1 2")
+        # print("1 2")
+        pass
+
     else:
         base = 1
         gap = 2
@@ -21,8 +24,7 @@ def main(n):
                 cur = base
             next_val = max(next_val, cur)
         ans += str(next_val)
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     main(10)

@@ -43,7 +43,8 @@ def main(n):
     # n controls the input size: length of the binary string n_str
     # n_str is deterministically generated as a repeating "101" pattern
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
     pattern = "101"
     n_str = (pattern * ((n + len(pattern) - 1) // len(pattern)))[:n]
@@ -51,7 +52,7 @@ def main(n):
     # keep k reasonably small relative to n to exercise the logic
     k = max(0, (n % 10) - 2)
     result = core(n_str, k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

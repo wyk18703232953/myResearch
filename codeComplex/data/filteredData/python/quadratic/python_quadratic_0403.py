@@ -10,15 +10,16 @@ def main(n):
     t = "".join(alphabet[i % 26] for i in range(n))
 
     if n == 1:
-        print(t * k)
+        # print(t * k)
+        pass
+
     else:
         i = len(t) - 1
         while i > 0 and t[-i:] != t[:i]:
             i -= 1
         t2 = t[i:]
-        print(t + t2 * (k - 1))
-
-
+        # print(t + t2 * (k - 1))
+        pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的大小做复杂度实验
     main(10)

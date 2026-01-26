@@ -4,6 +4,7 @@ def main(n):
     base = "abcxxx"
     if a <= 0:
         b = ""
+
     else:
         # 构造长度为 a 的字符串
         times = a // len(base) + 1
@@ -12,8 +13,7 @@ def main(n):
     for i in range(a - 2):
         if b[i:i + 3] == 'xxx':
             s = s + 1
-    print(s)
-
-
+    # print(s)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -16,7 +16,8 @@ def is_golden(total, integers):
 def main(n):
     # n 作为票据长度，生成确定性的数字串 "1234567890123..."
     if n <= 0:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     digits = []
@@ -39,10 +40,12 @@ def main(n):
         integers = integers[:-1*zeros]
 
     if not integers:
-        print("YES")
+        # print("YES")
+        pass
         return
     if len(integers) == 1:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     total = 0
@@ -50,10 +53,11 @@ def main(n):
         total += val
         splice = integers[i+1:]
         if is_golden(total, splice):
-            print("YES")
+            # print("YES")
+            pass
             return
-    print("NO")
-
+    # print("NO")
+    pass
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--n", type=int, default=10)

@@ -16,7 +16,8 @@ def main(n):
     if n_nodes == 1:
         # 特殊情况：只有 1 个点时，原始程序要求 d+1 <= n，否则 NO。
         # 对 n_nodes=1，必然 NO，这里直接输出。
-        print("NO")
+        # print("NO")
+        pass
         return
 
     d = n_nodes // 4
@@ -31,7 +32,8 @@ def main(n):
     n_val = n_nodes
 
     if d + 1 > n_val:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     ans = []
@@ -40,6 +42,7 @@ def main(n):
     for i in range(d + 1):
         if i == 0 or i == d:
             deg[i] = 1
+
         else:
             deg[i] = 2
         if i != d:
@@ -48,7 +51,8 @@ def main(n):
 
     for i in range(n_val):
         if deg[i] > k:
-            print("NO")
+            # print("NO")
+            pass
             return
 
     from collections import deque
@@ -64,16 +68,19 @@ def main(n):
             q.append(v)
             q.append(cur)
             cur += 1
+
         else:
             continue
     if cur != n_val:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
+        # print("YES")
+        pass
         for edge in ans:
-            print(edge[0], edge[1])
-
-
+            # print(edge[0], edge[1])
+            pass
 if __name__ == "__main__":
     # 示例：使用 n=20 进行一次运行
     main(20)

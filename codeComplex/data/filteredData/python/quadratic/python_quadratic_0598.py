@@ -4,7 +4,8 @@ def main(n):
     # m: modulus parameter, set as max(1, n//3 + 1) to scale with n
     # k: constant cost parameter, set as max(1, n//5 + 1) to scale with n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = n // 3 + 1
@@ -29,9 +30,8 @@ def main(n):
                 if val > ans:
                     ans = val
 
-    print(ans // m)
-
-
+    # print(ans // m)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; you can change n for experiments
     main(10)

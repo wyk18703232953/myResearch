@@ -5,7 +5,8 @@ def main(n):
     # Interpret n as the number of elements in the list s
     # Generate deterministic parameters and data
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = n  # unused in original logic but kept for structure
@@ -28,18 +29,19 @@ def main(n):
         if x != 0:
             ans += 1
             lim += x
+
         else:
             if len(s) > 0:
                 diff = s[0] - lim
                 if diff % k == 0:
                     x = diff // k
+
                 else:
                     x = diff // k + 1
                 lim += x * k
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n here when running experiments
     main(10)

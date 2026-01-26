@@ -59,6 +59,7 @@ def generate_case(case_idx, n):
     # Per-case length
     if case_idx < extra:
         length = base_len + 1
+
     else:
         length = base_len
     # Bound length to a reasonable size

@@ -18,8 +18,7 @@ def main(n):
                 cv = max(0, cv)
             cv += v
             bv = max(bv, cv)
-    print(bv)
-
-
+    # print(bv)
+    pass
 if __name__ == "__main__":
     main(10)

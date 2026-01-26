@@ -22,6 +22,7 @@ def main(n):
                 for x in range(n):
                     if j == 1:
                         z = (x + y) % 2
+
                     else:
                         z = 1 - (x + y) % 2
                     c += a[i][y][x] != z
@@ -35,7 +36,8 @@ def main(n):
             + b[2][i >> 2 & 1]
             + b[3][i >> 3 & 1],
         )
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 

@@ -15,7 +15,8 @@ def main(n):
     m = len(G)
 
     if min(G) < max(B):
-        print(-1)
+        # print(-1)
+        pass
         return
 
     cnt = 0
@@ -26,6 +27,7 @@ def main(n):
     for i in B:
         if i != z or f2:
             y = max(y, i)
+
         else:
             f2 = 1
     for i in G:
@@ -34,8 +36,7 @@ def main(n):
         cnt += i - z
     if f:
         cnt += z - y
-    print(cnt + sum(B) * m)
-
-
+    # print(cnt + sum(B) * m)
+    pass
 if __name__ == "__main__":
     main(10)

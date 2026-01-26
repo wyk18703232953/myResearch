@@ -46,7 +46,8 @@ def build_graph(n):
 
 def main(n):
     if n < 1:
-        print("YES")
+        # print("YES")
+        pass
         return
     edges = build_graph(n)
     inCycle = detect_cycle(n, edges)
@@ -59,11 +60,13 @@ def main(n):
             if detect_cycle(n, edges) is None:
                 possible = True
                 break
+
             else:
                 edges[inCycle[v]].append(inCycle[v + 1])
+
     else:
         possible = True
-    print('YES' if possible else 'NO')
-
+    # print('YES' if possible else 'NO')
+    pass
 if __name__ == "__main__":
     main(10)

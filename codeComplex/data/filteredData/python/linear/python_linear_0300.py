@@ -7,11 +7,13 @@ def main(n):
     for i in range(n):
         if (i + 1 > a[i]):
             b[i] = i + 1
+
         else:
             q = (a[i] - (i + 1) + n) // n
             b[i] = i + 1 + q * n
     result = b.index(min(b)) + 1
-    print(result)
+    # print(result)
+    pass
     return result
 
 

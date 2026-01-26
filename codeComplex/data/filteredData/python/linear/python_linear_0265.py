@@ -2,6 +2,7 @@ def main(n):
     # Interpret n as number of nodes in a tree
     if n < 2:
         a = 2
+
     else:
         a = n
 
@@ -23,23 +24,29 @@ def main(n):
             c += 1
             ans = i
     if c > 1:
-        print("No")
+        # print("No")
+        pass
     elif c == 0:
-        print("Yes")
-        print(1)
+        # print("Yes")
+        pass
+        # print(1)
+        pass
         for i in s:
             if len(s[i]) == 1:
-                print(i, end=" ")
+                # print(i, end=" ")
+                pass
+
     else:
-        print("Yes")
-        print(len(s[ans]))
+        # print("Yes")
+        pass
+        # print(len(s[ans]))
+        pass
         k = []
         for i in s:
             if len(s[i]) == 1:
                 k.append(i)
         for i in k:
-            print(min(ans, i), max(ans, i))
-
-
+            # print(min(ans, i), max(ans, i))
+            pass
 if __name__ == "__main__":
     main(10)

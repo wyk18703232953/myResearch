@@ -11,10 +11,12 @@ def find_segment(arr, n, k):
         while count == k:
             f[arr[L]] -= 1
             if f[arr[L]] == 0:
-                print(L + 1, R + 1)
+                # print(L + 1, R + 1)
+                pass
                 return
             L += 1
-    print(-1, -1)
+    # print(-1, -1)
+    pass
 
 
 def main(n):

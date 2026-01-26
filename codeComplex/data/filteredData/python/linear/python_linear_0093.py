@@ -2,7 +2,8 @@ def main(n):
     # Deterministically generate a string of length n over a small alphabet
     # Example pattern: repeating "ABC" to cover multiple distinct characters
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     base = "ABC"
@@ -24,9 +25,8 @@ def main(n):
         if i >= start_of_all and length < minlen:
             minlen = length
 
-    print(minlen)
-
-
+    # print(minlen)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

@@ -29,10 +29,11 @@ def main(n):
         m = i + 1
         if m in ans:
             outputs.append(f"{ans[m][0]} {ans[m][1]}")
+
         else:
             mm = m - count
             outputs.append(f"{maxval} {d[1 + (mm % n)]}")
-    print("\n".join(outputs))
-
+    # print("\n".join(outputs))
+    pass
 if __name__ == "__main__":
     main(10)

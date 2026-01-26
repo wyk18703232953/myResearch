@@ -3,7 +3,8 @@ def main(n):
     # 这里生成一个长度为 n 的“数字数组” b，然后将其拼成十进制整数 a
     # 生成规则完全确定：第 j 位为 (j % 10) + 1（避免出现 0，使得逻辑更有意义）
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     b = [((j % 10) + 1) for j in range(n)]
@@ -35,6 +36,7 @@ def main(n):
         for j in range(n):
             if su > l:
                 break
+
             else:
                 su += b[j]
                 if su == l:
@@ -44,11 +46,12 @@ def main(n):
             ans = True
         i += 1
     if ans:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 进行规模实验
     main(10)

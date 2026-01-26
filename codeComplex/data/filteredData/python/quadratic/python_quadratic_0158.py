@@ -21,6 +21,7 @@ def main(n):
             for j in range(x - 1, max(-1, x - k), -1):
                 if not choosed[j]:
                     best = j
+
                 else:
                     if x - left[j] < k:
                         best = left[j]
@@ -30,9 +31,8 @@ def main(n):
                 left[j] = best
         p[i] = left[x]
 
-    print(" ".join(map(str, p)))
-
-
+    # print(" ".join(map(str, p)))
+    pass
 if __name__ == "__main__":
     # 示例调用：可以根据需要修改 n 的规模进行实验
     main(1000)

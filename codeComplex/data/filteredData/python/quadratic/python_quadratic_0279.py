@@ -19,16 +19,17 @@ def main(n):
                     first = a
                     out.append(y[b])
                     b += 1
+
                 else:
                     out.insert(0, y[b])
                     b += 1
+
             else:
                 b += 1
     out.reverse()
     for a in out:
-        print(a)
-
-
+        # print(a)
+        pass
 if __name__ == "__main__":
     # example call; you can change n to test different scales
     main(10)

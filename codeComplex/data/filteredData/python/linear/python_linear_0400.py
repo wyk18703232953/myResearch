@@ -31,16 +31,18 @@ def main(n):
         mid = (r + l) / 2.0
         if check(mid):
             r = mid
+
         else:
             l = mid
         if r - l <= 1e-10:
             break
 
     if l >= 1e9 + 1e-6:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print("{:.10f}".format(l))
-
-
+        # print("{:.10f}".format(l))
+        pass
 if __name__ == "__main__":
     main(5)

@@ -44,9 +44,8 @@ def main(n):
         swap = m * (m - 1) // 2
         if swap % 2:
             res = 1 - res
-        print('odd' if res else 'even')
-
-
+        # print('odd' if res else 'even')
+        pass
 if __name__ == "__main__":
     # Example deterministic call
     main(10)

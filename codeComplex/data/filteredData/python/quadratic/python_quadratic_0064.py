@@ -17,8 +17,7 @@ def main(n):
         if l > r:
             l, r = r, l
         s ^= (r - l + 1) * (r - l) // 2 % 2
-        print(['even', 'odd'][s])
-
-
+        # print(['even', 'odd'][s])
+        pass
 if __name__ == "__main__":
     main(10)

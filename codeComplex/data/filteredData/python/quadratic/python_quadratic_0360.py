@@ -13,6 +13,7 @@ def main(n):
             # Example deterministic pattern: star if (i*j + i + j) is even
             if (i * j + i + j) % 2 == 0:
                 row_chars.append('*')
+
             else:
                 row_chars.append('.')
         grid.append(''.join(row_chars))
@@ -33,6 +34,7 @@ def main(n):
                     v += 1
                     if cc[i] > v:
                         cc[i] = v
+
                 else:
                     v = cc[i] = 0
         if f:
@@ -45,6 +47,7 @@ def main(n):
             for i in r:
                 if v > cc[i]:
                     v -= 1
+
                 else:
                     v = cc[i]
                 if v:
@@ -53,15 +56,16 @@ def main(n):
             ll.reverse()
             cc.reverse()
     if any(ll):
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         res = []
         for i, c in enumerate(cc):
             if c:
                 res.append(f'{i//m+1} {i%m+1} {c-1}')
-        print(len(res), '\n'.join(res), sep='\n')
-
-
+        # print(len(res), '\n'.join(res), sep='\n')
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for different experiment scales
     main(5)

@@ -5,6 +5,7 @@ def intersec(arr):
     x, y = 0, 0
     if a[0] == b[0]:
         return max(b[1][1] - a[1][0], 0)
+
     else:
         x = b[0][1] - a[1][0]
         y = b[1][1] - a[0][0]
@@ -17,8 +18,7 @@ def main(n):
         n = 2
     blanck = [[i, 2 * i] for i in range(1, n + 1)]
     result = intersec(blanck)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

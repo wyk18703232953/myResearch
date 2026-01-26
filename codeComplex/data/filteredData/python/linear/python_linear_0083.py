@@ -13,6 +13,7 @@ def chain_reaction(n, beacons):
             mid = int(lo + (hi - lo) / 2)
             if beacons[mid][0] < r:
                 lo = mid + 1
+
             else:
                 hi = mid - 1
         destroyed += table[hi] if hi >= 0 else 0
@@ -38,7 +39,7 @@ def generate_beacons(n):
 def main(n):
     beacons = generate_beacons(n)
     result = chain_reaction(n, beacons)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

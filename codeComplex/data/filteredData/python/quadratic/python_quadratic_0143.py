@@ -43,8 +43,7 @@ def main(n):
     for p in itertools.permutations(range(4), 4):
         ans = min(ans, solve(1, p, n))
         ans = min(ans, solve(0, p, n))
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(5)

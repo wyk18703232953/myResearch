@@ -1,6 +1,7 @@
 def main(n):
     if n < 1:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     # Deterministic generation of a[2..n], values in [1, n]
@@ -24,11 +25,11 @@ def main(n):
             c[a[i]] += 1
     for i in range(1, n + 1):
         if b[i] != 0 and c[i] < 3:
-            print("NO")
+            # print("NO")
+            pass
             return
-    print("YES")
-
-
+    # print("YES")
+    pass
 if __name__ == "__main__":
     # Example deterministic run
     main(10)

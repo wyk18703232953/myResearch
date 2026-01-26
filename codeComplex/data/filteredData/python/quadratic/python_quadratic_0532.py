@@ -6,7 +6,8 @@ def main(n):
 
     # Ensure total is at least 1
     if total <= 0:
-        print()
+        # print()
+        pass
         return
 
     # Generate deterministic array t of length (n + m) with exactly m ones
@@ -25,23 +26,25 @@ def main(n):
 
     # Guard against unexpected situations (though construction should avoid them)
     if not p:
-        print(' '.join(map(str, ans)))
+        # print(' '.join(map(str, ans)))
+        pass
         return
 
     ans[0] = p[0]
     for i in range(m):
         if i == m - 1:
             ans[i] += n + m - p[i] - 1
+
         else:
             for j in range(p[i] + 1, p[i + 1]):
                 if a[j] - a[p[i]] <= a[p[i + 1]] - a[j]:
                     ans[i] += 1
+
                 else:
                     ans[i + 1] += 1
 
-    print(' '.join(map(str, ans)))
-
-
+    # print(' '.join(map(str, ans)))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; change n to scale input size
     main(10)

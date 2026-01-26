@@ -79,7 +79,8 @@ def main(n):
     # n, k = length of s, and k is an even number <= n.
     if n < 2:
         # For very small n, no valid k, just print empty and return
-        print("")
+        # print("")
+        pass
         return
 
     # Make k the largest even <= n
@@ -97,6 +98,7 @@ def main(n):
         if lb > 0:
             if c == "(":
                 lb -= 1
+
             else:
                 rb -= 1
             ans.append(c)
@@ -106,8 +108,8 @@ def main(n):
                 rb -= 1
         elif lb == 0 and rb == 0:
             break
-    print(lts(ans))
-
+    # print(lts(ans))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n to scale input size
     main(10)

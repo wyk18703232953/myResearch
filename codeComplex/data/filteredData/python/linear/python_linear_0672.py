@@ -5,7 +5,8 @@ import math
 
 def main(n):
     if n <= 0:
-        print("YES")
+        # print("YES")
+        pass
         return
 
     # 确定性生成长度为 n 的整数列表
@@ -21,14 +22,16 @@ def main(n):
             previouslist.append(modcolumns[i])
         elif modcolumns[i] == previouslist[-1]:
             previouslist.pop()
+
         else:
             previouslist.append(modcolumns[i])
 
     if len(previouslist) <= 1:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(10)

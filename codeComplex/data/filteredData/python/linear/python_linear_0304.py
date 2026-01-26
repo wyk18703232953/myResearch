@@ -13,13 +13,13 @@ def main(n):
         dor = (layne[i] // num) * num
         if (layne[i] % num) - i > 0:
             dor = dor + num + i + 1
+
         else:
             dor = dor + i + 1
         if dor < dorf:
             dorf = dor
             indx = i + 1
-    print(indx)
-
-
+    # print(indx)
+    pass
 if __name__ == "__main__":
     main(10)

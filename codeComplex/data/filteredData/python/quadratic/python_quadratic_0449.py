@@ -9,11 +9,13 @@ def main(n):
     for i in range(n):
         if n == 1:
             arr[i] = 1
+
         else:
             if i < n // 3:
                 arr[i] = i
             elif i < 2 * n // 3:
                 arr[i] = n // 3
+
             else:
                 arr[i] = 2 * n // 3 - (i - 2 * n // 3)
 
@@ -27,13 +29,16 @@ def main(n):
         elif arr[i] < arr[i - 1]:
             for j in range(3, -1, -1):
                 dp[i][j] = max(dp[i - 1][j + 1], dp[i][j + 1])
+
         else:
             s = sum(dp[i - 1])
             for j in range(5):
                 dp[i][j] += (s > 0) * (dp[i - 1][j] == 0 or s > 1)
 
     if dp[-1] == [0, 0, 0, 0, 0]:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
         ans = [dp[-1].index(1) + 1]
         for i in range(n - 2, -1, -1):
@@ -45,8 +50,7 @@ def main(n):
                 ):
                     ans.append(j + 1)
                     break
-        print(*reversed(ans))
-
-
+        # print(*reversed(ans))
+        pass
 if __name__ == "__main__":
     main(10)

@@ -25,6 +25,7 @@ def main(n):
         for j in range(cols):
             if i == r0 and c0 <= j <= c1:
                 row_chars.append('B')
+
             else:
                 row_chars.append('.')
         s = ''.join(row_chars)
@@ -33,7 +34,8 @@ def main(n):
         if left != -1:
             right = s.rfind('B')
             c = (right - left) // 2 + 1
-            print(i + c, left + c)
+            # print(i + c, left + c)
+            pass
             break
 
 

@@ -2,7 +2,8 @@ def main(n):
     from collections import defaultdict
 
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministic construction:
@@ -21,6 +22,7 @@ def main(n):
     for e in a[1:]:
         if e == tar:
             presum.append(presum[-1] + 1)
+
         else:
             presum.append(presum[-1])
 
@@ -42,8 +44,7 @@ def main(n):
 
         final = max(final, tt)
 
-    print(final + count)
-
-
+    # print(final + count)
+    pass
 if __name__ == "__main__":
     main(10)

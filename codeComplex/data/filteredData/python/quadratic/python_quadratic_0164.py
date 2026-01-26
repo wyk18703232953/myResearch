@@ -30,9 +30,8 @@ def main(n):
                 c += 1
             arr[i].sort()
         ans.append(arr[i][0])
-    print(*ans)
-
-
+    # print(*ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要修改 n 的大小进行时间复杂度实验
     main(10)

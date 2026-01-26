@@ -34,12 +34,14 @@ def main(n):
                 break
 
     if notp:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
-        print(*check)
-
-
+        # print('YES')
+        pass
+        # print(*check)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

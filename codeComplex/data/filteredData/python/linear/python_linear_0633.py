@@ -18,10 +18,12 @@ def main(n):
                 ans = 'YES 1'
             elif ki == 3 or ki > 5:
                 ans = 'NO'
+
             else:
                 ans = 'YES 0'
         elif ni <= 32 and ki > (4 ** ni - 1) // 3:
             ans = 'NO'
+
         else:
             c, x = 0, ni
             p2 = 2
@@ -43,4 +45,5 @@ if __name__ == "__main__":
     # Example deterministic run
     res = main(10)
     for line in res:
-        print(line)
+        # print(line)
+        pass

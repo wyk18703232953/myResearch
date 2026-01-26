@@ -14,8 +14,7 @@ def main(n):
         if value in list1:
             list1.remove(value)
 
-    print(len(list1))
-
-
+    # print(len(list1))
+    pass
 if __name__ == "__main__":
     main(10)

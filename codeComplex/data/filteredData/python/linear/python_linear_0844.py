@@ -17,7 +17,8 @@ def main(n):
         if a[j] < a[j + 1]:
             v = False
     result = "YES" if v else "NO"
-    print(result)
+    # print(result)
+    pass
     return result
 
 

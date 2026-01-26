@@ -22,11 +22,11 @@ def main(n):
         if z < 2:
             for i in range(a * a):
                 total += (v[i] != '0') if i % 2 else (v[i] != '1')
+
         else:
             for i in range(a * a):
                 total += (v[i] != '1') if i % 2 else (v[i] != '0')
-    print(total)
-
-
+    # print(total)
+    pass
 if __name__ == "__main__":
     main(3)

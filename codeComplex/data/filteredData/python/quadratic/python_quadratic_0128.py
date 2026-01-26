@@ -36,8 +36,8 @@ def generate_input(n):
 def main(n):
     n_val, m_val, l = generate_input(n)
     result = core_algorithm(n_val, m_val, l)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(5)

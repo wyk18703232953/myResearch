@@ -10,6 +10,7 @@ def get_fingering(notes):
                 finger = 1 + (finger == 1)
             elif next_diff < 0:
                 finger = 5 - (finger == 5)
+
             else:
                 finger = 3 + (finger == 3)
         elif diff > 0:
@@ -17,13 +18,16 @@ def get_fingering(notes):
                 return None
             if next_diff < 0:
                 finger = 5
+
             else:
                 finger += 1
+
         else:
             if finger == 1:
                 return None
             if next_diff > 0:
                 finger = 1
+
             else:
                 finger -= 1
         fingering.append(finger)
@@ -43,10 +47,11 @@ def main(n):
     notes = generate_notes(n)
     fingering = get_fingering(notes)
     if fingering:
-        print(*fingering)
+        # print(*fingering)
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(10)

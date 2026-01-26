@@ -28,6 +28,7 @@ def main(n):
         edges = [(1, 2)]
     elif n == 3:
         edges = [(1, 2), (2, 3)]
+
     else:
         # base star at node 1
         edges = [(1, 2), (1, 3), (1, 4)]
@@ -60,4 +61,5 @@ def main(n):
 
 if __name__ == "__main__":
     # Example deterministic call
-    print(main(10))
+    # print(main(10))
+    pass

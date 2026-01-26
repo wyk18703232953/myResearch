@@ -4,8 +4,7 @@ def main(n):
     while mid > 0:
         ans += mid * 2
         mid -= 2
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

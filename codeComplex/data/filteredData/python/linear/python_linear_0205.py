@@ -21,7 +21,9 @@ def main(n):
         l.append(x * 60 + y)
 
     if l[1] != 0 and (l[1] - l[0]) >= s + 1:
-        print(0, 0)
+        # print(0, 0)
+        pass
+
     else:
         k = 2 * s + 2
         r = 0
@@ -29,13 +31,13 @@ def main(n):
             if l[i + 1] - l[i] >= k:
                 r = l[i] + s + 1
                 break
+
             else:
                 continue
         if r == 0:
             r = l[n] + s + 1
-        print(r // 60, r % 60)
-
-
+        # print(r // 60, r % 60)
+        pass
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次运行
     main(10)

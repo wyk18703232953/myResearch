@@ -4,7 +4,8 @@ def main(n):
     if n <= 1:
         # Handle trivial case: no edges, avoid division by zero
         s = 0
-        print(0)
+        # print(0)
+        pass
         return
 
     # Deterministically generate s as a simple function of n
@@ -29,11 +30,12 @@ def main(n):
             count += 1
 
     if count == 0:
-        print(0)
+        # print(0)
+        pass
+
     else:
-        print((s / count) * 2)
-
-
+        # print((s / count) * 2)
+        pass
 if __name__ == "__main__":
     # Example call for testing with a chosen scale n
     main(10)

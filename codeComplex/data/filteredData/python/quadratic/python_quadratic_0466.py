@@ -18,7 +18,8 @@ def main(n):
 
     # 以下为原算法主体逻辑
     if a[0] != 1:
-        print("No")
+        # print("No")
+        pass
         return
     ptr = 0
     i = 1
@@ -27,18 +28,20 @@ def main(n):
         par = a[ptr]
         while len(g[par]) != 0:
             if i >= n or a[i] not in g[par]:
-                print("No")
+                # print("No")
+                pass
                 return
+
             else:
                 g[par].remove(a[i])
                 g[a[i]].remove(par)
             i += 1
         ptr += 1
-    print("Yes")
-
-
+    # print("Yes")
+    pass
 if __name__ == "__main__":
     # 示例：对若干规模进行调用
     for size in [1, 2, 5, 10]:
-        print(f"n = {size}")
+        # print(f"n = {size}")
+        pass
         main(size)

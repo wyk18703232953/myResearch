@@ -13,9 +13,8 @@ def main(n):
         if turns < ans:
             ans = turns
             p = i
-    print(p + 1)
-
-
+    # print(p + 1)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 的大小做复杂度实验
     main(10)

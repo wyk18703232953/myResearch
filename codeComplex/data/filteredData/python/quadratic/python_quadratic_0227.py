@@ -23,10 +23,11 @@ def main(n):
 
     x = min(dp_3)
     if x == INF:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print(x)
-
-
+        # print(x)
+        pass
 if __name__ == "__main__":
     main(10)

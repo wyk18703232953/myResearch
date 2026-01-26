@@ -3,6 +3,7 @@ import collections
 def can_win(i, dp, possible):
     if i in dp:
         return dp[i]
+
     else:
         for nxt in possible[i]:
             if not can_win(nxt, dp, possible):
@@ -16,6 +17,7 @@ def run_algorithm(nb, nums):
     for i in range(nb):
         if nums[i] == 1:
             possible[i] = [k for k in range(nb) if k != i]
+
         else:
             for j in range(i + nums[i], nb, nums[i]):
                 if nums[j] > nums[i]:
@@ -28,6 +30,7 @@ def run_algorithm(nb, nums):
     for i in range(nb):
         if can_win(i, dp, possible):
             res += "A"
+
         else:
             res += "B"
     return res
@@ -35,6 +38,7 @@ def run_algorithm(nb, nums):
 def generate_input(n):
     if n <= 0:
         nb = 1
+
     else:
         nb = n
     nums = [(i % 5) + 1 for i in range(nb)]
@@ -43,7 +47,7 @@ def generate_input(n):
 def main(n):
     nb, nums = generate_input(n)
     result = run_algorithm(nb, nums)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -11,17 +11,20 @@ def main(n):
 
     # deterministic generation of t test cases from n
     t = max(1, n)
-    print(t)
+    # print(t)
+    pass
 
     for i in range(t):
         # generate n_i and k_i deterministically from i and n
         ni = max(1, (i % 40) + (n % 5))
         ki = (i + 1) * (n + 1)
 
-        print(ni, ki)
+        # print(ni, ki)
+        pass
 
         if ni >= 34:
-            print("YES " + str(ni - 1))
+            # print("YES " + str(ni - 1))
+            pass
             continue
 
         sek = 0
@@ -33,7 +36,8 @@ def main(n):
         while sek < ni:
             cnt = cnt + (1 << (sek + 1)) - 1
             if cnt > ki:
-                print("NO")
+                # print("NO")
+                pass
                 sudah = True
                 break
 
@@ -44,13 +48,13 @@ def main(n):
             sek += 1
             nyak = nyak + sisa * lst[ni - sek]
             if (nyak + cnt) >= ki:
-                print("YES " + str(ni - sek))
+                # print("YES " + str(ni - sek))
+                pass
                 sudah = True
                 break
 
         if not sudah:
-            print("NO")
-
-
+            # print("NO")
+            pass
 if __name__ == "__main__":
     main(10)

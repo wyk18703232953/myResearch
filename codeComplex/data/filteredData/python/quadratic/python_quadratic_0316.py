@@ -1,7 +1,8 @@
 def main(n):
     # Interpret n as length of array, k as n // 2 (at least 1)
     if n <= 0:
-        print(0.0)
+        # print(0.0)
+        pass
         return
 
     k = max(1, n // 2)
@@ -20,8 +21,7 @@ def main(n):
                 current = s / cnt
                 if current > avg:
                     avg = current
-    print(avg)
-
-
+    # print(avg)
+    pass
 if __name__ == "__main__":
     main(10)

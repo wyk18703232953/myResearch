@@ -1,7 +1,8 @@
 def main(n):
     # Ensure n is positive
     if n <= 0:
-        print("NO")
+        # print("NO")
+        pass
         return
 
     # Deterministic generation of left and right based on n
@@ -21,7 +22,8 @@ def main(n):
             if arr[j] > arr[i]:
                 more += 1
         if more != left[i]:
-            print('NO')
+            # print('NO')
+            pass
             return
 
     # check right
@@ -31,15 +33,17 @@ def main(n):
             if arr[j] > arr[i]:
                 more += 1
         if more != right[i]:
-            print('NO')
+            # print('NO')
+            pass
             return
 
-    print('YES')
+    # print('YES')
+    pass
     for x in arr:
-        print(x, end=' ')
-    print()
-
-
+        # print(x, end=' ')
+        pass
+    # print()
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for experiments
     main(10)

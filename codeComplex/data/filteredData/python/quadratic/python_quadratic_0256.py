@@ -6,21 +6,25 @@ def main(n):
     if n_nodes % 2 == 0:
         a = 1
         b = max(1, (n_nodes // 3) or 1)
+
     else:
         b = 1
         a = max(1, (n_nodes // 3) or 1)
 
     # preserve original logic
     if a > 1 and b > 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     if n_nodes == 3 and a == 1 and b == 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     if n_nodes == 2 and a == 1 and b == 1:
-        print('NO')
+        # print('NO')
+        pass
         return
 
     t = [[0 for _ in range(n_nodes)] for _ in range(n_nodes)]
@@ -37,10 +41,10 @@ def main(n):
                 if i != j:
                     t[i][j] = 1 - t[i][j]
 
-    print('YES')
+    # print('YES')
+    pass
     for i in range(n_nodes):
-        print("".join(map(str, t[i])))
-
-
+        # print("".join(map(str, t[i])))
+        pass
 if __name__ == "__main__":
     main(5)

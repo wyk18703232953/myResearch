@@ -1,7 +1,8 @@
 def main(n):
     # 映射：n -> 数组长度；m 和 k 由 n 确定性生成
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     m = max(1, n // 3)
@@ -18,8 +19,7 @@ def main(n):
                 cur -= k
             cur += a[j]
             ret = max(ret, cur)
-    print(ret)
-
-
+    # print(ret)
+    pass
 if __name__ == "__main__":
     main(1000)

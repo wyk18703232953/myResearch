@@ -16,10 +16,11 @@ def main(n):
             ok = 0
             break
     if ok:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     main(10)

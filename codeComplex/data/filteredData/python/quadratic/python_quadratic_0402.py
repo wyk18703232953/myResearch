@@ -27,8 +27,7 @@ def core_logic(n, k, s):
 def main(n):
     n, k, s = generate_input(n)
     result = core_logic(n, k, s)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -35,16 +35,18 @@ def main(n):
             return mid
         if check(mid):
             return binary_search(left, mid)
+
         else:
             return binary_search(mid, right)
 
     res = binary_search(0, 1e9 + 1)
     if res - 1e9 > EPS:
-        print(-1)
+        # print(-1)
+        pass
+
     else:
-        print("%.10f" % res)
-
-
+        # print("%.10f" % res)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n to run different scales
     main(5)

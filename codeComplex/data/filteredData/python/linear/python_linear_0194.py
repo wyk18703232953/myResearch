@@ -17,7 +17,8 @@ def main(n):
     # 这样随着 n 增大，循环规模也随之增大，便于时间复杂度实验。
 
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     a = 1
@@ -34,9 +35,8 @@ def main(n):
         for u in range(t, T + 1):
             temp = max(temp, c * (u - t) + a - b * (u - t))
         ans += temp
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # 示例调用：可以修改 n 以做不同规模的时间复杂度实验
     main(10)

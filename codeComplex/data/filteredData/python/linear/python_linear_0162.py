@@ -29,6 +29,7 @@ def core_logic(expressions):
         qs.append(res)
         if res in d:
             d[res] += 1
+
         else:
             d[res] = 1
     output_parts = []
@@ -39,7 +40,7 @@ def core_logic(expressions):
 def main(n):
     expressions = generate_input(n)
     result = core_logic(expressions)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

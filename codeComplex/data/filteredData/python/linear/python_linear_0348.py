@@ -18,12 +18,14 @@ def main(n):
     # 保持原来的核心输出逻辑：长度为 n 的 1010... 序列
     for i in range(1, n + 1):
         if i % 2 == 0:
-            print('0', end='')
+            # print('0', end='')
+            pass
+
         else:
-            print('1', end='')
-    print()
-
-
+            # print('1', end='')
+            pass
+    # print()
+    pass
 if __name__ == "__main__":
     # 示例调用，可根据需要调整 n
     main(10)

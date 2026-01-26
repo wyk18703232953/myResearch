@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # Deterministic construction of s and c based on n
@@ -26,8 +27,7 @@ def main(n):
                     res = val
     if res == float('inf'):
         res = -1
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     main(10)

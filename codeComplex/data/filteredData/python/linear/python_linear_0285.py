@@ -9,6 +9,7 @@ def main(n):
             # 简单确定性模式：根据 (t + i) 的奇偶选择括号
             if (t + i) % 3 == 0:
                 s.append('(')
+
             else:
                 s.append(')')
         s = ''.join(s)
@@ -17,9 +18,11 @@ def main(n):
         for ch in s:
             if ch == '(':
                 l += 1
+
             else:
                 if l != 0:
                     l -= 1
+
                 else:
                     nn += 1
         if l == 0 and nn == 0:
@@ -29,6 +32,7 @@ def main(n):
         elif l != 0:
             if l < 300000:
                 o[l] += 1
+
         else:
             if nn < 300000:
                 e[nn] += 1
@@ -36,8 +40,7 @@ def main(n):
     for i in range(300000):
         if e[i] and o[i]:
             r += e[i] * o[i]
-    print(pow(c, 2) + r)
-
-
+    # print(pow(c, 2) + r)
+    pass
 if __name__ == "__main__":
     main(1000)

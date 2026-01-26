@@ -50,9 +50,11 @@ def main(n):
     if (L == M or L1 == M or L2 == M or L3 == M or
         L4 == M or L5 == M or L6 == M or L7 == M or
         L8 == M or L9 == M or L10 == M or L11 == M):
-        print('Yes')
-    else:
-        print('No')
+        # print('Yes')
+        pass
 
+    else:
+        # print('No')
+        pass
 if __name__ == "__main__":
     main(5)

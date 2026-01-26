@@ -15,6 +15,7 @@ def transform_string(s: str) -> str:
                 break
         ans = news[0:ind] + '1' * d['1'] + news[ind:]
         return ans
+
     else:
         return s
 

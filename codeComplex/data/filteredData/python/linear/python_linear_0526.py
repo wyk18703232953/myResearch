@@ -38,19 +38,22 @@ def main(n):
                 if m[a[i]] == 0 and a[i] in g[first]:
                     m[a[i]] = 1
                     q.append(a[i])
+
                 else:
                     ans = False
                     break
             right += cnt
+
     else:
         ans = a[0] == 1
 
     if ans:
-        print("Yes")
+        # print("Yes")
+        pass
+
     else:
-        print("No")
-
-
+        # print("No")
+        pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     main(10)

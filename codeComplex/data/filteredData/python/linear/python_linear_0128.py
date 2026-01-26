@@ -18,8 +18,7 @@ def main(n):
         l.append(parent)
     s = set(l)
     result = if_spruce(n, l, s)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -10,9 +10,9 @@ def main(n):
             lst.append(a[i])
     if len(lst) == 0:
         pass
+
     else:
-        print(*lst)
-
-
+        # print(*lst)
+        pass
 if __name__ == "__main__":
     main(10)

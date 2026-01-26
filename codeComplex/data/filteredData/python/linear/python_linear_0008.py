@@ -8,6 +8,7 @@ def main(n):
             r = i
             c = i * 3
             tests.append(f"R{r}C{c}")
+
         else:
             # Excel-like format
             # Generate a column name deterministically based on i
@@ -18,6 +19,7 @@ def main(n):
                 if c % 26 == 0:
                     v.append('Z')
                     c = (c - 1) // 26
+
                 else:
                     v.append(chr(ord('A') + (c % 26 - 1)))
                     c //= 26
@@ -40,12 +42,14 @@ def main(n):
                 if c % 26 == 0:
                     v.append('Z')
                     c = (c - 1) // 26
+
                 else:
                     v.append(chr(ord('A') + (c % 26 - 1)))
                     c //= 26
 
             v.reverse()
-            print("%s%d" % ("".join(v), r))
+            # print("%s%d" % ("".join(v), r))
+            pass
 
         else:
             p = 0
@@ -61,8 +65,7 @@ def main(n):
             for x in sr:
                 c = c * 26 + (ord(x) - ord('A') + 1)
 
-            print("R%sC%d" % (sc, c))
-
-
+            # print("R%sC%d" % (sc, c))
+            pass
 if __name__ == "__main__":
     main(10)

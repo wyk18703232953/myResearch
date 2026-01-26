@@ -1,6 +1,7 @@
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # Set length of arrays; ensure at least 1
@@ -45,8 +46,7 @@ def main(n):
             u[idx] = 2
             idx = a[idx] - 1
         ans += mn
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(10)

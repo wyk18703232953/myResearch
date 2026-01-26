@@ -38,11 +38,11 @@ def main(n):
         for j in range(cols):
             if b[i][j] == '#':
                 if (not check(i, j, 0)) and a[i][j] == 0:
-                    print("NO")
+                    # print("NO")
+                    pass
                     return
-    print("YES")
-
-
+    # print("YES")
+    pass
 if __name__ == "__main__":
     # Example deterministic call for time complexity experiments
     main(10)

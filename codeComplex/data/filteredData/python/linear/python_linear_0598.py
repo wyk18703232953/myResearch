@@ -11,4 +11,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例：使用 n = 10 进行一次确定性调用
     result = main(10)
-    print(result)
+    # print(result)
+    pass

@@ -9,15 +9,17 @@ def main(n):
         if a[i + 1] > a[i]:
             if fl:
                 ans = False
+
         else:
             fl = True
 
     if ans:
-        print('YES')
+        # print('YES')
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的规模做时间复杂度实验
     main(10)

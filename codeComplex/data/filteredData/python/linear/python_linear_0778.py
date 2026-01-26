@@ -3,6 +3,7 @@ import math
 def func(a, k):
     if a % k != 0:
         mod = 1
+
     else:
         mod = 0
     return math.floor(a / k) * k + mod * k
@@ -32,6 +33,7 @@ def core_algorithm(arr, k):
                     c += 1
                     check = 'true'
                     used = 1
+
                 else:
                     temp = temp + func(int(arr[i]) - temp, k)
                     if arr[i] - c <= temp and used == 0:
@@ -49,7 +51,8 @@ def core_algorithm(arr, k):
 
 def main(n):
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 映射输入结构：
@@ -65,8 +68,8 @@ def main(n):
     arr = [(i * k) // 2 + (i % (k + 1)) for i in range(m)]
 
     result = core_algorithm(arr, k)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # 示例调用，可按需修改 n 进行复杂度实验
     main(10)

@@ -15,7 +15,8 @@ def main(n):
     # X, D 长度均为 m
     m = n
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 确定性生成 X 和 D
@@ -31,13 +32,14 @@ def main(n):
         if d < 0:
             if n % 2 == 1:
                 summ += d * (n // 2) * (n // 2 + 1)
+
             else:
                 summ += d * (n // 2) * (n // 2)
+
         else:
             summ += d * (n - 1) * n // 2
 
-    print(summ / n)
-
-
+    # print(summ / n)
+    pass
 if __name__ == "__main__":
     main(10)

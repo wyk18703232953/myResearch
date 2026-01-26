@@ -20,6 +20,7 @@ def solve(n, edges):
             if deg[i] == 1:
                 res.append(f"{i + 1} {ix + 1}")
         return res
+
     else:
         return ["No"]
 
@@ -42,8 +43,7 @@ def main(n):
     edges = generate_tree_edges(n)
     output_lines = solve(n, edges)
     for line in output_lines:
-        print(line)
-
-
+        # print(line)
+        pass
 if __name__ == "__main__":
     main(10)

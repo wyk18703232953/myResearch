@@ -37,10 +37,11 @@ def main(n):
         # No 'B' cells; define a deterministic fallback, e.g., center of the grid
         cy = (n + 1) // 2
         cx = (n + 1) // 2
-        print(cy, cx)
+        # print(cy, cx)
+        pass
+
     else:
-        print((y1 + y2) // 2, (x1 + x2) // 2)
-
-
+        # print((y1 + y2) // 2, (x1 + x2) // 2)
+        pass
 if __name__ == "__main__":
     main(5)

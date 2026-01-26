@@ -23,6 +23,7 @@ def main(n):
                         if q != cnt2 % 2:
                             total += 1
                         cnt2 += 1
+
             else:
                 cnt2 = 1
                 for p in j:
@@ -34,8 +35,7 @@ def main(n):
 
         ans = min(ans, total)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     main(5)

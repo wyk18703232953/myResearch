@@ -16,8 +16,7 @@ def main(n):
             if a[i] == x:
                 a[i] = -a[i] - 1
                 break
-    print(*a)
-
-
+    # print(*a)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -11,7 +11,8 @@ def main(n):
     for i in range(m):
         count[a[i] - 1] += 1
     result = min(count)
-    print(result)
+    # print(result)
+    pass
     return result
 
 if __name__ == "__main__":

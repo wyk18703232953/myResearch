@@ -24,6 +24,7 @@ def main(n):
                 water -= dist
                 time += 2 * dist
                 cgrass += dist
+
             else:
                 dist -= water
                 time += 2 * water
@@ -35,11 +36,13 @@ def main(n):
             water += l[i]
             time += 2 * l[i]
             seen = True
+
         else:
             dist = l[i]
             if water >= dist:
                 water -= dist
                 time += 2 * dist
+
             else:
                 dist -= water
                 time += 2 * water
@@ -48,6 +51,7 @@ def main(n):
                     cgrass -= dist
                     grass += dist
                     time += 3 * dist
+
                 else:
                     dist -= cgrass
                     grass += cgrass
@@ -56,12 +60,14 @@ def main(n):
                     if grass >= dist:
                         grass -= dist
                         time += 3 * dist
+
                     else:
                         dist -= grass
                         time += 3 * grass
                         grass = 0
                         if seen:
                             time += 4 * dist
+
                         else:
                             time += 6 * dist
 
@@ -71,4 +77,5 @@ def main(n):
 if __name__ == "__main__":
     # Example deterministic calls for time complexity experiments
     for n in [1, 5, 10, 100, 1000]:
-        print(n, main(n))
+        # print(n, main(n))
+        pass

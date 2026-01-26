@@ -15,6 +15,7 @@ def main(n):
         pf = f[ii - 1]
         if pf:
             dp.insert(0, 0)
+
         else:
             for jj in reversed(range(1, len(dp))):
                 dp[jj - 1] = summ(dp[jj - 1], dp[jj])
@@ -23,9 +24,8 @@ def main(n):
     for vv in dp:
         ans = summ(ans, vv)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

@@ -13,13 +13,13 @@ def main(n):
             mid = (l + r) >> 1
             if p[i][0] - p[i][1] <= p[mid][0]:
                 r = mid
+
             else:
                 l = mid
         dp[i] = i - r + dp[r - 1]
     ans = min(dp[i] + (n - i) for i in range(1, n + 1))
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

@@ -13,8 +13,7 @@ def main(n):
         if student > score:
             rank += 1
 
-    print(rank)
-
-
+    # print(rank)
+    pass
 if __name__ == "__main__":
     main(10)

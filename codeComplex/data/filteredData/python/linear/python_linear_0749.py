@@ -4,9 +4,8 @@ def main(n):
     for _ in range(max(0, n - 1)):
         wyn += x
         x += 4
-    print(wyn)
-
-
+    # print(wyn)
+    pass
 if __name__ == "__main__":
     # example deterministic call
     main(10)

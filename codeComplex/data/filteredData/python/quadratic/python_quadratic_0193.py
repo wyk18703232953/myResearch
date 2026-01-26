@@ -38,9 +38,8 @@ def main(n):
 
     # Output results to observe behavior / for timing
     for ans in results:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

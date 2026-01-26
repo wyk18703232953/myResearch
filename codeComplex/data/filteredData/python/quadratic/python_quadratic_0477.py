@@ -47,12 +47,14 @@ def main(n):
             break
 
     if fl == 1 and l[0] == 0 and r[n - 1] == 0:
-        print('YES')
-        print(*s_calc)
+        # print('YES')
+        pass
+        # print(*s_calc)
+        pass
+
     else:
-        print('NO')
-
-
+        # print('NO')
+        pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     main(10)

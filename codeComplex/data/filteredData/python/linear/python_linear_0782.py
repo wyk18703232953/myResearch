@@ -15,20 +15,21 @@ def main(n):
             cnt += 1
             break
     if a and a[0] < 0:
-        print('cslnb')
+        # print('cslnb')
+        pass
         return
 
     for i in range(0, len(a) - 1):
         if a[i] == a[i + 1]:
-            print('cslnb')
+            # print('cslnb')
+            pass
             return
 
     for i, x in enumerate(a):
         cnt += x - i
 
-    print('sjfnb' if (cnt & 1) else 'cslnb')
-
-
+    # print('sjfnb' if (cnt & 1) else 'cslnb')
+    pass
 if __name__ == "__main__":
     # 示例调用：可根据需要调整 n 以做时间复杂度实验
     main(10)

@@ -14,6 +14,7 @@ def main(n):
                         dp[i][j] = 1
                         Prev[i][j] = finger
                         break
+
             else:
                 dp[i][j] = 0
 
@@ -27,12 +28,14 @@ def main(n):
                 path.append(finger)
             path = path[::-1]
             for i in range(n):
-                print(path[i] + 1, end=' ')
-            print()
+                # print(path[i] + 1, end=' ')
+                pass
+            # print()
+            pass
             break
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     main(10)

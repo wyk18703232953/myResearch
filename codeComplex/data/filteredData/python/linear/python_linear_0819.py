@@ -8,9 +8,8 @@ def main(n):
         c += 1
     while c * (c + 1) // 2 - (n - c) != k:
         c += 1
-    print(n - c)
-
-
+    # print(n - c)
+    pass
 if __name__ == "__main__":
     # 示例：使用一个确定性的 n 调用
     main(1000)

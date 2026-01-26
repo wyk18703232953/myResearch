@@ -15,8 +15,7 @@ def main(n):
             c = i + 1
     for _ in range(k - 1):
         s1 += s[c:]
-    print(s1)
-
-
+    # print(s1)
+    pass
 if __name__ == "__main__":
     main(10)

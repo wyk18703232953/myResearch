@@ -41,13 +41,13 @@ def main(n):
             for k, part in enumerate(processed_parts):
                 if k == i or k == j:
                     a += part[0]
+
                 else:
                     a += part[1]
             ans = min(ans, a)
 
-    print(ans)
-
-
+    # print(ans)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for experimental purposes
     main(5)

@@ -51,6 +51,7 @@ def main(n):
             res ^= 1
         if res:
             out_lines.append("odd")
+
         else:
             out_lines.append("even")
     sys.stdout.write("\n".join(out_lines))

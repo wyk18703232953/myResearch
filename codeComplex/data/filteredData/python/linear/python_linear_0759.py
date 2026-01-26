@@ -19,9 +19,8 @@ def main(n):
     if n % 2 == 1 and max_i != -1:
         a[max_i] = -a[max_i] - 1
 
-    print(' '.join(map(str, a)))
-
-
+    # print(' '.join(map(str, a)))
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

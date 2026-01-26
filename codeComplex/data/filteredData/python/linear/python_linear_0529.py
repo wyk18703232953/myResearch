@@ -3,7 +3,8 @@ def main(n):
     # k = min(n, 26)，保证字母不超过 'A' 到 'Z'
     k = n if n <= 26 else 26
     if k <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     # 生成长度为 n 的字符串 s，由前 k 个大写字母循环构成
@@ -15,8 +16,7 @@ def main(n):
     for i in range(k):
         c = chr(ord('A') + i)
         m = min(m, s.count(c))
-    print(m * k)
-
-
+    # print(m * k)
+    pass
 if __name__ == "__main__":
     main(10)

@@ -23,8 +23,7 @@ def main(n):
 
         ans[di] += 1
 
-    print(' '.join(map(str, ans)))
-
-
+    # print(' '.join(map(str, ans)))
+    pass
 if __name__ == "__main__":
     main(10)

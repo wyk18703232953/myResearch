@@ -28,6 +28,7 @@ def main(n):
         s += n * x
         if d < 0:
             s += sm(n // 2) * d + sm(n // 2 - (n + 1) % 2) * d
+
         else:
             s += sm(n - 1) * d
     return s / n
@@ -35,4 +36,5 @@ def main(n):
 if __name__ == "__main__":
     # 示例调用，可根据需要修改 n 的值
     result = main(10)
-    print(result)
+    # print(result)
+    pass

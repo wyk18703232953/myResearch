@@ -31,6 +31,7 @@ def main(n):
         if st < 0:
             if hasWater:
                 ans += (-st) * 3
+
             else:
                 ans += (-st) * 5
             st = 0
@@ -40,7 +41,8 @@ def main(n):
     ans -= 4 * convert
     ans -= 2 * (st // 2 - convert)
     result = ans // 2
-    print(result)
+    # print(result)
+    pass
     return result
 
 

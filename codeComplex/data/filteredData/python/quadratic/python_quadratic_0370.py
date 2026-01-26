@@ -12,6 +12,7 @@ def main(n):
         for j in range(m):
             if (i + j) % 3 == 0:
                 row.append('.')
+
             else:
                 row.append('*')
         S.append(row)
@@ -26,6 +27,7 @@ def main(n):
         for j in range(m):
             if S[i][j] == '.':
                 cnt = 0
+
             else:
                 cnt += 1
                 L[i][j] = cnt
@@ -33,6 +35,7 @@ def main(n):
         for j in reversed(range(m)):
             if S[i][j] == '.':
                 cnt = 0
+
             else:
                 cnt += 1
                 R[i][j] = cnt
@@ -42,6 +45,7 @@ def main(n):
         for i in range(n_rows):
             if S[i][j] == '.':
                 cnt = 0
+
             else:
                 cnt += 1
                 U[i][j] = cnt
@@ -49,6 +53,7 @@ def main(n):
         for i in reversed(range(n_rows)):
             if S[i][j] == '.':
                 cnt = 0
+
             else:
                 cnt += 1
                 D[i][j] = cnt
@@ -84,13 +89,15 @@ def main(n):
         for j in range(m):
             if S[i][j] == '*':
                 if imosH[i][j] <= 0 and imosV[i][j] <= 0:
-                    print(-1)
+                    # print(-1)
+                    pass
                     return
+
     else:
-        print(len(ans))
+        # print(len(ans))
+        pass
         for triple in ans:
-            print(*triple)
-
-
+            # print(*triple)
+            pass
 if __name__ == "__main__":
     main(10)

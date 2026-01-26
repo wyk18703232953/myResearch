@@ -19,8 +19,7 @@ def main(n):
                 mapping[i] = j
         res.append(mapping[p])
 
-    print(" ".join(map(str, res)))
-
-
+    # print(" ".join(map(str, res)))
+    pass
 if __name__ == "__main__":
     main(10)

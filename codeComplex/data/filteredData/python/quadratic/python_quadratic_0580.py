@@ -6,6 +6,7 @@ def main(n):
         return
     if n == 1:
         k = 1
+
     else:
         k = max(1, min(n, n // 2))
 
@@ -33,9 +34,8 @@ def main(n):
             c += (s[i + j - 2] != l[j])
         res = min(res, c)
 
-    print(res)
-
-
+    # print(res)
+    pass
 if __name__ == "__main__":
     # Example deterministic call for experimentation
     main(100)

@@ -14,7 +14,8 @@ def main(n):
         if t[:i] == t[-i:]:
             j = i
     s = t + (k - 1) * t[-(n - j):]
-    print(s)
+    # print(s)
+    pass
     return s
 
 

@@ -25,10 +25,10 @@ def main(n):
                 swap2 = True
                 break
 
-    print(res - (2 if swap2 else 1 if swap1 else 0))
-    print(res1, res2)
-
-
+    # print(res - (2 if swap2 else 1 if swap1 else 0))
+    pass
+    # print(res1, res2)
+    pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n for experiments
     main(10)

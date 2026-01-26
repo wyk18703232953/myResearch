@@ -3,7 +3,8 @@ def main(n):
     m = n
     # 生成长度为 m 的输入列表 l，元素在 1..n 范围内，使用简单确定性映射
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     l = [(i % n) + 1 for i in range(m)]
@@ -11,8 +12,7 @@ def main(n):
     square = [0] * n
     for x in l:
         square[x - 1] += 1
-    print(min(square))
-
-
+    # print(min(square))
+    pass
 if __name__ == "__main__":
     main(10)

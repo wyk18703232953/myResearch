@@ -6,10 +6,12 @@ def generate_input(n):
 def main(n):
     n = generate_input(n)
     if n == 1:
-        print(1)
+        # print(1)
+        pass
         return
     elif n == 3:
-        print(1, 1, 3)
+        # print(1, 1, 3)
+        pass
         return
     l = [1] * (n // 2)
     if n % 2 == 1:
@@ -24,7 +26,7 @@ def main(n):
         tmp -= fn
         l += ([pow(2, i - 1)] * fn)
     l.append((n // pow(2, xn - 1)) * pow(2, xn - 1))
-    print(' '.join(str(i) for i in l))
-
+    # print(' '.join(str(i) for i in l))
+    pass
 if __name__ == "__main__":
     main(10)

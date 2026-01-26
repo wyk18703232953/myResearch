@@ -16,8 +16,7 @@ def main(n):
                 if best is None or val > best:
                     best = val
         ys.append(best if best is not None else r)
-    print(*ys)
-
-
+    # print(*ys)
+    pass
 if __name__ == "__main__":
     main(10)

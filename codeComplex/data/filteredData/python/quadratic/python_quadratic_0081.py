@@ -11,12 +11,14 @@ def bootstrap(f, stack=[]):
     def wrappedfunc(*args, **kwargs):
         if stack:
             return f(*args, **kwargs)
+
         else:
             to = f(*args, **kwargs)
             while True:
                 if type(to) is GeneratorType:
                     stack.append(to)
                     to = next(to)
+
                 else:
                     stack.pop()
                     if not stack:
@@ -149,13 +151,13 @@ def main(n):
     elif n % 3 == 1:
         nodes = n
         edges = generate_single_cycle_edges(nodes)
+
     else:
         nodes = n
         edges = generate_mixed_edges(nodes)
 
     result = core_logic(nodes, edges)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

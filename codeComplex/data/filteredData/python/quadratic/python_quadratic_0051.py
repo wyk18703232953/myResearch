@@ -53,6 +53,7 @@ def main(n):
         WHOLE_INVERSION += d*(d-1)//2
         if WHOLE_INVERSION % 2 != 0:
             out_lines.append("odd")
+
         else:
             out_lines.append("even")
     sys.stdout.write("\n".join(out_lines))

@@ -34,7 +34,8 @@ def main(n):
         if j >= 0:
             i += 1
             c = row_str.count('B') // 2 + 1
-            print(i + c, j + c)
+            # print(i + c, j + c)
+            pass
             return
         i += 1
         row_index += 1

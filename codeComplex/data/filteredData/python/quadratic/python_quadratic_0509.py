@@ -12,6 +12,7 @@ def main(n):
         for j in range(m):
             if (i * j) % 7 < 3:
                 row_chars.append('#')
+
             else:
                 row_chars.append('.')
         arr.append(''.join(row_chars))
@@ -49,11 +50,12 @@ def main(n):
             break
 
     if flag == 1:
-        print("NO")
+        # print("NO")
+        pass
+
     else:
-        print("YES")
-
-
+        # print("YES")
+        pass
 if __name__ == "__main__":
     # Example deterministic call for complexity experiments
     main(100)

@@ -20,6 +20,7 @@ def main(n):
     for i in a:
         if i == c:
             minus += 1
+
         else:
             freq[i] += 1
             nums[i].append(freq[i] - minus)
@@ -35,7 +36,8 @@ def main(n):
             continue
         freq[i] += 1
         ans = max(ans, suff[i][freq[i]] - nums[i][freq[i]] + 1 + tot)
-    print(ans)
+    # print(ans)
+    pass
 
 BUFSIZE = 8192
 

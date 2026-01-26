@@ -17,6 +17,7 @@ def main(n):
             p[int(i[0])] += 1
         elif i[1] == 'm':
             m[int(i[0])] += 1
+
         else:
             s[int(i[0])] += 1
 
@@ -42,8 +43,7 @@ def main(n):
             tmp += min(1, s[i + 2])
             need = min(3 - tmp, need)
 
-    print(need)
-
-
+    # print(need)
+    pass
 if __name__ == "__main__":
     main(20)

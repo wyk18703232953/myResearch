@@ -51,7 +51,7 @@ def main(n):
         k = (r - l + 1)
         o = c[r] - c[l - 1]
         z = sub(qpow(2, o), 1)
-        print(mul(z, qpow(2, k - o)))
-
+        # print(mul(z, qpow(2, k - o)))
+        pass
 if __name__ == "__main__":
     main(10)

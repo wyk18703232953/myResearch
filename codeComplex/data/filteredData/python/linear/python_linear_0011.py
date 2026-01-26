@@ -25,10 +25,11 @@ def main(n):
         if B[C[i]] == 1:
             x += 1
     if x >= k:
-        print("YES")
+        # print("YES")
+        pass
+
     else:
-        print("NO")
-
-
+        # print("NO")
+        pass
 if __name__ == "__main__":
     main(1000)

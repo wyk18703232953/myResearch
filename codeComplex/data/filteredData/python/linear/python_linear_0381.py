@@ -7,7 +7,8 @@ def timer(func):
         stime = time.perf_counter()
         res = func(*args, **kwargs)
         elapsed = time.perf_counter() - stime
-        print(f"{func.__name__} in {elapsed:.4f} secs")
+        # print(f"{func.__name__} in {elapsed:.4f} secs")
+        pass
         return res
     return wrapper
 
@@ -24,16 +25,19 @@ class solver:
             x, d = self.pairs[i]
             if d >= 0:
                 y += d * (n - 1) * n // 2
+
             else:
                 if n % 2 != 0:
                     l = (n - 1) // 2
                     y += d * l * (l + 1)
+
                 else:
                     l = n // 2
                     y += d * (l * (l + 1) - l)
             y += x * n
         y /= n
-        print(f'{y:.9f}')
+        # print(f'{y:.9f}')
+        pass
         return y
 
 def generate_input(n):

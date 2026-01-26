@@ -1,7 +1,8 @@
 def main(n):
     # n 表示元素数量
     if n <= 0:
-        print(-1)
+        # print(-1)
+        pass
         return
 
     # 确定性构造 sizes 和 cost
@@ -35,11 +36,12 @@ def main(n):
                 ret = True
                 lcomp.append(mi_1 + tot[j][1] + mi_2)
     if ret:
-        print(min(lcomp))
+        # print(min(lcomp))
+        pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # 示例调用，使用一个固定规模
     main(10)

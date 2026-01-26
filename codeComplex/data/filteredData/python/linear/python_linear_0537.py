@@ -6,7 +6,9 @@ def main(n):
     a = [(i // 3) * (-1 if i % 2 else 1) for i in range(n)]
 
     if n == 1:
-        print(a[0])
+        # print(a[0])
+        pass
+
     else:
         prod_minus = False
         for i in range(n - 1):
@@ -21,11 +23,12 @@ def main(n):
                 Min_abs = abs(num)
 
         if prod_minus:
-            print(Sum)
+            # print(Sum)
+            pass
+
         else:
-            print(Sum - 2 * Min_abs)
-
-
+            # print(Sum - 2 * Min_abs)
+            pass
 if __name__ == "__main__":
     # 示例：运行若干不同规模
     for size in [1, 5, 10, 1000]:

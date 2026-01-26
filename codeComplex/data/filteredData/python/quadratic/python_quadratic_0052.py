@@ -20,6 +20,7 @@ def solve(n):
     # permutation of size n: a[i] = (i+1) % n + 1 (a single n-cycle for n>1)
     if n == 1:
         a = [1]
+
     else:
         a = [(i + 1) % n + 1 for i in range(n)]
     x = inv_cnt(a)
@@ -33,9 +34,12 @@ def solve(n):
             l, r = r, l
         x = (x + (r - l + 1) // 2) % 2
         if x:
-            print("odd")
+            # print("odd")
+            pass
+
         else:
-            print("even")
+            # print("even")
+            pass
 
 
 def main(n):

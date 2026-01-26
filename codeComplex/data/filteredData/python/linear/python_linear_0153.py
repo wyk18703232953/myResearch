@@ -1,7 +1,8 @@
 def main(n):
     # 映射：n 为数组长度，p 为 n 的下一个质数（确定性构造）
     if n <= 0:
-        print(0)
+        # print(0)
+        pass
         return
 
     def next_prime(x):
@@ -40,9 +41,8 @@ def main(n):
         f += arr[i]
         maxi = max(maxi, f % p + (su - f) % p)
 
-    print(maxi)
-
-
+    # print(maxi)
+    pass
 if __name__ == "__main__":
     # 示例：可根据需要修改 n 的大小进行复杂度实验
     main(10)

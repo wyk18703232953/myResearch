@@ -8,7 +8,8 @@ def main(n):
     for x in a:
         p.append(p[-1] + x)
     ans = bisect.bisect_left(p, p[-1] / 2)
-    print(ans)
+    # print(ans)
+    pass
     return ans
 
 if __name__ == "__main__":

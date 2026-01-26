@@ -44,15 +44,18 @@ def main(n):
             break
         maxx += summ
     if it == 1:
-        print('NO')
+        # print('NO')
+        pass
+
     else:
-        print('YES')
+        # print('YES')
+        pass
         min_s = min(s)
         for i in s:
-            print(i - min_s + 1, end=' ')
-        print()
-
-
+            # print(i - min_s + 1, end=' ')
+            pass
+        # print()
+        pass
 if __name__ == "__main__":
     # Example deterministic call; adjust n as needed for experiments
     main(10)

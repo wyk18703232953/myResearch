@@ -34,7 +34,7 @@ def core_algorithm(a):
 def main(n):
     a = generate_input_array(n)
     result = core_algorithm(a)
-    print(result)
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     main(10)

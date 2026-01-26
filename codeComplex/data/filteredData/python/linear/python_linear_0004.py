@@ -4,6 +4,7 @@ def numtostr(a):
         if a % 26 == 0:
             var.append("Z")
             a = a // 26 - 1
+
         else:
             var.append(chr(a % 26 - 1 + ord("A")))
             a = a // 26
@@ -19,6 +20,7 @@ def strtonum(b):
     for elem in b:
         if par != 0:
             result += ((ord(elem) - ord("A")) * ((26) ** par))
+
         else:
             result += ((ord(elem) - ord("A")) + 1)
         if par == 0:
@@ -62,11 +64,14 @@ def main(n):
         if "R" in inp[key] and "C" in inp[key]:
             try:
                 if int(inp[key][1:inp[key].index("C")]) and int(inp[key][inp[key].index("C") + 1:]):
-                    print(method1(inp[key]))
+                    # print(method1(inp[key]))
+                    pass
             except:
-                print(method2(inp[key]))
-        else:
-            print(method2(inp[key]))
+                # print(method2(inp[key]))
+                pass
 
+        else:
+            # print(method2(inp[key]))
+            pass
 if __name__ == "__main__":
     main(10)

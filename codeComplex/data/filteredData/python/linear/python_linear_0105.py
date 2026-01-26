@@ -13,14 +13,16 @@ def main(n):
             ans += s1[i]
             if i == len(s1) - 1:
                 ans += s2[0]
+
         else:
             ans += s2[0]
             break
     if len(s1) == 1:
-        print(s1[0] + s2[0])
+        # print(s1[0] + s2[0])
+        pass
+
     else:
-        print(ans)
-
-
+        # print(ans)
+        pass
 if __name__ == "__main__":
     main(10)

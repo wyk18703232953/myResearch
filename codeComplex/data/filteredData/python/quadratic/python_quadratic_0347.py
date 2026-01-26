@@ -25,17 +25,21 @@ def main(n):
                 for j in range(cont, i, -1):
                     first[j], first[j - 1] = first[j - 1], first[j]
                     swap.append(j)
+
             else:
                 can = False
 
     if can:
-        print(len(swap))
+        # print(len(swap))
+        pass
+
         if swap:
-            print(*swap, end=' ')
+            # print(*swap, end=' ')
+            pass
+
     else:
-        print(-1)
-
-
+        # print(-1)
+        pass
 if __name__ == "__main__":
     # Example call; you can change n for different scales
     main(10)

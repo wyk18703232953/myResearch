@@ -10,6 +10,7 @@ def main(n):
     mx = (original_n - 1) * original_n // 2
     if original_n & 1:
         mn = (original_n // 2) * (original_n // 2 + 1)
+
     else:
         mn = original_n * original_n // 4
 
@@ -24,11 +25,13 @@ def main(n):
         res += x * original_n
         if d > 0:
             res += mx * d
+
         else:
             res += mn * d
 
     ans = res / original_n
-    print(f"{ans:.10f}")
+    # print(f"{ans:.10f}")
+    pass
     return ans
 
 

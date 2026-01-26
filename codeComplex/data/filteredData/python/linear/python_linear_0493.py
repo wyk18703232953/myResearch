@@ -61,9 +61,8 @@ def main(n):
     # n is the number of vertices in the tree
     graph = build_graph(n)
     result = get_new_edges(graph)
-    print(result)
-
-
+    # print(result)
+    pass
 if __name__ == "__main__":
     # Example: run main with a chosen input scale
     main(10)

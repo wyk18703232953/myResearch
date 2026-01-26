@@ -10,6 +10,7 @@ def main(n):
         x = (min(num, limit - num), max(num, limit - num))
         if x in dic:
             dic[x] += 1
+
         else:
             dic[x] = 1
     ans = 0
@@ -20,8 +21,7 @@ def main(n):
         half = m - half
         ans += half * (half - 1) / 2
     ans = n * (n + 1) / 2 - ans
-    print(int(ans))
-
-
+    # print(int(ans))
+    pass
 if __name__ == "__main__":
     main(10)

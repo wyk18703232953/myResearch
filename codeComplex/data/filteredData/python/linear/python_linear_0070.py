@@ -24,13 +24,16 @@ def solve(n):
         ti = n_val - i
         if i == 0:
             cm = fi + ti
+
         else:
             if fi + ti > cm:
                 cm = fi + ti
     if cm > s:
-        print(cm)
-    else:
-        print(s)
+        # print(cm)
+        pass
 
+    else:
+        # print(s)
+        pass
 if __name__ == "__main__":
     main(10)

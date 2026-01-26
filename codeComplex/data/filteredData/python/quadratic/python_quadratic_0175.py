@@ -14,6 +14,7 @@ def main(n):
                 if p[y] >= 0:
                     if p[y] + k > x:
                         p[x] = p[y]
+
                     else:
                         p[x] = p[y + 1] = y + 1
                     break
@@ -21,8 +22,7 @@ def main(n):
                 p[x] = p[x - k + 1] = x - k + 1
 
     b = [p[x] for x in a]
-    print(' '.join(map(str, b)))
-
-
+    # print(' '.join(map(str, b)))
+    pass
 if __name__ == "__main__":
     main(10)

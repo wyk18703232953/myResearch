@@ -24,9 +24,8 @@ def main(n):
                 t = max(t, t2)
         ans.append(t)
     for k in ans:
-        print(k)
-
-
+        # print(k)
+        pass
 if __name__ == "__main__":
     # Example call for time complexity experiments
     main(10)
