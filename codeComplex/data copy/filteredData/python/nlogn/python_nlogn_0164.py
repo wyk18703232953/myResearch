@@ -1,0 +1,18 @@
+def main(n):
+    vertices = []
+    for i in range(n):
+        x = i * 3 + 1
+        w = (i % 5) + 1
+        vertices.append([x - w, x + w])
+    vertices = sorted(vertices, key=lambda x: x[1])
+
+    ans = 0
+    border = -(10**9 + 100)
+    for v in vertices:
+        if border <= v[0]:
+            ans += 1
+            border = v[1]
+    # print(ans)
+    pass
+if __name__ == "__main__":
+    main(10)

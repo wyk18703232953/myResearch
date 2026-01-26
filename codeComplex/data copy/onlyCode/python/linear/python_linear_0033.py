@@ -1,0 +1,7 @@
+R = lambda : map(int, input().split())
+n = int(input())
+s = input()
+hc, tc = s.count('H'), s.count('T')
+hr = min([s[i:i + hc].count('T') for i in range(n - hc)])
+tr = min([s[i:i + tc].count('H') for i in range(n - tc)])
+print(min(hr, tr))

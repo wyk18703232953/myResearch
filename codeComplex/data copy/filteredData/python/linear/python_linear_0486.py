@@ -1,0 +1,24 @@
+def intersec(arr):
+    a = sorted(arr, key=lambda s: s[0], reverse=True)
+    b = sorted(arr, key=lambda s: s[1])
+
+    x, y = 0, 0
+    if a[0] == b[0]:
+        return max(b[1][1] - a[1][0], 0)
+
+    else:
+        x = b[0][1] - a[1][0]
+        y = b[1][1] - a[0][0]
+    return max(x, y, 0)
+
+
+def main(n):
+    # 生成 n 个区间 [i, 2*i]，n 至少为 2 才有意义
+    if n < 2:
+        n = 2
+    blanck = [[i, 2 * i] for i in range(1, n + 1)]
+    result = intersec(blanck)
+    # print(result)
+    pass
+if __name__ == "__main__":
+    main(10)

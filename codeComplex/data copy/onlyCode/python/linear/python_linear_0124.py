@@ -1,0 +1,15 @@
+n=int(input())
+d,l,m,a=[0]*(n+1),[0]*2,[0]*(n+1),0
+for _ in range(n-1):
+    a=int(input())
+    l.append(a)
+    m[a]+=1
+for i in range(1,n+1):
+    if m[i]==0:
+        d[l[i]]+=1
+for i in range(1,n+1):
+    if m[i]>0 and d[i]<3:
+        print("No")
+        break
+else:
+    print("Yes")

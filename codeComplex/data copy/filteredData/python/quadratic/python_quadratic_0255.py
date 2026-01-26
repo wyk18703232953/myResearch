@@ -1,0 +1,57 @@
+def main(n):
+    a = n % 5 + 1
+    b = (n // 5) % 5 + 1
+
+    if a != 1 and b != 1:
+        # print("NO")
+        pass
+
+    else:
+        con_char = '1'
+        discon_char = '0'
+        if a == 1:
+            con_char = '0'
+            discon_char = '1'
+            t = a
+            a = b
+            b = t
+
+        if a > 1:
+            # print("YES")
+            pass
+            n_con = n - a + 1
+            for i in range(n):
+                res = []
+                for j in range(n):
+                    if i == j:
+                        res.append('0')
+                    elif i < n_con and j < n_con:
+                        res.append(con_char)
+
+                    else:
+                        res.append(discon_char)
+                # print(''.join(res))
+                pass
+
+        else:
+            if n == 1 or n > 3:
+                # print("YES")
+                pass
+                for i in range(n):
+                    res = []
+                    for j in range(n):
+                        if i == j:
+                            res.append('0')
+                        elif abs(i - j) == 1:
+                            res.append('1')
+
+                        else:
+                            res.append('0')
+                    # print(''.join(res))
+                    pass
+
+            else:
+                # print("NO")
+                pass
+if __name__ == "__main__":
+    main(10)

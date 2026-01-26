@@ -1,0 +1,13 @@
+n,s=map(int,input().split())
+mins=s
+my_dict={}
+mylist=[]
+while(n):
+	person,floor=map(int,input().split())
+	mylist.append(person+floor)
+	n-=1
+val=max(mylist)
+if(val<mins):
+	print(mins)
+else:
+	print(val)

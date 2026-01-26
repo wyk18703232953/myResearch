@@ -1,0 +1,51 @@
+def main(n):
+    # 映射关系：n 作为输入规模，同时派生出参数 k
+    # 要求：0 <= k <= 2n-2, 且覆盖偶数和奇数情况
+    if n <= 2:
+        # 对于非常小的 n，避免无意义或非法的 k
+        k = 0
+
+    else:
+        # 确定性构造 k：
+        # 先取一个周期性模式，再截断到合法区间 [0, 2n-2]
+        k = (3 * n + 1) % (2 * n - 1)
+
+    if k % 2 == 0:
+        # print("YES")
+        pass
+        # print('.' * n)
+        pass
+        # print('.' + '#' * (k // 2) + '.' * (n - 1 - k // 2))
+        pass
+        # print('.' + '#' * (k // 2) + '.' * (n - 1 - k // 2))
+        pass
+        # print('.' * n)
+        pass
+
+    else:
+        # print("YES")
+        pass
+        # print('.' * n)
+        pass
+
+        if k <= n - 2:
+            # print('.' * ((n - k) // 2) + '#' * k + '.' * ((n - k) // 2))
+            pass
+            # print('.' * n)
+            pass
+
+        else:
+            # print('.' + '#' * (n - 2) + '.')
+            pass
+            print(
+                '.' +
+                '#' * ((k - n + 2) // 2) +
+                '.' * (n - 2 - k + n - 2) +
+                '#' * ((k - n + 2) // 2) +
+                '.'
+            )
+        # print('.' * n)
+        pass
+if __name__ == "__main__":
+    # 示例：以 n = 10 运行一次，用作规模化实验示范
+    main(10)

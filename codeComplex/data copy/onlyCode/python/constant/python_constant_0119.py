@@ -1,0 +1,17 @@
+s=input()
+n=len(s)
+if(s[0]=='-'):
+    if(s[n-1]<s[n-2]):
+        s=s[::-1]
+        s=s.replace(s[1],"",1)
+        s=s[::-1]
+    else:
+        s=s[::-1]
+        s=s.replace(s[0],"",1)
+        s=s[::-1]
+    if(s=="-0"):
+        print("0")
+    else:
+        print(s)
+else:
+    print(s)

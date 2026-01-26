@@ -1,0 +1,30 @@
+def main(n):
+    s = []
+    for i in range(3):
+        c = chr(ord('a') + (i + n) % 9)
+        d = str(((i * 2 + n) % 9) + 1)
+        s.append(c + d)
+    s.sort()
+    if s[0] == s[1] == s[2]:
+        # print(0)
+        pass
+        return
+    if s[0][1] == s[1][1] == s[2][1]:
+        if ord(s[0][0]) + 1 == ord(s[1][0]) == ord(s[2][0]) - 1:
+            # print(0)
+            pass
+            return
+    if (s[0][1] == s[1][1] and ord(s[0][0]) + 2 >= ord(s[1][0]) or
+        s[1][1] == s[2][1] and ord(s[1][0]) + 2 >= ord(s[2][0]) or
+        s[0][1] == s[2][1] and ord(s[0][0]) + 2 >= ord(s[2][0])):
+        # print(1)
+        pass
+        return
+    if s[0] == s[1] or s[1] == s[2] or s[0] == s[2]:
+        # print(1)
+        pass
+        return
+    # print(2)
+    pass
+if __name__ == "__main__":
+    main(10)

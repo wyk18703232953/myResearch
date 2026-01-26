@@ -73,25 +73,46 @@ def run_with_timeout(code_str, timeout_seconds):
         # 3. 准备环境 (Context)
         global_scope = {}
         
-        # 4. 在计时前，先执行一次定义 (Compile & Define)
-        # 这样 main 函数就被加载到了 global_scope 字典里，而且只做了一次
-        exec(code_content, global_scope)
+        # 4. 保存原始的 sys.stdin 和 sys.stdout
+        import sys
+        original_stdin = sys.stdin
+        original_stdout = sys.stdout
+        original_print = print
         
-        # 5. 从字典里把函数捞出来
-        if 'main' not in global_scope:
-            raise Exception("main function not found in code")
-        main_func = global_scope['main']
+        try:
+            # 5. 在计时前，先执行一次定义 (Compile & Define)
+            # 这样 main 函数就被加载到了 global_scope 字典里，而且只做了一次
+            exec(code_content, global_scope)
+            
+            # 6. 从字典里把函数捞出来
+            if 'main' not in global_scope:
+                raise Exception("main function not found in code")
+            main_func = global_scope['main']
+            import gc
+            # 1. 强制垃圾回收，清空之前的残留
+            gc.collect()
         
-        # 6. 【关键】直接测这个函数对象，没有任何 exec 开销
-        # 注意：这里直接调用 main_func(n_value)，纯净无噪声
-        timer = timeit.Timer(lambda: main_func(n_value))
+            # 2. 暂时关闭 GC，防止测试过程中 GC 启动干扰计时
+            # 注意：如果你的算法本身极度依赖 GC 释放内存否则会 OOM，则不能关
+            gc.disable()
+
+            # 7. 【关键】直接测这个函数对象，没有任何 exec 开销
+            # 注意：这里直接调用 main_func(n_value)，纯净无噪声
+            timer = timeit.Timer(lambda: main_func(n_value))
+            
+            # 8. 放心跑 10000 次
+            times = timeit.repeat(stmt=lambda: main_func(n_value), repeat=5, number=1)
+            min_time = np.min(times)  # 计算最小执行时间（秒）
+            
+            signal.alarm(0)
+            gc.enable()
+            return (True, min_time, None)
         
-        # 7. 放心跑 10000 次
-        total_time = timer.timeit(number=5)
-        avg_time = total_time / 5  # 计算平均执行时间（秒）
-        
-        signal.alarm(0)
-        return (True, avg_time, None)
+        finally:
+            # 恢复原始的 sys.stdin 和 sys.stdout
+            import sys
+            sys.stdin = original_stdin
+            sys.stdout = original_stdout
         
     except TimeoutError as e:
         signal.alarm(0)
@@ -358,7 +379,15 @@ def process_code_file(code_path, expected_models, base_dir):
             print(f"   [警告] 预热失败: {e}")
 
     try:
-        for n in range(start_n, config.max_n + 1, config.step):
+        # for n in range(start_n, config.max_n + 1, config.step):
+        k = max(1, (start_n + 1).bit_length() - 1) # 让 (2^k - 1) >= start_n
+        while True:
+            n = (1 << k) - 1
+            if n > config.max_n:
+                break
+        # for n in range(start_n, config.max_n + 1, config.step):
+    
+            print('n=',n)
             run_code = f"{code_content}\n\nmain({n})"
             
             run_times = []
@@ -386,6 +415,7 @@ def process_code_file(code_path, expected_models, base_dir):
             
             if len(test_results) % 10 == 0:
                 np.savez(temp_results_path, results=test_results)
+            k+=1
                 
     except KeyboardInterrupt:
         print("\n用户中断测试...")
@@ -627,9 +657,9 @@ def main():
     folder_config = {
         # 'constant': (config.constant_folder_path, ['Constant', 'constant']),
         # 'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
-        # 'linear': (config.linear_folder_path, ['Linear']),
+        'linear': (config.linear_folder_path, ['Linear']),
         # 'nlogn': (config.nlogn_folder_path, ['N Log N', 'nlogn', 'n_log_n']),
-        # 'quadratic': (config.quadratic_folder_path, ['Quadratic']),
+        'quadratic': (config.quadratic_folder_path, ['Quadratic']),
         'cubic': (config.cubic_folder_path, ['Cubic']),
         'np': (config.np_folder_path, ['NP']),
     }
@@ -669,7 +699,8 @@ def main():
         base_dir = base_dir_map[folder_type]
                        
         for i, file_name in enumerate(python_files, 1):
-            # if(i==3):
+            if(i<166):
+                continue
             full_path = os.path.join(folder_path, file_name)
             print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
             try:
@@ -692,7 +723,7 @@ def main():
                 global_stats['failed'] += 1
                 type_stats['failed_files'].append(file_name)
                 global_stats['failed_files'].append(f"{folder_type}/{file_name}")
-            
+                
         actual_processed = min(100, total_files)
         global_stats['total'] += actual_processed
         

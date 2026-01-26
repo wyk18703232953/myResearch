@@ -1,0 +1,5 @@
+r=input()
+t1=int(r)
+t2=int(r[:len(r)-1])
+t3=int(r[:len(r)-2]+r[-1])
+print(max(t1,t2,t3))
