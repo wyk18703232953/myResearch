@@ -1,0 +1,10 @@
+a,d=map(int,input().split())
+y,g,b=map(int,input().split())
+m=y*2+g
+n=b*3+g
+c=0
+if(m>a):
+    c+=m-a
+if(n>d):
+    c+=n-d
+print(c)

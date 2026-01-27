@@ -73,7 +73,7 @@ def process_file(file_path):
 
 def main():
     """主函数，遍历目录并处理所有Python文件"""
-    target_dir = r"/home/wuyankai/myResearch/codeComplex/data/filteredData/python/nlogn"
+    target_dir = r"/home/wuyankai/myResearch/codeComplex/data/filteredData/python/cubic"
     
     if not os.path.exists(target_dir):
         print(f"Directory not found: {target_dir}")

@@ -1,0 +1,5 @@
+k1,k2,k3=map(int,input().split())
+a=[k1,k2,k3];a=sorted(a)
+if a[0]==1 or a.count(2)>=2 or a.count(3)==3:print("YES")
+elif a.count(4)==2 and a.count(2)==1:print("YES")
+else:print("NO")

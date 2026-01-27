@@ -1,0 +1,19 @@
+n=int(input())
+if(n>=0):
+    print(n)
+else:
+    if((n*-1)//10==0):
+        print(0)
+    else:
+        n*=-1
+        y=n//10
+        z=n%10
+        x=y//10
+        x*=10;
+        x+=z;
+        x*=-1
+        y*=-1
+        if(x>=y):
+            print(x)
+        else:
+            print(y)

@@ -48,6 +48,7 @@ import timeit
 def run_with_timeout(code_str, timeout_seconds):
     import signal
     import re
+    import io
     
     def timeout_handler(signum, frame):
         raise TimeoutError(f"Execution timed out after {timeout_seconds} seconds")
@@ -70,49 +71,59 @@ def run_with_timeout(code_str, timeout_seconds):
         except:
             raise Exception(f"Invalid main call: main({main_call})")
         
-        # 3. 准备环境 (Context)
+        # 3. 准备环境 (Context) - 创建完全隔离的环境
         global_scope = {}
         
-        # 4. 保存原始的 sys.stdin 和 sys.stdout
+        # 4. 替换被执行代码中的 sys.stdin 和 sys.stdout
+        # 这样可以防止代码修改全局的标准输入输出流
         import sys
-        original_stdin = sys.stdin
-        original_stdout = sys.stdout
-        original_print = print
         
-        try:
-            # 5. 在计时前，先执行一次定义 (Compile & Define)
-            # 这样 main 函数就被加载到了 global_scope 字典里，而且只做了一次
-            exec(code_content, global_scope)
-            
-            # 6. 从字典里把函数捞出来
-            if 'main' not in global_scope:
-                raise Exception("main function not found in code")
-            main_func = global_scope['main']
-            import gc
-            # 1. 强制垃圾回收，清空之前的残留
-            gc.collect()
+        # 创建内存中的文件对象作为标准输入输出
+        fake_stdin = io.StringIO()
+        fake_stdout = io.StringIO()
+        fake_stderr = io.StringIO()
         
-            # 2. 暂时关闭 GC，防止测试过程中 GC 启动干扰计时
-            # 注意：如果你的算法本身极度依赖 GC 释放内存否则会 OOM，则不能关
-            gc.disable()
+        # 保存原始的 sys 模块
+        original_sys = sys
+        
+        # 创建一个新的 sys 模块副本
+        import types
+        fake_sys = types.ModuleType('sys')
+        fake_sys.__dict__.update(original_sys.__dict__)
+        fake_sys.stdin = fake_stdin
+        fake_sys.stdout = fake_stdout
+        fake_sys.stderr = fake_stderr
+        
+        # 将 fake_sys 注入到 global_scope
+        global_scope['sys'] = fake_sys
+        
+        # 5. 在计时前，先执行一次定义 (Compile & Define)
+        # 这样 main 函数就被加载到了 global_scope 字典里，而且只做了一次
+        exec(code_content, global_scope)
+        
+        # 6. 从字典里把函数捞出来
+        if 'main' not in global_scope:
+            raise Exception("main function not found in code")
+        main_func = global_scope['main']
+        import gc
+        # 1. 强制垃圾回收，清空之前的残留
+        gc.collect()
+    
+        # 2. 暂时关闭 GC，防止测试过程中 GC 启动干扰计时
+        # 注意：如果你的算法本身极度依赖 GC 释放内存否则会 OOM，则不能关
+        gc.disable()
 
-            # 7. 【关键】直接测这个函数对象，没有任何 exec 开销
-            # 注意：这里直接调用 main_func(n_value)，纯净无噪声
-            timer = timeit.Timer(lambda: main_func(n_value))
-            
-            # 8. 放心跑 10000 次
-            times = timeit.repeat(stmt=lambda: main_func(n_value), repeat=5, number=1)
-            min_time = np.min(times)  # 计算最小执行时间（秒）
-            
-            signal.alarm(0)
-            gc.enable()
-            return (True, min_time, None)
+        # 7. 【关键】直接测这个函数对象，没有任何 exec 开销
+        # 注意：这里直接调用 main_func(n_value)，纯净无噪声
+        timer = timeit.Timer(lambda: main_func(n_value))
         
-        finally:
-            # 恢复原始的 sys.stdin 和 sys.stdout
-            import sys
-            sys.stdin = original_stdin
-            sys.stdout = original_stdout
+        # 8. 放心跑 10000 次
+        times = timeit.repeat(stmt=lambda: main_func(n_value), repeat=5, number=1)
+        min_time = np.min(times)  # 计算最小执行时间（秒）
+        
+        signal.alarm(0)
+        gc.enable()
+        return (True, min_time, None)
         
     except TimeoutError as e:
         signal.alarm(0)
@@ -387,7 +398,7 @@ def process_code_file(code_path, expected_models, base_dir):
                 break
         # for n in range(start_n, config.max_n + 1, config.step):
     
-            print('n=',n)
+            # print('n=',n)
             run_code = f"{code_content}\n\nmain({n})"
             
             run_times = []
@@ -655,7 +666,7 @@ def main():
     }
     
     folder_config = {
-        # 'constant': (config.constant_folder_path, ['Constant', 'constant']),
+        'constant': (config.constant_folder_path, ['Constant', 'constant']),
         # 'logn': (config.logn_folder_path, ['Logarithmic', 'logn']),
         'linear': (config.linear_folder_path, ['Linear']),
         # 'nlogn': (config.nlogn_folder_path, ['N Log N', 'nlogn', 'n_log_n']),
@@ -699,10 +710,11 @@ def main():
         base_dir = base_dir_map[folder_type]
                        
         for i, file_name in enumerate(python_files, 1):
-            if(i<166):
-                continue
+            # if(i<540):
+            #     continue
             full_path = os.path.join(folder_path, file_name)
             print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
+            # time.sleep(1)
             try:
                 success = process_code_file(full_path, expected_models, base_dir)
                 if success:

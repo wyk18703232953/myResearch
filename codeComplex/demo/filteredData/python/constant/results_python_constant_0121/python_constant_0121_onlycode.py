@@ -1,0 +1,7 @@
+n=int(input())
+a=str(n)
+m=len(a)
+b=int(a[0:m-1])
+c=int(a[0:m-2]+a[-1])
+d=max(n,b,c)
+print(d)

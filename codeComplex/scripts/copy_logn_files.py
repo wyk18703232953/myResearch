@@ -3,8 +3,8 @@ import shutil
 import re
 
 # 源目录和目标目录
-SOURCE_DIR = "/home/wuyankai/myResearch/codeComplex/data/filteredData/python/logn"
-DEST_DIR = "/home/wuyankai/myResearch/codeComplex/demo/filteredData/python/logn"
+SOURCE_DIR = "/home/wuyankai/myResearch/codeComplex/data/onlyCode/python/constant"
+DEST_DIR = "/home/wuyankai/myResearch/codeComplex/demo/filteredData/python/constant"
 
 # 复制文件到对应的子目录
 def copy_files_to_subdirectories():
@@ -15,23 +15,27 @@ def copy_files_to_subdirectories():
     for filename in os.listdir(SOURCE_DIR):
         if filename.endswith('.py'):
             # 提取文件名中的编号部分
-            match = re.match(r'python_logn_(\d+)\.py', filename)
+            match = re.match(r'python_constant_(\d+)\.py', filename)
             if match:
                 number = match.group(1)
                 # 构建对应的子目录名
-                subdir_name = f"results_python_logn_{number}"
+                subdir_name = f"results_python_constant_{number}"
                 dest_subdir = os.path.join(DEST_DIR, subdir_name)
                 
                 # 确保子目录存在
                 os.makedirs(dest_subdir, exist_ok=True)
                 
-                # 复制文件到子目录
+                # 复制文件到子目录，并重命名为原名+1（在扩展名前添加1）
                 src_path = os.path.join(SOURCE_DIR, filename)
-                dest_path = os.path.join(dest_subdir, filename)
+                # 分离文件名和扩展名
+                name_without_ext, ext = os.path.splitext(filename)
+                # 在文件名后添加1，然后添加扩展名
+                dest_filename = f"{name_without_ext}_onlycode{ext}"
+                dest_path = os.path.join(dest_subdir, dest_filename)
                 
                 shutil.copy2(src_path, dest_path)
                 file_count += 1
-                print(f"复制: {filename} -> {subdir_name}")
+                print(f"复制: {filename} -> {subdir_name}/{dest_filename}")
             else:
                 print(f"跳过: {filename} (不符合命名模式)")
     
