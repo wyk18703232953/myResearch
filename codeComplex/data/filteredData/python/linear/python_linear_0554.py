@@ -262,9 +262,9 @@ def generate_input(n):
 def main(n):
     n_val, k_val, arr = generate_input(n)
     ans = core_algorithm(n_val, k_val, arr)
-    sys_stdout = IOWrapper(os.fdopen(1, "w"))
-    sys_stdout.write(str(ans) + "\n")
-    sys_stdout.flush()
+    # sys_stdout = IOWrapper(os.fdopen(1, "w"))
+    # sys_stdout.write(str(ans) + "\n")
+    # sys_stdout.flush()
 
 
 if __name__ == "__main__":
