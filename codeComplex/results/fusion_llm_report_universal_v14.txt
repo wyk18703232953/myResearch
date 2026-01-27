@@ -6,23 +6,23 @@ Processed: 4820
 Skipped: 0
 
 LLM-only accuracy: 3075/4820 (63.80%)
-Fit-only accuracy: 607/4820 (12.59%)
-Fusion accuracy: 3066/4820 (63.61%)
+Fit-only accuracy: 332/4820 (6.89%)
+Fusion accuracy: 2957/4820 (61.35%)
 
-LLM-Fit agreement: 774
-LLM-Fit disagreement: 4046
-Trustworthy fitting evidence: 170
-Extremely trustworthy fitting evidence: 144
-Untrustworthy fitting evidence: 4650
+LLM-Fit agreement: 804
+LLM-Fit disagreement: 4016
+Trustworthy fitting evidence: 71
+Extremely trustworthy fitting evidence: 59
+Untrustworthy fitting evidence: 4749
 Rechecked by LLM: 0
 
 ==================================================
 类型准确率统计
 ==================================================
-constant        总:  788 LLM:  507 ( 64.34%) Fit:  573 ( 72.72%) Fusion:  498 ( 63.20%)
+constant        总:  788 LLM:  507 ( 64.34%) Fit:    0 (  0.00%) Fusion:  503 ( 63.83%)
 cubic           总:  599 LLM:  322 ( 53.76%) Fit:    0 (  0.00%) Fusion:  322 ( 53.76%)
-linear          总:  834 LLM:  692 ( 82.97%) Fit:    0 (  0.00%) Fusion:  692 ( 82.97%)
-logn            总:  659 LLM:  378 ( 57.36%) Fit:   34 (  5.16%) Fusion:  378 ( 57.36%)
-nlogn           总:  785 LLM:  498 ( 63.44%) Fit:    0 (  0.00%) Fusion:  498 ( 63.44%)
+linear          总:  834 LLM:  692 ( 82.97%) Fit:    0 (  0.00%) Fusion:  503 ( 60.31%)
+logn            总:  659 LLM:  378 ( 57.36%) Fit:    0 (  0.00%) Fusion:  378 ( 57.36%)
+nlogn           总:  785 LLM:  498 ( 63.44%) Fit:  332 ( 42.29%) Fusion:  573 ( 72.99%)
 np              总:  528 LLM:  240 ( 45.45%) Fit:    0 (  0.00%) Fusion:  240 ( 45.45%)
 quadratic       总:  627 LLM:  438 ( 69.86%) Fit:    0 (  0.00%) Fusion:  438 ( 69.86%)
