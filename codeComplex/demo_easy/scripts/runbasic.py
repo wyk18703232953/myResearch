@@ -235,8 +235,8 @@ def process_code_file(code_path, expected_models, base_dir):
 
     print(f"开始测试 {file_name}: n={start_n} -> {config.max_n}")
 
-    REPEAT_COUNT = 3
-    TIMEOUT_SECONDS = 1
+    # 从配置文件导入参数
+    from config import REPEAT_COUNT, TIMEOUT_SECONDS
 
     if len(test_results) == 0:
         print("   [系统] 正在进行预热 (Warm-up)...")
@@ -249,15 +249,9 @@ def process_code_file(code_path, expected_models, base_dir):
             print(f"   [警告] 预热失败: {e}")
 
     try:
-        # for n in range(start_n, config.max_n + 1, config.step):
-        k = max(1, (start_n + 1).bit_length() - 1) # 让 (2^k - 1) >= start_n
-        while True:
-            n = (1 << k) - 1
+        for n in range(start_n, config.max_n + 1, config.step):
             if n > config.max_n:
                 break
-        # for n in range(start_n, config.max_n + 1, config.step):
-    
-            # print('n=',n)
             run_code = f"{code_content}\n\nmain({n})"
             
             run_times = []
@@ -285,7 +279,6 @@ def process_code_file(code_path, expected_models, base_dir):
             
             if len(test_results) % 10 == 0:
                 np.savez(temp_results_path, results=test_results)
-            k+=1
                 
     except KeyboardInterrupt:
         print("\n用户中断测试...")
@@ -318,17 +311,6 @@ def process_code_file(code_path, expected_models, base_dir):
     is_logarithmic, logarithmic_score, logarithmic_feature_count = detect_logarithmic_by_variation(x_data, y_data)
     is_nlogn, nlogn_score, nlogn_feature_count = detect_nlogn_by_variation(x_data, y_data)
     
-    if is_constant:
-        print(f"   [检测] 检测到常数复杂度特征 (confidence={constant_score:.2f})")
-    
-    if is_logarithmic:
-        print(f"   [检测] 检测到对数复杂度特征 (score={logarithmic_score:.2f}, features={logarithmic_feature_count})")
-    
-    if is_nlogn:
-        print(f"   [检测] 检测到nlogn复杂度特征 (score={nlogn_score:.2f}, features={nlogn_feature_count})")
-    
-    print("正在拟合模型...")
-    
     for name, func in MODELS.items():
         try:
             popt, pcov = curve_fit(func, x_data, y_data, maxfev=10000)
@@ -358,106 +340,31 @@ def process_code_file(code_path, expected_models, base_dir):
             resid = y_data - y_pred
             ssr = np.sum(resid**2)
             if ssr <= 0: ssr = 1e-10
-            k = len(popt)
             n_samples = len(y_data)
             
-            aic = 2 * k + n_samples * np.log(ssr / n_samples)
-            bic = n_samples * np.log(ssr / n_samples) + k * np.log(n_samples)
             
             fit_report[name] = {
                 "r2": r2,
-                "aic": aic,
-                "bic": bic,
                 "params": popt.tolist()
             }
                 
         except Exception as e:
             fit_report[name] = {"r2": -np.inf, "success": False}
     
-    valid_bics = [
-        info.get("bic", np.inf)
-        for info in fit_report.values()
-        if np.isfinite(info.get("bic", np.inf))
-    ]
-    bic_min = min(valid_bics) if valid_bics else None
+    
     n_samples = len(y_data)
-    best_conf_score = -np.inf
     
     for name, info in fit_report.items():
         r2 = info.get("r2", -np.inf)
-        bic = info.get("bic", np.inf)
         
-        if not (np.isfinite(r2) and np.isfinite(bic) and bic_min is not None):
+        if not np.isfinite(r2):
             info["confidence_score"] = -np.inf
             continue
         
         r2_clamped = min(max(r2, 0.0), 1.0)
-        bic_gap = bic - bic_min
-        bic_weight = math.exp(-0.5 * bic_gap)
+
         
-        if name == "Constant":
-            complexity_penalty = 0
-            if is_constant:
-                r2_clamped = min(r2_clamped + 0.4, 1.0)
-            # 如果检测到logarithmic或nlogn，大幅降低constant分数
-            if is_logarithmic or is_nlogn:
-                r2_clamped = max(r2_clamped - 0.5, 0.0)
-        elif name == "Logarithmic":
-            complexity_penalty = 0.002  # 极低的惩罚
-            # 使用logarithmic_score
-            if logarithmic_score > 0.6:
-                r2_clamped = min(r2_clamped + 0.5, 1.0)
-            elif logarithmic_score > 0.4:
-                r2_clamped = min(r2_clamped + 0.4, 1.0)
-            elif logarithmic_score > 0.2:
-                r2_clamped = min(r2_clamped + 0.3, 1.0)
-            # 如果检测到constant，大幅降低logarithmic分数
-            if is_constant:
-                r2_clamped = max(r2_clamped - 0.3, 0.0)
-            # 如果检测到nlogn，降低logarithmic分数
-            if is_nlogn:
-                r2_clamped = max(r2_clamped - 0.1, 0.0)
-        elif name == "N Log N":
-            complexity_penalty = 0.002  # 极低的惩罚
-            # 使用nlogn_score
-            if nlogn_score > 0.6:
-                r2_clamped = min(r2_clamped + 0.5, 1.0)
-            elif nlogn_score > 0.4:
-                r2_clamped = min(r2_clamped + 0.4, 1.0)
-            elif nlogn_score > 0.2:
-                r2_clamped = min(r2_clamped + 0.3, 1.0)
-            # 如果检测到constant，大幅降低nlogn分数
-            if is_constant:
-                r2_clamped = max(r2_clamped - 0.3, 0.0)
-        elif name == "Linear":
-            complexity_penalty = 0.01
-            # 如果检测到constant，大幅降低linear分数
-            if is_constant:
-                r2_clamped = max(r2_clamped - 0.4, 0.0)
-            # 如果检测到logarithmic，降低linear分数
-            if is_logarithmic:
-                r2_clamped = max(r2_clamped - 0.15, 0.0)
-            # 如果检测到nlogn，降低linear分数
-            if is_nlogn:
-                r2_clamped = max(r2_clamped - 0.15, 0.0)
-        else:
-            complexity_penalty = 0.02
-        
-        if name == "Constant":
-            confidence_score = 0.5 * r2_clamped + 0.3 * bic_weight + 0.2 * constant_score - complexity_penalty
-        elif name == "Logarithmic":
-            confidence_score = 0.5 * r2_clamped + 0.3 * bic_weight + 0.2 * logarithmic_score - complexity_penalty
-        elif name == "N Log N":
-            confidence_score = 0.5 * r2_clamped + 0.3 * bic_weight + 0.2 * nlogn_score - complexity_penalty
-        else:
-            confidence_score = 0.6 * r2_clamped + 0.4 * bic_weight - complexity_penalty
-        
-        confidence_score = min(max(confidence_score, 0.0), 1.0)
-        info["confidence_score"] = confidence_score
-        
-        if confidence_score > best_conf_score:
-            best_conf_score = confidence_score
-            best_model_name = name
+
     
     print(f"分析完成。最佳拟合模型: {best_model_name} (Confidence={best_conf_score:.4f})")
     
