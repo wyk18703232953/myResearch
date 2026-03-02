@@ -307,9 +307,7 @@ def process_code_file(code_path, expected_models, base_dir):
     fit_report = {}
     best_model_name = "None"
     
-    is_constant, constant_score = detect_constant_by_variation(x_data, y_data)
-    is_logarithmic, logarithmic_score, logarithmic_feature_count = detect_logarithmic_by_variation(x_data, y_data)
-    is_nlogn, nlogn_score, nlogn_feature_count = detect_nlogn_by_variation(x_data, y_data)
+
     
     for name, func in MODELS.items():
         try:
@@ -353,20 +351,12 @@ def process_code_file(code_path, expected_models, base_dir):
     
     
     n_samples = len(y_data)
-    
+        
     for name, info in fit_report.items():
-        r2 = info.get("r2", -np.inf)
-        
-        if not np.isfinite(r2):
-            info["confidence_score"] = -np.inf
-            continue
-        
-        r2_clamped = min(max(r2, 0.0), 1.0)
-
-        
+        r2 = info.get("r2", -np.inf)       
 
     
-    print(f"分析完成。最佳拟合模型: {best_model_name} (Confidence={best_conf_score:.4f})")
+    print(f"分析完成。最佳拟合模型: {best_model_name} ")
     
     plt.figure(figsize=(12, 7))
     
