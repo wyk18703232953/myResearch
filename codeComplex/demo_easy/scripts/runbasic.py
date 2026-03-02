@@ -351,12 +351,19 @@ def process_code_file(code_path, expected_models, base_dir):
     
     
     n_samples = len(y_data)
+    best_r2 = -np.inf
         
     for name, info in fit_report.items():
-        r2 = info.get("r2", -np.inf)       
+        r2 = info.get("r2", -np.inf)
+        
+        if not np.isfinite(r2):
+            continue
+        
+        if r2 > best_r2:
+            best_r2 = r2
+            best_model_name = name
 
-    
-    print(f"分析完成。最佳拟合模型: {best_model_name} ")
+    print(f"分析完成。最佳拟合模型: {best_model_name} (R²={best_r2:.4f})")
     
     plt.figure(figsize=(12, 7))
     
