@@ -86,4 +86,4 @@ def main(n: int):
 
 # 示例调用
 if __name__ == "__main__":
-    main(4)
+    main(21)
