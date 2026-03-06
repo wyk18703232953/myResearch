@@ -1,0 +1,9170 @@
+{
+  "total_files": 4900,
+  "correct_predictions": 2636,
+  "accuracy": 0.5379591836734694,
+  "detailed_stats": {
+    "constant": {
+      "total": 791,
+      "correct": 433,
+      "incorrect": [
+        {
+          "index": 7,
+          "predicted": "linear"
+        },
+        {
+          "index": 15,
+          "predicted": "linear"
+        },
+        {
+          "index": 24,
+          "predicted": "linear"
+        },
+        {
+          "index": 35,
+          "predicted": "linear"
+        },
+        {
+          "index": 39,
+          "predicted": "linear"
+        },
+        {
+          "index": 46,
+          "predicted": "linear"
+        },
+        {
+          "index": 72,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 75,
+          "predicted": "linear"
+        },
+        {
+          "index": 105,
+          "predicted": "linear"
+        },
+        {
+          "index": 106,
+          "predicted": "logn"
+        },
+        {
+          "index": 108,
+          "predicted": "linear"
+        },
+        {
+          "index": 110,
+          "predicted": "logn"
+        },
+        {
+          "index": 117,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 121,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 139,
+          "predicted": "linear"
+        },
+        {
+          "index": 156,
+          "predicted": "linear"
+        },
+        {
+          "index": 160,
+          "predicted": "linear"
+        },
+        {
+          "index": 178,
+          "predicted": "linear"
+        },
+        {
+          "index": 180,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 198,
+          "predicted": "linear"
+        },
+        {
+          "index": 199,
+          "predicted": "linear"
+        },
+        {
+          "index": 227,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 234,
+          "predicted": "linear"
+        },
+        {
+          "index": 254,
+          "predicted": "linear"
+        },
+        {
+          "index": 255,
+          "predicted": "logn"
+        },
+        {
+          "index": 257,
+          "predicted": "linear"
+        },
+        {
+          "index": 312,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 315,
+          "predicted": "linear"
+        },
+        {
+          "index": 342,
+          "predicted": "linear"
+        },
+        {
+          "index": 353,
+          "predicted": "linear"
+        },
+        {
+          "index": 356,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 363,
+          "predicted": "linear"
+        },
+        {
+          "index": 370,
+          "predicted": "linear"
+        },
+        {
+          "index": 383,
+          "predicted": "linear"
+        },
+        {
+          "index": 384,
+          "predicted": "linear"
+        },
+        {
+          "index": 412,
+          "predicted": "cubic"
+        },
+        {
+          "index": 445,
+          "predicted": "linear"
+        },
+        {
+          "index": 461,
+          "predicted": "linear"
+        },
+        {
+          "index": 467,
+          "predicted": "linear"
+        },
+        {
+          "index": 477,
+          "predicted": "logn"
+        },
+        {
+          "index": 500,
+          "predicted": "linear"
+        },
+        {
+          "index": 511,
+          "predicted": "logn"
+        },
+        {
+          "index": 536,
+          "predicted": "cubic"
+        },
+        {
+          "index": 549,
+          "predicted": "linear"
+        },
+        {
+          "index": 559,
+          "predicted": "linear"
+        },
+        {
+          "index": 568,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 577,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 594,
+          "predicted": "linear"
+        },
+        {
+          "index": 596,
+          "predicted": "linear"
+        },
+        {
+          "index": 620,
+          "predicted": "linear"
+        },
+        {
+          "index": 632,
+          "predicted": "linear"
+        },
+        {
+          "index": 638,
+          "predicted": "linear"
+        },
+        {
+          "index": 648,
+          "predicted": "linear"
+        },
+        {
+          "index": 663,
+          "predicted": "linear"
+        },
+        {
+          "index": 696,
+          "predicted": "linear"
+        },
+        {
+          "index": 711,
+          "predicted": "linear"
+        },
+        {
+          "index": 753,
+          "predicted": "linear"
+        },
+        {
+          "index": 756,
+          "predicted": "linear"
+        },
+        {
+          "index": 758,
+          "predicted": "linear"
+        },
+        {
+          "index": 777,
+          "predicted": "linear"
+        },
+        {
+          "index": 792,
+          "predicted": "linear"
+        },
+        {
+          "index": 807,
+          "predicted": "linear"
+        },
+        {
+          "index": 825,
+          "predicted": "logn"
+        },
+        {
+          "index": 826,
+          "predicted": "linear"
+        },
+        {
+          "index": 827,
+          "predicted": "linear"
+        },
+        {
+          "index": 847,
+          "predicted": "logn"
+        },
+        {
+          "index": 902,
+          "predicted": "linear"
+        },
+        {
+          "index": 905,
+          "predicted": "linear"
+        },
+        {
+          "index": 917,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 940,
+          "predicted": "linear"
+        },
+        {
+          "index": 941,
+          "predicted": "linear"
+        },
+        {
+          "index": 952,
+          "predicted": "linear"
+        },
+        {
+          "index": 993,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1004,
+          "predicted": "logn"
+        },
+        {
+          "index": 1028,
+          "predicted": "linear"
+        },
+        {
+          "index": 1059,
+          "predicted": "linear"
+        },
+        {
+          "index": 1104,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1108,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1111,
+          "predicted": "linear"
+        },
+        {
+          "index": 1120,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1133,
+          "predicted": "linear"
+        },
+        {
+          "index": 1152,
+          "predicted": "linear"
+        },
+        {
+          "index": 1156,
+          "predicted": "linear"
+        },
+        {
+          "index": 1162,
+          "predicted": "linear"
+        },
+        {
+          "index": 1179,
+          "predicted": "logn"
+        },
+        {
+          "index": 1222,
+          "predicted": "linear"
+        },
+        {
+          "index": 1231,
+          "predicted": "logn"
+        },
+        {
+          "index": 1270,
+          "predicted": "linear"
+        },
+        {
+          "index": 1282,
+          "predicted": "linear"
+        },
+        {
+          "index": 1283,
+          "predicted": "linear"
+        },
+        {
+          "index": 1286,
+          "predicted": "linear"
+        },
+        {
+          "index": 1295,
+          "predicted": "linear"
+        },
+        {
+          "index": 1299,
+          "predicted": "linear"
+        },
+        {
+          "index": 1305,
+          "predicted": "linear"
+        },
+        {
+          "index": 1310,
+          "predicted": "linear"
+        },
+        {
+          "index": 1358,
+          "predicted": "linear"
+        },
+        {
+          "index": 1388,
+          "predicted": "linear"
+        },
+        {
+          "index": 1409,
+          "predicted": "linear"
+        },
+        {
+          "index": 1414,
+          "predicted": "linear"
+        },
+        {
+          "index": 1415,
+          "predicted": "linear"
+        },
+        {
+          "index": 1416,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1419,
+          "predicted": "linear"
+        },
+        {
+          "index": 1424,
+          "predicted": "linear"
+        },
+        {
+          "index": 1425,
+          "predicted": "linear"
+        },
+        {
+          "index": 1428,
+          "predicted": "linear"
+        },
+        {
+          "index": 1431,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1447,
+          "predicted": "linear"
+        },
+        {
+          "index": 1450,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1453,
+          "predicted": "linear"
+        },
+        {
+          "index": 1455,
+          "predicted": "logn"
+        },
+        {
+          "index": 1504,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1515,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1524,
+          "predicted": "linear"
+        },
+        {
+          "index": 1546,
+          "predicted": "linear"
+        },
+        {
+          "index": 1561,
+          "predicted": "linear"
+        },
+        {
+          "index": 1575,
+          "predicted": "linear"
+        },
+        {
+          "index": 1577,
+          "predicted": "linear"
+        },
+        {
+          "index": 1579,
+          "predicted": "linear"
+        },
+        {
+          "index": 1582,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1584,
+          "predicted": "linear"
+        },
+        {
+          "index": 1604,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1612,
+          "predicted": "linear"
+        },
+        {
+          "index": 1662,
+          "predicted": "linear"
+        },
+        {
+          "index": 1670,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1693,
+          "predicted": "linear"
+        },
+        {
+          "index": 1727,
+          "predicted": "linear"
+        },
+        {
+          "index": 1732,
+          "predicted": "linear"
+        },
+        {
+          "index": 1735,
+          "predicted": "linear"
+        },
+        {
+          "index": 1763,
+          "predicted": "logn"
+        },
+        {
+          "index": 1765,
+          "predicted": "linear"
+        },
+        {
+          "index": 1776,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1778,
+          "predicted": "logn"
+        },
+        {
+          "index": 1788,
+          "predicted": "linear"
+        },
+        {
+          "index": 1803,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1807,
+          "predicted": "linear"
+        },
+        {
+          "index": 1822,
+          "predicted": "linear"
+        },
+        {
+          "index": 1830,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1832,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1841,
+          "predicted": "linear"
+        },
+        {
+          "index": 1886,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1893,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1897,
+          "predicted": "logn"
+        },
+        {
+          "index": 1916,
+          "predicted": "linear"
+        },
+        {
+          "index": 1930,
+          "predicted": "linear"
+        },
+        {
+          "index": 1933,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1936,
+          "predicted": "linear"
+        },
+        {
+          "index": 1954,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1971,
+          "predicted": "linear"
+        },
+        {
+          "index": 2000,
+          "predicted": "linear"
+        },
+        {
+          "index": 2009,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2020,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2038,
+          "predicted": "linear"
+        },
+        {
+          "index": 2052,
+          "predicted": "linear"
+        },
+        {
+          "index": 2057,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2061,
+          "predicted": "np"
+        },
+        {
+          "index": 2073,
+          "predicted": "linear"
+        },
+        {
+          "index": 2078,
+          "predicted": "linear"
+        },
+        {
+          "index": 2083,
+          "predicted": "linear"
+        },
+        {
+          "index": 2089,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2116,
+          "predicted": "linear"
+        },
+        {
+          "index": 2118,
+          "predicted": "linear"
+        },
+        {
+          "index": 2123,
+          "predicted": "linear"
+        },
+        {
+          "index": 2128,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2140,
+          "predicted": "linear"
+        },
+        {
+          "index": 2152,
+          "predicted": "linear"
+        },
+        {
+          "index": 2158,
+          "predicted": "linear"
+        },
+        {
+          "index": 2175,
+          "predicted": "linear"
+        },
+        {
+          "index": 2198,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2227,
+          "predicted": "linear"
+        },
+        {
+          "index": 2237,
+          "predicted": "linear"
+        },
+        {
+          "index": 2243,
+          "predicted": "logn"
+        },
+        {
+          "index": 2247,
+          "predicted": "linear"
+        },
+        {
+          "index": 2254,
+          "predicted": "linear"
+        },
+        {
+          "index": 2269,
+          "predicted": "linear"
+        },
+        {
+          "index": 2294,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2309,
+          "predicted": "linear"
+        },
+        {
+          "index": 2320,
+          "predicted": "linear"
+        },
+        {
+          "index": 2335,
+          "predicted": "linear"
+        },
+        {
+          "index": 2356,
+          "predicted": "linear"
+        },
+        {
+          "index": 2382,
+          "predicted": "linear"
+        },
+        {
+          "index": 2383,
+          "predicted": "linear"
+        },
+        {
+          "index": 2409,
+          "predicted": "linear"
+        },
+        {
+          "index": 2420,
+          "predicted": "linear"
+        },
+        {
+          "index": 2439,
+          "predicted": "linear"
+        },
+        {
+          "index": 2463,
+          "predicted": "linear"
+        },
+        {
+          "index": 2478,
+          "predicted": "logn"
+        },
+        {
+          "index": 2524,
+          "predicted": "linear"
+        },
+        {
+          "index": 2545,
+          "predicted": "linear"
+        },
+        {
+          "index": 2561,
+          "predicted": "linear"
+        },
+        {
+          "index": 2565,
+          "predicted": "linear"
+        },
+        {
+          "index": 2575,
+          "predicted": "linear"
+        },
+        {
+          "index": 2582,
+          "predicted": "linear"
+        },
+        {
+          "index": 2591,
+          "predicted": "linear"
+        },
+        {
+          "index": 2592,
+          "predicted": "linear"
+        },
+        {
+          "index": 2593,
+          "predicted": "linear"
+        },
+        {
+          "index": 2594,
+          "predicted": "linear"
+        },
+        {
+          "index": 2601,
+          "predicted": "linear"
+        },
+        {
+          "index": 2622,
+          "predicted": "linear"
+        },
+        {
+          "index": 2627,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2631,
+          "predicted": "linear"
+        },
+        {
+          "index": 2650,
+          "predicted": "linear"
+        },
+        {
+          "index": 2661,
+          "predicted": "linear"
+        },
+        {
+          "index": 2664,
+          "predicted": "linear"
+        },
+        {
+          "index": 2690,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2760,
+          "predicted": "linear"
+        },
+        {
+          "index": 2775,
+          "predicted": "linear"
+        },
+        {
+          "index": 2778,
+          "predicted": "linear"
+        },
+        {
+          "index": 2785,
+          "predicted": "linear"
+        },
+        {
+          "index": 2858,
+          "predicted": "linear"
+        },
+        {
+          "index": 2864,
+          "predicted": "linear"
+        },
+        {
+          "index": 2888,
+          "predicted": "linear"
+        },
+        {
+          "index": 2912,
+          "predicted": "linear"
+        },
+        {
+          "index": 2934,
+          "predicted": "linear"
+        },
+        {
+          "index": 2938,
+          "predicted": "linear"
+        },
+        {
+          "index": 2944,
+          "predicted": "linear"
+        },
+        {
+          "index": 2960,
+          "predicted": "linear"
+        },
+        {
+          "index": 2965,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2971,
+          "predicted": "linear"
+        },
+        {
+          "index": 2990,
+          "predicted": "linear"
+        },
+        {
+          "index": 3013,
+          "predicted": "linear"
+        },
+        {
+          "index": 3062,
+          "predicted": "linear"
+        },
+        {
+          "index": 3077,
+          "predicted": "linear"
+        },
+        {
+          "index": 3083,
+          "predicted": "linear"
+        },
+        {
+          "index": 3090,
+          "predicted": "linear"
+        },
+        {
+          "index": 3096,
+          "predicted": "linear"
+        },
+        {
+          "index": 3115,
+          "predicted": "logn"
+        },
+        {
+          "index": 3127,
+          "predicted": "linear"
+        },
+        {
+          "index": 3155,
+          "predicted": "linear"
+        },
+        {
+          "index": 3176,
+          "predicted": "linear"
+        },
+        {
+          "index": 3183,
+          "predicted": "linear"
+        },
+        {
+          "index": 3188,
+          "predicted": "linear"
+        },
+        {
+          "index": 3195,
+          "predicted": "linear"
+        },
+        {
+          "index": 3205,
+          "predicted": "linear"
+        },
+        {
+          "index": 3232,
+          "predicted": "linear"
+        },
+        {
+          "index": 3257,
+          "predicted": "linear"
+        },
+        {
+          "index": 3258,
+          "predicted": "linear"
+        },
+        {
+          "index": 3276,
+          "predicted": "linear"
+        },
+        {
+          "index": 3289,
+          "predicted": "linear"
+        },
+        {
+          "index": 3314,
+          "predicted": "linear"
+        },
+        {
+          "index": 3346,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3350,
+          "predicted": "linear"
+        },
+        {
+          "index": 3378,
+          "predicted": "linear"
+        },
+        {
+          "index": 3382,
+          "predicted": "linear"
+        },
+        {
+          "index": 3441,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3475,
+          "predicted": "linear"
+        },
+        {
+          "index": 3508,
+          "predicted": "linear"
+        },
+        {
+          "index": 3512,
+          "predicted": "linear"
+        },
+        {
+          "index": 3524,
+          "predicted": "linear"
+        },
+        {
+          "index": 3535,
+          "predicted": "linear"
+        },
+        {
+          "index": 3540,
+          "predicted": "linear"
+        },
+        {
+          "index": 3550,
+          "predicted": "linear"
+        },
+        {
+          "index": 3561,
+          "predicted": "linear"
+        },
+        {
+          "index": 3587,
+          "predicted": "linear"
+        },
+        {
+          "index": 3611,
+          "predicted": "logn"
+        },
+        {
+          "index": 3672,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3695,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3709,
+          "predicted": "linear"
+        },
+        {
+          "index": 3729,
+          "predicted": "linear"
+        },
+        {
+          "index": 3730,
+          "predicted": "linear"
+        },
+        {
+          "index": 3741,
+          "predicted": "linear"
+        },
+        {
+          "index": 3746,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3749,
+          "predicted": "linear"
+        },
+        {
+          "index": 3754,
+          "predicted": "linear"
+        },
+        {
+          "index": 3761,
+          "predicted": "linear"
+        },
+        {
+          "index": 3780,
+          "predicted": "linear"
+        },
+        {
+          "index": 3784,
+          "predicted": "linear"
+        },
+        {
+          "index": 3788,
+          "predicted": "linear"
+        },
+        {
+          "index": 3799,
+          "predicted": "linear"
+        },
+        {
+          "index": 3804,
+          "predicted": "linear"
+        },
+        {
+          "index": 3805,
+          "predicted": "linear"
+        },
+        {
+          "index": 3810,
+          "predicted": "linear"
+        },
+        {
+          "index": 3825,
+          "predicted": "linear"
+        },
+        {
+          "index": 3829,
+          "predicted": "linear"
+        },
+        {
+          "index": 3837,
+          "predicted": "logn"
+        },
+        {
+          "index": 3846,
+          "predicted": "linear"
+        },
+        {
+          "index": 3861,
+          "predicted": "linear"
+        },
+        {
+          "index": 3868,
+          "predicted": "linear"
+        },
+        {
+          "index": 3869,
+          "predicted": "linear"
+        },
+        {
+          "index": 3903,
+          "predicted": "linear"
+        },
+        {
+          "index": 3908,
+          "predicted": "linear"
+        },
+        {
+          "index": 3915,
+          "predicted": "linear"
+        },
+        {
+          "index": 3919,
+          "predicted": "linear"
+        },
+        {
+          "index": 3936,
+          "predicted": "linear"
+        },
+        {
+          "index": 3967,
+          "predicted": "linear"
+        },
+        {
+          "index": 3974,
+          "predicted": "logn"
+        },
+        {
+          "index": 3988,
+          "predicted": "linear"
+        },
+        {
+          "index": 4017,
+          "predicted": "linear"
+        },
+        {
+          "index": 4023,
+          "predicted": "linear"
+        },
+        {
+          "index": 4037,
+          "predicted": "linear"
+        },
+        {
+          "index": 4057,
+          "predicted": "linear"
+        },
+        {
+          "index": 4073,
+          "predicted": "linear"
+        },
+        {
+          "index": 4090,
+          "predicted": "linear"
+        },
+        {
+          "index": 4100,
+          "predicted": "linear"
+        },
+        {
+          "index": 4112,
+          "predicted": "linear"
+        },
+        {
+          "index": 4119,
+          "predicted": "linear"
+        },
+        {
+          "index": 4149,
+          "predicted": "linear"
+        },
+        {
+          "index": 4187,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4200,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4203,
+          "predicted": "linear"
+        },
+        {
+          "index": 4205,
+          "predicted": "linear"
+        },
+        {
+          "index": 4207,
+          "predicted": "linear"
+        },
+        {
+          "index": 4226,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4229,
+          "predicted": "logn"
+        },
+        {
+          "index": 4252,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4260,
+          "predicted": "linear"
+        },
+        {
+          "index": 4272,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4285,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4286,
+          "predicted": "linear"
+        },
+        {
+          "index": 4310,
+          "predicted": "linear"
+        },
+        {
+          "index": 4328,
+          "predicted": "linear"
+        },
+        {
+          "index": 4358,
+          "predicted": "linear"
+        },
+        {
+          "index": 4375,
+          "predicted": "linear"
+        },
+        {
+          "index": 4382,
+          "predicted": "linear"
+        },
+        {
+          "index": 4388,
+          "predicted": "logn"
+        },
+        {
+          "index": 4389,
+          "predicted": "linear"
+        },
+        {
+          "index": 4399,
+          "predicted": "linear"
+        },
+        {
+          "index": 4408,
+          "predicted": "linear"
+        },
+        {
+          "index": 4421,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4422,
+          "predicted": "linear"
+        },
+        {
+          "index": 4429,
+          "predicted": "linear"
+        },
+        {
+          "index": 4454,
+          "predicted": "linear"
+        },
+        {
+          "index": 4468,
+          "predicted": "linear"
+        },
+        {
+          "index": 4476,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4483,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4485,
+          "predicted": "linear"
+        },
+        {
+          "index": 4509,
+          "predicted": "linear"
+        },
+        {
+          "index": 4510,
+          "predicted": "linear"
+        },
+        {
+          "index": 4512,
+          "predicted": "linear"
+        },
+        {
+          "index": 4549,
+          "predicted": "linear"
+        },
+        {
+          "index": 4580,
+          "predicted": "linear"
+        },
+        {
+          "index": 4595,
+          "predicted": "linear"
+        },
+        {
+          "index": 4597,
+          "predicted": "linear"
+        },
+        {
+          "index": 4600,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4612,
+          "predicted": "linear"
+        },
+        {
+          "index": 4620,
+          "predicted": "linear"
+        },
+        {
+          "index": 4630,
+          "predicted": "linear"
+        },
+        {
+          "index": 4640,
+          "predicted": "linear"
+        },
+        {
+          "index": 4644,
+          "predicted": "linear"
+        },
+        {
+          "index": 4650,
+          "predicted": "linear"
+        },
+        {
+          "index": 4656,
+          "predicted": "linear"
+        },
+        {
+          "index": 4705,
+          "predicted": "linear"
+        },
+        {
+          "index": 4711,
+          "predicted": "linear"
+        },
+        {
+          "index": 4726,
+          "predicted": "linear"
+        },
+        {
+          "index": 4751,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4758,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4762,
+          "predicted": "linear"
+        },
+        {
+          "index": 4765,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4768,
+          "predicted": "linear"
+        },
+        {
+          "index": 4778,
+          "predicted": "linear"
+        },
+        {
+          "index": 4780,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4797,
+          "predicted": "linear"
+        },
+        {
+          "index": 4825,
+          "predicted": "linear"
+        },
+        {
+          "index": 4832,
+          "predicted": "linear"
+        },
+        {
+          "index": 4839,
+          "predicted": "linear"
+        },
+        {
+          "index": 4852,
+          "predicted": "linear"
+        },
+        {
+          "index": 4869,
+          "predicted": "linear"
+        },
+        {
+          "index": 4876,
+          "predicted": "linear"
+        },
+        {
+          "index": 4879,
+          "predicted": "linear"
+        }
+      ]
+    },
+    "linear": {
+      "total": 853,
+      "correct": 683,
+      "incorrect": [
+        {
+          "index": 1,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 48,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 80,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 90,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 96,
+          "predicted": "cubic"
+        },
+        {
+          "index": 102,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 147,
+          "predicted": "logn"
+        },
+        {
+          "index": 152,
+          "predicted": "cubic"
+        },
+        {
+          "index": 157,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 163,
+          "predicted": "constant"
+        },
+        {
+          "index": 195,
+          "predicted": "constant"
+        },
+        {
+          "index": 212,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 287,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 328,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 338,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 373,
+          "predicted": "cubic"
+        },
+        {
+          "index": 395,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 420,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 432,
+          "predicted": "cubic"
+        },
+        {
+          "index": 471,
+          "predicted": "cubic"
+        },
+        {
+          "index": 484,
+          "predicted": "constant"
+        },
+        {
+          "index": 509,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 523,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 538,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 539,
+          "predicted": "cubic"
+        },
+        {
+          "index": 610,
+          "predicted": "cubic"
+        },
+        {
+          "index": 627,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 654,
+          "predicted": "cubic"
+        },
+        {
+          "index": 720,
+          "predicted": "logn"
+        },
+        {
+          "index": 801,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 859,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 874,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 884,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 898,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 903,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 908,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 911,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 968,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1019,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1034,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1101,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1114,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1150,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1177,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1193,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1245,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1251,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1255,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1267,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1290,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1317,
+          "predicted": "constant"
+        },
+        {
+          "index": 1373,
+          "predicted": "logn"
+        },
+        {
+          "index": 1456,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1497,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1545,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1683,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1752,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1762,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1782,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1792,
+          "predicted": "constant"
+        },
+        {
+          "index": 1815,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1825,
+          "predicted": "np"
+        },
+        {
+          "index": 1857,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1861,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1875,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1901,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1929,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2045,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2054,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2075,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2115,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2126,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2164,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2171,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2230,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2233,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2266,
+          "predicted": "constant"
+        },
+        {
+          "index": 2276,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2282,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2349,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2425,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2549,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2556,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2562,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2598,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2647,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2652,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2654,
+          "predicted": "constant"
+        },
+        {
+          "index": 2665,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2684,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2691,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2749,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2780,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2917,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2923,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2940,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2941,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2954,
+          "predicted": "constant"
+        },
+        {
+          "index": 2961,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3059,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3107,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3128,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3135,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3141,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3154,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3272,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3309,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3329,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3343,
+          "predicted": "logn"
+        },
+        {
+          "index": 3344,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3345,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3397,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3444,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3448,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3464,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3467,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3559,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3566,
+          "predicted": "logn"
+        },
+        {
+          "index": 3610,
+          "predicted": "constant"
+        },
+        {
+          "index": 3628,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3631,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3640,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3643,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3721,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3726,
+          "predicted": "constant"
+        },
+        {
+          "index": 3766,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3771,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3783,
+          "predicted": "constant"
+        },
+        {
+          "index": 3790,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3798,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3859,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3866,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3879,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3885,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3897,
+          "predicted": "constant"
+        },
+        {
+          "index": 3902,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3963,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4012,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4029,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4126,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4151,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4161,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4179,
+          "predicted": "constant"
+        },
+        {
+          "index": 4210,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4262,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4267,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4280,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4307,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4322,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4394,
+          "predicted": "constant"
+        },
+        {
+          "index": 4438,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4444,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4448,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4449,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4484,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4496,
+          "predicted": "constant"
+        },
+        {
+          "index": 4500,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4529,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4546,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4622,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4633,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4641,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4663,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4679,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4728,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4745,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4772,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4816,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4844,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4884,
+          "predicted": "quadratic"
+        }
+      ]
+    },
+    "quadratic": {
+      "total": 657,
+      "correct": 404,
+      "incorrect": [
+        {
+          "index": 6,
+          "predicted": "linear"
+        },
+        {
+          "index": 10,
+          "predicted": "cubic"
+        },
+        {
+          "index": 19,
+          "predicted": "cubic"
+        },
+        {
+          "index": 29,
+          "predicted": "cubic"
+        },
+        {
+          "index": 69,
+          "predicted": "linear"
+        },
+        {
+          "index": 77,
+          "predicted": "cubic"
+        },
+        {
+          "index": 79,
+          "predicted": "linear"
+        },
+        {
+          "index": 103,
+          "predicted": "cubic"
+        },
+        {
+          "index": 113,
+          "predicted": "linear"
+        },
+        {
+          "index": 115,
+          "predicted": "cubic"
+        },
+        {
+          "index": 131,
+          "predicted": "cubic"
+        },
+        {
+          "index": 169,
+          "predicted": "cubic"
+        },
+        {
+          "index": 194,
+          "predicted": "cubic"
+        },
+        {
+          "index": 213,
+          "predicted": "cubic"
+        },
+        {
+          "index": 214,
+          "predicted": "cubic"
+        },
+        {
+          "index": 217,
+          "predicted": "linear"
+        },
+        {
+          "index": 238,
+          "predicted": "cubic"
+        },
+        {
+          "index": 244,
+          "predicted": "cubic"
+        },
+        {
+          "index": 259,
+          "predicted": "cubic"
+        },
+        {
+          "index": 277,
+          "predicted": "linear"
+        },
+        {
+          "index": 294,
+          "predicted": "cubic"
+        },
+        {
+          "index": 311,
+          "predicted": "cubic"
+        },
+        {
+          "index": 316,
+          "predicted": "linear"
+        },
+        {
+          "index": 327,
+          "predicted": "np"
+        },
+        {
+          "index": 341,
+          "predicted": "cubic"
+        },
+        {
+          "index": 360,
+          "predicted": "linear"
+        },
+        {
+          "index": 379,
+          "predicted": "linear"
+        },
+        {
+          "index": 430,
+          "predicted": "cubic"
+        },
+        {
+          "index": 492,
+          "predicted": "cubic"
+        },
+        {
+          "index": 494,
+          "predicted": "cubic"
+        },
+        {
+          "index": 496,
+          "predicted": "cubic"
+        },
+        {
+          "index": 505,
+          "predicted": "linear"
+        },
+        {
+          "index": 512,
+          "predicted": "linear"
+        },
+        {
+          "index": 513,
+          "predicted": "cubic"
+        },
+        {
+          "index": 516,
+          "predicted": "linear"
+        },
+        {
+          "index": 563,
+          "predicted": "cubic"
+        },
+        {
+          "index": 570,
+          "predicted": "cubic"
+        },
+        {
+          "index": 595,
+          "predicted": "linear"
+        },
+        {
+          "index": 601,
+          "predicted": "linear"
+        },
+        {
+          "index": 611,
+          "predicted": "cubic"
+        },
+        {
+          "index": 615,
+          "predicted": "linear"
+        },
+        {
+          "index": 629,
+          "predicted": "linear"
+        },
+        {
+          "index": 630,
+          "predicted": "linear"
+        },
+        {
+          "index": 649,
+          "predicted": "cubic"
+        },
+        {
+          "index": 690,
+          "predicted": "cubic"
+        },
+        {
+          "index": 694,
+          "predicted": "cubic"
+        },
+        {
+          "index": 698,
+          "predicted": "cubic"
+        },
+        {
+          "index": 700,
+          "predicted": "cubic"
+        },
+        {
+          "index": 707,
+          "predicted": "cubic"
+        },
+        {
+          "index": 754,
+          "predicted": "cubic"
+        },
+        {
+          "index": 763,
+          "predicted": "cubic"
+        },
+        {
+          "index": 772,
+          "predicted": "linear"
+        },
+        {
+          "index": 783,
+          "predicted": "cubic"
+        },
+        {
+          "index": 786,
+          "predicted": "cubic"
+        },
+        {
+          "index": 802,
+          "predicted": "cubic"
+        },
+        {
+          "index": 821,
+          "predicted": "linear"
+        },
+        {
+          "index": 829,
+          "predicted": "cubic"
+        },
+        {
+          "index": 853,
+          "predicted": "linear"
+        },
+        {
+          "index": 863,
+          "predicted": "cubic"
+        },
+        {
+          "index": 872,
+          "predicted": "cubic"
+        },
+        {
+          "index": 890,
+          "predicted": "cubic"
+        },
+        {
+          "index": 942,
+          "predicted": "cubic"
+        },
+        {
+          "index": 949,
+          "predicted": "cubic"
+        },
+        {
+          "index": 987,
+          "predicted": "cubic"
+        },
+        {
+          "index": 994,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1031,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1046,
+          "predicted": "linear"
+        },
+        {
+          "index": 1051,
+          "predicted": "linear"
+        },
+        {
+          "index": 1079,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1102,
+          "predicted": "linear"
+        },
+        {
+          "index": 1125,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1131,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1139,
+          "predicted": "linear"
+        },
+        {
+          "index": 1140,
+          "predicted": "linear"
+        },
+        {
+          "index": 1141,
+          "predicted": "linear"
+        },
+        {
+          "index": 1186,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1187,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1213,
+          "predicted": "linear"
+        },
+        {
+          "index": 1223,
+          "predicted": "np"
+        },
+        {
+          "index": 1252,
+          "predicted": "linear"
+        },
+        {
+          "index": 1285,
+          "predicted": "linear"
+        },
+        {
+          "index": 1312,
+          "predicted": "linear"
+        },
+        {
+          "index": 1315,
+          "predicted": "linear"
+        },
+        {
+          "index": 1323,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1334,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1336,
+          "predicted": "linear"
+        },
+        {
+          "index": 1346,
+          "predicted": "linear"
+        },
+        {
+          "index": 1361,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1364,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1377,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1408,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1420,
+          "predicted": "linear"
+        },
+        {
+          "index": 1476,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1481,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1519,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1528,
+          "predicted": "linear"
+        },
+        {
+          "index": 1532,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1576,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1581,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1634,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1652,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1667,
+          "predicted": "linear"
+        },
+        {
+          "index": 1796,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1820,
+          "predicted": "linear"
+        },
+        {
+          "index": 1835,
+          "predicted": "linear"
+        },
+        {
+          "index": 1848,
+          "predicted": "linear"
+        },
+        {
+          "index": 1880,
+          "predicted": "linear"
+        },
+        {
+          "index": 1932,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1967,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2001,
+          "predicted": "linear"
+        },
+        {
+          "index": 2032,
+          "predicted": "linear"
+        },
+        {
+          "index": 2042,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2047,
+          "predicted": "linear"
+        },
+        {
+          "index": 2064,
+          "predicted": "linear"
+        },
+        {
+          "index": 2070,
+          "predicted": "linear"
+        },
+        {
+          "index": 2077,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2107,
+          "predicted": "linear"
+        },
+        {
+          "index": 2124,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2129,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2137,
+          "predicted": "linear"
+        },
+        {
+          "index": 2168,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2180,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2239,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2242,
+          "predicted": "linear"
+        },
+        {
+          "index": 2284,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2301,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2339,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2352,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2364,
+          "predicted": "linear"
+        },
+        {
+          "index": 2366,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2403,
+          "predicted": "linear"
+        },
+        {
+          "index": 2407,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2411,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2418,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2419,
+          "predicted": "linear"
+        },
+        {
+          "index": 2464,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2466,
+          "predicted": "linear"
+        },
+        {
+          "index": 2482,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2488,
+          "predicted": "linear"
+        },
+        {
+          "index": 2497,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2515,
+          "predicted": "linear"
+        },
+        {
+          "index": 2516,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2548,
+          "predicted": "linear"
+        },
+        {
+          "index": 2570,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2574,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2584,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2599,
+          "predicted": "np"
+        },
+        {
+          "index": 2603,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2605,
+          "predicted": "linear"
+        },
+        {
+          "index": 2615,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2620,
+          "predicted": "linear"
+        },
+        {
+          "index": 2651,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2678,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2686,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2720,
+          "predicted": "linear"
+        },
+        {
+          "index": 2731,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2765,
+          "predicted": "linear"
+        },
+        {
+          "index": 2851,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2875,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2899,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2913,
+          "predicted": "linear"
+        },
+        {
+          "index": 2928,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2962,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2987,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2994,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3014,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3019,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3030,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3033,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3041,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3048,
+          "predicted": "linear"
+        },
+        {
+          "index": 3052,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3071,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3119,
+          "predicted": "linear"
+        },
+        {
+          "index": 3129,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3134,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3145,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3146,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3149,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3165,
+          "predicted": "linear"
+        },
+        {
+          "index": 3171,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3259,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3262,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3324,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3335,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3336,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3342,
+          "predicted": "linear"
+        },
+        {
+          "index": 3416,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3485,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3490,
+          "predicted": "linear"
+        },
+        {
+          "index": 3493,
+          "predicted": "linear"
+        },
+        {
+          "index": 3494,
+          "predicted": "linear"
+        },
+        {
+          "index": 3499,
+          "predicted": "linear"
+        },
+        {
+          "index": 3525,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3538,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3557,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3582,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3595,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3656,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3661,
+          "predicted": "linear"
+        },
+        {
+          "index": 3676,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3711,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3740,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3763,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3767,
+          "predicted": "linear"
+        },
+        {
+          "index": 3774,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3786,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3806,
+          "predicted": "linear"
+        },
+        {
+          "index": 3824,
+          "predicted": "linear"
+        },
+        {
+          "index": 3833,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3858,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3918,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3949,
+          "predicted": "linear"
+        },
+        {
+          "index": 3951,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3979,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4033,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4049,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4084,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4107,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4141,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4165,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4180,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4220,
+          "predicted": "linear"
+        },
+        {
+          "index": 4247,
+          "predicted": "linear"
+        },
+        {
+          "index": 4250,
+          "predicted": "linear"
+        },
+        {
+          "index": 4264,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4289,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4305,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4355,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4366,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4373,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4374,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4396,
+          "predicted": "np"
+        },
+        {
+          "index": 4415,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4423,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4427,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4445,
+          "predicted": "linear"
+        },
+        {
+          "index": 4467,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4469,
+          "predicted": "linear"
+        },
+        {
+          "index": 4493,
+          "predicted": "linear"
+        },
+        {
+          "index": 4537,
+          "predicted": "constant"
+        },
+        {
+          "index": 4554,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4581,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4591,
+          "predicted": "linear"
+        },
+        {
+          "index": 4607,
+          "predicted": "linear"
+        },
+        {
+          "index": 4617,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4672,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4727,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4735,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4763,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4785,
+          "predicted": "linear"
+        },
+        {
+          "index": 4798,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4898,
+          "predicted": "cubic"
+        }
+      ]
+    },
+    "cubic": {
+      "total": 606,
+      "correct": 475,
+      "incorrect": [
+        {
+          "index": 11,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 14,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 18,
+          "predicted": "np"
+        },
+        {
+          "index": 36,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 94,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 188,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 256,
+          "predicted": "linear"
+        },
+        {
+          "index": 282,
+          "predicted": "np"
+        },
+        {
+          "index": 291,
+          "predicted": "np"
+        },
+        {
+          "index": 320,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 321,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 359,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 405,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 409,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 688,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 752,
+          "predicted": "np"
+        },
+        {
+          "index": 768,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 842,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 891,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 943,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 950,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 970,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 973,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1024,
+          "predicted": "linear"
+        },
+        {
+          "index": 1042,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1044,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1167,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1173,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1196,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1207,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1212,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1236,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1264,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1302,
+          "predicted": "linear"
+        },
+        {
+          "index": 1307,
+          "predicted": "np"
+        },
+        {
+          "index": 1309,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1380,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1383,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1399,
+          "predicted": "np"
+        },
+        {
+          "index": 1417,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1427,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1478,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1553,
+          "predicted": "np"
+        },
+        {
+          "index": 1580,
+          "predicted": "np"
+        },
+        {
+          "index": 1591,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1594,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1626,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1628,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1712,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1718,
+          "predicted": "np"
+        },
+        {
+          "index": 1724,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1839,
+          "predicted": "np"
+        },
+        {
+          "index": 1862,
+          "predicted": "linear"
+        },
+        {
+          "index": 1876,
+          "predicted": "np"
+        },
+        {
+          "index": 1885,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1921,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1934,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1972,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1996,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2005,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2012,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2184,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2217,
+          "predicted": "linear"
+        },
+        {
+          "index": 2263,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2270,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2313,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2357,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2362,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2441,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2534,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2551,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2577,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2586,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2653,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2754,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2766,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2772,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2818,
+          "predicted": "np"
+        },
+        {
+          "index": 2821,
+          "predicted": "linear"
+        },
+        {
+          "index": 2886,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2989,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3001,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3097,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3121,
+          "predicted": "linear"
+        },
+        {
+          "index": 3175,
+          "predicted": "linear"
+        },
+        {
+          "index": 3179,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3282,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3315,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3318,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3483,
+          "predicted": "np"
+        },
+        {
+          "index": 3507,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3548,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3549,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3552,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3569,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3571,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3601,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3622,
+          "predicted": "linear"
+        },
+        {
+          "index": 3636,
+          "predicted": "np"
+        },
+        {
+          "index": 3689,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3716,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3795,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3838,
+          "predicted": "linear"
+        },
+        {
+          "index": 3878,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3884,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3973,
+          "predicted": "np"
+        },
+        {
+          "index": 4027,
+          "predicted": "linear"
+        },
+        {
+          "index": 4106,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4170,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4178,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4236,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4238,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4266,
+          "predicted": "np"
+        },
+        {
+          "index": 4282,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4299,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4319,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4320,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4412,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4455,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4520,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4542,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4555,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4568,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4593,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4616,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4624,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4718,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4720,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4749,
+          "predicted": "linear"
+        },
+        {
+          "index": 4809,
+          "predicted": "linear"
+        },
+        {
+          "index": 4875,
+          "predicted": "quadratic"
+        }
+      ]
+    },
+    "logn": {
+      "total": 669,
+      "correct": 221,
+      "incorrect": [
+        {
+          "index": 12,
+          "predicted": "constant"
+        },
+        {
+          "index": 22,
+          "predicted": "linear"
+        },
+        {
+          "index": 53,
+          "predicted": "linear"
+        },
+        {
+          "index": 62,
+          "predicted": "linear"
+        },
+        {
+          "index": 63,
+          "predicted": "linear"
+        },
+        {
+          "index": 64,
+          "predicted": "linear"
+        },
+        {
+          "index": 68,
+          "predicted": "linear"
+        },
+        {
+          "index": 76,
+          "predicted": "linear"
+        },
+        {
+          "index": 82,
+          "predicted": "linear"
+        },
+        {
+          "index": 84,
+          "predicted": "constant"
+        },
+        {
+          "index": 86,
+          "predicted": "constant"
+        },
+        {
+          "index": 98,
+          "predicted": "linear"
+        },
+        {
+          "index": 109,
+          "predicted": "linear"
+        },
+        {
+          "index": 111,
+          "predicted": "linear"
+        },
+        {
+          "index": 120,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 123,
+          "predicted": "constant"
+        },
+        {
+          "index": 145,
+          "predicted": "linear"
+        },
+        {
+          "index": 149,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 153,
+          "predicted": "linear"
+        },
+        {
+          "index": 155,
+          "predicted": "constant"
+        },
+        {
+          "index": 165,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 183,
+          "predicted": "linear"
+        },
+        {
+          "index": 192,
+          "predicted": "constant"
+        },
+        {
+          "index": 193,
+          "predicted": "linear"
+        },
+        {
+          "index": 248,
+          "predicted": "constant"
+        },
+        {
+          "index": 262,
+          "predicted": "linear"
+        },
+        {
+          "index": 273,
+          "predicted": "constant"
+        },
+        {
+          "index": 280,
+          "predicted": "constant"
+        },
+        {
+          "index": 289,
+          "predicted": "linear"
+        },
+        {
+          "index": 295,
+          "predicted": "linear"
+        },
+        {
+          "index": 301,
+          "predicted": "linear"
+        },
+        {
+          "index": 302,
+          "predicted": "constant"
+        },
+        {
+          "index": 322,
+          "predicted": "constant"
+        },
+        {
+          "index": 330,
+          "predicted": "linear"
+        },
+        {
+          "index": 332,
+          "predicted": "np"
+        },
+        {
+          "index": 349,
+          "predicted": "constant"
+        },
+        {
+          "index": 367,
+          "predicted": "linear"
+        },
+        {
+          "index": 378,
+          "predicted": "linear"
+        },
+        {
+          "index": 389,
+          "predicted": "constant"
+        },
+        {
+          "index": 393,
+          "predicted": "linear"
+        },
+        {
+          "index": 429,
+          "predicted": "linear"
+        },
+        {
+          "index": 441,
+          "predicted": "constant"
+        },
+        {
+          "index": 479,
+          "predicted": "linear"
+        },
+        {
+          "index": 483,
+          "predicted": "constant"
+        },
+        {
+          "index": 503,
+          "predicted": "linear"
+        },
+        {
+          "index": 514,
+          "predicted": "linear"
+        },
+        {
+          "index": 517,
+          "predicted": "linear"
+        },
+        {
+          "index": 518,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 524,
+          "predicted": "constant"
+        },
+        {
+          "index": 532,
+          "predicted": "linear"
+        },
+        {
+          "index": 551,
+          "predicted": "linear"
+        },
+        {
+          "index": 556,
+          "predicted": "linear"
+        },
+        {
+          "index": 558,
+          "predicted": "linear"
+        },
+        {
+          "index": 560,
+          "predicted": "linear"
+        },
+        {
+          "index": 578,
+          "predicted": "linear"
+        },
+        {
+          "index": 583,
+          "predicted": "constant"
+        },
+        {
+          "index": 587,
+          "predicted": "linear"
+        },
+        {
+          "index": 606,
+          "predicted": "linear"
+        },
+        {
+          "index": 613,
+          "predicted": "linear"
+        },
+        {
+          "index": 619,
+          "predicted": "linear"
+        },
+        {
+          "index": 639,
+          "predicted": "linear"
+        },
+        {
+          "index": 646,
+          "predicted": "linear"
+        },
+        {
+          "index": 657,
+          "predicted": "linear"
+        },
+        {
+          "index": 666,
+          "predicted": "constant"
+        },
+        {
+          "index": 670,
+          "predicted": "linear"
+        },
+        {
+          "index": 676,
+          "predicted": "linear"
+        },
+        {
+          "index": 691,
+          "predicted": "constant"
+        },
+        {
+          "index": 701,
+          "predicted": "constant"
+        },
+        {
+          "index": 703,
+          "predicted": "constant"
+        },
+        {
+          "index": 715,
+          "predicted": "linear"
+        },
+        {
+          "index": 717,
+          "predicted": "linear"
+        },
+        {
+          "index": 722,
+          "predicted": "linear"
+        },
+        {
+          "index": 727,
+          "predicted": "linear"
+        },
+        {
+          "index": 729,
+          "predicted": "linear"
+        },
+        {
+          "index": 733,
+          "predicted": "constant"
+        },
+        {
+          "index": 742,
+          "predicted": "linear"
+        },
+        {
+          "index": 744,
+          "predicted": "linear"
+        },
+        {
+          "index": 776,
+          "predicted": "constant"
+        },
+        {
+          "index": 804,
+          "predicted": "linear"
+        },
+        {
+          "index": 806,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 808,
+          "predicted": "linear"
+        },
+        {
+          "index": 862,
+          "predicted": "constant"
+        },
+        {
+          "index": 864,
+          "predicted": "linear"
+        },
+        {
+          "index": 866,
+          "predicted": "linear"
+        },
+        {
+          "index": 876,
+          "predicted": "linear"
+        },
+        {
+          "index": 888,
+          "predicted": "linear"
+        },
+        {
+          "index": 889,
+          "predicted": "linear"
+        },
+        {
+          "index": 894,
+          "predicted": "linear"
+        },
+        {
+          "index": 909,
+          "predicted": "linear"
+        },
+        {
+          "index": 915,
+          "predicted": "constant"
+        },
+        {
+          "index": 916,
+          "predicted": "constant"
+        },
+        {
+          "index": 919,
+          "predicted": "linear"
+        },
+        {
+          "index": 927,
+          "predicted": "constant"
+        },
+        {
+          "index": 954,
+          "predicted": "linear"
+        },
+        {
+          "index": 960,
+          "predicted": "linear"
+        },
+        {
+          "index": 965,
+          "predicted": "linear"
+        },
+        {
+          "index": 972,
+          "predicted": "linear"
+        },
+        {
+          "index": 974,
+          "predicted": "linear"
+        },
+        {
+          "index": 991,
+          "predicted": "linear"
+        },
+        {
+          "index": 992,
+          "predicted": "linear"
+        },
+        {
+          "index": 1012,
+          "predicted": "linear"
+        },
+        {
+          "index": 1013,
+          "predicted": "constant"
+        },
+        {
+          "index": 1045,
+          "predicted": "linear"
+        },
+        {
+          "index": 1105,
+          "predicted": "linear"
+        },
+        {
+          "index": 1130,
+          "predicted": "linear"
+        },
+        {
+          "index": 1135,
+          "predicted": "linear"
+        },
+        {
+          "index": 1138,
+          "predicted": "constant"
+        },
+        {
+          "index": 1153,
+          "predicted": "linear"
+        },
+        {
+          "index": 1155,
+          "predicted": "linear"
+        },
+        {
+          "index": 1166,
+          "predicted": "linear"
+        },
+        {
+          "index": 1168,
+          "predicted": "linear"
+        },
+        {
+          "index": 1171,
+          "predicted": "linear"
+        },
+        {
+          "index": 1175,
+          "predicted": "linear"
+        },
+        {
+          "index": 1210,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1214,
+          "predicted": "linear"
+        },
+        {
+          "index": 1215,
+          "predicted": "linear"
+        },
+        {
+          "index": 1234,
+          "predicted": "linear"
+        },
+        {
+          "index": 1257,
+          "predicted": "linear"
+        },
+        {
+          "index": 1263,
+          "predicted": "linear"
+        },
+        {
+          "index": 1276,
+          "predicted": "linear"
+        },
+        {
+          "index": 1284,
+          "predicted": "linear"
+        },
+        {
+          "index": 1318,
+          "predicted": "linear"
+        },
+        {
+          "index": 1320,
+          "predicted": "linear"
+        },
+        {
+          "index": 1322,
+          "predicted": "linear"
+        },
+        {
+          "index": 1324,
+          "predicted": "linear"
+        },
+        {
+          "index": 1327,
+          "predicted": "linear"
+        },
+        {
+          "index": 1329,
+          "predicted": "constant"
+        },
+        {
+          "index": 1347,
+          "predicted": "constant"
+        },
+        {
+          "index": 1382,
+          "predicted": "linear"
+        },
+        {
+          "index": 1392,
+          "predicted": "linear"
+        },
+        {
+          "index": 1405,
+          "predicted": "linear"
+        },
+        {
+          "index": 1422,
+          "predicted": "linear"
+        },
+        {
+          "index": 1429,
+          "predicted": "constant"
+        },
+        {
+          "index": 1440,
+          "predicted": "linear"
+        },
+        {
+          "index": 1459,
+          "predicted": "linear"
+        },
+        {
+          "index": 1460,
+          "predicted": "linear"
+        },
+        {
+          "index": 1479,
+          "predicted": "constant"
+        },
+        {
+          "index": 1511,
+          "predicted": "constant"
+        },
+        {
+          "index": 1547,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1557,
+          "predicted": "linear"
+        },
+        {
+          "index": 1559,
+          "predicted": "linear"
+        },
+        {
+          "index": 1562,
+          "predicted": "linear"
+        },
+        {
+          "index": 1569,
+          "predicted": "linear"
+        },
+        {
+          "index": 1589,
+          "predicted": "constant"
+        },
+        {
+          "index": 1614,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1618,
+          "predicted": "constant"
+        },
+        {
+          "index": 1619,
+          "predicted": "linear"
+        },
+        {
+          "index": 1624,
+          "predicted": "constant"
+        },
+        {
+          "index": 1631,
+          "predicted": "linear"
+        },
+        {
+          "index": 1632,
+          "predicted": "constant"
+        },
+        {
+          "index": 1649,
+          "predicted": "linear"
+        },
+        {
+          "index": 1673,
+          "predicted": "linear"
+        },
+        {
+          "index": 1677,
+          "predicted": "linear"
+        },
+        {
+          "index": 1681,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1685,
+          "predicted": "constant"
+        },
+        {
+          "index": 1687,
+          "predicted": "linear"
+        },
+        {
+          "index": 1694,
+          "predicted": "constant"
+        },
+        {
+          "index": 1695,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1710,
+          "predicted": "linear"
+        },
+        {
+          "index": 1740,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1744,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1747,
+          "predicted": "linear"
+        },
+        {
+          "index": 1751,
+          "predicted": "constant"
+        },
+        {
+          "index": 1759,
+          "predicted": "linear"
+        },
+        {
+          "index": 1764,
+          "predicted": "linear"
+        },
+        {
+          "index": 1772,
+          "predicted": "constant"
+        },
+        {
+          "index": 1779,
+          "predicted": "constant"
+        },
+        {
+          "index": 1809,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1814,
+          "predicted": "linear"
+        },
+        {
+          "index": 1816,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1894,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1917,
+          "predicted": "linear"
+        },
+        {
+          "index": 1947,
+          "predicted": "constant"
+        },
+        {
+          "index": 1968,
+          "predicted": "linear"
+        },
+        {
+          "index": 1978,
+          "predicted": "constant"
+        },
+        {
+          "index": 1985,
+          "predicted": "constant"
+        },
+        {
+          "index": 1989,
+          "predicted": "constant"
+        },
+        {
+          "index": 1991,
+          "predicted": "linear"
+        },
+        {
+          "index": 1997,
+          "predicted": "constant"
+        },
+        {
+          "index": 2007,
+          "predicted": "linear"
+        },
+        {
+          "index": 2023,
+          "predicted": "linear"
+        },
+        {
+          "index": 2026,
+          "predicted": "linear"
+        },
+        {
+          "index": 2046,
+          "predicted": "constant"
+        },
+        {
+          "index": 2055,
+          "predicted": "linear"
+        },
+        {
+          "index": 2084,
+          "predicted": "linear"
+        },
+        {
+          "index": 2095,
+          "predicted": "constant"
+        },
+        {
+          "index": 2104,
+          "predicted": "linear"
+        },
+        {
+          "index": 2127,
+          "predicted": "linear"
+        },
+        {
+          "index": 2134,
+          "predicted": "linear"
+        },
+        {
+          "index": 2154,
+          "predicted": "constant"
+        },
+        {
+          "index": 2160,
+          "predicted": "linear"
+        },
+        {
+          "index": 2167,
+          "predicted": "linear"
+        },
+        {
+          "index": 2194,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2196,
+          "predicted": "linear"
+        },
+        {
+          "index": 2203,
+          "predicted": "linear"
+        },
+        {
+          "index": 2213,
+          "predicted": "linear"
+        },
+        {
+          "index": 2214,
+          "predicted": "linear"
+        },
+        {
+          "index": 2250,
+          "predicted": "linear"
+        },
+        {
+          "index": 2264,
+          "predicted": "linear"
+        },
+        {
+          "index": 2265,
+          "predicted": "linear"
+        },
+        {
+          "index": 2277,
+          "predicted": "constant"
+        },
+        {
+          "index": 2287,
+          "predicted": "constant"
+        },
+        {
+          "index": 2314,
+          "predicted": "constant"
+        },
+        {
+          "index": 2323,
+          "predicted": "constant"
+        },
+        {
+          "index": 2326,
+          "predicted": "linear"
+        },
+        {
+          "index": 2343,
+          "predicted": "constant"
+        },
+        {
+          "index": 2354,
+          "predicted": "linear"
+        },
+        {
+          "index": 2355,
+          "predicted": "constant"
+        },
+        {
+          "index": 2358,
+          "predicted": "linear"
+        },
+        {
+          "index": 2373,
+          "predicted": "linear"
+        },
+        {
+          "index": 2376,
+          "predicted": "constant"
+        },
+        {
+          "index": 2384,
+          "predicted": "linear"
+        },
+        {
+          "index": 2399,
+          "predicted": "linear"
+        },
+        {
+          "index": 2412,
+          "predicted": "linear"
+        },
+        {
+          "index": 2414,
+          "predicted": "linear"
+        },
+        {
+          "index": 2422,
+          "predicted": "linear"
+        },
+        {
+          "index": 2427,
+          "predicted": "linear"
+        },
+        {
+          "index": 2432,
+          "predicted": "linear"
+        },
+        {
+          "index": 2445,
+          "predicted": "constant"
+        },
+        {
+          "index": 2449,
+          "predicted": "linear"
+        },
+        {
+          "index": 2457,
+          "predicted": "linear"
+        },
+        {
+          "index": 2461,
+          "predicted": "linear"
+        },
+        {
+          "index": 2467,
+          "predicted": "linear"
+        },
+        {
+          "index": 2473,
+          "predicted": "linear"
+        },
+        {
+          "index": 2496,
+          "predicted": "linear"
+        },
+        {
+          "index": 2498,
+          "predicted": "constant"
+        },
+        {
+          "index": 2501,
+          "predicted": "linear"
+        },
+        {
+          "index": 2506,
+          "predicted": "constant"
+        },
+        {
+          "index": 2519,
+          "predicted": "linear"
+        },
+        {
+          "index": 2529,
+          "predicted": "constant"
+        },
+        {
+          "index": 2538,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2541,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2542,
+          "predicted": "linear"
+        },
+        {
+          "index": 2550,
+          "predicted": "linear"
+        },
+        {
+          "index": 2560,
+          "predicted": "linear"
+        },
+        {
+          "index": 2566,
+          "predicted": "constant"
+        },
+        {
+          "index": 2573,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2579,
+          "predicted": "constant"
+        },
+        {
+          "index": 2604,
+          "predicted": "constant"
+        },
+        {
+          "index": 2608,
+          "predicted": "linear"
+        },
+        {
+          "index": 2667,
+          "predicted": "constant"
+        },
+        {
+          "index": 2675,
+          "predicted": "constant"
+        },
+        {
+          "index": 2682,
+          "predicted": "constant"
+        },
+        {
+          "index": 2683,
+          "predicted": "linear"
+        },
+        {
+          "index": 2688,
+          "predicted": "linear"
+        },
+        {
+          "index": 2729,
+          "predicted": "constant"
+        },
+        {
+          "index": 2756,
+          "predicted": "linear"
+        },
+        {
+          "index": 2761,
+          "predicted": "linear"
+        },
+        {
+          "index": 2771,
+          "predicted": "constant"
+        },
+        {
+          "index": 2794,
+          "predicted": "constant"
+        },
+        {
+          "index": 2797,
+          "predicted": "linear"
+        },
+        {
+          "index": 2819,
+          "predicted": "constant"
+        },
+        {
+          "index": 2823,
+          "predicted": "linear"
+        },
+        {
+          "index": 2828,
+          "predicted": "linear"
+        },
+        {
+          "index": 2832,
+          "predicted": "linear"
+        },
+        {
+          "index": 2835,
+          "predicted": "linear"
+        },
+        {
+          "index": 2837,
+          "predicted": "linear"
+        },
+        {
+          "index": 2840,
+          "predicted": "linear"
+        },
+        {
+          "index": 2842,
+          "predicted": "linear"
+        },
+        {
+          "index": 2844,
+          "predicted": "linear"
+        },
+        {
+          "index": 2861,
+          "predicted": "linear"
+        },
+        {
+          "index": 2880,
+          "predicted": "linear"
+        },
+        {
+          "index": 2882,
+          "predicted": "linear"
+        },
+        {
+          "index": 2891,
+          "predicted": "linear"
+        },
+        {
+          "index": 2894,
+          "predicted": "constant"
+        },
+        {
+          "index": 2911,
+          "predicted": "linear"
+        },
+        {
+          "index": 2916,
+          "predicted": "linear"
+        },
+        {
+          "index": 2922,
+          "predicted": "linear"
+        },
+        {
+          "index": 2935,
+          "predicted": "linear"
+        },
+        {
+          "index": 2937,
+          "predicted": "constant"
+        },
+        {
+          "index": 2939,
+          "predicted": "linear"
+        },
+        {
+          "index": 2942,
+          "predicted": "constant"
+        },
+        {
+          "index": 2943,
+          "predicted": "constant"
+        },
+        {
+          "index": 2991,
+          "predicted": "linear"
+        },
+        {
+          "index": 2996,
+          "predicted": "constant"
+        },
+        {
+          "index": 2999,
+          "predicted": "linear"
+        },
+        {
+          "index": 3012,
+          "predicted": "np"
+        },
+        {
+          "index": 3021,
+          "predicted": "linear"
+        },
+        {
+          "index": 3046,
+          "predicted": "linear"
+        },
+        {
+          "index": 3049,
+          "predicted": "constant"
+        },
+        {
+          "index": 3053,
+          "predicted": "linear"
+        },
+        {
+          "index": 3057,
+          "predicted": "linear"
+        },
+        {
+          "index": 3063,
+          "predicted": "linear"
+        },
+        {
+          "index": 3075,
+          "predicted": "linear"
+        },
+        {
+          "index": 3084,
+          "predicted": "constant"
+        },
+        {
+          "index": 3086,
+          "predicted": "linear"
+        },
+        {
+          "index": 3093,
+          "predicted": "constant"
+        },
+        {
+          "index": 3094,
+          "predicted": "linear"
+        },
+        {
+          "index": 3099,
+          "predicted": "linear"
+        },
+        {
+          "index": 3102,
+          "predicted": "linear"
+        },
+        {
+          "index": 3108,
+          "predicted": "linear"
+        },
+        {
+          "index": 3112,
+          "predicted": "constant"
+        },
+        {
+          "index": 3126,
+          "predicted": "linear"
+        },
+        {
+          "index": 3156,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3158,
+          "predicted": "linear"
+        },
+        {
+          "index": 3162,
+          "predicted": "linear"
+        },
+        {
+          "index": 3163,
+          "predicted": "constant"
+        },
+        {
+          "index": 3181,
+          "predicted": "linear"
+        },
+        {
+          "index": 3236,
+          "predicted": "linear"
+        },
+        {
+          "index": 3241,
+          "predicted": "linear"
+        },
+        {
+          "index": 3251,
+          "predicted": "constant"
+        },
+        {
+          "index": 3260,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3269,
+          "predicted": "constant"
+        },
+        {
+          "index": 3280,
+          "predicted": "linear"
+        },
+        {
+          "index": 3357,
+          "predicted": "linear"
+        },
+        {
+          "index": 3358,
+          "predicted": "linear"
+        },
+        {
+          "index": 3377,
+          "predicted": "linear"
+        },
+        {
+          "index": 3381,
+          "predicted": "linear"
+        },
+        {
+          "index": 3386,
+          "predicted": "constant"
+        },
+        {
+          "index": 3387,
+          "predicted": "linear"
+        },
+        {
+          "index": 3390,
+          "predicted": "constant"
+        },
+        {
+          "index": 3398,
+          "predicted": "linear"
+        },
+        {
+          "index": 3406,
+          "predicted": "linear"
+        },
+        {
+          "index": 3410,
+          "predicted": "constant"
+        },
+        {
+          "index": 3417,
+          "predicted": "constant"
+        },
+        {
+          "index": 3419,
+          "predicted": "constant"
+        },
+        {
+          "index": 3420,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3421,
+          "predicted": "constant"
+        },
+        {
+          "index": 3428,
+          "predicted": "constant"
+        },
+        {
+          "index": 3452,
+          "predicted": "linear"
+        },
+        {
+          "index": 3477,
+          "predicted": "linear"
+        },
+        {
+          "index": 3480,
+          "predicted": "linear"
+        },
+        {
+          "index": 3482,
+          "predicted": "linear"
+        },
+        {
+          "index": 3498,
+          "predicted": "linear"
+        },
+        {
+          "index": 3506,
+          "predicted": "linear"
+        },
+        {
+          "index": 3515,
+          "predicted": "linear"
+        },
+        {
+          "index": 3517,
+          "predicted": "constant"
+        },
+        {
+          "index": 3530,
+          "predicted": "linear"
+        },
+        {
+          "index": 3532,
+          "predicted": "linear"
+        },
+        {
+          "index": 3558,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3563,
+          "predicted": "linear"
+        },
+        {
+          "index": 3576,
+          "predicted": "linear"
+        },
+        {
+          "index": 3577,
+          "predicted": "linear"
+        },
+        {
+          "index": 3585,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3586,
+          "predicted": "linear"
+        },
+        {
+          "index": 3591,
+          "predicted": "linear"
+        },
+        {
+          "index": 3606,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3613,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3621,
+          "predicted": "constant"
+        },
+        {
+          "index": 3634,
+          "predicted": "linear"
+        },
+        {
+          "index": 3637,
+          "predicted": "linear"
+        },
+        {
+          "index": 3673,
+          "predicted": "linear"
+        },
+        {
+          "index": 3705,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3745,
+          "predicted": "linear"
+        },
+        {
+          "index": 3752,
+          "predicted": "linear"
+        },
+        {
+          "index": 3759,
+          "predicted": "linear"
+        },
+        {
+          "index": 3760,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3764,
+          "predicted": "linear"
+        },
+        {
+          "index": 3797,
+          "predicted": "constant"
+        },
+        {
+          "index": 3801,
+          "predicted": "linear"
+        },
+        {
+          "index": 3812,
+          "predicted": "constant"
+        },
+        {
+          "index": 3822,
+          "predicted": "constant"
+        },
+        {
+          "index": 3830,
+          "predicted": "linear"
+        },
+        {
+          "index": 3834,
+          "predicted": "linear"
+        },
+        {
+          "index": 3841,
+          "predicted": "constant"
+        },
+        {
+          "index": 3845,
+          "predicted": "linear"
+        },
+        {
+          "index": 3863,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3871,
+          "predicted": "linear"
+        },
+        {
+          "index": 3898,
+          "predicted": "constant"
+        },
+        {
+          "index": 3921,
+          "predicted": "linear"
+        },
+        {
+          "index": 3932,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3934,
+          "predicted": "linear"
+        },
+        {
+          "index": 3947,
+          "predicted": "linear"
+        },
+        {
+          "index": 3954,
+          "predicted": "linear"
+        },
+        {
+          "index": 3961,
+          "predicted": "linear"
+        },
+        {
+          "index": 3969,
+          "predicted": "linear"
+        },
+        {
+          "index": 3980,
+          "predicted": "constant"
+        },
+        {
+          "index": 3982,
+          "predicted": "linear"
+        },
+        {
+          "index": 3985,
+          "predicted": "linear"
+        },
+        {
+          "index": 3994,
+          "predicted": "constant"
+        },
+        {
+          "index": 4002,
+          "predicted": "linear"
+        },
+        {
+          "index": 4007,
+          "predicted": "constant"
+        },
+        {
+          "index": 4008,
+          "predicted": "linear"
+        },
+        {
+          "index": 4011,
+          "predicted": "linear"
+        },
+        {
+          "index": 4013,
+          "predicted": "constant"
+        },
+        {
+          "index": 4032,
+          "predicted": "constant"
+        },
+        {
+          "index": 4042,
+          "predicted": "linear"
+        },
+        {
+          "index": 4046,
+          "predicted": "constant"
+        },
+        {
+          "index": 4048,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4052,
+          "predicted": "linear"
+        },
+        {
+          "index": 4054,
+          "predicted": "constant"
+        },
+        {
+          "index": 4070,
+          "predicted": "constant"
+        },
+        {
+          "index": 4072,
+          "predicted": "constant"
+        },
+        {
+          "index": 4086,
+          "predicted": "linear"
+        },
+        {
+          "index": 4087,
+          "predicted": "constant"
+        },
+        {
+          "index": 4097,
+          "predicted": "constant"
+        },
+        {
+          "index": 4147,
+          "predicted": "linear"
+        },
+        {
+          "index": 4150,
+          "predicted": "constant"
+        },
+        {
+          "index": 4160,
+          "predicted": "constant"
+        },
+        {
+          "index": 4162,
+          "predicted": "linear"
+        },
+        {
+          "index": 4185,
+          "predicted": "linear"
+        },
+        {
+          "index": 4188,
+          "predicted": "constant"
+        },
+        {
+          "index": 4189,
+          "predicted": "constant"
+        },
+        {
+          "index": 4196,
+          "predicted": "linear"
+        },
+        {
+          "index": 4215,
+          "predicted": "linear"
+        },
+        {
+          "index": 4224,
+          "predicted": "linear"
+        },
+        {
+          "index": 4233,
+          "predicted": "linear"
+        },
+        {
+          "index": 4235,
+          "predicted": "linear"
+        },
+        {
+          "index": 4246,
+          "predicted": "constant"
+        },
+        {
+          "index": 4251,
+          "predicted": "linear"
+        },
+        {
+          "index": 4255,
+          "predicted": "linear"
+        },
+        {
+          "index": 4315,
+          "predicted": "linear"
+        },
+        {
+          "index": 4332,
+          "predicted": "linear"
+        },
+        {
+          "index": 4343,
+          "predicted": "linear"
+        },
+        {
+          "index": 4344,
+          "predicted": "constant"
+        },
+        {
+          "index": 4349,
+          "predicted": "linear"
+        },
+        {
+          "index": 4362,
+          "predicted": "linear"
+        },
+        {
+          "index": 4380,
+          "predicted": "linear"
+        },
+        {
+          "index": 4397,
+          "predicted": "constant"
+        },
+        {
+          "index": 4424,
+          "predicted": "constant"
+        },
+        {
+          "index": 4443,
+          "predicted": "constant"
+        },
+        {
+          "index": 4457,
+          "predicted": "constant"
+        },
+        {
+          "index": 4472,
+          "predicted": "linear"
+        },
+        {
+          "index": 4487,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4497,
+          "predicted": "linear"
+        },
+        {
+          "index": 4503,
+          "predicted": "linear"
+        },
+        {
+          "index": 4516,
+          "predicted": "linear"
+        },
+        {
+          "index": 4526,
+          "predicted": "linear"
+        },
+        {
+          "index": 4530,
+          "predicted": "linear"
+        },
+        {
+          "index": 4533,
+          "predicted": "linear"
+        },
+        {
+          "index": 4545,
+          "predicted": "linear"
+        },
+        {
+          "index": 4551,
+          "predicted": "linear"
+        },
+        {
+          "index": 4557,
+          "predicted": "linear"
+        },
+        {
+          "index": 4562,
+          "predicted": "constant"
+        },
+        {
+          "index": 4576,
+          "predicted": "constant"
+        },
+        {
+          "index": 4582,
+          "predicted": "linear"
+        },
+        {
+          "index": 4587,
+          "predicted": "linear"
+        },
+        {
+          "index": 4598,
+          "predicted": "linear"
+        },
+        {
+          "index": 4611,
+          "predicted": "linear"
+        },
+        {
+          "index": 4661,
+          "predicted": "linear"
+        },
+        {
+          "index": 4671,
+          "predicted": "linear"
+        },
+        {
+          "index": 4673,
+          "predicted": "linear"
+        },
+        {
+          "index": 4678,
+          "predicted": "constant"
+        },
+        {
+          "index": 4687,
+          "predicted": "linear"
+        },
+        {
+          "index": 4691,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4725,
+          "predicted": "linear"
+        },
+        {
+          "index": 4729,
+          "predicted": "linear"
+        },
+        {
+          "index": 4734,
+          "predicted": "linear"
+        },
+        {
+          "index": 4738,
+          "predicted": "linear"
+        },
+        {
+          "index": 4767,
+          "predicted": "constant"
+        },
+        {
+          "index": 4770,
+          "predicted": "linear"
+        },
+        {
+          "index": 4774,
+          "predicted": "constant"
+        },
+        {
+          "index": 4815,
+          "predicted": "linear"
+        },
+        {
+          "index": 4830,
+          "predicted": "linear"
+        },
+        {
+          "index": 4853,
+          "predicted": "linear"
+        },
+        {
+          "index": 4860,
+          "predicted": "linear"
+        },
+        {
+          "index": 4871,
+          "predicted": "constant"
+        },
+        {
+          "index": 4878,
+          "predicted": "linear"
+        }
+      ]
+    },
+    "nlogn": {
+      "total": 796,
+      "correct": 316,
+      "incorrect": [
+        {
+          "index": 32,
+          "predicted": "linear"
+        },
+        {
+          "index": 50,
+          "predicted": "linear"
+        },
+        {
+          "index": 59,
+          "predicted": "linear"
+        },
+        {
+          "index": 60,
+          "predicted": "linear"
+        },
+        {
+          "index": 66,
+          "predicted": "linear"
+        },
+        {
+          "index": 70,
+          "predicted": "linear"
+        },
+        {
+          "index": 73,
+          "predicted": "linear"
+        },
+        {
+          "index": 85,
+          "predicted": "linear"
+        },
+        {
+          "index": 92,
+          "predicted": "linear"
+        },
+        {
+          "index": 93,
+          "predicted": "linear"
+        },
+        {
+          "index": 118,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 124,
+          "predicted": "linear"
+        },
+        {
+          "index": 132,
+          "predicted": "linear"
+        },
+        {
+          "index": 137,
+          "predicted": "linear"
+        },
+        {
+          "index": 141,
+          "predicted": "linear"
+        },
+        {
+          "index": 143,
+          "predicted": "linear"
+        },
+        {
+          "index": 144,
+          "predicted": "constant"
+        },
+        {
+          "index": 161,
+          "predicted": "linear"
+        },
+        {
+          "index": 201,
+          "predicted": "linear"
+        },
+        {
+          "index": 204,
+          "predicted": "linear"
+        },
+        {
+          "index": 224,
+          "predicted": "linear"
+        },
+        {
+          "index": 232,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 270,
+          "predicted": "linear"
+        },
+        {
+          "index": 303,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 304,
+          "predicted": "linear"
+        },
+        {
+          "index": 307,
+          "predicted": "linear"
+        },
+        {
+          "index": 309,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 319,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 323,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 354,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 355,
+          "predicted": "linear"
+        },
+        {
+          "index": 374,
+          "predicted": "linear"
+        },
+        {
+          "index": 385,
+          "predicted": "linear"
+        },
+        {
+          "index": 386,
+          "predicted": "linear"
+        },
+        {
+          "index": 388,
+          "predicted": "linear"
+        },
+        {
+          "index": 391,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 394,
+          "predicted": "linear"
+        },
+        {
+          "index": 396,
+          "predicted": "linear"
+        },
+        {
+          "index": 406,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 414,
+          "predicted": "logn"
+        },
+        {
+          "index": 426,
+          "predicted": "linear"
+        },
+        {
+          "index": 427,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 435,
+          "predicted": "linear"
+        },
+        {
+          "index": 446,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 449,
+          "predicted": "linear"
+        },
+        {
+          "index": 457,
+          "predicted": "linear"
+        },
+        {
+          "index": 463,
+          "predicted": "linear"
+        },
+        {
+          "index": 466,
+          "predicted": "linear"
+        },
+        {
+          "index": 474,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 475,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 476,
+          "predicted": "linear"
+        },
+        {
+          "index": 487,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 495,
+          "predicted": "linear"
+        },
+        {
+          "index": 499,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 506,
+          "predicted": "cubic"
+        },
+        {
+          "index": 510,
+          "predicted": "linear"
+        },
+        {
+          "index": 564,
+          "predicted": "linear"
+        },
+        {
+          "index": 569,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 572,
+          "predicted": "linear"
+        },
+        {
+          "index": 573,
+          "predicted": "linear"
+        },
+        {
+          "index": 576,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 579,
+          "predicted": "linear"
+        },
+        {
+          "index": 581,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 584,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 591,
+          "predicted": "cubic"
+        },
+        {
+          "index": 605,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 612,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 618,
+          "predicted": "linear"
+        },
+        {
+          "index": 637,
+          "predicted": "linear"
+        },
+        {
+          "index": 643,
+          "predicted": "linear"
+        },
+        {
+          "index": 677,
+          "predicted": "linear"
+        },
+        {
+          "index": 682,
+          "predicted": "linear"
+        },
+        {
+          "index": 695,
+          "predicted": "linear"
+        },
+        {
+          "index": 714,
+          "predicted": "linear"
+        },
+        {
+          "index": 735,
+          "predicted": "linear"
+        },
+        {
+          "index": 745,
+          "predicted": "linear"
+        },
+        {
+          "index": 765,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 767,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 771,
+          "predicted": "linear"
+        },
+        {
+          "index": 774,
+          "predicted": "linear"
+        },
+        {
+          "index": 810,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 812,
+          "predicted": "cubic"
+        },
+        {
+          "index": 815,
+          "predicted": "linear"
+        },
+        {
+          "index": 828,
+          "predicted": "linear"
+        },
+        {
+          "index": 839,
+          "predicted": "linear"
+        },
+        {
+          "index": 854,
+          "predicted": "linear"
+        },
+        {
+          "index": 868,
+          "predicted": "linear"
+        },
+        {
+          "index": 870,
+          "predicted": "linear"
+        },
+        {
+          "index": 873,
+          "predicted": "linear"
+        },
+        {
+          "index": 885,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 901,
+          "predicted": "linear"
+        },
+        {
+          "index": 906,
+          "predicted": "linear"
+        },
+        {
+          "index": 910,
+          "predicted": "linear"
+        },
+        {
+          "index": 914,
+          "predicted": "linear"
+        },
+        {
+          "index": 922,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 924,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 929,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 938,
+          "predicted": "linear"
+        },
+        {
+          "index": 944,
+          "predicted": "linear"
+        },
+        {
+          "index": 953,
+          "predicted": "linear"
+        },
+        {
+          "index": 957,
+          "predicted": "linear"
+        },
+        {
+          "index": 958,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 983,
+          "predicted": "linear"
+        },
+        {
+          "index": 999,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1009,
+          "predicted": "linear"
+        },
+        {
+          "index": 1011,
+          "predicted": "linear"
+        },
+        {
+          "index": 1020,
+          "predicted": "linear"
+        },
+        {
+          "index": 1030,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1039,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1049,
+          "predicted": "linear"
+        },
+        {
+          "index": 1053,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1055,
+          "predicted": "linear"
+        },
+        {
+          "index": 1058,
+          "predicted": "linear"
+        },
+        {
+          "index": 1066,
+          "predicted": "linear"
+        },
+        {
+          "index": 1067,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1098,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1103,
+          "predicted": "linear"
+        },
+        {
+          "index": 1113,
+          "predicted": "linear"
+        },
+        {
+          "index": 1121,
+          "predicted": "linear"
+        },
+        {
+          "index": 1128,
+          "predicted": "linear"
+        },
+        {
+          "index": 1132,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1143,
+          "predicted": "linear"
+        },
+        {
+          "index": 1151,
+          "predicted": "linear"
+        },
+        {
+          "index": 1154,
+          "predicted": "linear"
+        },
+        {
+          "index": 1163,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1188,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1191,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1202,
+          "predicted": "linear"
+        },
+        {
+          "index": 1211,
+          "predicted": "linear"
+        },
+        {
+          "index": 1220,
+          "predicted": "linear"
+        },
+        {
+          "index": 1221,
+          "predicted": "linear"
+        },
+        {
+          "index": 1235,
+          "predicted": "linear"
+        },
+        {
+          "index": 1249,
+          "predicted": "linear"
+        },
+        {
+          "index": 1269,
+          "predicted": "linear"
+        },
+        {
+          "index": 1271,
+          "predicted": "linear"
+        },
+        {
+          "index": 1277,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1308,
+          "predicted": "linear"
+        },
+        {
+          "index": 1319,
+          "predicted": "linear"
+        },
+        {
+          "index": 1341,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1348,
+          "predicted": "linear"
+        },
+        {
+          "index": 1354,
+          "predicted": "linear"
+        },
+        {
+          "index": 1355,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1368,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1371,
+          "predicted": "linear"
+        },
+        {
+          "index": 1378,
+          "predicted": "logn"
+        },
+        {
+          "index": 1396,
+          "predicted": "linear"
+        },
+        {
+          "index": 1401,
+          "predicted": "linear"
+        },
+        {
+          "index": 1403,
+          "predicted": "linear"
+        },
+        {
+          "index": 1404,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1411,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1418,
+          "predicted": "linear"
+        },
+        {
+          "index": 1432,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1433,
+          "predicted": "linear"
+        },
+        {
+          "index": 1435,
+          "predicted": "linear"
+        },
+        {
+          "index": 1452,
+          "predicted": "linear"
+        },
+        {
+          "index": 1480,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1495,
+          "predicted": "linear"
+        },
+        {
+          "index": 1499,
+          "predicted": "linear"
+        },
+        {
+          "index": 1500,
+          "predicted": "linear"
+        },
+        {
+          "index": 1506,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1520,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1525,
+          "predicted": "linear"
+        },
+        {
+          "index": 1531,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1537,
+          "predicted": "linear"
+        },
+        {
+          "index": 1548,
+          "predicted": "linear"
+        },
+        {
+          "index": 1549,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1558,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1571,
+          "predicted": "constant"
+        },
+        {
+          "index": 1583,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1586,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1592,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1617,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1629,
+          "predicted": "linear"
+        },
+        {
+          "index": 1630,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1638,
+          "predicted": "linear"
+        },
+        {
+          "index": 1640,
+          "predicted": "linear"
+        },
+        {
+          "index": 1647,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1653,
+          "predicted": "linear"
+        },
+        {
+          "index": 1659,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1669,
+          "predicted": "linear"
+        },
+        {
+          "index": 1675,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1692,
+          "predicted": "linear"
+        },
+        {
+          "index": 1705,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1706,
+          "predicted": "linear"
+        },
+        {
+          "index": 1713,
+          "predicted": "linear"
+        },
+        {
+          "index": 1729,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1745,
+          "predicted": "linear"
+        },
+        {
+          "index": 1758,
+          "predicted": "linear"
+        },
+        {
+          "index": 1768,
+          "predicted": "linear"
+        },
+        {
+          "index": 1780,
+          "predicted": "linear"
+        },
+        {
+          "index": 1789,
+          "predicted": "linear"
+        },
+        {
+          "index": 1802,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1811,
+          "predicted": "linear"
+        },
+        {
+          "index": 1818,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1823,
+          "predicted": "linear"
+        },
+        {
+          "index": 1824,
+          "predicted": "linear"
+        },
+        {
+          "index": 1827,
+          "predicted": "linear"
+        },
+        {
+          "index": 1847,
+          "predicted": "linear"
+        },
+        {
+          "index": 1854,
+          "predicted": "linear"
+        },
+        {
+          "index": 1869,
+          "predicted": "linear"
+        },
+        {
+          "index": 1873,
+          "predicted": "linear"
+        },
+        {
+          "index": 1884,
+          "predicted": "linear"
+        },
+        {
+          "index": 1890,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1895,
+          "predicted": "linear"
+        },
+        {
+          "index": 1920,
+          "predicted": "linear"
+        },
+        {
+          "index": 1931,
+          "predicted": "linear"
+        },
+        {
+          "index": 1942,
+          "predicted": "linear"
+        },
+        {
+          "index": 1959,
+          "predicted": "linear"
+        },
+        {
+          "index": 1960,
+          "predicted": "linear"
+        },
+        {
+          "index": 1974,
+          "predicted": "linear"
+        },
+        {
+          "index": 1987,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2017,
+          "predicted": "linear"
+        },
+        {
+          "index": 2028,
+          "predicted": "linear"
+        },
+        {
+          "index": 2030,
+          "predicted": "linear"
+        },
+        {
+          "index": 2037,
+          "predicted": "linear"
+        },
+        {
+          "index": 2093,
+          "predicted": "np"
+        },
+        {
+          "index": 2097,
+          "predicted": "linear"
+        },
+        {
+          "index": 2103,
+          "predicted": "linear"
+        },
+        {
+          "index": 2112,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2114,
+          "predicted": "linear"
+        },
+        {
+          "index": 2117,
+          "predicted": "linear"
+        },
+        {
+          "index": 2121,
+          "predicted": "linear"
+        },
+        {
+          "index": 2125,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2145,
+          "predicted": "linear"
+        },
+        {
+          "index": 2159,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2166,
+          "predicted": "linear"
+        },
+        {
+          "index": 2169,
+          "predicted": "linear"
+        },
+        {
+          "index": 2176,
+          "predicted": "linear"
+        },
+        {
+          "index": 2187,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2189,
+          "predicted": "linear"
+        },
+        {
+          "index": 2221,
+          "predicted": "linear"
+        },
+        {
+          "index": 2224,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2228,
+          "predicted": "linear"
+        },
+        {
+          "index": 2236,
+          "predicted": "linear"
+        },
+        {
+          "index": 2268,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2271,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2281,
+          "predicted": "linear"
+        },
+        {
+          "index": 2285,
+          "predicted": "linear"
+        },
+        {
+          "index": 2288,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2290,
+          "predicted": "linear"
+        },
+        {
+          "index": 2291,
+          "predicted": "linear"
+        },
+        {
+          "index": 2302,
+          "predicted": "linear"
+        },
+        {
+          "index": 2310,
+          "predicted": "logn"
+        },
+        {
+          "index": 2336,
+          "predicted": "linear"
+        },
+        {
+          "index": 2340,
+          "predicted": "linear"
+        },
+        {
+          "index": 2341,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2346,
+          "predicted": "linear"
+        },
+        {
+          "index": 2368,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2387,
+          "predicted": "constant"
+        },
+        {
+          "index": 2402,
+          "predicted": "linear"
+        },
+        {
+          "index": 2404,
+          "predicted": "linear"
+        },
+        {
+          "index": 2406,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2417,
+          "predicted": "linear"
+        },
+        {
+          "index": 2423,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2436,
+          "predicted": "linear"
+        },
+        {
+          "index": 2444,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2454,
+          "predicted": "linear"
+        },
+        {
+          "index": 2465,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2469,
+          "predicted": "linear"
+        },
+        {
+          "index": 2470,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2477,
+          "predicted": "linear"
+        },
+        {
+          "index": 2489,
+          "predicted": "linear"
+        },
+        {
+          "index": 2494,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2500,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2525,
+          "predicted": "linear"
+        },
+        {
+          "index": 2535,
+          "predicted": "linear"
+        },
+        {
+          "index": 2546,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2559,
+          "predicted": "linear"
+        },
+        {
+          "index": 2569,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2609,
+          "predicted": "linear"
+        },
+        {
+          "index": 2613,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2630,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2641,
+          "predicted": "linear"
+        },
+        {
+          "index": 2649,
+          "predicted": "linear"
+        },
+        {
+          "index": 2676,
+          "predicted": "linear"
+        },
+        {
+          "index": 2685,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2692,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2693,
+          "predicted": "linear"
+        },
+        {
+          "index": 2698,
+          "predicted": "linear"
+        },
+        {
+          "index": 2722,
+          "predicted": "linear"
+        },
+        {
+          "index": 2726,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2732,
+          "predicted": "linear"
+        },
+        {
+          "index": 2747,
+          "predicted": "linear"
+        },
+        {
+          "index": 2764,
+          "predicted": "linear"
+        },
+        {
+          "index": 2768,
+          "predicted": "linear"
+        },
+        {
+          "index": 2774,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2776,
+          "predicted": "linear"
+        },
+        {
+          "index": 2782,
+          "predicted": "linear"
+        },
+        {
+          "index": 2792,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2799,
+          "predicted": "constant"
+        },
+        {
+          "index": 2807,
+          "predicted": "linear"
+        },
+        {
+          "index": 2850,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2863,
+          "predicted": "linear"
+        },
+        {
+          "index": 2872,
+          "predicted": "linear"
+        },
+        {
+          "index": 2878,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2879,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2889,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2896,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2904,
+          "predicted": "linear"
+        },
+        {
+          "index": 2927,
+          "predicted": "linear"
+        },
+        {
+          "index": 3009,
+          "predicted": "linear"
+        },
+        {
+          "index": 3023,
+          "predicted": "linear"
+        },
+        {
+          "index": 3025,
+          "predicted": "linear"
+        },
+        {
+          "index": 3035,
+          "predicted": "linear"
+        },
+        {
+          "index": 3043,
+          "predicted": "linear"
+        },
+        {
+          "index": 3064,
+          "predicted": "linear"
+        },
+        {
+          "index": 3072,
+          "predicted": "linear"
+        },
+        {
+          "index": 3082,
+          "predicted": "linear"
+        },
+        {
+          "index": 3089,
+          "predicted": "linear"
+        },
+        {
+          "index": 3103,
+          "predicted": "linear"
+        },
+        {
+          "index": 3104,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3109,
+          "predicted": "linear"
+        },
+        {
+          "index": 3138,
+          "predicted": "linear"
+        },
+        {
+          "index": 3142,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3164,
+          "predicted": "linear"
+        },
+        {
+          "index": 3177,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3189,
+          "predicted": "linear"
+        },
+        {
+          "index": 3191,
+          "predicted": "linear"
+        },
+        {
+          "index": 3210,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3220,
+          "predicted": "linear"
+        },
+        {
+          "index": 3238,
+          "predicted": "linear"
+        },
+        {
+          "index": 3239,
+          "predicted": "linear"
+        },
+        {
+          "index": 3253,
+          "predicted": "linear"
+        },
+        {
+          "index": 3256,
+          "predicted": "linear"
+        },
+        {
+          "index": 3271,
+          "predicted": "linear"
+        },
+        {
+          "index": 3274,
+          "predicted": "linear"
+        },
+        {
+          "index": 3275,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3284,
+          "predicted": "linear"
+        },
+        {
+          "index": 3330,
+          "predicted": "linear"
+        },
+        {
+          "index": 3337,
+          "predicted": "linear"
+        },
+        {
+          "index": 3338,
+          "predicted": "linear"
+        },
+        {
+          "index": 3339,
+          "predicted": "linear"
+        },
+        {
+          "index": 3348,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3352,
+          "predicted": "linear"
+        },
+        {
+          "index": 3364,
+          "predicted": "linear"
+        },
+        {
+          "index": 3368,
+          "predicted": "linear"
+        },
+        {
+          "index": 3375,
+          "predicted": "linear"
+        },
+        {
+          "index": 3385,
+          "predicted": "linear"
+        },
+        {
+          "index": 3400,
+          "predicted": "linear"
+        },
+        {
+          "index": 3412,
+          "predicted": "linear"
+        },
+        {
+          "index": 3439,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3443,
+          "predicted": "linear"
+        },
+        {
+          "index": 3456,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3462,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3470,
+          "predicted": "linear"
+        },
+        {
+          "index": 3478,
+          "predicted": "linear"
+        },
+        {
+          "index": 3479,
+          "predicted": "linear"
+        },
+        {
+          "index": 3488,
+          "predicted": "linear"
+        },
+        {
+          "index": 3511,
+          "predicted": "linear"
+        },
+        {
+          "index": 3514,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3521,
+          "predicted": "linear"
+        },
+        {
+          "index": 3526,
+          "predicted": "linear"
+        },
+        {
+          "index": 3572,
+          "predicted": "linear"
+        },
+        {
+          "index": 3573,
+          "predicted": "linear"
+        },
+        {
+          "index": 3578,
+          "predicted": "linear"
+        },
+        {
+          "index": 3580,
+          "predicted": "linear"
+        },
+        {
+          "index": 3592,
+          "predicted": "linear"
+        },
+        {
+          "index": 3593,
+          "predicted": "logn"
+        },
+        {
+          "index": 3594,
+          "predicted": "linear"
+        },
+        {
+          "index": 3609,
+          "predicted": "linear"
+        },
+        {
+          "index": 3624,
+          "predicted": "linear"
+        },
+        {
+          "index": 3646,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3648,
+          "predicted": "linear"
+        },
+        {
+          "index": 3665,
+          "predicted": "linear"
+        },
+        {
+          "index": 3670,
+          "predicted": "linear"
+        },
+        {
+          "index": 3675,
+          "predicted": "linear"
+        },
+        {
+          "index": 3681,
+          "predicted": "linear"
+        },
+        {
+          "index": 3704,
+          "predicted": "linear"
+        },
+        {
+          "index": 3708,
+          "predicted": "linear"
+        },
+        {
+          "index": 3720,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3728,
+          "predicted": "linear"
+        },
+        {
+          "index": 3742,
+          "predicted": "linear"
+        },
+        {
+          "index": 3744,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3751,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3768,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3769,
+          "predicted": "linear"
+        },
+        {
+          "index": 3782,
+          "predicted": "linear"
+        },
+        {
+          "index": 3785,
+          "predicted": "linear"
+        },
+        {
+          "index": 3793,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3815,
+          "predicted": "linear"
+        },
+        {
+          "index": 3816,
+          "predicted": "linear"
+        },
+        {
+          "index": 3817,
+          "predicted": "linear"
+        },
+        {
+          "index": 3820,
+          "predicted": "linear"
+        },
+        {
+          "index": 3832,
+          "predicted": "linear"
+        },
+        {
+          "index": 3835,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3836,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3876,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3877,
+          "predicted": "linear"
+        },
+        {
+          "index": 3895,
+          "predicted": "linear"
+        },
+        {
+          "index": 3916,
+          "predicted": "linear"
+        },
+        {
+          "index": 3920,
+          "predicted": "linear"
+        },
+        {
+          "index": 3928,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3933,
+          "predicted": "linear"
+        },
+        {
+          "index": 3938,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3956,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4018,
+          "predicted": "linear"
+        },
+        {
+          "index": 4022,
+          "predicted": "linear"
+        },
+        {
+          "index": 4025,
+          "predicted": "linear"
+        },
+        {
+          "index": 4026,
+          "predicted": "linear"
+        },
+        {
+          "index": 4028,
+          "predicted": "linear"
+        },
+        {
+          "index": 4053,
+          "predicted": "linear"
+        },
+        {
+          "index": 4077,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4080,
+          "predicted": "linear"
+        },
+        {
+          "index": 4108,
+          "predicted": "linear"
+        },
+        {
+          "index": 4120,
+          "predicted": "linear"
+        },
+        {
+          "index": 4122,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4124,
+          "predicted": "linear"
+        },
+        {
+          "index": 4127,
+          "predicted": "linear"
+        },
+        {
+          "index": 4131,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4153,
+          "predicted": "linear"
+        },
+        {
+          "index": 4158,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4172,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4183,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4193,
+          "predicted": "linear"
+        },
+        {
+          "index": 4195,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4239,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4243,
+          "predicted": "linear"
+        },
+        {
+          "index": 4269,
+          "predicted": "linear"
+        },
+        {
+          "index": 4271,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4287,
+          "predicted": "linear"
+        },
+        {
+          "index": 4297,
+          "predicted": "linear"
+        },
+        {
+          "index": 4302,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4304,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4335,
+          "predicted": "linear"
+        },
+        {
+          "index": 4337,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4340,
+          "predicted": "linear"
+        },
+        {
+          "index": 4347,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4351,
+          "predicted": "linear"
+        },
+        {
+          "index": 4363,
+          "predicted": "linear"
+        },
+        {
+          "index": 4370,
+          "predicted": "linear"
+        },
+        {
+          "index": 4371,
+          "predicted": "linear"
+        },
+        {
+          "index": 4377,
+          "predicted": "linear"
+        },
+        {
+          "index": 4402,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4426,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4439,
+          "predicted": "linear"
+        },
+        {
+          "index": 4451,
+          "predicted": "linear"
+        },
+        {
+          "index": 4456,
+          "predicted": "linear"
+        },
+        {
+          "index": 4489,
+          "predicted": "linear"
+        },
+        {
+          "index": 4490,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4498,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4501,
+          "predicted": "linear"
+        },
+        {
+          "index": 4504,
+          "predicted": "linear"
+        },
+        {
+          "index": 4519,
+          "predicted": "linear"
+        },
+        {
+          "index": 4527,
+          "predicted": "linear"
+        },
+        {
+          "index": 4528,
+          "predicted": "constant"
+        },
+        {
+          "index": 4544,
+          "predicted": "linear"
+        },
+        {
+          "index": 4553,
+          "predicted": "linear"
+        },
+        {
+          "index": 4560,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4561,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4565,
+          "predicted": "linear"
+        },
+        {
+          "index": 4570,
+          "predicted": "linear"
+        },
+        {
+          "index": 4585,
+          "predicted": "logn"
+        },
+        {
+          "index": 4590,
+          "predicted": "linear"
+        },
+        {
+          "index": 4619,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4621,
+          "predicted": "linear"
+        },
+        {
+          "index": 4638,
+          "predicted": "linear"
+        },
+        {
+          "index": 4645,
+          "predicted": "linear"
+        },
+        {
+          "index": 4647,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4649,
+          "predicted": "linear"
+        },
+        {
+          "index": 4664,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4700,
+          "predicted": "linear"
+        },
+        {
+          "index": 4704,
+          "predicted": "linear"
+        },
+        {
+          "index": 4716,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4730,
+          "predicted": "linear"
+        },
+        {
+          "index": 4733,
+          "predicted": "linear"
+        },
+        {
+          "index": 4744,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4748,
+          "predicted": "linear"
+        },
+        {
+          "index": 4766,
+          "predicted": "linear"
+        },
+        {
+          "index": 4769,
+          "predicted": "linear"
+        },
+        {
+          "index": 4782,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4820,
+          "predicted": "linear"
+        },
+        {
+          "index": 4823,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4829,
+          "predicted": "logn"
+        },
+        {
+          "index": 4836,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4841,
+          "predicted": "constant"
+        },
+        {
+          "index": 4863,
+          "predicted": "linear"
+        },
+        {
+          "index": 4866,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4883,
+          "predicted": "linear"
+        },
+        {
+          "index": 4885,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4893,
+          "predicted": "quadratic"
+        }
+      ]
+    },
+    "np": {
+      "total": 528,
+      "correct": 104,
+      "incorrect": [
+        {
+          "index": 4,
+          "predicted": "cubic"
+        },
+        {
+          "index": 25,
+          "predicted": "linear"
+        },
+        {
+          "index": 28,
+          "predicted": "linear"
+        },
+        {
+          "index": 41,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 54,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 57,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 100,
+          "predicted": "linear"
+        },
+        {
+          "index": 104,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 114,
+          "predicted": "linear"
+        },
+        {
+          "index": 122,
+          "predicted": "linear"
+        },
+        {
+          "index": 125,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 129,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 136,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 175,
+          "predicted": "cubic"
+        },
+        {
+          "index": 181,
+          "predicted": "cubic"
+        },
+        {
+          "index": 182,
+          "predicted": "linear"
+        },
+        {
+          "index": 187,
+          "predicted": "cubic"
+        },
+        {
+          "index": 189,
+          "predicted": "linear"
+        },
+        {
+          "index": 203,
+          "predicted": "linear"
+        },
+        {
+          "index": 206,
+          "predicted": "cubic"
+        },
+        {
+          "index": 208,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 209,
+          "predicted": "linear"
+        },
+        {
+          "index": 215,
+          "predicted": "linear"
+        },
+        {
+          "index": 236,
+          "predicted": "linear"
+        },
+        {
+          "index": 247,
+          "predicted": "linear"
+        },
+        {
+          "index": 267,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 269,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 271,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 276,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 288,
+          "predicted": "cubic"
+        },
+        {
+          "index": 290,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 325,
+          "predicted": "cubic"
+        },
+        {
+          "index": 331,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 337,
+          "predicted": "cubic"
+        },
+        {
+          "index": 346,
+          "predicted": "linear"
+        },
+        {
+          "index": 357,
+          "predicted": "cubic"
+        },
+        {
+          "index": 364,
+          "predicted": "linear"
+        },
+        {
+          "index": 390,
+          "predicted": "linear"
+        },
+        {
+          "index": 398,
+          "predicted": "cubic"
+        },
+        {
+          "index": 401,
+          "predicted": "linear"
+        },
+        {
+          "index": 404,
+          "predicted": "linear"
+        },
+        {
+          "index": 408,
+          "predicted": "linear"
+        },
+        {
+          "index": 410,
+          "predicted": "cubic"
+        },
+        {
+          "index": 434,
+          "predicted": "cubic"
+        },
+        {
+          "index": 448,
+          "predicted": "cubic"
+        },
+        {
+          "index": 468,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 473,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 488,
+          "predicted": "cubic"
+        },
+        {
+          "index": 529,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 533,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 534,
+          "predicted": "linear"
+        },
+        {
+          "index": 553,
+          "predicted": "linear"
+        },
+        {
+          "index": 557,
+          "predicted": "cubic"
+        },
+        {
+          "index": 565,
+          "predicted": "linear"
+        },
+        {
+          "index": 592,
+          "predicted": "cubic"
+        },
+        {
+          "index": 600,
+          "predicted": "cubic"
+        },
+        {
+          "index": 603,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 614,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 617,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 628,
+          "predicted": "linear"
+        },
+        {
+          "index": 634,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 647,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 655,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 658,
+          "predicted": "linear"
+        },
+        {
+          "index": 665,
+          "predicted": "cubic"
+        },
+        {
+          "index": 668,
+          "predicted": "linear"
+        },
+        {
+          "index": 669,
+          "predicted": "cubic"
+        },
+        {
+          "index": 679,
+          "predicted": "cubic"
+        },
+        {
+          "index": 728,
+          "predicted": "cubic"
+        },
+        {
+          "index": 730,
+          "predicted": "linear"
+        },
+        {
+          "index": 762,
+          "predicted": "linear"
+        },
+        {
+          "index": 770,
+          "predicted": "cubic"
+        },
+        {
+          "index": 778,
+          "predicted": "cubic"
+        },
+        {
+          "index": 779,
+          "predicted": "cubic"
+        },
+        {
+          "index": 785,
+          "predicted": "linear"
+        },
+        {
+          "index": 816,
+          "predicted": "cubic"
+        },
+        {
+          "index": 819,
+          "predicted": "cubic"
+        },
+        {
+          "index": 823,
+          "predicted": "cubic"
+        },
+        {
+          "index": 830,
+          "predicted": "cubic"
+        },
+        {
+          "index": 843,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 855,
+          "predicted": "cubic"
+        },
+        {
+          "index": 878,
+          "predicted": "cubic"
+        },
+        {
+          "index": 880,
+          "predicted": "cubic"
+        },
+        {
+          "index": 883,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 893,
+          "predicted": "linear"
+        },
+        {
+          "index": 897,
+          "predicted": "cubic"
+        },
+        {
+          "index": 904,
+          "predicted": "cubic"
+        },
+        {
+          "index": 930,
+          "predicted": "cubic"
+        },
+        {
+          "index": 956,
+          "predicted": "constant"
+        },
+        {
+          "index": 962,
+          "predicted": "linear"
+        },
+        {
+          "index": 979,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1025,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1036,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1043,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1057,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1084,
+          "predicted": "linear"
+        },
+        {
+          "index": 1117,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1126,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1142,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1172,
+          "predicted": "constant"
+        },
+        {
+          "index": 1185,
+          "predicted": "linear"
+        },
+        {
+          "index": 1192,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1199,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1201,
+          "predicted": "linear"
+        },
+        {
+          "index": 1226,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1233,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1248,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1259,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1272,
+          "predicted": "linear"
+        },
+        {
+          "index": 1274,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1296,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1394,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1395,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1430,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1439,
+          "predicted": "linear"
+        },
+        {
+          "index": 1442,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1462,
+          "predicted": "linear"
+        },
+        {
+          "index": 1464,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1471,
+          "predicted": "linear"
+        },
+        {
+          "index": 1477,
+          "predicted": "linear"
+        },
+        {
+          "index": 1487,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1494,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1508,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1517,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1521,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1534,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1539,
+          "predicted": "linear"
+        },
+        {
+          "index": 1541,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1551,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1563,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1593,
+          "predicted": "linear"
+        },
+        {
+          "index": 1595,
+          "predicted": "linear"
+        },
+        {
+          "index": 1601,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1605,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1608,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1625,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1654,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1657,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1658,
+          "predicted": "linear"
+        },
+        {
+          "index": 1666,
+          "predicted": "linear"
+        },
+        {
+          "index": 1671,
+          "predicted": "linear"
+        },
+        {
+          "index": 1678,
+          "predicted": "linear"
+        },
+        {
+          "index": 1690,
+          "predicted": "linear"
+        },
+        {
+          "index": 1700,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1702,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1709,
+          "predicted": "linear"
+        },
+        {
+          "index": 1750,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1756,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1793,
+          "predicted": "linear"
+        },
+        {
+          "index": 1795,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1817,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1843,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1858,
+          "predicted": "linear"
+        },
+        {
+          "index": 1887,
+          "predicted": "linear"
+        },
+        {
+          "index": 1899,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1904,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1915,
+          "predicted": "linear"
+        },
+        {
+          "index": 1940,
+          "predicted": "linear"
+        },
+        {
+          "index": 1949,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1957,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1965,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 1979,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1982,
+          "predicted": "linear"
+        },
+        {
+          "index": 1983,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 1988,
+          "predicted": "cubic"
+        },
+        {
+          "index": 1995,
+          "predicted": "linear"
+        },
+        {
+          "index": 2011,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2016,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2031,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2039,
+          "predicted": "linear"
+        },
+        {
+          "index": 2040,
+          "predicted": "linear"
+        },
+        {
+          "index": 2065,
+          "predicted": "linear"
+        },
+        {
+          "index": 2080,
+          "predicted": "linear"
+        },
+        {
+          "index": 2088,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2155,
+          "predicted": "linear"
+        },
+        {
+          "index": 2174,
+          "predicted": "linear"
+        },
+        {
+          "index": 2181,
+          "predicted": "linear"
+        },
+        {
+          "index": 2190,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2210,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2222,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2229,
+          "predicted": "linear"
+        },
+        {
+          "index": 2238,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2262,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2273,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2274,
+          "predicted": "linear"
+        },
+        {
+          "index": 2275,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2311,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2342,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2347,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2348,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2363,
+          "predicted": "linear"
+        },
+        {
+          "index": 2370,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2374,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2381,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2386,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2397,
+          "predicted": "linear"
+        },
+        {
+          "index": 2400,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2413,
+          "predicted": "linear"
+        },
+        {
+          "index": 2428,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2442,
+          "predicted": "linear"
+        },
+        {
+          "index": 2456,
+          "predicted": "linear"
+        },
+        {
+          "index": 2459,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2475,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2483,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2491,
+          "predicted": "linear"
+        },
+        {
+          "index": 2492,
+          "predicted": "constant"
+        },
+        {
+          "index": 2511,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2512,
+          "predicted": "linear"
+        },
+        {
+          "index": 2521,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2533,
+          "predicted": "linear"
+        },
+        {
+          "index": 2553,
+          "predicted": "linear"
+        },
+        {
+          "index": 2554,
+          "predicted": "linear"
+        },
+        {
+          "index": 2612,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2614,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2635,
+          "predicted": "linear"
+        },
+        {
+          "index": 2637,
+          "predicted": "linear"
+        },
+        {
+          "index": 2657,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2659,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2666,
+          "predicted": "linear"
+        },
+        {
+          "index": 2668,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2673,
+          "predicted": "linear"
+        },
+        {
+          "index": 2679,
+          "predicted": "linear"
+        },
+        {
+          "index": 2701,
+          "predicted": "linear"
+        },
+        {
+          "index": 2702,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2704,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2715,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2716,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2734,
+          "predicted": "constant"
+        },
+        {
+          "index": 2735,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2737,
+          "predicted": "linear"
+        },
+        {
+          "index": 2740,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2759,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2769,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2781,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2802,
+          "predicted": "constant"
+        },
+        {
+          "index": 2814,
+          "predicted": "linear"
+        },
+        {
+          "index": 2816,
+          "predicted": "linear"
+        },
+        {
+          "index": 2824,
+          "predicted": "linear"
+        },
+        {
+          "index": 2833,
+          "predicted": "linear"
+        },
+        {
+          "index": 2836,
+          "predicted": "linear"
+        },
+        {
+          "index": 2856,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2876,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2877,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2890,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2900,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 2907,
+          "predicted": "cubic"
+        },
+        {
+          "index": 2953,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 2977,
+          "predicted": "linear"
+        },
+        {
+          "index": 2978,
+          "predicted": "linear"
+        },
+        {
+          "index": 2980,
+          "predicted": "linear"
+        },
+        {
+          "index": 2985,
+          "predicted": "linear"
+        },
+        {
+          "index": 3031,
+          "predicted": "linear"
+        },
+        {
+          "index": 3037,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3040,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3044,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3055,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3061,
+          "predicted": "linear"
+        },
+        {
+          "index": 3067,
+          "predicted": "linear"
+        },
+        {
+          "index": 3088,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3132,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3133,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3153,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3167,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3185,
+          "predicted": "linear"
+        },
+        {
+          "index": 3198,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3200,
+          "predicted": "constant"
+        },
+        {
+          "index": 3208,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3211,
+          "predicted": "linear"
+        },
+        {
+          "index": 3218,
+          "predicted": "linear"
+        },
+        {
+          "index": 3224,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3226,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3228,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3255,
+          "predicted": "linear"
+        },
+        {
+          "index": 3261,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3265,
+          "predicted": "linear"
+        },
+        {
+          "index": 3266,
+          "predicted": "linear"
+        },
+        {
+          "index": 3277,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3281,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3287,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3295,
+          "predicted": "linear"
+        },
+        {
+          "index": 3322,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3326,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3334,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3355,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3367,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3370,
+          "predicted": "linear"
+        },
+        {
+          "index": 3372,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3384,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3401,
+          "predicted": "linear"
+        },
+        {
+          "index": 3411,
+          "predicted": "linear"
+        },
+        {
+          "index": 3413,
+          "predicted": "linear"
+        },
+        {
+          "index": 3431,
+          "predicted": "linear"
+        },
+        {
+          "index": 3433,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3457,
+          "predicted": "linear"
+        },
+        {
+          "index": 3471,
+          "predicted": "linear"
+        },
+        {
+          "index": 3473,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3497,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3502,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3510,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3522,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3527,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3536,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3537,
+          "predicted": "linear"
+        },
+        {
+          "index": 3542,
+          "predicted": "linear"
+        },
+        {
+          "index": 3543,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3567,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3574,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3579,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3605,
+          "predicted": "linear"
+        },
+        {
+          "index": 3608,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3618,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3620,
+          "predicted": "linear"
+        },
+        {
+          "index": 3630,
+          "predicted": "linear"
+        },
+        {
+          "index": 3644,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3649,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3659,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3664,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3669,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3671,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3690,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3696,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3699,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3706,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3717,
+          "predicted": "linear"
+        },
+        {
+          "index": 3724,
+          "predicted": "linear"
+        },
+        {
+          "index": 3738,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3747,
+          "predicted": "linear"
+        },
+        {
+          "index": 3750,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3753,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3757,
+          "predicted": "linear"
+        },
+        {
+          "index": 3762,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3778,
+          "predicted": "linear"
+        },
+        {
+          "index": 3781,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3839,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3850,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3853,
+          "predicted": "linear"
+        },
+        {
+          "index": 3907,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3911,
+          "predicted": "linear"
+        },
+        {
+          "index": 3917,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3935,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3955,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3958,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 3966,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3983,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3984,
+          "predicted": "linear"
+        },
+        {
+          "index": 3987,
+          "predicted": "cubic"
+        },
+        {
+          "index": 3989,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 3996,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4005,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4020,
+          "predicted": "linear"
+        },
+        {
+          "index": 4030,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4031,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4041,
+          "predicted": "linear"
+        },
+        {
+          "index": 4065,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4071,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4074,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4089,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4091,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4098,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4099,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4104,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4137,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4142,
+          "predicted": "linear"
+        },
+        {
+          "index": 4144,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4159,
+          "predicted": "linear"
+        },
+        {
+          "index": 4168,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4169,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4182,
+          "predicted": "linear"
+        },
+        {
+          "index": 4197,
+          "predicted": "linear"
+        },
+        {
+          "index": 4206,
+          "predicted": "linear"
+        },
+        {
+          "index": 4213,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4219,
+          "predicted": "linear"
+        },
+        {
+          "index": 4225,
+          "predicted": "linear"
+        },
+        {
+          "index": 4230,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4232,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4309,
+          "predicted": "linear"
+        },
+        {
+          "index": 4311,
+          "predicted": "linear"
+        },
+        {
+          "index": 4312,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4317,
+          "predicted": "linear"
+        },
+        {
+          "index": 4346,
+          "predicted": "linear"
+        },
+        {
+          "index": 4354,
+          "predicted": "linear"
+        },
+        {
+          "index": 4359,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4360,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4381,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4390,
+          "predicted": "linear"
+        },
+        {
+          "index": 4406,
+          "predicted": "linear"
+        },
+        {
+          "index": 4407,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4419,
+          "predicted": "linear"
+        },
+        {
+          "index": 4437,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4452,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4462,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4492,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4511,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4518,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4522,
+          "predicted": "linear"
+        },
+        {
+          "index": 4539,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4571,
+          "predicted": "linear"
+        },
+        {
+          "index": 4572,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4574,
+          "predicted": "linear"
+        },
+        {
+          "index": 4604,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4615,
+          "predicted": "linear"
+        },
+        {
+          "index": 4623,
+          "predicted": "linear"
+        },
+        {
+          "index": 4632,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4662,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4669,
+          "predicted": "nlogn"
+        },
+        {
+          "index": 4675,
+          "predicted": "linear"
+        },
+        {
+          "index": 4686,
+          "predicted": "linear"
+        },
+        {
+          "index": 4690,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4717,
+          "predicted": "linear"
+        },
+        {
+          "index": 4747,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4752,
+          "predicted": "linear"
+        },
+        {
+          "index": 4764,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4784,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4789,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4792,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4796,
+          "predicted": "linear"
+        },
+        {
+          "index": 4807,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4808,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4818,
+          "predicted": "quadratic"
+        },
+        {
+          "index": 4828,
+          "predicted": "linear"
+        },
+        {
+          "index": 4845,
+          "predicted": "cubic"
+        },
+        {
+          "index": 4849,
+          "predicted": "linear"
+        },
+        {
+          "index": 4856,
+          "predicted": "linear"
+        },
+        {
+          "index": 4880,
+          "predicted": "cubic"
+        }
+      ]
+    }
+  },
+  "confusion_matrix": {
+    "constant": {
+      "constant": 433,
+      "logn": 22,
+      "linear": 274,
+      "nlogn": 4,
+      "quadratic": 45,
+      "cubic": 12,
+      "np": 1
+    },
+    "logn": {
+      "constant": 125,
+      "logn": 221,
+      "linear": 288,
+      "nlogn": 13,
+      "quadratic": 18,
+      "cubic": 2,
+      "np": 2
+    },
+    "linear": {
+      "constant": 15,
+      "logn": 5,
+      "linear": 683,
+      "nlogn": 26,
+      "quadratic": 105,
+      "cubic": 18,
+      "np": 1
+    },
+    "nlogn": {
+      "constant": 6,
+      "logn": 6,
+      "linear": 315,
+      "nlogn": 316,
+      "quadratic": 133,
+      "cubic": 19,
+      "np": 1
+    },
+    "quadratic": {
+      "constant": 1,
+      "logn": 0,
+      "linear": 82,
+      "nlogn": 9,
+      "quadratic": 404,
+      "cubic": 157,
+      "np": 4
+    },
+    "cubic": {
+      "constant": 0,
+      "logn": 0,
+      "linear": 13,
+      "nlogn": 6,
+      "quadratic": 96,
+      "cubic": 475,
+      "np": 16
+    },
+    "np": {
+      "constant": 6,
+      "logn": 0,
+      "linear": 148,
+      "nlogn": 48,
+      "quadratic": 76,
+      "cubic": 146,
+      "np": 104
+    }
+  }
+}
