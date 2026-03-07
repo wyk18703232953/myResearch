@@ -1,0 +1,41 @@
+Time Complexity Analysis Results
+==================================================
+constant:
+  Total files: 791
+  Correct predictions: 462
+  Accuracy: 58.41%
+
+cubic:
+  Total files: 606
+  Correct predictions: 436
+  Accuracy: 71.95%
+
+linear:
+  Total files: 853
+  Correct predictions: 241
+  Accuracy: 28.25%
+
+logn:
+  Total files: 669
+  Correct predictions: 5
+  Accuracy: 0.75%
+
+nlogn:
+  Total files: 796
+  Correct predictions: 251
+  Accuracy: 31.53%
+
+np:
+  Total files: 528
+  Correct predictions: 62
+  Accuracy: 11.74%
+
+quadratic:
+  Total files: 657
+  Correct predictions: 131
+  Accuracy: 19.94%
+
+==================================================
+Total files: 4900
+Total correct predictions: 1588
+Overall accuracy: 32.41%

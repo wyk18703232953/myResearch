@@ -1,0 +1,1657 @@
+{
+  "total_files": 1259,
+  "correct_predictions": 872,
+  "accuracy": 0.6926131850675139,
+  "detailed_stats": {
+    "constant": {
+      "total": 718,
+      "correct": 542,
+      "incorrect": [
+        {
+          "file": "results_python_constant_0653",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0392",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0788",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0414",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0760",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0787",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0095",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0652",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0109",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0511",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0496",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0545",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0495",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0400",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0204",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0422",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0791",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0391",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0349",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0628",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0614",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0503",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0321",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0216",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0626",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0772",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0504",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0080",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0647",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0394",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0552",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0725",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0406",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0418",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0789",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0754",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0389",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0680",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0454",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0624",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0236",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0502",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0613",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0508",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0619",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0405",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0785",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0114",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0639",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0627",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0638",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0617",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0402",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0621",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0101",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0099",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0646",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0497",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0616",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0108",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0212",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0355",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0775",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0404",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0657",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0783",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0731",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0207",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0651",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0507",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0107",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0352",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0654",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0634",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0641",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0660",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0440",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0396",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0441",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0388",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0499",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0403",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0631",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0512",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0387",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0509",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0629",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0510",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0500",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0729",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0198",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0104",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0442",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0399",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0412",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0643",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0790",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0408",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0506",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0779",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0452",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0127",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0773",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0395",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0398",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0466",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0636",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0637",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0501",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0658",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0544",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0098",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0439",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0097",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0666",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0672",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0610",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0655",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0314",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0659",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0623",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0123",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0106",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0102",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0393",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0649",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0205",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0611",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0397",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0465",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0625",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0090",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0390",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0094",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0364",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0498",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0103",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0612",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0100",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0774",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0166",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0656",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0173",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0366",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0150",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0111",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0096",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0203",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0776",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0164",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0119",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0110",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0620",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0451",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0135",
+          "predicted": "np"
+        },
+        {
+          "file": "results_python_constant_0505",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0622",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0362",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0618",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0615",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0645",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0784",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0635",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0648",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_constant_0661",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0401",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0642",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0105",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0130",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0324",
+          "predicted": "quadratic"
+        },
+        {
+          "file": "results_python_constant_0415",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0358",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0494",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0093",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0780",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_constant_0777",
+          "predicted": "linear"
+        }
+      ]
+    },
+    "linear": {
+      "total": 0,
+      "correct": 0,
+      "incorrect": []
+    },
+    "quadratic": {
+      "total": 541,
+      "correct": 330,
+      "incorrect": [
+        {
+          "file": "results_python_quadratic_0536",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0454",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0444",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0243",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0497",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0157",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0113",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0117",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0155",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0554",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0166",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0160",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0414",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0162",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0499",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0418",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0170",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0353",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0489",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0213",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0401",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0328",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0051",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0163",
+          "predicted": "logn"
+        },
+        {
+          "file": "results_python_quadratic_0458",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0321",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0452",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0530",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0443",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0153",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0449",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0537",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0378",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0251",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0545",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0433",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0266",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0463",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0121",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0097",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0080",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0322",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0429",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0544",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0256",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0119",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0420",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0535",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0250",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0352",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0424",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0334",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0496",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0326",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0122",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0434",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0462",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0168",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0402",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0495",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0079",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0436",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0456",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0343",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0177",
+          "predicted": "logn"
+        },
+        {
+          "file": "results_python_quadratic_0488",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0156",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0178",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0461",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0258",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0123",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0336",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0410",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0165",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0176",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0346",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0030",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0254",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0327",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0247",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0112",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0435",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0481",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0025",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0413",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0457",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0174",
+          "predicted": "logn"
+        },
+        {
+          "file": "results_python_quadratic_0274",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0532",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0323",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0295",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0159",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0417",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0345",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0245",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0341",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0347",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0441",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0466",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0552",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0549",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0472",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0351",
+          "predicted": "logn"
+        },
+        {
+          "file": "results_python_quadratic_0330",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0126",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0081",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0128",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0382",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0333",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0324",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0252",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0294",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0158",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0020",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0078",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0498",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0021",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0067",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0104",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0173",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0430",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0072",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0084",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0073",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0248",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0125",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0416",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0400",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0325",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0415",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0116",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0407",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0460",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0349",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0409",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0337",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0411",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0338",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0244",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0550",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0124",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0493",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0437",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0438",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0340",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0453",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0393",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0450",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0428",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0404",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0485",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0164",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0427",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0445",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0019",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0099",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0262",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0293",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0431",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0425",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0332",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0232",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0406",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0451",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0448",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0500",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0534",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0350",
+          "predicted": "logn"
+        },
+        {
+          "file": "results_python_quadratic_0533",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0476",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0348",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0212",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0543",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0439",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0423",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0259",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0335",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0421",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0494",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0412",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0052",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0171",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0118",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0538",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0492",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0547",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0408",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0446",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0484",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0161",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0540",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0169",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0342",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0403",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0175",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0329",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0405",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0127",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0464",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0331",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0375",
+          "predicted": "cubic"
+        },
+        {
+          "file": "results_python_quadratic_0470",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0261",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0082",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0057",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0447",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0130",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0548",
+          "predicted": "linear"
+        },
+        {
+          "file": "results_python_quadratic_0105",
+          "predicted": "constant"
+        },
+        {
+          "file": "results_python_quadratic_0422",
+          "predicted": "nlogn"
+        },
+        {
+          "file": "results_python_quadratic_0114",
+          "predicted": "nlogn"
+        }
+      ]
+    },
+    "cubic": {
+      "total": 0,
+      "correct": 0,
+      "incorrect": []
+    },
+    "logn": {
+      "total": 0,
+      "correct": 0,
+      "incorrect": []
+    },
+    "nlogn": {
+      "total": 0,
+      "correct": 0,
+      "incorrect": []
+    },
+    "np": {
+      "total": 0,
+      "correct": 0,
+      "incorrect": []
+    }
+  },
+  "confusion_matrix": {
+    "constant": {
+      "constant": 542,
+      "logn": 0,
+      "linear": 137,
+      "nlogn": 25,
+      "quadratic": 13,
+      "cubic": 0,
+      "np": 1
+    },
+    "logn": {
+      "constant": 0,
+      "logn": 0,
+      "linear": 0,
+      "nlogn": 0,
+      "quadratic": 0,
+      "cubic": 0,
+      "np": 0
+    },
+    "linear": {
+      "constant": 0,
+      "logn": 0,
+      "linear": 0,
+      "nlogn": 0,
+      "quadratic": 0,
+      "cubic": 0,
+      "np": 0
+    },
+    "nlogn": {
+      "constant": 0,
+      "logn": 0,
+      "linear": 0,
+      "nlogn": 0,
+      "quadratic": 0,
+      "cubic": 0,
+      "np": 0
+    },
+    "quadratic": {
+      "constant": 42,
+      "logn": 5,
+      "linear": 111,
+      "nlogn": 43,
+      "quadratic": 330,
+      "cubic": 10,
+      "np": 0
+    },
+    "cubic": {
+      "constant": 0,
+      "logn": 0,
+      "linear": 0,
+      "nlogn": 0,
+      "quadratic": 0,
+      "cubic": 0,
+      "np": 0
+    },
+    "np": {
+      "constant": 0,
+      "logn": 0,
+      "linear": 0,
+      "nlogn": 0,
+      "quadratic": 0,
+      "cubic": 0,
+      "np": 0
+    }
+  }
+}
