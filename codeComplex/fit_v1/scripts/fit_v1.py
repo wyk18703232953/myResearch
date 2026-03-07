@@ -56,29 +56,6 @@ MODELS = {
 
 import timeit
 
-
-bytecode_count = 0
-
-def trace_func(frame, event, arg):
-    global bytecode_count
-    if event == "call":
-        frame.f_trace_opcodes = True
-        return trace_func
-    elif event == "opcode":
-        bytecode_count += 1
-    return trace_func
-
-
-def count_bytecode(func, *args):
-    global bytecode_count
-    bytecode_count = 0
-    import sys
-    sys.settrace(trace_func)
-    func(*args)
-    sys.settrace(None)
-    return bytecode_count
-
-
 def run_with_timeout(code_str, timeout_seconds):
     import signal
     import io
@@ -174,13 +151,14 @@ def run_with_timeout(code_str, timeout_seconds):
         # 注意：如果你的算法本身极度依赖 GC 释放内存否则会 OOM，则不能关
         gc.disable()
 
-        # 7. 【关键】使用字节码计数来测量复杂度
+        # 7. 【关键】直接测这个函数对象，没有任何 exec 开销
         # 注意：这里直接调用 main_func(n_value)，纯净无噪声
-        bc_count = count_bytecode(main_func, n_value)
+        times = timeit.repeat(stmt=lambda: main_func(n_value), repeat=2, number=1)
+        min_time = np.min(times)  # 计算最小执行时间（秒）
         
         signal.alarm(0)
         gc.enable()
-        return (True, bc_count, None)
+        return (True, min_time, None)
         
     except TimeoutError as e:
         signal.alarm(0)
@@ -198,42 +176,6 @@ def run_with_timeout(code_str, timeout_seconds):
             import io
             sys.stdout = io.StringIO()
             sys.stderr = io.StringIO()
-
-
-def calculate_coefficient_of_variation(values):
-    if len(values) == 0:
-        return np.inf
-    mean_val = np.mean(values)
-    if mean_val == 0:
-        return np.inf
-    std_val = np.std(values)
-    return std_val / abs(mean_val)
-
-
-def calculate_complexity_by_cv(x_data, y_data):
-    complexity_scores = {}
-    
-    n_safe = np.maximum(x_data, 1e-10)
-    
-    ratios = {
-        "Constant": y_data,
-        "Logarithmic": y_data / np.log(n_safe),
-        "Linear": y_data / n_safe,
-        "N Log N": y_data / (n_safe * np.log(n_safe)),
-        "Quadratic": y_data / (n_safe ** 2),
-        "Cubic": y_data / (n_safe ** 3),
-        "np": y_data / (2 ** n_safe)
-    }
-    
-    for name, ratio_values in ratios.items():
-        try:
-            cv = calculate_coefficient_of_variation(ratio_values)
-            complexity_scores[name] = cv
-        except Exception:
-            complexity_scores[name] = np.inf
-    
-    best_complexity = min(complexity_scores.keys(), key=lambda k: complexity_scores[k])
-    return best_complexity, complexity_scores
 
 
 def process_code_file(code_path, expected_models, base_dir):
@@ -288,15 +230,28 @@ def process_code_file(code_path, expected_models, base_dir):
                 break
             run_code = f"{code_content}\n\nmain({n})"
             
-            success, bc_count, error = run_with_timeout(run_code, TIMEOUT_SECONDS)
+            run_times = []
+            for attempt in range(REPEAT_COUNT):
+                success, exec_time, error = run_with_timeout(run_code, TIMEOUT_SECONDS)
+                
+                if success:
+                    run_times.append(exec_time * 1000)
+                    # print(f"   [成功] n={n}, 第{attempt+1}次运行成功，耗时 {exec_time*1000:.4f} ms")
+                else:
+                    print(f"   [警告] n={n}, 第{attempt+1}次运行失败: {error}")
+                    if "Timeout" in error:
+                        print(f"   [停止] n={n} 超时，停止模拟运行")
+                        break
+                    continue
             
-            if success:
-                test_results.append((n, bc_count))
-            else:
-                print(f"   [警告] n={n} 运行失败: {error}")
-                if "Timeout" in error:
-                    print(f"   [停止] n={n} 超时，停止模拟运行")
-                    break
+            if len(run_times) == 0:
+                print(f"   [错误] n={n} 所有运行都失败，跳过")
+                break
+            # median_time = np.median(run_times)
+            # test_results.append((n, median_time))
+            min_time = np.min(run_times)
+            # print(f"   [成功] n={n}, 最小耗时 {min_time:.4f} ms")
+            test_results.append((n, min_time))
             
             if len(test_results) % 10 == 0:
                 np.savez(temp_results_path, results=test_results)
@@ -304,7 +259,7 @@ def process_code_file(code_path, expected_models, base_dir):
     except KeyboardInterrupt:
         print("\n用户中断模拟运行...")
     finally:
-        final_data_path = os.path.join(result_dir, "bytecode_results.npz")
+        final_data_path = os.path.join(result_dir, "time_results.npz")
         np.savez(final_data_path, results=test_results)
 
     if len(test_results) < 4:
@@ -325,6 +280,7 @@ def process_code_file(code_path, expected_models, base_dir):
         print("   [警告] 数据过少，无法进行拟合。")
 
     fit_report = {}
+    best_model_name = "None"
     
     # -------------------------------------------------------------
     # 核心修改点：构造尾部加权的 weights 以及 curve_fit 用到的 sigma
@@ -364,6 +320,12 @@ def process_code_file(code_path, expected_models, base_dir):
                 # 针对其他函数，采用加权的 R2 score 判断拟合优度
                 r2 = r2_score(y_data, y_pred, sample_weight=weights)
             
+            resid = y_data - y_pred
+            ssr = np.sum(resid**2)
+            if ssr <= 0: ssr = 1e-10
+            n_samples = len(y_data)
+            
+            
             fit_report[name] = {
                 "r2": r2,
                 "params": popt.tolist()
@@ -372,10 +334,21 @@ def process_code_file(code_path, expected_models, base_dir):
         except Exception as e:
             fit_report[name] = {"r2": -np.inf, "success": False}
     
-    # 使用变异系数方法确定最佳复杂度类型
-    best_model_name, cv_scores = calculate_complexity_by_cv(x_data, y_data)
     
-    print(f"分析完成。最佳拟合模型: {best_model_name} (CV={cv_scores[best_model_name]:.4f})")
+    n_samples = len(y_data)
+    best_r2 = -np.inf
+        
+    for name, info in fit_report.items():
+        r2 = info.get("r2", -np.inf)
+        
+        if not np.isfinite(r2):
+            continue
+        
+        if r2 > best_r2:
+            best_r2 = r2
+            best_model_name = name
+
+    print(f"分析完成。最佳拟合模型: {best_model_name} (R²={best_r2:.4f})")
     
     plt.figure(figsize=(12, 7))
     
@@ -396,26 +369,17 @@ def process_code_file(code_path, expected_models, base_dir):
         plt.plot(x_smooth, y_smooth, 'r-', linewidth=2, 
                  label=f'Best Fit: {best_model_name} ($R^2={best_info["r2"]:.3f}$)')
         
-    plt.title(f"Time Complexity (Bytecode Count): {file_name}\n(Raw data count: {len(x_raw)}, Cleaned: {len(x_data)})")
+    plt.title(f"Time Complexity: {file_name}\n(Raw data count: {len(x_raw)}, Cleaned: {len(x_data)})")
     plt.xlabel("Input Size (n)")
-    plt.ylabel("Bytecode Count")
+    plt.ylabel("Time (ms)")
     plt.legend()
     plt.grid(True, alpha=0.3)
     plt.savefig(os.path.join(result_dir, "best_fit.png"))
     plt.close()
     
     with open(os.path.join(result_dir, "analysis_report.json"), 'w') as f:
-        cv_scores_dict = {}
-        for key, value in cv_scores.items():
-            if np.isfinite(value):
-                cv_scores_dict[key] = float(value)
-            else:
-                cv_scores_dict[key] = None
-        
         report_with_metadata = {
             "valid_points": len(x_data),
-            "best_model": best_model_name,
-            "cv_scores": cv_scores_dict,
             "models": fit_report
         }
         json.dump(report_with_metadata, f, indent=2)
@@ -495,8 +459,6 @@ def main():
         base_dir = base_dir_map[folder_type]
                        
         for i, file_name in enumerate(python_files, 1):
-            if(i>=20):
-                continue
             full_path = os.path.join(folder_path, file_name)
             print(f"\n[{i}/{total_files}] 处理文件: {file_name}")
             try:
