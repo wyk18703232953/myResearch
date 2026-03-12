@@ -1,12 +1,12 @@
 # 配置文件：存储时间复杂度分析的相关参数
 
 # 测试参数配置
-max_n = 1000  # 测试规模的最大值
+max_n =2002 # 测试规模的最大值
 
-step = 40# 测试规模的间隔
+step = 50# 测试规模的间隔
 start_n = 1 # 初始测试规模
-REPEAT_COUNT = 1 # 测试重复次数
-TIMEOUT_SECONDS = 15 # 测试超时时间（秒）
+REPEAT_COUNT = 3 # 测试重复次数
+TIMEOUT_SECONDS = 2 # 测试超时时间（秒）
 
 constant_folder_path = "/home/wuyankai/myResearch/codeComplex/data/filteredData/python/constant"  # 待处理的代码文件目录
 cubic_folder_path = "/home/wuyankai/myResearch/codeComplex/data/filteredData/python/cubic"  # 待处理的代码文件目录

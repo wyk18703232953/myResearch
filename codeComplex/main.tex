@@ -1,8 +1,6 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
-%Template version as of 6/27/2024
-
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -14,7 +12,7 @@
 \begin{document}
 
 \title{Conference Paper Title*\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured for https://ieeexplore.ieee.org  and
+{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 should not be used}
 \thanks{Identify applicable funding agency here. If none, delete this.}
 }
@@ -65,391 +63,101 @@ or Math in Paper Title or Abstract.
 \end{abstract}
 
 \begin{IEEEkeywords}
-component, formatting, style, styling, insert.
+component, formatting, style, styling, insert
 \end{IEEEkeywords}
 
 \section{Introduction}
-Automatic time complexity analysis is a fundamental problem in software engineering, program verification, and online judging systems. Accurate complexity classification is crucial for detecting inefficient implementations, preventing time limit exceeded (TLE) errors, and supporting intelligent grading and code review systems. Traditionally, complexity analysis relies on static program analysis techniques such as abstract interpretation, control-flow graph (CFG) inspection, and symbolic reasoning. Although these methods provide sound upper bounds, they are often overly conservative, difficult to scale to real-world programs, and expensive to implement for modern programming languages. 
+This document is a model and instructions for \LaTeX.
+Please observe the conference page limits. 
 
-Recently, large language models (LLMs) have demonstrated remarkable capabilities in code understanding and reasoning. Several studies have explored using LLMs to infer algorithmic complexity directly from source code. However, despite their strong semantic understanding, LLM-based complexity prediction still suffers from severe hallucination and systematic bias. In particular, we observe that LLMs frequently underestimate high-order polynomial complexities (e.g., $O(n^3)$ and $O(n^4)$), often confusing them with quadratic or near-linear patterns. Such misjudgments significantly limit the reliability of purely LLM-driven approaches. 
+\section{Ease of Use}
 
-An alternative direction is dynamic complexity estimation, which infers asymptotic growth by executing programs under scaled input sizes and fitting runtime measurements to predefined growth models. While dynamic fitting can capture empirical growth trends, it is inherently sensitive to runtime noise, limited input ranges, and short-scale behaviors. In practice, dynamic fitting alone may produce unstable or misleading classifications, especially when the input size cannot reach the asymptotic regime due to time or memory constraints. 
+\subsection{Maintaining the Integrity of the Specifications}
 
-These limitations motivate a hybrid approach that integrates static semantic reasoning and dynamic empirical measurement. In this paper, we propose a unified framework that combines LLM-based static complexity prediction with dynamic runtime curve fitting. By leveraging complementary strengths of both paradigms, our framework corrects systematic LLM biases using runtime evidence while stabilizing dynamic fitting results with semantic priors derived from LLM reasoning. 
+The IEEEtran class file is used to format your paper and style the text. All margins, 
+column widths, line spaces, and text fonts are prescribed; please do not 
+alter them. You may note peculiarities. For example, the head margin
+measures proportionately more than is customary. This measurement 
+and others are deliberate, using specifications that anticipate your paper 
+as one part of the entire proceedings, and not as an independent document. 
+Please do not revise any of the current designations.
 
-We conduct extensive experiments on a dataset of 4,900 competitive programming solutions collected from Codeforces. Our results show that LLM-only static prediction achieves an overall accuracy of 63.7\%, but exhibits pronounced underestimation on cubic and higher-order polynomial programs. By introducing our fusion strategy, we significantly improve classification accuracy, particularly on high-order complexity classes. 
+\section{Prepare Your Paper Before Styling}
+Before you begin to format your paper, first write and save the content as a 
+separate text file. Complete all content and organizational editing before 
+formatting. Please note sections \ref{AA}--\ref{SCM} below for more information on 
+proofreading, spelling and grammar.
 
-In summary, this paper makes the following contributions: 
+Keep your text and graphic files separate until after the text has been 
+formatted and styled. Do not number text heads---{\LaTeX} will do that 
+for you.
 
-\begin{itemize} 
-\item We present a hybrid complexity classification framework that integrates LLM-based static reasoning with dynamic runtime curve fitting. 
-\item We construct a large-scale complexity-labeled dataset of 4,900 competitive programming solutions for empirical evaluation. 
-\item We reveal systematic underestimation biases of LLMs on high-order polynomial complexities and demonstrate that our fusion strategy effectively mitigates these errors. 
-\end{itemize} 
+\subsection{Abbreviations and Acronyms}\label{AA}
+Define abbreviations and acronyms the first time they are used in the text, 
+even after they have been defined in the abstract. Abbreviations such as 
+IEEE, SI, MKS, CGS, ac, dc, and rms do not have to be defined. Do not use 
+abbreviations in the title or heads unless they are unavoidable.
 
-This work provides a practical and scalable direction toward robust, automatic time complexity classification and establishes a foundation for future research on LLM-assisted program performance analysis.
+\subsection{Units}
+\begin{itemize}
+\item Use either SI (MKS) or CGS as primary units. (SI units are encouraged.) English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as ``3.5-inch disk drive''.
+\item Avoid combining SI and CGS units, such as current in amperes and magnetic field in oersteds. This often leads to confusion because equations do not balance dimensionally. If you must use mixed units, clearly state the units for each quantity that you use in an equation.
+\item Do not mix complete spellings and abbreviations of units: ``Wb/m\textsuperscript{2}'' or ``webers per square meter'', not ``webers/m\textsuperscript{2}''. Spell out units when they appear in text: ``. . . a few henries'', not ``. . . a few H''.
+\item Use a zero before decimal points: ``0.25'', not ``.25''. Use ``cm\textsuperscript{3}'', not ``cc''.)
+\end{itemize}
 
-\section{Related Work} 
- \label{sec:related_work} 
- 
- \subsection{Benchmarks for Time Complexity Prediction} 
- Early studies on program time-complexity prediction mainly relied on relatively small or restricted benchmarks. 
- For example, CoRCoD contains 929 annotated \emph{Java} programs and augments them with hand-engineered features 
- (e.g., counts of loops, methods, variables, and specific data-structure usage) for machine learning-based prediction. :contentReference[oaicite:0]{index=0} 
- However, prior benchmarks are limited in scale and language coverage, and often do not fully capture the role of 
- \emph{input representation} (e.g., distinguishing numeric constants from input size indicators), which is crucial for 
- worst-case time complexity reasoning. 
- 
- To address these limitations, Baik et al.\ introduced \textsc{CodeComplex}, a large-scale benchmark designed 
- specifically for evaluating LLM reasoning on worst-case time complexity prediction. :contentReference[oaicite:1]{index=1} 
- \textsc{CodeComplex} highlights several advantages over earlier benchmarks: it is larger and more diverse (covering 
- multiple languages rather than only Java), includes a more comprehensive labeled complexity taxonomy, explicitly 
- models input representation, and proposes evaluation metrics beyond plain class accuracy for nuanced analysis. :contentReference[oaicite:2]{index=2} 
- In our work, we adopt \textsc{CodeComplex} as the primary benchmark and construct a modified subset tailored to our 
- execution-based setting (Section~\ref{sec:dataset}), focusing on a six-class label space 
- (\texttt{constant}, \texttt{logn}, \texttt{linear}, \texttt{nlogn}, \texttt{quadratic}, \texttt{cubic}). 
- 
- \subsection{Learning- and LLM-based Complexity Prediction} 
- A common paradigm for complexity prediction is to treat it as a supervised classification problem from code text 
- (or code-derived features). Beyond traditional ML baselines (e.g., decision trees, random forests, SVMs), 
- recent work evaluates a wide range of pretrained programming language models (PLMs), including encoder-based models 
- (CodeBERT, GraphCodeBERT, UniXcoder) and encoder--decoder models (PLBART, CodeT5/CodeT5+), as well as both closed- 
- and open-source LLMs. :contentReference[oaicite:3]{index=3} 
- These studies show that even strong models may exhibit systematic errors on higher-order classes, motivating methods 
- that go beyond purely static text-based inference. 
- 
- In parallel, the broader LLM reasoning literature explores prompting strategies such as zero-shot/few-shot prompting 
- and chain-of-thought prompting to elicit more structured inference. :contentReference[oaicite:4]{index=4} 
- While these techniques can improve reasoning in some settings, complexity prediction remains challenging due to the 
- need to jointly consider algorithmic structure, input size variables, and control-flow behavior. 
- 
- \subsection{Evaluation Metrics for Hierarchical Complexity Labels} 
- Time complexity classes have a natural hierarchy: confusing $O(n\log n)$ with $O(n)$ is typically less severe than 
- confusing $O(n^3)$ with $O(1)$. To reflect this, \textsc{CodeComplex} proposes the \emph{Hierarchy Complexity Score} 
- (HC-Score), which penalizes wrong predictions proportionally to their hierarchical distance from the ground truth, 
- and a windowed variant (HC$_w$) that truncates penalties beyond a specified distance. :contentReference[oaicite:5]{index=5} 
- Following this line of work, we report standard class-based metrics (accuracy, macro-F1) and optionally include 
- hierarchy-aware metrics (HC/HC$_w$) to better characterize near-miss behaviors, especially around adjacent polynomial 
- classes. 
- 
- \subsection{Static--Dynamic Hybrid Analysis} 
- Most existing benchmarks and baselines primarily study \emph{static} prediction from code (via features, PLMs, or LLMs). 
- In contrast, our work integrates LLM-based static reasoning with \emph{dynamic} runtime curve fitting, using execution 
- evidence to correct systematic static misclassifications and using semantic priors to stabilize fitting under noisy or 
- short-range measurements. This hybrid perspective complements prior benchmark-driven studies and targets robust 
- recognition of closely related polynomial classes such as \texttt{quadratic} vs.\ \texttt{cubic}.
+\subsection{Equations}
+Number equations consecutively. To make your 
+equations more compact, you may use the solidus (~/~), the exp function, or 
+appropriate exponents. Italicize Roman symbols for quantities and variables, 
+but not Greek symbols. Use a long dash rather than a hyphen for a minus 
+sign. Punctuate equations with commas or periods when they are part of a 
+sentence, as in:
+\begin{equation}
+a+b=\gamma\label{eq}
+\end{equation}
 
-\section{System Overview} 
- \label{sec:system} 
- 
- This section introduces the overall architecture and workflow of our hybrid framework for 
- worst-case time complexity classification. The core idea is to combine (i) LLM-based static reasoning 
- as a semantic prior and (ii) dynamic runtime curve fitting as empirical evidence, then produce a final 
- prediction through an LLM-first correction strategy. 
- 
- \subsection{Framework Architecture} 
- \label{subsec:architecture} 
- 
- Figure~\ref{fig:system_overview} illustrates the architecture of our framework. Given a program $P$, 
- the system outputs its complexity class in a six-class label space 
- $\mathcal{C}=\{\texttt{constant}, \texttt{logn}, \texttt{linear}, \texttt{nlogn}, \texttt{quadratic}, \texttt{cubic}\}$. 
- 
- \begin{figure}[t] 
- \centering 
- % Replace with your figure file: 
- % \includegraphics[width=\linewidth]{figures/system_overview.pdf} 
- \fbox{\parbox[c][3.6cm][c]{0.95\linewidth}{\centering System overview placeholder}} 
- \caption{System architecture of the proposed hybrid framework.} 
- \label{fig:system_overview} 
- \end{figure} 
- 
- The framework consists of four major modules: 
- 
- \textbf{(1) Static Complexity Predictor (LLM).} 
- We query an LLM with the source code (optionally enriched by structural information such as AST/CFG) 
- and obtain a predicted class $\hat{y}_{\text{LLM}}$ as a semantic prior. 
- 
- \textbf{(2) Runtime Input Generator.} 
- To enable dynamic analysis, we generate scalable test inputs following the program's input format and 
- produce a sequence of concrete instances at increasing scales 
- $n \in \{3,50,100,150,\dots,3000\}$. 
- 
- \textbf{(3) Runtime Measurement \& Curve Fitting.} 
- We execute the program under each scale and measure runtime with \texttt{time.perf\_counter()}. 
- For each scale we repeat runs $r=3$ times and use the median runtime. A per-run timeout of $\tau=60$ seconds is enforced. 
- Measured pairs $(n,t)$ are fitted to candidate growth models, and the best class is selected by maximizing a penalized 
- confidence score. 
- 
- \textbf{(4) Fusion Decision Module.} 
- The final prediction $\hat{y}$ is produced by an LLM-first fusion rule: the system retains 
- $\hat{y}_{\text{LLM}}$ unless runtime fitting provides strong evidence to correct it. This design targets robust 
- correction of systematic underestimation on high-order polynomial programs while avoiding overreaction to noisy fitting. 
- 
- \subsection{Workflow Description} 
- \label{subsec:workflow} 
- 
- Algorithm~\ref{alg:workflow} summarizes the end-to-end workflow. 
- 
- \begin{enumerate} 
-     \item \textbf{Static inference:} Given program $P$, the LLM predicts $\hat{y}_{\text{LLM}} \in \mathcal{C}$ with a constrained output format. 
-     \item \textbf{Input scaling:} The generator produces scalable test instances at increasing $n$ according to the program's input specification. 
-     \item \textbf{Runtime collection:} For each $n$, the program is executed with timeout control. We record median runtime over $r=3$ repeats. 
-           If fewer than $k_{\min}=5$ valid points are collected, dynamic fitting is considered failed. 
-     \item \textbf{Model fitting:} We fit runtimes to candidate growth functions and compute a penalized confidence score 
-           (Section~\ref{subsubsec:setup_confidence}) for each class, producing $\hat{y}_{\text{fit}}$. 
-     \item \textbf{Fusion:} If $\hat{y}_{\text{fit}}$ strongly disagrees with $\hat{y}_{\text{LLM}}$ with high confidence, 
-           Fusion outputs $\hat{y}_{\text{fit}}$; otherwise it outputs $\hat{y}_{\text{LLM}}$. 
- \end{enumerate} 
- 
- \begin{table}[t] 
- \caption{End-to-end workflow (high-level).} 
- \label{alg:workflow} 
- \centering 
- \begin{tabular}{p{0.95\linewidth}} 
- \hline 
- \textbf{Input:} Program $P$ \\ 
- \textbf{Output:} Predicted class $\hat{y} \in \mathcal{C}$ \\ 
- \hline 
- 1.\ \ \ $\hat{y}_{\text{LLM}} \leftarrow f_{\text{LLM}}(P)$ \\ 
- 2.\ \ \ Generate inputs at scales $n \in \{3,50,100,150,\dots,3000\}$ \\ 
- 3.\ \ \ Measure runtimes $(n,t)$ with $r=3$ repeats, timeout $\tau=60$s \\ 
- 4.\ \ \ If valid points $< k_{\min}=5$, set $\hat{y}_{\text{fit}} \leftarrow \texttt{unknown}$ \\ 
- 5.\ \ \ Else fit candidate models, select $\hat{y}_{\text{fit}} \leftarrow \arg\max_m \mathrm{Conf}(m)$ \\ 
- 6.\ \ \ Fuse: output $\hat{y}$ using LLM-first correction rule \\ 
- \hline 
- \end{tabular} 
- \end{table} 
- 
- This overview separates the \emph{system-level design} from the \emph{method-level details}. 
- We defer prompting, fitting objective, and fusion criteria to Section~\ref{sec:method}, and present the benchmark, 
- implementation, and evaluation protocol in Sections~\ref{sec:dataset} and~\ref{sec:experiments}.
+Be sure that the 
+symbols in your equation have been defined before or immediately following 
+the equation. Use ``\eqref{eq}'', not ``Eq.~\eqref{eq}'' or ``equation \eqref{eq}'', except at 
+the beginning of a sentence: ``Equation \eqref{eq} is . . .''
 
-\section{Methodology}
-\label{sec:methodology}
+\subsection{\LaTeX-Specific Advice}
 
-\subsection{Fusion Strategy} 
- \label{subsec:fusion} 
- 
- The LLM-based static prediction and the dynamic runtime fitting provide complementary signals for 
- time complexity inference. Static reasoning by LLMs captures high-level algorithmic intent but may 
- suffer from hallucination and systematic bias, while dynamic fitting reflects empirical growth trends 
- but is sensitive to runtime noise and limited input scales. To leverage the strengths of both, we adopt 
- an \emph{LLM-first with fitting-based correction} fusion strategy. 
- 
- \subsubsection{Static Prior and Dynamic Evidence} 
- \label{subsubsec:prior_evidence} 
- 
- We treat the LLM prediction as a \emph{semantic prior}: 
- \[ 
- \hat{y}_{\text{LLM}} = f_{\text{LLM}}(P), 
- \] 
- which reflects the model's reasoning over control flow, loop structure, and algorithmic patterns. 
- Dynamic runtime fitting provides \emph{empirical evidence}: 
- \[ 
- \hat{y}_{\text{fit}} = f_{\text{fit}}(\{(n_i, t_i)\}), 
- \] 
- where runtimes $t_i$ are measured using \texttt{time.perf\_counter()} over a sequence of input scales 
- $n_i \in \{3, 50, 100, 150, \dots, 3000\}$. 
- 
- \subsubsection{Correction Rule} 
- \label{subsubsec:correction} 
- 
- Our fusion rule prioritizes the static LLM prediction and applies dynamic fitting as a correction 
- signal only when there is strong empirical evidence of misclassification. Formally, the final prediction 
- $\hat{y}$ is determined as follows: 
- 
- \begin{enumerate} 
-     \item \textbf{Agreement:} If $\hat{y}_{\text{LLM}} = \hat{y}_{\text{fit}}$, we output 
-     $\hat{y} = \hat{y}_{\text{LLM}}$. 
-     \item \textbf{Dynamic failure:} If runtime fitting fails (e.g., insufficient valid measurements, 
-     timeout, or unstable fitting), we output $\hat{y} = \hat{y}_{\text{LLM}}$. 
-     \item \textbf{Conflict with strong evidence:} If $\hat{y}_{\text{LLM}} \neq \hat{y}_{\text{fit}}$, 
-     we accept the fitted result $\hat{y}_{\text{fit}}$ only when the fitting confidence exceeds a 
-     predefined threshold. Concretely, we require that the best-fitting model achieves a substantially 
-     lower penalized error than alternative models on larger input scales. 
-     \item \textbf{Fallback:} In all other cases, we retain $\hat{y} = \hat{y}_{\text{LLM}}$. 
- \end{enumerate} 
- 
- \subsubsection{High-Order Bias Correction} 
- \label{subsubsec:high_order} 
- 
- This correction mechanism is particularly effective for cubic-time programs. In our preliminary 
- analysis, LLMs exhibit a systematic tendency to underestimate cubic complexity as quadratic or 
- near-linear. When runtime measurements on larger input sizes (e.g., $n > 1000$) consistently favor 
- a cubic growth trend, the dynamic signal overrides the static prior, correcting this bias. Conversely, 
- for lower-order classes where runtime fitting is more susceptible to short-range noise, the LLM prior 
- provides a stabilizing effect. 
- 
- Overall, this \emph{LLM-first with correction} strategy ensures robustness against both LLM 
- hallucination and overfitting in dynamic analysis, yielding more reliable complexity classification.
+Please use ``soft'' (e.g., \verb|\eqref{Eq}|) cross references instead
+of ``hard'' references (e.g., \verb|(1)|). That will make it possible
+to combine sections, add equations, or change the order of figures or
+citations without having to go through the file line by line.
 
-\section{Experiments}
-\label{sec:experiments}
+Please don't use the \verb|{eqnarray}| equation environment. Use
+\verb|{align}| or \verb|{IEEEeqnarray}| instead. The \verb|{eqnarray}|
+environment leaves unsightly spaces around relation symbols.
 
-\subsection{Experimental Setup} 
- \label{subsec:exp_setup} 
- 
- This subsection describes the evaluation protocol, runtime measurement procedure, input scaling 
- configuration, and model settings used in our experiments. 
- 
- \subsubsection{Dataset and Label Space} 
- \label{subsubsec:setup_dataset} 
- All experiments are conducted on a modified version of the CodeComplex benchmark. 
- We focus on Python programs and a six-class taxonomy: 
- \texttt{constant}, \texttt{logn}, \texttt{linear}, \texttt{nlogn}, \texttt{quadratic}, and \texttt{cubic}. 
- Unless otherwise specified, all reported results are computed on the test split. 
- 
- \subsubsection{Methods Compared} 
- \label{subsubsec:setup_methods} 
- We evaluate three approaches: 
- (i) \textbf{LLM-only}, which predicts a complexity class from source code via prompting; 
- (ii) \textbf{Fit-only}, which estimates the class by executing the program under scaled inputs and fitting 
- runtime curves; and (iii) \textbf{Fusion (ours)}, which follows an LLM-first with fitting-based correction 
- strategy (Section~\ref{subsec:fusion}). 
- 
- \subsubsection{Input Scales and Runtime Measurement} 
- \label{subsubsec:setup_runtime} 
- For dynamic analysis, we execute each program under a sequence of input scales 
- $n \in \{3, 50, 100, 150, \dots, 3000\}$. 
- Runtime is measured using \texttt{time.perf\_counter()} by taking the difference between timestamps 
- immediately before and after execution. 
- To mitigate runtime noise, we repeat each measurement $r=3$ times per scale and use the median runtime. 
- We enforce a per-run timeout of $\tau = 60$ seconds. If a run exceeds the timeout, the measurement at that 
- scale is marked as failed. A program is considered a \emph{dynamic failure} if it yields fewer than 
- $k_{\min}=5$ valid runtime points across all scales. 
- 
- \subsubsection{Curve Fitting and Candidate Models} 
- \label{subsubsec:setup_fitting} 
- We fit measured pairs $\{(n_i, t_i)\}$ against candidate growth models corresponding to the six classes: 
- constant, $\log n$, $n$, $n\log n$, $n^2$, and $n^3$. 
- Model parameters are estimated by least squares, and each fitted model is scored by a 
- \emph{penalized confidence function} that balances goodness-of-fit and model complexity. 
- 
- \subsubsection{Penalized Confidence Score} 
- \label{subsubsec:setup_confidence} 
- Let $R^2(m)$ denote the coefficient of determination for model $m$, and let $\#\theta(m)$ be the number of 
- free parameters in $m$. 
- We compute a confidence score: 
- \[ 
- \mathrm{Conf}(m) = R^2(m) - \mathrm{Pen}_{\mathrm{param}}(m) - \mathrm{Pen}_{\mathrm{order}}(m), 
- \] 
- where the parameter penalty follows an information-criterion inspired form: 
- \[ 
- \mathrm{Pen}_{\mathrm{param}}(m) 
- = 0.5 \cdot \frac{\#\theta(m)\log(k)}{k}, 
- \] 
- and the complexity-order penalty increases with the asymptotic order: 
- \[ 
- \mathrm{Pen}_{\mathrm{order}}(m) = 0.02 \cdot \mathrm{ord}(m), 
- \] 
- with $\mathrm{ord}(m)$ being a discrete rank (larger means more complex) consistent with the label space. 
- We select the fitted prediction by maximizing the confidence score: 
- \[ 
- \hat{y}_{\text{fit}} = \arg\max_{m \in \mathcal{C}} \mathrm{Conf}(m). 
- \] 
- 
- \subsubsection{Fusion Correction Rule} 
- \label{subsubsec:setup_fusion_rule} 
- Fusion uses the LLM prediction as a semantic prior and applies fitting-based correction only when the 
- dynamic evidence is strong. In particular, when $\hat{y}_{\text{LLM}} \neq \hat{y}_{\text{fit}}$, we override 
- the static prediction only if the best fitted model achieves a sufficiently higher confidence score than 
- alternatives (e.g., a clear margin over the second-best model), and the fitting is based on at least 
- $k_{\min}$ valid runtime points. Otherwise, we keep $\hat{y}=\hat{y}_{\text{LLM}}$. 
- 
- \subsubsection{LLM Inference Settings} 
- \label{subsubsec:setup_llm} 
- For LLM-only and Fusion, we use a fixed prompt template with a constrained answer set (the six classes) 
- and require a structured output (e.g., JSON) for robust parsing. 
- We run inference with deterministic decoding whenever supported. 
- Invalid or out-of-set outputs are mapped to \texttt{unknown} and treated as misclassifications in accuracy 
- and macro-F1 unless otherwise specified. 
- 
- \subsubsection{Evaluation Metrics} 
- \label{subsubsec:setup_metrics} 
- We report overall accuracy and macro-F1 as primary metrics. 
- We additionally report per-class performance and analyze confusion patterns between adjacent classes 
- (e.g., \texttt{nlogn} vs.\ \texttt{quadratic}, \texttt{quadratic} vs.\ \texttt{cubic}).
+Please note that the \verb|{subequations}| environment in {\LaTeX}
+will increment the main equation counter even when there are no
+equation numbers displayed. If you forget that, you might write an
+article in which the equation numbers skip from (17) to (20), causing
+the copy editors to wonder if you've discovered a new method of
+counting.
 
-\subsection{Overall Results} 
- \label{subsec:overall_results} 
- 
- We first report the overall performance of the LLM-only baseline on our six-class setting 
- (\texttt{constant}, \texttt{logn}, \texttt{linear}, \texttt{nlogn}, \texttt{quadratic}, \texttt{cubic}). 
- After removing the exponential/\texttt{NP} class from the original benchmark, the evaluation set 
- contains 4,372 programs. On this six-class benchmark, the LLM-only approach achieves an accuracy of 
- 65.99\% and a macro-F1 of 0.672. 
- This result indicates that LLMs can capture many common algorithmic patterns, but still exhibit 
- non-trivial systematic errors, especially on adjacent polynomial classes. 
- 
- Next, we compare LLM-only with Fit-only and our Fusion approach. Table~\ref{tab:overall_results} 
- summarizes the overall accuracy and macro-F1. As we show later, dynamic evidence provides useful 
- correction signals, while the LLM prior stabilizes the prediction under noisy or short-range runtime 
- measurements. 
- 
- \subsection{Per-Class Performance} 
- \label{subsec:perclass_results} 
- 
- Table~\ref{tab:perclass} reports per-class precision, recall, and F1 for the LLM-only baseline. 
- Overall, lower-order classes such as \texttt{logn} and \texttt{nlogn} achieve relatively high precision, 
- while high-order classes (notably \texttt{cubic}) suffer from reduced recall, suggesting a tendency 
- toward \emph{underestimation}. 
- In particular, \texttt{cubic} achieves a precision of 0.915 but a recall of 0.536, meaning that when the 
- LLM predicts \texttt{cubic} it is often correct, but it fails to identify nearly half of the true 
- \texttt{cubic} programs. This observation motivates our fitting-based correction strategy. 
- 
- For \texttt{linear}, we observe an opposite pattern: recall is high but precision is substantially lower, 
- indicating that the LLM frequently over-predicts \texttt{linear} for programs that are actually 
- \texttt{nlogn}, \texttt{quadratic}, or \texttt{cubic}. This confusion is consistent with the fact that many 
- programs exhibit near-linear behavior on small input scales or contain linear-looking outer structures 
- that hide higher-order inner costs. 
- 
- \subsection{Confusion Analysis} 
- \label{subsec:confusion_analysis} 
- 
- To better understand systematic errors, Figure~\ref{fig:confusion} visualizes the confusion matrix for 
- LLM-only. We highlight three dominant confusion patterns. 
- 
- \textbf{(1) Cubic underestimation.} 
- Among true \texttt{cubic} programs, 20.8\% are misclassified as \texttt{linear} and 18.0\% as 
- \texttt{quadratic}, while an additional 2.5\% are predicted as \texttt{nlogn}. These mistakes suggest that 
- the LLM tends to compress higher-order growth into simpler polynomial forms, especially when nested loops 
- or repeated substring/DP-like patterns are not explicitly recognized. 
- 
- \textbf{(2) Quadratic-to-linear confusion.} 
- A substantial portion of \texttt{quadratic} programs are predicted as \texttt{linear}. This error commonly 
- occurs when the higher-order term is triggered only under certain input distributions or when the loop 
- nesting is implicit (e.g., hidden inside library calls or repeated slicing operations). 
- 
- \textbf{(3) Logarithmic vs.\ constant ambiguity.} 
- We also observe confusion between \texttt{logn} and \texttt{constant}, which is expected because short-range 
- runtime curves often make $\log n$ appear nearly flat, and static inspection may miss the input-size 
- variable that drives logarithmic behavior. 
- 
- These findings justify the need for a hybrid approach: static LLM reasoning alone is prone to systematic 
- bias on high-order classes, while dynamic analysis can provide direct growth evidence to correct such 
- misclassifications. 
- 
- \subsection{Effect of Fusion} 
- \label{subsec:fusion_effect} 
- 
- We now evaluate whether the proposed Fusion strategy improves classification performance. 
- Fusion uses the LLM prediction as a semantic prior and overrides it only when dynamic curve fitting yields 
- strong evidence (Section~\ref{subsec:fusion}). 
- Table~\ref{tab:overall_results} shows that Fusion improves overall accuracy from 65.99\% (LLM-only) to 
- XX.X\%, and macro-F1 from 0.672 to XX.X. 
- More importantly, Fusion increases recall on \texttt{cubic} programs, indicating that runtime evidence 
- effectively corrects the LLM's underestimation bias. 
- We provide additional case studies in Section~\ref{subsec:case_study}. 
- 
- \subsection{Case Study: Correcting Cubic Underestimation} 
- \label{subsec:case_study} 
- 
- We further analyze representative programs where LLM-only predicts a lower-order class but runtime fitting 
- exhibits a clear cubic trend. Such programs often contain nested loops with data-dependent iteration bounds 
- or repeated substring/collection operations whose cost is proportional to the size of the processed segment. 
- In these cases, the fitted model on larger scales consistently favors \texttt{cubic}, leading Fusion to 
- override the static prior. This behavior aligns with our design goal: using execution evidence to correct 
- systematic high-order underestimation while retaining LLM stability when fitting is uncertain.
+{\BibTeX} does not work by magic. It doesn't get the bibliographic
+data from thin air but from .bib files. If you use {\BibTeX} to produce a
+bibliography you must send the .bib files. 
+
+{\LaTeX} can't read your mind. If you assign the same label to a
+subsubsection and a table, you might find that Table I has been cross
+referenced as Table IV-B3. 
+
+{\LaTeX} does not have precognitive abilities. If you put a
+\verb|\label| command before the command that updates the counter it's
+supposed to be using, the label will pick up the last counter to be
+cross referenced instead. In particular, a \verb|\label| command
+should not go before the caption of a figure or a table.
+
+Do not use \verb|\nonumber| inside the \verb|{array}| environment. It
+will not stop equation numbers inside \verb|{array}| (there won't be
+any anyway) and it might stop a wanted equation number in the
+surrounding equation.
 
 \subsection{Some Common Mistakes}\label{SCM}
 \begin{itemize}
@@ -467,7 +175,7 @@ This work provides a practical and scalable direction toward robust, automatic t
 \end{itemize}
 An excellent style manual for science writers is \cite{b7}.
 
-\subsection{Authors and Affiliations}\label{AAA}
+\subsection{Authors and Affiliations}
 \textbf{The class file is designed for, but not limited to, six authors.} A 
 minimum of one author is required for all conference articles. Author names 
 should be listed starting from left to right and then moving down to the 
@@ -476,7 +184,7 @@ and by indexing services. Names should not be listed in columns nor group by
 affiliation. Please keep your affiliations as succinct as possible (for 
 example, do not differentiate among departments of the same organization).
 
-\subsection{Identify the Headings}\label{ITH}
+\subsection{Identify the Headings}
 Headings, or heads, are organizational devices that guide the reader through 
 your paper. There are two types: component heads and text heads.
 
@@ -495,7 +203,7 @@ sub-topics, the next level head (uppercase Roman numerals) should be used
 and, conversely, if there are not at least two sub-topics, then no subheads 
 should be introduced.
 
-\subsection{Figures and Tables}\label{FAT}
+\subsection{Figures and Tables}
 \paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
 bottom of columns. Avoid placing them in the middle of columns. Large 
 figures and tables may span across both columns. Figure captions should be 
@@ -572,12 +280,7 @@ citation first, followed by the original foreign-language citation \cite{b6}.
 \bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
 \bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
 \bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
-\bibitem{b8} D. P. Kingma and M. Welling, ``Auto-encoding variational Bayes,'' 2013, arXiv:1312.6114. [Online]. Available: https://arxiv.org/abs/1312.6114
-\bibitem{b9} S. Liu, ``Wi-Fi Energy Detection Testbed (12MTC),'' 2023, gitHub repository. [Online]. Available: https://github.com/liustone99/Wi-Fi-Energy-Detection-Testbed-12MTC
-\bibitem{b10} ``Treatment episode data set: discharges (TEDS-D): concatenated, 2006 to 2009.'' U.S. Department of Health and Human Services, Substance Abuse and Mental Health Services Administration, Office of Applied Studies, August, 2013, DOI:10.3886/ICPSR30122.v2
-\bibitem{b11} K. Eves and J. Valasek, ``Adaptive control for singularly perturbed systems examples,'' Code Ocean, Aug. 2023. [Online]. Available: https://codeocean.com/capsule/4989235/tree
 \end{thebibliography}
-
 \vspace{12pt}
 \color{red}
 IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
