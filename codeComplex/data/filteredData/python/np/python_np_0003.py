@@ -63,8 +63,8 @@ def main(n):
     path.append(0)
     path = list(reversed(path))
 
-    print(result_cost)
-    print(' '.join(map(str, path)))
+    # print(result_cost)
+    # print(' '.join(map(str, path)))
 
 
 if __name__ == "__main__":

@@ -75,8 +75,8 @@ def main(n):
         if not progressed:
             break
 
-    print(int(dp[(1 << n) - 1]))
-    print(*path[::-1])
+    # print(int(dp[(1 << n) - 1]))
+    # print(*path[::-1])
 
 
 if __name__ == "__main__":

@@ -59,8 +59,8 @@ def main(n):
         for i in range(len(prev) - 1):
             cur -= (1 << (prev[i] - 1))
 
-    print(res)
-    print(" ".join(map(str, path)))
+    # print(res)
+    # print(" ".join(map(str, path)))
 
 
 if __name__ == "__main__":

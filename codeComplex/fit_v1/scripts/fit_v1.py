@@ -302,11 +302,11 @@ def process_code_file(code_path, expected_models, base_dir):
                 if relative_std < 0.03:
                     r2 = 0.95
                 elif relative_std < 0.05:
-                    r2 = 0.90
-                elif relative_std < 0.08:
                     r2 = 0.85
+                elif relative_std < 0.08:
+                    r2 = 0.75
                 else:
-                    r2 = max(r2, 0.70)
+                    r2 = max(r2, 0.55)
             else:
                 r2 = r2_score(y_data, y_pred)
             

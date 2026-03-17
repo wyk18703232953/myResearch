@@ -44,7 +44,7 @@ def main(n):
     for i in range(n):
         ans.append(dp[1 << i])
 
-    print(*ans)
+    # print(*ans)
 
 
 if __name__ == "__main__":

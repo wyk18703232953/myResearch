@@ -50,7 +50,7 @@ def main(n):
                 pres[newstt] = sb | bit
                 vis.add(newstt)
 
-    print(mint[allb] if allb >= 0 else 0)
+    # print(mint[allb] if allb >= 0 else 0)
     path = ['0']
     stt = allb
 
@@ -61,7 +61,7 @@ def main(n):
         path.append('0')
         stt ^= pres[stt]
 
-    print(' '.join(path))
+    # print(' '.jwoin(path))
 
 
 if __name__ == "__main__":

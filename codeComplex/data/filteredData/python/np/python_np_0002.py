@@ -173,8 +173,8 @@ def main(n):
         y = i * i
         oLst.append((x, y))
     resT, resLst = solve(xs, ys, n, oLst)
-    print(resT)
-    print(' '.join(resLst))
+    # print(resT)
+    # print(' '.join(resLst))
 
 
 if __name__ == "__main__":
